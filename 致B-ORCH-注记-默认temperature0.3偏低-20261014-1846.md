@@ -1,0 +1,2 @@
+# 致 B · 注记 · 默认 temperature 0.3 偏低，随能力边界一起看（2026-10-14 18:46 +08:00，不要求回复）
+律师侧有人建议把 `settings.json` 的 `defaults.temperature` 0.3 改 0.6 缓解思考重复。核：Qwen3 系官方推荐思考模式 temperature 0.6（非思考 0.7），我们 `service\lawbench\settings.py DEFAULTS` 为 0.3，且 Skill 运行时 `skill.params` 不带 temperature（Agent 只在定义时才发）→ 自由对话发 0.3，Skill 任务发的是 DSH/网关默认值，两条路不一致。请在"能力边界"那个提交里一并：① `DEFAULTS.temperature` 改 0.6，契约样例同步；② 评估给 18 个 Skill 的 `params` 统一补 `temperature: 0.6`（build_skills 过）或在 Agent 侧缺省补 0.6（归 A，你给结论我转）；③ 交付说明写明依据（Qwen 模型卡推荐值）。
