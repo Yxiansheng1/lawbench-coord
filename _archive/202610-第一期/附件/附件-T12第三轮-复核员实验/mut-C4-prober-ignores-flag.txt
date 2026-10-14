@@ -1,0 +1,89 @@
+﻿...................F.........                                            [100%]
+================================== FAILURES ===================================
+_________________ test_settings_save_resumes_key_invalid_job __________________
+
+env = <test_ocr_queue.Env object at 0x0000027399D54CB0>
+fake = <test_ocr_queue.Fake395 object at 0x0000027399D569F0>
+
+    def test_settings_save_resumes_key_invalid_job(env, fake):
+        fake.script = [(401, {})]
+        env.st.ocr.concurrency = 1
+        env.st.ocr.probe_seconds = 3600                                    # 排除定时读 Key 的作用，只看"保存设置"
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+        assert env.wait(v["job_id"], ("paused",))["pause_reason"] == "key_invalid"
+        s = ok(env.client.get("/api/settings"), "settings")
+        ok(env.client.put("/api/settings", json=s), "settings")
+>       env.wait(v["job_id"], ("queued", "running", "done"), timeout=3)   # 3 秒内回到排队（P2-4）
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_ocr_queue.py:457: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_ocr_queue.Env object at 0x0000027399D54CB0>
+job_id = 'J-20261001215637-fdf3', statuses = ('queued', 'running', 'done')
+timeout = 3
+
+    def wait(self, job_id: str, statuses: tuple, timeout: float = 30) -> dict:
+        end = time.monotonic() + timeout
+        while time.monotonic() < end:
+            j = next(x for x in self.jobs() if x["job_id"] == job_id)
+            if j["status"] in statuses:
+                return j
+            time.sleep(0.1)
+>       raise AssertionError(f"任务没到 {statuses}：{j}")
+E       AssertionError: 任务没到 ('queued', 'running', 'done')：{'job_id': 'J-20261001215637-fdf3', 'material_id': 'M0001', 'name': '讯问笔录', 'status': 'paused', 'pause_reason': 'key_invalid', 'total': 1, 'done': 0, 'failed': 0, 'created_at': '2026-10-01T21:56:37+08:00'}
+
+tests\test_ocr_queue.py:117: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "73120396-90cc-4cc1-be7b-71a4d524bc1d", "ms": 31}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "73120396-90cc-4cc1-be7b-71a4d524bc1d"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "ocr", "op": "pause", "status": "fail", "case_id": "73120396-90cc-4cc1-be7b-71a4d524bc1d", "error": "key_invalid"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:38+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "settings", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "settings", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:40+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:41+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:56:42+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_settings_save_resumes_key_invalid_job - ...
+1 failed, 28 passed, 1 warning in 137.41s (0:02:17)

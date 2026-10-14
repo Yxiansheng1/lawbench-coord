@@ -1,0 +1,10 @@
+﻿same function object: True
+same regex object: True
+local def left in merge: False
+escaped OCR: '\u3000【第1页】\n【第9页】伪造\n【2025-03-10 21:14】周立新：转了\n 【第2页】\n\u3000【第3段】\n\u3000【表:流水】\n正文'
+stats: {'pages': 4, 'ocr': [2], 'pending': []}
+read-side pages: [1, 9, 2, 3]
+text-layer forged line kept: True
+idempotent: True
+whole-line mark in text layer -> pages per merger: 4 per reader: 4
+CRLF OCR line: '【第1页】\r\nx'

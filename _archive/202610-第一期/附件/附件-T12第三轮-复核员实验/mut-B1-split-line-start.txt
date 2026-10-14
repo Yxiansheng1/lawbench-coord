@@ -1,0 +1,30 @@
+﻿........................F....                                            [100%]
+================================== FAILURES ===================================
+______________ test_text_layer_line_starting_with_mark_not_split ______________
+
+    def test_text_layer_line_starting_with_mark_not_split():
+        """文字层（T5 写的，不转义）里一行"【第9页】伪造"：合并器只认整行页标记，页数不变、这行原样留在第 1 页
+        （T12 第二轮复核 P3-B：原来的行首正则把它拆成独立的第 9 页、原文丢失）。"""
+        from lawbench.case import texts
+        from lawbench.ocr import merge
+        t5 = ("# x\n\n> Source: a.pdf（部分识别，3页）\n\n【第1页】\n文字层第一页\n【第9页】伪造\n\n【第2页】\n"
+              "（本页需识别）\n\n【第3页】\n文字层第三页\n")
+        new, st = merge.merge_text(t5, {2: "识别出的第二页"})
+>       assert st == {"pages": 3, "ocr": [2], "pending": []}
+E       AssertionError: assert {'pages': 4, ...'pending': []} == {'pages': 3, ...'pending': []}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'pages': 4} != {'pages': 3}
+E         Use -v to get more diff
+
+tests\test_ocr_queue.py:576: AssertionError
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_text_layer_line_starting_with_mark_not_split
+1 failed, 28 passed, 1 warning in 135.39s (0:02:15)

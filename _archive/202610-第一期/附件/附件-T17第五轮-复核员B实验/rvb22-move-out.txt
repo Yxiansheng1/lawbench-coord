@@ -1,0 +1,7 @@
+﻿AG live=true old files before copy ["\\工作区\\case-id.txt","\\工作区\\会话\\ENC\\s1\\session.v4.jsonl"] FIRST in old 1
+MV rename ok
+MV statuses ["running","idle"] old exists false
+AG live=true agent was live true session cwd <tmp>\桌面\案丙 AFTER-COPY in old 0 in new 0
+AG live=true after shutdown flush: AFTER-COPY in old 0 in new 0
+AG live=true restart list ["s1@new"] new store files ["\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-claude-D--lawbench-780b8a59-1849-4c63-905e-c6705fafa3f6-scratchpad-rv-A22-B-lab-tmp-rvb22a-rQyA0A-~684C~9762-~6848~4E19--\\s1\\session.v4.jsonl"]
+AG live=true after restart list ["s1@new"] restart sees AFTER-COPY false

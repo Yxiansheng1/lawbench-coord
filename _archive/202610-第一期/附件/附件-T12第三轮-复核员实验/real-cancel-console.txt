@@ -1,0 +1,5 @@
+﻿started fake395 pid 43064
+started svc pid 12896
+cancel#0: api cancelled 1.78s | conns before 3 | zero at 2.947582244873047
+cancel#1: api cancelled 1.72s | conns before 2 | zero at 1.77748703956604
+cancel#2: api cancelled 1.87s | conns before 2 | zero at 1.9436748027801514

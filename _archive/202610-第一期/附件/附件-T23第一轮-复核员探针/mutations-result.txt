@@ -1,0 +1,36 @@
+﻿M1 转换顺序 WPS 先于 Word: 红(被抓住) rc=1 ['1 failed, 1 warning in 2.42s']
+  复原 sha256 一致 bb40dcf7fb71
+M2 超时只杀子进程不杀树: SKIP 匹配 0 处
+M3 去掉外链预检: 红(被抓住) rc=1 ['1 failed, 1 warning in 1.69s']
+  复原 sha256 一致 bb40dcf7fb71
+M4 忽略规则失效（命名混乱）: 红(被抓住) rc=1 ['1 failed, 1 warning in 2.85s']
+  复原 sha256 一致 0dfe163ea1a3
+M5 文件夹对应多项也归入: 红(被抓住) rc=1 ['1 failed, 1 warning in 0.94s']
+  复原 sha256 一致 0dfe163ea1a3
+M6 缺失必交项不看 required: 红(被抓住) rc=1 ['1 failed, 1 warning in 2.52s']
+  复原 sha256 一致 0dfe163ea1a3
+M7 不加页码层: SKIP 匹配 0 处
+M8 同名不加 -v2（覆盖旧文件夹）: 红(被抓住) rc=1 ['1 failed, 1 warning in 41.34s']
+  复原 sha256 一致 9e65fd419b3c
+M9 result 为 null 也生成: SKIP 匹配 0 处
+M10 原件被改（PDF 原件追加一字节）: SKIP 匹配 0 处
+M11 临时目录不清: 红(被抓住) rc=1 ['1 failed, 1 warning in 20.91s']
+  复原 sha256 一致 9e65fd419b3c
+M12 COM 收尾不分父进程: 红(被抓住) rc=1 ['1 failed, 1 warning in 0.77s']
+  复原 sha256 一致 bb40dcf7fb71
+M13 页码范围少算一页: 红(被抓住) rc=1 ['1 failed, 1 warning in 21.78s']
+  复原 sha256 一致 9e65fd419b3c
+M14 AddToRecentFiles=True（com_worker）: 绿(没抓住) rc=0 ['31 passed, 1 skipped, 1 warning in 143.87s (0:02:23)']
+  复原 sha256 一致 195d0fed9d2c
+M15 不恢复 UpdateLinksAtOpen、ReadOnly=False（com_worker）: 绿(没抓住) rc=0 ['31 passed, 1 skipped, 1 warning in 147.01s (0:02:27)']
+  复原 sha256 一致 195d0fed9d2c
+M16 不拒失败材料（基线：现在就不拒，看有无用例守）: 红(被抓住) rc=1 ['1 failed, 1 passed, 1 warning in 2.20s']
+  复原 sha256 一致 0dfe163ea1a3
+M2 超时只杀子进程不杀树: 红(被抓住) rc=1 ['1 failed, 1 warning in 13.44s']
+  复原 sha256 一致 bb40dcf7fb71
+M7 不加页码层: 红(被抓住) rc=1 ['1 failed, 1 warning in 26.55s']
+  复原 sha256 一致 9e65fd419b3c
+M9 result 为 null 也生成: 红(被抓住) rc=1 ['1 failed, 1 warning in 20.02s']
+  复原 sha256 一致 9e65fd419b3c
+M10 原件被改（PDF 原件追加一字节）: 红(被抓住) rc=1 ['1 failed, 1 warning in 19.91s']
+  复原 sha256 一致 9e65fd419b3c

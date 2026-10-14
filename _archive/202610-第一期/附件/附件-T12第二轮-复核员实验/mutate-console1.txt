@@ -1,0 +1,24 @@
+﻿M1_worker_setpage_unguarded: exit=1 (RED) 28s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_case_db_locked_20s_others_continue - Ass...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed, 3 warnings in 25.32s
+
+M2_process_no_isdir: exit=1 (RED) 43s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_lab_c16.py::test_x3_vanish_while_in_flight - AssertionError...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 passed, 1 warning in 40.70s
+
+M3_next_no_per_job_guard: exit=0 (GREEN) 31s restored_sha_ok
+      from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 1 warning in 28.80s
+
+M3b_next_no_isdir_pop_only: exit=0 (GREEN) 11s restored_sha_ok
+      from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 1 warning in 9.06s
+

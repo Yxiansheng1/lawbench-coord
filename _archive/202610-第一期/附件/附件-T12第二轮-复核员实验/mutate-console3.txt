@@ -1,0 +1,36 @@
+﻿M7_cancel_no_disconnect: exit=1 (RED) 11s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_cancel_keeps_done_pages_and_drops_in_flight
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 warning in 8.52s
+
+M8_503_no_wait: exit=1 (RED) 6s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_503_waits_and_retries_without_counting
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 warning in 3.41s
+
+M9_write_fail_unbounded: exit=1 (RED) 34s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_result_write_failure_stops_after_three
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 warning in 32.26s
+
+M10_no_resume_on_case_open: exit=1 (RED) 36s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_case_folder_gone_others_continue_then_resume_on_open
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 warning in 33.57s
+
+M11_no_escape: exit=1 (RED) 7s restored_sha_ok
+  =========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_ocr_line_like_page_mark_escaped - Assert...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 1 warning in 4.74s
+
+M12_resume_case_touches_inmemory: exit=0 (GREEN) 31s restored_sha_ok
+      from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 passed, 1 warning in 28.46s
+

@@ -1,0 +1,2 @@
+# 致 B · 执行令 · 1.4 已合 main；做 case_forget（候项 17）+ 两处小修（2026-10-11 02:42 +08:00）
+`bb5fc41`/`00d5231`/`d7ff3b4` 已进 main，VERSION 1.4。rebase main 后：① 一行令"1.4 两处小修"（坏索引 reason 改"请联系技术支持"；`test_has_recycle_bin_only_on_fixed_local_drive` 改 tmp_path/monkeypatch）；② 注记 `致B-ORCH-注记-1.4加case_forget-…` 的 `POST /api/case/forget`（仍在 1.4 内，schema/gen/样例/用例/Spec 20.12 行补一句）。一个或两个 T3 提交，service 全量计数，交回 `致ORCH-B-交回-case_forget-<HHMM>.md`。

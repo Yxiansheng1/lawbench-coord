@@ -1,0 +1,15 @@
+﻿python.exe : Traceback (most recent call last):
+At line:1 char:452
++ ... env.ps1'; Set-Location "$lab"; & $py -B "$lab\mutate.py" 2>&1 | Out-F ...
++                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C16-T12
+-lab\mutate.py", line 127, in <module>
+    main(sys.argv[1:] or list(MUTS))
+  File "C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C16-T12
+-lab\mutate.py", line 106, in main
+    assert n == 1, (name, n, a[:60])
+           ^^^^^^
+AssertionError: ('M1_worker_setpage_unguarded', 0, '                try:\n                    self._set_page(job.')

@@ -1,0 +1,13 @@
+﻿started fake395 pid 26744
+started svc pid 31436
+hardkill: done-before-kill ['1.md', '2.md'] fake started 3
+started svc2 pid 6060
+hardkill: job done 3 0 | total sent 4 | max per page 2 | done-before-kill rewritten: []
+cancel: api cancelled 1.82s | svc->395 conns before 2 after 0 at 5.09s | job cancelled
+two_cases: done
+two_cases: done
+two_cases: done
+two_cases material: parsed full [] False
+two_cases material: parsed full [] False
+two_cases fake pages: 9
+log leak hits: {'讯问笔录': 0, '识别文本': 0, 'sk-lab-fake-c18': 0, '甲': 0, '乙': 0, '卷一': 0} | ocr log lines: 11

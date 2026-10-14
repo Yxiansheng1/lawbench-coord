@@ -1,0 +1,2 @@
+- [用户在场时由用户传话](owner-relays-when-present.md) — lawbench：在场不挂监控不巡检，信箱件照写；只有 /keep-pushing 才架监控
+- [先搭框架、不做低价值耗时事](skeleton-first-skip-low-value.md) — 长耗时且当前环境无意义的步骤先估值，不闷头跑；先把样子做出来

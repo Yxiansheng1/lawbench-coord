@@ -1,0 +1,295 @@
+﻿...........................F.FF.......                                   [100%]
+================================== FAILURES ===================================
+______________ test_finalize_db_failure_then_job_still_finishes _______________
+
+env = <test_ocr_queue.Env object at 0x0000023FE53FB860>
+fake = <test_ocr_queue.Fake395 object at 0x0000023FE6AE56D0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023FE6BBFAA0>
+
+    def test_finalize_db_failure_then_job_still_finishes(env, fake, monkeypatch):
+        """所有页都完成后收尾写库失败（库被占超时）：任务不永远停在"识别中"，_next 发现没有待发、没有在途时再收尾。"""
+        from lawbench.ocr import queue as Q
+        real = Q.OcrQueue._finalize
+        n = []
+    
+        def flaky(self, *a):
+            n.append(1)
+            if len(n) == 1:
+                raise sqlite3.OperationalError("database is locked")
+            return real(self, *a)
+        monkeypatch.setattr(Q.OcrQueue, "_finalize", flaky)
+        monkeypatch.setattr(Q, "LOCKED_BACKOFF_S", 0.5)
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+>       assert env.wait(v["job_id"], ("done",), timeout=15)["done"] == 1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_ocr_queue.py:654: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <test_ocr_queue.Env object at 0x0000023FE53FB860>
+job_id = 'J-20261001213208-b7f5', statuses = ('done',), timeout = 15
+
+    def wait(self, job_id: str, statuses: tuple, timeout: float = 30) -> dict:
+        end = time.monotonic() + timeout
+        while time.monotonic() < end:
+            j = next(x for x in self.jobs() if x["job_id"] == job_id)
+            if j["status"] in statuses:
+                return j
+            time.sleep(0.1)
+>       raise AssertionError(f"任务没到 {statuses}：{j}")
+E       AssertionError: 任务没到 ('done',)：{'job_id': 'J-20261001213208-b7f5', 'material_id': 'M0001', 'name': '讯问笔录', 'status': 'running', 'pause_reason': None, 'total': 1, 'done': 1, 'failed': 0, 'created_at': '2026-10-01T21:32:08+08:00'}
+
+tests\test_ocr_queue.py:117: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:08+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "039540ce-d912-4be7-ab47-10943af9e6c1", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:08+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "039540ce-d912-4be7-ab47-10943af9e6c1"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:08+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 63}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:08+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:08+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "ocr", "op": "page", "status": "fail", "case_id": "039540ce-d912-4be7-ab47-10943af9e6c1", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:09+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:10+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:11+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:12+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:13+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:14+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:17+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:19+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:20+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:21+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:22+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:23+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+_______________ test_y1_finalize_fails_after_pop_deterministic ________________
+
+env = <test_ocr_queue.Env object at 0x0000023FE6BA1CD0>
+fake = <test_ocr_queue.Fake395 object at 0x0000023FE6BA2C00>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023FE6BA0A40>
+
+    def test_y1_finalize_fails_after_pop_deterministic(env, fake, monkeypatch):
+        """_finalize 已把任务移出内存后，库写失败（这里让 _other_active 抛一次 database is locked）：
+        任务还能不能不重开、不重启就收尾？"""
+        from lawbench.ocr import queue as Q
+        real = Q.OcrQueue._other_active
+        n = []
+    
+        def flaky(root, mid, jid):
+            n.append(1)
+            if len(n) == 1:
+                raise sqlite3.OperationalError("database is locked")
+            return real(root, mid, jid)
+        monkeypatch.setattr(Q.OcrQueue, "_other_active", staticmethod(flaky))
+        monkeypatch.setattr(Q, "LOCKED_BACKOFF_S", 0.5)
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+        time.sleep(12)
+        print("Y1 after 12s:", rows(env.root, v["job_id"]), "in_mem", v["job_id"] in env.st.ocr._jobs,
+              "threads", [t.is_alive() for t in env.st.ocr._threads], "other_active calls", len(n))
+        j = job_status(env, env.case_id, v["job_id"])
+>       assert j["status"] == "done", j
+E       AssertionError: {'job_id': 'J-20261001213227-7c96', 'material_id': 'M0001', 'name': '讯问笔录', 'status': 'running', ...}
+E       assert 'running' == 'done'
+E         
+E         - done
+E         + running
+
+tests\test_lab_c18.py:45: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Y1 after 12s: (('running', 1, 0), {1: 'done'}) in_mem False threads [True, True] other_active calls 1
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:27+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "e6efb3ab-b12d-43ba-aa8e-3dba4240684c", "ms": 32}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:27+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "e6efb3ab-b12d-43ba-aa8e-3dba4240684c"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:27+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:27+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:28+08:00", "module": "ocr", "op": "page", "status": "fail", "case_id": "e6efb3ab-b12d-43ba-aa8e-3dba4240684c", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:39+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+________________ test_y2_finalize_final_update_lock_realistic _________________
+
+env = <test_ocr_queue.Env object at 0x0000023FE6E51370>
+fake = <test_ocr_queue.Fake395 object at 0x0000023FE6D81FA0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023FE6DB5EB0>
+
+    def test_y2_finalize_final_update_lock_realistic(env, fake, monkeypatch):
+        """更接近真实：合并完成（_apply 返回）后另一个连接 BEGIN IMMEDIATE 占住 case.db 12 秒，
+        _finalize 最后一步"标完成"10 秒超时。放开后 20 秒内不重开、不重启，任务能否变 done？"""
+        from lawbench.ocr import queue as Q
+        real_apply = Q.OcrQueue._apply
+        held = {}
+    
+        def apply_then_lock(self, case_id, root, material_id, active=None):
+            real_apply(self, case_id, root, material_id, active=active)
+            if active is not None and "hold" not in held:          # 只在收尾那次
+                h = sqlite3.connect(str(pathlib.Path(root) / "工作区" / "case.db"), timeout=1,
+                                    isolation_level=None, check_same_thread=False)
+                h.execute("BEGIN IMMEDIATE")
+                held["hold"] = h
+                held["t"] = time.monotonic()
+    
+                def release():
+                    time.sleep(12)
+                    h.execute("ROLLBACK")
+                    h.close()
+                    held["released"] = time.monotonic()
+                threading.Thread(target=release, daemon=True).start()
+        monkeypatch.setattr(Q.OcrQueue, "_apply", apply_then_lock)
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+        end = time.monotonic() + 20
+        while "released" not in held and time.monotonic() < end:
+            time.sleep(0.2)
+        assert "released" in held
+        time.sleep(20)
+        st = rows(env.root, v["job_id"])
+        print("Y2 20s after release:", st, "in_mem", v["job_id"] in env.st.ocr._jobs,
+              "threads", [t.is_alive() for t in env.st.ocr._threads], "calls", len(fake.calls))
+        stuck = st[0][0] != "done"
+        if stuck:   # 再看重开案件能否救回（定性）
+            ok(env.client.post("/api/case/open", json={"path": str(env.root)}), "case_open")
+            time.sleep(5)
+            print("Y2 after case_open:", rows(env.root, v["job_id"]))
+>       assert not stuck, st
+E       AssertionError: (('running', 1, 0), {1: 'done'})
+E       assert not True
+
+tests\test_lab_c18.py:87: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Y2 20s after release: (('running', 1, 0), {1: 'done'}) in_mem False threads [True, True] calls 1
+Y2 after case_open: (('queued', 1, 0), {1: 'done'})
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:40+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:40+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:40+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 108}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:40+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:41+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:32:52+08:00", "module": "ocr", "op": "page", "status": "fail", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:33:13+08:00", "module": "case", "op": "open", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:33:13+08:00", "module": "ocr", "op": "resume", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:33:13+08:00", "module": "api", "op": "case_open", "status": "ok", "case_id": "560ce921-397e-473d-9e78-0d59432fdb10", "ms": 110}
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_finalize_db_failure_then_job_still_finishes
+FAILED tests/test_lab_c18.py::test_y1_finalize_fails_after_pop_deterministic
+FAILED tests/test_lab_c18.py::test_y2_finalize_final_update_lock_realistic - ...
+3 failed, 35 passed, 1 warning in 311.91s (0:05:11)

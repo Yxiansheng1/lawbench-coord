@@ -1,0 +1,100 @@
+26 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.8
+26 INFO: Python: 3.12.14
+41 INFO: Platform: macOS-15.7.9-arm64-arm-64bit
+41 INFO: Python environment: /Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python
+42 INFO: wrote /Users/runner/work/lawbench/lawbench/packaging/mac/work/长截图切分.spec
+45 INFO: Removing temporary files and cleaning cache in /Users/runner/Library/Application Support/pyinstaller
+369 INFO: Module search paths (PYTHONPATH):
+['/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python312.zip',
+ '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12',
+ '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/lib-dynload',
+ '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages',
+ '/Users/runner/work/lawbench/lawbench/packaging/mac/work',
+ '/Users/runner/work/lawbench/lawbench/tools',
+ '/Users/runner/work/lawbench/lawbench/tools/splitter']
+506 INFO: Appending 'binaries' from .spec
+507 INFO: Appending 'datas' from .spec
+508 INFO: checking Analysis
+508 INFO: Building Analysis because Analysis-00.toc is non existent
+508 INFO: Looking for Python shared library...
+517 INFO: Using Python shared library: /Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/libpython3.12.dylib
+517 INFO: Running Analysis Analysis-00.toc
+517 INFO: Target bytecode optimization level: 0
+517 INFO: Initializing module dependency graph...
+518 INFO: Initializing module graph hook caches...
+523 INFO: Analyzing modules for base_library.zip ...
+967 INFO: Processing standard module hook 'hook-encodings.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+1109 INFO: Processing standard module hook 'hook-math.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+1214 INFO: Processing standard module hook 'hook-heapq.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+1719 INFO: Processing standard module hook 'hook-pickle.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+2394 INFO: Caching module dependency graph...
+2417 INFO: Analyzing /Users/runner/work/lawbench/lawbench/packaging/mac/work/splitter-main.py
+2423 INFO: Processing pre-find-module-path hook 'hook-tkinter.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/pre_find_module_path'
+2423 INFO: TclTkInfo: initializing cached Tcl/Tk info...
+2588 INFO: Processing standard module hook 'hook-_tkinter.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+2651 INFO: Processing standard module hook 'hook-numpy.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+2816 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/pre_safe_import_module'
+2816 INFO: SetuptoolsInfo: initializing cached setuptools info...
+3210 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+3299 INFO: Processing standard module hook 'hook-xml.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+3465 INFO: Processing standard module hook 'hook-_ctypes.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+3812 INFO: Processing standard module hook 'hook-platform.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+3890 INFO: Processing standard module hook 'hook-sysconfig.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+3898 INFO: Processing standard module hook 'hook-_osx_support.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+4114 INFO: Processing standard module hook 'hook-webbrowser.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+4678 INFO: Processing standard module hook 'hook-difflib.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5113 INFO: Processing standard module hook 'hook-PIL.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5170 INFO: Processing standard module hook 'hook-PIL.Image.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5303 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5408 INFO: Processing standard module hook 'hook-PIL.ImageFilter.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5527 INFO: Analyzing hidden import 'pypdfium2'
+5527 INFO: Processing standard module hook 'hook-pypdfium2.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+5533 INFO: Processing standard module hook 'hook-pypdfium2_raw.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/_pyinstaller_hooks_contrib/stdhooks'
+5674 INFO: Analyzing hidden import 'pypdfium2.__main__'
+5678 INFO: Processing module hooks (post-graph stage)...
+5682 INFO: Processing standard module hook 'hook-_tkinter.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5847 INFO: Processing standard module hook 'hook-PIL.SpiderImagePlugin.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks'
+5906 INFO: Performing binary vs. data reclassification (237 entries)
+5920 INFO: Looking for ctypes DLLs
+5956 INFO: Analyzing run-time hooks ...
+5958 INFO: Including run-time hook 'pyi_rth_inspect.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/rthooks'
+5959 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/rthooks'
+5960 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/rthooks'
+5961 INFO: Including run-time hook 'pyi_rth__tkinter.py' from '/Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/hooks/rthooks'
+5969 INFO: Creating base_library.zip...
+5981 INFO: Looking for dynamic libraries
+6187 INFO: Warnings written to /Users/runner/work/lawbench/lawbench/packaging/mac/work/build-splitter/长截图切分/warn-长截图切分.txt
+6204 INFO: Graph cross-reference written to /Users/runner/work/lawbench/lawbench/packaging/mac/work/build-splitter/长截图切分/xref-长截图切分.html
+6246 INFO: checking PYZ
+6246 INFO: Building PYZ because PYZ-00.toc is non existent
+6246 INFO: Building PYZ (ZlibArchive) /Users/runner/work/lawbench/lawbench/packaging/mac/work/build-splitter/长截图切分/PYZ-00.pyz
+6678 INFO: Building PYZ (ZlibArchive) /Users/runner/work/lawbench/lawbench/packaging/mac/work/build-splitter/长截图切分/PYZ-00.pyz completed successfully.
+6684 INFO: EXE target arch: arm64
+6684 INFO: Code signing identity: None
+6691 INFO: checking PKG
+6691 INFO: Building PKG because PKG-00.toc is non existent
+6691 INFO: Building PKG (CArchive) 长截图切分.pkg
+6703 INFO: Building PKG (CArchive) 长截图切分.pkg completed successfully.
+6703 INFO: Bootloader /Users/runner/work/lawbench/lawbench/packaging/mac/work/buildpy/python/lib/python3.12/site-packages/PyInstaller/bootloader/Darwin-64bit/runw
+6703 INFO: checking EXE
+6703 INFO: Building EXE because EXE-00.toc is non existent
+6703 INFO: Building EXE from EXE-00.toc
+6703 INFO: Copying bootloader EXE to /Users/runner/work/lawbench/lawbench/packaging/mac/work/build-splitter/长截图切分/长截图切分
+6704 INFO: Converting EXE to target arch (arm64)
+8520 INFO: Removing signature(s) from EXE
+8535 INFO: Modifying Mach-O image UUID(s) in EXE
+8540 INFO: Appending PKG archive to EXE
+8541 INFO: Fixing EXE headers for code signing
+8548 INFO: Rewriting the executable's macOS SDK version (26.2.0) to match the SDK version of the Python library (15.0.0) in order to avoid inconsistent behavior and potential UI issues in the frozen application.
+8549 INFO: Re-signing the EXE
+8572 INFO: Building EXE from EXE-00.toc completed successfully.
+8575 INFO: checking COLLECT
+8575 INFO: Building COLLECT because COLLECT-00.toc is non existent
+8575 INFO: Building COLLECT COLLECT-00.toc
+10215 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+10223 INFO: checking BUNDLE
+10223 INFO: Building BUNDLE because BUNDLE-00.toc is non existent
+10223 INFO: Building BUNDLE BUNDLE-00.toc
+11334 INFO: Signing the BUNDLE...
+11497 INFO: Building BUNDLE BUNDLE-00.toc completed successfully.
+11502 INFO: Build complete! The results are available in: /Users/runner/work/lawbench/lawbench/packaging/mac/work/dist-splitter

@@ -1,0 +1,75 @@
+﻿{
+    "project":  "lawbench",
+    "updated_at":  "2026-10-06 14:11 (+08:00)",
+    "updated_by":  "ORCH",
+    "main_sha":  "27b1f7802e5bcdc93fc2f9493bb3c2c622876544",
+    "coord_dir":  "D:\\lawbench-coord",
+    "orchestrator":  {
+                         "token":  "ORCH",
+                         "generation":  1,
+                         "model":  "Fable · high",
+                         "workdir":  "D:\\lawbench",
+                         "branch":  "main",
+                         "handoff":  null,
+                         "since":  "2026-09-29 18:08 (+08:00)"
+                     },
+    "lanes":  [
+                  {
+                      "token":  "A",
+                      "name":  "线 A（客户端）",
+                      "model":  "Opus 5.5 · high",
+                      "workdir":  "D:\\lawbench-A",
+                      "branch":  "line-A",
+                      "ports":  "18801-18809",
+                      "current_ticket":  "T17 第三步返修（令 1125）",
+                      "next_ticket":  "T17 小项（openExternal 两处、@ 说明、PERMISSION_MODE 锁死）等双人复核结果后做；T7 真服务复测等 line-B 合并",
+                      "status":  "第二步定稿；T13 参数一致性止损候 N51",
+                      "last_order":  "致A-ORCH-执行令-T17第三步返修-20261001-1125.md"
+                  },
+                  {
+                      "token":  "B",
+                      "name":  "线 B（工作台服务）",
+                      "model":  "Opus 5.5 · high",
+                      "workdir":  "D:\\lawbench-B",
+                      "branch":  "line-B",
+                      "ports":  "18811-18819",
+                      "current_ticket":  "T10 出处核对（令 1127）+ T9 小项",
+                      "next_ticket":  null,
+                      "status":  "T9 已合并 main",
+                      "last_order":  "致B-ORCH-执行令-T10出处核对-20261001-1127.md"
+                  },
+                  {
+                      "token":  "C",
+                      "name":  "线 C（395 与周边）",
+                      "model":  "Opus 5.5 · high",
+                      "workdir":  "D:\\lawbench-C",
+                      "branch":  "line-C",
+                      "ports":  "18821-18829",
+                      "current_ticket":  "T25 续做（令 1128）→ T12",
+                      "next_ticket":  "T19 第五步（不转换 .doc/.wps）→ 复核 → 合并；之后 T25、T12（等 line-B 合并）",
+                      "status":  "T11 小项亲核过、已进 main；395 契约 1.3",
+                      "last_order":  "致C-ORCH-执行令-T25续做及A项裁决-20261001-1128.md"
+                  },
+                  {
+                      "token":  "D",
+                      "name":  "线 D（macOS 版）",
+                      "model":  "Opus 5.5 · high",
+                      "workdir":  "D:\\lawbench-D",
+                      "branch":  "line-D",
+                      "ports":  "18831-18839",
+                      "current_ticket":  "T28 第一阶段（令 2026-10-06）",
+                      "next_ticket":  null,
+                      "status":  "新建，基座 main 27b1f78",
+                      "last_order":  "致D-ORCH-执行令-T28开工与平台盘点-20261006-1412.md"
+                  }
+              ],
+    "inbox_patterns":  {
+                           "ORCH":  "^致ORCH-|^OWNER-|^SELFTEST-ORCH",
+                           "A":  "^致A-|^ORCH-广播-|^OWNER-|^SELFTEST-A",
+                           "B":  "^致B-|^ORCH-广播-|^OWNER-|^SELFTEST-B",
+                           "C":  "^致C-|^ORCH-广播-|^OWNER-|^SELFTEST-C",
+                           "D":  "^致D-|^ORCH-广播-|^OWNER-|^SELFTEST-D"
+                       },
+    "notes":  "现任主编排以本文件为唯一判据。本文件不写 Key、密码、网络密钥。已合并：T0、T1、T2、T4、T6、T7（至 150cd83）、T21。复核中：T3+T5（两名）、T8（一名）@695191f；T19@aaad8c1（一名）；T13 1.2@d746011（一名）。T17 第一步返修、P-5、P-9 等第二步做完一起双人复核。契约 1.2（2026-09-30）。候用户：N16（SSH）、N4、N8、N12、N13、N30、N33 已结（线 B 已恢复）。值守窗已关，用户在场传话。",
+    "monitoring":  "值守窗已于 2026-09-30 10:34 (+08:00) 关闭，恢复由用户传话"
+}

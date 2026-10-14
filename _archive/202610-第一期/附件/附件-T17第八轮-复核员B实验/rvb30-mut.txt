@@ -1,0 +1,10 @@
+﻿C0[after].caseMoved = true
+C0[after].turn1 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[after].turn2 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[after].disk = {"oldExists":false,"newSame":true,"tmpHasOne":0,"tmpHasTwo":0}
+C0[after].dispose = {"ms":7,"disposeErr":"none","tmpHasOne":0,"oldExists":false}
+C0[after].restart = {"hasFirst":true,"hasMoved":false}
+C3[after] = {"movedWhileAway":true,"movedAfterBack":true,"calls":0,"notice":"CASE_MOVED","errors":[],"hasReply":0,"hasAfter":0}
+C3[after].restart = {"run":true,"reply":false,"after":false}
+C4[after] = {"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"tmpHasSay":0,"tmpHasReply":0}
+C4[after].restart = {"say":false,"reply":false,"first":true}

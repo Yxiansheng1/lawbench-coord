@@ -1,0 +1,89 @@
+# T17 N55 ② 与第七至九轮返修变异（撤回单处修法）
+
+## 判定：不看盘（根不在盘上也不算失效）
+文件：dsh-ext/session-store/router.ts；跑：tests/live-writer.spec.ts、tests/session-store.spec.ts
+结果：1 failed | 107 passed (108)
+- N55 ②：写句柄所属案件根不在名单上、或不在盘上 → 位置失效；根回到名单、盘插回 → 解除；名单刷新失败不误判；关掉的句柄不算
+- tests/session-store.spec.ts > 第三轮复核返修：路由 > N55 ②：写句柄所属案件根不在名单上、或不在盘上 → 位置失效；根回到名单、盘插回 → 解除；名单刷新失败不误判；关掉的句柄不算
+
+## 第八轮 B-F1：位置失效的判断不排在最前（只剩先 next() 再判的那个）
+文件：dsh-ext/agent/index.ts；跑：tests/live-writer.spec.ts
+结果：7 failed | 13 passed (20)
+- C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+- tests/live-writer.spec.ts > C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+- tests/live-writer.spec.ts > 搬家后服务还没列出新位置（律师没在新位置打开）：根已不在盘上，整轮拒绝，哪里都不写
+- tests/live-writer.spec.ts > 搬家（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 搬家（checkpoint 插件：before）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）
+- tests/live-writer.spec.ts > 盘暂时不在、名单没变（checkpoint 插件：after）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- tests/live-writer.spec.ts > 盘暂时不在、名单没变（checkpoint 插件：before）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- 搬家后服务还没列出新位置（律师没在新位置打开）：根已不在盘上，整轮拒绝，哪里都不写
+- 搬家（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 搬家（checkpoint 插件：before）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）
+- 盘暂时不在、名单没变（checkpoint 插件：after）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- 盘暂时不在、名单没变（checkpoint 插件：before）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+
+## 第八轮 B-F2：不判会话自己的记录还在不在
+文件：dsh-ext/session-store/router.ts；跑：tests/live-writer.spec.ts
+结果：1 failed | 19 passed (20)
+- C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+- tests/live-writer.spec.ts > C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+
+## 第八轮 B-F2：新建会话不等原版落盘就判记录在不在
+文件：dsh-ext/session-store/router.ts；跑：tests/live-writer.spec.ts
+结果：20 failed (20)
+- C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+- CASE_NOT_FOUND（真服务语义：task/begin 的 cwd 已不是登记的案件，名单又没刷新到）：整轮拒绝，记 CASE_NOT_FOUND 给界面
+- E2（复核员 B 第七轮）盘在一轮当中拔出、一轮结束后名单刷新 → 插回：这一轮的回答保住，解除，能续写，重启后看得到
+- X2（复核员 A 第七轮）接回核对内存事件数之后律师立刻发一句：不误接回、序号接得上，这句和回答都落盘
+- tests/live-writer.spec.ts > C4（复核员 B 第八轮）搬家 → 新位置打开 → 原路径上又建了另一个案件并打开 → 回老会话说一句：会话自己的记录已不在原处，整轮拒绝、记 CASE_MOVED
+- tests/live-writer.spec.ts > CASE_NOT_FOUND（真服务语义：task/begin 的 cwd 已不是登记的案件，名单又没刷新到）：整轮拒绝，记 CASE_NOT_FOUND 给界面
+- tests/live-writer.spec.ts > E2（复核员 B 第七轮）盘在一轮当中拔出、一轮结束后名单刷新 → 插回：这一轮的回答保住，解除，能续写，重启后看得到
+- tests/live-writer.spec.ts > X2（复核员 A 第七轮）接回核对内存事件数之后律师立刻发一句：不误接回、序号接得上，这句和回答都落盘
+- tests/live-writer.spec.ts > 名单刷新失败（服务的最近案件接口不可用）不误判：复制后根还在名单上、还在盘上，照常在旧处续写
+- tests/live-writer.spec.ts > 复制 → 新位置打开（写入者放下）→ 重新打开原位置（根回到名单、一样长）→ 在原处接回，能续写，新位置不变
+- tests/live-writer.spec.ts > 复制 → 新位置打开（放下）→ 又被拒过一轮（这几条只在内存里）→ 重新打开原位置：不接回，仍提示重启，两处不变；重启后照常
+- tests/live-writer.spec.ts > 复制时会话正在跑一轮：不打断，这一轮照原处落完；下一轮拒绝
+- tests/live-writer.spec.ts > 复制（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 复制：会话已放下（下次续写走 resume）→ 新位置 caseOpen → 续写落新文件夹，不拒
+- tests/live-writer.spec.ts > 搬家后服务还没列出新位置（律师没在新位置打开）：根已不在盘上，整轮拒绝，哪里都不写
+- tests/live-writer.spec.ts > 搬家（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 搬家（checkpoint 插件：before）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 搬家（checkpoint 插件：none）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- tests/live-writer.spec.ts > 新建的会话第一轮（原版还没落盘、盘上没有它的记录）不误判为位置失效
+- tests/live-writer.spec.ts > 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）
+- tests/live-writer.spec.ts > 盘拔出期间名单刷新过（服务报 exists:false；根不在盘上不放下）→ 插回、名单刷新 → 解除，能续写
+- tests/live-writer.spec.ts > 盘暂时不在、名单没变（checkpoint 插件：after）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- tests/live-writer.spec.ts > 盘暂时不在、名单没变（checkpoint 插件：before）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- tests/live-writer.spec.ts > 盘暂时不在、名单没变（checkpoint 插件：none）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- 名单刷新失败（服务的最近案件接口不可用）不误判：复制后根还在名单上、还在盘上，照常在旧处续写
+- 复制 → 新位置打开（写入者放下）→ 重新打开原位置（根回到名单、一样长）→ 在原处接回，能续写，新位置不变
+- 复制 → 新位置打开（放下）→ 又被拒过一轮（这几条只在内存里）→ 重新打开原位置：不接回，仍提示重启，两处不变；重启后照常
+- 复制时会话正在跑一轮：不打断，这一轮照原处落完；下一轮拒绝
+- 复制（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 复制：会话已放下（下次续写走 resume）→ 新位置 caseOpen → 续写落新文件夹，不拒
+- 搬家后服务还没列出新位置（律师没在新位置打开）：根已不在盘上，整轮拒绝，哪里都不写
+- 搬家（checkpoint 插件：after）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 搬家（checkpoint 插件：before）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 搬家（checkpoint 插件：none）：会话活着（Agent 还在）→ 新位置 caseOpen → 在这个会话里再说一句：整轮拒绝、记 CASE_MOVED、没有 agent/error，旧处新处都不变；重启后在新位置续写照常
+- 新建的会话第一轮（原版还没落盘、盘上没有它的记录）不误判为位置失效
+- 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）
+- 盘拔出期间名单刷新过（服务报 exists:false；根不在盘上不放下）→ 插回、名单刷新 → 解除，能续写
+- 盘暂时不在、名单没变（checkpoint 插件：after）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- 盘暂时不在、名单没变（checkpoint 插件：before）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+- 盘暂时不在、名单没变（checkpoint 插件：none）：这一轮拒绝、记 CASE_MOVED、没有 agent/error（原版写不进去留着缓冲）；插回后解除，能续写，被拒那一轮作为"被拦下"落回原处
+
+## 第八轮 B-F5：接回时以写方式打开不设上限
+文件：dsh-ext/session-store/router.ts；跑：tests/session-store.spec.ts
+结果：1 failed | 87 passed (88)
+- tests/session-store.spec.ts > 第三轮复核返修：路由 > 第七轮 B-F4、A-P3-2、A-P3-3：放下时关句柄挂住 → 到时照样记已放下、记一条 writer_detach_failed；接回后代理方法转给新句柄
+- 第七轮 B-F4、A-P3-2、A-P3-3：放下时关句柄挂住 → 到时照样记已放下、记一条 writer_detach_failed；接回后代理方法转给新句柄
+
+## 第七轮 B-F1：根不在盘上（拔盘）也放下
+文件：dsh-ext/session-store/router.ts；跑：tests/live-writer.spec.ts
+结果：2 failed | 18 passed (20)
+- E2（复核员 B 第七轮）盘在一轮当中拔出、一轮结束后名单刷新 → 插回：这一轮的回答保住，解除，能续写，重启后看得到
+- tests/live-writer.spec.ts > E2（复核员 B 第七轮）盘在一轮当中拔出、一轮结束后名单刷新 → 插回：这一轮的回答保住，解除，能续写，重启后看得到
+- tests/live-writer.spec.ts > 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）
+- 盘拔出期间名单刷新过、又被拒过一轮 → 插回、名单刷新：解除，被拒那一轮作为"被拦下"落回原处，能续写（第七轮复核 B-F1）

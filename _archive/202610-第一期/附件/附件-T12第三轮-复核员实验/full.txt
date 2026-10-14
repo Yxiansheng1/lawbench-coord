@@ -1,0 +1,36 @@
+﻿........................................................................ [  7%]
+........................................................................ [ 14%]
+............................................................ss.......... [ 21%]
+....s................................................................... [ 28%]
+........................................................................ [ 35%]
+........................................................................ [ 42%]
+..................................ss.................................... [ 49%]
+........................................................................ [ 56%]
+........................................................................ [ 63%]
+........................................................................ [ 70%]
+........................................................................ [ 78%]
+........................................................................ [ 85%]
+........................................................................ [ 92%]
+..............................Fsss...................................... [ 99%]
+.......                                                                  [100%]
+================================== FAILURES ===================================
+_____________________ test_tokenizer_json_ignored_by_git ______________________
+
+    def test_tokenizer_json_ignored_by_git():
+        out = subprocess.run(["git", "check-ignore", "service/lawbench/llm/tokenizer.json"], cwd=REPO_ROOT,
+                             capture_output=True, text=True)
+>       assert out.returncode == 0, "tokenizer.json 应被 service\\.gitignore 忽略"
+E       AssertionError: tokenizer.json 应被 service\.gitignore 忽略
+E       assert 128 == 0
+E        +  where 128 = CompletedProcess(args=['git', 'check-ignore', 'service/lawbench/llm/tokenizer.json'], returncode=128, stdout='', stderr='fatal: not a git repository (or any of the parent directories): .git\n').returncode
+
+tests\test_tokens.py:38: AssertionError
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\src\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_tokens.py::test_tokenizer_json_ignored_by_git - AssertionEr...
+1 failed, 1006 passed, 8 skipped, 1 warning in 1071.30s (0:17:51)

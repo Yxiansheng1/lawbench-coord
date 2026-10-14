@@ -1,0 +1,9 @@
+{"ts":"2026-10-07T12:14:36.553Z","source":"host","level":"info","event":"config.packaged_layout"}
+{"ts":"2026-10-07T12:14:36.554Z","source":"host","level":"info","event":"service.state","state":"starting"}
+{"ts":"2026-10-07T12:14:36.785Z","source":"session-store","level":"info","event":"session_store.started","case_roots":0,"allow_outside_case":false}
+{"ts":"2026-10-07T12:14:36.808Z","source":"host","level":"info","event":"service.spawn","port":49180}
+{"ts":"2026-10-07T12:14:38.884Z","source":"host","level":"info","event":"service.state","state":"running"}
+{"ts":"2026-10-07T12:14:40.218Z","source":"host","level":"info","event":"api.call","method":"getCapsules","ok":true,"ms":152}
+{"ts":"2026-10-07T12:14:40.224Z","source":"host","level":"info","event":"api.call","method":"caseRecent","ok":true,"ms":141}
+{"ts":"2026-10-07T12:14:40.226Z","source":"host","level":"info","event":"selfcheck.done","python":"ok","tokenizer":"ok","libreoffice":"ok","pandoc":"ok","admin_skills":"info","cache_path":"ok"}
+{"ts":"2026-10-07T12:14:40.264Z","source":"host","level":"info","event":"api.call","method":"getCapsules","ok":true,"ms":11}

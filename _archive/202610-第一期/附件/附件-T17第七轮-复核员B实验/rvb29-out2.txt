@@ -1,0 +1,8 @@
+﻿E3c.20ms.old_has_RACE = 0
+E3c.20ms.notice = "CASE_MOVED"
+E3c.100ms.old_has_RACE = 0
+E3c.100ms.notice = "CASE_MOVED"
+E3c.300ms.old_has_RACE = 0
+E3c.300ms.notice = "CASE_MOVED"
+E3c.1000ms.old_has_RACE = 0
+E3c.1000ms.notice = "CASE_MOVED"

@@ -1,0 +1,52 @@
+﻿Y1 uiOpenCase {"open":true,"openMs":19,"attach":"{\"attached\":1,\"failed\":0}","attachMs":15} members new ["s1"] old []
+Y1 after append: old changed true new changed false events old 7 new 3
+Y1 open(write) again while live handle held ok cwd=<tmp>\案件盘\案丙
+Y1 open(write) after agent released ok cwd=<tmp>\案件盘\案丙
+Y1m rename with live handle ok
+Y1m uiOpenCase {"open":true,"openMs":20,"attach":"{\"attached\":1,\"failed\":0}","attachMs":12}
+Y1m append via live handle Error ENOENT old dir recreated false old files 0 events new 3
+Y2 hang uiOpenCase {"open":true,"openMs":3020,"attach":"{\"attached\":0,\"failed\":0}","attachMs":3013} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-ebzrPF\\桌面\\案丙"] members new [] old ["s1"]
+Y2 hang continue write cwd=<tmp>\桌面\案丙 ms 10 old changed true events old 7 new 3 logs []
+Y2 500 uiOpenCase {"open":true,"openMs":20,"attach":"{\"attached\":0,\"failed\":0}","attachMs":6} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-6r3ocs\\桌面\\案丙"] members new [] old ["s1"]
+Y2 500 continue write cwd=<tmp>\桌面\案丙 ms 10 old changed true events old 7 new 3 logs []
+Y2 reset uiOpenCase {"open":true,"openMs":18,"attach":"{\"attached\":0,\"failed\":0}","attachMs":8} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-Kg1RF0\\桌面\\案丙"] members new [] old ["s1"]
+Y2 reset continue write cwd=<tmp>\桌面\案丙 ms 12 old changed true events old 7 new 3 logs []
+Y3 open ok true cwd <tmp>\案件盘\案丙 old unchanged true events new 7
+Y4 A {"open":true,"openMs":425,"attach":"{\"attached\":1,\"failed\":0}","attachMs":847} B {"open":true,"openMs":841,"attach":"{\"attached\":1,\"failed\":0}","attachMs":829} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-IPwCVK\\案乙","C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-IPwCVK\\案件盘\\案丙"]
+Y4 s1 cwd <tmp>\案件盘\案丙 b1 cwd <tmp>\案乙 old unchanged true members new ["s1"] B ["b1"]
+Y4 reboot registry ok
+Y5 before opening new: wrote to <tmp>\桌面\案丙 events old 4 new 3
+Y5 open new {"open":true,"openMs":20,"attach":"{\"attached\":1,\"failed\":0}","attachMs":13}
+Y5 after open new: wrote to <tmp>\案件盘\案丙 old unchanged true events old 4 new 7
+Y5 reopen old {"open":true,"openMs":14,"attach":"{\"attached\":1,\"failed\":0}","attachMs":17} members old ["s1"] new []
+Y5 after reopen old: wrote to <tmp>\桌面\案丙 new unchanged true list ["s1@C:\\Users\\<用户>\\AppData\\Local\\Temp\\claude\\D--lawbench\\780b8a59-1849-4c63-905e-c6705fafa3f6\\scratchpad\\rv-A22-B-lab\\tmp\\rvb22-ZwRjw3\\桌面\\案丙"]
+Y5 reboot registry ok
+Y6 先打开后列表 stat cwd <tmp>\案件盘\案丙 old unchanged true cache files old 1 new true
+Y6 先列表后打开 stat cwd <tmp>\案件盘\案丙 old unchanged true cache files old 1 new true
+Y7 缺 table {"open":true,"openMs":24,"attach":"{\"attached\":0,\"failed\":1}","attachMs":25} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 缺 table list ["s1@new"] write old unchanged true
+Y7 缺 table reboot members new [] old []
+Y7 缺 table reboot ok
+Y7 缺 indexHeaders {"open":true,"openMs":31,"attach":"{\"attached\":0,\"failed\":1}","attachMs":31} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 缺 indexHeaders list ["s1@new"] write old unchanged true
+Y7 缺 indexHeaders reboot members new [] old []
+Y7 缺 indexHeaders reboot ok
+Y7 都缺 {"open":true,"openMs":22,"attach":"{\"attached\":0,\"failed\":1}","attachMs":24} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 都缺 list ["s1@new"] write old unchanged true
+Y7 都缺 reboot members new [] old []
+Y7 都缺 reboot ok
+Y7 detach 抛错 {"open":true,"openMs":28,"attach":"{\"attached\":0,\"failed\":1}","attachMs":27} logs ["workspace.detach_failed","workspace.case_sessions_attached"] members new [] old [] raw new [] raw old ["s1"]
+Y7 detach 抛错 list ["s1@new"] write old unchanged true
+Y7 detach 抛错 reboot members new [] old []
+Y7 detach 抛错 reboot ok
+Y8 down: list ms [3008,0,1] create NOT_READY 0 later concurrent lists [1,1,1]
+Y8 down fresh: 3 concurrent first lists ms [3003,3003,3003]
+Y8 hang: list ms [3006,1,1]
+Y8 B-F6 empty: roots [true] list ["k1"] open write writable cwd=<tmp>\案丁 create new in that case ok
+Y9 attach {"ok":true,"value":{"attached":1,"failed":0}}
+Y9 list ["s1@new"] title {"title":"RVB22-NEW-JXW3DC7Y"} members new (after dispose n/a)
+Y9 SIG2 in dsh-home [] appData [] old folder [] old unchanged true ALL ["\\案件盘\\案丙\\工作区\\会话缓存\\s1.json","\\案件盘\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-claude-D--lawbench-780b8a59-1849-4c63-905e-c6705fafa3f6-scratchpad-rv-A22-B-lab-tmp-rvb22-ri76Vw-~684C~9762-~6848~4E19--\\s1\\session.v4.jsonl"]
+Y9 SIG2 system TEMP top-level files 0
+Y10 {"open":true,"openMs":2947,"attach":"{\"attached\":1,\"failed\":0}","attachMs":1533} total ms 4480 roots ["new"]
+Y11 5 quick misses -> recent hits 1 after 2.1s one more -> 2
+Y11 hang stat ms [3014,3011,3009]

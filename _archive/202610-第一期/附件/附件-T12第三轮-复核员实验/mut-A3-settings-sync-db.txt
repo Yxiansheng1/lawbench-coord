@@ -1,0 +1,52 @@
+﻿............................F                                            [100%]
+================================== FAILURES ===================================
+________________ test_settings_save_fast_while_case_db_locked _________________
+
+env = <test_ocr_queue.Env object at 0x000001719FF7AE10>
+fake = <test_ocr_queue.Fake395 object at 0x000001719FF6BAD0>
+
+    def test_settings_save_fast_while_case_db_locked(env, fake):
+        """有任务在内存里、它们的 case.db 被占时保存设置不被拖住（T12 第二轮复核 P3-A：原来 21 秒）。"""
+        fake.block = True
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        m = env.material("讯问笔录")
+        env.submit(m["material_id"], [1])
+        env.submit(m["material_id"], [2])
+        assert fake.arrived.wait(10)
+        env.st.ocr._bad_key = "x" * 64                                    # 就算有任务因 Key 暂停，也不在请求线程里动库
+        hold = sqlite3.connect(str(env.root / "工作区" / "case.db"), timeout=1, isolation_level=None)
+        hold.execute("BEGIN IMMEDIATE")
+        try:
+            s = ok(env.client.get("/api/settings"), "settings")
+            t0 = time.monotonic()
+            ok(env.client.put("/api/settings", json=s), "settings")
+            dt = time.monotonic() - t0
+        finally:
+            hold.execute("ROLLBACK")
+            hold.close()
+            fake.hold.set()
+>       assert dt < 3, dt
+E       AssertionError: 21.405999999959022
+E       assert 21.405999999959022 < 3
+
+tests\test_ocr_queue.py:679: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "1d36dd03-2283-4ade-b2be-a522ee5bfbc4", "ms": 30}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "1d36dd03-2283-4ade-b2be-a522ee5bfbc4"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "1d36dd03-2283-4ade-b2be-a522ee5bfbc4", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "1d36dd03-2283-4ade-b2be-a522ee5bfbc4"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:04+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 63}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:05+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:05+08:00", "module": "api", "op": "settings", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:37:26+08:00", "module": "api", "op": "settings", "status": "ok", "ms": 21391}
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_settings_save_fast_while_case_db_locked
+1 failed, 28 passed, 1 warning in 160.82s (0:02:40)

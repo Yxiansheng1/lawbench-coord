@@ -1,0 +1,3 @@
+- 工单：T3 第三轮返修（S1 补漏、S6）＋ T5 第一轮返修（X1–X13、Y1–Y9）＋ T8 返修（P1-1–P3-4、P2-7 按 1054 令）＋ 契约 1.2 服务这一半（1134 令）
+- line-B 最新 SHA：`695191feddcf461309f38f285617952ea4a45ffd`（已按令 rebase 到 main `be6aef7`；rebase 前 `7407914`，前后提交号对照在 T3 交付说明第 11 节）
+- 交付说明：`docs\plan\evidence\T3\交付说明.md` 第 10–12 节；`docs\plan\evidence\T5\交付说明.md` 第 6、14、15 节；`docs\plan\evidence\T8\交付说明.md` 第 10–11 节

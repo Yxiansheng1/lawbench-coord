@@ -1,0 +1,6 @@
+macOS payload (2026-10-07T12:00:25Z, commit b18fa8e534345199710e99a7f21deef747adbcd6)
+python             3.12.14+20260901   81a359f1cfadd4da11766534c5913791cea55f26e1bb902cacd2a531bb1e4b2b
+libreoffice        26.8.0             8858d8058da4f862f47559486814e65efc27294da67c5e4bb56b006b1ee59f89
+pandoc             3.11               15806bedf9517bfead72e88fe6a6696635c3691efbb6e152173440e9c5bb50b4
+pandoc-copying     3.11               3ebfbf9235b049d384cdba5a66a1a3434bb544391e720b76faa8e1b3ee61a4e5
+pandoc-copyright   3.11               842e33ef01625e93f85bebb8bac83aa570186b7aa77a09971257cc29f8f60740

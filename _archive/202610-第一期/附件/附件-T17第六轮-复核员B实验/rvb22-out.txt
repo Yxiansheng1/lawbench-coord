@@ -1,0 +1,52 @@
+﻿Y1 uiOpenCase {"open":true,"openMs":53,"attach":"{\"attached\":1,\"failed\":0}","attachMs":23} members new ["s1"] old []
+Y1 after append: old changed false new changed true events old 3 new 7
+Y1 open(write) again while live handle held SessionAlreadyOwnedError: session "s1" is already owned by an active write handle
+Y1 open(write) after agent released ok cwd=<tmp>\案件盘\案丙
+Y1m rename with live handle ok
+Y1m uiOpenCase {"open":true,"openMs":28,"attach":"{\"attached\":1,\"failed\":0}","attachMs":18}
+Y1m append via live handle ok old dir recreated false old files 0 events new 7
+Y2 hang uiOpenCase {"open":true,"openMs":3034,"attach":"{\"attached\":0,\"failed\":0,\"listed\":false}","attachMs":3032} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-Wfwp1c\\桌面\\案丙"] members new [] old ["s1"]
+Y2 hang continue write cwd=<tmp>\桌面\案丙 ms 14 old changed true events old 7 new 3 logs []
+Y2 500 uiOpenCase {"open":true,"openMs":17,"attach":"{\"attached\":0,\"failed\":0,\"listed\":false}","attachMs":7} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-wgQ9v7\\桌面\\案丙"] members new [] old ["s1"]
+Y2 500 continue write cwd=<tmp>\桌面\案丙 ms 9 old changed true events old 7 new 3 logs []
+Y2 reset uiOpenCase {"open":true,"openMs":18,"attach":"{\"attached\":0,\"failed\":0,\"listed\":false}","attachMs":9} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-8Rjzl5\\桌面\\案丙"] members new [] old ["s1"]
+Y2 reset continue write cwd=<tmp>\桌面\案丙 ms 10 old changed true events old 7 new 3 logs []
+Y3 open ok true cwd <tmp>\案件盘\案丙 old unchanged true events new 7
+Y4 A {"open":true,"openMs":435,"attach":"{\"attached\":1,\"failed\":0}","attachMs":847} B {"open":true,"openMs":848,"attach":"{\"attached\":1,\"failed\":0}","attachMs":824} roots ["C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-JTmZXK\\案乙","C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-JTmZXK\\案件盘\\案丙"]
+Y4 s1 cwd <tmp>\案件盘\案丙 b1 cwd <tmp>\案乙 old unchanged true members new ["s1"] B ["b1"]
+Y4 reboot registry ok
+Y5 before opening new: wrote to <tmp>\桌面\案丙 events old 4 new 3
+Y5 open new {"open":true,"openMs":19,"attach":"{\"attached\":1,\"failed\":0}","attachMs":19}
+Y5 after open new: wrote to <tmp>\案件盘\案丙 old unchanged true events old 4 new 7
+Y5 reopen old {"open":true,"openMs":23,"attach":"{\"attached\":1,\"failed\":0}","attachMs":16} members old ["s1"] new []
+Y5 after reopen old: wrote to <tmp>\桌面\案丙 new unchanged true list ["s1@C:\\Users\\<用户>\\AppData\\Local\\Temp\\rvb22-VmxSnL\\桌面\\案丙"]
+Y5 reboot registry ok
+Y6 先打开后列表 stat cwd <tmp>\案件盘\案丙 old unchanged true cache files old 1 new true
+Y6 先列表后打开 stat cwd <tmp>\案件盘\案丙 old unchanged true cache files old 1 new true
+Y7 缺 table {"open":true,"openMs":33,"attach":"{\"attached\":0,\"failed\":1}","attachMs":30} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 缺 table list ["s1@new"] write old unchanged true
+Y7 缺 table reboot members new [] old []
+Y7 缺 table reboot ok
+Y7 缺 indexHeaders {"open":true,"openMs":34,"attach":"{\"attached\":0,\"failed\":1}","attachMs":27} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 缺 indexHeaders list ["s1@new"] write old unchanged true
+Y7 缺 indexHeaders reboot members new [] old []
+Y7 缺 indexHeaders reboot ok
+Y7 都缺 {"open":true,"openMs":21,"attach":"{\"attached\":0,\"failed\":1}","attachMs":31} logs ["workspace.attach_unsupported"] members new [] old ["s1"] raw new [] raw old ["s1"]
+Y7 都缺 list ["s1@new"] write old unchanged true
+Y7 都缺 reboot members new [] old []
+Y7 都缺 reboot ok
+Y7 detach 抛错 {"open":true,"openMs":31,"attach":"{\"attached\":0,\"failed\":1}","attachMs":31} logs ["workspace.detach_failed","workspace.case_sessions_attached"] members new [] old [] raw new [] raw old ["s1"]
+Y7 detach 抛错 list ["s1@new"] write old unchanged true
+Y7 detach 抛错 reboot members new [] old []
+Y7 detach 抛错 reboot ok
+Y8 down: list ms [3013,0,0] create NOT_READY 0 later concurrent lists [1,1,0]
+Y8 down fresh: 3 concurrent first lists ms [3005,3005,3005]
+Y8 hang: list ms [3013,0,1]
+Y8 B-F6 empty: roots [true] list ["k1"] open write writable cwd=<tmp>\案丁 create new in that case ok
+Y9 attach {"ok":true,"value":{"attached":1,"failed":0}}
+Y9 list ["s1@new"] title {"title":"RVB22-NEW-LZNAS2E3"} members new (after dispose n/a)
+Y9 SIG2 in dsh-home [] appData [] old folder [] old unchanged true ALL ["\\案件盘\\案丙\\工作区\\会话缓存\\s1.json","\\案件盘\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-rvb22-FmpumG-~684C~9762-~6848~4E19--\\s1\\session.v4.jsonl"]
+Y9 SIG2 system TEMP top-level files 0
+Y10 {"open":true,"openMs":2974,"attach":"{\"attached\":1,\"failed\":0}","attachMs":1538} total ms 4512 roots ["new"]
+Y11 5 quick misses -> recent hits 1 after 2.1s one more -> 2
+Y11 hang stat ms [3013,3016,3019]

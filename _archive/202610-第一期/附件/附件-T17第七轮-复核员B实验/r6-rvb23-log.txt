@@ -1,0 +1,33 @@
+﻿J1 两轮后 begin: ["ok","ok"] old has FIRST/SECOND 1 1
+J1 结果 {"strict":true,"begin":"ok","notes":["CASE_MOVED"],"cwdInMemory":"old","newHasAfterMsg":0,"newHasAnswer":0,"oldUnchanged":true,"caseMoved":true}
+J1 重开后再续写 {"begin":"ok","notes":["CASE_MOVED","CASE_MOVED"],"newHas":0}
+J1 重启后 {"hasAfter":false,"hasAnswer":false,"hasSecond":true}
+J1 两轮后 begin: ["ok","ok"] old has FIRST/SECOND 1 1
+J1 结果 {"strict":false,"begin":"ok","notes":["CASE_MOVED"],"cwdInMemory":"old","newHasAfterMsg":0,"newHasAnswer":0,"oldUnchanged":true,"caseMoved":true}
+J1 重开后再续写 {"begin":"ok","notes":["CASE_MOVED","CASE_MOVED"],"newHas":0}
+J1 重启后 {"hasAfter":false,"hasAnswer":false,"hasSecond":true}
+D1 {"errs":[],"begin":["ok"],"types":["agent/inbox/spliced","turn/start","agent/inbox/spliced","step/start","system/message","user/message","user/message","request/header","request/context","assistant/message","step/end","turn/end"],"hasAns":true}
+L1 {"lost1":true,"notes":["CASE_MOVED","CASE_MOVED"],"lostAfterReopen":true,"newHasTry2":0,"oldExists":false}
+R2 结果 {"status":"idle","caseMoved":true,"flushErr":"none","oldResend":1,"newResend":0,"oldResendAns":1,"newResendAns":0}
+R2 再续写 {"caseMoved":true,"newAfter":0,"oldAfter":0,"oldUnchanged":true}
+R2 重启后 {"resend":false,"resendAns":false,"after":false}
+S1
+{"d":0,"openMs":27,"lost":true,"flush":"ok","newHas":0,"oldHas":1}
+{"d":5,"openMs":28,"lost":true,"flush":"ok","newHas":0,"oldHas":1}
+{"d":10,"openMs":28,"lost":true,"flush":"ok","newHas":0,"oldHas":1}
+{"d":20,"openMs":19,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+{"d":30,"openMs":20,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+{"d":40,"openMs":19,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+{"d":60,"openMs":18,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+{"d":80,"openMs":18,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+{"d":120,"openMs":21,"lost":true,"flush":"ok","newHas":0,"oldHas":0}
+R3 结果 {"notes":["CASE_MOVED"],"caseMoved":true,"oldMsg":1,"newMsg":0,"oldAns":0,"newAns":0}
+R3 重启后 {"msg":false,"ans":false}
+S2
+{"d":20,"lost":false,"flush":"ok","memSeq":1619,"diskEvents":1603,"win":false,"later":false,"oldWin":0}
+{"d":30,"lost":false,"flush":"ok","memSeq":1619,"diskEvents":1603,"win":false,"later":false,"oldWin":0}
+{"d":25,"lost":false,"flush":"ok","memSeq":1619,"diskEvents":1603,"win":false,"later":false,"oldWin":0}
+J2 {"notes":["CASE_MOVED"],"caseMoved":true,"newMsg":0,"newAns":0,"oldMsg":0}
+J3 {"hits":[],"inHome":0,"inAppData":0,"inOld":0,"inNew":0,"tempHits":0}
+N1 {"lostDuring":true,"lostAfter":false,"notes":[],"oldHasAfter":1}
+P1 {"events":4803,"caseOpenMs":21,"caseMoved":true,"bytes":1061898}

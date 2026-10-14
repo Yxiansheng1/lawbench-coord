@@ -1,0 +1,10 @@
+﻿AG live=true old files before copy ["\\工作区\\case-id.txt","\\工作区\\会话\\ENC\\s1\\session.v4.jsonl"] FIRST in old 1
+AG live=true agent was live true session cwd <tmp>\桌面\案丙 AFTER-COPY in old 0 in new 0
+AG live=true after shutdown flush: AFTER-COPY in old 0 in new 1
+AG live=true restart list ["s1@new"] new store files ["\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-rvb22a-eZye4C-~684C~9762-~6848~4E19--\\s1\\session.v4.jsonl"]
+AG live=true after restart list ["s1@new"] restart sees AFTER-COPY true
+AG live=false old files before copy ["\\工作区\\case-id.txt","\\工作区\\会话\\ENC\\s1\\session.v4.jsonl"] FIRST in old 1
+AG live=false agent was live false session cwd <tmp>\案件盘\案丙 AFTER-COPY in old 0 in new 0
+AG live=false after shutdown flush: AFTER-COPY in old 0 in new 1
+AG live=false restart list ["s1@new"] new store files ["\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-rvb22a-fZ4xGR-~684C~9762-~6848~4E19--\\s1\\session.v4.jsonl"]
+AG live=false after restart list ["s1@new"] restart sees AFTER-COPY true

@@ -1,0 +1,51 @@
+C0[after].turn1 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[after].turn2 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[after].disk = {"oldExists":false,"newSame":true,"tmpHasOne":0}
+C0[after].restart = {"hasFirst":true,"hasMoved":false,"oldExists":false}
+C2[after] = {"calls":0,"notice":"CASE_MOVED","errors":[],"oldExists":false}
+C2[after].back = {"calls":1,"notice":null,"errors":[],"hasBack":1}
+C4[after] = {"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0,"tmpHasReply":0}
+C4[after].restart = {"say":false,"reply":false,"first":true}
+C4b[after] = {"projDirs":1,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0}
+M1[after] = {"s2OnDiskBeforeMove":false,"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldRecreated":true,"oldHasSay":1,"newHasSay":0}
+M1[after].afterDispose = {"oldRecreated":true,"oldFiles":1}
+M1[after].restart = {"r":"OPEN-FAILED:SessionPersistenceNotFoundEr"}
+M2[after] = {"caseMoved":false,"calls":1,"notice":null,"errors":[],"otherCaseHasSay":1,"otherCaseHasReply":1,"newHasSay":0}
+S2[after] reopen=false = {"calls":2,"notice":null,"errors":["Error:ENOENT: no such file or directory, open '<tmp>\\桌面\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-lb-rvb31-HsZr0B-~684C"],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[after] reopen=false.restart = {"say":false,"reply":false,"first":false,"oldExists":false}
+S2[after] reopen=true = {"calls":2,"notice":null,"errors":["Error:ENOENT: no such file or directory, open '<tmp>\\桌面\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-lb-rvb31-10buGX-~684C"],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[after] reopen=true.restart = {"say":true,"reply":false,"first":true,"oldExists":false}
+C0[before].turn1 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[before].turn2 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[before].disk = {"oldExists":false,"newSame":true,"tmpHasOne":0}
+C0[before].restart = {"hasFirst":true,"hasMoved":false,"oldExists":false}
+C2[before] = {"calls":0,"notice":"CASE_MOVED","errors":[],"oldExists":false}
+C2[before].back = {"calls":1,"notice":null,"errors":[],"hasBack":1}
+C4[before] = {"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0,"tmpHasReply":0}
+C4[before].restart = {"say":false,"reply":false,"first":true}
+C4b[before] = {"projDirs":1,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0}
+M1[before] = {"s2OnDiskBeforeMove":false,"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldRecreated":true,"oldHasSay":1,"newHasSay":0}
+M1[before].afterDispose = {"oldRecreated":true,"oldFiles":1}
+M1[before].restart = {"r":"OPEN-FAILED:SessionPersistenceNotFoundEr"}
+M2[before] = {"caseMoved":false,"calls":1,"notice":null,"errors":[],"otherCaseHasSay":1,"otherCaseHasReply":1,"newHasSay":0}
+S2[before] reopen=false = {"calls":2,"notice":null,"errors":["Error:ENOENT: no such file or directory, open '<tmp>\\桌面\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-lb-rvb31-5AwZRS-~684C"],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[before] reopen=false.restart = {"say":false,"reply":false,"first":false,"oldExists":false}
+S2[before] reopen=true = {"calls":2,"notice":null,"errors":["Error:ENOENT: no such file or directory, open '<tmp>\\桌面\\案丙\\工作区\\会话\\--C-Users-<用户>-AppData-Local-Temp-lb-rvb31-YnADVw-~684C"],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[before] reopen=true.restart = {"say":true,"reply":false,"first":true,"oldExists":false}
+C0[none].turn1 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[none].turn2 = {"calls":0,"notice":"CASE_MOVED","errors":[]}
+C0[none].disk = {"oldExists":false,"newSame":true,"tmpHasOne":0}
+C0[none].restart = {"hasFirst":true,"hasMoved":false,"oldExists":false}
+C2[none] = {"calls":0,"notice":"CASE_MOVED","errors":[],"oldExists":false}
+C2[none].back = {"calls":1,"notice":null,"errors":[],"hasBack":1}
+C4[none] = {"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0,"tmpHasReply":0}
+C4[none].restart = {"say":false,"reply":false,"first":true}
+C4b[none] = {"projDirs":1,"calls":0,"notice":"CASE_MOVED","errors":[],"oldHasSay":0}
+M1[none] = {"s2OnDiskBeforeMove":false,"caseMoved":true,"calls":0,"notice":"CASE_MOVED","errors":[],"oldRecreated":true,"oldHasSay":1,"newHasSay":0}
+M1[none].afterDispose = {"oldRecreated":true,"oldFiles":1}
+M1[none].restart = {"r":"OPEN-FAILED:SessionPersistenceNotFoundEr"}
+M2[none] = {"caseMoved":false,"calls":1,"notice":null,"errors":[],"otherCaseHasSay":1,"otherCaseHasReply":1,"newHasSay":0}
+S2[none] reopen=false = {"calls":3,"notice":null,"errors":[],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[none] reopen=false.restart = {"say":false,"reply":false,"first":false,"oldExists":false}
+S2[none] reopen=true = {"calls":3,"notice":null,"errors":[],"caseMoved":true,"oldExists":false,"newHasSay":1,"newHasReply":0}
+S2[none] reopen=true.restart = {"say":true,"reply":false,"first":true,"oldExists":false}

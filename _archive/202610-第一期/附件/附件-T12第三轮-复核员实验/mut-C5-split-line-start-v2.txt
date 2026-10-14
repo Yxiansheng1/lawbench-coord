@@ -1,0 +1,88 @@
+﻿......F.................F....                                            [100%]
+================================== FAILURES ===================================
+______________ test_cancel_keeps_done_pages_and_drops_in_flight _______________
+
+env = <test_ocr_queue.Env object at 0x0000020D4FA97E90>
+fake = <test_ocr_queue.Fake395 object at 0x0000020D4FA95100>
+
+    def test_cancel_keeps_done_pages_and_drops_in_flight(env, fake):
+        m = env.material("讯问笔录")
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(m["material_id"], [1, 2, 3])
+        end = time.monotonic() + 20
+        while env.jobs()[0]["done"] < 1 and time.monotonic() < end:        # 等第 1 页完成
+            time.sleep(0.05)
+        fake.arrived.clear()
+        fake.block = True
+        assert fake.arrived.wait(10)                                       # 第 2 页正在发送
+        t0 = time.monotonic()
+        r = ok(env.client.post(f"/api/ocr/jobs/{v['job_id']}/cancel"), "ocr_cancel")
+        assert r == {"job_id": v["job_id"], "status": "cancelled"} and time.monotonic() - t0 < 5
+        end = time.monotonic() + 5                                         # 在途请求被断开：发送线程很快放下这一页
+        while env.st.ocr._senders and time.monotonic() < end:              # （假 395 要到用例结束才返回）
+            time.sleep(0.05)
+        assert env.st.ocr._senders == {}
+        time.sleep(0.5)
+        p = env.pages(v["job_id"])
+        assert p[1][0] == "done" and p[2][0] == "cancelled" and p[3][0] == "cancelled"
+        j = env.jobs()[0]
+        assert (j["status"], j["done"]) == ("cancelled", 1)
+        text = env.text(m)
+>       assert "【第1页】\n> 识别所得" in text and "【第2页】\n（本页需识别）" in text   # 已完成的页保留并合并
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert ('【第1页】\n> 识别所得' in '# 讯问笔录\n\n> Source: 卷一/讯问笔录.pdf（部分识别，3页）\n> Collected: 2026-10-01\n\n【第1页】\n> 识别所得\n识别文本 be3d1b359a90\n\n【第2页】\n\n\n（本页需识别）\n\n【第3页】\n\n\n（本页需识别）\n' and '【第2页】\n（本页需识别）' in '# 讯问笔录\n\n> Source: 卷一/讯问笔录.pdf（部分识别，3页）\n> Collected: 2026-10-01\n\n【第1页】\n> 识别所得\n识别文本 be3d1b359a90\n\n【第2页】\n\n\n（本页需识别）\n\n【第3页】\n\n\n（本页需识别）\n')
+
+tests\test_ocr_queue.py:291: AssertionError
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "f9776dee-099c-49ec-b79e-ea9eeada6c99", "ms": 30}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "f9776dee-099c-49ec-b79e-ea9eeada6c99"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:15+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 15}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:16+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:17+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "f9776dee-099c-49ec-b79e-ea9eeada6c99", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:17+08:00", "module": "ocr", "op": "cancel", "status": "ok", "case_id": "f9776dee-099c-49ec-b79e-ea9eeada6c99"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:17+08:00", "module": "api", "op": "ocr_cancel", "status": "ok", "ms": 78}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:58:18+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 32}
+______________ test_text_layer_line_starting_with_mark_not_split ______________
+
+    def test_text_layer_line_starting_with_mark_not_split():
+        """文字层（T5 写的，不转义）里一行"【第9页】伪造"：合并器只认整行页标记，页数不变、这行原样留在第 1 页
+        （T12 第二轮复核 P3-B：原来的行首正则把它拆成独立的第 9 页、原文丢失）。"""
+        from lawbench.case import texts
+        from lawbench.ocr import merge
+        t5 = ("# x\n\n> Source: a.pdf（部分识别，3页）\n\n【第1页】\n文字层第一页\n【第9页】伪造\n\n【第2页】\n"
+              "（本页需识别）\n\n【第3页】\n文字层第三页\n")
+        new, st = merge.merge_text(t5, {2: "识别出的第二页"})
+>       assert st == {"pages": 3, "ocr": [2], "pending": []}
+E       AssertionError: assert {'pages': 4, ...'pending': []} == {'pages': 3, ...'pending': []}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'pages': 4} != {'pages': 3}
+E         Use -v to get more diff
+
+tests\test_ocr_queue.py:576: AssertionError
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_ocr_queue.py::test_cancel_keeps_done_pages_and_drops_in_flight
+FAILED tests/test_ocr_queue.py::test_text_layer_line_starting_with_mark_not_split
+2 failed, 27 passed, 1 warning in 132.75s (0:02:12)

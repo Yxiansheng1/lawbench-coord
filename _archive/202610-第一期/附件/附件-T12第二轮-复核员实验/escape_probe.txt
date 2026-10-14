@@ -1,0 +1,8 @@
+﻿line-C escape : '\u3000【2025-03-10 21:14】周立新：钱已经转了\n\u3000【第1页】\n\u3000【第9页】伪造\n正文'
+main   escape : '【2025-03-10 21:14】周立新：钱已经转了\n\u3000【第1页】\n【第9页】伪造\n正文'
+merge stats   : {'pages': 3, 'ocr': [2], 'pending': [1, 3]}
+main split    : ['第1页', '第2页', '第3页']
+t5 text-layer -> merge stats: {'pages': 4, 'ocr': [2], 'pending': []}
+main split after merge      : ['第1页', '第9页', '第2页', '第3页']
+text-layer line kept?       : False | page-9 block body lost? True
+second merge stable?        : True {'pages': 4, 'ocr': [2], 'pending': []}

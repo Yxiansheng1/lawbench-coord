@@ -1,0 +1,18 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.3, pytest-9.1.1, pluggy-1.6.0 -- D:\lawbench-B\service\.venv\Scripts\python.exe
+rootdir: C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\src\service
+configfile: pyproject.toml
+plugins: anyio-4.15.1
+collecting ... collected 4 items / 3 deselected / 1 selected
+
+tests/test_lab_c18.py::test_y4_settings_put_two_cases_locked Y4 PUT took 0.032 bad_key after locked resume: ''
+Y4 job b after release: queued in 0.05 s
+PASSED
+
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\src\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================= 1 passed, 3 deselected, 1 warning in 10.39s =================

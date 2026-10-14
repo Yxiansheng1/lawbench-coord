@@ -1,0 +1,122 @@
+﻿.............................FF.......                                   [100%]
+================================== FAILURES ===================================
+_______________ test_y1_finalize_fails_after_pop_deterministic ________________
+
+env = <test_ocr_queue.Env object at 0x000001DC0932AE10>
+fake = <test_ocr_queue.Fake395 object at 0x000001DC08FCDFA0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001DC09086C00>
+
+    def test_y1_finalize_fails_after_pop_deterministic(env, fake, monkeypatch):
+        """_finalize 已把任务移出内存后，库写失败（这里让 _other_active 抛一次 database is locked）：
+        任务还能不能不重开、不重启就收尾？"""
+        from lawbench.ocr import queue as Q
+        real = Q.OcrQueue._other_active
+        n = []
+    
+        def flaky(root, mid, jid):
+            n.append(1)
+            if len(n) == 1:
+                raise sqlite3.OperationalError("database is locked")
+            return real(root, mid, jid)
+        monkeypatch.setattr(Q.OcrQueue, "_other_active", staticmethod(flaky))
+        monkeypatch.setattr(Q, "LOCKED_BACKOFF_S", 0.5)
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+        time.sleep(12)
+        print("Y1 after 12s:", rows(env.root, v["job_id"]), "in_mem", v["job_id"] in env.st.ocr._jobs,
+              "threads", [t.is_alive() for t in env.st.ocr._threads], "other_active calls", len(n))
+        j = job_status(env, env.case_id, v["job_id"])
+>       assert j["status"] == "done", j
+E       AssertionError: {'job_id': 'J-20261001215319-e9d2', 'material_id': 'M0001', 'name': '讯问笔录', 'status': 'running', ...}
+E       assert 'running' == 'done'
+E         
+E         - done
+E         + running
+
+tests\test_lab_c18.py:45: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Y1 after 12s: (('running', 1, 0), {1: 'done'}) in_mem False threads [True, True] other_active calls 1
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:19+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "ceeab225-6268-47a0-9344-a0a5d9793364", "ms": 16}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:19+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "ceeab225-6268-47a0-9344-a0a5d9793364"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:19+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 63}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:20+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:20+08:00", "module": "ocr", "op": "page", "status": "fail", "case_id": "ceeab225-6268-47a0-9344-a0a5d9793364", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:32+08:00", "module": "api", "op": "ocr_list", "status": "ok", "ms": 30}
+________________ test_y2_finalize_final_update_lock_realistic _________________
+
+env = <test_ocr_queue.Env object at 0x000001DC090C0380>
+fake = <test_ocr_queue.Fake395 object at 0x000001DC0932A1B0>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001DC092B9BB0>
+
+    def test_y2_finalize_final_update_lock_realistic(env, fake, monkeypatch):
+        """更接近真实：合并完成（_apply 返回）后另一个连接 BEGIN IMMEDIATE 占住 case.db 12 秒，
+        _finalize 最后一步"标完成"10 秒超时。放开后 20 秒内不重开、不重启，任务能否变 done？"""
+        from lawbench.ocr import queue as Q
+        real_apply = Q.OcrQueue._apply
+        held = {}
+    
+        def apply_then_lock(self, case_id, root, material_id, active=None):
+            real_apply(self, case_id, root, material_id, active=active)
+            if active is not None and "hold" not in held:          # 只在收尾那次
+                h = sqlite3.connect(str(pathlib.Path(root) / "工作区" / "case.db"), timeout=1,
+                                    isolation_level=None, check_same_thread=False)
+                h.execute("BEGIN IMMEDIATE")
+                held["hold"] = h
+                held["t"] = time.monotonic()
+    
+                def release():
+                    time.sleep(12)
+                    h.execute("ROLLBACK")
+                    h.close()
+                    held["released"] = time.monotonic()
+                threading.Thread(target=release, daemon=True).start()
+        monkeypatch.setattr(Q.OcrQueue, "_apply", apply_then_lock)
+        env.st.ocr.concurrency = 1
+        env.st.ocr.start()
+        v = env.submit(env.material("讯问笔录")["material_id"], [1])
+        end = time.monotonic() + 20
+        while "released" not in held and time.monotonic() < end:
+            time.sleep(0.2)
+        assert "released" in held
+        time.sleep(20)
+        st = rows(env.root, v["job_id"])
+        print("Y2 20s after release:", st, "in_mem", v["job_id"] in env.st.ocr._jobs,
+              "threads", [t.is_alive() for t in env.st.ocr._threads], "calls", len(fake.calls))
+        stuck = st[0][0] != "done"
+        if stuck:   # 再看重开案件能否救回（定性）
+            ok(env.client.post("/api/case/open", json={"path": str(env.root)}), "case_open")
+            time.sleep(5)
+            print("Y2 after case_open:", rows(env.root, v["job_id"]))
+>       assert not stuck, st
+E       AssertionError: (('running', 1, 0), {1: 'done'})
+E       assert not True
+
+tests\test_lab_c18.py:87: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Y2 20s after release: (('running', 1, 0), {1: 'done'}) in_mem False threads [True, True] calls 1
+Y2 after case_open: (('done', 1, 0), {1: 'done'})
+------------------------------ Captured log call ------------------------------
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:33+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "ms": 14}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:33+08:00", "module": "ocr", "op": "submit", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:33+08:00", "module": "api", "op": "ocr_submit", "status": "ok", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:33+08:00", "module": "net", "op": "select_prep", "status": "ok"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:34+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:45+08:00", "module": "ocr", "op": "page", "status": "fail", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:53:46+08:00", "module": "ocr", "op": "page_reset", "status": "fail", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "error": "OperationalError"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:54:06+08:00", "module": "case", "op": "open", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:54:06+08:00", "module": "ocr", "op": "resume", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f"}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:54:06+08:00", "module": "api", "op": "case_open", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "ms": 77}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:54:06+08:00", "module": "search", "op": "index", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f", "ms": 0}
+INFO     lawbench.events:logs.py:53 {"t": "2026-10-01T21:54:06+08:00", "module": "ocr", "op": "job_done", "status": "ok", "case_id": "353db1a2-0124-417f-ab50-0c5b9808059f"}
+============================== warnings summary ===============================
+tests\conftest.py:17
+  C:\Users\<用户>\AppData\Local\Temp\claude\D--lawbench\780b8a59-1849-4c63-905e-c6705fafa3f6\scratchpad\rv-C18-T12-lab\srcm\service\tests\conftest.py:17: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_lab_c18.py::test_y1_finalize_fails_after_pop_deterministic
+FAILED tests/test_lab_c18.py::test_y2_finalize_final_update_lock_realistic - ...
+2 failed, 36 passed, 1 warning in 267.35s (0:04:27)
