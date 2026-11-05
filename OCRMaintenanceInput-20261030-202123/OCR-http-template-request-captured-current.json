@@ -1,0 +1,15 @@
+{
+  "state": "ACTUAL_BACKEND_REQUEST_CAPTURED_IN_MEMORY_NO_NETWORK_NO_INFERENCE",
+  "local_stage": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lb-ocr-template-20261030-200436-30bc55d6",
+  "remote_stage": "C:/Users/PC/AppData/Local/Temp/lb-ocr-template-20261030-200436-30bc55d6",
+  "request_bytes": 177698,
+  "request_sha256": "0b04102960d29ce77935b5a2d7efd5d1fc616aab9770e5260fc893183cfef0d5",
+  "image_sha256": "6c8399569502b6444544960b3e6f32ed43e5ada8a47ff6f7c039127ab813c40a",
+  "backend_sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200",
+  "transport": "httpx.MockTransport intercepted before response; sentinel exception, no fake OCR result",
+  "next_endpoint": "http://127.0.0.1:9101/apply-template",
+  "source_handler": "exact upstream cee37ffea server-context.cpp5040..5052: parse then return prompt; no inference or enqueue",
+  "model_alias_scope": "controlled request uses frozen installed OCR model filename; service environment value not read",
+  "full_suite": false,
+  "Packaging": "HOLD"
+}

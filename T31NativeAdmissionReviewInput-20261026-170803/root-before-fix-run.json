@@ -1,0 +1,248 @@
+{
+  "OS": [
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.6440420+08:00",
+      "pid": 36476
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.7615430+08:00",
+      "pid": 34024
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.4340800+08:00",
+      "pid": 35948
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:53.1116850+08:00",
+      "pid": 31936
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.5824190+08:00",
+      "pid": 36096
+    },
+    {
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.3530980+08:00",
+      "pid": 10488
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.7756500+08:00",
+      "pid": 30016
+    },
+    {
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.4405010+08:00",
+      "pid": 25432
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.7710490+08:00",
+      "pid": 3120
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.3466860+08:00",
+      "pid": 36824
+    },
+    {
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.5894250+08:00",
+      "pid": 35084
+    },
+    {
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.2131080+08:00",
+      "pid": 8552
+    },
+    {
+      "exe": "E:\\node\\node.exe",
+      "gone": true,
+      "creation": "2026-10-26T16:52:52.2015020+08:00",
+      "pid": 14064
+    }
+  ],
+  "elapsed_seconds": 5.0825069,
+  "whole_T31_pass": false,
+  "forced": false,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31DisposalFixed-root-20261026-165252",
+  "GUI_pass": false,
+  "source_unchanged": true,
+  "at": "2026-10-26T16:52:58.1895529+08:00",
+  "results": [
+    {
+      "failed": 2,
+      "assertions": [
+        {
+          "title": "rejects a cancelled-and-replaced batch at the nextPaint boundary and retries with a fresh R",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: expected [ { …(5) } ] to deeply equal []\n    at D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-material-admission.client.spec.ts:427:33\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        },
+        {
+          "title": "rejects a changed selection at the nextPaint boundary and retries with only the current selection",
+          "status": "failed",
+          "failureMessages": [
+            "AssertionError: expected [ { …(5) } ] to deeply equal []\n    at D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-material-admission.client.spec.ts:547:33\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ]
+        }
+      ],
+      "name": "A-native2",
+      "pid": 14064,
+      "exit": 1,
+      "tests": 2,
+      "passed": 0,
+      "expected": 2
+    },
+    {
+      "failed": 0,
+      "assertions": [
+        {
+          "title": "最后一个提交观察点解绑后，迟到的材料清单不得重建批次或阻断态",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "name": "C-disposal1",
+      "pid": 36824,
+      "exit": 0,
+      "tests": 1,
+      "passed": 1,
+      "expected": 1
+    },
+    {
+      "failed": 0,
+      "assertions": [
+        {
+          "title": "本次只选一个文件时，同 ref_id 但可信位置不在选根内的材料不进入本批",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "真实引用登记成功但材料清单读取失败时，下一页提问必须被失败状态拦住",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "真实引用登记成功但本次成员为空时，下一页提问也必须被失败状态拦住",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "同一会话两个不同 R 在首个准备未完成时，不得同时发出 prepare",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "同一 R 的幂等重入共享同一次真实准备结果，成功时只发一次 prepare",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "同一 R 的幂等重入共享同一次真实准备失败，失败时也只发一次 prepare",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "不同会话的并行准备互不误锁，各自使用自己的 R 完成",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "取消本批后旧 prepare 才返回：旧 R 不得成功，必须释放并允许新 R 按新批重试",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "prepare 返回前改选：不得接受旧选择，释放旧 R 后显式重试必须只带新选择",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "取消 loading 阻断后清单才返回：迟到的成功清单不得重建批次或重新阻断提问",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "同一会话 A/B 两批并发建批且 B 先返回：A 的迟到清单不得覆盖 B",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "输入区文件夹拖入携带本会话标识和目录根，只弹现有引用确认，不自动发送",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "原生提交观察点没加载时拒绝输入区文件，不回退成聊天附件",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "从所选根的真实材料清单建批：重复根仍取全部当前成员，其他位置和已移除材料不混入",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "真实 runRefImport 先只登记引用，再从材料清单生成本批；没有 scope 或模型请求",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "材料清单失败留下可见阻断态；明确取消后普通整案提问恢复",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "批次按会话隔离；界面允许逐份改选和取消整批，期间不调用模型或 scope 接口",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "prepare 使用同一条原生 R；失败只 release 同一 R 并保留批次，成功接受后只清掉当时那条批次",
+          "status": "passed",
+          "failureMessages": []
+        },
+        {
+          "title": "没有本批材料时不发 scope 请求；不同会话或换到别的案件时不会错绑",
+          "status": "passed",
+          "failureMessages": []
+        }
+      ],
+      "name": "A-affected19",
+      "pid": 35948,
+      "exit": 0,
+      "tests": 19,
+      "passed": 19,
+      "expected": 19
+    },
+    {
+      "failed": null,
+      "assertions": [],
+      "name": "A-types",
+      "pid": 36096,
+      "exit": 0,
+      "tests": null,
+      "passed": null,
+      "expected": null
+    }
+  ]
+}

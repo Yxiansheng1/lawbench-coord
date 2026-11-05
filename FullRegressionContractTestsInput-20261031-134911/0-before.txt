@@ -1,0 +1,110 @@
+// @vitest-environment jsdom
+// T32 步骤 1 第一切片：案件页上半保留基本信息与成果入口，下半直接复用材料页的 Materials。
+// 本文件守布局、成果参数和材料请求不重复；识别/移除/跨案隔离由 case-materials.spec.ts 守。
+import { act, createElement } from 'react'
+import { createRoot, type Root } from 'react-dom/client'
+import { CaseSummary, KIND_TEXT } from '../ui/case-tab.tsx'
+import { TABS } from '../ui/cases.ts'
+import { caseEvent, OUTPUTS_CHANGED, setNav, type Nav } from '../ui/kit.tsx'
+import { RIGHTBAR_TABS } from '../ui/rightbar.ts'
+import { setApi, type CaseRef, type LawbenchApi } from '../ui/state.ts'
+
+;(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true
+let root: Root | undefined
+let box: HTMLDivElement
+beforeEach(() => { box = document.createElement('div'); document.body.appendChild(box) })
+afterEach(async () => { await act(async () => { root?.unmount() }); root = undefined; box.remove(); setApi(undefined); setNav(undefined) })
+
+const CASE: CaseRef = { case_id: 'c-1', name: '张某甲诈骗案（虚构）', root: 'D:\\案件\\张某甲诈骗案', exists: true, kind: 'criminal' }
+const out = (title: string, at: string) => ({ title, version: 1, confirmed_at: at, files: [{ format: 'docx', path: `成果/${title}-v1.docx` }] })
+const material = (id: string, name: string, pending: number[]) => ({
+  material_id: id, name, rel_path: `02案件材料/${name}.pdf`, type: 'pdf',
+  status: pending.length ? 'needs_ocr' : 'parsed', unit: 'page', unit_count: 3, is_ocr: 'no',
+  stale_ocr: false, error: null, pages_need_ocr: pending, pages_mixed: [],
+})
+const settle = async () => { for (let i = 0; i < 7; i++) await act(async () => { await Promise.resolve() }) }
+
+function service(o: { outputs?: unknown[]; materials?: unknown[] } = {}) {
+  const calls: Array<[string, unknown]> = []
+  setNav({ openTab: () => {}, pathFor: () => '', pickDirectory: async () => null } as unknown as Nav)
+  setApi({
+    materialsList: async (r: unknown) => {
+      calls.push(['materialsList', r])
+      return { ok: true, value: { materials: o.materials ?? [material('M1', '起诉意见书', []), material('M2', '讯问笔录', [1, 2])] } }
+    },
+    outputsList: async (r: unknown) => { calls.push(['outputsList', r]); return { ok: true, value: { outputs: o.outputs ?? [] } } },
+    ocrList: async () => ({ ok: true, value: { jobs: [] } }),
+    tasksList: async () => ({ ok: true, value: { tasks: [] } }),
+    getWikiSuggestions: async () => ({ ok: true, value: { suggestions: [] } }),
+    caseWiki: async () => ({ ok: true, value: { exists: false, generated_at: null, sections: [], card: null, changes: null } }),
+    getWikiReview: async () => ({ ok: true, value: { exists: false, reviewed: false, reviewed_at: null, changes: null } }),
+    openFile: async (r: unknown) => { calls.push(['openFile', r]); return { ok: true, value: { opened: true } } },
+    openFolder: async (r: unknown) => { calls.push(['openFolder', r]); return { ok: true, value: { opened: true } } },
+  } as unknown as LawbenchApi)
+  return { calls }
+}
+async function render(c: CaseRef = CASE) {
+  root = createRoot(box)
+  await act(async () => { root!.render(createElement(CaseSummary, { caseRef: c })) })
+  await settle()
+}
+const text = () => box.textContent ?? ''
+const button = (t: string) => [...box.querySelectorAll('button')].find((b) => b.textContent === t)!
+const count = (svc: ReturnType<typeof service>, name: string) => svc.calls.filter((c) => c[0] === name).length
+
+describe('右栏"案件"页签（T32 步骤 1）', () => {
+  it('新会话由右栏默认打开案件、文稿两页', () => {
+    expect(RIGHTBAR_TABS).toEqual([TABS.case, TABS.document])
+  })
+
+  it('基本信息保留；材料列表与待识别计数来自同一个 Materials，不再另拉摘要或跳旧材料页', async () => {
+    const svc = service()
+    await render()
+    expect(text()).toContain('张某甲诈骗案（虚构）')
+    expect(text()).toContain('类型刑事')
+    expect(text()).toContain(CASE.root)
+    expect(text()).toContain('起诉意见书')
+    expect(text()).toContain('讯问笔录')
+    expect(text()).toContain('待识别 1 份')
+    expect(count(svc, 'materialsList')).toBe(1)
+    expect(svc.calls.filter((c) => c[0] === 'materialsList')).toEqual([['materialsList', { case_id: CASE.case_id }]])
+    expect([...box.querySelectorAll('button')].some((b) => b.textContent?.includes('去生成 wiki'))).toBe(false)
+
+    await act(async () => { root?.unmount() })
+    service()
+    await render({ ...CASE, kind: null })
+    expect(text()).toContain('类型未注明')
+    expect(KIND_TEXT).toEqual({ civil: '民商事', criminal: '刑事', daily: '日常事务' })
+  })
+
+  it('成果在材料区前；原打开文件和成果文件夹参数不变', async () => {
+    const svc = service({ outputs: [out('阅卷笔录', '2026-10-15T10:00:00+08:00'), out('量刑分析', '2026-10-16T09:00:00+08:00')] })
+    await render()
+    const labels = [...box.querySelectorAll('button')].map((b) => b.textContent)
+    expect(labels.indexOf('量刑分析-v1.docx')).toBeLessThan(labels.indexOf('提交识别…'))
+    expect(labels.filter((v) => v?.endsWith('.docx'))).toEqual(['量刑分析-v1.docx', '阅卷笔录-v1.docx'])
+
+    await act(async () => { button('量刑分析-v1.docx').click() })
+    await act(async () => { button('打开成果文件夹').click() })
+    expect(svc.calls.filter((c) => c[0] === 'openFile' || c[0] === 'openFolder')).toEqual([
+      ['openFile', { case_id: 'c-1', root: CASE.root, rel: '成果/量刑分析-v1.docx' }],
+      ['openFolder', { case_id: 'c-1', root: CASE.root, rel: '成果' }],
+    ])
+
+    await act(async () => { root?.unmount() })
+    service()
+    await render()
+    expect(text()).toContain('已确认的成果还没有')
+  })
+
+  it('成果确认事件只重读成果；材料区仍在原位并显示本案件列表', async () => {
+    const svc = service()
+    await render()
+    expect(count(svc, 'outputsList')).toBe(1)
+    await act(async () => { caseEvent(OUTPUTS_CHANGED, CASE.case_id) })
+    await act(async () => { caseEvent(OUTPUTS_CHANGED, 'c-别的') })
+    await settle()
+    expect(count(svc, 'outputsList')).toBe(2)
+    expect(text()).toContain('起诉意见书')
+  })
+})

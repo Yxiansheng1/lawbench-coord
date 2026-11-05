@@ -1,0 +1,32 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31FixReviewInput-20261026-154418\\current\\A\\dsh-ext\\ui\\material-batch.ts",
+    "sha256": "38328dc0b4b1a568772729e5310677657e48247c1713d65f0cde6028fea4cd01",
+    "bytes": 16768
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\request_scope.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31FixReviewInput-20261026-154418\\current\\B\\service\\lawbench\\case\\request_scope.py",
+    "sha256": "9a0bcfe70c7aeedb05f2b6440526ae7cc10d4d3cd5c5edd4a7dc8000680dc405",
+    "bytes": 20322
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\request_scope_intent.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31FixReviewInput-20261026-154418\\current\\B\\contracts\\files\\request_scope_intent.schema.json",
+    "sha256": "cb8a2cb8459120f1bfed4ba3eac94052bef342a85d33f2fc3f637c1a11e732fe",
+    "bytes": 1659
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-batch-races.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31FixReviewInput-20261026-154418\\current\\A\\dsh-ext\\tests\\material-batch-races.spec.tsx",
+    "sha256": "29ed5d6d556c7bbc810c7e57e658e6abfc666862aebc60b4977ebe26efa7c653",
+    "bytes": 12389
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\ReviewRegression-20261026-150412\\scope_loss_check.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31FixReviewInput-20261026-154418\\current\\B\\docs\\plan\\evidence\\T31\\ReviewRegression-20261026-150412\\scope_loss_check.py",
+    "sha256": "5bf34cdd65be170754ba4faa1f40ef312045f4ffc160983ff15a0e0d61f69af2",
+    "bytes": 9599
+  }
+]

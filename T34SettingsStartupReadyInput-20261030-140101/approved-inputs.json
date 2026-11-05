@@ -1,0 +1,126 @@
+{
+  "product_source": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+    "bytes": 61281,
+    "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+  },
+  "new_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-settings-startup-ready-20261030-140101.spec.ts",
+  "primary": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 61281,
+      "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\supervisor.ts",
+      "bytes": 17523,
+      "sha256": "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\host-api.spec.ts",
+      "bytes": 21084,
+      "sha256": "d92e84a6ddf52a7b407da6726b8677b0ad77771d6ae53cf98810b96bc10d3c74"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\supervisor.spec.ts",
+      "bytes": 22540,
+      "sha256": "ea17b59b3ca6f5d8c6edf4e1abf4e048e42448a6a76ec365c16ffc46e3d86385"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\remote-methods.ts",
+      "bytes": 5227,
+      "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\settings.schema.json",
+      "bytes": 931,
+      "sha256": "f8fdf47838d36416aef88b92690c965aa85c94f6293d8e7aa5c3fa7a36124553"
+    }
+  ],
+  "actual_closed": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-read-signature-actual-closed-current.json",
+  "frozen_private_build": {
+    "verdict": "STATIC25_CURRENT_T34_CALLER_IDEMPOTENCE_ACCEPTED_BUILD0",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\IdempotencePrivateBuild-20261030-085828\\private-output-20261030-091211",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34IdempotencePrivateBuild-root-20261030-091211",
+    "manifest_bytes": 58198,
+    "manifest_sha": "8493f52c879b8674b8c72f961de4c81d89165f97ffd251b91bcb270c85bf39ab",
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "unchanged23_payloads": true,
+    "sourceModules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "unchanged_agent_host_AST_reused": true,
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "OS": [
+      {
+        "pid": 29288,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639289195393105770,
+        "gone": true
+      },
+      {
+        "pid": 5808,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639289195402226402,
+        "gone": true
+      },
+      {
+        "pid": 54204,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birthTicks": 639289195393259331,
+        "gone": true
+      },
+      {
+        "pid": 16640,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639289195409178946,
+        "gone": true
+      }
+    ],
+    "OS_complete_count": 4,
+    "OS_partial_count": 0,
+    "full_OS_identity_proof": true,
+    "build_elapsed_s": 19.381895,
+    "forced": false,
+    "GUI": false,
+    "underlying_ConfigEditor_cause": "UNKNOWN",
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  }
+}

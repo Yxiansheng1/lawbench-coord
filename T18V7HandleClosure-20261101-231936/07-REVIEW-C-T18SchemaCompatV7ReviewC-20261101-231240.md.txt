@@ -1,0 +1,70 @@
+D:\Lawbeach\lawbench-coord\REVIEW-C-T18SchemaCompatV7ReviewC-20261101-231240.md
+SHA 4685e3c3aa5132115d2a8f9370c7e3eedafffeef50d83f2270d775077af2fc35
+0001 # C-line independent source review - T18 schema-keyword compat V7
+0002 
+0003 Verdict: AMEND
+0004 
+0005 ## Basis
+0006 
+0007 Reviewed only the C_views listed in the supplied index, in full: consumer focus 660-830,
+0008 offline controls 615-665 and 850-1005, both source-record JSONs, the complete V7 root PS
+0009 (literal and resolved-static), the launcher static-parse record, the source manifest, both
+0010 change inverses, and the recorded .NET/CIM birth-precision diagnosis. Static reading only;
+0011 no execution, no other files, no hash re-derivation.
+0012 
+0013 ## Holds - consumer schema keyword compat
+0014 
+0015 - The consumer delta is exactly one property removal: `uniqueItems: true` is gone from the
+0016   `refs` schema built at review-consumer.mjs 0675-0685. No keyword was added or reshaped.
+0017 - Branch construction (0709-0738) keeps enum/minItems/maxItems intact; when no eligible
+0018   reference targets exist, `items` is omitted instead of emitting an empty enum
+0019   (0976-0999), so the response format stays well formed.
+0020 - Local validation is unchanged and still rejects duplicate refs: `REF_DUPLICATE` at 0796,
+0021   with its negative control retained at 0625-0634. Typed family, unknown-id, count, merge,
+0022   UTF-16 and positive-without-ref assertions hold (0615-0665, 0850-0953).
+0023 - Therefore this is a schema-side capability retreat, not a validator waiver: a provider may
+0024   now emit duplicate refs and the consumer will still fail them.
+0025 
+0026 ## Amend item A1 - owned child not cleaned up on the new fail-closed path
+0027 
+0028 - V7 root PS 0031-0033 captures the child CIM identity and birth before the key write at
+0029   0036, and uses the same CIM birth for the inner watchdog (0040) and the outer readback
+0030   (0034 start.json). Exact string equality is kept; no time window or coarser match.
+0031 - Defect line: 0032 throws when the CIM identity is null or mismatched, so 0033 never sets
+0032   `$birth`; 0061 then requires `$null -ne $birth` before killing and 0065 only disposes.
+0033 - Trigger: `Get-CimInstance` returns `$null`, throws, or cannot resolve `ExecutablePath`
+0034   immediately after `Start()` - provider visibility race or provider error, the exact
+0035   failure path the new hunk introduces.
+0036 - Effect: the owned Node child is not killed by the driver and its exit is not reaped; only
+0037   stdin EOF after disposal/exit ends it. The key has not been written yet on this path, so
+0038   no credential exposure, but the "owned child is always cleaned up" property fails here.
+0039 - Same root cause on the watchdog path: the kill at 0040 needs a second successful CIM
+0040   re-query. If the provider keeps failing, 0041 throws and 0063 skips the kill although the
+0041   key was already delivered at 0036, so a live consumer can outrun the declared failure.
+0042 - Minimal fix: in `finally`, when `$null -ne $child -and -not $child.HasExited`, call
+0043   `$child.Kill()` followed by `$child.WaitForExit(5000)` independently of `$birth`. The
+0044   Process handle is authoritative and cannot hit a reused PID; keep the CIM exe+birth
+0045   equality checks for PID-based cross-process readback, and optionally bound-retry the 0031
+0046   capture briefly before throwing.
+0047 
+0048 ## Holds - root ownership, keygate, aliases
+0049 
+0050 - Key ordering is correct: DPAPI unprotect, ASCII validation, then start, CIM ownership
+0051   check, birth capture, start.json, and only then the anonymous stdin credential write.
+0052   No argv/env/file transport is introduced; redaction and the UTF-8 artifact scan are intact.
+0053 - Driver inverse shows only aliases/purpose/verdict/path renames plus the three-line PS
+0054   replacement. Watchdog budget, scan scope, reparse rejection and failure JSON are unchanged.
+0055 - Launcher: the unsubstituted-template parse failure is retained, and the corrected
+0056   quoted-dummy-path static parse reports zero errors without execution, Key or model use.
+0057 - Manifest carries five keys (algorithm plus four sha256-pinned files) matching the pinned
+0058   paths; the original wrong-algorithm `files`-array manifest was rejected before launch.
+0059 
+0060 ## Limits
+0061 
+0062 - Provider acceptance beyond `uniqueItems` is unproven; other keyword, grammar, backend and
+0063   request-compatibility behaviour remains unverified.
+0064 - Runtime, CIM availability, watchdog kill, natural exit and cleanup are static-only here.
+0065 - ACL, hostile-local-actor, Native, production, business, semantic and security admission
+0066   are not established; semantic criteria and prior frozen guard findings are untouched.
+0067 - The byte-hold claim for unchanged outer root code is accepted from the supplied inverse
+0068   and record, not independently re-derived.

@@ -1,0 +1,99 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+  "baseline_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+      "bytes": 88654,
+      "sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\literal-inputs.json",
+      "bytes": 38458,
+      "sha256": "d32c0bd42d9e6764c7878f77d958f19086da1bf1a242161484745e7e93b7f40c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\prepare.ps1",
+      "bytes": 13563,
+      "sha256": "57a55816e85436b74fc1143d550b217e6fc402b843c7e67ac0d4df9e4d6afa5e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\README.md",
+      "bytes": 3665,
+      "sha256": "964d6a30c28c58cfad666bf3aed6eb1d20443675c46d48bfbad684b44a3263c3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\settings-read-observer.mjs",
+      "bytes": 11513,
+      "sha256": "4fac11cf4a8bd75d46f932a0ce3cbb1d5dd263d15a81c2c180953715bf8ce107"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\signature-finite.mjs",
+      "bytes": 5381,
+      "sha256": "d52d1848983de75a8fb30f4ce9ca0340a349fc7942972a06fa44a8588f1aefed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\start.ps1",
+      "bytes": 95734,
+      "sha256": "66edf51bddc08c0f009f080b76699e25b00696a320bae9e6d93fc33ce54b2b90"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\stop.ps1",
+      "bytes": 7180,
+      "sha256": "b8510efdfe0e3247d3b02cecfa22738a24358802bd3fad5a03320f8c3ba899ed"
+    }
+  ],
+  "source_entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914\\entry.py",
+  "source_entry_bytes": 43762,
+  "source_entry_sha256": "34f9d264e8835b604f5e7696137de33e3b4ca7314126f1d8982ff3d92c79a9b5",
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914\\entry.py",
+      "bytes": 43762,
+      "sha256": "34f9d264e8835b604f5e7696137de33e3b4ca7314126f1d8982ff3d92c79a9b5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914\\scope-a.txt",
+      "bytes": 37,
+      "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914\\scope-b.txt",
+      "bytes": 37,
+      "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914\\scope-c.txt",
+      "bytes": 39,
+      "sha256": "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439"
+    }
+  ],
+  "forward_port": 57667,
+  "old_literal_line": "        baseURL: http://127.0.0.1:65005/v1",
+  "new_literal_line": "        baseURL: http://127.0.0.1:57667/v1",
+  "old_normalized_prefix_sha256": "c4734c3a5be68ae3a6a3a89fd44ca43b1f9a4d18037d6353203f0136b3d35649",
+  "new_normalized_prefix_sha256": "63efe801cc3fff18dd7e4b609fdcc35e6639086c253985497db9e2a0a4414b25",
+  "normalized_prefix_bytes": 2110,
+  "original_prefix": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\cordis.patch.yml",
+    "bytes": 2146,
+    "sha256": "7bb1e3fa7bb7bdb412487db11e1be48d025521130dd7104d5b9210ab3e3b025f"
+  },
+  "current_runtime_source_accepted": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-final-service-source-accepted-current.json",
+  "whole_test_actual": "NOT_RUN"
+}

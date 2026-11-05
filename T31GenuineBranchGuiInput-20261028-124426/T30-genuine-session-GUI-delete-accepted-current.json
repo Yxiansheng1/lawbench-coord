@@ -1,0 +1,282 @@
+{
+  "at": "2026-10-28T11:49:05.103555+08:00",
+  "verdict": "PASS_ACTUAL_GUI_NONEMPTY_CHILD_DELETE_AND_PARENT_SOURCE_RETENTION_OS_RECYCLE_NOT_VERIFIED",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineSessionGUI-root-20261028-113231",
+  "sourceSession": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+  "childSession": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+  "caseId": "872b161f-27d4-40bf-879e-ee457ef6454b",
+  "actionTimeHumanConfirmation": "Confirmed fresh sample113231 before final click; prior110751 late confirmation not consumed.",
+  "actualSuccessfulGUIClicks": 6,
+  "GUISend": 0,
+  "GUItyping": 0,
+  "GUIactualDelete": 1,
+  "GUIafterDelete": "Exact child row gone, remaining parent row31, returned homepage, no failure notice.",
+  "privateWindow": 265510,
+  "privateWindowGone": true,
+  "exactControlOS": {
+    "listenCount": 0,
+    "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231",
+    "pythonCleanupClaimed": false,
+    "finalMetadata": false,
+    "allControlledGone": true,
+    "GUI_PASS": false,
+    "Packaging": "HOLD",
+    "loopClosed": true,
+    "pythonForcedStop": true,
+    "nativePort": 50816,
+    "controlledOS": [
+      {
+        "birthTicks": "639287551728587768",
+        "pid": 34824,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "electron-child"
+      },
+      {
+        "birthTicks": "639287551750222680",
+        "pid": 32496,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "native-service"
+      },
+      {
+        "birthTicks": "639287551731085807",
+        "pid": 32892,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "host"
+      },
+      {
+        "birthTicks": "639287556494373689",
+        "pid": 27196,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "electron-child"
+      },
+      {
+        "birthTicks": "639287551751070671",
+        "pid": 33464,
+        "gone": true,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "role": "native-service"
+      },
+      {
+        "birthTicks": "639287551728312677",
+        "pid": 28048,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "electron-child"
+      },
+      {
+        "birthTicks": "639287551720065620",
+        "pid": 37060,
+        "gone": true,
+        "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "role": "relay"
+      },
+      {
+        "birthTicks": "639287551675342512",
+        "pid": 28280,
+        "gone": true,
+        "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "role": "supervisor"
+      },
+      {
+        "birthTicks": "639287551725767331",
+        "pid": 11364,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "electron"
+      },
+      {
+        "birthTicks": "639287551728350600",
+        "pid": 42516,
+        "gone": true,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "role": "electron-child"
+      }
+    ],
+    "portClosureMeasured": true
+  },
+  "requests": 130,
+  "statuses": {
+    "200": 130
+  },
+  "writes": [
+    {
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200,
+      "disposition": "native_app",
+      "elapsed_ms": 32
+    }
+  ],
+  "productionDeletedEvent": {
+    "ts": "2026-10-28T03:37:29.671Z",
+    "source": "session-store",
+    "level": "info",
+    "event": "session_store.deleted",
+    "recorded": true
+  },
+  "currentFinalObserver": {
+    "verdict": "PASS_CURRENT_FINAL_OBSERVER_ON_ACTUAL_GUI_CASE_ONLY",
+    "identity": {
+      "pid": 36692,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birthUtcTicks": "639287559291343935"
+    },
+    "result": {
+      "sourceCaseFilesUnchanged": true,
+      "sourceSession": {
+        "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-97c67db2-b8a6-428b-be48-04b4144d10bd/session.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+      },
+      "childSession": null,
+      "childSessionState": "CHILD_DIRECTORY_ABSENT_PENDING_ROOT_GUI_AND_OS_RECYCLE_PROOF",
+      "childSessionResumeMarker": null,
+      "targetLogsUnchanged": false,
+      "nativeAutoSession": {
+        "present": true,
+        "sessionId": "session-0b97317d-485f-4a73-9c78-a03fec8e95c9",
+        "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T30-GenuineSessionGui-20261028-094637-runs-T30-genuine-session-gui-20261028-113231-case--/session-0b97317d-485f-4a73-9c78-a03fec8e95c9/session.v4.jsonl",
+        "projectDirectory": "--D-Lawbeach-lawbench-A-docs-plan-evidence-T30-GenuineSessionGui-20261028-094637-runs-T30-genuine-session-gui-20261028-113231-case--",
+        "headerOnly": true,
+        "eventCount": 0,
+        "header": {
+          "type": "session",
+          "version": 4,
+          "id": "session-0b97317d-485f-4a73-9c78-a03fec8e95c9",
+          "createdAt": 1793158379132,
+          "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231\\case",
+          "isSeeded": false,
+          "delegationDepth": 0,
+          "agentPreset": "lawbench"
+        },
+        "acceptanceProof": false
+      },
+      "sqliteFiles": {
+        "工作区/case.db": {
+          "present": true,
+          "state": "PRESENT_OBSERVED",
+          "beforeBytes": 65536,
+          "afterBytes": 65536,
+          "beforeSha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6",
+          "afterSha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6",
+          "changed": false
+        },
+        "工作区/case.db-shm": {
+          "present": false,
+          "state": "ABSENT_AFTER_GUI_LIFECYCLE",
+          "beforeBytes": 32768,
+          "afterBytes": null,
+          "beforeSha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+          "afterSha256": null,
+          "changed": true
+        },
+        "工作区/case.db-wal": {
+          "present": false,
+          "state": "ABSENT_AFTER_GUI_LIFECYCLE",
+          "beforeBytes": 0,
+          "afterBytes": null,
+          "beforeSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "afterSha256": null,
+          "changed": true
+        }
+      },
+      "caseDbMetadata": {
+        "caseId": "872b161f-27d4-40bf-879e-ee457ef6454b",
+        "schemaVersion": "1",
+        "readMode": "sqlite_uri_mode_ro_query_only"
+      },
+      "projectionCacheFiles": {
+        "source": {
+          "relativePath": "工作区/会话缓存/session-97c67db2-b8a6-428b-be48-04b4144d10bd.json",
+          "present": false,
+          "bytes": null,
+          "sha256": null,
+          "productGeneratedCache": true,
+          "acceptanceProof": false
+        },
+        "child": {
+          "relativePath": "工作区/会话缓存/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.json",
+          "present": false,
+          "bytes": null,
+          "sha256": null,
+          "productGeneratedCache": true,
+          "acceptanceProof": false
+        },
+        "native": {
+          "relativePath": "工作区/会话缓存/session-0b97317d-485f-4a73-9c78-a03fec8e95c9.json",
+          "present": true,
+          "bytes": 1749,
+          "sha256": "528d2cf685cf22004c67b3078ce61a991cafac4d83974083b194372f7bf9360e",
+          "productGeneratedCache": true,
+          "acceptanceProof": false
+        }
+      },
+      "nativeAutoSessionProjectionCache": {
+        "relativePath": "工作区/会话缓存/session-0b97317d-485f-4a73-9c78-a03fec8e95c9.json",
+        "present": true,
+        "bytes": 1749,
+        "sha256": "528d2cf685cf22004c67b3078ce61a991cafac4d83974083b194372f7bf9360e",
+        "productGeneratedCache": true,
+        "acceptanceProof": false
+      }
+    },
+    "serve": false,
+    "main": false,
+    "GUI": false,
+    "model": false,
+    "OSRecycleAccepted": false,
+    "sourceSHA": "9afc42e1e851948b8ff4d06fe405718303375e6ab20d5001c2b438ddfbd4f360"
+  },
+  "finiteObserverSeconds": 0.5460000000020955,
+  "finiteObserverOSGone": true,
+  "OSRecycle": {
+    "verdict": "NOT_VERIFIED",
+    "pairedIRead": false,
+    "existingBinEntriesEnumerated": false,
+    "createdOnlyCapture": {
+      "pid": 22404,
+      "captureSeconds": 90,
+      "unmatchedCreatedCount": 1,
+      "birthTicks": "639287553914254968",
+      "pairedIRead": false,
+      "matched": false,
+      "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231",
+      "existingBinEntriesEnumerated": false,
+      "finishedUTC": "2026-10-28T03:38:02.8635486Z",
+      "startedUTC": "2026-10-28T03:36:31.9128250Z",
+      "targetFileID": "0x0000000000000000000100000012e59f",
+      "target": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+      "acceptance": false,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "watcherDisposed": true
+    },
+    "fileIDResolution": {
+      "target": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-113231\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+      "targetFileID": "0x0000000000000000000100000012e59f",
+      "existingEntriesEnumerated": false,
+      "metadataOnly": true,
+      "matched": false,
+      "pairedIRead": false,
+      "errorType": "OSError",
+      "error": "[Errno 87] OpenFileById exact owned directory",
+      "verification": "NOT_VERIFIED_NO_ENUMERATION_OR_FALLBACK",
+      "handlesClosed": true
+    },
+    "qualification": "Created-only90s capture saw one unmatched ID; exact owned directory fileID resolution through fsutil and OpenFileById returned87. No existing/business recycle inventory read, no pairedI read, no unsupported alternate GUI. Directory absence and recorded:true do not prove actual OS recycle."
+  },
+  "whole_T30_PASS": false,
+  "Gate1": false,
+  "Packaging": "HOLD",
+  "qualification": [
+    "Actual frozen GUI runtime and private synthetic case only; not default package/USB/Mac.",
+    "Pythonforcedtrue/cleanupClaimedfalse/noFinalMetadata; loopclosed present not original finally proof.",
+    "Separate current finalobserver after shutdown passed0.546s natural0 on actual GUI case, source5/parent fixed and native headeronly; no server/GUI/model rerun. SQLite mode_ro/queryonly is datareadonly; auxiliary lifecycle is not promised absent.",
+    "One stale getWindow capture showed unrelated foreground window. No input, storage or evidence use of that image; reselected exact265510 then actual private dialog before Delete.",
+    "Root metadata recorder90s disposed, existingBinEntriesEnumeratedfalse; two fsutil queries87 and native directory resolution87 preserved, not product failure."
+  ]
+}

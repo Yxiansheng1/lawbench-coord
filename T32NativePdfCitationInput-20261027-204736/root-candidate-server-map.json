@@ -1,0 +1,46 @@
+{
+  "entry_bytes": 75664,
+  "entry_sha": "08ff8a25cdec7db73d6bf28765f8d1145ccdd7f40899394a53b1ae1b0934910f",
+  "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\root-candidate-server.py",
+  "changed_top_level_defs": [
+    "_fixture_identity",
+    "_source_file_identity",
+    "_prepare",
+    "_verify_prepared",
+    "_bootstrap_snapshot",
+    "_bootstrap_native"
+  ],
+  "added_top_level_defs": [
+    "_assert_root_inventory",
+    "_directory_names",
+    "_pdf_fixture_identity",
+    "_pdf_page_text",
+    "_plain_text",
+    "_png_identity"
+  ],
+  "removed_top_level_defs": [],
+  "unchanged_top_level_defs": [
+    "_plain_sha256",
+    "_load_safety_base",
+    "_guard_reply",
+    "_layout",
+    "_validate_run_path",
+    "_settings",
+    "_pinned_sources",
+    "_source_identity",
+    "_check_path",
+    "_append_ndjson",
+    "_checked_file",
+    "_plain_file",
+    "_single_child",
+    "_query_pairs",
+    "Firewall",
+    "_serve",
+    "_host_values",
+    "_serve_checked",
+    "_prepare_checked",
+    "main"
+  ],
+  "kind": "ROOT_STATIC_AST_AND_BYTES_ONLY_NO_PRODUCT_EXECUTION",
+  "candidate_not_handback": true
+}

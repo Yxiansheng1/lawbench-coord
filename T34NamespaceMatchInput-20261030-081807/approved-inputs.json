@@ -1,0 +1,22 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+      "bytes": 39756,
+      "sha256": "48295283802e0b5fab824dc004b004c513d28320ed235608450d4d29e37f4fc9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+      "bytes": 18994,
+      "sha256": "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-disabled-provider-idempotence.spec.ts",
+      "bytes": 10958,
+      "sha256": "c81c10d73e138c84220675b6b0ac32015aaef8ea7df69037d6b18a87538305b1"
+    }
+  ],
+  "original_before": "D:\\Lawbeach\\lawbench-coord\\T34DisabledIdempotenceInput-20261030-080958",
+  "note": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\DisabledIdempotence-20261030-080958\\README.md",
+  "verdict": "STATIC_REJECT_BEFORE_RUNTIME_TOTAL_NAMESPACE_COUNT_MUST_NOT_REPLACE_MATCH_COUNT"
+}

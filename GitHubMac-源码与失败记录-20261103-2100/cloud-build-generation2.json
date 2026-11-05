@@ -1,0 +1,13 @@
+{
+  "at": "2026-11-03T20:50:14.127457+08:00",
+  "commit": "b2bf9d9e787fc896a36c5335330bfc9926b843be",
+  "run": 41639004913,
+  "url": "https://github.com/Yxiansheng1/lawbench/actions/runs/41639004913",
+  "architectures": [
+    "arm64",
+    "x64"
+  ],
+  "previousRun": 41637800827,
+  "previousResult": "FAIL: five Windows-private verification sources included in host aggregate",
+  "change": "Curate those exact five sources out of rollup; retain byte-identical copies in verification/windows-bound. All remaining rollup sections byte-identical. Clean replay passed. No product/test-assertion/tsconfig changes."
+}

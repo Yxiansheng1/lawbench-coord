@@ -1,0 +1,22 @@
+[
+  {
+    "file": "prepare.ps1",
+    "sha256": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37",
+    "bytes": 5544
+  },
+  {
+    "file": "README.md",
+    "sha256": "c1c8b4ecaa97ff427f2ad0af2255084a0aa23213d77f17e51c53e8ee640635b0",
+    "bytes": 7526
+  },
+  {
+    "file": "start.ps1",
+    "sha256": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445",
+    "bytes": 48353
+  },
+  {
+    "file": "stop.ps1",
+    "sha256": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647",
+    "bytes": 7126
+  }
+]

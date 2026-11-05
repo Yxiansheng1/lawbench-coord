@@ -1,0 +1,81 @@
+{
+  "scope": "FULL_CUMULATIVE_NATIVE_GROUNDING_CLOSURE_SOURCE_NOT_MODEL_PASS",
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "bytes": 25946,
+      "sha256": "611814ea7366f653d9935587dd3aa84bfdae252df412f8daffb41094605ac5cb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 30477,
+      "sha256": "8ba90b40310b10e51efd9e950e6e8f6a0cec4b9d20a1f58fc93631c3cc59de56"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\types.ts",
+      "bytes": 22007,
+      "sha256": "f5206fd5daf18d3899202c96ca0edb6e7c1a10ddc535edead062ed28f2261b2d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\agent.ts",
+      "bytes": 27451,
+      "sha256": "486662e133184cfbc8b816b445339ab0b75200fd771dba1af1562b28d8e7bdc5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_material.schema.json",
+      "bytes": 6090,
+      "sha256": "95fc7f5ee89b223b70d8eac74f1d16aa039abfefe5c1045f45e45b381bce7c5a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_wiki.schema.json",
+      "bytes": 1430,
+      "sha256": "f068983b652f85e7351450a8be5033bd39a1f5753fd71e2f92c4647e69534f6d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.result.json",
+      "bytes": 191,
+      "sha256": "92605b16a190940d5f7b8e786bdb9960fc5c2f48b991e5fcdcdf65783b3d21bd"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_save_draft.result.json",
+      "bytes": 897,
+      "sha256": "084def0bf7bd065f686a07e0400da79d5191c4e5f4530ea9f66e93c106419eb0"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGroundingReview-20261102-000134\\index.before.ts",
+      "bytes": 59895,
+      "sha256": "7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGroundingReview-20261102-000134\\task-state.before.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    }
+  ],
+  "original_order": "D:\\Lawbeach\\lawbench-coord\\ORCH-A-T18NativeGroundingReview-20261102-000134.md",
+  "closure_order": "D:\\Lawbeach\\lawbench-coord\\ORCH-A-T18NativeGroundingClosure-20261102-001900.md",
+  "three_changed_files": [
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts"
+  ],
+  "Root_offline_result": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-green-unit-current.json",
+  "known_actual": "13PASS/types0/464pinsheld/5completeOSgone/guarddenialsabsent/noModel",
+  "acceptance": "Same-R task-bound receipts;2isolatedcriticcalls budgeted with author reserve;prompt cancel/replacement/finish/iterator cleanup;no draft mutation;exact anchors advisory not semanticPASS",
+  "previous_findings_author_defense_or_peer_verdict_NOT_supplied": true
+}

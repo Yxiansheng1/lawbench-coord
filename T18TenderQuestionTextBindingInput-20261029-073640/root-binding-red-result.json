@@ -1,0 +1,75 @@
+{
+  "verdict": "TARGET_OBSERVER_BINDINGS_RED",
+  "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TenderReviewObservationContract-20261029-072238\\native-tender-review.mts",
+  "targets": [
+    "question"
+  ],
+  "refs": [
+    {
+      "name": "question",
+      "line": 1784,
+      "bound": true,
+      "declaration": true
+    },
+    {
+      "name": "question",
+      "line": 1785,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1786,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1787,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1788,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1816,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1826,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1837,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1845,
+      "bound": true,
+      "declaration": false
+    },
+    {
+      "name": "question",
+      "line": 1884,
+      "bound": false,
+      "declaration": false
+    }
+  ],
+  "unbound_targets": [
+    "question"
+  ],
+  "denied": [],
+  "consumer_executed": false,
+  "full_typecheck": false
+}

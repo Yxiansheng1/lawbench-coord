@@ -1,0 +1,2825 @@
+{
+  "args": [
+    "E:/node/node.exe",
+    "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "--config",
+    "vitest.config.mjs",
+    "tests/native-grounding-review-20261102-000134.spec.ts",
+    "tests/t18-delivery-quality-20261031-173317.spec.ts",
+    "tests/t18-delivery-coverage-20261031-1830.spec.ts",
+    "--testNamePattern",
+    "T18",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\results.json"
+  ],
+  "cwd": "D:\\Lawbeach\\lawbench-A\\dsh-ext",
+  "timeout_s": 90,
+  "pins_before": [
+    {
+      "path": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "bytes": 301368,
+      "sha256": "362a356ce7f0940ec74f73a8fc2c990a2cc24a38a11c90bbd8eca947110ad139",
+      "mtime_ns": "1793037014289552000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-T18-native-grounding-unit-root-admin.py",
+      "bytes": 6797,
+      "sha256": "22a952c696fd134cd28c80eae7a941e9613970430a968f05c6ab20a3f2ecb7ef",
+      "mtime_ns": "1793549082315594700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\archive_build.schema.json",
+      "bytes": 6331,
+      "sha256": "d131ddbd7cd873f35bae3fce02088b365f9121f7482d3e533d7409d2a5d993b3",
+      "mtime_ns": "1793506375739753900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\capsules_reset.schema.json",
+      "bytes": 1024,
+      "sha256": "31b2b726834a49dd1c073c69878490105776c398c0669e43fb48ed82289d2884",
+      "mtime_ns": "1793506375739753900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\capsules.schema.json",
+      "bytes": 1010,
+      "sha256": "4fed1ca16b33b1bf278ed2dbabd51e22676a4dcc67925730ee8c1ffe7fcf09ee",
+      "mtime_ns": "1793506375738754300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\case_forget.schema.json",
+      "bytes": 1866,
+      "sha256": "c1235747e4f2dfecfeb5ce68d4e5840e9e5a8a070f1c005b29d839098f627fed",
+      "mtime_ns": "1793506375730234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\case_open.schema.json",
+      "bytes": 4241,
+      "sha256": "bda9de2ca0f5e202336ade4f196a86591a450c40a6d18af96d89851cf964334d",
+      "mtime_ns": "1793506375730234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\case_recent.schema.json",
+      "bytes": 3876,
+      "sha256": "d944d7b7ae09caea5ec923e8ad8447a6dd0daae9c504619463b203c156226971",
+      "mtime_ns": "1793506375730234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\connection_test.schema.json",
+      "bytes": 3537,
+      "sha256": "1826a778e74d9c096e9faa1356f98f3463db3a35cf6d90054049d4d851b51c84",
+      "mtime_ns": "1793506375741754200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\documents_save.schema.json",
+      "bytes": 3582,
+      "sha256": "84680bf99aad21f48fbb1071e0011eb39772e2d388058984fa598a2edf3c2db9",
+      "mtime_ns": "1793506375736562900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\invoice_run.schema.json",
+      "bytes": 11347,
+      "sha256": "c0695984bbe570ea59407e9be4f4912589d0f1e8cb01c352a33a17baf96ecffa",
+      "mtime_ns": "1793506375740754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\materials_import.schema.json",
+      "bytes": 7664,
+      "sha256": "078e4e0edd00f83d79e0dd1320a7e47dc552af946b6d272a3ff2fa2a20c3637b",
+      "mtime_ns": "1793506375737750300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\materials_list.schema.json",
+      "bytes": 9956,
+      "sha256": "370943e6c57008f24fc1d6dd298604a3f02436daabf3ddfe88317cc084eb42e0",
+      "mtime_ns": "1793506375731739600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\materials_relocate.schema.json",
+      "bytes": 3210,
+      "sha256": "cfb1c096dd1409c5f48282dc5d1b8a4d7f078714175f7c049873e293a6fcad5f",
+      "mtime_ns": "1793506375737750300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\materials_remove.schema.json",
+      "bytes": 4591,
+      "sha256": "58cd883f1b08968d7dc21bd6cb2f60be653769b038a3857bce43b950fc1733e3",
+      "mtime_ns": "1793506375738754300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\materials_scan.schema.json",
+      "bytes": 2657,
+      "sha256": "7fc07b739b11744b969aefa58fc9dce49ac1c55f16b9e8b79e043120bafdf476",
+      "mtime_ns": "1793506375730234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\ocr_cancel.schema.json",
+      "bytes": 1725,
+      "sha256": "869f4f661fc57c8e849ac45265a33b4e5d5fe43f757eb1e057d4799d754ac89c",
+      "mtime_ns": "1793506375732745900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\ocr_list.schema.json",
+      "bytes": 5642,
+      "sha256": "1d496f418997646061ea529e1020d6f23af6e139b4d49ce4152384e2649e2b91",
+      "mtime_ns": "1793506375731739600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\ocr_submit.schema.json",
+      "bytes": 2815,
+      "sha256": "ae743f4adc57dc23d02f7148a42d2a85279530d200e0600da0cdc36fb386340d",
+      "mtime_ns": "1793506375731739600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\outputs_confirm.schema.json",
+      "bytes": 3676,
+      "sha256": "307698ce8452955c678c2763baa19bac730bd915ce6ab68d8308064f12ecb5d6",
+      "mtime_ns": "1793506375736562900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\outputs_list.schema.json",
+      "bytes": 1180,
+      "sha256": "5d377e4b7584ad69dc97c18fd4e5c7b91b95c0375c57e2b7f41f6c30e7553413",
+      "mtime_ns": "1793506375735256600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\pipeline_cancel.schema.json",
+      "bytes": 1244,
+      "sha256": "f9fa09ca4aa3099aeb76be9b3791a7025b7a91c679875b3ef32d11c3cd0aec9e",
+      "mtime_ns": "1793506375734256900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\pipeline_run.schema.json",
+      "bytes": 2003,
+      "sha256": "9935be97dd5b8b1a5322cccd62c6cca3a0f87493723278bb0d78cac88219cf21",
+      "mtime_ns": "1793506375733251000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\pipeline_status.schema.json",
+      "bytes": 4221,
+      "sha256": "aedd0388b2f3842e6a8530b63c596b572ca51ed5c141ca8cbe8ebf0a8faf0acd",
+      "mtime_ns": "1793506375734256900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\prompt_refine.schema.json",
+      "bytes": 3637,
+      "sha256": "a457b33f8a2d865e5b8cd0e800c6c3a48409eb392e9e0d3badfe73b00bef915e",
+      "mtime_ns": "1793506375741754200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\redline.schema.json",
+      "bytes": 3312,
+      "sha256": "900787ec427bd96f858fdf43e2a1526db8cf9bc12a5f4cdb2481222921793fe5",
+      "mtime_ns": "1793506375735256600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\remote_access.schema.json",
+      "bytes": 4390,
+      "sha256": "31740171c8024772affe49c7754def9ddbceb8966f75dc2db3678cedf0354d22",
+      "mtime_ns": "1793506375741754200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\request_scope.schema.json",
+      "bytes": 4555,
+      "sha256": "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c",
+      "mtime_ns": "1793506375733251000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\retainer_driver.schema.json",
+      "bytes": 1889,
+      "sha256": "422bc80849febc85acce94b37cd519f9a3d6854e9eb3bce4b5064af932888220",
+      "mtime_ns": "1793506375740754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\search.schema.json",
+      "bytes": 1267,
+      "sha256": "b0e61a2a6a13896fab98cc50459d503f54268a2899c6c771a578388f562ffd22",
+      "mtime_ns": "1793506375736562900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\settings.schema.json",
+      "bytes": 931,
+      "sha256": "f8fdf47838d36416aef88b92690c965aa85c94f6293d8e7aa5c3fa7a36124553",
+      "mtime_ns": "1793506375740754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\source.schema.json",
+      "bytes": 4025,
+      "sha256": "211414531b073515b52ea0eafbcb9cd5b6e9ffa9741ba0449b82206f387f03ab",
+      "mtime_ns": "1793506375736562900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\task_create.schema.json",
+      "bytes": 3120,
+      "sha256": "e71083a654957cca1f057a5092a9618aebce062e2e63b0539facb81d2b8ba210",
+      "mtime_ns": "1793506375732745900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\task_current.schema.json",
+      "bytes": 5802,
+      "sha256": "b3f6ddacc1abdd7394b38eb547eea6bda55d1e398f283ed38cccfafe1cf37e6f",
+      "mtime_ns": "1793506375733251000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\tasks_list.schema.json",
+      "bytes": 7839,
+      "sha256": "6b3225cd2ce8af6617d2cd023b27401bbedbe8da48d84ba30f54dbfc593bed4e",
+      "mtime_ns": "1793506375735256600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\wiki_review.schema.json",
+      "bytes": 4684,
+      "sha256": "067513d9290ee9922fffdb088d284a24f433c36ea481318707e508831c7b19a1",
+      "mtime_ns": "1793506375738754300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\wiki_suggestions.schema.json",
+      "bytes": 1944,
+      "sha256": "64a6437381e1729b57cf0c69a24580f509538ffdb00b16e5cee838b9e50743d4",
+      "mtime_ns": "1793506375735256600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\common.schema.json",
+      "bytes": 17837,
+      "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445",
+      "mtime_ns": "1793506375724228300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\core\\context.schema.json",
+      "bytes": 5197,
+      "sha256": "778e77caa5110464c093fb33b5064c4ee4a4dd87433d4598dd5ab7089b21f0c7",
+      "mtime_ns": "1793506375725234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\core\\progress.schema.json",
+      "bytes": 1561,
+      "sha256": "642de13c265ff579cd1d8124e5e6eed942a1492e1fec4d562ca125fc31dd81c3",
+      "mtime_ns": "1793506375725234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\core\\task_begin.schema.json",
+      "bytes": 6129,
+      "sha256": "df0abb157797ffe3d27ddb2f668ab039826ccab2447b90d124432c49b16b27e1",
+      "mtime_ns": "1793506375724228300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\core\\task_end.schema.json",
+      "bytes": 2684,
+      "sha256": "ab6b6a2c9999dd6b39cb74bd990b6a8bfe3386cb409f1d4a45507a52bc4647c6",
+      "mtime_ns": "1793506375726234800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\core\\tool.schema.json",
+      "bytes": 1245,
+      "sha256": "4ebb29206f1bb36a95924d8755cd5f569cb4d6d7d8ba6a90e23e70b7eed80c71",
+      "mtime_ns": "1793506375725234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_archive_build.fail.json",
+      "bytes": 159,
+      "sha256": "594913233c31b81457bbb7a380f295fa98410486c03dfa5004da9e7a12e228ef",
+      "mtime_ns": "1792616233219744600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_forget.req.json",
+      "bytes": 56,
+      "sha256": "20217481ae28881a0435139569241a24c243f2cb82bd581a5a826d2e5ee92693",
+      "mtime_ns": "1792616233334926600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_forget.res.json",
+      "bytes": 66,
+      "sha256": "8dae211ad197907f00334c8b855e83af32ba93f9bb3573c086fdbe42f956eb49",
+      "mtime_ns": "1792616233449116200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_open.fail.json",
+      "bytes": 174,
+      "sha256": "03966e70e56bb9a4601233a574943b9724dd6b2c203c2a458af2293f21d08a76",
+      "mtime_ns": "1792616233562371300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_open.req_bad_kind.json",
+      "bytes": 67,
+      "sha256": "ae67b5dc43d9ea6a5272b769c8bc730bf79d3e119a0b90ceec1992b5263e5fc4",
+      "mtime_ns": "1792616233676708000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_open.req_folders.json",
+      "bytes": 143,
+      "sha256": "71cffbe3871b61329ff3043b1cecc5378fe01da65b85be2eba4febec4ca60c71",
+      "mtime_ns": "1792616233797146400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_case_open.req_kind.json",
+      "bytes": 95,
+      "sha256": "c69f8cbc323d14ca9a0a26520f05a72c9ab594108d1e61bd16c44f440c096407",
+      "mtime_ns": "1792616233911957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_documents_save.fail.json",
+      "bytes": 104,
+      "sha256": "3e13e7eb5ab7501ab9eaab913f9edc84da3eb1341bdceb712a3eaecf2cd5965b",
+      "mtime_ns": "1792616234024472500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_documents_save.req.json",
+      "bytes": 194,
+      "sha256": "17b0c1060dbf635d4c0ef608e53340736978f94f882d37e4366a69e73339259a",
+      "mtime_ns": "1792616234112551400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_documents_save.res.json",
+      "bytes": 1052,
+      "sha256": "b7fd3ff7975f453b704f4b260b80a90e0a067988d84534ef13e8a45a551da66c",
+      "mtime_ns": "1792616234196763400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_invoice_run.req_imap.json",
+      "bytes": 116,
+      "sha256": "90df842d2b6ef852e5de39a811bb5cd6aaf5c792758db600168204704bb81a85",
+      "mtime_ns": "1792616234395778100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_invoice_run.req.json",
+      "bytes": 117,
+      "sha256": "310c69da7082dbf9ae53928977bb538c49c86b307e361f75397a6f619cac9854",
+      "mtime_ns": "1792616234282110100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_invoice_run.res_blocked.json",
+      "bytes": 196,
+      "sha256": "ac0c7fe4bfb84a2b6b6ee7bea3395c938ffe92d18f53ebb57032ac7fb90b0525",
+      "mtime_ns": "1792616234622008400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_invoice_run.res_exclude.json",
+      "bytes": 225,
+      "sha256": "a435fecf02d927f59aae4017eccf03e87cf33de67c0ef49e4403a6c6293e4a0f",
+      "mtime_ns": "1792616234735700000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_invoice_run.res.json",
+      "bytes": 181,
+      "sha256": "d317abb77f90b8990297d43bae40cc8785dff3d1275ef9f41e4051f3d2dfab60",
+      "mtime_ns": "1792616234508965700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.req_bad_mode.json",
+      "bytes": 173,
+      "sha256": "a90f42849b8eb1ee821021dcd96fdb3360b7f112fa418ab2fb3c123bbf043954",
+      "mtime_ns": "1792616234964916900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.req_ref.json",
+      "bytes": 172,
+      "sha256": "aa56a22f656a482e08b38cbcb4fd82e303f1692d690339726bbe74546bcf3ae9",
+      "mtime_ns": "1792616235048974900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.req.json",
+      "bytes": 209,
+      "sha256": "488e098c315438a1b5c3e3c005be6d9fc1277e84a02720f485b3c6c7439711e4",
+      "mtime_ns": "1792616234851524900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.res_bad_reason.json",
+      "bytes": 305,
+      "sha256": "2c8afde78b07b2d73ee1486884782075322f12607d613be86c14f70b411d1ebf",
+      "mtime_ns": "1792616235248674100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.res_bad_registered.json",
+      "bytes": 323,
+      "sha256": "37bed7843161c24387c88639251ba8d3526facbeb5696bc9d4f73559fc72ea64",
+      "mtime_ns": "1792616235360366300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.res_ref.json",
+      "bytes": 345,
+      "sha256": "88f47ca966a75772057b2e4fcfdef7de0a21450134dd7121e05b32c52bb2e39a",
+      "mtime_ns": "1792616235444892600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_import.res.json",
+      "bytes": 437,
+      "sha256": "3c5ae92d3a020637691dcdff8ae353e3bcc18c0eb6b51e10c51184f9c9037da7",
+      "mtime_ns": "1792616235134386200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_list.res_missing.json",
+      "bytes": 616,
+      "sha256": "5361673afb89c61d3afeb3d489e583e7ca97dc60406f1460933a8dbcf4fb749a",
+      "mtime_ns": "1792616235530885000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_relocate.req_bad_ref_zero.json",
+      "bytes": 117,
+      "sha256": "08a77a678dfd8c8d501df6f17bb8d3f8a3add3d7d16d08a48379f89e78a9b386",
+      "mtime_ns": "1792616235791168200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_relocate.req_bad_ref.json",
+      "bytes": 115,
+      "sha256": "a6e824b50ea89ea928bdc6c6e837fcf3af4d21f894fd5195c6b78c459d47310e",
+      "mtime_ns": "1792616235699246600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_relocate.req.json",
+      "bytes": 117,
+      "sha256": "49f9800bf2e08218ccf3286096bd328fe180dbc575795c737f85c9f9fa92dd11",
+      "mtime_ns": "1792616235615890600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_relocate.res.json",
+      "bytes": 225,
+      "sha256": "42ac4ad54d27566105f84aeef21780c4d27b63996f5b7bdffcac626475d1fb5a",
+      "mtime_ns": "1792616235876011400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_remove.req.json",
+      "bytes": 106,
+      "sha256": "bdff321bc0ed1689ad363e3653c89add412fdc1c0f09b0d21507ec78d9882071",
+      "mtime_ns": "1792616235958562600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_materials_remove.res.json",
+      "bytes": 255,
+      "sha256": "caca57be7b66cbb27a7fbec478b4b29d6b3fe0e0709005abfa811cf93fa52a2a",
+      "mtime_ns": "1792616236072918700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_ocr_list.res.json",
+      "bytes": 347,
+      "sha256": "147a1783a184d5767181a1482778944b8ae3d15c2c893901b1ad7de267901fdc",
+      "mtime_ns": "1792616236186796500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_ocr_submit.req.json",
+      "bytes": 137,
+      "sha256": "060533cec12e90bc92136bd421cc01eaed910f1ac68395c67d8f051c06224fea",
+      "mtime_ns": "1792616236301716200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_prompt_refine.req_bad_empty.json",
+      "bytes": 17,
+      "sha256": "33780dfdb55b34cbbe4e576c6ccff3997d822d1c72cea4c945e970eb2fb6ba22",
+      "mtime_ns": "1792616236499163800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_prompt_refine.req.json",
+      "bytes": 139,
+      "sha256": "06c9adc6f476faef776f4089de3e6a1726dab5b4b93ad2271ea337db8431f483",
+      "mtime_ns": "1792616236415946300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_prompt_refine.res_original.json",
+      "bytes": 140,
+      "sha256": "2c2b9bae29a02200628053ce2d222bd773f6fa23300e7ea3963d732c6ec9e048",
+      "mtime_ns": "1792616236667290400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_prompt_refine.res.json",
+      "bytes": 182,
+      "sha256": "0b19c74610f6e7958bd2dd35314343d3029d0becb1346046dc28d7c86239ac9b",
+      "mtime_ns": "1792616236583705900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_remote_access.req_code_null.json",
+      "bytes": 18,
+      "sha256": "0e83ad9525b4e6877e4fdb73c0e7ef652751f7e325fa6d072f8a91e25ce4c6a6",
+      "mtime_ns": "1792616236750853100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_remote_access.req_code_spaces.json",
+      "bytes": 36,
+      "sha256": "d94306c0c3d411070aa26145e29f88cc6c6b07d397e708f43850188714be200f",
+      "mtime_ns": "1792616236841286300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_remote_access.req_enabled.json",
+      "bytes": 21,
+      "sha256": "62cca9576952a5bdd2c123ef4643782afc12072f906887d712789249e72902f3",
+      "mtime_ns": "1792616236928562300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_remote_access.res_failed.json",
+      "bytes": 121,
+      "sha256": "5ae02b68931a0dc516dc35c209dbf07dca5e1739a520893c29c569c3a935a4a7",
+      "mtime_ns": "1792616237012944400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_request_scope.req_prepare.json",
+      "bytes": 212,
+      "sha256": "3b812351f30926f1f764326e282c99c17e4c44838b59648de373a8811bfa4b37",
+      "mtime_ns": "1792947374014439400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_request_scope.req_release.json",
+      "bytes": 162,
+      "sha256": "e13e617d55b44f916b86d40593f27de08831d91ab5775ac49b4e475c00002b42",
+      "mtime_ns": "1792947374188257900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_request_scope.res_prepare.json",
+      "bytes": 259,
+      "sha256": "889d1ebf00af9b2a14cb31ffb59e0cd7463013c353b4813c7921bc35a3b0e7a7",
+      "mtime_ns": "1792947374355258100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_request_scope.res_release.json",
+      "bytes": 201,
+      "sha256": "c70059a95bec1c757f21a77a10343bc1e10ec40df452ae7cfdb97185f4ce20bc",
+      "mtime_ns": "1792947374536000700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_source.req_task.json",
+      "bytes": 158,
+      "sha256": "8f24b923b376b924c2f9f75d370c64d356a28d5ce9e0bde3cb12f3492ba1e982",
+      "mtime_ns": "1792616237100103800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_source.res_missing.json",
+      "bytes": 238,
+      "sha256": "37c08661fa0428a92d59ca4ddeb04769b483133cf66ebd5affb6c0c2af58c546",
+      "mtime_ns": "1792616237336737400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_source.res.json",
+      "bytes": 197,
+      "sha256": "f71189a2fab75ee5743e5a147c761cd161a548bc76cd20ca78ab7f96dfe15005",
+      "mtime_ns": "1792616237215189400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_task_create.req_legacy.json",
+      "bytes": 263,
+      "sha256": "e791951d88d1b9d1777e69e7af922a5aeaf1ebcfb0eb92cc5a00b77f1b5842d0",
+      "mtime_ns": "1792682335135009100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_task_create.req.json",
+      "bytes": 287,
+      "sha256": "3d50ef40d21cfa116dc27fa0dc3a0fae82d00e985084ebfdd4425676f36d39f7",
+      "mtime_ns": "1792682335134009300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_task_current.req.json",
+      "bytes": 30,
+      "sha256": "c2fe164d7680dc3bbec8c557400123f1d732558f86d6967ec5f79800161f3486",
+      "mtime_ns": "1792616237423531500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_task_current.res_free.json",
+      "bytes": 57,
+      "sha256": "c40295867e8a37edb52625d4f827f8273c2f2e54cb52c5665d669b709f2a3ae3",
+      "mtime_ns": "1792616237662683200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_task_current.res.json",
+      "bytes": 398,
+      "sha256": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64",
+      "mtime_ns": "1792682335134009300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_wiki_review.res.json",
+      "bytes": 205,
+      "sha256": "66ae22f36f46015a9d443dbaf8cad1cf272626dfdfc990ad594b20a32cc9662f",
+      "mtime_ns": "1792616237778333800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\api_wiki_suggestions.res.json",
+      "bytes": 362,
+      "sha256": "c4f0fc4c3c6e27e39b02008203122873788f13f3e6ad315c8e0dcd64e5dfc598",
+      "mtime_ns": "1792616237897453800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_0.json",
+      "bytes": 23,
+      "sha256": "9bb858497a0931018943e9aa7cef29ee10e0449c983be861e1b13754609b6a9f",
+      "mtime_ns": "1792616238010760900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_1.json",
+      "bytes": 32,
+      "sha256": "40f4ae6520b4bd6218f53c9c1f5f0297121a8cdce2b63639fc04befd086828ab",
+      "mtime_ns": "1792616238128788000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_10.json",
+      "bytes": 59,
+      "sha256": "c33978d78f5839d509d51cec74d6899ef3b7012a6413fcbd02d3f27c6ea98b06",
+      "mtime_ns": "1792616238243093300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_11.json",
+      "bytes": 38,
+      "sha256": "0734caf672d9d98d90ad2725a64f912c42070ac48f7f8ed9d68cd62e44b444b0",
+      "mtime_ns": "1792616238355844500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_12.json",
+      "bytes": 41,
+      "sha256": "9f46ce09f6968ab9f81eda92a05dd655b61d7c1261dba185a467545da8113f08",
+      "mtime_ns": "1792616238468162500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_2.json",
+      "bytes": 32,
+      "sha256": "3896d2979de668498c03f7978c32875dd3f103923cde38bc859285cd0e90e969",
+      "mtime_ns": "1792616238580507500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_3.json",
+      "bytes": 51,
+      "sha256": "e6545030e943ed10a838394734c05bd6023b0e62b4e36ea9a5c5dbf487016853",
+      "mtime_ns": "1792616238692413100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_4.json",
+      "bytes": 24,
+      "sha256": "9fbcb5ab4b8728e61e399a7e302ec34497d146f6fa4039063a5aa97da2b63412",
+      "mtime_ns": "1792616238807206700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_5.json",
+      "bytes": 15,
+      "sha256": "b8c9845732386414062221434ff8811a491c4cbec8ef9aa4dd031e404b91e192",
+      "mtime_ns": "1792616238924771300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_6.json",
+      "bytes": 23,
+      "sha256": "f2dc8efae3d3a3e022cafc870fc80a779681083ec82cc51da68a7e7625ba13a2",
+      "mtime_ns": "1792616239039734800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_7.json",
+      "bytes": 33,
+      "sha256": "5f720d19ff03fd0b507356167a0a144d4a33defacdb5111d4fff2af7cabf4394",
+      "mtime_ns": "1792616239154554600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_8.json",
+      "bytes": 15,
+      "sha256": "ac593079c7537b22c8ba5a75a38f6bc8d20206a71628c3bfdc45a6aec17a925d",
+      "mtime_ns": "1792616239270035300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\citation_9.json",
+      "bytes": 40,
+      "sha256": "8c6bcc8751f827da1eeb6fc215a831a6574389623aeefdb34644dda93c4a6f10",
+      "mtime_ns": "1792616239384943900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_context.res.json",
+      "bytes": 365,
+      "sha256": "b0622883e064bd04baeed820e7e8ac8fabe73ce014c151111e2968e45301aac2",
+      "mtime_ns": "1792616239496396000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.fail.json",
+      "bytes": 129,
+      "sha256": "88002620be9d4d9e2fec8647cc32e79871ed871fc1084b2a45ffa7bea8ff8789",
+      "mtime_ns": "1792616239611450900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.req_legacy.json",
+      "bytes": 70,
+      "sha256": "c1c447ede5501371bef62a3c7ce791eba6a3de39965434aa7845e5e6e921a98c",
+      "mtime_ns": "1792947373641882000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.req.json",
+      "bytes": 126,
+      "sha256": "beebb7bc4ef3055eb7ec2ecd4e4d4a36a259b32a5d0d47df95fd93d2f21cc73f",
+      "mtime_ns": "1792947373297197400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.res_legacy.json",
+      "bytes": 356,
+      "sha256": "1f318be12f6b153bc55e3b64e373de4f8021c4819b95031f407ec2d63e592fa9",
+      "mtime_ns": "1792947373827507200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.res.json",
+      "bytes": 960,
+      "sha256": "7f06fcbed0c6ad96f8aa5b9418aeafbee3038314bceb0214c08c5225dd95a9e7",
+      "mtime_ns": "1792947373472093400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_end.req.json",
+      "bytes": 123,
+      "sha256": "02849374100be272e2c9aafaaa8ef2638f848498c0d05c4e05070d9052f54269",
+      "mtime_ns": "1792616239952955700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_case_card.json",
+      "bytes": 588,
+      "sha256": "a733cc98a7362e7710748850ae084c0febe1d605ffaf4deb8f30605c930ed3ca",
+      "mtime_ns": "1792616240067217800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_cases.json",
+      "bytes": 227,
+      "sha256": "224ff188670c819b29248e3e6922e59652a9ccaf2674e2b4b925d8be57494f33",
+      "mtime_ns": "1792616240181078700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_index.json",
+      "bytes": 766,
+      "sha256": "0b7b9d569631147057066a05d2c776be09c6f55de1cdb262391411197ba502c6",
+      "mtime_ns": "1792616240294990300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_index.ref_renamed.json",
+      "bytes": 857,
+      "sha256": "0981e77b6892bf85a8ab896b706273e992cabb14e08c8b7ef08ffa488a604f17",
+      "mtime_ns": "1792616240492515400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_index.ref_source_rel.json",
+      "bytes": 898,
+      "sha256": "ad067c6c22cbc6ba8a0e6c8aa50514474c0fa08e6d809f9c70298a545f547e28",
+      "mtime_ns": "1792616240576949200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_index.ref.json",
+      "bytes": 851,
+      "sha256": "60630b6902db9522f16a0826f5d64a0d085edeb772b010589b3e7e506624e86f",
+      "mtime_ns": "1792616240406308600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_refs.bad_required.json",
+      "bytes": 227,
+      "sha256": "1418626505decb09d31c721354f882f724ff8891ae4d6a2a32196e376def1603",
+      "mtime_ns": "1792616240662086300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_material_refs.json",
+      "bytes": 276,
+      "sha256": "af99bc9a03a02ddabf6cd7a841ec59982d5a9371dbc105df93374cbf7724e43a",
+      "mtime_ns": "1792616240746303200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_outputs_index.json",
+      "bytes": 373,
+      "sha256": "8ca2f5b15cfd9cd465b4294ecdec03904772ba1836d16e73ac24449177b01eb7",
+      "mtime_ns": "1792616240838127100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_reads.json",
+      "bytes": 299,
+      "sha256": "095de162966a05d93eb5d4e52edb10b98e3e617847bba96d1b24b9c93f5e4ff7",
+      "mtime_ns": "1792616240966016000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_result.json",
+      "bytes": 1375,
+      "sha256": "11eccb917f6d4000875d70b17406f405167264fca889455f838321789c9fff50",
+      "mtime_ns": "1792616241080990800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_settings.external.json",
+      "bytes": 810,
+      "sha256": "9a3b73923821af19b1cdc89bdf232d7ce3b4f0a163e36adcd353c676cc527f18",
+      "mtime_ns": "1792682335141037700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_settings.json",
+      "bytes": 745,
+      "sha256": "ba8a77cbe32a706d4b1e5cbf0f242d45932788646dfbbce3edddb33a4374c2d2",
+      "mtime_ns": "1792616241196963000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_settings.ports.json",
+      "bytes": 648,
+      "sha256": "e6c2feb6ab263000d2ceb0af97cb8910aeac3a8036a8183e9e79df50293f2d09",
+      "mtime_ns": "1792616241314779500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_task.json",
+      "bytes": 759,
+      "sha256": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034",
+      "mtime_ns": "1792682335127498000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_task.legacy.json",
+      "bytes": 505,
+      "sha256": "716230f5a779bfca7076a86a7fdcc956cc7e6a86fa2b184efc443bd2939952b1",
+      "mtime_ns": "1792682335129003100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\file_task.request_scope.json",
+      "bytes": 963,
+      "sha256": "725d582b8263ae1eb42cc4dbd8528d0e8f476722f3e80786a6854562b2186a04",
+      "mtime_ns": "1792947805473157500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\manifest.json",
+      "bytes": 15653,
+      "sha256": "560b8e2012c09f4e675b10db7ca3a2b92652d902d8e2784e64c0244d4e24cb19",
+      "mtime_ns": "1792947805641336400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\prep_extract.req.json",
+      "bytes": 130,
+      "sha256": "fa9accf64525eea1222d20b2d897bdf545f166eb074199f8e4e860349248ae74",
+      "mtime_ns": "1792616241624955700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\prep_extract.res.json",
+      "bytes": 152,
+      "sha256": "7e1de35d65542e71a00373b58f66682bb3fd9295bd0678d0a7c932cf74efb9de",
+      "mtime_ns": "1792616241737670500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\prep_health.json",
+      "bytes": 118,
+      "sha256": "90be90ba017d93624c0af3d25cb947e39f0f936fbf9354eea6206bc02abd9cab",
+      "mtime_ns": "1792616241852271000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\prep_ocr.err.json",
+      "bytes": 77,
+      "sha256": "3d1dbc477ee756cbc2f1f94e4ac920ecc2d99b195664d42ac85e6c10c4d75a6d",
+      "mtime_ns": "1792616241971458200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\prep_ocr.res.json",
+      "bytes": 184,
+      "sha256": "1d68255f367fddd19b71de9bb78ebd2b80ebb1ff3d5b896017411b1cbdd22e91",
+      "mtime_ns": "1792616242089879700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\skill_capsules.bad_tool.json",
+      "bytes": 689,
+      "sha256": "c6ef3e8adcd4e3ad6fabf3e3f054d9882d9405543af87b9f9b68f756fed69490",
+      "mtime_ns": "1792616242205714400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\skill_capsules.json",
+      "bytes": 691,
+      "sha256": "de49a24666e0eb7aff2a698ba9de0b74e3e8535eac715cb3dcadb6a9a4881ca4",
+      "mtime_ns": "1792616242320982200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\skill_capsules.new_item.json",
+      "bytes": 713,
+      "sha256": "b6d0faa781999233d6f7d0c23eb707ca7305a9dca5036079ff4d833e92d3fc1b",
+      "mtime_ns": "1792616242434486600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_archive_plan.args_bad.json",
+      "bytes": 640,
+      "sha256": "00d77c8fc3108333c81147a86d23cffad71b35f0adbba44ffcb56a0dd96ec612",
+      "mtime_ns": "1792616242660615500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_archive_plan.args.json",
+      "bytes": 658,
+      "sha256": "2938f621a02688865a6b8836a527042a38f81729624f3cd3f1d1b384ff6e8692",
+      "mtime_ns": "1792616242547227900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_calc_sentence.args_bad.json",
+      "bytes": 43,
+      "sha256": "f460fa796d0e286fef1d0a68359d9057124662aceedd4359f981cc57b08e1370",
+      "mtime_ns": "1792616242895730500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_calc_sentence.args.json",
+      "bytes": 293,
+      "sha256": "34ed662acac4a7069e5990512087710630a8526baf3171cc45d14ca1d46de9fa",
+      "mtime_ns": "1792616242778895900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_calc_sentence.result.json",
+      "bytes": 439,
+      "sha256": "eb1007aa5143ca8a0677e310a01c5f34e73d441fb91592dd3732c028e8df35ef",
+      "mtime_ns": "1792616243011149900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_edit_list.args.json",
+      "bytes": 244,
+      "sha256": "0005a9d3e2422370afec872092f53b4ca8139236247ddefb3f87df17bccafc2f",
+      "mtime_ns": "1792616243131133100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_list.result.json",
+      "bytes": 270,
+      "sha256": "a87cfcf0ed22f38df9841fce4428730f254ed04ce788c715def71ef53158c131",
+      "mtime_ns": "1792616243244072100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read_material.args_more.json",
+      "bytes": 79,
+      "sha256": "b8aa408402bdad4ec3271f3aea61afd8e5c46b7a07671d604db8508c18af269f",
+      "mtime_ns": "1792616243697775500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.args_path.json",
+      "bytes": 41,
+      "sha256": "48e198ef5ba9fdbdf6370768399b9d431160afc87c94911850e72d5b1ba937d8",
+      "mtime_ns": "1792616243471031600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.args.json",
+      "bytes": 37,
+      "sha256": "580df030d60f564dc4de30451d669b8019e2b43bb5ba4b30678368413a64a3ed",
+      "mtime_ns": "1792616243357483100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.result.json",
+      "bytes": 191,
+      "sha256": "92605b16a190940d5f7b8e786bdb9960fc5c2f48b991e5fcdcdf65783b3d21bd",
+      "mtime_ns": "1792616243583248900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_save_draft.result.json",
+      "bytes": 897,
+      "sha256": "084def0bf7bd065f686a07e0400da79d5191c4e5f4530ea9f66e93c106419eb0",
+      "mtime_ns": "1792616243811340100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_search.result.json",
+      "bytes": 272,
+      "sha256": "581fe245dbc8e6cecda61d4c45de0f9c2a52002d1bd6e644950b21bc18d9c2df",
+      "mtime_ns": "1792616243926905500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\case_card.schema.json",
+      "bytes": 3421,
+      "sha256": "09f1fbf7d8662aa5497d13d7a9f3732698de1ff8bd261b7ba6de0727581a4e2a",
+      "mtime_ns": "1793506375745265400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\cases.schema.json",
+      "bytes": 1341,
+      "sha256": "31543bb738bd876ca4ca1358a66db7ddebf50dd00af9ca99f0b01443e8ae20cf",
+      "mtime_ns": "1793506375746264200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\material_index.schema.json",
+      "bytes": 4658,
+      "sha256": "3a35d31a2a438d4a6b55dfb8be326fbbd3360cc3e0d16f94a4ff485015ab6483",
+      "mtime_ns": "1793506375742754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\material_refs.schema.json",
+      "bytes": 1669,
+      "sha256": "09b47821d4167e7badd111ded813a8d0894e8879a70ed7cc4f96e7b9b740fc62",
+      "mtime_ns": "1793506375744258900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\outputs_index.schema.json",
+      "bytes": 2202,
+      "sha256": "535397567c567e004b191d316e6a5aec0867dcfb2d88ef0c4f1141ffd2bc3ad0",
+      "mtime_ns": "1793506375746264200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\reads.schema.json",
+      "bytes": 1463,
+      "sha256": "d58c762972159024afe81a9db4e89d1bea1f972222e83eac9c7bb47aa2d1b379",
+      "mtime_ns": "1793506375744258900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\result.schema.json",
+      "bytes": 2572,
+      "sha256": "40f3f270433418363d07a02f0ff4d0b52c3e864a0c452ea68393fa4875349be3",
+      "mtime_ns": "1793506375745265400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\settings.schema.json",
+      "bytes": 7460,
+      "sha256": "f39f105f55cbb8c76ad4cd8e5a65e24ee0d0dc5a76041314b916b876e7f816c8",
+      "mtime_ns": "1793506375747263900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\task.schema.json",
+      "bytes": 3987,
+      "sha256": "1b1292a3259113518c80834a0d9ee6ca83f9970073aa389d5872fcde8e6b373e",
+      "mtime_ns": "1793506375744258900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\wiki_pending.schema.json",
+      "bytes": 1643,
+      "sha256": "042a76f163044245f74b1d276d14557d7e986fe084d9913ce967d36880f11b62",
+      "mtime_ns": "1793506375745265400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\prep395\\extract.schema.json",
+      "bytes": 4284,
+      "sha256": "0ce032df0161b39786e2a0cc0dc10262cd5d70f4e7fd480b7bed7607cdb6d9ad",
+      "mtime_ns": "1793506375742754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\prep395\\health.schema.json",
+      "bytes": 944,
+      "sha256": "69f56b9bf99c4fa7f71736b2cb5506d6b23e41f19faf13410daf1e026aaf3cab",
+      "mtime_ns": "1793506375742754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\prep395\\ocr_page.schema.json",
+      "bytes": 2378,
+      "sha256": "ba3bbfa5748db74797f22e1d50be900e8e1e6e37eadbdcb380c7c43e6aaee698",
+      "mtime_ns": "1793506375742754600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\skill\\archive_catalog.schema.json",
+      "bytes": 2062,
+      "sha256": "2aeb9b8264502994764bf0808795c603305807d925dee7d6df5d9358faa422b1",
+      "mtime_ns": "1793506375748265000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\skill\\capsules.schema.json",
+      "bytes": 4239,
+      "sha256": "0a6425f48d27e5f573533174377494c1dbe86699a4edfd1574edd71190faf0d0",
+      "mtime_ns": "1793506375747263900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\skill\\frontmatter.schema.json",
+      "bytes": 1186,
+      "sha256": "8f5681af36338ce395ae88ed745f341fee1142bbfc38779a7f3e012d09bfd95a",
+      "mtime_ns": "1793506375747263900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_archive_match.schema.json",
+      "bytes": 3375,
+      "sha256": "f14cc490213424ce9b4a6fd2c05c9e460d47bc625d676a6cc20f10000d068035",
+      "mtime_ns": "1793506375729234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_calc_sentence.schema.json",
+      "bytes": 4441,
+      "sha256": "6ba0ce150dea9de1ba4f3fd21bac8c9082cb1f16f11fd397468fa1b50eba3cf4",
+      "mtime_ns": "1793506375729234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_list_materials.schema.json",
+      "bytes": 842,
+      "sha256": "106c025f947896dcf766a028d620ad8b04b02555b31f6a7b15d44bce795f38b9",
+      "mtime_ns": "1793506375726234800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_input.schema.json",
+      "bytes": 1735,
+      "sha256": "8b6eedeb68d38dafa79ec180f77e65283b4446708b1abdd4398060e0663413f3",
+      "mtime_ns": "1793506375727234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_material.schema.json",
+      "bytes": 6090,
+      "sha256": "95fc7f5ee89b223b70d8eac74f1d16aa039abfefe5c1045f45e45b381bce7c5a",
+      "mtime_ns": "1793506375726234800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_wiki.schema.json",
+      "bytes": 1430,
+      "sha256": "f068983b652f85e7351450a8be5033bd39a1f5753fd71e2f92c4647e69534f6d",
+      "mtime_ns": "1793506375727234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_save_archive_plan.schema.json",
+      "bytes": 9452,
+      "sha256": "0bc15810336e5cd3adbf63e37b1a67fbf568de4d9f1c5523002538b179dd1418",
+      "mtime_ns": "1793506375729234600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_save_draft.schema.json",
+      "bytes": 1687,
+      "sha256": "e3cddc974b53277645bb278fe9ccdb51470357f5939a88a2840337a46d66a3f5",
+      "mtime_ns": "1793506375728234300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_save_edit_list.schema.json",
+      "bytes": 3716,
+      "sha256": "ce0dbebecf0a84a9f5ad9ff50b362c2117f28e4c415a633924c12a6e8232b24b",
+      "mtime_ns": "1793506375728234300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_search.schema.json",
+      "bytes": 2065,
+      "sha256": "79d7ccfa3de0d543ccff632a2067c1b30897f743fb6ca9ad25be7ceea0c8ed51",
+      "mtime_ns": "1793506375727234700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_suggest_wiki.schema.json",
+      "bytes": 1195,
+      "sha256": "1875097f8e990ffd4406823a5da6cdf030de929fce28aeeb85a4e073ff99e1a7",
+      "mtime_ns": "1793506375728234300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+      "bytes": 7588,
+      "sha256": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130",
+      "mtime_ns": "1792763027730591700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "bytes": 37867,
+      "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8",
+      "mtime_ns": "1793555139498153300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1",
+      "mtime_ns": "1793550228132006600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\repetition.ts",
+      "bytes": 7466,
+      "sha256": "e21e2cb7f0d05e82ea2fae37224296188e70c9930521e8474f0992ba0593b323",
+      "mtime_ns": "1792392977818508900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae",
+      "mtime_ns": "1793472939838046600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\credentials\\credman.ts",
+      "bytes": 5519,
+      "sha256": "280ecc5f56e55af939f5d3a883a1369aae5ee6d675c143e71ee9b67c624101a8",
+      "mtime_ns": "1792379417903404200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\credentials\\index.ts",
+      "bytes": 10859,
+      "sha256": "2a94e990c5cb46f9973b5bef0825f1103777569b1f4263b46653391ed89050de",
+      "mtime_ns": "1792757911250599100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\credentials\\keychain.ts",
+      "bytes": 3952,
+      "sha256": "23d6c337a28afd59c948ca6dcc5d4b04018ba8f492d8f2ef9344079de498271e",
+      "mtime_ns": "1792379417904403700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\archive-plan.ts",
+      "bytes": 3121,
+      "sha256": "16cb52d5485e2cac25cc964d131afab454823a53efd69c4f69b84d259c774585",
+      "mtime_ns": "1792379417905403300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\attach-sessions.ts",
+      "bytes": 7937,
+      "sha256": "52a902ed4695a6f233efcd0792ee4f7b7c8b4f0a922149a912323b38dd3367cc",
+      "mtime_ns": "1792379417905403300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\case-wiki.ts",
+      "bytes": 5053,
+      "sha256": "95caed4a9d58a343af78713a6cddd664272693d962ee6847130ca241cbec27f0",
+      "mtime_ns": "1792392977818508900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\daily-case.ts",
+      "bytes": 4740,
+      "sha256": "b7f9bab6606433c040fae1884e32532f5f6a9e466781723d5270b238745a19f2",
+      "mtime_ns": "1792392977820018600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\desk-actions.ts",
+      "bytes": 14915,
+      "sha256": "a201d546f5703d402750d2bb16053287c0f34470e3ac54b512a8011691c5590c",
+      "mtime_ns": "1792379417906907900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\desk-node.ts",
+      "bytes": 2772,
+      "sha256": "820da49bb8fc692373819bbe43a126b4c2dd91a5bb3d93a7a7828039e6a7acf2",
+      "mtime_ns": "1792379417906907900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\document-preview.ts",
+      "bytes": 17057,
+      "sha256": "dacda113a153707df61a911f898f1735a0513c1dc8811c53f23a82677ede4b07",
+      "mtime_ns": "1792759948434358400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\document-read.ts",
+      "bytes": 9505,
+      "sha256": "ff65b5c749c20ed25c008f55f2127c18eaa0615e96cb789c7d39a8bc8153e5f1",
+      "mtime_ns": "1792613718392962000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\hidden-cases.ts",
+      "bytes": 2680,
+      "sha256": "6a4091e383f9d7b40ac4b21ce99919be05220ce85863b73c5b2e44173ab6c493",
+      "mtime_ns": "1792392977820018600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\http-json.ts",
+      "bytes": 3192,
+      "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732",
+      "mtime_ns": "1792737491185657700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 63665,
+      "sha256": "cb3679ae85ea6b4f56406b5cbb1e01c1fe0e4739bb22d0ccf05cd4c7ac8fbf83",
+      "mtime_ns": "1793340546650776500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\install-layout.ts",
+      "bytes": 6054,
+      "sha256": "0d0cbfbc88c69dbc57ead5939de8ce9440682d320768842d385093929103ffb7",
+      "mtime_ns": "1792757934520529800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\path-state.ts",
+      "bytes": 1861,
+      "sha256": "a1a388046870e6dba6cc7803b8d712d5dbcf0df5dc212295514eccca6150a7e1",
+      "mtime_ns": "1792379417908419000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\public-search.ts",
+      "bytes": 11493,
+      "sha256": "a978859a2c606c5d8df820bb6356fdc2340947a283ff9d31ebf812c569a49bd7",
+      "mtime_ns": "1792758354110546700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\selfcheck-node.ts",
+      "bytes": 2203,
+      "sha256": "c1b8819223ff0e212e4565edb9c0688262b495af3a13430442290eb3828a9590",
+      "mtime_ns": "1792379417908419000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\selfcheck.ts",
+      "bytes": 5868,
+      "sha256": "add111a2d2e6d72e44214ed3c77a7b42e7e0f780a98bde70d9623dd7cab616b1",
+      "mtime_ns": "1792379417908419000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+      "bytes": 3801,
+      "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472",
+      "mtime_ns": "1793184091651825700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\supervisor.ts",
+      "bytes": 17523,
+      "sha256": "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599",
+      "mtime_ns": "1792968876271251300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\task-answer.ts",
+      "bytes": 4994,
+      "sha256": "f88d5397c3c1b0398b1db48065e1441bae292dc0fc2fada09eee203e7fcc227f",
+      "mtime_ns": "1793465196726151500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794",
+      "mtime_ns": "1792379417909424000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\build.mjs",
+      "bytes": 5498,
+      "sha256": "34e0f5d6136d203f56816bf181d359ce7941bc7e09048fce2ec62cc145646b33",
+      "mtime_ns": "1792379417910423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\contracts-source.mjs",
+      "bytes": 1471,
+      "sha256": "6460a6963458f9a74e18e15f26aeaa292bf9a00222bc45eea8c71d8d9c4e5baf",
+      "mtime_ns": "1792379417910423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\test.mjs",
+      "bytes": 634,
+      "sha256": "9a22b333361f704f0a25ad8a712131342c2a94fd35f0b9afe098efc129bc149d",
+      "mtime_ns": "1792379417910423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\api-routes.ts",
+      "bytes": 7429,
+      "sha256": "b2efae9b895c0c455cebbd8f43996c518e8a4e622a45c104f122922e86692130",
+      "mtime_ns": "1792947393391701400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\case-folders.ts",
+      "bytes": 5665,
+      "sha256": "7b964d2fad12f56e46101a3b02f5225f4b5a3fe93e08849ccc14fd7f343eb47d",
+      "mtime_ns": "1792392977821712800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\contracts.ts",
+      "bytes": 4742,
+      "sha256": "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b",
+      "mtime_ns": "1792379417912423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\core-client.ts",
+      "bytes": 3666,
+      "sha256": "5deeb42f96b2b23225f90adb8642fa9529f419a01a8e14f731378b4f2ac74c50",
+      "mtime_ns": "1792379417912423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\file-log.ts",
+      "bytes": 1745,
+      "sha256": "7b0751b754c052e6a403229e568659cd7d8945cfdd02d2df185d158a51e29bc8",
+      "mtime_ns": "1792379417912423700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\product.ts",
+      "bytes": 1477,
+      "sha256": "896bf3f2afed0c2f7d0266164dfe872f2a0f100bdd58ea08802ad6b419ad49ef",
+      "mtime_ns": "1792590218318408300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\remote-methods.ts",
+      "bytes": 5227,
+      "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631",
+      "mtime_ns": "1792757918757960500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+      "bytes": 4045,
+      "sha256": "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0",
+      "mtime_ns": "1793181000120716100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\virtual.d.ts",
+      "bytes": 134,
+      "sha256": "731db1da441b03b2b1ad74818dda1774dc4bc2d6c704ac44c389c625a597575c",
+      "mtime_ns": "1792379417913423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\agent.spec.ts",
+      "bytes": 10351,
+      "sha256": "fefd4664f160e0498c9d7aaf6eb09371272f124237549a852d3b9601a0b21d19",
+      "mtime_ns": "1793425930592472900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\answer.spec.ts",
+      "bytes": 17433,
+      "sha256": "6c23cb9c91ea6de32db39febbc1c6f33447e5c6020c8a56f9b5c682b07b07d5e",
+      "mtime_ns": "1792392977821712800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\archive-workflow-gate-20261030-003021.spec.ts",
+      "bytes": 29709,
+      "sha256": "527c755dcf8f2b9fc411624d96bb9353d3f9b93d47181be07cdf5bd3aa3edf2d",
+      "mtime_ns": "1793459707169135300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\archive.spec.ts",
+      "bytes": 13581,
+      "sha256": "b638fb9dba247ae60ae35c76ffb41791adff975a95b8cbf102be0bea240e9165",
+      "mtime_ns": "1792379417914423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\brand.spec.ts",
+      "bytes": 5888,
+      "sha256": "63b34582926e6466af697d0a17eaee4eda785f17cf08e66a873493a8ec66bb80",
+      "mtime_ns": "1792401275180765100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\budget-wrapup.spec.ts",
+      "bytes": 12050,
+      "sha256": "7f380d8a9282e6043eca801c389b9310fb5dd2c83063104a9c2cf2ad54bc7247",
+      "mtime_ns": "1792379417914423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\call-args.spec.ts",
+      "bytes": 1567,
+      "sha256": "590e09c6012ef7bba2e06aa1e88060733edc1921e6487fe090e5f3d8f1973de9",
+      "mtime_ns": "1792379417914423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-folders.spec.ts",
+      "bytes": 14584,
+      "sha256": "fda129907c8493029e12878d19cd99ea471b214ba2db0e1ff84c9e16a50db6c6",
+      "mtime_ns": "1792392977822986100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-forget.spec.ts",
+      "bytes": 19109,
+      "sha256": "39049c5be7c1325533fdf2248ce5c29b87d55e960e2010435ffc621b6cd44818",
+      "mtime_ns": "1792392977822986100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-materials.spec.ts",
+      "bytes": 10877,
+      "sha256": "5c8873a41aa40566bb48358338450225ae8b1c948983b554fb18d398248223d2",
+      "mtime_ns": "1792605427761933500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-open.spec.ts",
+      "bytes": 17592,
+      "sha256": "7c8696f1588eb05190cd59530345fdf3f7294d3a1b6e97af48322a42fd96a6b1",
+      "mtime_ns": "1792379417915422400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-switcher.spec.ts",
+      "bytes": 4126,
+      "sha256": "c53db3e9a4deb243e747db32dcaf1d23139fdbbea2f944a04cd19aaaa1e30856",
+      "mtime_ns": "1792379417915422400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-tab.spec.ts",
+      "bytes": 6344,
+      "sha256": "b428bd2515a3fb736a004e05cbf07c1f0fc7a239d3b27395c7d86301d0eca30b",
+      "mtime_ns": "1793425899425565600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\cases-block.spec.ts",
+      "bytes": 2038,
+      "sha256": "bd709362c9b89aa55939c65f298a9d6c49584bc7f3b36f1ddc2701438bb68f84",
+      "mtime_ns": "1792379417915422400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\citation.spec.ts",
+      "bytes": 8605,
+      "sha256": "6ee937eb81c1e00b7c1e3a094c9e6c0300e4e286385c7c7ea7be8c3cdcf2072a",
+      "mtime_ns": "1792379417915422400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\compaction-loop.spec.ts",
+      "bytes": 17712,
+      "sha256": "6285076ea50a7c611a7809ead6b27bf1f0490fb16877fa77ebf6aadba9cb35f5",
+      "mtime_ns": "1792392584142493600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\confirm-save.spec.ts",
+      "bytes": 13240,
+      "sha256": "f8159d3b6bd0ecf443fb6938134617110f18b5404a021b71bc3fd1dc5cdd346b",
+      "mtime_ns": "1792379417916422600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-draft-question-recovery.spec.ts",
+      "bytes": 18087,
+      "sha256": "cb70095abd6d1b216e9d9a2011c587c26054f6ff6e5576fdad9b0f03cd517928",
+      "mtime_ns": "1793220730785809700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate-runtime.spec.ts",
+      "bytes": 15507,
+      "sha256": "c5c89d7fbc42eaa70144565d62c27fcaa2559335113c82ec106b25f5810b09ec",
+      "mtime_ns": "1793184929118355600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate.spec.ts",
+      "bytes": 22358,
+      "sha256": "248d87161122529cf295985d6d56b53cdcc6722ad9e55d7f432f3a2eaa1d5ed8",
+      "mtime_ns": "1793184148388534200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract14-display.spec.ts",
+      "bytes": 6131,
+      "sha256": "f6208aa7284eb0f2d29a10d92b3f8bd03c9daddfa2bf6ffed88bc6d95bdd24bc",
+      "mtime_ns": "1792392977822986100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contracts.spec.ts",
+      "bytes": 2784,
+      "sha256": "fe7bada9e52f5bff6bcde5235c9a6ba933574ad30b1bd453e2dfde375b0a32ee",
+      "mtime_ns": "1792379417916422600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\core-client.spec.ts",
+      "bytes": 2699,
+      "sha256": "759dd1e11bc4826559f98f8e7ac39e718cd8fe8289a9e89161b6aac6b4ce5f69",
+      "mtime_ns": "1792379417916422600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\core-response.spec.ts",
+      "bytes": 2548,
+      "sha256": "698bf7f1e50d52ba4b09aae34b805c095be5a1ce3d4da877661b5b5b883cfca8",
+      "mtime_ns": "1792379417916422600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\credentials.spec.ts",
+      "bytes": 12125,
+      "sha256": "73d31dcd0375e0276295a4222554db3aa41f3df443d92e801747521d7c1469e5",
+      "mtime_ns": "1792689869600283200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\credman.spec.ts",
+      "bytes": 1917,
+      "sha256": "4b60fb9c73c23ff427ecfce132e488cefcf39c4c9a2acf4a3992cf2234851b0c",
+      "mtime_ns": "1792379417916422600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\criminal-application-question-gate-20261029-150420.spec.ts",
+      "bytes": 17714,
+      "sha256": "e73983461b33dcb1e141cb5e34859f7baca6faced73b1001d5fde73c93e39540",
+      "mtime_ns": "1793257561376574500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\cross-exam-question-gate-20261029-121018.spec.ts",
+      "bytes": 17345,
+      "sha256": "670c9f5573ec8530e088a3735b68aca2c63efbb0a94b3927c825ef24f186870c",
+      "mtime_ns": "1793247210740892900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\daily-case.spec.ts",
+      "bytes": 9448,
+      "sha256": "6b1081e31544279e6b5564cb33ba7f18dc26aa8b0ea6f813f8e111d0327dc5a6",
+      "mtime_ns": "1792392977822986100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-question-gate-20261029-172117.spec.ts",
+      "bytes": 22408,
+      "sha256": "ff05c2260dfbb01c9466fb019282b276973cdecc9cf8da7192bd0b7d6f344097",
+      "mtime_ns": "1793509668425132300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-20261101-114236.spec.ts",
+      "bytes": 14260,
+      "sha256": "afc69baa8127a95c1f07a65c83c24980d51ee11dc8951e1c06699e12b7a79d80",
+      "mtime_ns": "1793512205699955500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-compiled-20261101-125300.spec.ts",
+      "bytes": 13124,
+      "sha256": "bee79f5f4a0164b446a97b0232e30e80658f28b5a96ac85612a0ceccfc9b8f14",
+      "mtime_ns": "1793507669016022000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-question-order-20261031-224957.spec.ts",
+      "bytes": 15620,
+      "sha256": "e5caf7ec8d2a5c60b2d493877aef674b0c7c3b9d63f7abfb7054f21f7ec63ec5",
+      "mtime_ns": "1793506849486301600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-compiled-20261101-030741.spec.ts",
+      "bytes": 13775,
+      "sha256": "846444a2edc49026e9d437f5a2791a1d20396278b60372bed8ca5e5230969647",
+      "mtime_ns": "1793473785843167500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-read-order-20261101-024639.spec.ts",
+      "bytes": 13465,
+      "sha256": "2d44e353a976eabacffef64b66ccbac34de8effa1daf8dfbbc2a433e0276990e",
+      "mtime_ns": "1793507771574861100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\desk-actions.spec.ts",
+      "bytes": 14370,
+      "sha256": "1e31a7e7c4fde1ad6b3c221530b79f280bf15602122e2d5cb05c4438fec666e3",
+      "mtime_ns": "1792379417917423000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\doc-revise-question-current-other-20261029-045644.spec.ts",
+      "bytes": 12425,
+      "sha256": "f7316921de8230db89b83fe548ff551099e193dba5de338bb5ed05211b17b3c3",
+      "mtime_ns": "1793221099046809300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\doc-revise-question-gate.spec.ts",
+      "bytes": 14604,
+      "sha256": "ece550bae450faa4851ee29f7f597d2951606cc57f6a1973e215633c0a9fe55d",
+      "mtime_ns": "1793425910903591400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock-a19.spec.ts",
+      "bytes": 9822,
+      "sha256": "c185678539f20ee53cb82c71b19caa67cbb22638cbf97320b6b948ce647f93c9",
+      "mtime_ns": "1792379417917423000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock-capsules.spec.ts",
+      "bytes": 9258,
+      "sha256": "3c3eeb0e4dbb9198a6661b2cb704c29fa83ba65218788780dc7a4d17550d6e3d",
+      "mtime_ns": "1793427982393030800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock-review.spec.ts",
+      "bytes": 23820,
+      "sha256": "5b5570fd3b7bb1ff3c0b8569a4a780b81f2d533b523d72721a3dd7afc936ca43",
+      "mtime_ns": "1793425384742564800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock-z.spec.ts",
+      "bytes": 9107,
+      "sha256": "40d2a1f19b31553dc06140d67e0c363390d38b60dfb74893f959f0fe565db76b",
+      "mtime_ns": "1792379417918423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock.spec.ts",
+      "bytes": 34159,
+      "sha256": "982a9220549e1912cde2bda6d3052048fb93e137fe99cd0ff970d09cb06097db",
+      "mtime_ns": "1793424850919851000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-late-callback.spec.tsx",
+      "bytes": 12383,
+      "sha256": "e9aa0b39a702c4af777c7919983a52b894d90ef101987457fec4ef3378a3b929",
+      "mtime_ns": "1793103087155678300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-navigation.spec.tsx",
+      "bytes": 8979,
+      "sha256": "6c438973fd59868a9fb5ca596c842c4bf8314e5127a9807b654cfe7bec0114b7",
+      "mtime_ns": "1793099906592883700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-read.spec.ts",
+      "bytes": 13506,
+      "sha256": "85193826d33dd79280144cfb6e23bd8f11936c37060cb2735e63900778241cb1",
+      "mtime_ns": "1792613744841443400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-save-route.spec.ts",
+      "bytes": 4323,
+      "sha256": "0766a38bb0d29e8f2b5fc025d7a36bc3ef88017a62dca30b21ed78c84f52c02c",
+      "mtime_ns": "1792616615494941800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\documents.spec.tsx",
+      "bytes": 27208,
+      "sha256": "42fc98715f1e7524cb5ef56e4da19297b4686671216ff72115649801f02881da",
+      "mtime_ns": "1792861025599079100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\draft-feedback-recovery.spec.ts",
+      "bytes": 15455,
+      "sha256": "6e23e5d532ef4e79f02606dddac472252a9737f6d9d125356e3a85923e8e5f94",
+      "mtime_ns": "1793194773035326500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\drop-case.spec.ts",
+      "bytes": 27041,
+      "sha256": "23716fb515955377fa60587a7121fd62e6f6cccb7a2532c5f45b9831f91ba8ff",
+      "mtime_ns": "1792392977823986100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\estimate.spec.ts",
+      "bytes": 8890,
+      "sha256": "868c3e525c2a7f56fb55f7b13edd6fca2f37aceecfed1ad8641b9746251e8a1d",
+      "mtime_ns": "1792683486635450900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\fake-document-fixture.spec.ts",
+      "bytes": 3333,
+      "sha256": "9bd7bb4ea1e130097336f9ef07133132fd4b3155a8dd2abf4847e653bebc2c70",
+      "mtime_ns": "1792857615234564400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\fake-tools.spec.ts",
+      "bytes": 1670,
+      "sha256": "d0938b080d71aa948065a7bae87fc4acc081b5c0c8aa82fd6404cfb93b284e6b",
+      "mtime_ns": "1792379417919423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\feedback-buttons.spec.ts",
+      "bytes": 7535,
+      "sha256": "199b13a01a4a9f3d424d1aca1b849f624a12c90658e381fd180646aa168fdce0",
+      "mtime_ns": "1792392977824985900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\fixtures.spec.ts",
+      "bytes": 4470,
+      "sha256": "e2ed74fa9fef35818a8be2a507b141bde327ab478f861b8a05ff8ed83803859c",
+      "mtime_ns": "1792379417919423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-drafting-question-gate.spec.ts",
+      "bytes": 9032,
+      "sha256": "c14bce581cfe033ab7a4cc6192ab8a3920c402094f16bf1b0f0a1445a499076a",
+      "mtime_ns": "1793216431215324300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-read-question-order-20261030-163023.spec.ts",
+      "bytes": 14107,
+      "sha256": "ad772e1629d2a1f4c048403a03f135e6707f355659cba6b02d8cdbd0572979e3",
+      "mtime_ns": "1793349182527276400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\globals.d.ts",
+      "bytes": 69,
+      "sha256": "35b42c3f754ceb941587f58b7714ed6a89e3cc292a511a3046c880d4f8df5986",
+      "mtime_ns": "1792379417919423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\capsule-pick.ts",
+      "bytes": 1380,
+      "sha256": "aa92ee89eb279e59cfc74d4f6373766fb291da90e8bef985eaa1973c468c667c",
+      "mtime_ns": "1792379417919423200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\dock-lab.ts",
+      "bytes": 8001,
+      "sha256": "41685b990217d636248c7e525808c7a5f8e35376b4a5ffca4479a807e050d905",
+      "mtime_ns": "1793423520224714600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\fake.ts",
+      "bytes": 2602,
+      "sha256": "8e1545e459ced93af2a5bd38786a8705d4cc777bde540632a7a95aaa6f709189",
+      "mtime_ns": "1792379417920422900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\primitives-stub.ts",
+      "bytes": 1915,
+      "sha256": "d36e82f62fcbdb7880a0359d26cb8c111a21b1d23f2a4469e06b76b4c87e0ed5",
+      "mtime_ns": "1792400476445553600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\home-page.spec.ts",
+      "bytes": 4465,
+      "sha256": "d0f14990dc60a4eb7a3c992579d68864617e073065e965c2464b9d4ecdd6edad",
+      "mtime_ns": "1792379417920422900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\home-retry.spec.ts",
+      "bytes": 4146,
+      "sha256": "ab33a01d40cebbce33c26b4396200530eea9592d3d23be552a9b82e4e11a7134",
+      "mtime_ns": "1792379417921424800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\host-api.spec.ts",
+      "bytes": 21084,
+      "sha256": "d92e84a6ddf52a7b407da6726b8677b0ad77771d6ae53cf98810b96bc10d3c74",
+      "mtime_ns": "1792379417921424800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\input-import.spec.tsx",
+      "bytes": 14583,
+      "sha256": "25be9a12a323b1afd779093d75f2f6c3f877b5f929ad0d02636a26d551c28fbf",
+      "mtime_ns": "1792970396554577600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\install-layout.spec.ts",
+      "bytes": 7111,
+      "sha256": "34a8040f78c03d6fcb9cd0dd3fe7d7b585421aba875b4990ca8238738ad9e0f3",
+      "mtime_ns": "1792379417921424800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\intake.spec.ts",
+      "bytes": 10458,
+      "sha256": "476c228f64214583de71a9e695b6fb2883ef8dbbd516c9705bcba8e8afe4707c",
+      "mtime_ns": "1792971186980028000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\invoice.spec.ts",
+      "bytes": 15273,
+      "sha256": "e35f36b2be26eb2937451fe55f878a401b0bf48c70a5f119c4035d79d0aae467",
+      "mtime_ns": "1792379417921424800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\litigation-question-order-20261029-192258.spec.ts",
+      "bytes": 26384,
+      "sha256": "5ff6233b54005cfd2795587d4f947aebbff575132b8ee9276042af9880651f0f",
+      "mtime_ns": "1793459191570540300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\live-writer.spec.ts",
+      "bytes": 32789,
+      "sha256": "efb51dfccd4f9c8ec3b3213fd8a38086b4cd148d403e06013da2fe66c8a2f1c5",
+      "mtime_ns": "1793426962940998100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\loop-fuses.spec.ts",
+      "bytes": 25352,
+      "sha256": "989686d69d499ea92af6a88f248ac4ee5dad49634cf3be869be92b96a7618314",
+      "mtime_ns": "1793426223768905200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\macos.spec.ts",
+      "bytes": 11764,
+      "sha256": "8479cb03defea39871fb6d87c8ae2d12294abf25b10d57da71a1a538dfbd23fe",
+      "mtime_ns": "1792379417922423400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-batch-boundaries.spec.tsx",
+      "bytes": 13346,
+      "sha256": "6ca28c6ff21c434e3c33a37cab73a8232d918e0fe5e74635a581a27fd8525c8c",
+      "mtime_ns": "1792951302099248500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-batch-races.spec.tsx",
+      "bytes": 12389,
+      "sha256": "29ed5d6d556c7bbc810c7e57e658e6abfc666862aebc60b4977ebe26efa7c653",
+      "mtime_ns": "1792998478605505100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-batch.spec.tsx",
+      "bytes": 12240,
+      "sha256": "d1a947fd9c7d3181b3c5700ac96e356180b271c37409d60e4755c19c2ca66a28",
+      "mtime_ns": "1792951311890411400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-remove.spec.ts",
+      "bytes": 14832,
+      "sha256": "6ceec42d439c30982f9155325569893c4a1776ff4ab26fda7738dd0e34492a0b",
+      "mtime_ns": "1793510664911090400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\materials-rescan.spec.ts",
+      "bytes": 5343,
+      "sha256": "0e3b9f98942fd04a6d86b00473f1052aa1e8ec6bbb06130ac53e047aca0278fc",
+      "mtime_ns": "1792392977825986700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 50993,
+      "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1",
+      "mtime_ns": "1793555139694751700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\ocr-notify.spec.ts",
+      "bytes": 7991,
+      "sha256": "dbc567234b3cdbdf35657f9e40d54f224d2a3ea955526775935f66b225824d3b",
+      "mtime_ns": "1792607452187966200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\ocr-refresh.spec.ts",
+      "bytes": 12424,
+      "sha256": "4e6e49cbafa9ee6a266ee9fc0f3881ecf354c631ed403b2162e5cd52a4e17643",
+      "mtime_ns": "1792605427948653400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\overview.spec.ts",
+      "bytes": 7643,
+      "sha256": "9adf8aa61dfb9a02f5498f5772e6473f5a596da132b32eaa54c3085e8e069dcc",
+      "mtime_ns": "1792379417922423400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\path-state.spec.ts",
+      "bytes": 1705,
+      "sha256": "61186d682cf7b446354b5d59d36a2a42301c16f3971f92f1a901ffcb4a17efe9",
+      "mtime_ns": "1792379417923423600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\projection-cache.spec.ts",
+      "bytes": 9279,
+      "sha256": "fe1f0fde7b4454461f1f63c9201312b16134b21026fc2941b34d0d0f55a5e14d",
+      "mtime_ns": "1792379417923423600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\remote-access-host.spec.ts",
+      "bytes": 5987,
+      "sha256": "10b94ab2e5a9dedfb3ad98567156f5280c46ed6492b5ae519c1827d9b7c56f29",
+      "mtime_ns": "1792593044946133200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\remote-access.spec.ts",
+      "bytes": 13065,
+      "sha256": "deb4bf65f40a52f003f160f9a599c6bf3e4033da9c6360058cb4bbfcb60fe341",
+      "mtime_ns": "1792596257547653400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\remote-methods.spec.ts",
+      "bytes": 4885,
+      "sha256": "f0ba2a2e61128068672e6b2e735181138df6fa9a9bfc0e35ca858842f673cf93",
+      "mtime_ns": "1793426697853661200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\repetition-samples.spec.ts",
+      "bytes": 12645,
+      "sha256": "7578fb21aca620bbc654be088fb0c5de6fba27f49719beb5746bded6c20d3470",
+      "mtime_ns": "1792392977825986700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\result-cards.spec.ts",
+      "bytes": 16203,
+      "sha256": "ec39f7947ac606463858e630a0a46b2d4ee8ba3d953d2fa6e7fa5bea765e88d1",
+      "mtime_ns": "1793445299692050800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\retainer.spec.ts",
+      "bytes": 7921,
+      "sha256": "067d37330a523a5b3115ccada22402c6def16ece17cead10b32b412962991bf0",
+      "mtime_ns": "1792379417923423600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\rightbar.spec.ts",
+      "bytes": 7667,
+      "sha256": "aa161d5c2ea868de7d6aaa58da9b56a2191bed3ffc25ec9f788ef434fbd09434",
+      "mtime_ns": "1792616506568921200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\selfcheck-banner.spec.ts",
+      "bytes": 2138,
+      "sha256": "6485ab0b577c5a11dfebc1f86e476c94581a3dfe942f55faaeb676a48e4e2d86",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\selfcheck.spec.ts",
+      "bytes": 6288,
+      "sha256": "d4942501b1afe4ac7f1eb95e470882780e3f80f0839bbdbb0cfc065152440889",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\sentence-workflow-gate-20261029-215838.spec.ts",
+      "bytes": 19870,
+      "sha256": "15373c7027b4f3fa860f79fbc8f26836a212bcec665d29ca4bc50c0ed5f06a86",
+      "mtime_ns": "1793459707358850500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\service-start-error.spec.ts",
+      "bytes": 8220,
+      "sha256": "9519c6876a06bb1e3f45ddd89805522afa0c151754c55820964256be922358e9",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\session-delete-ui.spec.ts",
+      "bytes": 4406,
+      "sha256": "b403dcd3c1794dee62d5e0cef20358fedc4ba3ff27b7a48ab9420e538251c844",
+      "mtime_ns": "1792565514160488700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\session-delete.spec.ts",
+      "bytes": 29687,
+      "sha256": "e0bfd80e2a0d821b4d6412931390494ded77ea4429c2665ef696ef833fe01c62",
+      "mtime_ns": "1793510682442925100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\session-store.spec.ts",
+      "bytes": 46817,
+      "sha256": "ec8387eb930a92ab0a19157f011808e6a3ac2f6a03de70f1131cf5004f86ded1",
+      "mtime_ns": "1792392977827988100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\settings-key.spec.ts",
+      "bytes": 3215,
+      "sha256": "c18087a36e55256e73364737bcb1248c4618e92245d8b7a06fc51119ccfd2e6f",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\settings-save.spec.ts",
+      "bytes": 5452,
+      "sha256": "6d16e46c96b4be77e97d221cc837204e7563574824bec905178aa7689faa0722",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\settings-t34.spec.ts",
+      "bytes": 36195,
+      "sha256": "14b9e21982a6ec0d4cf51ebde716f82c1e91cddeac660eb7f3a6a312f94751c3",
+      "mtime_ns": "1792882180564740900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\source-tab-lifecycle.spec.ts",
+      "bytes": 7545,
+      "sha256": "b7522a2b941876f9887b48933631fbf7b53df9a3324728f547dca8bd1a009fe2",
+      "mtime_ns": "1793425899699955100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\stderr-encoding.spec.ts",
+      "bytes": 2054,
+      "sha256": "b19e59f0bb4f82d39439e5ba6f66b4febdbc88eccdc7cba2fd6b280c8a32f253",
+      "mtime_ns": "1792379417924424100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\supervisor.spec.ts",
+      "bytes": 22540,
+      "sha256": "ea17b59b3ca6f5d8c6edf4e1abf4e048e42448a6a76ec365c16ffc46e3d86385",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t18-agent-current-fixture-20261028-214724.spec.ts",
+      "bytes": 11825,
+      "sha256": "74b4028d3e5e66b7509a25889c1446cdb154b934262e1f9ff74113cbd06f284d",
+      "mtime_ns": "1793196144735326600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t18-delivery-coverage-20261031-1830.spec.ts",
+      "bytes": 15429,
+      "sha256": "0aed4d9f5ef082c881b34c556d53cbf68adfb88a7f2a2c9360095900db52b60b",
+      "mtime_ns": "1793442980692532900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t18-delivery-quality-20261031-173317.spec.ts",
+      "bytes": 15599,
+      "sha256": "372e9208bd0bcf195e4fbba3a6291f4af0630712452a96c78773ada6da8337c1",
+      "mtime_ns": "1793439726549516600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-agent-scope-lifecycle.spec.ts",
+      "bytes": 6861,
+      "sha256": "8dbdd93982225e96ec4ed858cb1a7a6a7d9a903acd7983cb2da2ea6246e4202c",
+      "mtime_ns": "1792958056429988600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-health-auth.spec.ts",
+      "bytes": 6921,
+      "sha256": "7fccfb10d9784447a42dffa696b319db401c3a74d3db34843bfafbd53ef49258",
+      "mtime_ns": "1792968897707443300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-native-scope-http.spec.ts",
+      "bytes": 27856,
+      "sha256": "055d65ba57fa6e625fcc59d44a791c76c58f3e2889d65adf9aa11edc15b69eb1",
+      "mtime_ns": "1792958974608555200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-ui-host-batch-http.spec.ts",
+      "bytes": 24687,
+      "sha256": "69cc1c7d89de7174012e579a5b8950064b701ca664ebb213160c4027070d5032",
+      "mtime_ns": "1792992893902942200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t32-materials-removed-optin.spec.tsx",
+      "bytes": 6351,
+      "sha256": "b338913095f92491cfe358001b9ba31fc19f760ae1a3c9c098f9958abf989b25",
+      "mtime_ns": "1793077839446158000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t32-native-draft-http.spec.ts",
+      "bytes": 15240,
+      "sha256": "1c672fe8d1da0e2b7f7db55e3840d2f389729b3cc3892653d0c93903e33d1fac",
+      "mtime_ns": "1793518860585685100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t33-reference-client.spec.ts",
+      "bytes": 22871,
+      "sha256": "d9e36d97f975b39f637a64c2c9b4b73c979279d086b3325a4e7297eeeca6ce17",
+      "mtime_ns": "1792683555172380200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-core-route-contract.spec.ts",
+      "bytes": 4972,
+      "sha256": "cca0d590b16308011fb04142a8c07e8597a4fcc9100730d45db0433f8b090d70",
+      "mtime_ns": "1792910277824723800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-credential-describe-shape-20261031-071304.spec.ts",
+      "bytes": 12089,
+      "sha256": "81a4efe0ad842362742f36269a4cf7a7a4be76858869beeabc2d0cfb718790a2",
+      "mtime_ns": "1793402273818104600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-disabled-provider-idempotence.spec.ts",
+      "bytes": 12622,
+      "sha256": "2b5104d027eba0bfd9efe40a6ba540339d13896968d25ef3f657b00b64b998a1",
+      "mtime_ns": "1793319576595747900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-native-core-http.spec.ts",
+      "bytes": 8337,
+      "sha256": "dc96b528e52fd0cfe26281ba3fe433838be492c76777c4a866e907ceec086028",
+      "mtime_ns": "1793518860419044700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-projection-error.spec.ts",
+      "bytes": 2856,
+      "sha256": "6e9733c4e843d8b910c8fac785cc93836426f72fb629a95d588522aec5989ed0",
+      "mtime_ns": "1792882042004283600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-provider.spec.ts",
+      "bytes": 45143,
+      "sha256": "85ab25a0e3b3b360d35630fd6996187ac8f30e33e2b35379ff93f8082780b716",
+      "mtime_ns": "1792882180362017200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-provider.vitest.config.mjs",
+      "bytes": 2705,
+      "sha256": "de4fb2cf108aaa46b4c3be900a61bc3cfa560cac33d3aa084ce6c948303d9bba",
+      "mtime_ns": "1792697637337119000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-route.spec.ts",
+      "bytes": 21537,
+      "sha256": "efd1c28d9b1a49421764c7bb1e6737d49039bc5f0d9fcbc24ef3ca15e1b0d349",
+      "mtime_ns": "1792721365605254100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-settings-contract.spec.ts",
+      "bytes": 2773,
+      "sha256": "1ee7530c840ede1eeede8d41e6882b385326041f525694a3ad7f41a0122f9cbe",
+      "mtime_ns": "1792877169482500600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-settings-startup-ready-20261030-140101.spec.ts",
+      "bytes": 9587,
+      "sha256": "651e130f2520a1459af31296ac7bb0a7c9ccafec0c13ce51e9ddead77e676124",
+      "mtime_ns": "1793340352148450800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-tools-capability.spec.ts",
+      "bytes": 36709,
+      "sha256": "1546450b88ccfab03ad47bd87b50ae85c3420b5816c026a186516cdb18e1fcfd",
+      "mtime_ns": "1792718429220747200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t35-prompt-refine-cancel.spec.ts",
+      "bytes": 2875,
+      "sha256": "6218977e9636ff8efd8ebdb03f4374261e2af5bd2399151fe14b3c75644bf28e",
+      "mtime_ns": "1792737450474930000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t35-prompt-refine-client.spec.tsx",
+      "bytes": 25906,
+      "sha256": "c9f7cef5ff4d358bc26fd6284f3124fca892aafe1d6a9abf33a0226b22ae3e9e",
+      "mtime_ns": "1792738173010753300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t35-prompt-refine-native.spec.ts",
+      "bytes": 12992,
+      "sha256": "3751c4db89a31dcbfbffe49aa69e1a7e04328211ba4498480cc97329764feceb",
+      "mtime_ns": "1792746334974516000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t35-prompt-refine.spec.ts",
+      "bytes": 5364,
+      "sha256": "f966320ae779cfdc04ffaefa8ec8260a9c7213931fd64588879eeddea976200a",
+      "mtime_ns": "1793426043746535100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-credentials.spec.ts",
+      "bytes": 1843,
+      "sha256": "2de5d1a573406ba90e785ff85f5b8418156614892bf84b0f9018c9900d92cf40",
+      "mtime_ns": "1792758247518776600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-documents-preview.spec.tsx",
+      "bytes": 8555,
+      "sha256": "591aeadb0b5c2c40b88ca605068506207093b1faec6e7c00796266b860db479c",
+      "mtime_ns": "1792771084161308000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-office-preview.spec.ts",
+      "bytes": 9760,
+      "sha256": "5866d46f5d2bf486df252a1552875968ff84494dab0197096c64b5be65c96399",
+      "mtime_ns": "1792758341136562500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-public-search.spec.ts",
+      "bytes": 7918,
+      "sha256": "1978272aa3433ebfabfe6bbe131ecb6e49600803c95b03067179a75d463265fd",
+      "mtime_ns": "1792758354304743900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-repair-office.spec.ts",
+      "bytes": 12293,
+      "sha256": "f7ae92064623466c08ff91b3129ea22f0c2fd8f6382f5920c4dcaa5fe4f7b356",
+      "mtime_ns": "1792760503367346100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-repair-ui.spec.tsx",
+      "bytes": 7107,
+      "sha256": "771f19acfefe0e61bbdbd77baffb6e76eb9d8a59c04b74f1cafb2788337993f6",
+      "mtime_ns": "1792759252659285000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t49-web-search-ui.spec.tsx",
+      "bytes": 6066,
+      "sha256": "c2bf515ef4b18e9ed1d7fad55dbd600971f2dbaafae48eb4463af20e4ad36439",
+      "mtime_ns": "1792758192607351300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-answer-null-20261101-003736.spec.ts",
+      "bytes": 7644,
+      "sha256": "78dccf9ec63f8306a638cf7fc933344372c21a315f4e18f7cd263c8cc2fd4be0",
+      "mtime_ns": "1793464944595735400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-route-contract.spec.ts",
+      "bytes": 3058,
+      "sha256": "d50450b91d75df576fe25ee3f9ded1b0736c7ecad40b403cc82aa11235fbcc1d",
+      "mtime_ns": "1792856132789080600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-skill-binding-20261030-023251.spec.ts",
+      "bytes": 8777,
+      "sha256": "a60c87e6bf2312b8c5091486bfbb98f86acc46e5faeaff1fdbf3731810ba119e",
+      "mtime_ns": "1793298914682745900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-state.spec.ts",
+      "bytes": 4991,
+      "sha256": "0c0974647f237558ef8331a8237cb9cb5d76e225661f59ff3c7bc91410f5293b",
+      "mtime_ns": "1792392584143663300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\trash-macos.spec.ts",
+      "bytes": 5823,
+      "sha256": "b7280a1f729f41698049d84f13516052d54ea883bdda208dd28260d449f22b55",
+      "mtime_ns": "1792399778583073800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\trash.spec.ts",
+      "bytes": 5887,
+      "sha256": "ac0bd7614e335ac2bfae719cb73b31244bc8cbb084e0b592d9846788b0545222",
+      "mtime_ns": "1792399833135553000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\trial-connection.spec.ts",
+      "bytes": 12620,
+      "sha256": "29073f0aa31a06d0d50d320781750eaca42a83a410859d493683ca1bc47d5429",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\turn-notices.spec.ts",
+      "bytes": 4910,
+      "sha256": "ac69ef136810e30bea6b1c66066dcca6d662b0a7b261b7faca9c78d490b300ee",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\ui-logic.spec.ts",
+      "bytes": 15827,
+      "sha256": "5bb46cb481836aae75605e961bc9775b1d9e33fc148cbaa4509ff54aadf98ff6",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\wiki-card.spec.ts",
+      "bytes": 13908,
+      "sha256": "ae7089e08404237f57010f07c395f6870ac90e51e42a749d38d50801d34ec984",
+      "mtime_ns": "1792898158472374600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\wiki-entry.spec.ts",
+      "bytes": 8415,
+      "sha256": "c6b3ae995da4eed741735aa8d060d1c25b1b06c861c402d5b59026c596b77156",
+      "mtime_ns": "1792586827213358800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\wiki-params.spec.ts",
+      "bytes": 3766,
+      "sha256": "d70f8880171117f73c655d4a7315633afbc12accfd5dfbf88f711204131d7c9b",
+      "mtime_ns": "1792584313588358000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\workspace-attach.spec.ts",
+      "bytes": 19679,
+      "sha256": "3b65d73824199b2511bb628f51c060e6db5bfca129169c9fae921ec379f36f1d",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tsconfig.json",
+      "bytes": 977,
+      "sha256": "db6444cb6b3fef772b06b324cebb36610a4e418445bf40981001bb0c1ada560b",
+      "mtime_ns": "1792379417925957800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\answer.tsx",
+      "bytes": 6985,
+      "sha256": "bb57f3806370815fe9b14251b805e15ea57164b33cad45ce110ac73d9c453377",
+      "mtime_ns": "1792392977828987300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\archive-logic.ts",
+      "bytes": 5410,
+      "sha256": "9ba0f3b658f4fb6e6b0bd912ff2213000d4a1a99e7c35aa84f2435d912b76b64",
+      "mtime_ns": "1792379417927475700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\archive.tsx",
+      "bytes": 10171,
+      "sha256": "8ffc860f555e2bcdcba1f248b93353d804fd41c6e9e118b0b3fdd4cdd0f5fc22",
+      "mtime_ns": "1792379417927475700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\brand-assets.ts",
+      "bytes": 65084,
+      "sha256": "d344da890b5a4484507ccf2f28468a1ffef51b114bf85dc719a1f14f2c13a032",
+      "mtime_ns": "1792379417928481800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\brand.tsx",
+      "bytes": 3829,
+      "sha256": "1016a3295be095156e0ac7ea5bc91cce7ff1d6ce20c7994320ad29f1b92f3ab2",
+      "mtime_ns": "1792401281817702600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\capsules.ts",
+      "bytes": 6295,
+      "sha256": "9fe2ea4a3045063c49b3d3c9ee75ced42fc8040b4a3a9ee2fd6aefd70e49a4a2",
+      "mtime_ns": "1792379417928481800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\case-switcher.tsx",
+      "bytes": 4910,
+      "sha256": "789d91f75932741730a606bec1ba75861af64c89d420f11dab236fa779067931",
+      "mtime_ns": "1792392977828987300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\case-tab.tsx",
+      "bytes": 3614,
+      "sha256": "9c8907f3933e569f5d1414885425538a95a9b12eb88cc783203e02973a2f852d",
+      "mtime_ns": "1792605321338379400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\cases.ts",
+      "bytes": 19799,
+      "sha256": "b12000ab4b3faae5a18802d169fb41752c068f17ce29e8511a8ea77f806106de",
+      "mtime_ns": "1792951269840867200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation-deps.ts",
+      "bytes": 1383,
+      "sha256": "c10922a9ab721a9dc1fbee982adcfd486e2cce3ce9a60d0f63fe4be6506134a0",
+      "mtime_ns": "1792392977829987700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation.ts",
+      "bytes": 7651,
+      "sha256": "d525f0cb5cfc5bc95f79bc2aeb859cbb8cf5b19f6646f117ce526ecc87f2a0b5",
+      "mtime_ns": "1792379417929481000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\daily-error.tsx",
+      "bytes": 719,
+      "sha256": "64f13c8006bf7fe93ddc2e660bac4de6c85f9ca8b60ba6fdb39b69a59371ff42",
+      "mtime_ns": "1792379417929481000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dialogs.tsx",
+      "bytes": 12350,
+      "sha256": "da51a25f728409be767ac9e7bbb578400bb22846c3fb78d4bab5ed17b21d01df",
+      "mtime_ns": "1792948997405755600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dock.tsx",
+      "bytes": 48424,
+      "sha256": "d9db5ade5a4936a6367453835f0b4d4213e7778d061a050d9ae8d64b9efc3787",
+      "mtime_ns": "1793181011418938100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\document-preview.tsx",
+      "bytes": 6472,
+      "sha256": "e99222c7e07118bc53e7dd3e5849d64d4f70522ed852ffee27a4b881f0f8e026",
+      "mtime_ns": "1792771083962349100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+      "bytes": 21776,
+      "sha256": "a276632db5ae38af61d0e81b743c960b539c5d76c11f170a3d7cdc10dbe85d55",
+      "mtime_ns": "1793100484750468600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\drop-case.ts",
+      "bytes": 9924,
+      "sha256": "0598dc2340633d73d4e7ce1791bd918b9703db7a17145540dc2bbb7ea2dac440",
+      "mtime_ns": "1792392977829987700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dsh-shims.d.ts",
+      "bytes": 1843,
+      "sha256": "8b2d514c6f24a0c5cfe75b13a1f34e4aea2c1f67bac2f16d73af6f2a066d15d6",
+      "mtime_ns": "1792400482639492100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\estimate.ts",
+      "bytes": 7269,
+      "sha256": "21e8c1d0d64a2882f2d2381de917aaf9d2cb66284967ff16fab5f4b2ca0852a7",
+      "mtime_ns": "1792683529788767700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\archive_build.json",
+      "bytes": 949,
+      "sha256": "128541cb6db8beab94640d86646d5c508572a23536f9fe5265623aae2c442d6a",
+      "mtime_ns": "1792379417931480800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\capsules_reset.json",
+      "bytes": 6271,
+      "sha256": "83516419569eed5075de12ef4531c46f0d9f2c3d448daa69fb3e333e8e8a3383",
+      "mtime_ns": "1792379417931480800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\capsules.json",
+      "bytes": 7608,
+      "sha256": "98823d8b64382f14f4e647f2d528962e6ba20715d9f6a7f94f887a0a58f444b6",
+      "mtime_ns": "1792862617506753100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\capsules.req.json",
+      "bytes": 6993,
+      "sha256": "ea12fcff7251d39e5335435acd4fa00b7cd70b24491e2e200f7e49198becc552",
+      "mtime_ns": "1793427463259653700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\case_open.fail.json",
+      "bytes": 174,
+      "sha256": "551a3a2d5bedbd96f9537dc92d8bfe22c511a9295640b9971c8af0bd238f3c22",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\case_open.json",
+      "bytes": 274,
+      "sha256": "937a0d0a973287ff4523e59796629574189c330f8ea7d131db34fb2c678f1c38",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\case_recent.json",
+      "bytes": 1192,
+      "sha256": "5dcd7028e0cf4487256017d8213ca967cb59bfde69a7a0e8c8aeef4b657a454a",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\invoice_run.json",
+      "bytes": 284,
+      "sha256": "ab47c226007f04ac5d09bff075bbc4b55113dd439bacada9a44e6dc622a2bf06",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\materials_import.fail.json",
+      "bytes": 236,
+      "sha256": "9d16e6784a3121389a76928ec1c32bd6f1b005bf6cc281140506b0277fa9f034",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\materials_import.json",
+      "bytes": 688,
+      "sha256": "cb88be98ec5f0aa0bcd6019f18347487df10887fdddcb821785a5e84b61c5ed9",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\materials_import.req.json",
+      "bytes": 215,
+      "sha256": "c0ce9a24e448329cd10a8aa18d7d6d5cd718960fa45ee6bf631212ce9a696034",
+      "mtime_ns": "1792379417932480900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\materials_list.json",
+      "bytes": 4193,
+      "sha256": "c470c224d4647b0cdbdcb81feed73d7ccb86a8626a86088c190e5f84c60e82c3",
+      "mtime_ns": "1793427463024742200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\materials_scan.json",
+      "bytes": 130,
+      "sha256": "aa32bd626ecbd67676e8025d016f012a3dfc59a85925be62d6f7663611994cb8",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\ocr_cancel.json",
+      "bytes": 100,
+      "sha256": "8ce114cdcd01ec81b13962ace7c78992d9e28911e5f313136cfc3e4cf37730d0",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\ocr_list.json",
+      "bytes": 1236,
+      "sha256": "c155845ee97d7e5b89f2899927ab73afd81cdedd74941cb194f6e434df4abdc6",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\ocr_submit.fail.json",
+      "bytes": 182,
+      "sha256": "d4259a390e35eae072e27c0e2607567e0d06d14afc4f53554200ed07033fb7b7",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\ocr_submit.json",
+      "bytes": 117,
+      "sha256": "dddf390f99d0e79a3a9255efc633c7adb76262bd4d4e7b466419317ec8e3246f",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\ocr_submit.req.json",
+      "bytes": 144,
+      "sha256": "5fab054d28515b3fa40621872ec631a9607b9ee3063cb663d6c0d6e43e7cf321",
+      "mtime_ns": "1792379417934133900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\outputs_confirm.json",
+      "bytes": 323,
+      "sha256": "92d64149fe7505dc73eb45b4e57ab1229cb328dd890d8acf3d5a6f4566380ed2",
+      "mtime_ns": "1792379417935139400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\outputs_list.json",
+      "bytes": 546,
+      "sha256": "059813923fd861044eac1d8f2c6d1734c587f96dec2f1098de9cac3014c251b8",
+      "mtime_ns": "1792379417935139400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\outputs_list.req.json",
+      "bytes": 56,
+      "sha256": "6dcbf451957ceef2f377dbc860dec1e81938d810c5c05bbb83727e602dce4dc2",
+      "mtime_ns": "1792379417935139400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\pipeline_cancel.json",
+      "bytes": 32,
+      "sha256": "ed3cdacaf0b92870687e0d366d87edd85723582473d4bfcd05455574d48150ae",
+      "mtime_ns": "1792379417935139400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\pipeline_run.json",
+      "bytes": 74,
+      "sha256": "3118aeffecea6f4b8950ba98dbd012d7c8733502055db0ce3fe1ba1c02f7899a",
+      "mtime_ns": "1792379417935139400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\pipeline_run.req.json",
+      "bytes": 186,
+      "sha256": "fc3c68e684a767d4896dada0fb63444583d2a91ed6e5b5151e29245158095abf",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\pipeline_status.json",
+      "bytes": 159,
+      "sha256": "027f9ade09171a04791700aede5c5af0870b3f324952d39887a5af6d2ae3d910",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\prompt_refine.json",
+      "bytes": 182,
+      "sha256": "0b19c74610f6e7958bd2dd35314343d3029d0becb1346046dc28d7c86239ac9b",
+      "mtime_ns": "1792616236583705900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\redline.json",
+      "bytes": 348,
+      "sha256": "2f7c18ef38684db6a941ae66cd7abf4226f4e855293e2e48d9e5c2ca12760f74",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\retainer_driver.json",
+      "bytes": 120,
+      "sha256": "6a3712e346c8248c6d9a7dccc4bb3946a9dce7582f6c12ef957414c783fef854",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\search.json",
+      "bytes": 938,
+      "sha256": "7816e3efcd4d76e7e93560389bc2f11bd17698db91075959b86f6fb23629d2aa",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\source.json",
+      "bytes": 412,
+      "sha256": "68d72b7e36a3f998fa210ba97966603de6ffa959156de797d930c6562e76c524",
+      "mtime_ns": "1792379417936139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\task_create.json",
+      "bytes": 74,
+      "sha256": "11b5d7b26e63f025c1acc936bb0625e375ff12656fde82ae1bac72c42d35878a",
+      "mtime_ns": "1792379417937139300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\task_create.req.json",
+      "bytes": 252,
+      "sha256": "2b6840306be51f2897ea5649f80fd87a195aa9685a0651cd75ffbe5d091e01b3",
+      "mtime_ns": "1792379417937139300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\task_current.json",
+      "bytes": 345,
+      "sha256": "8100745e234bb9bf67a663e4fcb8d9cd6d9b5a463f26f6b48bc5ef15bd3ba6d3",
+      "mtime_ns": "1792379417937139300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\task_current.req.json",
+      "bytes": 37,
+      "sha256": "9ee46ee5479165faf4d16e13518e6d5050617729ce68ba5db8a24c029d3b383f",
+      "mtime_ns": "1792379417937139300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\tasks_list.json",
+      "bytes": 3530,
+      "sha256": "5467f02f1a409db540b40ce52d700770d3e05ab53448af4e718d1a090bffc596",
+      "mtime_ns": "1792379417938138900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\fixtures\\wiki_suggestions.json",
+      "bytes": 1386,
+      "sha256": "15a6d64b6290df343d65e8e1ce002361a15b3dfa534eba9bdfc8a5ddbafcf51b",
+      "mtime_ns": "1792379417938138900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\folder-actions.ts",
+      "bytes": 5859,
+      "sha256": "74fc8aa9b66c908783145514c88cdd18b1daf6aaeb0338c97407990d34f7430d",
+      "mtime_ns": "1792681969133921700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\format.ts",
+      "bytes": 11807,
+      "sha256": "48b525966723d5591b05bae95ed685e42089bc73f5068bfe586567d40869fcfe",
+      "mtime_ns": "1792681674490243500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\hidden-cases.ts",
+      "bytes": 3194,
+      "sha256": "08fe90a535d9d72d73a9349428f3886b798391b883c323b93e193a5a22af7cd1",
+      "mtime_ns": "1792392977831492200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\home-page.tsx",
+      "bytes": 15286,
+      "sha256": "3fba63f0dbe6f3d6dad02dfcbc5bb78d725673cd1fa249ca7facc69e19539645",
+      "mtime_ns": "1792590218520161000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\home.tsx",
+      "bytes": 13760,
+      "sha256": "bddd3d972c72f6eaf9b41a3a7ad614b4766caca88c1d751792d2f03c64467fdf",
+      "mtime_ns": "1792379417939139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\host.ts",
+      "bytes": 218,
+      "sha256": "9bbcf9f92525bf885263df63b6da495327a57f44d3ff1f02e0dc9be5c8bb488d",
+      "mtime_ns": "1792379417939139200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\index.tsx",
+      "bytes": 30047,
+      "sha256": "165bdbb32254a7be826d929cbd4861761cd82a82f2868c3eb5acd5994606edf0",
+      "mtime_ns": "1793014927683557300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\input-import.tsx",
+      "bytes": 5327,
+      "sha256": "a0891e884b1f518bbbfdb3497b1a732879f028be30f1eb79737b5d4167f06af6",
+      "mtime_ns": "1792970388816702900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\intake.ts",
+      "bytes": 6524,
+      "sha256": "926f787ca7fc7f92efb03a2ec0faa0029ecfe5243af4d1335371ef08bb3e689a",
+      "mtime_ns": "1792970406595575000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\invoice-logic.ts",
+      "bytes": 9874,
+      "sha256": "0c12bbdb8ed97ddd6fcd33fa43c0b795d43a9f9b78405f20d78e4c83abf37d94",
+      "mtime_ns": "1792379417940139100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\invoice.tsx",
+      "bytes": 14042,
+      "sha256": "188dd448b10f15204e803aea598be3c4fe0150bc42da8a3294db42e9e342d10a",
+      "mtime_ns": "1792379417940139100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\kit.tsx",
+      "bytes": 10336,
+      "sha256": "2c963a25cdf00a45409c41182056823f5e927028ee2dd7a7a44441f8a3000dd3",
+      "mtime_ns": "1792392977832495700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+      "bytes": 18759,
+      "sha256": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796",
+      "mtime_ns": "1793014868180869300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.tsx",
+      "bytes": 3632,
+      "sha256": "1fdd2a32cbef1ec04be59e1197bd852b287e1a900c3ffcad4cebab6382cb0586",
+      "mtime_ns": "1792951440000878100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\materials.tsx",
+      "bytes": 26603,
+      "sha256": "4b482392cf71b685cd87bcc160189142552fa50068d13a9072d30a16cbb6b782",
+      "mtime_ns": "1793077794700734100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\ocr-watch.ts",
+      "bytes": 4859,
+      "sha256": "a665cfaa66313d6773e98a7c2e87b48e5260bb75b868919618b323f5061e8f52",
+      "mtime_ns": "1792607436354350900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\overview.tsx",
+      "bytes": 6851,
+      "sha256": "0dc865818e41336fd3e4d4e36dc1718c3acb0095f5d381791dce86e504b3bc75",
+      "mtime_ns": "1792392977833495900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\platform.ts",
+      "bytes": 708,
+      "sha256": "891b8ae12eb5edaa94240501fa43c4eda9183901b252c02d40a4105ab2286abc",
+      "mtime_ns": "1792379417940139100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\prompt-refine.tsx",
+      "bytes": 11154,
+      "sha256": "fb9bd0b4d1738792d35d0a61c439046490b8dd0107a9491f90c067c14335ced6",
+      "mtime_ns": "1792737337329091900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\remote-access.tsx",
+      "bytes": 8459,
+      "sha256": "b7cb7938b1425412da4f0426733c061a1f639b11603c3fa61de79f626a456fbb",
+      "mtime_ns": "1792596257388435600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\remote.ts",
+      "bytes": 1646,
+      "sha256": "1e9c82cd362f32b36be5e52cbf847c3e5c3997c55b35587491c449cc425dd88e",
+      "mtime_ns": "1792757989271779600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\result-cards.tsx",
+      "bytes": 22409,
+      "sha256": "cfaccbfb7a6118634fdf92e642b7de043918232cb478307008f16d1946ba979a",
+      "mtime_ns": "1793445299466329300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\retainer.ts",
+      "bytes": 4968,
+      "sha256": "e5861353facee429ae8dd0f2b2b1d358e124f62be72aaedd89dc34474838e9e0",
+      "mtime_ns": "1792379417941251500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\rightbar.ts",
+      "bytes": 3948,
+      "sha256": "8948f1f31ff34abd58ad26480a2faecc73cc78ece3ffdbe92fc22c612cd4d17e",
+      "mtime_ns": "1792616472508047000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\session-case.tsx",
+      "bytes": 2061,
+      "sha256": "24b338439d87272417a89ad46a1aeff213131489f67ec6fccdc2abb680e99e5f",
+      "mtime_ns": "1792695296752436400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\session-delete.tsx",
+      "bytes": 4002,
+      "sha256": "141a0f2a93e7e89b50acfedac8181347dcd43795f32f0f7839079187d4966a7f",
+      "mtime_ns": "1792565424085002000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings-draft.ts",
+      "bytes": 6551,
+      "sha256": "b43141a6ac8be1b80c5015714abbe3ad4990161a2107a9611afc280813b1e1f5",
+      "mtime_ns": "1792701465981219100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+      "bytes": 40242,
+      "sha256": "00cb7f3149ae7c6418eedfe423a400c146877ea80b4dbba58ffbb5f71f40572d",
+      "mtime_ns": "1793402524230643200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\source.tsx",
+      "bytes": 5947,
+      "sha256": "0d9d319d90eb3b100e3c89afe9e5582d104c1a25672b93ce724e3b8044740d8a",
+      "mtime_ns": "1792392977834564900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+      "bytes": 18994,
+      "sha256": "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb",
+      "mtime_ns": "1793319121421159900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\store.ts",
+      "bytes": 911,
+      "sha256": "01c96cfd6b4c0df8b7a64d01fefcc6e92cb12c8d37791a8a3d836e414bc565d6",
+      "mtime_ns": "1792379417942761700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\tasksheet.ts",
+      "bytes": 6083,
+      "sha256": "433e84bce0812f83fe42011e68a81041b26d5c79477f0d4bcb2554bc593c3c56",
+      "mtime_ns": "1792695351207113800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\web-search.tsx",
+      "bytes": 13643,
+      "sha256": "8c726bd6318160df8bdbee1df4ac78be6820c369cf2bf0ef03112e59d71a292b",
+      "mtime_ns": "1792759227187016100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\wiki-card.tsx",
+      "bytes": 12394,
+      "sha256": "aa3080aff89e12caf173e838ef6635203ed51858a64c5e93ab58521de5db5e5a",
+      "mtime_ns": "1792898158261925900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\wiki-entry.tsx",
+      "bytes": 3494,
+      "sha256": "bab17f70847616a3de42df17f3c53ff9ad64790091fc688119595bfd6b382fe1",
+      "mtime_ns": "1792584261547263500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.config.mjs",
+      "bytes": 2641,
+      "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf",
+      "mtime_ns": "1792994543867145300"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32",
+      "mtime_ns": "1788797158000000000"
+    }
+  ],
+  "private_environment_keys": [
+    "APPDATA",
+    "COMSPEC",
+    "DSH_HOME",
+    "HOME",
+    "LOCALAPPDATA",
+    "NODE_OPTIONS",
+    "PATH",
+    "PATHEXT",
+    "SYSTEMDRIVE",
+    "SYSTEMROOT",
+    "T50_NETWORK_DENIAL_LOG",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "WINDIR",
+    "XDG_CACHE_HOME",
+    "XDG_CONFIG_HOME"
+  ],
+  "dotenv_candidates_absent": true,
+  "scope": "NEW_GROUNDING20_PLUS_ORIGINAL_DELIVERY17_OFFLINE_AND_TYPES"
+}

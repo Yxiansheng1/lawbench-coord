@@ -1,0 +1,415 @@
+--- FAILED_V2/offline-controls.mjs
++++ V3/offline-controls.mjs
+@@ -18,6 +18,7 @@
+   assertTargetCountWithinPilotCap,
+   buildAuthorizationHeader,
+   buildFragmentInventory,
++  buildReviewShards,
+   buildRequestPayload,
+   buildStage1Envelope,
+   buildStage1Messages,
+@@ -25,6 +26,7 @@
+   buildStage2Messages,
+   buildVisibleUnits,
+   joinAssessmentsToUnits,
++  mergeShardReviews,
+   outputStatusForReviews,
+   parseModelJson,
+   parsePinnedStage1Assessments,
+@@ -257,8 +259,46 @@
+   "TARGET_COUNT_EXCEEDS_PILOT_CAP",
+ );
+ 
+-assert.equal(MAX_REQUESTS, 1);
+-assert.deepEqual(REQUEST_STAGES, ["stage2"]);
++function syntheticInventory(count) {
++  return {
++    targets: Array.from({ length: count }, (_, index) => {
++      const kind = ["F", "C", "Q"][index % 3];
++      return {
++        target_id: `${kind}${String(index + 1).padStart(4, "0")}`,
++        kind,
++        text: "",
++      };
++    }),
++  };
++}
++
++const oddShardInventory = syntheticInventory(9);
++const oddShardPlan = buildReviewShards(oddShardInventory);
++assert.deepEqual(oddShardPlan.map((shard) => shard.shard_id), REQUEST_STAGES);
++assert.deepEqual(oddShardPlan.map((shard) => shard.review_target_ids.length), [5, 4]);
++const oddShardUnion = oddShardPlan.flatMap((shard) => shard.review_target_ids);
++assert.equal(new Set(oddShardUnion).size, oddShardInventory.targets.length);
++assert.deepEqual(oddShardUnion, oddShardInventory.targets.map((target) => target.target_id));
++
++const evenShardInventory = syntheticInventory(10);
++const evenShardPlan = buildReviewShards(evenShardInventory);
++assert.deepEqual(evenShardPlan.map((shard) => shard.review_target_ids.length), [5, 5]);
++assert.deepEqual(
++  evenShardPlan.flatMap((shard) => shard.review_target_ids),
++  evenShardInventory.targets.map((target) => target.target_id),
++);
++assertProtocolError(
++  () => buildReviewShards(syntheticInventory(1)),
++  "TARGET_COUNT_BELOW_MINIMUM",
++);
++assertProtocolError(
++  () => buildReviewShards({ targets: [{ ...syntheticInventory(2).targets[0], target_id: "F0001" },
++    { ...syntheticInventory(2).targets[1], target_id: "F0001" }] }),
++  "TARGET_TABLE_INVALID",
++);
++
++assert.equal(MAX_REQUESTS, 2);
++assert.deepEqual(REQUEST_STAGES, ["stage2a", "stage2b"]);
+ assert.equal(ROUTE, "http://10.126.126.1:8000/v1/chat/completions");
+ assert.equal(MODEL, "qwen38-27b");
+ assert.equal(PARAMETERS.temperature, 0.6);
+@@ -353,16 +393,22 @@
+   joinedUnits.map((unit) => unit.description),
+   assessments.map((assessment) => assessment.description),
+ );
++const shardPlan = buildReviewShards(inventory);
+ const stage2Envelope = buildStage2Envelope(units, validatedStage1.assessments, inventory, coverage);
+ assert.deepEqual(Object.keys(stage2Envelope).sort(), [
+   "actual_coverage",
+   "draft_parent_spans",
++  "review_target_ids",
+   "selfcheck_parent_spans",
+   "source_units",
+   "targets",
+ ]);
+ assert.deepEqual(stage2Envelope.source_units, joinedUnits);
+ assert.deepEqual(stage2Envelope.targets, inventory.targets);
++assert.deepEqual(
++  stage2Envelope.review_target_ids,
++  inventory.targets.map((target) => target.target_id),
++);
+ assert.equal(stage2Envelope.draft_parent_spans.map((parent) => parent.text).join(""), draft);
+ assert.equal(stage2Envelope.selfcheck_parent_spans.map((parent) => parent.text).join(""), selfcheck);
+ assert.equal(stage2Envelope.actual_coverage, coverage);
+@@ -379,6 +425,24 @@
+ assert.ok(JSON.stringify(stage2Messages).includes("\uD83D\uDE00"));
+ assert.ok(!JSON.stringify(stage2Messages).includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+ assert.ok(!stage2Messages[1].content.includes("assistant"));
++const firstShardMessages = buildStage2Messages(
++  units,
++  validatedStage1.assessments,
++  inventory,
++  coverage,
++  shardPlan[0].review_target_ids,
++);
++const firstShardEnvelope = buildStage2Envelope(
++  units,
++  validatedStage1.assessments,
++  inventory,
++  coverage,
++  shardPlan[0].review_target_ids,
++);
++assert.deepEqual(firstShardEnvelope.targets, inventory.targets);
++assert.deepEqual(firstShardEnvelope.review_target_ids, shardPlan[0].review_target_ids);
++assert.ok(firstShardMessages[0].content.includes("exact and only target ids"));
++assert.ok(firstShardMessages[0].content.includes("All supplied targets remain available"));
+ 
+ function makeValidReviews() {
+   return inventory.targets.map((target, index) => {
+@@ -419,6 +483,105 @@
+ assert.equal(outputStatusForReviews(validatedStage2.reviews), COMPLETION_STATUS);
+ assert.notEqual(outputStatusForReviews(validatedStage2.reviews), "PASS");
+ 
++const firstActiveIds = new Set(shardPlan[0].review_target_ids);
++const firstActiveReviews = cloneReviews(
++  validReviews.filter((review) => firstActiveIds.has(review.target_id)),
++);
++const firstActiveValidation = validateStage2Result(
++  { reviews: [...firstActiveReviews].reverse() },
++  inventory,
++  shardPlan[0].review_target_ids,
++);
++assert.deepEqual(
++  firstActiveValidation.reviews.map((review) => review.target_id),
++  shardPlan[0].review_target_ids,
++);
++const firstActiveTarget = inventory.targets.find(
++  (target) => target.target_id === firstActiveReviews[0].target_id,
++);
++const outsideActiveRef = inventory.targets.find(
++  (target) => !firstActiveIds.has(target.target_id) && target.kind !== firstActiveTarget.kind,
++);
++assert.ok(outsideActiveRef);
++const crossShardRefReviews = cloneReviews(firstActiveReviews);
++crossShardRefReviews[0].treatment = "PARTIAL";
++crossShardRefReviews[0].refs = [outsideActiveRef.target_id];
++assert.equal(
++  validateStage2Result(
++    { reviews: crossShardRefReviews },
++    inventory,
++    shardPlan[0].review_target_ids,
++  ).reviews.length,
++  shardPlan[0].review_target_ids.length,
++);
++
++const missingActiveReview = cloneReviews(firstActiveReviews).slice(0, -1);
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: missingActiveReview },
++    inventory,
++    shardPlan[0].review_target_ids,
++  ),
++  "MISSING_TARGET_REVIEW",
++);
++const duplicateActiveReview = cloneReviews(firstActiveReviews);
++duplicateActiveReview[duplicateActiveReview.length - 1] = {
++  ...duplicateActiveReview[0],
++  refs: [...duplicateActiveReview[0].refs],
++};
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: duplicateActiveReview },
++    inventory,
++    shardPlan[0].review_target_ids,
++  ),
++  "DUPLICATE_TARGET_ID",
++);
++const unknownActiveReview = cloneReviews(firstActiveReviews);
++unknownActiveReview[0].target_id = "F999999";
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: unknownActiveReview },
++    inventory,
++    shardPlan[0].review_target_ids,
++  ),
++  "UNKNOWN_TARGET_ID",
++);
++const outsideActiveReview = validReviews.find((review) => !firstActiveIds.has(review.target_id));
++const knownOutsideActive = cloneReviews(firstActiveReviews);
++knownOutsideActive[0] = {
++  ...outsideActiveReview,
++  refs: [...outsideActiveReview.refs],
++};
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: knownOutsideActive },
++    inventory,
++    shardPlan[0].review_target_ids,
++  ),
++  "UNEXPECTED_TARGET_REVIEW",
++);
++assertProtocolError(
++  () => validateStage2Result({ reviews: [] }, inventory, []),
++  "EXPECTED_TARGET_IDS_EMPTY",
++);
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: firstActiveReviews },
++    inventory,
++    [shardPlan[0].review_target_ids[0], shardPlan[0].review_target_ids[0]],
++  ),
++  "EXPECTED_TARGET_ID_DUPLICATE",
++);
++assertProtocolError(
++  () => validateStage2Result(
++    { reviews: firstActiveReviews },
++    inventory,
++    ["F999999"],
++  ),
++  "EXPECTED_TARGET_ID_UNKNOWN",
++);
++
+ const missingReview = cloneReviews(validReviews).slice(0, -1);
+ assertProtocolError(
+   () => validateStage2Result({ reviews: missingReview }, inventory),
+@@ -497,6 +660,85 @@
+     validateStage2Result({ reviews: relatedButNotQualityPass }, inventory).reviews,
+   ),
+   COMPLETION_STATUS,
++);
++
++const secondActiveIds = new Set(shardPlan[1].review_target_ids);
++const firstShardReviews = cloneReviews(
++  validReviews.filter((review) => firstActiveIds.has(review.target_id)),
++);
++const secondShardReviews = cloneReviews(
++  validReviews.filter((review) => secondActiveIds.has(review.target_id)),
++);
++const mergedShardReviews = mergeShardReviews(
++  inventory,
++  shardPlan,
++  [firstShardReviews, secondShardReviews],
++);
++assert.deepEqual(
++  mergedShardReviews.reviews.map((review) => review.target_id),
++  inventory.targets.map((target) => target.target_id),
++);
++assert.equal(mergedShardReviews.reviews.length, inventory.targets.length);
++
++const overlappingSecondReviews = cloneReviews(secondShardReviews);
++overlappingSecondReviews[0] = {
++  ...firstShardReviews[0],
++  refs: [...firstShardReviews[0].refs],
++};
++assertProtocolError(
++  () => mergeShardReviews(
++    inventory,
++    shardPlan,
++    [firstShardReviews, overlappingSecondReviews],
++  ),
++  "SHARD_REVIEW_UNEXPECTED",
++);
++const duplicateSecondReviews = cloneReviews(secondShardReviews);
++duplicateSecondReviews[0] = {
++  ...duplicateSecondReviews[1],
++  refs: [...duplicateSecondReviews[1].refs],
++};
++assertProtocolError(
++  () => mergeShardReviews(
++    inventory,
++    shardPlan,
++    [firstShardReviews, duplicateSecondReviews],
++  ),
++  "SHARD_REVIEW_DUPLICATE",
++);
++assertProtocolError(
++  () => mergeShardReviews(
++    inventory,
++    shardPlan,
++    [firstShardReviews, secondShardReviews.slice(0, -1)],
++  ),
++  "SHARD_REVIEW_COUNT_MISMATCH",
++);
++const overlappingPlan = shardPlan.map((shard) => ({
++  shard_id: shard.shard_id,
++  review_target_ids: [...shard.review_target_ids],
++}));
++overlappingPlan[1].review_target_ids[0] = overlappingPlan[0].review_target_ids[0];
++assertProtocolError(
++  () => mergeShardReviews(
++    inventory,
++    overlappingPlan,
++    [firstShardReviews, secondShardReviews],
++  ),
++  "SHARD_OVERLAP",
++);
++const incompletePlan = shardPlan.map((shard) => ({
++  shard_id: shard.shard_id,
++  review_target_ids: [...shard.review_target_ids],
++}));
++incompletePlan[1].review_target_ids.pop();
++assertProtocolError(
++  () => mergeShardReviews(
++    inventory,
++    incompletePlan,
++    [firstShardReviews, secondShardReviews],
++  ),
++  "SHARD_UNION_INCOMPLETE",
+ );
+ 
+ const stage2CompletionContent = JSON.stringify({ reviews: validReviews });
+@@ -583,7 +825,7 @@
+ assert.deepEqual(parseModelJson('```json\n{"reviews":[]}\n```'), { reviews: [] });
+ assertProtocolError(() => parseModelJson('prefix {"reviews":[]}'), "MALFORMED_JSON");
+ 
+-function makeFakeResponse({ status, chunks, throwAfterChunks }) {
++function makeFakeResponse({ status, chunks, throwAfterChunks, throwFailure }) {
+   const state = { cancelCalls: 0, releaseLockCalls: 0, reads: 0 };
+   const reader = {
+     async read() {
+@@ -595,9 +837,7 @@
+         };
+       }
+       if (throwAfterChunks) {
+-        const failure = new Error("FAKE_READER_FAILURE_SENTINEL");
+-        failure.name = "FakeReaderFailure";
+-        throw failure;
++        throw throwFailure || new Error("FAKE_READER_FAILURE_SENTINEL");
+       }
+       return { done: true, value: undefined };
+     },
+@@ -619,10 +859,15 @@
+ const fakeRequestBody = JSON.stringify({ model: MODEL, probe: "FAKE_REQUEST_BODY_SENTINEL" });
+ const originalFetch = globalThis.fetch;
+ try {
++  const knownTransportFailure = new Error("KNOWN_TRANSPORT_FAILURE_SENTINEL");
++  knownTransportFailure.name = "TypeError";
++  knownTransportFailure.code = "ECONNRESET";
++  knownTransportFailure.cause = { code: "UND_ERR_HEADERS_TIMEOUT" };
+   const failing = makeFakeResponse({
+     status: 200,
+     chunks: ["{\"partial_prefix\":"],
+     throwAfterChunks: true,
++    throwFailure: knownTransportFailure,
+   });
+   let fetchCalls = 0;
+   let capturedOptions = null;
+@@ -646,8 +891,63 @@
+   assert.equal(failingResult.status, 200);
+   assert.equal(failingResult.body, "{\"partial_prefix\":");
+   assert.equal(failingResult.transportError, "TRANSPORT_FAILURE");
++  assert.deepEqual(failingResult.transportDiagnostic, {
++    errorName: "TYPE_ERROR",
++    errorCode: "ECONNRESET",
++    causeCode: "UND_ERR_HEADERS_TIMEOUT",
++  });
+   assert.equal(failing.state.cancelCalls, 1);
+   assert.equal(failing.state.releaseLockCalls, 1);
++
++  const secretFailure = new Error("RAW_SECRET_MESSAGE_SENTINEL");
++  secretFailure.name = "SECRET_NAME_SENTINEL";
++  secretFailure.code = "SECRET_CODE_SENTINEL";
++  secretFailure.cause = { code: "SECRET_CAUSE_CODE_SENTINEL" };
++  const unknownFailureResponse = makeFakeResponse({
++    status: 200,
++    chunks: ["{\"unknown_partial\":"],
++    throwAfterChunks: true,
++    throwFailure: secretFailure,
++  });
++  globalThis.fetch = async () => unknownFailureResponse.response;
++  const unknownFailureResult = await performRequest(
++    "stage2a",
++    fakeRequestBody,
++    fakeCredential,
++    Date.now() + ENTIRE_CALL_CAP_MS,
++  );
++  assert.equal(unknownFailureResult.body, "{\"unknown_partial\":");
++  assert.equal(unknownFailureResult.transportError, "TRANSPORT_FAILURE");
++  assert.deepEqual(unknownFailureResult.transportDiagnostic, {
++    errorName: "OTHER",
++    errorCode: "OTHER",
++    causeCode: "OTHER",
++  });
++  assert.ok(!JSON.stringify(unknownFailureResult).includes("RAW_SECRET_MESSAGE_SENTINEL"));
++  assert.ok(!JSON.stringify(unknownFailureResult).includes("SECRET_CODE_SENTINEL"));
++  assert.equal(unknownFailureResponse.state.cancelCalls, 1);
++  assert.equal(unknownFailureResponse.state.releaseLockCalls, 1);
++
++  const absentCodeFailure = new Error("ABSENT_CODE_SENTINEL");
++  absentCodeFailure.name = "AbortError";
++  const absentCodeResponse = makeFakeResponse({
++    status: null,
++    chunks: [],
++    throwAfterChunks: true,
++    throwFailure: absentCodeFailure,
++  });
++  globalThis.fetch = async () => absentCodeResponse.response;
++  const absentCodeResult = await performRequest(
++    "stage2b",
++    fakeRequestBody,
++    fakeCredential,
++    Date.now() + ENTIRE_CALL_CAP_MS,
++  );
++  assert.deepEqual(absentCodeResult.transportDiagnostic, {
++    errorName: "ABORT_ERROR",
++    errorCode: null,
++    causeCode: null,
++  });
+ 
+   const complete = makeFakeResponse({
+     status: 200,
+@@ -666,6 +966,7 @@
+   assert.equal(completeResult.capturedBytes, Buffer.byteLength("{\"ok\":true}", "utf8"));
+   assert.equal(completeResult.responseOverflow, false);
+   assert.equal(completeResult.transportError, null);
++  assert.equal(completeResult.transportDiagnostic, null);
+   assert.equal(complete.state.cancelCalls, 0);
+   assert.equal(complete.state.releaseLockCalls, 1);
+ 

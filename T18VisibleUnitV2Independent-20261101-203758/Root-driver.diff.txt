@@ -1,0 +1,92 @@
+--- V1-root
++++ V2-root
+@@ -21,7 +21,7 @@
+     script="$p=Get-CimInstance Win32_Process -Filter 'ProcessId="+str(identity['pid'])+"';if($p -and $p.ExecutablePath -ceq "+quote(identity['exe'])+" -and $p.CreationDate.ToUniversalTime().ToString('o') -ceq "+quote(identity['birth_utc'])+"){Stop-Process -Id "+str(identity['pid'])+" -Force}"
+     subprocess.run([PW,'-NoProfile','-NonInteractive','-Command',script],capture_output=True,check=True,creationflags=subprocess.CREATE_NO_WINDOW)
+ 
+-admission_path=O/'T18-isolated-semantic-pilot-runtime-admission-current.json'
++admission_path=O/'T18-visible-unit-semantic-pilot-v2-runtime-admission-current.json'
+ a=r(admission_path)
+ assert a['verdict']=='ADMITTED_ISOLATED_TWO_STAGE_SEMANTIC_CAPABILITY_DIAGNOSTIC'
+ assert a['admitted'] and not a['consumed'] and a['source_review_accepted']
+@@ -41,7 +41,7 @@
+ assert authority['scope']=='AUTONOMOUS_MAINLINE_REPAIR_AND_NECESSARY_CHANGED_SOURCE_VERIFICATION_UNTIL_FIXED'
+ assert authority['per_cycle_owner_reapproval_required'] is False and not authority['current_runtime_active']
+ stamp=datetime.now(timezone(timedelta(hours=8))).strftime('%Y%m%d-%H%M%S')
+-root=O/('T18IsolatedSemanticActual-root-'+stamp)
++root=O/('T18VisibleUnitSemanticV2Actual-root-'+stamp)
+ assert not root.exists()
+ for p in [O,*O.parents]: assert not p.is_symlink() and not p.is_junction(), 'Reparse ancestor'
+ root.mkdir(); modelroot=root/'model-output'
+@@ -52,9 +52,18 @@
+ assert not any(k.upper()in{'HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','NODE_OPTIONS','NODE_EXTRA_CA_CERTS'} for k in env)
+ driver=r'''$ErrorActionPreference='Stop'
+ $bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$completed=$false;$forced=$false
+-$clock=[Diagnostics.Stopwatch]::StartNew()
++$clock=[Diagnostics.Stopwatch]::StartNew();$phase='ROOT_GATE'
++function Read-SharedOwnedBytes([string]$LiteralPath){
++ $inputStream=$null;$memory=$null
++ try{
++  $inputStream=[IO.FileStream]::new($LiteralPath,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite)
++  $memory=[IO.MemoryStream]::new();$inputStream.CopyTo($memory)
++  return ,($memory.ToArray())
++ }finally{if($memory){$memory.Dispose()};if($inputStream){$inputStream.Dispose()}}
++}
+ try {
+  if([Console]::ReadLine() -cne 'ROOT_START'){throw 'Root gate invalid'}
++ $phase='DEDICATED_CREDENTIAL_INPUT'
+  Add-Type -AssemblyName System.Security.Cryptography.ProtectedData
+  $bytes=[Security.Cryptography.ProtectedData]::Unprotect([IO.File]::ReadAllBytes('C:/Users/morel/AppData/Local/LawbenchSyntheticTests/6000d.dpapi'),$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
+  if($bytes.Length -eq 0 -or $bytes.Length -gt 4096){throw 'Dedicated credential length invalid'}
+@@ -69,6 +78,7 @@
+  $psi.UseShellExecute=$false;$psi.CreateNoWindow=$true;$psi.RedirectStandardInput=$true;$psi.RedirectStandardOutput=$true;$psi.RedirectStandardError=$true
+  $psi.StandardInputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardOutputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardErrorEncoding=[Text.UTF8Encoding]::new($false)
+  $psi.ArgumentList.Add(SOURCE_LITERAL);$psi.ArgumentList.Add('--credential-stdin');$psi.ArgumentList.Add('--root');$psi.ArgumentList.Add(MODELROOT_LITERAL)
++ $phase='OWNED_NODE_START'
+  $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start()
+  $birth=$child.StartTime.ToUniversalTime().ToString('o')
+  [IO.File]::WriteAllText(START_LITERAL,([pscustomobject]@{pid=$child.Id;exe=NODE_LITERAL;birth_utc=$birth;credential_transport='anonymous stdin only'}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+@@ -82,10 +92,11 @@
+  }
+  $stdout=Redact-OwnedString ($stdoutTask.GetAwaiter().GetResult());$stderr=Redact-OwnedString ($stderrTask.GetAwaiter().GetResult())
+  [IO.File]::WriteAllText(STDOUT_LITERAL,$stdout,[Text.UTF8Encoding]::new($false));[IO.File]::WriteAllText(STDERR_LITERAL,$stderr,[Text.UTF8Encoding]::new($false))
++ $phase='OWNED_UTF8_ARTIFACT_SCAN'
+  $utf8=[Text.UTF8Encoding]::new($false,$true);$scanned=0;$binary=0;$hits=0;$escapedHits=0
+  foreach($f in Get-ChildItem -LiteralPath ROOT_LITERAL -File -Recurse){
+   if(($f.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Owned artifact reparse point'}
+-  try{$text=$utf8.GetString([IO.File]::ReadAllBytes($f.FullName))}catch [Text.DecoderFallbackException]{$binary++;continue}
++  try{$text=$utf8.GetString((Read-SharedOwnedBytes $f.FullName))}catch [Text.DecoderFallbackException]{$binary++;continue}
+   $scanned++;if($text.Contains($secret)){$hits++};if($escaped -cne $secret -and $text.Contains($escaped)){$escapedHits++}
+  }
+  [IO.File]::WriteAllText(SCAN_LITERAL,([pscustomobject]@{UTF8_files=$scanned;binary_not_scanned=$binary;raw_usedKey_hit_files=$hits;JSONescaped_usedKey_hit_files=$escapedHits;scope='exact owned root only';full_memory_or_machine_claim=$false}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+@@ -94,7 +105,7 @@
+  [pscustomobject]@{kind='ROOT_ISOLATED_SEMANTIC_DPAPI_STDIN';child_exit=$child.ExitCode;forced_stop=$forced;natural_child_exit=(-not $forced);credential_argv_env_file=$false;requests_cap=2}|ConvertTo-Json -Compress
+  exit $child.ExitCode
+ }catch{
+- [pscustomobject]@{kind='ROOT_DRIVER_FAILURE';error_type=$_.Exception.GetType().Name;consumer_completed=$completed;credential_output=$false;forced_stop=$forced}|ConvertTo-Json -Compress
++ [pscustomobject]@{kind='ROOT_DRIVER_FAILURE';phase=$phase;error_type=$_.Exception.GetType().Name;consumer_completed=$completed;credential_output=$false;forced_stop=$forced}|ConvertTo-Json -Compress
+  exit 91
+ }finally{
+  if($null -ne $child -and -not $child.HasExited -and $null -ne $birth){
+@@ -108,10 +119,10 @@
+ (root/'root-driver.ps1').write_text(driver,'utf-8')
+ before=a['pins'];diagnostics=authority.setdefault('diagnostic_records',[]);index=len(diagnostics)+1
+ authority['current_runtime_active']=True
+-diagnostics.append(dict(index=index,purpose='ISOLATED_SEMANTIC_CAPABILITY_NOT_NATIVE_WORKFLOW',state='CONSUMED_STARTING',root=str(root),max_requests=2,consumer_sha256=fp(source)['sha256']))
++diagnostics.append(dict(index=index,purpose='VISIBLE_UNIT_V2_SEMANTIC_CAPABILITY_NOT_NATIVE_WORKFLOW',state='CONSUMED_STARTING',root=str(root),max_requests=2,consumer_sha256=fp(source)['sha256']))
+ w(authority_path,authority);a.update(consumed=True,admitted=False,root=str(root),diagnostic_index=index);w(admission_path,a)
+ ids=set();seen={};forced=False;peers=[];start=time.monotonic();rc=None;error_code=None;p=None
+-active_path=O/'T18-isolated-semantic-pilot-runtime-active-current.json'
++active_path=O/'T18-visible-unit-semantic-pilot-v2-runtime-active-current.json'
+ try:
+     with(root/'driver-stdout.txt').open('wb')as out,(root/'driver-stderr.txt').open('wb')as err:
+         p=subprocess.Popen([PW,'-NoProfile','-NonInteractive','-File',str(root/'root-driver.ps1')],cwd=root,env=env,stdin=subprocess.PIPE,stdout=out,stderr=err,creationflags=subprocess.CREATE_NO_WINDOW)
+@@ -161,7 +172,7 @@
+     final=modelroot/'artifacts'/'final-report.json'
+     driver_result=r(root/'driver-stdout.txt')if(root/'driver-stdout.txt').exists()and(root/'driver-stdout.txt').stat().st_size else None
+     proof=dict(root=str(root),exit_code=rc,elapsed_s=time.monotonic()-start,forced_by_Root=forced,driver_result=driver_result,Root_error_type=error_code,identities=list(seen.values()),independent_OS_after=after,source_changes=changed,observed_owned_Node_TCP_peers=peers,report=str(final)if final.exists()else None,consumer_report=r(final)if final.exists()else None,usedKey_scan=r(root/'owned-usedKey-scan.json')if(root/'owned-usedKey-scan.json').exists()else None,not_Native_or_product_business_PASS=True,owner_only_ACL_or_full_platform_security_NOT_PROVEN=True,Packaging='HOLD')
+-    w(root/'root-result.json',proof);w(O/'T18-isolated-semantic-pilot-actual-runtime-current.json',proof)
++    w(root/'root-result.json',proof);w(O/'T18-visible-unit-semantic-pilot-v2-actual-runtime-current.json',proof)
+     w(active_path,dict(state='CLOSED_REQUIRES_ROOT_MANUAL_REVIEW',root=str(root),exit_code=rc,forced_by_Root=forced))
+     authority=r(authority_path);authority['current_runtime_active']=False
+     record=authority['diagnostic_records'][index-1];assert record['root']==str(root)

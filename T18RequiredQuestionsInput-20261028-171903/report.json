@@ -1,0 +1,415 @@
+{
+  "format": "lawbench-t18-native-contract-workflow-v1",
+  "task": "A-T18-native-contract-workflow-20261028-163202",
+  "status": "FAILED",
+  "authoredStatus": "AUTHORED_NOT_RUN",
+  "startedAtUtc": "2026-10-28T09:12:32.451Z",
+  "process": {
+    "executable": "E:\\node\\node.exe",
+    "pid": 8324,
+    "node": "v24.21.0",
+    "cwd": "D:\\Lawbeach\\lawbench-A\\dsh"
+  },
+  "fixture": {
+    "syntheticOnly": true,
+    "names": [
+      "采购合同",
+      "采购部内部意见"
+    ],
+    "lawyerRequest": "帮我审一下这份钢材采购合同。我们代表青禾建材，就是甲方采购方。这是签约前把关，审完顺便出个修订版，我要直接发给对方。采购部的内部意见也放在材料里了，你参考一下。",
+    "importedInstructionFile": false,
+    "importedJudgingNotes": false,
+    "noExternalSendInstruction": true
+  },
+  "runRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeContractWorkflow-20261028-163202\\run-Ru6yvt",
+  "admission": {
+    "initial": {
+      "checkedAtUtc": "2026-10-28T09:12:32.987Z",
+      "manifestSha256": "63f2da57aedf9165a50e7b356224c37ca4b8918abf3ceb9e4b839ff8773b8e6d",
+      "fixtureCount": 2,
+      "dependencyCount": 54,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    },
+    "final": {
+      "checkedAtUtc": "2026-10-28T09:16:54.359Z",
+      "manifestSha256": "63f2da57aedf9165a50e7b356224c37ca4b8918abf3ceb9e4b839ff8773b8e6d",
+      "fixtureCount": 2,
+      "dependencyCount": 54,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    }
+  },
+  "modelPosts": {
+    "attempts": 10,
+    "http200": 10,
+    "observations": [
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:12:37.749Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:12:37.862Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:12:40.624Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:12:40.706Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:12:44.667Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:12:44.721Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:12:46.747Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:12:46.801Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:12:50.189Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:12:50.243Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:14:11.464Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:14:11.528Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:14:49.808Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:14:49.880Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:15:36.325Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:15:36.399Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:16:03.376Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:16:03.456Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T09:16:39.089Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T09:16:39.173Z"
+      }
+    ]
+  },
+  "networkSummary": {
+    "observations": 24,
+    "modelPostAttempts": 10,
+    "modelPostHttp200": 10,
+    "coreCalls": 13,
+    "healthCalls": 1,
+    "deniedAttempts": 0
+  },
+  "apiCalls": [
+    {
+      "method": "caseOpen",
+      "http": "POST",
+      "path": "/api/case/open",
+      "ok": true
+    },
+    {
+      "method": "materialsImport",
+      "http": "POST",
+      "path": "/api/materials/import",
+      "ok": true
+    },
+    {
+      "method": "materialsList",
+      "http": "GET",
+      "path": "/api/materials",
+      "ok": true
+    },
+    {
+      "method": "getSettings",
+      "http": "GET",
+      "path": "/api/settings",
+      "ok": true
+    },
+    {
+      "method": "taskCreate",
+      "http": "POST",
+      "path": "/api/task",
+      "ok": true
+    },
+    {
+      "method": "requestScope",
+      "http": "POST",
+      "path": "/api/request/scope",
+      "ok": true
+    }
+  ],
+  "toolCalls": [
+    {
+      "ordinal": 1,
+      "name": "skill",
+      "callId": "chatcmpl-tool-ac0420a48bae87c9",
+      "argumentsSha256": "9d3c10176e3de5d59207ac5b01ac9f856676942b1f3646415b988859962ebef8"
+    },
+    {
+      "ordinal": 2,
+      "name": "case_list_materials",
+      "callId": "chatcmpl-tool-9af7f745b8a98bd9",
+      "argumentsSha256": "c89a148be40e6752261e3038609a4b68de22fa3bfdaf32f884edffb8480b9bbe"
+    },
+    {
+      "ordinal": 3,
+      "name": "case_read_material",
+      "callId": "chatcmpl-tool-ae4173804121e3ed",
+      "argumentsSha256": "8ac3e94a663afe2bffa7acea5e90cb219b40b4cb0b2a111e9b538788a0ca44b9"
+    },
+    {
+      "ordinal": 4,
+      "name": "case_read_material",
+      "callId": "chatcmpl-tool-84508bdee55a1421",
+      "argumentsSha256": "3f6360bfa3841f476d9212462143c9c9f04daa13c150851ea6c26d58a61f8fc0"
+    },
+    {
+      "ordinal": 5,
+      "name": "case_save_draft",
+      "callId": "chatcmpl-tool-abf54ada054609ee",
+      "argumentsSha256": "12a4fff2d18ccfdf702933f064ed7f00457367d3e13a21c9273686ba90619a1e"
+    },
+    {
+      "ordinal": 6,
+      "name": "case_save_draft",
+      "callId": "chatcmpl-tool-8a6a12ad5092a683",
+      "argumentsSha256": "7e0ddd2fa347fb8d454a8fba6e2be5c0ea41560652d04ce566c5d6fca4b78ab9"
+    },
+    {
+      "ordinal": 7,
+      "name": "case_save_draft",
+      "callId": "chatcmpl-tool-a3dd1e27be8e880a",
+      "argumentsSha256": "486e200c1c5ffb5ffd7e6222b5dca1625d4e30fc13bdc4d050848e5b28ae2d4e"
+    },
+    {
+      "ordinal": 8,
+      "name": "case_save_edit_list",
+      "callId": "chatcmpl-tool-ab2d9dd8d369e2a6",
+      "argumentsSha256": "87436442cc8a9ca4a949cb0415157a760f6585530df82b9428031ce3789d1a6b"
+    },
+    {
+      "ordinal": 9,
+      "name": "case_save_draft",
+      "callId": "chatcmpl-tool-929e07ecc0232e7e",
+      "argumentsSha256": "fdf2154ee84e26128cc77a595225373ee6973d544ac6d63e8575a01c623c2558"
+    }
+  ],
+  "question": null,
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "claims": {
+    "oneSyntheticWorkflowOnly": true,
+    "actualModelReviewAndEditList": false,
+    "productionRedlineArtifact": false,
+    "fullT18": false,
+    "businessAcceptance": false,
+    "gui": false,
+    "packaging": false
+  },
+  "case": {
+    "caseId": "e443388f-fac8-4928-b0dc-4aef5ac16b35",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeContractWorkflow-20261028-163202\\run-Ru6yvt\\case",
+    "materialIds": [
+      "M0001",
+      "M0002"
+    ],
+    "importedPaths": [
+      "02案件材料/采购合同.docx",
+      "02案件材料/采购部内部意见.txt"
+    ],
+    "originalAreaFiles": [
+      "02案件材料/采购合同.docx",
+      "02案件材料/采购部内部意见.txt"
+    ]
+  },
+  "materialReads": [
+    {
+      "materialId": "M0001",
+      "name": "采购合同",
+      "type": "docx",
+      "unit": "para",
+      "unitCount": 47,
+      "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeContractWorkflow-20261028-163202\\run-Ru6yvt\\case\\02案件材料\\采购合同.docx",
+      "originalBytes": 39994,
+      "originalSha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "sourceBytes": 39994,
+      "sourceSha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "sourceMtimeNs": "1792379578857675200"
+    },
+    {
+      "materialId": "M0002",
+      "name": "采购部内部意见",
+      "type": "txt",
+      "unit": "line",
+      "unitCount": 10,
+      "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeContractWorkflow-20261028-163202\\run-Ru6yvt\\case\\02案件材料\\采购部内部意见.txt",
+      "originalBytes": 823,
+      "originalSha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "sourceBytes": 823,
+      "sourceSha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "sourceMtimeNs": "1792379578787315800"
+    }
+  ],
+  "taskParams": {
+    "thinking": "高",
+    "window": "128K",
+    "max_tokens": 32768,
+    "temperature": 0.6
+  },
+  "nativeSessionId": "session-35fb7d5e-cb33-4c95-96cc-6a4227135f6d",
+  "taskSelectionId": "T-20261028171236-e8d4",
+  "requestId": "9e2caa7a-5ce8-421c-8c13-f12b356a80d5",
+  "error": {
+    "name": "Error",
+    "message": "actual tool loop lacks ask_user_question"
+  },
+  "bService": {
+    "ready": {
+      "contractVersion": "1.6",
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "fixtureCount": 2,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "ocrStarted": false,
+      "pid": 39856,
+      "port": 52262,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "startedAtUtc": "2026-10-28T09:12:35.168+00:00",
+      "status": "ready"
+    },
+    "final": {
+      "credentials": {
+        "externalKeyGetter": 0,
+        "keyGetter": 0
+      },
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "failure": null,
+      "finishedAtUtc": "2026-10-28T09:16:53.227+00:00",
+      "fixtureCount": 2,
+      "fixtureInputsUnchanged": true,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "listenerClosed": true,
+      "logsClosed": true,
+      "netClientClosed": true,
+      "ocrStarted": false,
+      "outbound": {
+        "attempts": 0,
+        "denied": 0
+      },
+      "passed": true,
+      "pid": 39856,
+      "port": 52262,
+      "protocol": {
+        "caseBound": true,
+        "counts": {
+          "GET /api/materials": 1,
+          "GET /api/settings": 1,
+          "GET /health": 1,
+          "POST /api/case/open": 1,
+          "POST /api/materials/import": 1,
+          "POST /api/request/scope": 1,
+          "POST /api/task": 1,
+          "POST /core/context": 1,
+          "POST /core/progress": 1,
+          "POST /core/task/begin": 1,
+          "POST /core/task/end": 1,
+          "POST /core/tool": 8
+        },
+        "denials": {},
+        "materialIdCount": 2,
+        "redlinePath": null,
+        "sessionBound": true,
+        "taskBound": true,
+        "violations": []
+      },
+      "retainerClosed": true,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "sourcePinsUnchanged": true,
+      "startedAtUtc": "2026-10-28T09:12:35.168+00:00",
+      "status": "STOPPED"
+    },
+    "exitCode": 0,
+    "forcedStop": false
+  },
+  "finishedAtUtc": "2026-10-28T09:16:54.360Z"
+}

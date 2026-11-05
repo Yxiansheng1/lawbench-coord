@@ -1,0 +1,70 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIExactGUI-20261031-102438",
+  "names": [
+    "README.md",
+    "entry.py",
+    "literal-inputs.json",
+    "observer-finite.mjs",
+    "prepare.ps1",
+    "private-provider-binding.mjs",
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "signature-finite.mjs",
+    "start.ps1",
+    "stop.ps1"
+  ],
+  "frozen_helpers": [
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "private-provider-binding.mjs",
+    "observer-finite.mjs",
+    "signature-finite.mjs"
+  ],
+  "start_replacements": [
+    {
+      "old": "CanonicalOriginalGUI-20261031-022702",
+      "new": "CurrentUIExactGUI-20261031-102438",
+      "expected_count": 2
+    },
+    {
+      "old": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028",
+      "new": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIPrivateBuild-20261031-101722\\private-output-20261031-101856",
+      "expected_count": 1
+    },
+    {
+      "old": "58199",
+      "new": "58197",
+      "expected_count": 1
+    },
+    {
+      "old": "89725cac86267da39572a8e9e9fb3e855aca26199cac4e0df13dd84e2cf76d52",
+      "new": "4947e42090ad66b31ac192ddc8280fc3fb63e17f80ec346ff4a69c2f7410385a",
+      "expected_count": 1
+    },
+    {
+      "old": "539499",
+      "new": "539879",
+      "expected_count": 1
+    },
+    {
+      "old": "b818090fc0b52bd15c2b63a76689b178b887c2e35b2d4f05f7d208d360be7e62",
+      "new": "8d9cea9ca3863be6390c9d574e10a645ab93ef40d68bc969a97bf7da100428d6",
+      "expected_count": 1
+    },
+    {
+      "old": "88654",
+      "new": "88651",
+      "expected_count": 1
+    },
+    {
+      "old": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64",
+      "new": "5cc5412f1901023ac62345b91e974cc953a2ca619e46efefdb3282312e46c830",
+      "expected_count": 1
+    }
+  ],
+  "before": "D:\\Lawbeach\\lawbench-coord\\T34CurrentUIGUIExactInput-20261031-102438",
+  "blueprint": "D:\\Lawbeach\\lawbench-coord\\T34CurrentUIGUIExactInput-20261031-102438\\root-approved-manifest-blueprint.json",
+  "old_failed_source_preserved": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T34-current-UI-GUI-1017-20261031-102147.job.json",
+  "no_actual_Key_privacy_or_SystemStore": true
+}

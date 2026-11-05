@@ -1,0 +1,3 @@
+T49 NativeExternalImage: AUTHORED / RUNTIME_NOT_RUN; see README and consumer at D:\Lawbeach\lawbench-A\docs\plan\evidence\T49\NativeExternalImage-20261027-095129\README.md and D:\Lawbeach\lawbench-A\docs\plan\evidence\T49\NativeExternalImage-20261027-095129\native_external_image.mjs.
+Evidence boundary: fixed manifest SHA 9b68a3f3e7199bc3d8fab62088e95fe1272b929a047dffe1bcc8ca09a04d2da0; all 16 identities read-only verified before handback; no runtime result or PASS/FAIL is claimed.
+Git/product/package changes: none; Git writes: 0; root full-review and the single actual run remain pending; Packaging HOLD and Gate 1 unfinished.

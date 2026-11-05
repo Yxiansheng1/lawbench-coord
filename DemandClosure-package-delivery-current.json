@@ -1,0 +1,30 @@
+{
+  "state": "ONE_COMBINED_INSTALLER_BUILT_HANDED_BACK_OWNER_GUI_REQUIRED",
+  "at": "2026-11-02T20:11:49.2308717+08:00",
+  "artifact": {
+    "path": "D:\\Lawbeach\\lawbench-A\\.p\\DC-20261102-200449\\runs\\20261102-200449\\out\\LawBench-DEMAND-CLOSURE-0.1.0-20261102200449-win-x64.exe",
+    "bytes": 811662545,
+    "sha256": "6aeaa8ab9919440e2298628e1423cd2c478201576dc5d82bea6ec664f08a24cb"
+  },
+  "buildStamp": "20261102-200449",
+  "receipt": "D:\\Lawbeach\\lawbench-coord\\需求收口-统一安装包-20261102-201149.md",
+  "receipt_sha256": "ab01673982847af886422f7843f35fded5b3108ee38230c5f3741fdc2bffd61a",
+  "newCombinedPackagesBuilt": 1,
+  "NSIS_attempts": 1,
+  "NSIS_exit": 0,
+  "NSIS_seconds": 24.3161324,
+  "compiled_ASAR_outputs_exact": 24,
+  "Office_required_stage_hashes": 10,
+  "installed": false,
+  "GUI": "NOT_RUN_OWNER_ASSIGNED",
+  "P06": "NOT_FIXED_WRONG_PAGE_STILL_RED",
+  "EasyTier_binary": "OWNER_DEFERRED_TO_TOMORROW_NOT_INCLUDED",
+  "modelCases": 0,
+  "KeyReads": 0,
+  "published": false,
+  "allProjectPassed": false,
+  "ownedCapturedComplete": 6,
+  "ownedCapturedPartial": 4,
+  "ownedPIDsRemaining": 0,
+  "currentBuildActive": false
+}

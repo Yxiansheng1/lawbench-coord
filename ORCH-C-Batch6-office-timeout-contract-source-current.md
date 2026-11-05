@@ -1,0 +1,3 @@
+SOURCE ONLY，一处literal修正，3分钟。原生pwsh/loginfalse，禁止Git/runtime/test/parser/build/HTTP/GUI/model。当前C上单已terminal。
+Root首次实际最终包验收已完成，Office worker收到timeoutMs120000直接FAILED。完整固定finalpayload office-runtime/worker.mjs源码40行明确timeoutMs<=30000，否则拒绝参数；本次新验收脚本错误传120000，不是产品转换失败。仅允许修改 office_acceptance.mjs 中 const CONVERTER_TIMEOUT_MS = 120_000; 为30_000，保留全部原assertions/验收判据/资源/授权/固定pin/其他预算。不改worker/产品/SDK。交回coord/HANDBACK-C-Batch6-office-timeout-contract-current.md byteinverse与SHA；不执行。
+发票首次因为本次验收private缓存路径太长导致解包环境import openpyxl失败，Root会换D:/Lawbeach/_acceptance/v100短private根，脚本不改、不重建包。不需要你处理发票或网络，只改上述一个timeoutliteral。

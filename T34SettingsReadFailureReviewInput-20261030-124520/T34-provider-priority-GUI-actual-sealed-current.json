@@ -1,0 +1,8 @@
+{
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34PrivateProjectionGUI-root-20261030-122651",
+  "files": 43,
+  "manifest_sha256": "750d09ca45c62abad538c655dbd74f6b199360dc6b2888173623d83457c492a7",
+  "verdict": "ACTUAL_UI_SETTINGS_READ_FAILED_BEFORE_REQUIRED_MUTATION_PRIVATE_COMPONENT_BINDING_NOT_PROVEN",
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD"
+}

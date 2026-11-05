@@ -1,0 +1,18 @@
+{
+  "session": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamNative-20261029-113906\\run-zMFEDU\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-CrossExamNative-20261029-113906-run-zMFEDU-case--\\session-d099d317-2b32-451d-88f1-203bf04f4e24\\session.v4.jsonl",
+  "session_sha256": "13555ca8461f2e76fe987c4f0ff13ce35e57dd20fe6154546d27b01ed0f97604",
+  "rows": [
+    {
+      "seq": 16,
+      "callId": "chatcmpl-tool-ba9522b98ac615d8",
+      "raw_sha256": "4e47b9d46f8c47b7b2becb7136352271d6ea3e6aea1cd7707b9b96fe6fe789d4",
+      "canonical_sorted_sha256": "c57bd4d2679e6364bb725eb629a02042e1aed6af4af87c8e0fb03407ee995115"
+    },
+    {
+      "seq": 21,
+      "callId": "chatcmpl-tool-a0ad7a38e18998d5",
+      "raw_sha256": "1e90c7a5036f90971453d4be13288991eb273ad19956eaf33f4d4a6ce50850b4",
+      "canonical_sorted_sha256": "18782071255151490d54ad3e658f4a6e8c3d46ed633c7be103f38ac32806a480"
+    }
+  ]
+}

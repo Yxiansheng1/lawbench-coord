@@ -1,0 +1,55 @@
+{
+  "task": "T18_BOUNDED_MATERIAL_READ",
+  "source_evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-mainline-cycle3-runtime-current.json",
+  "current_fact": "Contract1.6/read_material provides start+offset+max_chars but cannot express inclusive end; server correctly follows current contract by greedily accumulating units. Existing defense guard intentionally accepts start1; changing to start>1 would be wrong.",
+  "root_approved_contract_proposal": "Compatible optional end inclusive unit number, omitted retains legacy behavior; 1.7 generator/VERSION/Spec20.12 required before adoption. more_names cannot combine end. Server validates end>=start and end<=unitcount, records only fully read units within bounds; continuation stays within requested range.",
+  "defense_rule": "After existing questions+successfulsearch, require explicit integer start>=1 AND end===start for one located page/paragraph/line/unit; start1,end1 valid. No query/citation string parsing or arbitrary max_chars cap. Nondefense legacy behavior retained.",
+  "quality_limit": "This fixes an expressible and enforceable read boundary only; it does not claim to solve fact selection or false selfcheck. Original consumer assertions and old failures immutable.",
+  "first_phase": "TEST_SOURCE_ONLY_THEN_ROOT_REAL_RED_BEFORE_ANY_PRODUCT_CHANGE",
+  "before": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\0-index.ts",
+      "bytes": 59185,
+      "sha256": "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\1-task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\materials.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\2-materials.py",
+      "bytes": 7115,
+      "sha256": "9122850f43ca96647fe8c3240c47000c55e395aba983c221e2fc79fcdc476a73"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\_build\\gen_schemas.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\3-gen_schemas.py",
+      "bytes": 67207,
+      "sha256": "c511bdcd9e490f1e3ad8b53cae25f03b309856382f66c4d98931ee3c5c07b4ab"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\_build\\gen_schemas.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\4-gen_schemas.py",
+      "bytes": 69329,
+      "sha256": "6902e298c64573473c3898768099093126241f69c1e3faeb8e143795fde86762"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\VERSION",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\5-VERSION",
+      "bytes": 4,
+      "sha256": "e5cd57eee9635f3612a2a913746f7f794cdb573cc3e16f6b7d8e613f92beac83"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\VERSION",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedRead-20261101-114236Input\\6-VERSION",
+      "bytes": 5,
+      "sha256": "3f3ae6f85d022c669f9977e4c7a5ab80a1ab61c4a3c782e96fb65b1bbaef318a"
+    }
+  ],
+  "model_runtime_authorization": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-autonomous-mainline-repair-authority-current.json",
+  "Packaging": "HOLD"
+}

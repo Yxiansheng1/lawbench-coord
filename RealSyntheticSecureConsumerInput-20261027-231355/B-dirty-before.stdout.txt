@@ -1,0 +1,101 @@
+## line-B...origin/line-B [ahead 141, behind 1]
+ M contracts/_build/gen_examples.py
+ M contracts/_build/gen_schemas.py
+ M contracts/api/materials_list.schema.json
+ M contracts/api/task_create.schema.json
+ M contracts/api/task_current.schema.json
+ M contracts/common.schema.json
+ M contracts/core/task_begin.schema.json
+ M contracts/examples/api_remote_access.req_code_null.json
+ M contracts/examples/api_remote_access.req_code_spaces.json
+ M contracts/examples/api_remote_access.req_enabled.json
+ M contracts/examples/api_remote_access.res_failed.json
+ M contracts/examples/api_task_current.res.json
+ M contracts/examples/core_task_begin.req.json
+ M contracts/examples/core_task_begin.res.json
+ M contracts/examples/file_task.json
+ M contracts/examples/manifest.json
+ M contracts/files/settings.schema.json
+ M contracts/files/task.schema.json
+ M docs/src/Spec.md
+ M service/lawbench/__main__.py
+ M service/lawbench/api/core.py
+ M service/lawbench/api/ui.py
+ M service/lawbench/app.py
+ M service/lawbench/case/context.py
+ M service/lawbench/case/materials.py
+ M service/lawbench/case/refs.py
+ M service/lawbench/case/registry.py
+ M service/lawbench/case/task.py
+ M service/lawbench/net.py
+ M service/lawbench/search/fts.py
+ M service/lawbench/settings.py
+ M service/lawbench/tools/__init__.py
+ M service/lawbench/tools/drafts.py
+ M service/lawbench/tools/inputs.py
+ M service/lawbench/tools/search.py
+ M service/tests/t37_remove_ref_standalone.py
+ M service/tests/test_api_case.py
+?? .agents/
+?? AGENTS.md
+?? contracts/api/request_scope.schema.json
+?? contracts/examples/api_request_scope.req_prepare.json
+?? contracts/examples/api_request_scope.req_release.json
+?? contracts/examples/api_request_scope.res_prepare.json
+?? contracts/examples/api_request_scope.res_release.json
+?? contracts/examples/api_task_create.req.json
+?? contracts/examples/api_task_create.req_legacy.json
+?? contracts/examples/core_task_begin.req_legacy.json
+?? contracts/examples/core_task_begin.res_legacy.json
+?? contracts/examples/file_request_scope_store.json
+?? contracts/examples/file_settings.external.json
+?? contracts/examples/file_task.legacy.json
+?? contracts/examples/file_task.request_scope.json
+?? contracts/files/request_scope_intent.schema.json
+?? contracts/files/request_scope_store.schema.json
+?? docs/guide/
+?? docs/plan/evidence/Capsules/
+?? docs/plan/evidence/T15/ConfirmMdEntry-20261025-212409/
+?? docs/plan/evidence/T15/ConfirmedReadEntry-20261025-215536/
+?? docs/plan/evidence/T24/CoreToolCheck-20261026-125234/
+?? docs/plan/evidence/T24/CurrentFixtureCheck-20261026-105236/
+?? docs/plan/evidence/T31/
+?? docs/plan/evidence/T32/GuiDraftEntry-20261025-172934/
+?? docs/plan/evidence/T32/InvalidScopeCancelFix-20261027-144659/
+?? docs/plan/evidence/T32/InvalidScopeCancelHttp-20261027-155531/
+?? docs/plan/evidence/T32/NativeDocumentCitationEntry-20261027-190830/
+?? docs/plan/evidence/T32/NativeDraftEntry-20261025-165327/
+?? docs/plan/evidence/T32/NativePdfCitationEntry-20261027-204736/
+?? docs/plan/evidence/T32/RealSyntheticOCRRefine-20261027-225347/
+?? docs/plan/evidence/T32/RefRemoveEntry-20261027-115753/
+?? docs/plan/evidence/T32/RefRemoveGui-20261027-115753/
+?? docs/plan/evidence/T32/RefRemoveOptinEntry-20261027-131809/
+?? docs/plan/evidence/T32/RemovedListOptin-20261027-130434/
+?? docs/plan/evidence/T32/RemovedScopeVisibility-20261027-143226/
+?? docs/plan/evidence/T33/
+?? docs/plan/evidence/T34/
+?? docs/plan/evidence/T36/LawyerSkillList-20261027-174444/
+?? docs/plan/evidence/T36/LawyerSkillListPrecision-20261027-175532/
+?? docs/plan/evidence/T36/LawyerSkillListSingleDraft-20261027-180122/
+?? docs/plan/evidence/T37/LegacyMixed-20261027-080232/
+?? docs/plan/evidence/T37/MixedMaterialsGui-20261027-164646/
+?? docs/plan/evidence/T37/应用与API接入静态交回-20261022-212738/
+?? docs/plan/evidence/T37/引用重新定位-20261022-155358/
+?? docs/plan/evidence/T37/部分取消重扫返修-20261022-151021/
+?? docs/plan/evidence/T37/重新定位单文件尾名同步-20261022-203038/
+?? docs/plan/evidence/T37/重新定位大小写计数一致-20261022-195811/
+?? docs/plan/evidence/T37/重新定位文本保护顺序补正-20261022-171325/
+?? docs/plan/evidence/T37/重新定位正文断言补正-20261022-175058/
+?? docs/plan/evidence/T37/重新定位测试前置壳补正-20261022-161613/
+?? docs/plan/evidence/T37/重新定位稳定尾与剩余唯一恢复-20261022-192344/
+?? docs/plan/evidence/T37/重新定位身份保持返修-20261022-165212/
+?? docs/plan/evidence/T38/外部模型安全接线-20261022-231529/
+?? docs/plan/evidence/T38/精确接入契约-20261022-230802/
+?? docs/plan/evidence/T39/HTTP接续-20261023-013812/
+?? dsh-ext/tests/t34-native-core-http.spec.ts
+?? service/lawbench/case/request_scope.py
+?? service/lawbench/external_llm.py
+?? service/tests/t37_ref_api_finite_standalone.py
+?? service/tests/t37_relocate_ref_standalone.py
+?? service/tests/t38_external_finite_standalone.py
+?? service/tests/t39_prompt_refine_api_finite_standalone.py

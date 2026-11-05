@@ -1,0 +1,50 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\案情摘要.txt",
+    "bytes": 327,
+    "sha256": "0720b647487e10e423da3024f2920220067404a25c14d75538d74482c9ad8ab7",
+    "mtime_ns": "1792379578827479100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\还款记录.txt",
+    "bytes": 260,
+    "sha256": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+    "mtime_ns": "1792379578827479100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\借条.txt",
+    "bytes": 831,
+    "sha256": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+    "mtime_ns": "1792379578826478300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\情况说明.txt",
+    "bytes": 528,
+    "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+    "mtime_ns": "1792379578827479100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\银行流水.txt",
+    "bytes": 600,
+    "sha256": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+    "mtime_ns": "1792379578827479100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\SKILL.md",
+    "bytes": 14878,
+    "sha256": "46639190956bdd517742ef89a5f598e9e7a0a2466ad92e4a5190169c90a3c25f",
+    "mtime_ns": "1792400314797479100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\样本02-借贷案代理词无wiki\\_任务说明.md",
+    "bytes": 376,
+    "sha256": "50d2a2c26ca7a27ca3258f214729722f6d732d836a5cbb56737512c3a5228b50",
+    "mtime_ns": "1792379578826478300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\tests\\要点.md",
+    "bytes": 7344,
+    "sha256": "5f226ef9ffc4f5a15d7956cb7827441cc4f49767488144a0e4cf77567cb974ab",
+    "mtime_ns": "1792379578830479200"
+  }
+]

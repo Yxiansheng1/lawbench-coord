@@ -1,0 +1,24 @@
+{
+  "paths": {
+    "agent": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "state": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "oldtest": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-question-order-20261031-224957.spec.ts",
+    "search_result": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_search.result.json",
+    "read_result": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.result.json",
+    "new_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-read-order-20261101-024639.spec.ts",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18DefenseSearchOrderRED-20261101-024639.md"
+  },
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 57836,
+      "sha256": "a9a26fd6fffc3fc458e6f04e18848ad035db80e67723886e73d3f1425a815451"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 24595,
+      "sha256": "8c68eb6b99e36f774cddd0f7cd30fb0441c27d3e55b01d6eb733381538a0d899"
+    }
+  ],
+  "cause": "Actual original postchange scenario skipped case_search, then read both originals via name-only defaults. Source has question gate but no successful-search/explicitstart gate for defense primaryreads. Skill step3 already requires search then localizedstart. No productchange before RED."
+}

@@ -1,0 +1,25 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18ShardedBidirectionalV4-20261101-213929\source-manifest.json
+SHA b87d5b4243f637ac781a672b0127ea819d9cff708a729f0d8c949d5766fa7aad
+0001 {
+0002   "algorithm": "sha256",
+0003   "consumer": {
+0004     "path": "review-consumer.mjs",
+0005     "bytes": 49695,
+0006     "sha256": "ee5b52624529d760b25a1a9ac36ceafb80a358f453f21ddc9c89e810b78c02c7"
+0007   },
+0008   "fixed_data": {
+0009     "path": "fixed-data.json",
+0010     "bytes": 17427,
+0011     "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+0012   },
+0013   "offline_controls": {
+0014     "path": "offline-controls.mjs",
+0015     "bytes": 34986,
+0016     "sha256": "646e7ed6b2f2e1a0298a3696789996ffdd3ec60c151eb28405b67da4f0fb7173"
+0017   },
+0018   "stage1_assessments": {
+0019     "path": "stage1-assessments.json",
+0020     "bytes": 10015,
+0021     "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1"
+0022   }
+0023 }

@@ -1,0 +1,63 @@
+{
+  "old_mts": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle3-20261101-112139\\native-defense-opinion.mts",
+  "old_py": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle3-20261101-112139\\b-service-defense-opinion.py",
+  "old_manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle3-20261101-112139\\literalfixed-inputs.json",
+  "MTS_mapping": {
+    "const APPROVED_RUNTIME_PINS = {\n  'current-compiled-agent': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\agent.js',\n    bytes: 569_146,\n    sha256: '0cec7b2fca38bd7feb88f80d86843f88fe45dcc034c37f3dc11a832d2db21364',\n  },\n  'current-compiled-host': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\host.js',\n    bytes: 904_836,\n    sha256: 'c20145ec00e0a3a48da996946cd31c2a4089361ec187cb608480c3ee94a472b4',\n  },\n  'current-compiled-package': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\package.json',\n    bytes: 1_257,\n    sha256: '3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794',\n  },\n  'current-compiled-manifest': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\manifest.json',\n    bytes: 58_590,\n    sha256: '50fc1bf5adc0243c5ff98853c4eb789220fd8796a60267ce994f7027cb0d5e08',\n  },\n} as const": "const APPROVED_RUNTIME_PINS = {\n  \"current-compiled-agent\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\agent.js\",\n    \"bytes\": 569980,\n    \"sha256\": \"47cf4cb2de59bbc27a30c656fd12d3eb68fb8675ca311393b44ab0a9a0abe03b\"\n  },\n  \"current-compiled-host\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\host.js\",\n    \"bytes\": 905178,\n    \"sha256\": \"19c21b8db04adf387a4f9925e11685106aa979b4683c32684eb67c418393297a\"\n  },\n  \"current-compiled-package\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\package.json\",\n    \"bytes\": 1257,\n    \"sha256\": \"3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794\"\n  },\n  \"current-compiled-manifest\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\manifest.json\",\n    \"bytes\": 58594,\n    \"sha256\": \"e4ac06d961ef93085fecb7ce60f658c0d65db2a6ea79c5df7156f2eef1ed1d95\"\n  }\n} as const",
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle3-20261101-112139Input\\\\approved-inputs.json": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18BoundedReadNativeCase-20261101-125036Input\\\\approved-inputs.json",
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18DefenseGenerationVerification-20261101-022802Input\\\\reviewed-b346-current.json": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18BoundedReadNativeCase-20261101-125036Input\\\\reviewed-b346-current.json",
+    "'1.6'": "'1.7'",
+    "APPROVED_INPUTS_BYTES = 2_217": "APPROVED_INPUTS_BYTES = 2_224",
+    "4570656f1a40fef673064cd6834c2163631ac0fcb693c2d499e536afc47da1ac": "e3049919a9e0b280f923e2546e9db0c1998f521d2a076e4558cb71add7e769b9",
+    "SOURCE_PINS_BYTES = 53_548": "SOURCE_PINS_BYTES = 53_547",
+    "cf67afa48126253f21697eff0a10fb4f1879952be5b659610a72bd961348510b": "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9"
+  },
+  "PY_mapping": {
+    "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle3-20261101-112139Input": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadNativeCase-20261101-125036Input",
+    "D:\\Lawbeach\\lawbench-coord\\T18DefenseGenerationVerification-20261101-022802Input": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadNativeCase-20261101-125036Input",
+    "\"1.6\"": "\"1.7\"",
+    "current B contract version is not 1.6": "current B contract version is not 1.7",
+    "APPROVED_INPUTS_BYTES = 2_217": "APPROVED_INPUTS_BYTES = 2_224",
+    "4570656f1a40fef673064cd6834c2163631ac0fcb693c2d499e536afc47da1ac": "e3049919a9e0b280f923e2546e9db0c1998f521d2a076e4558cb71add7e769b9",
+    "SOURCE_PINS_BYTES = 53_548": "SOURCE_PINS_BYTES = 53_547",
+    "cf67afa48126253f21697eff0a10fb4f1879952be5b659610a72bd961348510b": "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9"
+  },
+  "MTS_counts": {
+    "const APPROVED_RUNTIME_PINS = {\n  'current-compiled-agent': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\agent.js',\n    bytes: 569_146,\n    sha256: '0cec7b2fca38bd7feb88f80d86843f88fe45dcc034c37f3dc11a832d2db21364',\n  },\n  'current-compiled-host': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\host.js',\n    bytes: 904_836,\n    sha256: 'c20145ec00e0a3a48da996946cd31c2a4089361ec187cb608480c3ee94a472b4',\n  },\n  'current-compiled-package': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\profile-node_modules\\\\lawbench-dsh\\\\package.json',\n    bytes: 1_257,\n    sha256: '3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794',\n  },\n  'current-compiled-manifest': {\n    path: 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18DefenseSearchPrivateBuild-20261101-030307\\\\private-output-20261101-030559\\\\manifest.json',\n    bytes: 58_590,\n    sha256: '50fc1bf5adc0243c5ff98853c4eb789220fd8796a60267ce994f7027cb0d5e08',\n  },\n} as const": 1,
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle3-20261101-112139Input\\\\approved-inputs.json": 1,
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18DefenseGenerationVerification-20261101-022802Input\\\\reviewed-b346-current.json": 1,
+    "'1.6'": 3,
+    "APPROVED_INPUTS_BYTES = 2_217": 1,
+    "4570656f1a40fef673064cd6834c2163631ac0fcb693c2d499e536afc47da1ac": 1,
+    "SOURCE_PINS_BYTES = 53_548": 1,
+    "cf67afa48126253f21697eff0a10fb4f1879952be5b659610a72bd961348510b": 1
+  },
+  "PY_counts": {
+    "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle3-20261101-112139Input": 1,
+    "D:\\Lawbeach\\lawbench-coord\\T18DefenseGenerationVerification-20261101-022802Input": 1,
+    "\"1.6\"": 1,
+    "current B contract version is not 1.6": 1,
+    "APPROVED_INPUTS_BYTES = 2_217": 1,
+    "4570656f1a40fef673064cd6834c2163631ac0fcb693c2d499e536afc47da1ac": 1,
+    "SOURCE_PINS_BYTES = 53_548": 1,
+    "cf67afa48126253f21697eff0a10fb4f1879952be5b659610a72bd961348510b": 1
+  },
+  "ready_manifest": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadNativeCase-20261101-125036Input\\literalfixed-inputs-ready.json",
+  "target_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadNativeCase-20261101-125036",
+  "expected_consumer": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadNativeCase-20261101-125036\\native-defense-opinion.mts",
+    "bytes": 156893,
+    "sha256": "4f62aaaffa3e4e63c477d30eab551da7fde30605dc1e097d0812754d203f310f"
+  },
+  "expected_bService": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadNativeCase-20261101-125036\\b-service-defense-opinion.py",
+    "bytes": 53710,
+    "sha256": "59b91aa7fb24a926961c8d7f950750efedf49ed31fdbd214d8a34b94765e4809"
+  },
+  "expected_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadNativeCase-20261101-125036Input\\literalfixed-inputs-ready.json",
+    "bytes": 12019,
+    "sha256": "f3157b56dbb01e9265a0dcd9cd0458cac3b44b3a4dbac3f86eee59ced79d6ec2"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadNativeCase-20261101-125036.md"
+}

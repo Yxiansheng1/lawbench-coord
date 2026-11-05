@@ -1,0 +1,16 @@
+{
+  "base_sha256": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca",
+  "expected_head": "dc56a93be4b07dbe7a48863e3135351659817fb5",
+  "post_route": "/api/task",
+  "entry": "contract-draft",
+  "skill": "contract-draft",
+  "route": "local",
+  "inputs": [],
+  "session_pattern": "^session-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+  "new_directory": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\TaskSelectionEntry-20261025-154140",
+  "allowed_write_files": [
+    "server.py",
+    "README.md"
+  ],
+  "forwarded_task_posts_per_run": 1
+}

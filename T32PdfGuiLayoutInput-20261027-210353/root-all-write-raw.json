@@ -1,0 +1,65 @@
+[
+  {
+    "id": "item_26",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_30",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_40",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\root-layout-correction-20261027-210353.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-GUI-layout-20261027-210353.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_42",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\root-layout-correction-20261027-210353.md",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-GUI-layout-20261027-210353.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_48",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-GUI-layout-20261027-210353.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

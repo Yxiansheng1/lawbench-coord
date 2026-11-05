@@ -1,0 +1,31 @@
+{
+  "verdict": "ONE_PRIVATE_PROVIDER_COMPONENT_BUILD_STATIC_ACCEPTED_NOT_NATIVE",
+  "actual_root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34ProviderPrivateBuild-root-20261030-120733",
+  "output": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderPrivateBuild-20261030-120048\\private-output\\llm-pi-ai.mjs",
+    "bytes": 81412,
+    "sha256": "664859957b714046e4667ca8a7739fddd232b358ecf36da3750c562d788a7c17"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderPrivateBuild-20261030-120048\\private-output\\manifest.json",
+    "bytes": 24383,
+    "sha256": "f881626dbcd0cce738f2bcb08a64e3d3bf7bc48de93921ebce3d4329edb72e54"
+  },
+  "source_inputs": 12,
+  "external_imports": 31,
+  "one_build_sync": true,
+  "whole148_input_fingerprints_held": true,
+  "elapsed_s": 2.437999999994645,
+  "exit_code": 0,
+  "forced": false,
+  "build_complete_OS_identity_count": 0,
+  "build_OS_identity_NOT_PROVEN": true,
+  "main_PID_absent_after": true,
+  "main_natural_exit_confirmed": true,
+  "full_machine_cleanup_NOT_PROVEN": true,
+  "model": 0,
+  "GUI": 0,
+  "original_SDK_source_lib_and_frozen25_held": true,
+  "native_write_cause": "UNKNOWN",
+  "Packaging": "HOLD"
+}

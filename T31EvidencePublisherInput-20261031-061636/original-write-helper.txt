@@ -1,0 +1,6 @@
+def _write_json(path: pathlib.Path, value: Any, mode: str = "x") -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, mode, encoding="utf-8", newline="\n") as stream:
+        json.dump(value, stream, ensure_ascii=False, indent=2, sort_keys=True)
+        stream.write("\n")
+

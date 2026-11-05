@@ -1,0 +1,279 @@
+{
+  "format": "lawbench-t18-defense-opinion-native-inputs-v1",
+  "task": "B-T18-defense-opinion-native-20261029-155352",
+  "hashAlgorithm": "sha256",
+  "approvedInputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18QualityDefenseInput-20261031-173317\\approved-inputs.json",
+    "bytes": 2217,
+    "sha256": "f835e8ef523438d9ec8b3440e3465435c2d4e0a4e9f7b9c8855561af3c1a976e"
+  },
+  "sourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18RequestDigestInput-20261031-215607\\reviewed-b346-current.json",
+    "bytes": 53548,
+    "sha256": "98d18e82053f1d1d4d0e8543e97011907bc6387a148537f308f1288ea84155fd"
+  },
+  "authorizedSyntheticAnswers": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\authorized-synthetic-answers.json",
+    "bytes": 206,
+    "sha256": "b0c00129c22acbaee5cc1db1152f96e170901e7d28cd417514e2f073a698999d"
+  },
+  "selectionDecision": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\root-selection-decision.json",
+    "bytes": 1487,
+    "sha256": "92877cfcfad57e10232dda472824bd625a260fd3d3fa2f0995a41e6f9deb445d"
+  },
+  "canonicalTask": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\_任务说明.md",
+    "bytes": 800,
+    "sha256": "cb2a81ac34025347c5e3f7feedf6e16fd38b623160336014de1b77ca0579bc8c",
+    "mtime_ns": "1792379578812954900"
+  },
+  "skill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "bytes": 13852,
+    "sha256": "f3fed80c767e5c9d7f2fdaebc9e0fa5c0b5aa2878383ffd52b12edca260c9846",
+    "mtime_ns": "1793440531688076800"
+  },
+  "materials": [
+    {
+      "name": "起诉意见书",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\起诉意见书.txt",
+      "bytes": 3033,
+      "sha256": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+      "mtime_ns": "1792379578812954900"
+    },
+    {
+      "name": "讯问笔录",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\讯问笔录.txt",
+      "bytes": 1357,
+      "sha256": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+      "mtime_ns": "1792379578812954900"
+    }
+  ],
+  "priorInput": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\_上游成果-刑事阅卷笔录.md",
+    "bytes": 1404,
+    "sha256": "5801888a5df0525d0b12071e7ad3691102aed915c3f020b2052dd0f7967c056a",
+    "mtime_ns": "1792379578811954800"
+  },
+  "referenceNotes": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\要点.md",
+    "bytes": 8684,
+    "sha256": "890588f7440f3917494f8cfecb4f2f696a724eb1f922a5adf4e24c7199b5b23e",
+    "mtime_ns": "1792379578815968600"
+  },
+  "dependencies": [
+    {
+      "role": "persona",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md",
+      "bytes": 2706,
+      "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+    },
+    {
+      "role": "dsh-cordis",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "role": "dsh-llm",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "role": "dsh-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+      "bytes": 60384,
+      "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d"
+    },
+    {
+      "role": "dsh-system-prompt",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\system-prompt\\src\\index.ts",
+      "bytes": 26532,
+      "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e"
+    },
+    {
+      "role": "dsh-tools",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\index.ts",
+      "bytes": 90679,
+      "sha256": "9107a2b6447b10c2ecb90429d7c1b80b956759e96d35230af16f5a88f5d3eccd"
+    },
+    {
+      "role": "dsh-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+      "bytes": 31340,
+      "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9"
+    },
+    {
+      "role": "dsh-agent-loop",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+      "bytes": 37946,
+      "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605"
+    },
+    {
+      "role": "dsh-session-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-projection\\src\\index.ts",
+      "bytes": 31464,
+      "sha256": "2186b62bfd59c0b5ea1413287f34e3a5be79b2162c5e0e2eb2143d7e42fea39f"
+    },
+    {
+      "role": "dsh-persistence-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+      "bytes": 70510,
+      "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436"
+    },
+    {
+      "role": "dsh-session-query",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session-query\\session-query\\src\\index.ts",
+      "bytes": 15460,
+      "sha256": "549f7f90c90efec63a5c7d69dbc65938c0f9578f85dcfc8ee25a49a43a8e83e3"
+    },
+    {
+      "role": "dsh-typert",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\registry\\src\\index.ts",
+      "bytes": 1023,
+      "sha256": "a6c1aa498660cb50d768c867411943d3760e2bbb8dcd016c950c6294ed626e2a"
+    },
+    {
+      "role": "dsh-llm-pi-ai",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+      "bytes": 14182,
+      "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d"
+    },
+    {
+      "role": "controller-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+      "bytes": 22822,
+      "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769"
+    },
+    {
+      "role": "controller-commands",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+      "bytes": 31548,
+      "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c"
+    },
+    {
+      "role": "controller-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+      "bytes": 3041,
+      "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f"
+    },
+    {
+      "role": "browser-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+      "bytes": 40534,
+      "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73"
+    },
+    {
+      "role": "skill-registry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill\\src\\index.ts",
+      "bytes": 35965,
+      "sha256": "af4fad67fb086c3f5c93aed4604830718b4535e7e59a60d680404b07ea08477c"
+    },
+    {
+      "role": "skill-filesystem",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill-filesystem\\src\\index.ts",
+      "bytes": 39233,
+      "sha256": "a3fcfefcc6500f4bd7c19ba48dfa80efad312034f196f81a40d33d0d0098d315"
+    },
+    {
+      "role": "tool-skill",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\tool-skill\\src\\index.ts",
+      "bytes": 18371,
+      "sha256": "fb7b9f7558d516854ffe159803586decd1da003d7f10e04e026c4b7ca3622a1c"
+    },
+    {
+      "role": "user-questions",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\user-questions\\src\\index.ts",
+      "bytes": 5960,
+      "sha256": "2d8e7899f9763b308cf3fab3cc1018f5026af8c06a6b39925982ccdb8d934668"
+    },
+    {
+      "role": "tool-ask-user",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\tool-ask-user\\src\\index.ts",
+      "bytes": 3702,
+      "sha256": "aa448c483d0e0de805079950c616e45d93b4c972b7a62345b4e4a8c4164bfecf"
+    },
+    {
+      "role": "repeat-tool-reminder",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\src\\index.ts",
+      "bytes": 10619,
+      "sha256": "1e917986fe9c5187d8f0fa11154ab2bf3b7c1d30db991540f4d1e62a2c59236d"
+    },
+    {
+      "role": "installed-lock",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lock.yaml",
+      "bytes": 1011346,
+      "sha256": "60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"
+    },
+    {
+      "role": "shared-skill-rules",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\_shared\\共用规则.md",
+      "bytes": 6982,
+      "sha256": "ebb19fe3584185971e989a87580d1e0f2f5ec1c83cc1c965c9958cbb8aec8b45"
+    },
+    {
+      "role": "defense-opinion-skill",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+      "bytes": 13852,
+      "sha256": "f3fed80c767e5c9d7f2fdaebc9e0fa5c0b5aa2878383ffd52b12edca260c9846"
+    }
+  ],
+  "compilerPrivate": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 566992,
+      "sha256": "b26f4484b34f366a80af72a546633dfddaa021ff879d566259e01c871e480558"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904755,
+      "sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\manifest.json",
+      "bytes": 58596,
+      "sha256": "e3a91a9492afe5ba40395e4f14d7455d4e7b9ad2ae1e3e44e56db0f99aa28d13"
+    }
+  ],
+  "runtimeExecutables": [
+    {
+      "role": "node",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "role": "tsx",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "role": "python",
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "bytes": 104952,
+      "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+    }
+  ],
+  "consumer": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546\\native-defense-opinion.mts",
+    "bytes": 156871,
+    "sha256": "27d3a318b34aa3560c18c3b206c0583dd41b7576e12ebacf0801665857a6a8ea"
+  },
+  "bService": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546\\b-service-defense-opinion.py",
+    "bytes": 53695,
+    "sha256": "76c940b6994da9efd18b5f473ddb7229202d1a5c8513c6b1841c3402bd5c96ea"
+  }
+}

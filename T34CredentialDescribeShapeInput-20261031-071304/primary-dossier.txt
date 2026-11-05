@@ -1,0 +1,300 @@
+CURRENT ExternalKeyControl FULL:
+}
+
+/** 只走真实 credentials Remote；提交后先清空输入，再进行异步写入。 */
+export function ExternalKeyControl() {
+  const [capability, setCapability] = useState<{
+    api: CredentialsApi
+    configured: boolean | null
+    writable: boolean
+  } | null>(null)
+  const [open, setOpen] = useState(false)
+  const [key, setKey] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState('')
+  const api = useSyncExternalStore(subscribeCredentialsApi, currentCredentialsApi, currentCredentialsApi)
+  const generation = useRef(0)
+  const operation = useRef(0)
+  const busyGate = useRef(false)
+  const isCurrent = (startedAt: number, usedApi: CredentialsApi) =>
+    generation.current === startedAt && currentCredentialsApi() === usedApi
+  // readonly 资格必须由当前 API 实例的有效 describe 产生；旧实例留下的 true 不能跨代沿用。
+  const configured = capability !== null && capability.api === api ? capability.configured : null
+  const writable = capability !== null && capability.api === api && capability.writable === true
+
+  // 凭据插件可能在设置控件挂载后才注入、撤下或重新注入；能力换代时旧响应和旧忙碌门都失效。
+  useEffect(() => {
+    let active = true
+    const startedAt = ++generation.current
+    operation.current += 1
+    busyGate.current = false
+    setBusy(false)
+    setMessage('')
+    if (!api) {
+      setCapability(null)
+      return () => { active = false; generation.current += 1 }
+    }
+    setCapability(null)
+    const read = async () => {
+      try {
+        const info = (await api.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+        if (!active || !isCurrent(startedAt, api)) return
+        setCapability({ api, configured: info?.configured === true, writable: info?.writable !== false })
+      } catch {
+        if (!active || !isCurrent(startedAt, api)) return
+        setCapability({ api, configured: null, writable: false })
+        setMessage('没能读取外部 Key 状态')
+      }
+    }
+    void read()
+    return () => { active = false; generation.current += 1 }
+  }, [api])
+
+  const begin = () => {
+    busyGate.current = true
+    setBusy(true)
+    setMessage('')
+    return { op: ++operation.current, startedAt: ++generation.current }
+  }
+
+  const submit = async () => {
+    const secret = key.trim()
+    const usedApi = api
+    if (!usedApi || currentCredentialsApi() !== usedApi || !capability || capability.api !== usedApi || !capability.writable ||
+      !secret || busyGate.current) return
+    setKey('')
+    const { op, startedAt } = begin()
+    try {
+      await usedApi.set(EXTERNAL_LLM_KEY, secret)
+      if (!isCurrent(startedAt, usedApi)) return
+      setOpen(false)
+      setMessage('外部 Key 已保存')
+      try {
+        const info = (await usedApi.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: info?.configured === true, writable: info?.writable !== false })
+      } catch {
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('外部 Key 已保存，但没能读取当前状态')
+      }
+    } catch {
+      if (isCurrent(startedAt, usedApi)) setMessage('外部 Key 没有保存成功')
+    } finally {
+      if (operation.current === op && isCurrent(startedAt, usedApi)) {
+        busyGate.current = false
+        setBusy(false)
+      }
+    }
+  }
+  const clear = async () => {
+    const usedApi = api
+    if (!usedApi || currentCredentialsApi() !== usedApi || !capability || capability.api !== usedApi || !capability.writable ||
+      capability.configured !== true || busyGate.current) return
+    const { op, startedAt } = begin()
+    try {
+      await usedApi.unset(EXTERNAL_LLM_KEY)
+      if (!isCurrent(startedAt, usedApi)) return
+      let info: { configured: boolean; writable: boolean } | undefined
+      try {
+        info = (await usedApi.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+      } catch {
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('未确认清除：没能读取当前状态')
+        return
+      }
+      if (!isCurrent(startedAt, usedApi)) return
+      if (!info) {
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('未确认清除：没能读取当前状态')
+        return
+      }
+      setCapability({ api: usedApi, configured: info.configured === true, writable: info?.writable !== false })
+      setMessage(info.configured === false ? '外部 Key 已清除' : '未确认清除：外部 Key 仍显示为已设置')
+    } catch {
+      if (isCurrent(startedAt, usedApi)) setMessage('外部 Key 没有清除成功')
+    } finally {
+      if (operation.current === op && isCurrent(startedAt, usedApi)) {
+        busyGate.current = false
+        setBusy(false)
+      }
+    }
+  }
+  const canSubmit = key.trim().length > 0 && !busy && writable
+  return (
+    <span style={{ ...S.row, flexWrap: 'wrap' }}>
+      <span>{configured === null ? '状态未知' : configured ? '已设置' : '未设置'}</span>
+      {open ? (
+        <>
+          <input type="password" autoComplete="off" aria-label="外部模型 Key" style={{ ...S.input, width: 240 }} value={key}
+            onChange={(e) => setKey(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && canSubmit) { e.preventDefault(); void submit() } }} />
+          <Button size="sm" variant="primary" disabled={!canSubmit} onClick={() => void submit()}>保存外部 Key</Button>
+          <Button size="sm" variant="ghost" disabled={busy} onClick={() => { setKey(''); setOpen(false) }}>取消</Button>
+        </>
+      ) : <Button size="sm" variant="outline" disabled={busy || !writable} onClick={() => { setMessage(''); setOpen(true) }}>保存外部 Key</Button>}
+      {configured ? <Button size="sm" variant="ghost" disabled={busy || !writable} onClick={() => void clear()}>清除外部 Key</Button> : null}
+      {message ? <span role="status">{message}</span> : null}
+    </span>
+  )
+}
+
+/**
+ * 设置页底部固定的保存条（令 1609 第 2 条）：贴在设置内容的底边、不随内容滚动。有未保存的修改时显示"有未保存的修改"＋"保存"＋"放弃修改"；
+ * 保存成功后两秒内显示"已保存 HH:mm"；其余时候不显示。
+ */
+
+Actual mandatory boolean CredentialsApi types:
+/** DSH 真正 credentials Remote 的配置态接口；没有读取秘密的路径。 */
+export interface CredentialsApi {
+  describe(refs: string[]): Promise<Record<string, { configured: boolean; source?: string; writable: boolean }>>
+  set(ref: string, value: string): Promise<void>
+  unset(ref: string): Promise<void>
+}
+
+/** DSH Gateway 对每次 Remote 调用的统一外壳。 */
+export type RemoteResult<T> = { ok: true; value: T } | { ok: false; error?: { message?: string } }
+
+/** DSH 真正 ctx.remote.credentials 的最小接口；没有读取秘密的方法。 */
+export interface CredentialsRemote {
+  describe(refs: string[]): Promise<RemoteResult<Record<string, { configured: boolean; source?: string; writable: boolean }>>>
+  set(ref: string, value: string): Promise<RemoteResult<void>>
+  unset(ref: string): Promise<RemoteResult<void>>
+}
+
+Existing real React/jsdom test scaffolding:
+// @vitest-environment jsdom
+// T34：外部模型五字段、原草稿保存、真正 credentials Remote 的双 Key 配置态。
+import { act, createElement } from 'react'
+import { createRoot, type Root } from 'react-dom/client'
+import {
+  ExternalKeyControl, ExternalLLMSettings, externalProviderLifecycle, projectAndShowExternalProvider,
+  retryExternalProviderProjection, SettingsSection,
+} from '../ui/settings.tsx'
+import { settingsDraft } from '../ui/settings-draft.ts'
+import { registerCore, registerCredentials, registerSettingsRemote } from '../ui/index.tsx'
+import {
+  app, credentials, setApi, setCredentialsApi, setSettingsRemote,
+  type CredentialsApi, type CredentialsRemote, type LawbenchApi, type SettingsRemote,
+} from '../ui/state.ts'
+
+;(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true
+let root: Root | undefined
+let box: HTMLDivElement
+
+beforeEach(() => {
+  box = document.createElement('div')
+  document.body.appendChild(box)
+})
+
+afterEach(async () => {
+  await act(async () => { root?.unmount() })
+  root = undefined
+  box.remove()
+  setApi(undefined)
+  setCredentialsApi(undefined)
+  setSettingsRemote(undefined)
+  externalProviderLifecycle.set({ error: null })
+  settingsDraft.set({ loaded: null, draft: null, savedAt: null })
+  app.set((state) => ({ ...state, dialogs: [] }))
+})
+
+const button = (text: string) => [...box.querySelectorAll('button')].find((b) => b.textContent === text)!
+const input = (label: string) => box.querySelector(`[aria-label="${label}"]`) as HTMLInputElement
+const setInput = async (el: HTMLInputElement, value: string) => {
+  const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!
+  await act(async () => { setValue.call(el, value); el.dispatchEvent(new Event('input', { bubbles: true })) })
+}
+const state = (configured: boolean, writable = true) => ({
+  EXTERNAL_LLM_KEY: { configured, writable },
+})
+
+interface Deferred<T> {
+  promise: Promise<T>
+  resolve: (value: T) => void
+  reject: (reason?: unknown) => void
+}
+
+const deferredValue = <T = void>(): Deferred<T> => {
+  let resolve!: (value: T) => void
+  let reject!: (reason?: unknown) => void
+  const promise = new Promise<T>((done, fail) => { resolve = done; reject = fail })
+  return { promise, resolve, reject }
+}
+
+const flushTasks = async (turns = 6) => {
+  for (let i = 0; i < turns; i += 1) await act(async () => { await Promise.resolve() })
+}
+
+const settingsWithProvider = (model: string, enabled = true): Record<string, unknown> => ({
+  v: 1 as const,
+  servers: { llm_base_url: 'http://a', prep_base_url: 'http://b', llm_alt_base_url: null, prep_alt_base_url: null },
+  defaults: { thinking: '中' as const, window: '64K' as const, max_tokens: 16384 },
+  skill_presets: {},
+  templates: { 文书: null, 合同: null },
+  ocr_fallback_llm: false,
+
+Existing Key component test:
+  it('Key 只投配置态；set/unset 使用 EXTERNAL_LLM_KEY，提交后 DOM 不含 fake Key', async () => {
+    let configured = false
+    const calls: string[] = []
+    const api: CredentialsApi = {
+      describe: async (refs) => Object.fromEntries(refs.map((ref) => [ref, { configured, writable: true }])),
+      set: async (ref, value) => { calls.push(`set:${ref}:${value}`); configured = true },
+      unset: async (ref) => { calls.push(`unset:${ref}`); configured = false },
+    }
+    setCredentialsApi(api)
+    root = createRoot(box)
+    await act(async () => { root!.render(createElement(ExternalKeyControl)) })
+    await act(async () => { button('保存外部 Key').click() })
+    const input = box.querySelector('[aria-label="外部模型 Key"]') as HTMLInputElement
+    const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!
+    await act(async () => { setValue.call(input, 'fake-external-secret-0001'); input.dispatchEvent(new Event('input', { bubbles: true })) })
+    await act(async () => { button('保存外部 Key').click(); await Promise.resolve() })
+    expect(calls).toContain('set:EXTERNAL_LLM_KEY:fake-external-secret-0001')
+    expect(box.innerHTML).not.toContain('fake-external-secret-0001')
+    expect((box.querySelector('[aria-label="外部模型 Key"]') as HTMLInputElement | null)).toBeNull()
+    await act(async () => { button('清除外部 Key').click(); await Promise.resolve() })
+    expect(calls).toContain('unset:EXTERNAL_LLM_KEY')
+  })
+
+
+Vitest config:
+// 我方测试配置。vitest 取自 dsh 的依赖环境，这里不 import 它（dsh-ext 不在 dsh 的模块树里），测试用全局 API。
+import { VIRTUAL_ID, contractsModuleSource } from './scripts/contracts-source.mjs'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { createRequire } from 'node:module'
+import { realpathSync } from 'node:fs'
+
+// 界面代码 import 的 react 运行时由 DSH 提供；测试里指向 dsh 依赖环境中的同一版本
+const REACT = join(dirname(fileURLToPath(import.meta.url)), '..', 'dsh', 'node_modules', '.pnpm', 'react@18.3.1', 'node_modules', 'react')
+const REACT_DOM = join(dirname(fileURLToPath(import.meta.url)), '..', 'dsh', 'node_modules', '.pnpm', 'react-dom@18.3.1_react@18.3.1', 'node_modules', 'react-dom')
+// 输入区组件测试（tests\dock.spec.ts）：DSH 的界面原件换成一个只有 Button 的替身，别的测试不引用它
+const PRIMITIVES_STUB = join(dirname(fileURLToPath(import.meta.url)), 'tests', 'helpers', 'primitives-stub.ts')
+
+// 会话存储测试（tests\session-store.spec.ts）借用 DSH 的存储契约用例，它引用的 dsh-llm 只装在原版 JSONL 包下，从那里解析
+const JSONL_PKG = join(dirname(fileURLToPath(import.meta.url)), '..', 'dsh', 'packages', 'session', 'session-persistence-jsonl', 'package.json')
+const DSH_LLM = createRequire(JSONL_PKG).resolve('@deepseek-ai/dsh-llm')
+const SESSION_PERSISTENCE_LIB = createRequire(JSONL_PKG).resolve('@deepseek-ai/dsh-session-persistence')
+
+export default {
+  plugins: [{
+    name: 'lawbench-contracts',
+    resolveId: (id) => (id === VIRTUAL_ID ? '\0' + VIRTUAL_ID : null),
+    load: (id) => (id === '\0' + VIRTUAL_ID ? contractsModuleSource() : null),
+  }, {
+    // 契约用例从源码引错误类，原版 JSONL 包（已构建）抛的是 lib 里的同名类；只对这一个文件改指向 lib，instanceof 才对得上
+    name: 'lawbench-persistence-contract-lib',
+    enforce: 'pre',
+    resolveId: (id, importer) => (id === '../src/index.ts' && importer?.replace(/\\/g, '/').endsWith('session-persistence/tests/contract.ts') ? SESSION_PERSISTENCE_LIB : null),
+  }],
+  resolve: { alias: { react: REACT, 'react-dom': REACT_DOM, '@deepseek-ai/dsh-client-ui-primitives': PRIMITIVES_STUB, '@deepseek-ai/dsh-llm': DSH_LLM } },
+  test: {
+    include: ['tests/**/*.spec.ts', 'tests/**/*.spec.tsx'],
+    exclude: ['**/node_modules/**', '**/.git/**', 'tests/t31-native-scope-http.spec.ts', 'tests/t31-ui-host-batch-http.spec.ts'],
+    environment: 'node',
+    globals: true,
+    testTimeout: 30000,
+  },
+}

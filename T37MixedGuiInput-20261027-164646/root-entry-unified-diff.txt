@@ -1,0 +1,851 @@
+--- 
++++ 
+@@ -1,16 +1,17 @@
+ #!/usr/bin/env python3
+-"""T32 finite native reference-removal entry for current opt-in source.
++"""T37 finite mixed legacy-copy/reference materials entry for current opt-in source.
+ 
+ The prepare phase creates a fresh private root without importing lawbench.  The
+ serve phase reuses that root, current-B contracts/skills and the current-B
+ ``lawbench.app.create_app`` behind one IPv4 loopback listener.  Product
+ lifespan remains off; native auth, routes, Gate, Materials and Registry remain
+ in use.  Before the listener starts, the wrapper admits exactly one native
+-case-open and two idempotent imports of the same synthetic reference directory
+-through ``httpx.ASGITransport``.  TCP traffic is then limited to readback and
+-one exact native removal of M0002.  The finite HTTP probe distinguishes the
+-default/false live-only list from the exact true tombstone list; it is not a
+-GUI launcher or GUI acceptance.
++case-open, one legacy default-copy import of ``scope-in.txt``, and one
++reference-mode import of the other two synthetic files through
++``httpx.ASGITransport``.  TCP traffic is then limited to readback and one exact
++native removal of reference material M0002.  The finite HTTP probe checks the
++case-copy/reference mix, the default/false live-only list, and the exact true
++tombstone list; it is not a GUI launcher or GUI acceptance.
+ """
+ from __future__ import annotations
+ 
+@@ -57,7 +58,7 @@
+ FIXTURE_BYTES = 47379
+ FIXTURE_SHA256 = "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad"
+ RUN_NAME = re.compile(r"^T33-host-[0-9]{8}-[0-9]{6}$")
+-PREPARED_FORMAT = "T32-reference-remove-gui-prepared-v1"
++PREPARED_FORMAT = "T37-mixed-materials-gui-prepared-v1"
+ REQUEST_ID = re.compile(
+     r"^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+ )
+@@ -66,6 +67,15 @@
+ )
+ MATERIAL_ID = re.compile(r"^M[0-9]{4}$")
+ TARGET_MATERIAL_ID = "M0002"
++CASE_MATERIAL_ID = "M0001"
++CASE_SOURCE_FILE = "scope-in.txt"
++REFERENCE_MATERIALS = (
++    ("R01", "scope-out.txt", "scope-out", "M0002"),
++    ("R02", "scope-third.txt", "scope-third", "M0003"),
++)
++REFERENCE_MATERIAL_IDS = tuple(item[3] for item in REFERENCE_MATERIALS)
++EXPECTED_MATERIAL_IDS = (CASE_MATERIAL_ID, *REFERENCE_MATERIAL_IDS)
++REMAINING_MATERIAL_IDS = ("M0001", "M0003")
+ SCOPE_SOURCE_NAME = "scope-source"
+ SCOPE_SOURCE_FILES = (
+     ("scope-in.txt", "scope-in", "T31_SHARED 内部唯一正文\n"),
+@@ -811,7 +821,7 @@
+     TASK_FILES = frozenset({"task.json", "result.json", "reads.json"})
+     FILE_LIMIT = 64 * 1024
+     SPARSE = 0x200
+-    REF_ID = "R01"
++    TARGET_REF_ID = "R01"
+     MAX_CASE_OPENS = 4
+     MAX_IMPORTS = 2
+     MAX_MATERIAL_LISTS = 16
+@@ -839,6 +849,7 @@
+             "ref_id",
+         }
+     )
++    CASE_ROW_KEYS = MATERIAL_ROW_KEYS - {"origin", "ref_id"}
+     TOOL_PLAN = (
+         ("case_list_materials", {}),
+         ("case_read_material", {"name": "scope-in"}),
+@@ -900,7 +911,7 @@
+         self.setup_complete = False
+         self.native_refs_verified = False
+         self.native_index_verified = False
+-        self.original_copy_free = False
++        self.case_original_copy_verified = False
+         self.scope_source = _scope_source_manifest(ready)
+         self.source_root = ready / SCOPE_SOURCE_NAME
+         self.expected_source_files = {
+@@ -987,48 +998,65 @@
+         except (Deny, OSError, ValueError, TypeError):
+             return False
+ 
+-    def _native_refs(self) -> dict[str, Any]:
++    def _native_refs(
++        self, *, removed_ref_ids: frozenset[str] = frozenset()
++    ) -> list[dict[str, Any]]:
+         path = self.case / "工作区" / "材料" / "引用.json"
+         data = self._checked_file(path)
+         if (
+             not isinstance(data, dict)
+             or set(data) != {"v", "refs", "next_seq"}
+             or data.get("v") != 1
+-            or data.get("next_seq") != 2
++            or data.get("next_seq") != 1 + len(REFERENCE_MATERIALS)
+             or not isinstance(data.get("refs"), list)
+-            or len(data["refs"]) != 1
++            or len(data["refs"]) != len(REFERENCE_MATERIALS)
+         ):
+             raise Deny("native_refs_shape")
+-        ref = data["refs"][0]
+-        if (
+-            not isinstance(ref, dict)
+-            or set(ref) != {
+-                "ref_id",
+-                "path",
+-                "kind",
+-                "status",
+-                "added_at",
+-                "checked_at",
++        expected = {
++            ref_id: (file_name, ref_id in removed_ref_ids)
++            for ref_id, file_name, _material_name, _material_id in REFERENCE_MATERIALS
++        }
++        found: dict[str, dict[str, Any]] = {}
++        for ref in data["refs"]:
++            if (
++                not isinstance(ref, dict)
++                or set(ref) != {
++                    "ref_id",
++                    "path",
++                    "kind",
++                    "status",
++                    "added_at",
++                    "checked_at",
++                }
++                or ref.get("ref_id") not in expected
++                or ref.get("ref_id") in found
++            ):
++                raise Deny("native_refs_identity")
++            ref_id = ref["ref_id"]
++            file_name, is_removed = expected[ref_id]
++            path_value = ref.get("path")
++            if (
++                not isinstance(path_value, str)
++                or _norm(path_value) != _norm(self.source_root / file_name)
++                or ref.get("kind") != "file"
++                or ref.get("status") != ("removed" if is_removed else "ok")
++                or not isinstance(ref.get("added_at"), str)
++                or not ref["added_at"]
++                or not isinstance(ref.get("checked_at"), str)
++                or not ref["checked_at"]
++            ):
++                raise Deny("native_refs_identity")
++            found[ref_id] = {
++                "ref_id": ref_id,
++                "path": path_value,
++                "canonical": _norm(path_value),
++                "kind": ref["kind"],
++                "status": ref["status"],
+             }
+-            or ref.get("ref_id") != self.REF_ID
+-            or not isinstance(ref.get("path"), str)
+-            or _norm(ref["path"]) != _norm(self.source_root)
+-            or ref.get("kind") != "dir"
+-            or ref.get("status") != "ok"
+-            or not isinstance(ref.get("added_at"), str)
+-            or not ref["added_at"]
+-            or not isinstance(ref.get("checked_at"), str)
+-            or not ref["checked_at"]
+-        ):
++        if set(found) != set(expected):
+             raise Deny("native_refs_identity")
+         self.native_refs_verified = True
+-        return {
+-            "ref_id": ref["ref_id"],
+-            "path": ref["path"],
+-            "canonical": _norm(ref["path"]),
+-            "kind": ref["kind"],
+-            "status": ref["status"],
+-        }
++        return [found[ref_id] for ref_id in sorted(found)]
+ 
+     def _native_materials(self) -> list[dict[str, Any]]:
+         path = self.case / "工作区" / "材料" / "index.json"
+@@ -1045,20 +1073,43 @@
+             raise Deny("native_index_shape")
+         source_now = self._source_snapshot()["files"]
+         by_name = {item["name"]: item for item in source_now}
+-        prefix = f"工作区/引用/{self.REF_ID}/"
++        reference_by_rel = {
++            f"工作区/引用/{ref_id}/{file_name}": (
++                ref_id,
++                file_name,
++                material_name,
++                material_id,
++            )
++            for ref_id, file_name, material_name, material_id in REFERENCE_MATERIALS
++        }
+         found: dict[str, dict[str, Any]] = {}
+         ids: set[str] = set()
+         for row in data["materials"]:
+-            if (
+-                not isinstance(row, dict)
+-                or set(row) != self.MATERIAL_ROW_KEYS
+-                or row.get("origin") != "ref"
+-                or row.get("ref_id") != self.REF_ID
+-                or not isinstance(row.get("rel_path"), str)
+-                or not row["rel_path"].startswith(prefix)
+-            ):
++            if not isinstance(row, dict) or not isinstance(row.get("rel_path"), str):
+                 raise Deny("native_material_row_shape")
+-            file_name = row["rel_path"][len(prefix) :]
++            rel_path = row["rel_path"]
++            if rel_path == CASE_SOURCE_FILE:
++                if (
++                    set(row) not in {self.CASE_ROW_KEYS, self.CASE_ROW_KEYS | {"origin"}}
++                    or row.get("origin") not in (None, "case")
++                    or row.get("ref_id") is not None
++                ):
++                    raise Deny("native_case_material_row_shape")
++                ref_id = None
++                expected_material_id = CASE_MATERIAL_ID
++                file_name = CASE_SOURCE_FILE
++                material_name = "scope-in"
++            else:
++                reference = reference_by_rel.get(rel_path)
++                if (
++                    reference is None
++                    or set(row) != self.MATERIAL_ROW_KEYS
++                    or row.get("origin") != "ref"
++                ):
++                    raise Deny("native_material_row_shape")
++                ref_id, file_name, material_name, expected_material_id = reference
++                if row.get("ref_id") != ref_id:
++                    raise Deny("native_material_ref_identity")
+             expected = by_name.get(file_name)
+             if expected is None or file_name in found:
+                 raise Deny("native_material_path_identity")
+@@ -1070,9 +1121,9 @@
+                 else None
+             )
+             if (
+-                not isinstance(material_id, str)
+-                or MATERIAL_ID.fullmatch(material_id) is None
++                material_id != expected_material_id
+                 or material_id in ids
++                or row.get("name") != material_name
+                 or row.get("type") != "txt"
+                 or row.get("status") != "parsed"
+                 or row.get("size") != expected["bytes"]
+@@ -1088,21 +1139,29 @@
+             ids.add(material_id)
+             found[file_name] = {
+                 "file_name": file_name,
+-                "material_name": expected["material_name"],
++                "material_name": material_name,
+                 "material_id": material_id,
++                "origin": "case" if ref_id is None else "ref",
++                "ref_id": ref_id,
+                 "sha256": row["sha256"],
+                 "bytes": row["size"],
+-                "rel_path": row["rel_path"],
++                "rel_path": rel_path,
+                 "text_path": text_path,
+                 "name": row["name"],
+                 "status": row["status"],
+             }
+-        if set(found) != set(by_name):
++        if set(found) != set(by_name) or tuple(
++            found[name]["material_id"] for name in sorted(found)
++        ) != tuple(sorted(EXPECTED_MATERIAL_IDS)):
+             raise Deny("native_material_set")
+         self.native_index_verified = True
+-        return [found[name] for name in sorted(found)]
+-
+-    def _contains_source_payload(self) -> bool:
++        ordered_names = [
++            CASE_SOURCE_FILE,
++            *[item[1] for item in REFERENCE_MATERIALS],
++        ]
++        return [found[file_name] for file_name in ordered_names]
++
++    def _source_payload_matches(self) -> list[dict[str, str]]:
+         def traversal_access(value: str | os.PathLike[str]) -> pathlib.Path:
+             text = os.fspath(value)
+             if (
+@@ -1126,9 +1185,10 @@
+             return pathlib.Path(value)
+ 
+         wanted = {
+-            (item["bytes"], item["sha256"])
++            (item["bytes"], item["sha256"]): item["name"]
+             for item in self.scope_source["files"]
+         }
++        matches: list[dict[str, str]] = []
+         stack = [self.case]
+         while stack:
+             directory = traversal_access(stack.pop())
+@@ -1143,9 +1203,78 @@
+                     elif entry.is_file(follow_symlinks=False):
+                         info = entry.stat(follow_symlinks=False)
+                         key = (info.st_size, _sha256(entry_path))
+-                        if key in wanted:
+-                            return True
+-        return False
++                        source_name = wanted.get(key)
++                        if source_name is not None:
++                            relative = entry_path.relative_to(self.case).as_posix()
++                            matches.append(
++                                {
++                                    "source_name": source_name,
++                                    "rel_path": relative,
++                                }
++                            )
++        return sorted(matches, key=lambda item: item["rel_path"])
++
++    def _case_copy_state(self) -> dict[str, Any]:
++        matches = self._source_payload_matches()
++        expected = [{"source_name": CASE_SOURCE_FILE, "rel_path": CASE_SOURCE_FILE}]
++        if matches != expected:
++            raise Deny("case_original_copy_identity")
++        self.case_original_copy_verified = True
++        return {
++            "case_original_rel_path": CASE_SOURCE_FILE,
++            "source_payload_matches": matches,
++            "reference_original_copies": 0,
++        }
++
++    def _verify_case_only_state(self) -> list[dict[str, Any]]:
++        if not self._own_registry() or not self._task_dir_empty():
++            raise Deny("case_or_task_scope")
++        if not self._source_unchanged():
++            raise Deny("source_identity_changed")
++        data = self._case_index()
++        if data.get("next_seq") != 2 or len(data["materials"]) != 1:
++            raise Deny("case_only_index_shape")
++        row = data["materials"][0]
++        expected = self.expected_source_files[CASE_SOURCE_FILE]
++        if (
++            not isinstance(row, dict)
++            or set(row) not in {self.CASE_ROW_KEYS, self.CASE_ROW_KEYS | {"origin"}}
++            or row.get("origin") not in (None, "case")
++            or row.get("ref_id") is not None
++            or row.get("material_id") != CASE_MATERIAL_ID
++            or row.get("rel_path") != CASE_SOURCE_FILE
++            or row.get("name") != "scope-in"
++            or row.get("type") != "txt"
++            or row.get("status") != "parsed"
++            or row.get("size") != expected["bytes"]
++            or row.get("sha256") != expected["sha256"]
++            or row.get("mtime") != expected["mtime"]
++        ):
++            raise Deny("case_only_material_identity")
++        text = self._text_identity(row)
++        refs_path = self.case / "工作区" / "材料" / "引用.json"
++        if os.path.lexists(refs_path):
++            refs = self._checked_file(refs_path)
++            if refs != {"v": 1, "refs": [], "next_seq": 1}:
++                raise Deny("case_only_refs_not_empty")
++        copy_state = self._case_copy_state()
++        return [
++            {
++                "file_name": CASE_SOURCE_FILE,
++                "material_name": "scope-in",
++                "material_id": CASE_MATERIAL_ID,
++                "origin": "case",
++                "ref_id": None,
++                "sha256": row["sha256"],
++                "bytes": row["size"],
++                "rel_path": row["rel_path"],
++                "text_path": row["text_path"],
++                "name": row["name"],
++                "status": row["status"],
++                "text": text,
++                "case_copy": copy_state,
++            }
++        ]
+ 
+     def _verify_import_state(self) -> list[dict[str, Any]]:
+         if not self._own_registry() or not self._task_dir_empty():
+@@ -1154,9 +1283,7 @@
+             raise Deny("source_identity_changed")
+         self._native_refs()
+         materials = self._native_materials()
+-        if self._contains_source_payload():
+-            raise Deny("source_original_copied_into_case")
+-        self.original_copy_free = True
++        self._case_copy_state()
+         return materials
+ 
+     @staticmethod
+@@ -1387,14 +1514,13 @@
+             material_id: self._text_identity(row)
+             for material_id, row in rows.items()
+         }
+-        if self._contains_source_payload():
+-            raise Deny("source_original_copied_into_case")
+-        self.original_copy_free = True
++        case_copy = self._case_copy_state()
+         return {
+             "refs": refs,
+             "materials": materials,
+             "index": raw,
+             "texts": texts,
++            "case_copy": case_copy,
+         }
+ 
+     def finish_setup(self, public_value: dict[str, Any]) -> None:
+@@ -1406,7 +1532,13 @@
+                 or self.import_attempts != self.MAX_IMPORTS
+                 or self.import_ok != self.MAX_IMPORTS
+                 or self.materials_first is None
+-                or self.materials_after != self.materials_first
++                or len(self.materials_first) != 1
++                or self.materials_first[0].get("material_id") != CASE_MATERIAL_ID
++                or self.materials_after is None
++                or tuple(
++                    item.get("material_id") for item in self.materials_after
++                )
++                != EXPECTED_MATERIAL_IDS
+             ):
+                 raise Deny("setup_state_incomplete")
+         native = self._native_material_state()
+@@ -1428,7 +1560,9 @@
+             len(materials) != len(SCOPE_SOURCE_FILES)
+             or target is None
+             or target["file_name"] != "scope-out.txt"
+-            or target["rel_path"] != f"工作区/引用/{self.REF_ID}/scope-out.txt"
++            or target["ref_id"] != self.TARGET_REF_ID
++            or target["rel_path"]
++            != f"工作区/引用/{self.TARGET_REF_ID}/scope-out.txt"
+         ):
+             raise Deny("target_material_identity")
+         public_by_id = {
+@@ -1439,12 +1573,21 @@
+         if (
+             len(public_by_id) != len(public_rows)
+             or set(public_by_id) != set(by_id)
++            or any(public_by_id[mid].get("name") != item["name"] for mid, item in by_id.items())
+             or any(
+-                public_by_id[mid].get("name") != item["name"]
+-                or public_by_id[mid].get("status") != "parsed"
+-                or public_by_id[mid].get("origin") != "ref"
+-                or public_by_id[mid].get("ref_id") != self.REF_ID
+-                for mid, item in by_id.items()
++                public_by_id[mid].get("status") != "parsed"
++                for mid in by_id
++            )
++            or public_by_id[CASE_MATERIAL_ID].get("origin") not in (None, "case")
++            or public_by_id[CASE_MATERIAL_ID].get("ref_id") is not None
++            or public_by_id[CASE_MATERIAL_ID].get("location") is not None
++            or any(
++                public_by_id[material_id].get("origin") != "ref"
++                or public_by_id[material_id].get("ref_id") != ref_id
++                or not isinstance(public_by_id[material_id].get("location"), str)
++                or _norm(public_by_id[material_id]["location"])
++                != _norm(self.source_root / file_name)
++                for ref_id, file_name, _material_name, material_id in REFERENCE_MATERIALS
+             )
+         ):
+             raise Deny("setup_public_materials_identity")
+@@ -1470,7 +1613,8 @@
+             raise Deny("remove_source_identity")
+         current = self._native_material_state()
+         expected = {
+-            key: baseline[key] for key in ("refs", "materials", "index", "texts")
++            key: baseline[key]
++            for key in ("refs", "materials", "index", "texts", "case_copy")
+         }
+         if current != expected:
+             raise Deny("remove_pre_state_changed")
+@@ -1483,9 +1627,17 @@
+             raise Deny("remove_post_case_or_task_scope")
+         if not self._source_unchanged():
+             raise Deny("remove_external_source_changed")
+-        refs = self._native_refs()
+-        if refs != baseline["refs"] or refs["status"] != "ok":
+-            raise Deny("remove_ref_not_live")
++        refs = self._native_refs(
++            removed_ref_ids=frozenset({self.TARGET_REF_ID})
++        )
++        expected_refs = []
++        for ref in baseline["refs"]:
++            expected_ref = dict(ref)
++            if expected_ref["ref_id"] == self.TARGET_REF_ID:
++                expected_ref["status"] = "removed"
++            expected_refs.append(expected_ref)
++        if refs != expected_refs:
++            raise Deny("remove_ref_state")
+         raw = self._case_index()
+         before_raw = baseline["index"]
+         if (
+@@ -1550,9 +1702,7 @@
+         }
+         if remaining_texts != expected_texts:
+             raise Deny("remove_remaining_text_identity")
+-        if self._contains_source_payload():
+-            raise Deny("remove_source_original_copied_into_case")
+-        self.original_copy_free = True
++        case_copy = self._case_copy_state()
+         return {
+             "refs": refs,
+             "index": raw,
+@@ -1560,6 +1710,7 @@
+             "remaining_ids": sorted(remaining_ids),
+             "remaining_texts": remaining_texts,
+             "target_text_absent": True,
++            "case_copy": case_copy,
+             "source_unchanged": True,
+         }
+ 
+@@ -1922,18 +2073,37 @@
+             return self._deny("RUN_FAILED")
+         if not self._no_query(query):
+             return self._deny("IMPORT_QUERY")
+-        keys = {"case_id", "paths", "target", "unzip", "mode"}
+-        if not self._exact_keys(data, keys):
+-            return self._deny("IMPORT_BODY")
+         source = self.ready / SCOPE_SOURCE_NAME
+-        if not (
+-            data["case_id"] == self.case_id
+-            and data["paths"] == [str(source)]
+-            and data["target"] is None
+-            and data["unzip"] is False
+-            and data["mode"] == "ref"
+-        ):
+-            return self._deny("IMPORT_SCOPE")
++        case_path = str(source / CASE_SOURCE_FILE)
++        reference_paths = [
++            str(source / file_name)
++            for _ref_id, file_name, _material_name, _material_id in REFERENCE_MATERIALS
++        ]
++        with self.lock:
++            attempt_index = self.import_attempts
++        if attempt_index == 0:
++            if (
++                not self._exact_keys(data, {"case_id", "paths", "target", "unzip"})
++                or data["case_id"] != self.case_id
++                or data["paths"] != [case_path]
++                or data["target"] is not None
++                or data["unzip"] is not False
++            ):
++                return self._deny("IMPORT_SCOPE")
++        elif attempt_index == 1:
++            if (
++                not self._exact_keys(
++                    data, {"case_id", "paths", "target", "unzip", "mode"}
++                )
++                or data["case_id"] != self.case_id
++                or data["paths"] != reference_paths
++                or data["target"] is not None
++                or data["unzip"] is not False
++                or data["mode"] != "ref"
++            ):
++                return self._deny("IMPORT_SCOPE")
++        else:
++            return self._deny("IMPORT_LIMIT")
+         with self.lock:
+             if self.setup_complete:
+                 return self._deny("IMPORT_AFTER_SETUP")
+@@ -1948,13 +2118,13 @@
+                 return "source_identity_changed"
+             if self.import_attempts == 1:
+                 try:
+-                    materials = self._verify_import_state()
++                    materials = self._verify_case_only_state()
+                 except Deny as exc:
+                     self._fail(exc.code)
+                     return exc.code
+                 if materials != self.materials_first:
+-                    self._fail("IMPORT_REPLAY_IDENTITY")
+-                    return "IMPORT_REPLAY_IDENTITY"
++                    self._fail("FIRST_IMPORT_CHANGED")
++                    return "FIRST_IMPORT_CHANGED"
+             self.import_attempts += 1
+             self.inflight = "materials_import"
+         return None
+@@ -2339,51 +2509,74 @@
+         value = response.get("value") if isinstance(response, dict) else None
+         scan = value.get("scan") if isinstance(value, dict) else None
+         registered = value.get("registered") if isinstance(value, dict) else None
+-        expected_scan = (
+-            {
+-                "added": len(SCOPE_SOURCE_FILES),
+-                "changed": 0,
+-                "removed": 0,
+-                "failed": 0,
+-                "review_needed": True,
+-            }
+-            if self.import_attempts == 1
+-            else {
+-                "added": 0,
+-                "changed": 0,
+-                "removed": 0,
+-                "failed": 0,
+-                "review_needed": False,
+-            }
+-        )
+-        if not (
+-            status == 200
+-            and isinstance(response, dict)
+-            and set(response) == {"ok", "value"}
+-            and response.get("ok") is True
+-            and isinstance(value, dict)
+-            and set(value) == {"copied", "skipped", "scan", "registered"}
+-            and value.get("copied") == []
+-            and value.get("skipped") == []
+-            and scan == expected_scan
+-            and isinstance(registered, list)
+-            and len(registered) == 1
+-            and isinstance(registered[0], dict)
+-            and set(registered[0]) == {"path", "ref_id", "kind"}
+-            and isinstance(registered[0].get("path"), str)
+-            and _norm(registered[0]["path"]) == _norm(self.source_root)
+-            and registered[0].get("ref_id") == self.REF_ID
+-            and registered[0].get("kind") == "dir"
+-        ):
+-            raise Deny("MATERIALS_IMPORT_RESPONSE")
+-        materials = self._verify_import_state()
+         if self.import_attempts == 1:
++            source = str(self.source_root / CASE_SOURCE_FILE)
++            if not (
++                status == 200
++                and isinstance(response, dict)
++                and set(response) == {"ok", "value"}
++                and response.get("ok") is True
++                and isinstance(value, dict)
++                and set(value) == {"copied", "skipped", "scan"}
++                and value.get("copied")
++                == [{"from": source, "to": CASE_SOURCE_FILE}]
++                and value.get("skipped") == []
++                and scan
++                == {
++                    "added": 1,
++                    "changed": 0,
++                    "removed": 0,
++                    "failed": 0,
++                    "review_needed": True,
++                }
++            ):
++                raise Deny("CASE_COPY_IMPORT_RESPONSE")
++            materials = self._verify_case_only_state()
+             self.materials_first = materials
+-        elif materials != self.materials_first:
+-            raise Deny("IMPORT_REPLAY_IDENTITY")
+-        self.materials_after = materials
++            self.phase = "one_import"
++        else:
++            expected_registered = [
++                {
++                    "path": str(self.source_root / file_name),
++                    "ref_id": ref_id,
++                    "kind": "file",
++                }
++                for ref_id, file_name, _material_name, _material_id in REFERENCE_MATERIALS
++            ]
++            if not (
++                status == 200
++                and isinstance(response, dict)
++                and set(response) == {"ok", "value"}
++                and response.get("ok") is True
++                and isinstance(value, dict)
++                and set(value) == {"copied", "skipped", "scan", "registered"}
++                and value.get("copied") == []
++                and value.get("skipped") == []
++                and scan
++                == {
++                    "added": len(REFERENCE_MATERIALS),
++                    "changed": 0,
++                    "removed": 0,
++                    "failed": 0,
++                    "review_needed": True,
++                }
++                and isinstance(registered, list)
++                and len(registered) == len(expected_registered)
++                and all(
++                    isinstance(item, dict)
++                    and set(item) == {"path", "ref_id", "kind"}
++                    and isinstance(item.get("path"), str)
++                    and _norm(item["path"]) == _norm(expected["path"])
++                    and item.get("ref_id") == expected["ref_id"]
++                    and item.get("kind") == expected["kind"]
++                    for item, expected in zip(registered, expected_registered)
++                )
++            ):
++                raise Deny("REFERENCE_IMPORT_RESPONSE")
++            materials = self._verify_import_state()
++            self.materials_after = materials
++            self.phase = "done"
+         self.import_ok += 1
+-        self.phase = "one_import" if self.import_ok == 1 else "done"
+ 
+     def _complete_remove(self, status: int | None, response: Any) -> None:
+         value = response.get("value") if isinstance(response, dict) else None
+@@ -2836,6 +3029,23 @@
+                 and set(self.post_remove_list_results)
+                 == {"default", "false", "true"}
+             )
++            mixed_materials_verified = bool(
++                self.materials_first is not None
++                and tuple(
++                    item.get("material_id") for item in self.materials_first
++                )
++                == (CASE_MATERIAL_ID,)
++                and self.materials_first[0].get("origin") == "case"
++                and self.materials_after is not None
++                and tuple(
++                    item.get("material_id") for item in self.materials_after
++                )
++                == EXPECTED_MATERIAL_IDS
++                and tuple(
++                    item.get("origin") for item in self.materials_after
++                )
++                == ("case", "ref", "ref")
++            )
+             protocol_complete = bool(
+                 self.phase == "done"
+                 and self.setup_complete
+@@ -2844,21 +3054,20 @@
+                 and self.case_id is not None
+                 and self.case_open_ok == 1 + self.gui_case_open_ok
+                 and self.gui_case_open_ok <= 2
+-                and self.materials_first is not None
+-                and self.materials_after == self.materials_first
++                and mixed_materials_verified
+                 and self.remove_attempts == 1
+                 and self.remove_ok == 1
+                 and self.pre_remove_baseline is not None
+                 and self.post_remove_baseline is not None
+                 and self.post_remove_baseline.get("remaining_ids")
+-                == ["M0001", "M0003"]
++                == list(REMAINING_MATERIAL_IDS)
+                 and pre_remove_list_buckets_valid
+                 and post_remove_list_buckets_valid
+                 and self.post_remove_list_ok >= 1
+                 and bool(self.post_remove_list_results)
+                 and self.native_refs_verified
+                 and self.native_index_verified
+-                and self.original_copy_free
++                and self.case_original_copy_verified
+                 and source_unchanged
+                 and task_empty
+                 and registry_owned
+@@ -2906,10 +3115,12 @@
+                 ),
+                 "read_counts": dict(sorted(self.read_counts.items())),
+                 "read_ok": dict(sorted(self.read_ok.items())),
+-                "ref_id": self.REF_ID,
++                "target_ref_id": self.TARGET_REF_ID,
++                "ref_ids": [item[0] for item in REFERENCE_MATERIALS],
+                 "native_refs_verified": self.native_refs_verified,
+                 "native_index_verified": self.native_index_verified,
+-                "source_original_copy_free": self.original_copy_free,
++                "case_original_copy_verified": self.case_original_copy_verified,
++                "case_original_rel_path": CASE_SOURCE_FILE,
+                 "task_dir_empty": task_empty,
+                 "case_registry_owned": registry_owned,
+                 "source_identity_before": self.source_identity_before,
+@@ -2917,10 +3128,7 @@
+                 "source_unchanged": source_unchanged,
+                 "materials_first": self.materials_first,
+                 "materials_after": self.materials_after,
+-                "material_identity_retained": bool(
+-                    self.materials_first is not None
+-                    and self.materials_after == self.materials_first
+-                ),
++                "mixed_materials_verified": mixed_materials_verified,
+                 "pre_remove": self.pre_remove_baseline,
+                 "post_remove": self.post_remove_baseline,
+                 "post_remove_list": self.post_remove_list,
+@@ -3106,19 +3314,29 @@
+             or opened.get("created") is not True
+         ):
+             raise Deny("setup_case_identity")
+-        import_body = {
++        case_import = {
+             "case_id": case_id,
+-            "paths": [str(source)],
++            "paths": [str(source / CASE_SOURCE_FILE)],
++            "target": None,
++            "unzip": False,
++        }
++        reference_import = {
++            "case_id": case_id,
++            "paths": [
++                str(source / file_name)
++                for _ref_id, file_name, _material_name, _material_id
++                in REFERENCE_MATERIALS
++            ],
+             "target": None,
+             "unzip": False,
+             "mode": "ref",
+         }
+-        first = await post("/api/materials/import", import_body)
+-        second = await post("/api/materials/import", import_body)
++        first = await post("/api/materials/import", case_import)
++        second = await post("/api/materials/import", reference_import)
+         if (
+             first.get("scan")
+             != {
+-                "added": 3,
++                "added": 1,
+                 "changed": 0,
+                 "removed": 0,
+                 "failed": 0,
+@@ -3126,11 +3344,11 @@
+             }
+             or second.get("scan")
+             != {
+-                "added": 0,
++                "added": 2,
+                 "changed": 0,
+                 "removed": 0,
+                 "failed": 0,
+-                "review_needed": False,
++                "review_needed": True,
+             }
+         ):
+             raise Deny("setup_import_scan")
+@@ -3142,14 +3360,19 @@
+     return copy.deepcopy(
+         {
+             "case_id": case_id,
+-            "ref_id": firewall.REF_ID,
++            "case_material_id": CASE_MATERIAL_ID,
++            "reference_material_ids": list(REFERENCE_MATERIAL_IDS),
++            "target_ref_id": firewall.TARGET_REF_ID,
++            "ref_ids": [item[0] for item in REFERENCE_MATERIALS],
+             "material_ids": [
+                 item["material_id"] for item in baseline["materials"]
+             ],
+             "target_material_id": TARGET_MATERIAL_ID,
++            "case_original_rel_path": CASE_SOURCE_FILE,
+             "public_materials": baseline["public_materials"],
+             "index": baseline["index"],
+             "refs": baseline["refs"],
++            "case_copy": baseline["case_copy"],
+             "requests": firewall.setup_snapshot(),
+         }
+     )
+@@ -3475,8 +3698,8 @@
+             else "FAILED_FOR_ROOT_REVIEW"
+         ),
+         "not_acceptance": (
+-            "Finite backend/guard slice plus separately run GUI; not the "
+-            "whole T32, packaging, or production acceptance."
++            "Finite mixed-materials backend/guard slice plus separately run "
++            "root GUI; not the whole T37, packaging, or production acceptance."
+         ),
+         "root": str(root),
+         "prepared_sha256": prepared_sha256,
+@@ -3672,7 +3895,9 @@
+ 
+ 
+ def main() -> int:
+-    parser = argparse.ArgumentParser(description="T31 batch-selection native HTTP entry")
++    parser = argparse.ArgumentParser(
++        description="T37 mixed legacy-copy/reference native HTTP entry"
++    )
+     mode = parser.add_mutually_exclusive_group(required=True)
+     mode.add_argument("--prepare", action="store_true")
+     mode.add_argument("--serve", action="store_true")

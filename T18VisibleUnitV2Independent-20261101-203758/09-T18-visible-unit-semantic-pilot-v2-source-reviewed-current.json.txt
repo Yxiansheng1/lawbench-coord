@@ -1,0 +1,46 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-visible-unit-semantic-pilot-v2-source-reviewed-current.json
+SHA a91c45cf97c8e8d395b0dde068b8bbcde4707943beb3ca413cfec0f221ae096c
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_SOURCE_AND_OFFLINE_V2_PROTOCOL_ONLY_NOT_SEMANTICS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+0008       "bytes": 34800,
+0009       "sha256": "9c4d1e54f0fe6f412e9e7fc4641ce6868ee2680fe9db042cddf231444a7433e1",
+0010       "mtime_ns": "1793535346890854900"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+0014       "bytes": 29274,
+0015       "sha256": "e9c41d4ca0f35b142751ad1a47bb1d0912c1d7e25a9f6fdb4b04d0d773d07742",
+0016       "mtime_ns": "1793536141350334000"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\source-manifest.json",
+0026       "bytes": 505,
+0027       "sha256": "063c039988c8e736b11f26a721b1ea5d7ce2ac904c08b220e1577a815f99e050",
+0028       "mtime_ns": "1793536399198824000"
+0029     }
+0030   ],
+0031   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0032   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-visible-unit-semantic-pilot-v2-passive-current.json",
+0033   "pending_independent_reviews": true,
+0034   "Root_review": "Full consumer+controls/setupcleanup/sourcecommands/writefaces/formals and every newhunk read. Unit framing/schema only, no semanticclassifier. Generated exactsource/draft/selfcheck anchors, fullsuppliedidset coverage not factcompleteness.",
+0035   "qualifications": [
+0036     "OriginalV2source deadline14commands13zero1PSformaterror+3consumerpatches, extraoldmanifestread/dataJSONstructuralmetadata+source rereads; no Node/APPtest/HTTP/businessmodel; no formal/manifest. Oldstate/raw held.",
+0037     "Controlsclosure5/5commands+6patch/sourceonly removedunauthorizedOVERALL_PASS_ISSUE prose regex and exactlineunit guard; manifestgenerated once. Sourcepartialconsumer34891->34800 onlytwotargetedfixes.",
+0038     "RootactualofflineRED1.563s controlJSON-of-JSON newline assumption; originalRED held, actualinputnotreached. Wireclosuredeadline9/9+1patch,4extranarrowconsumerreads, no formal/manifest. Finalizer4/4+3patch fixed deepEqualvaluebut wrongmanifestroot/files; RootSTATICREJECT beforeNode. Exactmanifestclosure7/7 .NETwrites plusunapprovedcoordfilename survey/extraoldformalreadback; rawwins blanketdiscipline notclean.",
+0039     "Helpercomments no realtimers isoverbroad: AbortSignal timers constructed but no timerwait/HTTP. Sourcecontrols import no actualNetwork, originalguardheld/denials0.",
+0040     "No product/schema/Skill/SDK/Host/TaskState changes; V1actualfailseals immutable; V2businessmodel0/Key0. Sourceauthoridentitymissing forshortcompletedjobs NOTOSgoneproof; no rerunforidentity."
+0041   ],
+0042   "no_business_or_legal_PASS": true,
+0043   "Packaging": "HOLD"
+0044 }

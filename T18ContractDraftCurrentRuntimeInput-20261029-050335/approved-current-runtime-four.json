@@ -1,0 +1,174 @@
+{
+  "private": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552781,
+      "sha256": "f0b3f4c9bdc77c4b6c6de6eb7355c179a23568d7a15a8716a5f45683d7ee1f2f"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\manifest.json",
+      "bytes": 58200,
+      "sha256": "712f3b68d73d793c3caa6391bcc0f14e48b66c83dd5364e78b02db8a84affc14"
+    }
+  ],
+  "build": {
+    "at": "2026-10-29T05:01:59.614680+08:00",
+    "verdict": "STATIC25_CURRENT_CONTRACT_DRAFT_QUESTION_RECOVERY_ACCEPTED_BUILD0",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ContractDraftPrivateBuild-root-20261029-050141",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141",
+    "manifest_sha": "712f3b68d73d793c3caa6391bcc0f14e48b66c83dd5364e78b02db8a84affc14",
+    "manifest_bytes": 58200,
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "source_modules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "current_gate_agent_sha": "f0b3f4c9bdc77c4b6c6de6eb7355c179a23568d7a15a8716a5f45683d7ee1f2f",
+    "current_gate_host_sha": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b",
+    "compiled_gate_strings_present": true,
+    "build_exit": 0,
+    "elapsed_s": 15.3489274,
+    "OS": [
+      {
+        "pid": 45800,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639288181019413190,
+        "gone": true
+      },
+      {
+        "pid": 10156,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birthTicks": 639288181019483772,
+        "gone": true
+      },
+      {
+        "pid": 29460,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288181028468511,
+        "gone": true
+      },
+      {
+        "pid": 2904,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288181034098874,
+        "gone": true
+      },
+      {
+        "pid": 38980,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639288181032402235,
+        "gone": true
+      }
+    ],
+    "OS_complete_count": 5,
+    "OS_partial_count": 0,
+    "full_OS_identity_proof": true,
+    "OS_qualification": "5 complete observed build exe/UTCbirth identities gone; 0 partial fast-exit PID identities retained as NOT_PROVEN. Natural build0; no forced stop. Static AST helper OS identity not collected separately.",
+    "AST_helper_OS_identity_not_collected": true,
+    "forced": false,
+    "GUI": false,
+    "model_calls": 0,
+    "original_contract_business_pass": false,
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "source_review": {
+    "verdict": "EXACT_CONTRACT_DRAFT_QUESTION_AND_EXISTING_FEEDBACK_PREDICATES_REVIEWED_PENDING_UNIT",
+    "at_scope": "SOURCE_AUDIT_AND_UNIT_RUNNER_PREPARATION_ONLY",
+    "consumer_product": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "product_sha256": "40ab48b82a3bb8b1ae488daa1ba930924d1b8b292aa70114bf317e9a633d5794",
+    "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-draft-question-recovery.spec.ts",
+    "test_sha256": "cb70095abd6d1b216e9d9a2011c587c26054f6ff6e5576fdad9b0f03cd517928",
+    "full_product_byte_inverse": true,
+    "old_tests_TaskState_Host_Skills_all_bytes_held": true,
+    "unchanged_notice_all_bytes_held": true,
+    "only_four_confirmed_required_Skills": true,
+    "feedback_only_review_and_draft": true,
+    "full_new_test_source_and_all_actual_commands_reviewed": true,
+    "author_actual_commands": 54,
+    "author_success": 50,
+    "author_nonzero": 4,
+    "author_runtime": 0,
+    "actual_red": "run-yB8LvP 5model200 ask0 save1 citations0 hints21 feedbacknotice0",
+    "unit_scope": "Actual LegalAgent/Host metadata/TaskState with in-memory Core plus existing actual ToolRuntime pipeline; no model or NativeR claim",
+    "model_started": false,
+    "full_T18": false,
+    "Packaging": "HOLD"
+  },
+  "equivalent51_types0": {
+    "verdict": "CURRENT_PRODUCT51_EQUIVALENT_DISJOINT_UNIT_PASS_TYPES0_OLD_FAILURE_PRESERVED",
+    "at_utc": "2026-10-28T21:01:40.447579+00:00",
+    "current_product_sha256": "40ab48b82a3bb8b1ae488daa1ba930924d1b8b292aa70114bf317e9a633d5794",
+    "reused_disjoint_current_source_PASS": 46,
+    "fresh_exact_control_copy_PASS": 5,
+    "equivalent_total": 51,
+    "original50_PLUS5_NOT_ADDED": true,
+    "original_unit_failed1_retained": true,
+    "current_new_contract7_PASS": true,
+    "old_tests_all_bytes_held": true,
+    "copy_only_single_other_identity_change": true,
+    "types_exit0": true,
+    "source_changes": [],
+    "full_observed_OS_gone": 15,
+    "forced": false,
+    "unit_original_packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ContractDraftQuestionRecoveryUnit-root-20261029-045457",
+    "unit_current_copy_packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ContractDraftOtherControlUnit-root-20261029-050126",
+    "unit_original_s": 5.5051724,
+    "unit_new_copy_s": 1.4407708,
+    "types_new_copy_s": 3.3640648,
+    "model_calls": 0,
+    "full_T18": false,
+    "Packaging": "HOLD"
+  }
+}

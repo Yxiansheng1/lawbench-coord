@@ -1,0 +1,80 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830\\server.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\00-server.py",
+    "bytes": 67862,
+    "sha256": "ec4e15f047f3ae6264dc25ad582cb2191ce085e9bc7c5add4bb5df0212ba0dd8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830\\probe.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\01-probe.mjs",
+    "bytes": 26101,
+    "sha256": "b981e58b4863821fb31a7cf7e73120e3d1323f803cb0b7034bcf05d2a55f2e0c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\README.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\02-README.md",
+    "bytes": 9653,
+    "sha256": "2a0169abc98195a4c70ebdd7b9e9d0aa0eab9bb4b3edef3485959ec2c5c034bc"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\_gen\\case_criminal01.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\03-case_criminal01.py",
+    "bytes": 7509,
+    "sha256": "f4ff04da809b73d76be38e3c27b67554bb8f29bb58a38dc168dccd1a0ef4db85"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\_gen\\verify.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\04-verify.py",
+    "bytes": 17710,
+    "sha256": "80569473f09539128fe1246371d785c5cb9e3f2a15d693850c2a313471a43b46"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\criminal-01\\起诉意见书.pdf",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\05-起诉意见书.pdf",
+    "bytes": 57132,
+    "sha256": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\source.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\06-source.py",
+    "bytes": 6659,
+    "sha256": "5b09e28c59fe4f36c6ed66563969d372a08758360ac8df1b6f5e2bf2ea3ac1b5"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ocr\\render.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\07-render.py",
+    "bytes": 2892,
+    "sha256": "600fbb3c368c6a0dbc71fd173c94ba5455af8518717284b852ccee8b72849ae3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ingest\\pdf.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\08-pdf.py",
+    "bytes": 2717,
+    "sha256": "0aabd06821880218ea6ad312e72f32f8fc33c88a0f641170777e9badd8309ae3"
+  },
+  {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pypdfium2_raw\\__init__.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\09-__init__.py",
+    "bytes": 841,
+    "sha256": "c8279b9e5b5171d37a3bcdb6628b7da8fb009d2cb803ea0e877c0381f52722d8"
+  },
+  {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pypdfium2_raw\\bindings.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\10-bindings.py",
+    "bytes": 153023,
+    "sha256": "2f492d5232bfe3a52da5fd4f06ab0c5c6745715840d3128ddc8b7dd9c8ca6fc0"
+  },
+  {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pypdfium2_raw\\pdfium.dll",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\11-pdfium.dll",
+    "bytes": 7381504,
+    "sha256": "69f1e860f6742fbaafcc4db80e785eec9a4ee0da36ea6d1dc0867ea0f18baea6"
+  },
+  {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pypdfium2_raw\\version.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\12-version.json",
+    "bytes": 152,
+    "sha256": "363ee2f6a236c8b262326634ee79c661a6020c9df1fcef734dd928ee6924113a"
+  }
+]

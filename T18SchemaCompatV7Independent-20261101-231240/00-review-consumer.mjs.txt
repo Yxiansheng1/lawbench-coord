@@ -1,0 +1,174 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18SchemaKeywordCompatV7-20261101-230453\review-consumer.mjs
+SHA cba474a6babb427c11d461e7945b29edc5313071599a92771247645dce2129ec
+FOCUSEDRANGES [(660, 830)]
+0660         !/^[0-9a-f]{64}$/.test(pin.sha256)) {
+0661       fail("source", "SOURCE_MANIFEST_INVALID");
+0662     }
+0663   }
+0664   return manifest;
+0665 }
+0666 
+0667 function allowedRefKinds(kind) {
+0668   if (kind === "F") return new Set(["C"]);
+0669   if (kind === "C") return new Set(["F"]);
+0670   if (kind === "Q") return new Set(["F", "C"]);
+0671   return new Set();
+0672 }
+0673 
+0674 function buildStage2ReviewRecordSchema(targetIds, treatments, referenceIds, minimumRefs) {
+0675   const refsSchema = {
+0676     type: "array",
+0677     minItems: minimumRefs,
+0678     maxItems: referenceIds.length,
+0679   };
+0680   if (referenceIds.length > 0) {
+0681     refsSchema.items = {
+0682       type: "string",
+0683       enum: referenceIds,
+0684     };
+0685   }
+0686   return {
+0687     type: "object",
+0688     additionalProperties: false,
+0689     required: ["target_id", "treatment", "refs", "assessment"],
+0690     properties: {
+0691       target_id: {
+0692         type: "string",
+0693         enum: targetIds,
+0694       },
+0695       treatment: {
+0696         type: "string",
+0697         enum: treatments,
+0698       },
+0699       refs: refsSchema,
+0700       assessment: {
+0701         type: "string",
+0702         minLength: 1,
+0703         maxLength: ASSESSMENT_MAX_UTF16,
+0704       },
+0705     },
+0706   };
+0707 }
+0708 
+0709 export function buildStage2ResponseFormat(inventory, reviewTargetIds) {
+0710   const targetIndex = buildCanonicalTargetIndex(inventory, "schema");
+0711   const expectedIds = validateExpectedTargetIds(reviewTargetIds, targetIndex, "schema");
+0712   const branches = [];
+0713   for (const kind of ["F", "C", "Q"]) {
+0714     const activeTargetIds = targetIndex.canonicalIds.filter((targetId) => (
+0715       expectedIds.has(targetId) && targetIndex.targetsById.get(targetId).kind === kind
+0716     ));
+0717     if (activeTargetIds.length === 0) continue;
+0718     const referenceKinds = allowedRefKinds(kind);
+0719     const referenceIds = targetIndex.canonicalIds.filter((targetId) => (
+0720       referenceKinds.has(targetIndex.targetsById.get(targetId).kind)
+0721     ));
+0722     const treatments = kind === "F" ? FRAGMENT_TREATMENTS : SUPPORT_TREATMENTS;
+0723     const positiveTreatment = kind === "F" ? "ADDRESSED" : "SUPPORTED";
+0724     if (referenceIds.length > 0) {
+0725       branches.push(buildStage2ReviewRecordSchema(
+0726         activeTargetIds,
+0727         [positiveTreatment],
+0728         referenceIds,
+0729         1,
+0730       ));
+0731     }
+0732     branches.push(buildStage2ReviewRecordSchema(
+0733       activeTargetIds,
+0734       treatments.filter((treatment) => treatment !== positiveTreatment),
+0735       referenceIds,
+0736       0,
+0737     ));
+0738   }
+0739   return {
+0740     type: "json_schema",
+0741     json_schema: {
+0742       name: "lawbench_target_review_v6",
+0743       schema: {
+0744         type: "object",
+0745         additionalProperties: false,
+0746         required: ["reviews"],
+0747         properties: {
+0748           reviews: {
+0749             type: "array",
+0750             minItems: expectedIds.size,
+0751             maxItems: expectedIds.size,
+0752             items: {
+0753               anyOf: branches,
+0754             },
+0755           },
+0756         },
+0757       },
+0758     },
+0759   };
+0760 }
+0761 
+0762 export function validateStage2Result(parsed, inventory, expectedTargetIds = undefined) {
+0763   exactKeys(parsed, ["reviews"], "stage2", "RESPONSE_SCHEMA_INVALID");
+0764   if (!Array.isArray(parsed.reviews)) fail("stage2", "RESPONSE_SCHEMA_INVALID");
+0765   const targetIndex = buildCanonicalTargetIndex(inventory, "stage2");
+0766   const expectedIds = validateExpectedTargetIds(
+0767     expectedTargetIds === undefined ? targetIndex.canonicalIds : expectedTargetIds,
+0768     targetIndex,
+0769     "stage2",
+0770   );
+0771   const seen = new Set();
+0772   const reviews = [];
+0773   for (const record of parsed.reviews) {
+0774     exactKeys(record, ["target_id", "treatment", "refs", "assessment"],
+0775       "stage2", "REVIEW_SCHEMA_INVALID");
+0776     if (!nonemptyString(record.target_id)) fail("stage2", "TARGET_ID_INVALID");
+0777     const target = targetIndex.targetsById.get(record.target_id);
+0778     if (!target) fail("stage2", "UNKNOWN_TARGET_ID");
+0779     if (!expectedIds.has(record.target_id)) fail("stage2", "UNEXPECTED_TARGET_REVIEW");
+0780     if (seen.has(record.target_id)) fail("stage2", "DUPLICATE_TARGET_ID");
+0781     seen.add(record.target_id);
+0782     const allowedTreatments = target.kind === "F" ? FRAGMENT_TREATMENTS : SUPPORT_TREATMENTS;
+0783     if (!allowedTreatments.includes(record.treatment)) fail("stage2", "TREATMENT_INVALID");
+0784     if (!nonemptyString(record.assessment) || record.assessment.trim() === "" ||
+0785         record.assessment.length > ASSESSMENT_MAX_UTF16) {
+0786       fail("stage2", "ASSESSMENT_INVALID");
+0787     }
+0788     if (!Array.isArray(record.refs)) fail("stage2", "REFS_INVALID");
+0789     const allowedKinds = allowedRefKinds(target.kind);
+0790     const refIds = new Set();
+0791     for (const ref of record.refs) {
+0792       if (!nonemptyString(ref)) fail("stage2", "REF_INVALID");
+0793       const refTarget = targetIndex.targetsById.get(ref);
+0794       if (!refTarget) fail("stage2", "UNKNOWN_REF_TARGET_ID");
+0795       if (!allowedKinds.has(refTarget.kind)) fail("stage2", "REF_FAMILY_INVALID");
+0796       if (refIds.has(ref)) fail("stage2", "REF_DUPLICATE");
+0797       refIds.add(ref);
+0798     }
+0799     if ((record.treatment === "ADDRESSED" || record.treatment === "SUPPORTED") &&
+0800         record.refs.length === 0) {
+0801       fail("stage2", "POSITIVE_TREATMENT_WITHOUT_REF");
+0802     }
+0803     reviews.push({
+0804       target_id: record.target_id,
+0805       treatment: record.treatment,
+0806       assessment: record.assessment,
+0807       target: { ...target },
+0808       refs: record.refs.map((ref) => ({ ...targetIndex.targetsById.get(ref) })),
+0809     });
+0810   }
+0811   if ([...expectedIds].some((targetId) => !seen.has(targetId))) {
+0812     fail("stage2", "MISSING_TARGET_REVIEW");
+0813   }
+0814   if (reviews.length !== expectedIds.size) fail("stage2", "REVIEW_COUNT_MISMATCH");
+0815   const order = new Map(targetIndex.canonicalIds.map((targetId, position) => [targetId, position]));
+0816   reviews.sort((left, right) => order.get(left.target_id) - order.get(right.target_id));
+0817   return { reviews };
+0818 }
+0819 
+0820 export function mergeShardReviews(inventory, shardPlan, shardReviewSets) {
+0821   const targetIndex = buildCanonicalTargetIndex(inventory, "merge");
+0822   if (!Array.isArray(shardPlan) || shardPlan.length !== REQUEST_STAGES.length) {
+0823     fail("merge", "SHARD_PLAN_INVALID");
+0824   }
+0825   if (!Array.isArray(shardReviewSets) || shardReviewSets.length !== shardPlan.length) {
+0826     fail("merge", "SHARD_RESULTS_INVALID");
+0827   }
+0828   const shardTargetIds = [];
+0829   const globallyPlanned = new Set();
+0830   for (let index = 0; index < shardPlan.length; index += 1) {

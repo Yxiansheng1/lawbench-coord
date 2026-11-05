@@ -1,0 +1,180 @@
+function Assert-File([string]$Path, [string]$Label) {
+  if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
+    throw "$Label missing: $Path"
+  }
+}
+
+function Assert-Directory([string]$Path, [string]$Label) {
+  if (-not (Test-Path -LiteralPath $Path -PathType Container)) {
+    throw "$Label missing: $Path"
+  }
+}
+
+function Get-Sha256([string]$Path) {
+  return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+
+function Get-ExtendedLocalPath([string]$Path) {
+  $full = [IO.Path]::GetFullPath($Path)
+  if ($full.StartsWith('\\?\', [StringComparison]::Ordinal)) {
+    return $full
+  }
+  if ($full.StartsWith('\\', [StringComparison]::Ordinal)) {
+    return '\\?\UNC\' + $full.Substring(2)
+  }
+  return '\\?\' + $full
+}
+
+function Assert-Sha256([string]$Path, [string]$Expected, [string]$Label) {
+  Assert-File $Path $Label
+  if ((Get-Sha256 $Path) -ne $Expected) {
+    throw "$Label hash mismatch: $Path"
+  }
+}
+
+function Get-T30CaseFile([string]$Root, [string]$RelativePath) {
+  $path = Join-Path $Root ($RelativePath.Replace('/', '\'))
+  Assert-NoReparsePath $path
+  $extended = Get-ExtendedLocalPath $path
+  if (-not (Test-Path -LiteralPath $extended -PathType Leaf)) {
+    throw "T30 case file missing: $RelativePath"
+  }
+  return $extended
+}
+
+function Assert-T30PreparedInputs {
+  $preparedPath = Join-Path $rootFull 'prepared.json'
+  $admissionPath = Join-Path $rootFull 'admission.json'
+  $casePath = Join-Path $rootFull 'case'
+  $settingsPath = Join-Path $PrivateAppdata 'settings.json'
+  $markerPath = Join-Path $PrivateAppdata 'daily-case.json'
+  Assert-File $preparedPath 'T30 prepared manifest'
+  Assert-File $admissionPath 'T30 admission report'
+  Assert-NoReparsePath $casePath
+  Assert-NoReparsePath $SourceCaseRoot
+  $sourceRunReportPath = 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T30\GenuineSessionAdmission-20261028-092536\run-kLVTTq\admission-report.json'
+  Assert-Sha256 $sourceRunReportPath $SourceRunReportSha256 'T30 source run report'
+
+  $manifest = Get-Content -Raw -LiteralPath $preparedPath | ConvertFrom-Json
+  if ($manifest.format -cne $PreparedFormat -or
+      $manifest.expectedCaseId -cne $ExpectedCaseId -or
+      [string]$manifest.sourceCaseRoot -ine $SourceCaseRoot -or
+      [string]$manifest.sourceRunReport.sha256 -cne $SourceRunReportSha256 -or
+      [string]$manifest.sourceRunReport.packetManifestSha256 -cne $SourceRunPacketManifestSha256) {
+    throw 'T30 prepared manifest identity mismatch'
+  }
+
+  $expectedRows = @(
+    @{ RelativePath = "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/$SourceSession/session.v4.jsonl"; Bytes = $SourceSessionBytes; Sha256 = $SourceSessionSha256 },
+    @{ RelativePath = "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/$ChildSession/session.v4.jsonl"; Bytes = $ChildSessionBytes; Sha256 = $ChildSessionSha256 },
+    @{ RelativePath = '工作区/case.db'; Bytes = 65536; Sha256 = '47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6' },
+    @{ RelativePath = '工作区/case.db-shm'; Bytes = 32768; Sha256 = 'fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb' },
+    @{ RelativePath = '工作区/case.db-wal'; Bytes = 0; Sha256 = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' }
+  )
+  $actualManifestRows = @($manifest.sourceFiles | ForEach-Object {
+    "$($_.relativePath)|$($_.bytes)|$($_.sha256)"
+  } | Sort-Object)
+  $expectedManifestRows = @($expectedRows | ForEach-Object {
+    "$($_.RelativePath)|$($_.Bytes)|$($_.Sha256)"
+  } | Sort-Object)
+  if (($actualManifestRows -join "`n") -cne ($expectedManifestRows -join "`n")) {
+    throw 'T30 prepared source row mismatch'
+  }
+  $sourceFileCount = @(Get-ChildItem -LiteralPath (Get-ExtendedLocalPath $SourceCaseRoot) -Recurse -File -Force).Count
+  if ($sourceFileCount -ne $expectedRows.Count) {
+    throw "T30 source case file count mismatch: $sourceFileCount"
+  }
+  foreach ($row in $expectedRows) {
+    $sourcePath = Get-T30CaseFile $SourceCaseRoot $row.RelativePath
+    if ((Get-Item -LiteralPath $sourcePath).Length -ne [long]$row.Bytes -or
+        (Get-Sha256 $sourcePath) -cne [string]$row.Sha256) {
+      throw "T30 source case changed: $($row.RelativePath)"
+    }
+  }
+
+  $sourceLog = Get-T30CaseFile $casePath "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/$SourceSession/session.v4.jsonl"
+  $childLog = Get-T30CaseFile $casePath "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/$ChildSession/session.v4.jsonl"
+  if ((Get-Item -LiteralPath $sourceLog).Length -ne $SourceSessionBytes -or
+      (Get-Sha256 $sourceLog) -cne $SourceSessionSha256 -or
+      (Get-Item -LiteralPath $childLog).Length -ne $ChildSessionBytes -or
+      (Get-Sha256 $childLog) -cne $ChildSessionSha256) {
+    throw 'T30 copied session log identity mismatch'
+  }
+
+  $admission = Get-Content -Raw -LiteralPath $admissionPath | ConvertFrom-Json
+  if ($admission.format -cne $AdmissionFormat -or
+      $admission.status -cne 'REGISTERED_NOT_GUI_RUN' -or
+      [string]$admission.runRoot -ine $rootFull -or
+      [string]$admission.caseRoot -ine $casePath -or
+      [string]$admission.appdata -ine $PrivateAppdata -or
+      [string]$admission.caseId -cne $ExpectedCaseId -or
+      [string]$admission.registryKind -cne 'daily' -or
+      $admission.sourceBeforeEqualsAfter -ne $true -or
+      [int]$admission.modelCalls -ne 0 -or
+      [int]$admission.httpRequests -ne 0 -or
+      $admission.guiStarted -ne $false -or
+      $admission.deleteAttempted -ne $false) {
+    throw 'T30 admission report identity mismatch'
+  }
+  if ([string]$admission.sourceLogs.source.sha256 -cne $SourceSessionSha256 -or
+      [string]$admission.sourceLogs.child.sha256 -cne $ChildSessionSha256) {
+    throw 'T30 admission log identity mismatch'
+  }
+
+  $cases = Get-Content -Raw -LiteralPath (Join-Path $PrivateAppdata 'cases.json') | ConvertFrom-Json
+  if ($cases.v -ne 1 -or @($cases.cases).Count -ne 1 -or
+      [string]$cases.cases[0].case_id -cne $ExpectedCaseId -or
+      [string]$cases.cases[0].root -ine $casePath -or
+      [string]$cases.cases[0].kind -cne 'daily') {
+    throw 'T30 CaseRegistry cache identity mismatch'
+  }
+
+  $settings = Get-Content -Raw -LiteralPath $settingsPath | ConvertFrom-Json
+  if ($settings.external_llm.enabled -ne $false -or
+      $settings.servers.llm_base_url -cne 'http://127.0.0.1:65001/v1' -or
+      $settings.servers.llm_alt_base_url -cne 'http://127.0.0.1:65003/v1' -or
+      $settings.servers.prep_base_url -cne 'http://127.0.0.1:65002' -or
+      $settings.servers.prep_alt_base_url -cne 'http://127.0.0.1:65004') {
+    throw 'T30 prepared settings content mismatch'
+  }
+  if ((Get-Sha256 $settingsPath) -cne [string]$manifest.settings.sha256 -or
+      (Get-Sha256 $markerPath) -cne [string]$manifest.dailyMarker.sha256) {
+    throw 'T30 settings or daily marker changed'
+  }
+  $marker = Get-Content -Raw -LiteralPath $markerPath | ConvertFrom-Json
+  if ([string]$marker.root -ine $casePath) {
+    throw 'T30 daily marker root mismatch'
+  }
+
+  $rootEntries = @(Get-ChildItem -LiteralPath $rootFull -Force | ForEach-Object Name | Sort-Object)
+  $expectedRootEntries = @('admission.json', 'case', 'prepared.json', 'private') | Sort-Object
+  if (($rootEntries -join ',') -cne ($expectedRootEntries -join ',')) {
+    throw 'T30 fresh prepared root inventory mismatch'
+  }
+  foreach ($artifact in @('started.json', 'ready.json', 'final-metadata.json', 'loop-closed.json', 'requests.ndjson', 'run-error.json')) {
+    if (Test-Path -LiteralPath (Join-Path $rootFull $artifact)) {
+      throw "T30 root already served or reused: $artifact"
+    }
+  }
+  return $manifest
+}
+
+function Assert-NoReparsePath([string]$Path, [switch]$AllowMissingTail) {
+  $full = [IO.Path]::GetFullPath($Path)
+  $driveRoot = [IO.Path]::GetPathRoot($full)
+  $current = $driveRoot
+  foreach ($segment in (($full.Substring($driveRoot.Length)) -split '[\\/]+')) {
+    if (-not $segment) { continue }
+    $current = Join-Path $current $segment
+    $extended = Get-ExtendedLocalPath $current
+    if (-not (Test-Path -LiteralPath $extended)) {
+      if ($AllowMissingTail) { continue }
+      throw "path component missing: $current"
+    }
+    $item = Get-Item -LiteralPath $extended -Force
+    if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+      throw "reparse point refused: $current"
+    }
+  }
+}
+

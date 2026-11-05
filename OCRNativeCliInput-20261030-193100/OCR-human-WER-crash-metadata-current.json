@@ -1,0 +1,30 @@
+{
+  "at_utc": "2026-10-30T09:57:18.719538+00:00",
+  "source": "HUMAN_PASTED_395_GET_WINEVENT_OUTPUT",
+  "Application1000": {
+    "local_time": "2026-10-27T23:43:52+08:00",
+    "app": "C:/prep395/llama/llama-server.exe",
+    "module": "ucrtbase.dll",
+    "module_version": "10.0.26100.9711",
+    "exception_code": "c0000409",
+    "offset": "00000000000a527e",
+    "process_id_hex": "0x24e8",
+    "report_id": "4ce8fe32-06c1-48fb-a940-7e551aa8ab7d"
+  },
+  "WER1001": {
+    "local_time": "2026-10-27T23:44:07+08:00",
+    "event_name": "BEX64",
+    "P8": "c0000409",
+    "P9": "0000000000000007",
+    "report_id": "4ce8fe32-06c1-48fb-a940-7e551aa8ab7d",
+    "store_path": "C:/ProgramData/Microsoft/Windows/WER/ReportArchive/AppCrash_llama-server.exe_135e8b46ca79e8a1f4c7878b0e6cd994c1183_c273f9d1_823f19aa-8e7a-4133-9eec-0a4a1779448e"
+  },
+  "same_report_id_confirmed": true,
+  "OCR_request_correlation_not_unique_trace_id": true,
+  "root_cause": "UNKNOWN",
+  "new_inference": 0,
+  "server_changes": 0,
+  "crash_dump_read": false,
+  "full_suite": false,
+  "Packaging": "HOLD"
+}

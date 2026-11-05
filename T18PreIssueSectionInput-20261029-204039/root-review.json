@@ -1,0 +1,29 @@
+{
+  "verdict": "SOURCE_REVIEWED_SECTION_COUNT_CONTRACT_REQUIRES_CORRECTION_BEFORE_RUNTIME",
+  "commands": 124,
+  "success": 96,
+  "nonzero": 28,
+  "author_runtime": 0,
+  "all124_actual_commands_writefaces_full1181entry_delta439service_delta203manifest_delta_README_formal_reviewed": true,
+  "whole_manifest_inverse": true,
+  "B_tracked42_held": true,
+  "only_new4files_and_formal": true,
+  "primary_original8_held": true,
+  "private4_current_held": true,
+  "root_preliminary_civil_template_issue_withdrawn": true,
+  "civil_template_reason": "all three executable verify_private_case callsites use defaultFalse; exact empty subdirectory set is enforced. The old three-name variable only belongs to an unused true branch, no blocking defect proved.",
+  "golden_notes_author_read_scope_deviation_retained": true,
+  "business_prompt_exact_before_separator_no_golden_assertions": true,
+  "finding": {
+    "id": "OUTPUT_SECTION_CONTRACT_OVERRESTRICTED",
+    "status": "CONFIRMED_PRIMARY_BEFORE_RUNTIME",
+    "primary": "pre-issue-check/SKILL.md handling step1 explicitly permits a separate unverified-citations section after section5; shared rule requires self-check at end",
+    "candidate": "The exact-five count rejects a sixth primary-required supplementary section or inner numbered check items despite all five mandatory nonempty ordered sections being present.",
+    "repair": "ONE predicate ==5 to >=5 only; keep all five named heading/order/nonempty/title/table/test-note checks unchanged; no model/prompt/primary changes"
+  },
+  "cumulative_commands": 7343,
+  "cumulative_success": 6342,
+  "cumulative_nonzero": 1001,
+  "historical_runtime_violating_jobs": 6,
+  "Packaging": "HOLD"
+}

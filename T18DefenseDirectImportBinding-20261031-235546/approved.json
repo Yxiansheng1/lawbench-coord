@@ -1,0 +1,20 @@
+{
+  "old_source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseReadGateRecovery-20261031-233816",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546",
+  "literal_replacements": [
+    {
+      "old": "import('file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/CoveragePrivateBuild-20261031-1845/private-output-20261031-184648/profile-node_modules/lawbench-dsh/lib/agent.js')",
+      "new": "import(pathToFileURL(APPROVED_RUNTIME_PINS['current-compiled-agent'].path).href)",
+      "count": 1
+    },
+    {
+      "old": "import('file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/CoveragePrivateBuild-20261031-1845/private-output-20261031-184648/profile-node_modules/lawbench-dsh/lib/host.js')",
+      "new": "import(pathToFileURL(APPROVED_RUNTIME_PINS['current-compiled-host'].path).href)",
+      "count": 1
+    }
+  ],
+  "expected_consumer_bytes": 156871,
+  "expected_consumer_sha256": "27d3a318b34aa3560c18c3b206c0583dd41b7576e12ebacf0801665857a6a8ea",
+  "approved_manifest": "D:\\Lawbeach\\lawbench-coord\\T18DefenseDirectImportBinding-20261031-235546\\approved-literal-manifest.json",
+  "no_other_changes": true
+}

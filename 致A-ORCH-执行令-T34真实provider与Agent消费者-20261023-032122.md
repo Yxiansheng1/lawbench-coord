@@ -1,0 +1,19 @@
+# T34最后一段路由接续：真实provider生命周期与Agent消费者
+
+2026-10-23T03:21:22.154832+08:00。唯一A精确deepseek-v4-pro；900秒绝对界2026-10-23T03:36:22.154832+08:00，无自动重试/降档。旧job全terminal、无writer，HEADa23271/staged空，414源/全部E/dirty/T33+185完整保全C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\A-T34-provider-consumer-before-20261023-032122。前UI组件8绿/noEmit0，root收执D:\Lawbeach\lawbench-coord\ORCH-收执-T34路由类型两错已闭与消费者续单-20261023-032122.md；仍不能收全路由。GPT只编排/独立复核，不写产品或测试；OWNER已授权普通外部模型，无需问休息用户。新工程目标沿最初02:49单，最终完整累计仍以C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\A-T34-session-route-before-20261023-024946为before，不能只审此单delta。
+
+先全文核现已写的syncExternalProvider、registerCore/loadSettingsIntoState、saveDraft/SettingsSection保存及离开保存、LawbenchRemote.externalLlmState、LegalAgent.preStep/request/apply与DSH实际llm-pi-ai消费。不是再造映射。当前明确缺口：syncExternalProvider只有Save/onLeaveSave调用，已有enabled配置在重启/新挂载时未保证external provider；真正Agent.begin→TaskState→request尚只有源码，没有真消费者fake证据。
+
+1. provider生命周期：实际启动/remote.settings可用且服务设置读回后，以真实当前已保存external_llm投影；保存成功/离开选择保存同样可靠同步；禁用只原子unset providers.external，保留lawfirm及其他值。不得未保存草稿进profile、不得从旧load/旧Remote晚回覆写新设置；Remote暂缺/重接必须诚实不可用或恢复，不能假绿。Namespace源已核llm-pi-ai entry id（cordis.patch.yml211与真实settingsNs），不是猜字符串。仅127.0.0.1:18765/v1-ext、apiKeyEnv=EXTERNAL_LLM_KEY，模型/窗口来自当前服务配置；任何公网base_url不进profile/P9。成功只认实际Remote ok/value；失败固定中文可重试，不删除律所provider、不local fallback、不改已确认凭据组件。
+
+2. Agent真消费者：begin仍一次且请求只session_id/cwd；旧无route→local，external使用begin这一轮route和实际模型/窗口快照；后续UI下一选择不改该轮params/route/budget，request waterfall实际provider/model保持effort/maxTokens/temp。不可用明确拒绝，不创建空模型/静默本地。保留既有sheetHold/moved/context失败/预算。Host桥只describe配置态不resolve秘密，正确通过现getSettings/checked消费者；fake可构造真LawbenchRemote但绝不能产品apply/supervisor.start。wiki/OCR/refine仍local。支持工具false摘除严格留下一独立片，本单不能偷偷禁止false/改默认/声称已实现。
+
+3. 精确fake证据必须覆盖真注册/加载路径和真SettingsSection保存路径调用真实settings.mutate（fake Remote），startup已有enabled、成功模型窗口、禁用删除/保留lawfirm、Remote缺失/失败/换代旧结果；不只导出helper直接调用。受控Promise证明旧load/旧保存晚回不覆盖新选择。真LegalAgent.preStep/request或其apply注册的真实waterfall，加真CoreClient(fake fetch)验证local旧响应/external、begin次数与请求字段、真实参数预算快照、配置不可用拒绝、后续选择不影响；不只TaskState getter。所有fetch完整替换为内存handler且意外目标立即throw，credentials仅fake describe，无真实网络/Keyring/Host apply/真实案卷。
+
+4. A当前旧schema不接受route是默认合流边界，不空等/复制契约。需要验证真CoreClient/Host checked时：现scripts/contracts-source.mjs已有loadContracts(dir)/contractsModuleSource(dir)显式参数；可新增一个仅本次测试用的vitest配置，复用现vitest.config.mjs全部隔离/alias，仅把lawbench:contracts virtual插件喂入显式只读固定B合同路径（C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T38-serial-full-cumulative-20261023-010815/current/contracts，请先核实际packet结构）。只从本次子进程专用环境变量或配置明确参数取该路径，未给时拒绝；不改原config/loader/default环境、不开validateContracts=false伪称合同校验，不手抄schema/不加另一个validator/不改VERSION。根批准后将准确限定这一配置跑专用新test，而非默认包可用。若真合同输入有技术缺口准确报告，不借口等用户/先篡契约。
+
+本单白名单：ui/settings.tsx仅provider保存/加载投影接线，ui/index.tsx与state.ts仅真实settings Remote注册/生命周期必要最少桥；可一个聚焦ui/external-route.ts（本轮总共最多一个helper，不通用框架）；agent/index.ts与task-state.ts仅真轮次路由最小缺口；host/index.ts仅既有externalLlmState桥最小缺口。ui/dock.tsx现仅允把新增运行中工程化文案改为律师能懂的“本轮使用启动时的模型，切换在下一条消息生效”，不可顺带改已绿UI门实现。其他源、原credentials/双Key组件及其控件、原测试/DSH/P9/cordis.patch/契约/VERSION全部字节保持。
+
+新测试只一个tests/t34-provider.spec.ts（需要jsdom顶部声明，沿现globals，不误导入vitest类型）和可选一个tests/t34-provider.vitest.config.mjs，两个不同验证入口非重复UI suite；旧t34-route8例原样，不自行重跑。审查现agent.spec参考即可，禁止import整套agent.spec/startFake或启动18807/8/9真实进程，禁止生产日志路径。只docs/plan/evidence/T34/会话路由与发送屏障-20261023-024946/provider与Agent接续-20261023-032122最多3份短说明/准确累计diff/静态审计，旧E原样。所有node/vitest/tsc/npm/test/build/产品import/Host/GUI/服务/lifespan/网络/凭据仍禁止作者执行，root全文审fake与config后才准一次有限验证；交回不伪称通过。
+
+Git严格只读，禁add/commit/stash/reset/clean/checkout/rebase/push/部署/Actions。显式pwsh绝对路径loginfalse、禁止Bash与含混PATH，不反复尝试子模块权限；原文保留先前误指定被拒历史。禁真实案卷/.env.local/Keyring/凭据/ACL/UAC/RunAs/锁/审批/隔离/API/Key/GPT全局更改，风险拒绝不绕。不问休息用户，6000D/395真接入仍禁。900秒不能完成则具体partial，不补空文档/无用校验器/提前打包。正式三行交回后停。

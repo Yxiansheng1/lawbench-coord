@@ -1,0 +1,14 @@
+{
+  "format": "ROOT_EXPLICIT_SYNTHETIC_SELECTION_SCENARIO",
+  "authority": "existing T31 selected batch may be cancelled before next question; select genuine prior drafts only",
+  "automatic_fallback_forbidden": true,
+  "old_fixed_two_material_scope_variant": "STATIC_BLOCKED_RETAINS_GUARD_NO_NEW_PASS",
+  "new_scenario": "explicitly cancel material batch BEFORE native submission and choose original draft as L1 prior input; ordinary case dialogue with exactly 2 synthetic materials",
+  "ui_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+  "ui_sha256": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796",
+  "old_B_author_runtime_command78": "REJECTED_UNAUTHORIZED_PRECHECK_EXECUTION",
+  "old_B_author_validation_accepted": false,
+  "no_root_rerun_old_preflight": true,
+  "new_model_workflow_not_yet_executed": true,
+  "Packaging": "HOLD"
+}

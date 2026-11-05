@@ -1,0 +1,113 @@
+{
+  "target_source_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940",
+  "sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\review-consumer.mjs",
+      "bytes": 27921,
+      "sha256": "a323c1641a87f1686ce16515d31430e966905f2eb3a4dfb4d4775cd8cb3dcb87"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\offline-controls.mjs",
+      "bytes": 16290,
+      "sha256": "dbd040a95952263ed140ec1a28ae6b980cf375f09d182498f5ac76f8c67acc7f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\source-manifest.json",
+      "bytes": 523,
+      "sha256": "61f7d79a29b1489d1a1d8711817cb54f9c1d138df471c90a599562838dc94730"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-B-T18IsolatedSemanticPilot-20261101-183940.md",
+      "bytes": 6724,
+      "sha256": "923774cbdb2da258135dcc4d73d7aaf3da48ebd5b04c1921720ae07e54246fe4"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-independent-findings-root-adjudication-current.json",
+      "bytes": 2919,
+      "sha256": "aa37b823f0373e418dd921794058273096455bc1c3f631c4a793494e958c635c"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-semantic-pilot-saved-key-root-admin.py",
+      "bytes": 13493,
+      "sha256": "b890ef8c1a621ded74d00118989899504dc34e7447eb8ce1fe4f626878234443"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-existing-parent-access-readonly-current.json",
+      "bytes": 4423,
+      "sha256": "ee911834d3b2158a983bd4e91c1d05b85c5862982605a0a4c99b85d1eecc6ed6"
+    }
+  ],
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\00-review-consumer.mjs.txt",
+      "bytes": 32353,
+      "sha256": "ff46e8d146418be9d8172a682ec440fd2627a7c7c83d9c97bd9dd8f8dbd01976"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\01-offline-controls.mjs.txt",
+      "bytes": 19391,
+      "sha256": "594e2da2c4a7681f52d964108716e2b45af8887e8fcde395e128024750093fb8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\02-source-manifest.json.txt",
+      "bytes": 793,
+      "sha256": "3697b9e677da7b46bc1b2222373ae3808b0c5e24147c38f1a1b4623b6468d115"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\03-ORCH-B-T18IsolatedSemanticPilot-20261101-183940.md.txt",
+      "bytes": 6928,
+      "sha256": "1448426a0f5ecffe1b436a3ab3c0d891b0ad54959ceee1f53163a3d7ce1ed267"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\04-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\05-T18-isolated-semantic-pilot-independent-findings-root-adjudication-current.json.txt",
+      "bytes": 3356,
+      "sha256": "04e3937c21b7f406783237a10f8fc37762d57205d648103b9529f197dd628cd1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\06-run-semantic-pilot-saved-key-root-admin.py.txt",
+      "bytes": 14629,
+      "sha256": "6cca0339d72a0d007f1fce4266752424ac165e8958d1213a2ced82044acbcd86"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\07-T18-isolated-semantic-pilot-existing-parent-access-readonly-current.json.txt",
+      "bytes": 5343,
+      "sha256": "ed62b42331656c1529e7e9915c46b21c884f7ab12525fbbb1d30c24f2cf29ae8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\review-consumer.mjs.diff.txt",
+      "bytes": 6615,
+      "sha256": "b5a57cedac8938a929ddff09939629720afa91672468c47262c40d8ddb6fefae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotClosure-20261101-191919\\offline-controls.mjs.diff.txt",
+      "bytes": 5185,
+      "sha256": "321dc2aba41b811fca1fe6603bc7cae5bb3621a7c7839b991af5f8437fa8b2d1"
+    }
+  ],
+  "source_data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+  },
+  "scope": "Independent source-only closure review: isolated synthetic two-stage diagnostic plus Root launcher. No model/Key runtime yet. Offline controls ran once after changed source, not semantic proof.",
+  "requirements": [
+    "Two fresh contexts; stage1 read receipts only; stage2 same receipts+parsed candidates+physical oldv3 draft+visible selfcheck+actualcoverage. No expected defect keywords.",
+    "Original order EXPLICITLY permits ONE outer markdown fence; no other parser repair. Source validators authentic anchors only; literalquote presence cannot establish semantic treatment. All model findings require manual judgment, no business/legal/completeness PASS.",
+    "Data exact externalSHA-size proves physicalv3; schema positive safeinteger. External manifest/Node/source pins Root before Key and after. Colocated manifest not self-authenticating.",
+    "Four source closures: SAME verified buffer consumed; wholedeadline before BOTH requests/min400s and remaining900s/afterresponse; exactresponse model; raw+JSONescaped redaction. Check real negative controls and all cumulative source.",
+    "Root known pinned Node/clean env/no proxy/preload; fixed http://10.126.126.1:8000/v1/chat/completions POST redirecterror/no retry; sameqwen38-27b0.6/49152/streamfalse/max2requests/Root900s. No healthprobe.",
+    "Root DPAPI6000D rawKey anonymousstdin only AFTER admission/fullpins; no Keyenv/args/file/hash/delegation. All ownartifact/error/stdout redacted/scanned. Exact ownPID/exe/UTCbirth cleanup, no fullmachine/servercancel/memoryerasure proof.",
+    "Trust boundary explicitly current user plus existing local Codex workspace. Existing parent user-owned but CodexSandboxUsers sharedwritable, owner-only ACL/hostile-local-actor platform security NOT proven/claimed. All data synthetic/no rawKeyartifact. Fresh paths and no observed reparse ancestors required; NO global/privateACL/security changes. Do not demand new owner-only ACL framework as this diagnostic acceptance. If actual residualrisk exists within this stated boundary identify concrete trigger.",
+    "No authorruntime/Key/test/Node/Python/HTTP/GUI/probe/build/Git/source changes. Root must review launcher before real admission. Current draft is not admitted; pinpoint functional/cleanup errors before runtime, not stylistic hardening."
+  ]
+}

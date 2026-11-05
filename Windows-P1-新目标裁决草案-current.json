@@ -1,0 +1,83 @@
+{
+  "status": "OWNER_APPROVED_NEW_TARGET_ADMITTED",
+  "base_commit": "a23271abee333a9a256fd46a3141da16975c2380",
+  "fixed_packet": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-private.mjs",
+      "bytes": 32635,
+      "sha256": "f66ff91110bbc0c6f7f1103fcc900cf4b27c26b830a75699310396d6180be1e2",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-private.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-config.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-windows-candidate.ps1",
+      "bytes": 52227,
+      "sha256": "baaab08ca57afc96cce4c5bc4576bf20e303a96051797d2b728195d3283c4a5a",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-windows-candidate.ps1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\builder.config.json",
+      "bytes": 27024,
+      "sha256": "10ae82827795dedbe57aec99302ed6f3399109f37ca1f3e33aae16ad654dd4aa",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\builder.config.json"
+    }
+  ],
+  "goal": "Fix only the deterministic packaging entry/path/dependency/copy/NSIS-tool wiring defects of these4 packaging files, then execute existing Windows P1..P8; T18 source/SDK/guards unchanged",
+  "proposed_executor": "Root direct packaging glue implementation only; requires owner exception to prior exact-DS-only preparer code role and explicit new-target admission after prior2-repair cap",
+  "maximum_repair_rounds": 2,
+  "acceptance": [
+    "Reviewed private component exits0 and writes25 artifact manifest using Bcontracts1.7 and frozen current A source",
+    "NSIS build yields one original-pin private acceptance candidate",
+    "Clean-directory installation0, no existing app replacement/appdata deletion",
+    "Continue P2..P8 with actual outputs, no publication/model/Key access"
+  ],
+  "failure_evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackage-P1-component-build-result-current.json",
+  "expected": "component exits0, valid manifest and output artifacts",
+  "actual": "exit1/.063s, paths[1] argument received undefined, output not created",
+  "old_controller_target": "STOPPED_AFTER_TWO_REPAIR_ATTEMPTS",
+  "T18": "CLOSED_NO_REOPEN",
+  "old_jobs": [
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-WindowsPackageP1-20261102-021251.job.json",
+      "actual_state": "completed",
+      "command_events": 36,
+      "zero": 29,
+      "nonzero": 7
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-WindowsPackageP1Builder-20261102-022540.job.json",
+      "actual_state": "deadline_exceeded",
+      "command_events": 78,
+      "zero": 72,
+      "nonzero": 6
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-WindowsPackageP1Repair1-20261102-024557.job.json",
+      "actual_state": "deadline_exceeded",
+      "command_events": 50,
+      "zero": 45,
+      "nonzero": 5
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-WindowsPackageP1Repair2-20261102-030219.job.json",
+      "actual_state": "deadline_exceeded",
+      "command_events": 43,
+      "zero": 43,
+      "nonzero": 0
+    }
+  ],
+  "owner_question_sent_once_at": "2026-11-02T03:21:01.508983+08:00",
+  "owner_question_status": "APPROVED_ROOT_FOUR_FILE_FIX_AND_P1_P8",
+  "frozen_packet_directory": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101",
+  "proposed_fresh_workdir": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T20/WindowsP1RootTarget-20261102-032101",
+  "old_artifacts_will_remain_immutable": true,
+  "owner_answer_exact": "批准 Root 修复四个打包文件并继续",
+  "admitted_at": "2026-11-02T07:46:46.199919+08:00",
+  "repair_round": 1,
+  "workdir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101"
+}

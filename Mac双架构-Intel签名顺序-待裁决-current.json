@@ -1,0 +1,24 @@
+{
+  "state": "OWNER_APPROVED_AMENDED_AND_APPLIED",
+  "observedAt": "2026-11-04T00:11:54.300066",
+  "run": 41665876425,
+  "sourceHead": "562ef5f6d504696bfeb827311feb11831f3b6f16",
+  "newFailure": "Outer main executable signing fails due unsigned Helper(Renderer).app",
+  "evidence": "D:/Lawbeach/_release/c24xl/packaging/mac/out/build-log.txt",
+  "rootCauseAssessment": "First pass signs outer bundle executable before nested app bundles. codesign associates executable with outer bundle and rejects unsigned renderer helper. Ordering is wrong; no argument or source-runtime change needed.",
+  "confidence": "Source+failure-path supported; Mac fix not yet run, not claimed proven recovered",
+  "scope": [
+    "packaging/mac/sign-adhoc.sh"
+  ],
+  "change": "Defer only outer CFBundleExecutable to the existing final sign(APP) stage; retain Mach-O signing, nested bundle sealing, strict verification and ad-hoc identity",
+  "prohibited": "No --deep signing shortcut, no removed verification, no app.asar.unpacked mutation, no runtime/product/assertion/guard changes",
+  "sameCauseCount": 1,
+  "nextSameCauseFailure": "STOP; no further retry",
+  "newBudgetNeeded": true,
+  "proposal": "One new arch=both run under a separately approved45minute window; current00:20 cutoff remains until explicit new decision",
+  "applied": true,
+  "finalSourceHead": "49df4cce9420bdbb4ebd35f5dedcb34fe5e797e8",
+  "finalRun": 41672986472,
+  "deadline": "2026-11-04T00:57:00+08:00",
+  "ownerAmendment": "Explicit MAIN_EXECUTABLE signature then APP at final stage. Any nextIntelSigningFailure STOP."
+}

@@ -1,0 +1,20 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\native-criminal-applications.mts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\native-criminal-applications.mts",
+    "bytes": 137944,
+    "sha256": "fe37f8f0f11d4d8feca0ff6cd46a17a562d03c2153d6197ad957e28a3f4f3e44"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\b-service-criminal-applications.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\b-service-criminal-applications.py",
+    "bytes": 48430,
+    "sha256": "5841bfe21acd27ac6bc6dd468d8d2c1dedafbb28db52b176fb94d12032c7e28b"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\literalfixed-inputs.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\literalfixed-inputs.json",
+    "bytes": 11700,
+    "sha256": "e8d7b4bd0af0e21cb507defac4d1e1d122ce5bb136ff26512d8d678e2fe4fb5f"
+  }
+}

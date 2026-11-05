@@ -1,0 +1,2 @@
+tests/contract-question-gate.spec.ts(199,49): error TS7006: Parameter '_name' implicitly has an 'any' type.
+tests/contract-question-gate.spec.ts(199,56): error TS7006: Parameter 'answers' implicitly has an 'any' type.

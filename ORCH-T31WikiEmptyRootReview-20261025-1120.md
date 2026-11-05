@@ -1,0 +1,5 @@
+# T31 空 wiki 旧待生成提示：源码与有限测试切片
+实际heartbeat2026-10-25T02:46:42.904Z，原tick一次scan，Packaging HOLD。
+root真实native空case GUI红证据已实见旧提示，原卡T31step5明确不再显示；不是fixture/Key/API问题。Aactual01a1710e-5497-7322-96bf-70c931de6ceb精确1017/max，completed真实12/11，formal全读。唯一失败为Git参数位置错误，后只读正确盘点；未扩权/写Git。before两文件原clean，未清除其它dirty。
+root完整before/current审查：wiki-card.tsx仅!w.exists返回null；loading/fail/已有wiki正文/出处/复核/文件操作不改。旧消费者test改无旧提示/按钮及零postWikiReview，既有实质断言保留。新准确单文件9/9绿，tsconfig受影响types exit0；类型零输出Tee没生成txt，管理员实录012ac2 exit0于result.json，不造原始日志。测试配置/Host纯读取/自身临时目录cleanup/mock已审，不启动真实产品服务/应用。GUI红→源码窄修→新单文件绿；固定新client真实GUI仍PENDING，单测不代GUI。
+完整包C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T31-wiki-empty-root-full-20261025-1120，manifest SHA5e7fdc8e1fffd01d4a9d4e432cd61d1084223ca1ee3bc8438e65c819f0bb730a。现唯一A开发6编译固定SHA准备见outputs/T31-wiki-build-current.json；仅一次既有build，其内置ESM/形参检查属于builder，作者禁另跑测试。旧E50/原resolver/guard/PDF/原runtime冻结，无复制或运行新GUI。root交回完整审六before/current与pin，不能旧E26client冒验新source。准确私有启动依赖先只读核profile绝对入口是否可复用原resolver；未证不写新launcher/不动旧E50，不盲猜放宽hash。

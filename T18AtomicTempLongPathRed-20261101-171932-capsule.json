@@ -1,0 +1,150 @@
+{
+  "target_test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_atomic_temp_longpath_20261101_171932.py",
+  "target_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18AtomicTempLongPathRed-20261101-171932\\bootstrap.py",
+  "original_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadBootstrap-20261101-143849\\bootstrap.py",
+  "original_MAIN": "    pytest_args = [\n        f\"--ignore={EXCLUDED_TEST}\",\n        \"-p\",\n        \"no:cacheprovider\",\n        f\"--basetemp={basetemp}\",\n        f\"--junitxml={junit}\",\n        f\"--log-file={root / 'pytest.log'}\",\n        r\"D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py\",\n    ]\n",
+  "original_gate_write": "def resolve_write(root: str, rel: str, op: str = \"write\") -> pathlib.Path:\n    \"\"\"写入：只允许 工作区/ 和 成果/（规则 5）。\"\"\"\n    parts = _split_rel(rel, op)\n    if parts[0] not in WRITABLE_TOP:\n        raise _deny(op, \"write_outside_work\")\n    path = _resolve(root, parts, op)\n    if _real_top(root, path, op) not in (WORK.casefold(), OUTPUT.casefold()):\n        raise _deny(op, \"write_outside_work\")\n    return path\n\n\ndef write_bytes(root: str, rel: str, data: bytes, op: str = \"write\") -> pathlib.Path:\n    path = resolve_write(root, rel, op)\n    _mkdirs(root, path.parent, op)\n    atomic_write_bytes(path, data)\n    return path\n\n\ndef mkdir_work(root: str, rel: str, op: str = \"write\") -> pathlib.Path:\n    path = resolve_write(root, rel, op)\n    _mkdirs(root, path, op)\n    return path\n",
+  "original_atomic": "def atomic_write_bytes(path: pathlib.Path, data: bytes) -> None:\n    path.parent.mkdir(parents=True, exist_ok=True)\n    fd, tmp = tempfile.mkstemp(prefix=\".~lb-\", suffix=\".tmp\", dir=path.parent)\n    try:\n        with os.fdopen(fd, \"wb\") as f:\n            f.write(data)\n            f.flush()\n            os.fsync(f.fileno())\n        _replace_with_retry(tmp, path)\n    except BaseException:\n        try:\n            os.unlink(tmp)\n        except FileNotFoundError:\n            pass\n        raise\n\n\ndef _replace_with_retry(tmp: str, path: pathlib.Path) -> None:\n    \"\"\"Windows 上目标文件正被别的句柄打开（读取、杀毒扫描）时 os.replace 抛 PermissionError：有上限地重试。\"\"\"\n    for attempt in range(REPLACE_RETRIES):\n        try:\n            os.replace(tmp, path)\n            return\n        except PermissionError:\n            if attempt == REPLACE_RETRIES - 1:\n                raise\n            time.sleep(REPLACE_WAIT)\n",
+  "Env_exact": "    def __init__(self, base: pathlib.Path, files: dict[str, pathlib.Path]):\n        self.appdata = pathlib.Path(tempfile.mkdtemp(prefix=\"lbad-\"))\n        self._saved = gate._registry_onedrive_folders\n        gate._registry_onedrive_folders = lambda: []\n        self.client = TestClient(create_app(Config(token=TOKEN, appdata=self.appdata), key_getter=lambda: None),\n                                 raise_server_exceptions=False)\n        self.client.headers[\"Authorization\"] = f\"Bearer {TOKEN}\"\n        self.root = base / \"张某甲借款纠纷\"\n        for rel, src in files.items():\n            dst = self.root / rel\n            dst.parent.mkdir(parents=True, exist_ok=True)\n            shutil.copy(src, dst)\n        self.root.mkdir(exist_ok=True)\n        self.case_id = ok(self.client.post(\"/api/case/open\", json={\"path\": str(self.root)}),\n                          \"api/case_open.schema.json\")[\"case_id\"]\n        ok(self.client.post(\"/api/materials/scan\", json={\"case_id\": self.case_id}), \"api/materials_scan.schema.json\")\n\n\n    def close(self) -> None:\n        self.client.close()\n        gate._registry_onedrive_folders = self._saved\n        shutil.rmtree(self.appdata, ignore_errors=True)\n",
+  "Env_import": "from t8_helpers import Env; from lawbench.case import gate; import os,pytest,pathlib",
+  "actual_failure": {
+    "status": "LONG_OWNED_ROOT_SAME14_FAILED9_PRESERVED_NOT_ACCEPTED",
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitationActionabilityGREEN-root-20261101-170729",
+    "actual_counts": {
+      "tests": 14,
+      "passed": 5,
+      "failed": 9,
+      "errors": 0
+    },
+    "pytest_s": 8.153,
+    "controller_s": 10.468999999997322,
+    "source_pins_held": 540,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 40080,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:07:29.675057+00:00",
+        "birth_filetime_ticks": "134379976496750566",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 40104,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:07:29.883803+00:00",
+        "birth_filetime_ticks": "134379976498838029",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "actual_service_error_types": {
+      "FileNotFoundError": 9
+    },
+    "original_atomic_write": "contracts.atomic_write_bytes -> tempfile.mkstemp(prefix=\".~lb-\",suffix=\".tmp\",dir=path.parent); originalCPython3.12 randomname length8",
+    "sample_draft_parent_chars": 242,
+    "derived_original_atomic_temp_chars": 260,
+    "root_label_longer_than_prior13": true,
+    "pure_copy_Spec_changes_only_proven": true,
+    "diagnostic_inference": "Windows path-length boundary suspected from original atomic temp path260 plus FileNotFoundError; exact failing frame not captured by privacy-preserving product logger. Need unchanged-code fresh shorter-owned-root differential control. Do NOT declare product long-path PASS or erase this failure.",
+    "next": "Same14/source/guard/assertions unchanged; ONLY fresh packet/private-root path binding shorter. No moving old case, symlink, guard/policy/ACL/registry/library change or denial bypass.",
+    "business_quality": "FAILED_PARTIAL",
+    "Packaging": "HOLD"
+  },
+  "frozen18": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\prepare.ps1",
+      "expected": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37",
+      "actual": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\start.ps1",
+      "expected": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445",
+      "actual": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\stop.ps1",
+      "expected": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647",
+      "actual": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/server.py",
+      "expected": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca",
+      "actual": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\agent.js",
+      "expected": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43",
+      "actual": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\client.js",
+      "expected": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661",
+      "actual": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\credentials.js",
+      "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+      "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\host.js",
+      "expected": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8",
+      "actual": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\index.js",
+      "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+      "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\session-store.js",
+      "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+      "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\resolve-from-dsh.mjs",
+      "expected": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208",
+      "actual": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+      "expected": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130",
+      "actual": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/agent.js",
+      "expected": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b",
+      "actual": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/client.js",
+      "expected": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46",
+      "actual": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/host.js",
+      "expected": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994",
+      "actual": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/credentials.js",
+      "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+      "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/index.js",
+      "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+      "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/session-store.js",
+      "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+      "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+    }
+  ],
+  "scope": "contracts.py original atomic helper not among frozen18; gate/resolver/guards remain UNCHANGED. No productfix before actual RED."
+}

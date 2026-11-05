@@ -1,0 +1,22 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProfileReadContract-20261030-075459\\literal-inputs.json",
+      "bytes": 6564,
+      "sha256": "a1bb3b9fefd0463bc0f782deb3e6c23fe7ae6795463a2f633c0eca9a9c3af871"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProfileReadContract-20261030-075459\\profile-read-contract.mjs",
+      "bytes": 13284,
+      "sha256": "c18f5769a3a565fba5d35e292d8905768d92f26bc50b7bafebe1f92e6669035e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProfileReadContract-20261030-075459\\README.md",
+      "bytes": 3613,
+      "sha256": "4dbadd03160aaa5f43476f459d314a586813e9466d437badb96d04b6006f8c2a"
+    }
+  ],
+  "original_input": "D:\\Lawbeach\\lawbench-coord\\T34ProfileReadInput-20261030-075459",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProfileReadContract-20261030-075459",
+  "verdict": "STATIC_REJECT_BEFORE_RUNTIME_METADATA_ASSUMPTIONS_NOT_PRODUCT_DEFECT"
+}

@@ -1,0 +1,22 @@
+{
+  "repeat-source": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\src\\index.ts",
+    "bytes": 10619,
+    "sha256": "1e917986fe9c5187d8f0fa11154ab2bf3b7c1d30db991540f4d1e62a2c59236d"
+  },
+  "repeat-package": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\package.json",
+    "bytes": 1400,
+    "sha256": "4a67ad059ddc15b69e26f56d4e6882ada1b1f53261b6e747585390466bb47581"
+  },
+  "base-config": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\base\\cordis.patch.yml",
+    "bytes": 20894,
+    "sha256": "861414459d7f60af5421ac7a9735a7c0d80b52a2369623b8cda3ce6079c733b4"
+  },
+  "lawbench-patch": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\cordis.patch.yml",
+    "bytes": 19570,
+    "sha256": "e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"
+  }
+}

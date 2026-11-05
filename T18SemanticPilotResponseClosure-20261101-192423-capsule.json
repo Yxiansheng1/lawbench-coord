@@ -1,0 +1,15 @@
+{
+  "source_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotResponseClosure-20261101-192423Before",
+  "data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18SemanticPilotResponseClosure-20261101-192423.md",
+  "root_proven_findings": [
+    "Partial/boundary response evidence lost before persistence",
+    "Response reader failure terminal path not canceled",
+    "ASCII redaction marker may contain valid printableASCII credential; use nonASCII marker guaranteed outside accepted credential character set"
+  ]
+}

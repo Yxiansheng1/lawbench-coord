@@ -1,0 +1,94 @@
+{
+  "original_task": "T18 factual selection and selfcheck truth",
+  "synthetic_fixture_only": true,
+  "actual_protocol": {
+    "HTTP200": 2,
+    "source_units": 62,
+    "stage1assessments": 62,
+    "stage2reviews": 62,
+    "allissuesempty": true
+  },
+  "proven_counterexample": [
+    {
+      "id": "F1",
+      "severity": "BLOCKER",
+      "unit": "read-result-92#L14",
+      "stage1": {
+        "unit_id": "read-result-92#L14",
+        "material_id": "M0001",
+        "unit": "line",
+        "number": 14,
+        "receipt_id": "read-result-92",
+        "text": "【第14行】\n答：我跟她说我是某某投资的业务经理，可以帮她办低息贷款，给她看了我自己做的工作证。\n",
+        "description": "Answer: Suspect claims he told her he was a business manager at the investment company who could arrange low-interest loans, and showed her a work ID he made himself."
+      },
+      "stage2": {
+        "unit_id": "read-result-92#L14",
+        "treatment": "ADDRESSED",
+        "assessment": "Answer about false identity and work ID referenced in draft's discussion of the fraud scheme.",
+        "issues": [],
+        "source": {
+          "unit_id": "read-result-92#L14",
+          "receipt_id": "read-result-92",
+          "material_id": "M0001",
+          "unit": "line",
+          "number": 14,
+          "text": "【第14行】\n答：我跟她说我是某某投资的业务经理，可以帮她办低息贷款，给她看了我自己做的工作证。\n"
+        },
+        "draft_refs": [
+          "D:43"
+        ],
+        "draft_quotes": [
+          "2. 张某甲承认未在某某投资工作过。〔讯问笔录 第20行〕某某投资已于2024年注销。〔起诉意见书 第19行〕证人王某证实张某甲从未在某某投资任职。〔起诉意见书 第20行〕上述事实表明张某甲虚构了身份，但该情节已反映在诈骗行为的定性中。\n"
+        ],
+        "selfcheck_refs": [
+          "S:16"
+        ],
+        "selfcheck_quotes": [
+          "| 独立不利及争议事实的实际落点 | 第四部分列明3项不利事实及回应：80,000元供认、虚构身份、款项用于还网贷和消费 | 讯问笔录第16、17-18、20行；起诉意见书第19、20、22行 | 通过 |\n"
+        ]
+      },
+      "actual_draft_D43": "2. 张某甲承认未在某某投资工作过。〔讯问笔录 第20行〕某某投资已于2024年注销。〔起诉意见书 第19行〕证人王某证实张某甲从未在某某投资任职。〔起诉意见书 第20行〕上述事实表明张某甲虚构了身份，但该情节已反映在诈骗行为的定性中。\n",
+      "actual_selfcheck_S16": "| 独立不利及争议事实的实际落点 | 第四部分列明3项不利事实及回应：80,000元供认、虚构身份、款项用于还网贷和消费 | 讯问笔录第16、17-18、20行；起诉意见书第19、20、22行 | 通过 |\n",
+      "judgment": "Stage1 explicitly describes selfmade work ID. Stage2 says same detail ADDRESSED by generic falseidentity paragraph even though NONE of olddraft contains workcard. False entailment and original falsePASS not detected. Same source line contains multiple independent details; line-level treatment hides omission."
+    },
+    {
+      "id": "F2",
+      "severity": "BLOCKER",
+      "units": [
+        "read-result-77#L19",
+        "read-result-82#L21",
+        "read-result-82#L24"
+      ],
+      "draft_refs": [
+        "D:18",
+        "D:21",
+        "D:29",
+        "D:32",
+        "D:51"
+      ],
+      "draft_quotes": [
+        "卷宗中关于16,500元的证据仅有被害人吴某陈述和转账记录，未见借条、聊天记录等能够证明该笔款项系\"解冻费\"的直接证据。起诉意见书所列电子数据为\"从张某甲手机中提取的聊天记录\"，但未说明其中是否包含与该笔款项性质相关的内容。摘要列明该项，实际底层材料内容未提供／未读取／未核验，待律师核实。\n",
+        "张某甲始终辩称该笔16,500元系吴某自愿借给其个人，而非以\"解冻费\"名义骗取。该笔款项的性质存在争议，现有证据中被害人陈述与犯罪嫌疑人供述相互矛盾，尚无其他证据能够排除合理怀疑地证明该笔款项系诈骗所得。建议对该笔款项是否计入诈骗数额予以审慎认定。法律依据待律师核实。\n",
+        "卷宗中关于郑某30,000元的证据仅有被害人郑某陈述和转账记录。与吴某80,000元部分不同，卷宗中未见张某甲对郑某30,000元事实的供述或辩解（第1次讯问笔录未问及郑某）。摘要列明该项，实际底层材料内容未提供／未读取／未核验，待律师核实。\n",
+        "郑某30,000元事实目前仅有被害人单方陈述与转账记录，缺乏犯罪嫌疑人供述、证人证言等其他证据的印证。该笔事实的证据链条相对薄弱，建议进一步审查是否存在其他证据能够补强证明。法律依据待律师核实。\n",
+        "- 郑某30,000元：仅有被害人陈述与转账记录，证据链条相对薄弱，建议进一步审查。\n"
+      ],
+      "selfcheck_S15": "| 来源层级与有限阅读反证 | \"摘要列明该项，实际底层材料内容未提供／未读取／未核验，待律师核实\"（第一、二部分证据限制节） | 仅读取起诉意见书和讯问笔录，未读取电子数据、被害人陈述等底层材料 | 通过 |\n",
+      "judgment": "All issues empty. Merely mentions chatdata uncertainty; fails to flag categorical only-victimstatement/transfer or no-other-corroboration statements while underlying records/chat unavailable/unread. Source->draft matching alone does not review unsupported candidate claims or selfcheck truth."
+    }
+  ],
+  "current_source": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+    "bytes": 34922,
+    "sha256": "9830ff15d8cd415fc138ea45112d9bdaef3dd88cdfd462be7274dd7584c7f98d",
+    "mtime_ns": "1793537046224765800"
+  },
+  "current_controls": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+    "bytes": 29641,
+    "sha256": "94ea1da30b6c9ada096dd179ae89304d6a935158c2f48d09555e0265822f7782",
+    "mtime_ns": "1793537046393332700"
+  },
+  "scope": "Source-only minimal falsifiable protocol feasibility, NOT productcode/NativeAPI research/runtime/model permission."
+}

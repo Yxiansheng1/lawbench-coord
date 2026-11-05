@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\00-documents.tsx",
+    "bytes": 21776,
+    "sha256": "a276632db5ae38af61d0e81b743c960b539c5d76c11f170a3d7cdc10dbe85d55"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\01-citation.ts",
+    "bytes": 7651,
+    "sha256": "d525f0cb5cfc5bc95f79bc2aeb859cbb8cf5b19f6646f117ce526ecc87f2a0b5"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation-deps.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\02-citation-deps.ts",
+    "bytes": 1383,
+    "sha256": "c10922a9ab721a9dc1fbee982adcfd486e2cce3ce9a60d0f63fe4be6506134a0"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-navigation.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\03-document-citation-navigation.spec.tsx",
+    "bytes": 8979,
+    "sha256": "6c438973fd59868a9fb5ca596c842c4bf8314e5127a9807b654cfe7bec0114b7"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\documents.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\04-documents.spec.tsx",
+    "bytes": 27208,
+    "sha256": "42fc98715f1e7524cb5ef56e4da19297b4686671216ff72115649801f02881da"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\citation.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\05-citation.spec.ts",
+    "bytes": 8605,
+    "sha256": "6ee937eb81c1e00b7c1e3a094c9e6c0300e4e286385c7c7ea7be8c3cdcf2072a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.config.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CitationLateCallbackInput-20261027-200827\\06-vitest.config.mjs",
+    "bytes": 2641,
+    "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf"
+  }
+]

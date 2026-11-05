@@ -1,0 +1,64 @@
+{
+  "old_source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestResume-20261031-223828",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseReadGateRecovery-20261031-233816",
+  "literal_replacements": [
+    {
+      "old": "D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CoveragePrivateBuild-20261031-1845\\\\private-output-20261031-184648",
+      "new": "D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\DefenseReadOrderPrivateBuild-20261031-231143\\\\private-output-20261031-231753",
+      "count": 4
+    },
+    {
+      "old": "566_945",
+      "new": "566_992",
+      "count": 1
+    },
+    {
+      "old": "2b8ca40fe6ce5dfdd90edfe910d3d830e662dd33115181dc446118b85a505244",
+      "new": "b26f4484b34f366a80af72a546633dfddaa021ff879d566259e01c871e480558",
+      "count": 1
+    },
+    {
+      "old": "58_592",
+      "new": "58_596",
+      "count": 1
+    },
+    {
+      "old": "156ca581c3bee3706f5a1ddfdc16cea32fef3939985d838fd51593e13e03e202",
+      "new": "e3a91a9492afe5ba40395e4f14d7455d4e7b9ad2ae1e3e44e56db0f99aa28d13",
+      "count": 1
+    }
+  ],
+  "expected_consumer": {
+    "bytes": 157063,
+    "sha256": "1dc2030362eeaf3f2282a8437677e0efd861dc8c6b841a88b4aef70efc3648b5"
+  },
+  "approved_manifest": "D:\\Lawbeach\\lawbench-coord\\T18DefenseReadGateRecoveryInput-20261031-233816\\approved-literal-manifest.json",
+  "compiled_rows": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 566992,
+      "sha256": "b26f4484b34f366a80af72a546633dfddaa021ff879d566259e01c871e480558"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904755,
+      "sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\manifest.json",
+      "bytes": 58596,
+      "sha256": "e3a91a9492afe5ba40395e4f14d7455d4e7b9ad2ae1e3e44e56db0f99aa28d13"
+    }
+  ],
+  "source_data_changes_only": true,
+  "original_model_prompt_budget_assertions_guards_unchanged": true
+}

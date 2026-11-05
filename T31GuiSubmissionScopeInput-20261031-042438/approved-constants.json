@@ -1,0 +1,144 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiSubmissionScopeService-20261031-042438",
+  "planned_GUI_evidence_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiSubmissionScope-20261031-042438",
+  "baseline_GUI": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+      "bytes": 88654,
+      "sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\prepare.ps1",
+      "bytes": 13563,
+      "sha256": "57a55816e85436b74fc1143d550b217e6fc402b843c7e67ac0d4df9e4d6afa5e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\start.ps1",
+      "bytes": 95734,
+      "sha256": "66edf51bddc08c0f009f080b76699e25b00696a320bae9e6d93fc33ce54b2b90"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\stop.ps1",
+      "bytes": 7180,
+      "sha256": "b8510efdfe0e3247d3b02cecfa22738a24358802bd3fad5a03320f8c3ba899ed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+      "bytes": 42437,
+      "sha256": "44bb8b5ff60309a7d7dc3c1474ab4efebe00995673927f59137dbb1f86346203"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\ScopeHttpEntry-20261026-031523\\server.py",
+      "bytes": 92343,
+      "sha256": "f0bcbb7fc2745ea1957167b2d5a247b1866a53a2d147e77ebdaa24cbb65bab89"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+      "bytes": 18759,
+      "sha256": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 50958,
+      "sha256": "f2f8444f9cc4f83a98153f40dc81fb32dcf5e0c21c846101c60433c274896ead"
+    }
+  ],
+  "B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+    "mtime_ns": "1793302647316836800"
+  },
+  "current_private25": {
+    "verdict": "STATIC25_GENERAL_READ_ORDER_AGENT_ACCEPTED_BUILD0",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\GeneralReadOrderPrivateBuild-root-20261030-171028",
+    "manifest_bytes": 58199,
+    "manifest_sha": "89725cac86267da39572a8e9e9fb3e855aca26199cac4e0df13dd84e2cf76d52",
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "unchanged22_payloads": true,
+    "client_whole_stamp_inverse": true,
+    "sourceModules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "OS": [
+      {
+        "pid": 7988,
+        "parent": 53388,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-30T09:10:39.4656220Z"
+      },
+      {
+        "pid": 14224,
+        "parent": 7988,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birth_utc": "2026-10-30T09:10:39.4937390Z"
+      },
+      {
+        "pid": 58616,
+        "parent": 7988,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-30T09:10:40.3559000Z"
+      },
+      {
+        "pid": 58344,
+        "parent": 7988,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-30T09:10:41.5395630Z"
+      }
+    ],
+    "OS_complete_count": 4,
+    "OS_partial_NOT_PROVEN": [],
+    "build_elapsed_s": 18.82799999997951,
+    "forced": false,
+    "AST_helper_OS_not_individually_sealed": true,
+    "GUI": false,
+    "general_read_order_actual": "NOT_YET_VERIFIED",
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "canonical_runtime": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\.desktop-build\\development\\project",
+  "max_runtime_seconds": 600,
+  "actual_model_POST_allowed": 0,
+  "actual_credentials_allowed": 0,
+  "scope": "T31_REAL_GUI_NATIVE_REQUEST_SCOPE_BRIDGE_ONLY_MODELS_REFUSED_BEFORE_UPSTREAM"
+}

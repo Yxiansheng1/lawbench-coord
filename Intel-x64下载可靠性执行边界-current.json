@@ -1,0 +1,172 @@
+{
+  "state": "CLOSED_OWNER_CONFIRMED_CANCELLED_NOT_DELIVERABLE",
+  "at": "2026-11-04T11:47:44.938681+08:00",
+  "goal": "Intel x64 only; one CI dispatch after finite checks",
+  "targetTime": "2026-11-04T13:00:00+08:00",
+  "wallClockSafetyDeadline": "2026-11-04T06:20:07+00:00",
+  "buildJobTimeoutMinutes": 120,
+  "base": "3e1a829f27220b4a7943897a38f3c611a4a3a3b9",
+  "ownerOrder": "D:/Lawbeach/lawbench-coord/OWNER-Intel紧急-下载重试与超时-20261104-112000.md",
+  "pins": [
+    {
+      "path": "packaging/mac/build.sh",
+      "bytes": 35244,
+      "sha256": "f9ee940641471bdbfaa89925784c0b425454d5e80f73b92600a444c6a07b5540"
+    },
+    {
+      "path": ".github/workflows/mac-build.yml",
+      "bytes": 10739,
+      "sha256": "a8cae651926d904aeabf1c3d8365955f97c6d89f184e0dbe30f1e607b9e7b20c"
+    },
+    {
+      "path": "dsh/apps/desktop/scripts/prepare-runtime.ts",
+      "bytes": 3128,
+      "sha256": "8d8fd1f783f6b3184dfb67de8669cc4536e9b31e295fcc7aa4c35d05d47e6dd4"
+    },
+    {
+      "path": "dsh-patches/PATCHES.md",
+      "bytes": 98084,
+      "sha256": "bfc14375e1d2acb3a3f8f4571049bfe9bdb4f80a980bd71db78a770c588aa39c"
+    },
+    {
+      "path": "packaging/mac/sign-adhoc.sh",
+      "bytes": 5513,
+      "sha256": "e1e13d06c86e2e6fd25d9ee8c68a2059ca57eee7a69f5fa19a2dbae726a53274"
+    },
+    {
+      "path": "packaging/versions.lock",
+      "bytes": 8162,
+      "sha256": "bc430305eb4f2a394e659da0035bd6e676f5a46492c03702e0928564ac97eb61"
+    }
+  ],
+  "doNotTouch": "Windows/ARM artifacts, product/assertions/guards/strict, original patches",
+  "mechanismCorrections": [
+    "cache continue-on-error alone does not save failed jobs; use explicit cache restore/save",
+    "curl max-time is per attempt; hard parent-process 900s timeout also required"
+  ],
+  "noMirrorOverrideThisRun": true,
+  "sameCauseStop": 2,
+  "quotaAlertStop": true,
+  "dispatchCount": 1,
+  "head": "2cc9fec9cb79866212896a7b6121bf6306172806",
+  "committedPaths": [
+    "packaging/mac/build.sh",
+    ".github/workflows/mac-build.yml",
+    "dsh-patches/PATCHES.md",
+    "dsh-patches/P-34-intel-download-retry-timeout-20261104.patch"
+  ],
+  "sourceCheckResults": [
+    "finite-download-checks.json",
+    "static-checks.json",
+    "workflow-checks.json",
+    "clean-patch-replay.json",
+    "patch-context-whitespace-correction.json"
+  ],
+  "dispatchRequestedAt": "2026-11-04T11:44:58.593207+08:00",
+  "dispatchExit": 0,
+  "run": 41769016292,
+  "runNumber": 33,
+  "url": "https://github.com/Yxiansheng1/lawbench/actions/runs/41769016292",
+  "createdAt": "2026-11-04T11:42:59.984304+08:00",
+  "currentPins": [
+    {
+      "path": "packaging/mac/build.sh",
+      "localBytes": 35701,
+      "localSha256": "003e9e4f367753c782926fc8ca43ba9ff7187dc82366c1c612054b0ef6d5571e",
+      "expectedCISha256": "003e9e4f367753c782926fc8ca43ba9ff7187dc82366c1c612054b0ef6d5571e"
+    },
+    {
+      "path": ".github/workflows/mac-build.yml",
+      "localBytes": 11591,
+      "localSha256": "61f03a54271f8d66b6adf0fdd6eee9a62016237c35ad1943e148af0670046424",
+      "expectedCISha256": "61f03a54271f8d66b6adf0fdd6eee9a62016237c35ad1943e148af0670046424"
+    },
+    {
+      "path": "dsh/apps/desktop/scripts/prepare-runtime.ts",
+      "localBytes": 3733,
+      "localSha256": "b4dd127279c87ca8071dac41e65a2fc07d6f44c99b6026a2d3c6e4de4c4c663c",
+      "expectedCISha256": "b4dd127279c87ca8071dac41e65a2fc07d6f44c99b6026a2d3c6e4de4c4c663c"
+    },
+    {
+      "path": "dsh-patches/PATCHES.md",
+      "localBytes": 98493,
+      "localSha256": "ae34a464083a6459e69e57e82dce7f135dbb97a585c81d436f1db6c31d3da747",
+      "expectedCISha256": "ae34a464083a6459e69e57e82dce7f135dbb97a585c81d436f1db6c31d3da747"
+    },
+    {
+      "path": "dsh-patches/P-34-intel-download-retry-timeout-20261104.patch",
+      "localBytes": 2717,
+      "localSha256": "91343ff0b21cdf3cb0c47d40c84e59137d643da9f6c527bf0606ab9c37e00f24",
+      "expectedCISha256": "efe8e16a688e9af4e4d3de06e9edd473376c868e05ae682be6a9f277b4cdd32e"
+    },
+    {
+      "path": "packaging/mac/sign-adhoc.sh",
+      "localBytes": 5513,
+      "localSha256": "e1e13d06c86e2e6fd25d9ee8c68a2059ca57eee7a69f5fa19a2dbae726a53274",
+      "expectedCISha256": "e1e13d06c86e2e6fd25d9ee8c68a2059ca57eee7a69f5fa19a2dbae726a53274"
+    },
+    {
+      "path": "packaging/versions.lock",
+      "localBytes": 8162,
+      "localSha256": "bc430305eb4f2a394e659da0035bd6e676f5a46492c03702e0928564ac97eb61",
+      "expectedCISha256": "bc430305eb4f2a394e659da0035bd6e676f5a46492c03702e0928564ac97eb61"
+    }
+  ],
+  "watchSession": 36794,
+  "startedBuildJob": 126374084995,
+  "oldOwnerRun": "41758901369 completed/cancelled before new dispatch",
+  "restoreFailureNotFatal": true,
+  "failureSaveExplicit": true,
+  "cancelledSaveNotGuaranteed": true,
+  "previousRun": 41767481068,
+  "previousHead": "93926092bb5d28c2e9083d2341d56816c10d520f",
+  "overallDispatchCountBefore": 1,
+  "singleCauseFailureCounts": {
+    "download503Prior": 1,
+    "newExplicitUndefinedTS2379": 1
+  },
+  "failureQualification": "Pre-fix local root Host check intentionally reproduced the same one TS2379; not another repaired CI attempt",
+  "scope": "omit absent optional downloader field; no transport-function/flags/SHA changes",
+  "oldRunAllJobsTerminal": true,
+  "overallDispatchCount": 2,
+  "retryQualification": "New scoped one-line type assembly fix, not unchanged rerun. Current OWNER112000 authorizes download fixes with same-cause2 stop; no new target or time reset.",
+  "rootFixHead": "1de60580b449401de4b6bdad8a95dc61529fdb28",
+  "unexpectedRemoteCommit": "Only patch index descriptor; source payload byte-identical after normal full patch application. Main local worktree NOT overwritten/merged.",
+  "actualCurrentRun": 41769016292,
+  "previousRunOutcome": "41767481068 FAILED first TS2379; native gate/signature/not reached; actual smoke NOT_RUN",
+  "newCacheProof": "attempt-1/caches-after-failure.json x64 snapshot588850202B",
+  "typeAfter": "root Host strict/noEmit0, original config includesdesktop scripts, no strict modification",
+  "budgetReset": false,
+  "rootInventedEarlierWallCutoffRemoved": "2026-11-04T13:21:30+08:00",
+  "ownerTimingLiteral": "超时由 build job 的120分钟上限兜底",
+  "nativeBuildDeadline": "2026-11-04T05:45:07+00:00",
+  "observationFallbackMeaning": "Build120min plus existing smoke30min plus5min readback/cleanup; NOT a larger build timeout, NOT a new CI",
+  "existingSmokeTimeoutMinutes": 30,
+  "oldWatcherStopped": 69852,
+  "nativeWaiterIdentity": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Intel-x64-download-reliability-20261104-1121\\attempt-2\\native-budget-waiter-identity.json",
+  "ownerDesktopBoundary": "After owner asked 控制我电脑干嘛, Root committed NO further desktop/browser UI interaction for this task, persists across turns. Only authorized CLI/cloud build/local file evidence continue; cloud CI smoke remains requested.",
+  "optionalLiveLogQuestion": "Sent once, optional; no response required to continue and no re-asking",
+  "goal1300Missed": true,
+  "currentCloudStatus": "Build in_progress, no current result; never claim PASS from duration",
+  "closedAt": "2026-11-04T13:19:43.473190+08:00",
+  "runStatus": "completed",
+  "runConclusion": "cancelled",
+  "allJobsTerminal": true,
+  "cancelSource": "Owner explicitly confirmed cancellation; source clarification resolved. No restart authorization.",
+  "noAutomaticRestart": true,
+  "finalClosure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Intel-x64-download-reliability-20261104-1121\\attempt-2\\final-closure-current.json",
+  "reports": [
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64下载修复-六项交回-20261104-131943.md",
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64下载修复-架构闸门-20261104-131943.md",
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64下载修复-签名验证-20261104-131943.md",
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64下载修复-构建结果-20261104-131943.md"
+  ],
+  "dmg": null,
+  "source3FixesDone": true,
+  "currentRawArtifactReadback": "two transport timeouts; no contents reviewed",
+  "cancellationSource": "OWNER_CONFIRMED",
+  "ownerCancellationExactAnswer": "是，我取消了",
+  "cancellationClarificationPending": false,
+  "cancellationClarificationResolvedAt": "2026-11-04T13:29:20.450418+08:00",
+  "newBuildAuthorization": false
+}

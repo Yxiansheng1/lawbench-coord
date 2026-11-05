@@ -1,0 +1,27 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 44666,
+    "sha256": "4f652150927692c5230bd7ec5d517fdec2f45e35839fefd017d3e6d0aa3c922c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 20103,
+    "sha256": "d69d93748eace497539a5ca96b18fd19e9852de2b3bed93cbddb45c87a7277b4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+    "bytes": 61281,
+    "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+    "bytes": 3801,
+    "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+    "bytes": 4045,
+    "sha256": "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0"
+  }
+]

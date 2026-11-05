@@ -1,0 +1,22 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\LitigationQuestionObserver-20261029-192800\\native-litigation-docs.mts",
+    "bytes": 127135,
+    "sha256": "7e615458396fefcba57bb6f23647f9e40a6263b046705b9a5012fe48256d3ec3"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\LitigationQuestionObserver-20261029-192800\\b-service-litigation-docs.py",
+    "bytes": 46327,
+    "sha256": "c9e8faa0b998eff4ed893a439e5030a76c0a04dda8e438e6bc2af563e29105f2"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\LitigationQuestionObserver-20261029-192800\\literalfixed-inputs.json",
+    "bytes": 11264,
+    "sha256": "95e572a30ebde10a687a50e27c12723b32a8bb862f933f70bbde487fa87af00a"
+  },
+  "finite": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\LitigationQuestionObserver-20261029-192800\\observer-replay-finite.mjs",
+    "bytes": 23471,
+    "sha256": "c323daeb49783585704f03f6c228fe1a67fe4c6b548b5925f445641dec81305c"
+  }
+}

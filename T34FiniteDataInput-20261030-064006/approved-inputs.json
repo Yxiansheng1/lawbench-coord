@@ -1,0 +1,80 @@
+{
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\entry.py",
+      "bytes": 88670,
+      "sha256": "369f3fd3b8f70e01a56e9685e14bd41d7b126cad490a974544b62911a2e58980"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\frame-classifier-finite.mjs",
+      "bytes": 6972,
+      "sha256": "2828a684b26aaaf4a435c05959a2d0951e6c6d0203bec2f24ccd601c6d4e804c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\literal-inputs.json",
+      "bytes": 13410,
+      "sha256": "ce985069ce69d3b391358fa1e91ea24d63598d516480f97766cf1e71e5500359"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\prepare.ps1",
+      "bytes": 13561,
+      "sha256": "d280ca31609865f91b60c02b1cb531c506673b26e9743b3fdda5ffe8c6dfa9bc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\projection-observer.mjs",
+      "bytes": 18502,
+      "sha256": "a50d2eeb520b87576bf977fe2bb895175a8a89e4527bbc907296897714dd0da5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\README.md",
+      "bytes": 12772,
+      "sha256": "4f2c11afa82c4014b29f0d067c10ff0e21190c8b2c3791ffed915f183dea8f9a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\start.ps1",
+      "bytes": 76348,
+      "sha256": "4fe39e1dc2cfc989bbbffe976a71948af1436ec5fc4c49f6820352fb5bb2caf5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\stop.ps1",
+      "bytes": 7178,
+      "sha256": "d52ed07f1ec6bf0ef116c1dab069647c042e5f80751e579bc0872e7ccfed932d"
+    }
+  ],
+  "earlier_byte_pins": "D:\\Lawbeach\\lawbench-coord\\T34ProjectionFramesInput-20261030-063418\\approved-inputs.json",
+  "root_red": {
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34FrameClassifierFinite-root-20261030-063918",
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\projection-observer.mjs",
+    "source_sha256": "a50d2eeb520b87576bf977fe2bb895175a8a89e4527bbc907296897714dd0da5",
+    "finite_sha256": "2828a684b26aaaf4a435c05959a2d0951e6c6d0203bec2f24ccd601c6d4e804c",
+    "exit_code": 1,
+    "elapsed_s": 2.4070000000065193,
+    "identities": [
+      {
+        "pid": 14744,
+        "parent": 28800,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-29T22:39:18.1780280Z"
+      },
+      {
+        "pid": 36568,
+        "parent": 14744,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birth_utc": "2026-10-29T22:39:18.2379000Z"
+      }
+    ],
+    "owned_OS_after": [],
+    "forced": false,
+    "network": {
+      "exit_code": 1,
+      "denied": []
+    },
+    "source_held": true,
+    "stdout": "",
+    "model": 0,
+    "consumer_main_executed": false,
+    "actual_Native_events_created": false,
+    "Packaging": "HOLD"
+  },
+  "observer_frozen": true
+}

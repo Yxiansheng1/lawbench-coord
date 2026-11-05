@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/documents_save.schema.json",
+  "title": "POST /api/documents/save",
+  "description": "保存已登记 Markdown 草稿或成果的新版本（1.6 起）：服务从本案登记恢复实际标题和来源任务，只接受已结束任务的普通草稿/成果 md；写入来源任务的新草稿版本，旧版本和成果不覆盖，不自动确认",
+  "$defs": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+        },
+        "path": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "path",
+        "content"
+      ]
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "task_id": {
+                  "$ref": "lawbench://contracts/common.schema.json#/$defs/task_id"
+                },
+                "path": {
+                  "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+                },
+                "version": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "citation_check": {
+                  "$ref": "lawbench://contracts/common.schema.json#/$defs/citation_check"
+                },
+                "coverage": {
+                  "$ref": "lawbench://contracts/common.schema.json#/$defs/coverage"
+                },
+                "not_fully_read": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "description": "材料名"
+                  }
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "task_id",
+                "path",
+                "version",
+                "citation_check",
+                "coverage",
+                "not_fully_read"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/task_id"
+        },
+        "path": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "citation_check": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/citation_check"
+        },
+        "coverage": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/coverage"
+        },
+        "not_fully_read": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "材料名"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "path",
+        "version",
+        "citation_check",
+        "coverage",
+        "not_fully_read"
+      ]
+    }
+  }
+}

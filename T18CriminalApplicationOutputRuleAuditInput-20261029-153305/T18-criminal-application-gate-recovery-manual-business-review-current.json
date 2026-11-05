@@ -1,0 +1,52 @@
+{
+  "verdict": "MANUAL_BUSINESS_FAILED_REQUIRED_LEGAL_MARKER_AND_UNSUPPORTED_FORGIVENESS",
+  "at_utc": "2026-10-29T07:30:41.076156+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx",
+  "final_draft_sha256": "8b1c9229926999e68722044942b5de90c36776df6d8a54aa75854c9ed97535cc",
+  "full_final_draft_final_reply_all3_canonical_sources_primary_template_shared_rules_read": true,
+  "primary_support": [
+    "Skill output template reason paragraph explicitly contains 法律依据待律师核实",
+    "Shared rule requires that phrase for legal application; actual body applies bail/legal-dangerousness conditions",
+    "Primary Step1 confirmation requires agency prefill with source location"
+  ],
+  "failed": [
+    {
+      "issue": "Required legal-verification marker absent",
+      "evidence": "Actual application body and final reply have no 法律依据待律师核实; not a consumer false-positive against primary."
+    },
+    {
+      "issue": "Unsupported victim forgiveness",
+      "draft": "取得被害人部分谅解，社会矛盾有所化解。",
+      "source": "Repayment receipt proves partial20,000 payment only; none of3materials provides victim forgiveness."
+    },
+    {
+      "issue": "Authority prefill lacks formal source location",
+      "evidence": "Both actual questions name 起诉意见书 and correctagency but contain no source-location citation; IDs and correctname alone do not meet manual semantic gate."
+    },
+    {
+      "issue": "Evidence-fixed and legal-dangerousness claims need qualification",
+      "evidence": "Actual body states evidence basicallyfixed and guarantee ensures appearance; no labelled inference or lawyer-verified basis."
+    },
+    {
+      "issue": "Self-check not supplied as primary checklist",
+      "evidence": "Final reply gives drafting summary and missingitems, not each primary self-check item with pass/problem handling."
+    }
+  ],
+  "observed_appropriate": [
+    "ExactdeclaredtwoIDs finallyjointlyanswered once before successfulsaves",
+    "Firstpartialaskdeniedbyexistingproductionrequiredquestiongate",
+    "Partial20,000payment/identity/detentiondates/agency follow currentmaterials",
+    "Family/guarantor data identified as 律师提供",
+    "Phone/date/guarantorproof gaps remain placeholders"
+  ],
+  "citation_check_pass_not_semantic_truth": true,
+  "citation_stats": {
+    "citations": 10,
+    "must_fix": 0,
+    "hints": 1
+  },
+  "business_all_PASS": false,
+  "legal_merits_certified": false,
+  "previous_initial_failure_preserved": true,
+  "Packaging": "HOLD"
+}

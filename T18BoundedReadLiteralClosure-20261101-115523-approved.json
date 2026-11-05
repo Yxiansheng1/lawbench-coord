@@ -1,0 +1,9 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+  "mapping": {
+    "coverage[\"partial\"]": "coverage[\"partially_read\"]",
+    "_selected_unit_count(_coverage_snapshot(txt_env, task_id), LONG_FILE)": "_selected_unit_count(_coverage_snapshot(txt_env, task_id), first[\"name\"])",
+    "_selected_unit_count(coverage, RANGE_FILE)": "_selected_unit_count(coverage, value[\"name\"])"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadLiteralClosure-20261101-115523.md"
+}

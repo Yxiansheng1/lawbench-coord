@@ -1,0 +1,71 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ArticleDeltaFinite-root-20261029-011150",
+  "exit_code": 1,
+  "elapsed_s": 1.8910000000032596,
+  "natural_exit": true,
+  "forced_stop": false,
+  "identities": [
+    {
+      "pid": 44496,
+      "parent": 628,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T17:11:50.4302260Z"
+    }
+  ],
+  "OS_after": [],
+  "source_held": true,
+  "result": {
+    "kind": "ROOT_EXTRACTED_ACTUAL_\"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-prior-delta-observed-0111.mts\"_DELTA_OBSERVER_ONLY",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-prior-delta-observed-0111.mts",
+    "source_sha256": "07b17ac7c111ff8601f1318c2965a8be88efd3b9b14e2ed828b9144c39ea79d3",
+    "extracted_functions": [
+      "sha256Bytes",
+      "risk3BlockRange",
+      "risk3Block",
+      "oneContiguousEdit"
+    ],
+    "controls": [
+      {
+        "name": "exact necessary article-number change",
+        "expected": true,
+        "accepted": false,
+        "error": "Error",
+        "pass": false
+      },
+      {
+        "name": "unchanged wrong article",
+        "expected": false,
+        "accepted": false,
+        "error": "Error",
+        "pass": true
+      },
+      {
+        "name": "correct article plus unrelated body append",
+        "expected": false,
+        "accepted": false,
+        "error": "Error",
+        "pass": true
+      },
+      {
+        "name": "wrong replacement article",
+        "expected": false,
+        "accepted": false,
+        "error": "Error",
+        "pass": true
+      },
+      {
+        "name": "correct article plus nearby unrelated phrase",
+        "expected": false,
+        "accepted": false,
+        "error": "Error",
+        "pass": true
+      }
+    ],
+    "passed": false,
+    "model": 0,
+    "HTTP": 0,
+    "Key": 0,
+    "product_main_executed": false,
+    "corrected_body_saved_or_sent": false
+  }
+}

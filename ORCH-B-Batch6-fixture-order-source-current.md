@@ -1,0 +1,4 @@
+SOURCE ONLY R2，准确ASCII首读本令，nativepwsh/loginfalse，不Git/runtime/parser/test/build/HTTP/GUI/model。前单4分钟到期未写，不重查已证事实，限本单3分钟，不扩范围。
+Root实证与契约formats.md110：材料name是文件名去扩展名，不是完整.txt。当前24个name都是 Test-material-01..24，rel_path是 工作区/引用/R01/Test-material-01.txt 等，原文件目录虽含发票，API相对路径却不含，因此原夹具搜发票永远0。
+仅修B6隔离prepare.py和entry.py的夹具命名/对应精确inventory检查：前12个文件 basename=发票-Test-material-01.txt..12.txt，后12仍Test-material-13.txt..24.txt。实际Materials.list精确24唯一name要比较stem（前12发票-Test-material-01..12，后12Test-material-13..24），可sorted比对且保留len24、originref、registered24、5原件/sessionSHA和B346/所有guards原样。entry.py fixture_names对应24相同basename。禁止改产品/材料排序/安全函数/RootBinding/长路径IO；未授权任何运行。
+只改这几个literal/生成式，不调查其他源，交回coord/HANDBACK-B-Batch6-fixture-order-current.md含全diff/bytes/SHA，三分钟内。失败root纯虚构已证无需重读，不改旧failedroot。第24末项仍Test-material-24。若无法完成只报未完成停止。

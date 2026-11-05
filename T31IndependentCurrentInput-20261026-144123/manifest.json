@@ -1,0 +1,371 @@
+[
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/material-batch.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\material-batch.ts",
+    "bytes": 14543,
+    "sha256": "5456b507f01d74e722317008d3d67b78717bca8ffd500da4f1466da7cebf4397",
+    "mtime": "2026-10-25T18:10:53.4197224Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/material-batch.tsx",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\material-batch.tsx",
+    "bytes": 3632,
+    "sha256": "1fdd2a32cbef1ec04be59e1197bd852b287e1a900c3ffcad4cebab6382cb0586",
+    "mtime": "2026-10-25T18:04:00.0008781Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/input-import.tsx",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\input-import.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\input-import.tsx",
+    "bytes": 5327,
+    "sha256": "a0891e884b1f518bbbfdb3497b1a732879f028be30f1eb79737b5d4167f06af6",
+    "mtime": "2026-10-25T23:19:48.8167029Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/intake.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\intake.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\intake.ts",
+    "bytes": 6524,
+    "sha256": "926f787ca7fc7f92efb03a2ec0faa0029ecfe5243af4d1335371ef08bb3e689a",
+    "mtime": "2026-10-25T23:20:06.5955750Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/cases.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\cases.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\cases.ts",
+    "bytes": 19799,
+    "sha256": "b12000ab4b3faae5a18802d169fb41752c068f17ce29e8511a8ea77f806106de",
+    "mtime": "2026-10-25T18:01:09.8408672Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/ui/state.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\ui\\state.ts",
+    "bytes": 18947,
+    "sha256": "dc1bfca134440714b4242a7e13d53dd4ca993841c7dc1197ce791c3fa3d5ce51",
+    "mtime": "2026-10-25T18:01:03.1474464Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/agent/index.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\agent\\index.ts",
+    "bytes": 36736,
+    "sha256": "b89fd30fce0df233603368861dea440dfbba0de1ca3c152b7a42a0fb19c065cd",
+    "mtime": "2026-10-25T19:22:35.9312478Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/host/index.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\host\\index.ts",
+    "bytes": 59779,
+    "sha256": "4a12f0e0176c05596a6620b6877f2a8e6d12f4c61081683fc70ffd4302a3d6b8",
+    "mtime": "2026-10-25T22:54:36.0847648Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/api/session-controller/src/commands.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "bytes": 29003,
+    "sha256": "0ec066a40e71b2ada35b6c3fbde40a84b7506457bcbbf282a15a62193acef87e",
+    "mtime": "2026-10-25T19:14:58.6277694Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/api/session-controller/src/agent.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "bytes": 22822,
+    "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "mtime": "2026-10-19T09:43:32.4038528Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/api/session-controller/src/types.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\types.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\api\\session-controller\\src\\types.ts",
+    "bytes": 21997,
+    "sha256": "10e8460f23f897b6d65b6ce979e26d56e386589201e063bdb076b7a9b5322cf2",
+    "mtime": "2026-10-19T03:11:03.5025798Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/api/session-controller/src/client/sessions/session.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+    "bytes": 40287,
+    "sha256": "507260418c1d9666756fa43839bf15489d1114c0ea8da850f2be0869459538f5",
+    "mtime": "2026-10-19T03:11:03.4995788Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/api/session-controller/src/client/contract/session.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\session.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\session.ts",
+    "bytes": 7697,
+    "sha256": "fa0d217edc0a5ac2a6e90301a2320d2f62e81fac1db33dac38f96d14fdf179d1",
+    "mtime": "2026-10-19T03:11:03.4965791Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh/packages/client/ui-conversation/src/client/apply.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src\\client\\apply.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh\\packages\\client\\ui-conversation\\src\\client\\apply.ts",
+    "bytes": 29087,
+    "sha256": "4339baaf4a2d07b955c4b783d115b20a2af2d6a621da5c651f3a8952a42f2447",
+    "mtime": "2026-10-25T18:02:10.2447373Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/tests/material-batch-boundaries.spec.tsx",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\material-batch-boundaries.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\tests\\material-batch-boundaries.spec.tsx",
+    "bytes": 13346,
+    "sha256": "6ca28c6ff21c434e3c33a37cab73a8232d918e0fe5e74635a581a27fd8525c8c",
+    "mtime": "2026-10-25T18:01:42.0992485Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/tests/t31-agent-scope-lifecycle.spec.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-agent-scope-lifecycle.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\tests\\t31-agent-scope-lifecycle.spec.ts",
+    "bytes": 6861,
+    "sha256": "8dbdd93982225e96ec4ed858cb1a7a6a7d9a903acd7983cb2da2ea6246e4202c",
+    "mtime": "2026-10-25T19:54:16.4299886Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/shared/core-client.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\core-client.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\shared\\core-client.ts",
+    "bytes": 3666,
+    "sha256": "5deeb42f96b2b23225f90adb8642fa9529f419a01a8e14f731378b4f2ac74c50",
+    "mtime": "2026-10-19T03:10:17.9124237Z"
+  },
+  {
+    "tree": "A",
+    "relative": "dsh-ext/tests/core-client.spec.ts",
+    "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\core-client.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\A\\dsh-ext\\tests\\core-client.spec.ts",
+    "bytes": 2699,
+    "sha256": "759dd1e11bc4826559f98f8e7ac39e718cd8fe8289a9e89161b6aac6b4ce5f69",
+    "mtime": "2026-10-19T03:10:17.9164226Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/request_scope.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\request_scope.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\request_scope.py",
+    "bytes": 13476,
+    "sha256": "4b158901d7b478e645cb57d4c53e5eb6b7ea947bf9581dce4be05058fa3356e8",
+    "mtime": "2026-10-25T18:48:57.9846810Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/task.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\task.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\task.py",
+    "bytes": 40253,
+    "sha256": "80033acb3ae76585f4a44a4582d07068aa48aad433b7bc2a2e09349e5e3341c0",
+    "mtime": "2026-10-25T19:02:04.4681651Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/context.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\context.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\context.py",
+    "bytes": 6409,
+    "sha256": "1128f934f13e1f0453be4c73cea1466dd4bf54ede158cd359eedc48a57e4d9ee",
+    "mtime": "2026-10-25T18:01:37.4967986Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/materials.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\materials.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\materials.py",
+    "bytes": 84031,
+    "sha256": "3983f6e90337be065819eb24539a81dc9a181ef4d5d81303656e713954627078",
+    "mtime": "2026-10-22T14:12:31.3626199Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/refs.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\refs.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\refs.py",
+    "bytes": 19343,
+    "sha256": "76d2f550a65b1f07b504e46fb5dbfa53351391bcaa1217cb78aa4ed869ba2ac2",
+    "mtime": "2026-10-22T07:56:47.5688367Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/registry.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\registry.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\registry.py",
+    "bytes": 11656,
+    "sha256": "05d3266afd7efb4108d416102c35d548aae29b011cdfb8b757872a8b0e656c21",
+    "mtime": "2026-10-22T14:13:17.5757015Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/case/texts.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\texts.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\case\\texts.py",
+    "bytes": 6262,
+    "sha256": "1f44044b450d6816b1384288391f5a72229b236e8d067a958b424dadae6f85c4",
+    "mtime": "2026-10-21T18:18:14.4067054Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/tools/inputs.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\inputs.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\tools\\inputs.py",
+    "bytes": 4428,
+    "sha256": "b13f8ac7bdb85d87403531e4a6e9a3eb336623455f7e7a68db9422cf4b1f23ee",
+    "mtime": "2026-10-25T19:03:05.8302746Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/tools/materials.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\materials.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\tools\\materials.py",
+    "bytes": 7115,
+    "sha256": "9122850f43ca96647fe8c3240c47000c55e395aba983c221e2fc79fcdc476a73",
+    "mtime": "2026-10-19T03:12:58.7416049Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/tools/search.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\search.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\tools\\search.py",
+    "bytes": 562,
+    "sha256": "cc26c032bdaff52283680ef43ce1f5421bf054d42217b4062d3ebef3efa89531",
+    "mtime": "2026-10-25T18:02:02.4474634Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/tools/drafts.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\tools\\drafts.py",
+    "bytes": 6779,
+    "sha256": "119d3ceacee730523b6192c540c063dd36aaec4b3c91814efe57194896ef2f2a",
+    "mtime": "2026-10-25T18:02:09.4982993Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/api/core.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\api\\core.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\api\\core.py",
+    "bytes": 2106,
+    "sha256": "42d8ef7176d2624ff50f9bffc5d156f4f6a126c293f2f354e6fef7770719e988",
+    "mtime": "2026-10-25T18:01:20.9030818Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/__init__.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\__init__.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\__init__.py",
+    "bytes": 9100,
+    "sha256": "a552dc0dd7fcdae6477fdd5d796e2c0e525e43d77dd63069c160e86938b341ca",
+    "mtime": "2026-10-19T03:12:58.7366064Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/llm.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\llm.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\llm.py",
+    "bytes": 8911,
+    "sha256": "e5856059e4d467f38be1a49cfd8c10ad7649f50914530d5205d94bb990112157",
+    "mtime": "2026-10-19T03:12:58.7366064Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/prep.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\prep.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\prep.py",
+    "bytes": 6747,
+    "sha256": "f733ef25466ab59a0fa6754690afc8d3c5a855261116aa390709eb7ee0575003",
+    "mtime": "2026-10-19T03:12:58.7376064Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/prompts.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\prompts.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\prompts.py",
+    "bytes": 1808,
+    "sha256": "16da3732378054c827684453995a0670587d888f421b8d2f7728568b10da2af9",
+    "mtime": "2026-10-19T03:12:58.7376064Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/refine.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\refine.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\refine.py",
+    "bytes": 5582,
+    "sha256": "a4263eb872a56567d979db4675f0255f72cd6fe64c999af5c8f3c04f632ca333",
+    "mtime": "2026-10-19T09:07:48.3726384Z"
+  },
+  {
+    "tree": "B",
+    "relative": "service/lawbench/pipeline/runner.py",
+    "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\runner.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\service\\lawbench\\pipeline\\runner.py",
+    "bytes": 15876,
+    "sha256": "83fd1f79c4a7d20a5aaef48aca770585ce82d380fc5bd5a4d3997c8a57a23f94",
+    "mtime": "2026-10-19T03:12:58.7376064Z"
+  },
+  {
+    "tree": "B",
+    "relative": "contracts/common.schema.json",
+    "original": "D:\\Lawbeach\\lawbench-B\\contracts\\common.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\contracts\\common.schema.json",
+    "bytes": 17837,
+    "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445",
+    "mtime": "2026-10-25T18:04:33.1311377Z"
+  },
+  {
+    "tree": "B",
+    "relative": "contracts/core/task_begin.schema.json",
+    "original": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\task_begin.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\contracts\\core\\task_begin.schema.json",
+    "bytes": 6382,
+    "sha256": "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571",
+    "mtime": "2026-10-25T18:03:25.2090115Z"
+  },
+  {
+    "tree": "B",
+    "relative": "contracts/files/task.schema.json",
+    "original": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\task.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\contracts\\files\\task.schema.json",
+    "bytes": 4155,
+    "sha256": "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed",
+    "mtime": "2026-10-25T18:03:33.0188923Z"
+  },
+  {
+    "tree": "B",
+    "relative": "contracts/api/request_scope.schema.json",
+    "original": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\request_scope.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\contracts\\api\\request_scope.schema.json",
+    "bytes": 4555,
+    "sha256": "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c",
+    "mtime": "2026-10-25T18:03:42.5092610Z"
+  },
+  {
+    "tree": "B",
+    "relative": "contracts/files/request_scope_store.schema.json",
+    "original": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\request_scope_store.schema.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31IndependentCurrentInput-20261026-144123\\B\\contracts\\files\\request_scope_store.schema.json",
+    "bytes": 2357,
+    "sha256": "e8b40898e8f4af1ac21a66bda79213ae37031b842d05c309e1c645c83cd2a477",
+    "mtime": "2026-10-25T18:03:51.5508775Z"
+  }
+]

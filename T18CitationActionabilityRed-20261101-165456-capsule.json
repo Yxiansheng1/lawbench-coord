@@ -1,0 +1,55 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+  "prefix_bytes": 23084,
+  "prefix_sha256": "fe2841296774f75d984ffcd49f9ed6656cc6f0a70935259509af56f6207b064f",
+  "helpers_exact": "\"\"\"T18：辩护意见引用必须由本任务当前材料版本的完整读取支撑。\n\n本文件只定义有限的红灯测试和正向对照，不修改产品实现、旧测试或测试辅助层。\n\"\"\"\nfrom __future__ import annotations\n\nimport pathlib\n\nfrom t8_helpers import Env, fail, ok\n\n\nDEFENSE_SKILL = \"defense-opinion\"\nTASK_PARAMS = {\"thinking\": \"中\", \"window\": \"32K\", \"max_tokens\": 2048}\n\n\ndef _selected_task(env: Env, session: str, skill: str | None) -> str:\n    \"\"\"通过公开的 /api/task 选择 skill，再由真实 /core/task/begin 建运行中任务。\"\"\"\n    req = {\n        \"case_id\": env.case_id,\n        \"session_id\": session,\n        \"entry\": skill,\n        \"skill\": skill,\n        \"inputs\": [],\n        \"params\": TASK_PARAMS,\n    }\n    ok(env.client.post(\"/api/task\", json=req), \"api/task_create.schema.json\")\n    return env.begin(session)[\"task_id\"]\n\n\ndef _material_env(tmp_path: pathlib.Path, text: str) -> Env:\n    source = tmp_path / \"事实材料.txt\"\n    source.write_text(text, encoding=\"utf-8\")\n    return Env(tmp_path / \"case\", {\"事实材料.txt\": source})\n\n\ndef _reads(env: Env, task_id: str) -> list[dict]:\n    return env.read_json(task_id, \"reads.json\", \"files/reads.schema.json\")[\"reads\"]\n\n\ndef _snapshot(env: Env, task_id: str) -> tuple[bytes, tuple[tuple[str, bytes], ...]]:\n    task_dir = env.task_dir(task_id)\n    result = (task_dir / \"result.json\").read_bytes()\n    drafts_dir = task_dir / \"草稿\"\n    drafts = tuple(sorted(\n        ((p.relative_to(drafts_dir).as_posix(), p.read_bytes()) for p in drafts_dir.glob(\"*.md\")),\n        key=lambda item: item[0],\n    ))\n    return result, drafts\n\n\ndef _assert_citation_denied(env: Env, task_id: str, content: str, name: str, loc: str,\n                            private_text: str) -> None:\n    materials = env.tool_ok(task_id, \"case_list_materials\", {})[\"materials\"]\n    material_id = next(m[\"material_id\"] for m in materials if m[\"name\"] == name)\n    before = _snapshot(env, task_id)\n    body = fail(env.tool(task_id, \"case_save_draft\", {\"title\": \"辩护意见\", \"content\": content}),\n                \"INVALID_ARGUMENT\")\n    error = body[\"error\"]\n    message = error[\"message\"]\n    assert isinstance(message, str) and message\n    assert material_id in message and loc in message\n    assert \"读取\" in message\n    assert name not in message\n    assert private_text not in message\n    assert len(message) <= 500\n    assert _snapshot(env, task_id) == before\n    assert env.read_json(task_id, \"task.json\", \"files/task.schema.json\")[\"state\"] == \"running\"\n\n\ndef test_t18_main_search_only_numeric_citation_denied_without_side_effects(tmp_path):\n    \"\"\"搜索命中不是读取；未读引用必须拒绝，且不落草稿、不改 result。\"\"\"\n    env = _material_env(\n        tmp_path,\n",
+  "other_existing_helpers": "_material_env(tmp_path,text) creates Env with original TXT; _edge_material(env,tid,name) resolves public list. _selected_task, _snapshot, _reads, Env/fail/ok/DEFENSE_SKILL imported unchanged.",
+  "public_read_args_schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "start": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "起始位置号（页 / 段 / 行；Excel 为整份材料里表格行的顺序号，跨工作表连续，1.2 起），默认 1"
+      },
+      "end": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "结束位置号（含本端，1.7 起，可选）：与 start 相同表示只读一个单元；省略时保持原有从 start 向后读的行为"
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "从起始位置号那个单元内的第几个字开始读（0 起），默认 0；单元本身超过 max_chars 时用它接着读同一单元（1.2 起）"
+      },
+      "max_chars": {
+        "type": "integer",
+        "minimum": 500,
+        "maximum": 8000,
+        "description": "单次最多返回的字数，默认且最大 8000"
+      },
+      "more_names": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "maxItems": 9,
+        "uniqueItems": true,
+        "description": "同一次再读这几份材料（各从头读；1.4 起）：按顺序接在 name 后面，合计不超过 max_chars，放不下的不读、在 parts 里标 read=false。给了它就不能再给 start、end、offset"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ]
+  },
+  "current_error": "ID+loc, asks read material ID but does not instruct case_list_materials -> corresponding name",
+  "source_reason": "Independent A AMEND + Root actual public contract/read_material ctx.material_by_name confirmed. Need prove current message recovery ambiguity against actual public Core FS mapping. No actual model-loop causality claim.",
+  "original_filtered_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadBoundarySourceClosure-20261101-161104\\bootstrap.py",
+  "new_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitationActionabilityRed-20261101-165456\\bootstrap.py",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18CitationActionabilityRed-20261101-165456.md"
+}

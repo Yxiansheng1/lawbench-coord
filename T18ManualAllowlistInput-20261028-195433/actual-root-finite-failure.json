@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ManualReasonFinite-root-20261028-195334",
+  "exit": 1,
+  "elapsed_s": 1.235000000000582,
+  "natural": true,
+  "forced": false,
+  "identities": [
+    {
+      "pid": 35304,
+      "parent": 3264,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T11:53:34.5319670Z"
+    },
+    {
+      "pid": 46128,
+      "parent": 35304,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T11:53:34.6031290Z"
+    }
+  ],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_function_and_one_callsite_only_inverse": true,
+  "source_sha256": "d1146fcfd9bc71e73de091e1fc578eb0faa66c71d4e562fe535016b7ffb80479",
+  "test_sha256": "ee7a89af4a3387b69177b7919911607923fe0fcf4c5b62c111855da50c672934",
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: observer call is outside safe allowlist: add\n    at inspectCapabilities (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\manual-reason-observer.spec.mts:64:12)\n    at visitNode2 (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:32551:18)\n    at forEachChildInExpressionStatement (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:32781:12)\n    at Object.forEachChild (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:33072:35)\n    at inspectCapabilities (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\manual-reason-observer.spec.mts:70:6)\n    at visitNodes (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:32559:22)\n    at forEachChildInBlock (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:33029:10)\n    at Object.forEachChild (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:33072:35)\n    at inspectCapabilities (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\manual-reason-observer.spec.mts:70:6)\n    at visitNode2 (D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript\\lib\\typescript.js:32551:18) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.21.0\n",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

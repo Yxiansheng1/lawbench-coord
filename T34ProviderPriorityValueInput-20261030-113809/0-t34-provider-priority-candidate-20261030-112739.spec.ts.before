@@ -1,0 +1,167 @@
+/** T34: real provider composition through the existing profile settings seams. */
+import { readFileSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { FiberState } from '@deepseek-ai/cordis'
+import { readProfilePatches, reconcileProfilePatches } from '@deepseek-ai/dsh-app-boot'
+import LlmRuntime from '@deepseek-ai/dsh-llm'
+import * as LlmPiAi from 'file:///D:/Lawbeach/lawbench-A/dsh/packages/llm/llm-pi-ai/t34-source-candidate-20261030-112739/index.ts'
+import { expect, it, onTestFinished, vi } from 'vitest'
+import { parseDocument } from 'yaml'
+import { configurationFixture } from 'file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/tests/configuration-fixture.ts'
+
+const builtinName = 't34-llm-pi-ai'
+const namespace = 'llm-pi-ai'
+const entryName = `cordis:${builtinName}`
+
+function syntheticProfilePatch(baseURL: string): string {
+  return [
+    '- id: llm-pi-ai',
+    '  config:',
+    '    providers:',
+    '      lawfirm:',
+    '        apiKeyEnv: T34_COMPOSITION_SYNTHETIC_KEY',
+    '        api: openai-completions',
+    baseURL,
+    '        timeoutMs: 1200000',
+    '        retryPolicy:',
+    '          mode: normal',
+    '          maxRetries: 1',
+    '        models:',
+    '          - id: lawfirm-synthetic',
+    '            input: [text]',
+    '            contextWindow: 2048',
+    '      external:',
+    '        apiKeyEnv: T34_COMPOSITION_SYNTHETIC_KEY',
+    '        api: openai-completions',
+    baseURL,
+    '        timeoutMs: 1200000',
+    '        retryPolicy:',
+    '          mode: normal',
+    '          maxRetries: 1',
+    '        models:',
+    '          - id: external-synthetic',
+    '            input: [text]',
+    '            contextWindow: 2048',
+    '',
+  ].join('\n')
+}
+
+async function setupSyntheticProviders(baseURL: string) {
+  const { ctx, profile } = await configurationFixture()
+  await ctx.plugin(LlmRuntime)
+  Object.assign(ctx.loader.builtins, { [builtinName]: LlmPiAi })
+
+  const lowerPatchPath = join(profile.dir, 'node_modules', 'test-bundle', 'cordis.patch.yml')
+  const lowerPatches = JSON.parse(readFileSync(lowerPatchPath, 'utf8')) as Array<{
+    insert: Array<{ id: string; name: string; config?: unknown }>
+  }>
+  expect(lowerPatches).toHaveLength(1)
+  const insert = lowerPatches[0]!.insert
+  expect(insert).toHaveLength(5)
+  insert.push({ id: namespace, name: entryName })
+  writeFileSync(lowerPatchPath, JSON.stringify(lowerPatches))
+
+  writeFileSync(profile.patchPath, syntheticProfilePatch(baseURL))
+
+  await ctx.hmr.runExclusive(async () => {
+    await reconcileProfilePatches(ctx, readProfilePatches('dsh', profile), 'dsh', [namespace])
+  })
+
+  const entry = [...ctx.loader.entries()].find(row => row.options.id === namespace)
+  expect(entry?.options.name).toBe(entryName)
+  expect(entry?.fiber?.state).toBe(FiberState.ACTIVE)
+  const descriptor = ctx.settings.describe().find(row => row.ns === namespace)
+  expect(descriptor).toBeDefined()
+  return { ctx, profile, entry: entry!, fiber: entry!.fiber!, descriptor: descriptor! }
+}
+
+type ProviderView = { providers: Record<string, unknown> }
+
+it('removes a synthetic external provider through real Settings with literal route URLs', async () => {
+  const { ctx, profile, entry, fiber, descriptor } = await setupSyntheticProviders(
+    '        baseURL: http://127.0.0.1:1/v1',
+  )
+  const before = descriptor.value as ProviderView
+  expect(Object.keys(before.providers).sort()).toEqual(['external', 'lawfirm'])
+  expect(before.providers.lawfirm).toMatchObject({
+    baseURL: 'http://127.0.0.1:1/v1',
+    timeoutMs: 1200000,
+  })
+
+  await ctx.settings.mutate(namespace, [{ op: 'unset', path: ['providers', 'external'] }])
+
+  const afterEntry = [...ctx.loader.entries()].find(row => row.options.id === namespace)
+  expect(afterEntry?.fiber).toBe(fiber)
+  expect(afterEntry?.fiber?.state).toBe(FiberState.ACTIVE)
+  const afterDescriptor = ctx.settings.describe().find(row => row.ns === namespace)
+  expect(afterDescriptor).toBeDefined()
+  const after = afterDescriptor!.value as ProviderView
+  expect(Object.keys(after.providers)).toEqual(['lawfirm'])
+  expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+
+  const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
+  })
+  expect(document.errors).toEqual([])
+  const persisted = JSON.stringify(document.toJS())
+  expect(persisted).toContain('lawfirm-synthetic')
+  expect(persisted).not.toContain('external')
+  expect(entry.options.id).toBe(namespace)
+})
+
+it('removes a synthetic external provider through real Settings with expression route URLs', async () => {
+  vi.stubEnv('T34_COMPOSITION_PORT', '1')
+  onTestFinished(() => { vi.unstubAllEnvs() })
+  const { ctx, profile, fiber, descriptor } = await setupSyntheticProviders(
+    '        baseURL: !!js "`http://127.0.0.1:${process.env.T34_COMPOSITION_PORT}/v1`"',
+  )
+  const before = descriptor.value as ProviderView
+  expect(Object.keys(before.providers).sort()).toEqual(['external', 'lawfirm'])
+  expect(before.providers.lawfirm).toMatchObject({
+    baseURL: 'http://127.0.0.1:1/v1',
+    timeoutMs: 1200000,
+  })
+
+  await ctx.settings.mutate(namespace, [{ op: 'unset', path: ['providers', 'external'] }])
+
+  const afterEntry = [...ctx.loader.entries()].find(row => row.options.id === namespace)
+  expect(afterEntry?.fiber).toBe(fiber)
+  expect(afterEntry?.fiber?.state).toBe(FiberState.ACTIVE)
+  const afterDescriptor = ctx.settings.describe().find(row => row.ns === namespace)
+  expect(afterDescriptor).toBeDefined()
+  const after = afterDescriptor!.value as ProviderView
+  expect(Object.keys(after.providers)).toEqual(['lawfirm'])
+  expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+
+  const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
+  })
+  expect(document.errors).toEqual([])
+  const persisted = JSON.stringify(document.toJS())
+  expect(persisted).toContain('lawfirm-synthetic')
+  expect(persisted).not.toContain('external')
+})
+
+it('rejects a malformed route after expression validation ordering is corrected', async () => {
+  const { ctx, profile, fiber, descriptor } = await setupSyntheticProviders(
+    '        baseURL: http://127.0.0.1:1/v1',
+  )
+  const before = descriptor.value as ProviderView
+  const descriptorBefore = structuredClone(before)
+  expect(Object.keys(before.providers).sort()).toEqual(['external', 'lawfirm'])
+  const patchBefore = readFileSync(profile.patchPath)
+
+  await expect(ctx.settings.mutate(namespace, [{
+    op: 'set',
+    path: ['providers', 'external', 'baseURL'],
+    value: 123,
+  }])).rejects.toThrow('$.providers.external.baseURL expected string')
+
+  expect(readFileSync(profile.patchPath)).toEqual(patchBefore)
+  const afterEntry = [...ctx.loader.entries()].find(row => row.options.id === namespace)
+  expect(afterEntry?.fiber).toBe(fiber)
+  expect(afterEntry?.fiber?.state).toBe(FiberState.ACTIVE)
+  const afterDescriptor = ctx.settings.describe().find(row => row.ns === namespace)
+  expect(afterDescriptor).toBe(descriptor)
+  expect(afterDescriptor!.value).toEqual(descriptorBefore)
+})

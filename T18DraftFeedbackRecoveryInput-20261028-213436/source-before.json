@@ -1,0 +1,32 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 44666,
+    "sha256": "4f652150927692c5230bd7ec5d517fdec2f45e35839fefd017d3e6d0aa3c922c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 20103,
+    "sha256": "d69d93748eace497539a5ca96b18fd19e9852de2b3bed93cbddb45c87a7277b4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\agent.spec.ts",
+    "bytes": 10300,
+    "sha256": "7a520b1c07908286fd04a00f154ac63b0e3b0c4931c432ccada2965cba68bbcf"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-state.spec.ts",
+    "bytes": 4991,
+    "sha256": "0c0974647f237558ef8331a8237cb9cb5d76e225661f59ff3c7bc91410f5293b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate.spec.ts",
+    "bytes": 22358,
+    "sha256": "248d87161122529cf295985d6d56b53cdcc6722ad9e55d7f432f3a2eaa1d5ed8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\contracts.ts",
+    "bytes": 4742,
+    "sha256": "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b"
+  }
+]

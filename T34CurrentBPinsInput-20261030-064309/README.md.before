@@ -1,0 +1,270 @@
+# T34 私有投影失败观察器
+
+状态：`SOURCE_ONLY_AMEND_HANDOFF / AUTHOR_RUNTIME_ZERO / ROOT_AUDIT_AND_ONE_RUN_REQUIRED`
+
+本目录只回答一个有限问题：既有的原生“关闭外部模型”操作真实进入
+`llm-pi-ai` 设置写入链后，究竟停在哪个已知拒绝类别、错误类型、错误码或
+Zod issue/path，以及失败发生在已批准生产模块的哪一行。观察器不改产品设置逻辑，
+不重试，不制造成功，也不把“抓到了失败”写成产品已修复。
+
+## 2026-10-30 投影帧补正
+
+本补正只处理已确认的分类器漏检：原 `moduleFrames` 只识别
+`@deepseek-ai/dsh-*/lib/index.js` 虚拟包文本，而本次批准的实际构建位置是
+`dsh\packages\...\lib\index.js` 物理路径。启动参数没有
+`--preserve-symlinks`，因此原函数确实可能漏掉这些物理路径或 file URL。
+这不证明外部模型禁用投影被拒的底层原因。
+
+`projection-observer.mjs` 只替换 `moduleFrames`。固定映射仅有三项：
+
+| 固定输出 label | 既有虚拟路径 | 批准物理路径/URL |
+| --- | --- | --- |
+| `@deepseek-ai/dsh-config-editor/lib/index.js` | 同名 | `dsh\packages\boot\config-editor\lib\index.js` |
+| `@deepseek-ai/dsh-settings/lib/index.js` | 同名 | `dsh\packages\settings\settings\lib\index.js` |
+| `@deepseek-ai/dsh-api-settings-controller/lib/index.js` | 同名 | `dsh\packages\api\settings-controller\lib\index.js` |
+
+三个物理路径均同时按原样 Windows 分隔符（运行时归一为 `/`）和
+`file:///D:/...` 识别。所有正则元字符均转义；合法帧必须以前导行首、空白或
+`(` 开始，并在 `:line:column` 后紧跟行尾、空白或 `)`。因此相似点号、前缀/
+后缀私有路径和未批准路径不会命中。输出仍只含三项固定 label 与数值
+line/column，最多四条去重帧，不输出原始路径或 stack。
+
+另新增纯有限助手 `frame-classifier-finite.mjs`。它只读取协调目录里的原
+观察器快照与本目录当前观察器，只抽取两版 `moduleFrames` 到 `vm`，使用
+`node:assert` 验证旧函数漏物理路径/file URL 的红证据、新函数识别固定路径、
+虚拟 label、Windows/正斜杠、file URL、相似点号、前缀/后缀/未批准路径、
+去重、四条上限、非字符串及输出白名单。助手不 import 生产模块，不启动
+服务、Agent、Session、Native、HTTP 或模型，也不写文件。
+
+2026-10-30 根侧首次运行该有限助手时自然退出，退出码为 1，耗时 2.407 秒；
+根记录中的两个进程身份均已结束，`forced=false`，无遗留 OS 进程、网络访问、
+应用启动或模型调用。失败发生在第一个断言：断言消息为旧分类器漏掉批准物理
+路径，实际展示数据为 `[]`。原因是 `vm.runInNewContext` 返回的函数产生
+跨 realm 数组，`node:assert/strict.deepEqual` 会检查数组原型；这是助手数据
+realm 不一致，不是生产观察器失败，也没有创建真实 Native 事件或执行产品主链。
+本次只把该函数结果经 JSON 数据往返转回助手 realm，再进入全部既有严格比较，
+不放宽断言。根红记录为：
+`C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T34FrameClassifierFinite-root-20261030-063918`。
+
+同一轮根检查还确认，后续相似点号输入把模块名中的连字符改成了 `X`，没有
+命中旧分类器真正未转义的点。现在三条输入保留完整模块名和连字符，只把
+`index.js` 改成 `indexXjs`，从而要求旧函数产生红证据、新函数拒绝相似输入。
+
+## 既有状态
+
+- A 树 HEAD：`a23271abee333a9a256fd46a3141da16975c2380`。
+- 普通 `git status` 仍在 `dsh` 子模块 worktree 元数据处被权限拒绝；
+  `--ignore-submodules=all` 只读列表与协调目录 `tracked-dirty-before.txt`
+  的 tracked dirty 集一致。没有修锁、扩权、暂存、提交、rebase 或清理。
+- 原始七个文件仍为允许交付面；本次补正只另增 `frame-classifier-finite.mjs`
+  一个有限助手，目录合计八个文件。
+- 五个蓝图快照当前字节/SHA-256 与 `approved-inputs.json` 完全一致。
+- 三个已构建生产模块当前 SHA-256 与批准值完全一致：
+  `config-editor` 为 `bb85243d…fab5`，`settings` 为 `9432b872…0136`，
+  `settings-controller` 为 `dd2bdf64…e2d`。
+- 源案件、两份原始日志、E50/runtime6/resolver/guard/PDF 五资源、legacy18、
+  private build、SDK、产品源码、契约、测试和 Skills 均未改。
+
+作者运行面为 0：未运行 PowerShell/Python/Node 脚本，未 import、parser、AST、
+测试、构建、GUI、HTTP、模型、SSH、端口或 OS 进程探测，未读凭据或原始
+`dsh-home`。五条误填 `bash` 的只读命令均在执行前被运行器以
+`E_ACCESSDENIED` 拒绝，没有产生命令效果；其后命令均使用指定的绝对原生
+PowerShell。本次补正又有两条只读命令误填 `bash`，同样在执行前被拒绝；
+未产生命令效果，累计七条被拒，作者运行面仍为 0。
+
+## 最小接线
+
+`prepare.ps1`、`start.ps1`、`stop.ps1`、`entry.py` 均先字节复制已验收 T31
+蓝图，再只修改独立 T34 根、格式/名称和观察接线。逆变换后，诊断外区域必须与
+对应 `.before` 完全相同。
+
+### `prepare.ps1`
+
+仅改变：
+
+1. `EvidenceRoot` 指向本目录。
+2. prepared format 改为 `lawbench-t34-private-projection-observer-prepared-v1`。
+3. 默认 run 根及正则改为
+   `T34-private-projection-observer-YYYYMMDD-HHMMSS`。
+4. manifest task 改为 `A-T34-private-projection-observer-20261030-061810`。
+
+源案件五文件和目录清单、字节复制、source identity 断言、私有 profile 目录、
+settings/daily marker、fresh root inventory 与所有旧断言保持蓝图字节。
+
+### `start.ps1`
+
+仅改变：
+
+1. `EvidenceRoot` 和新 `entry.py`、`projection-observer.mjs` 自钉。
+2. 新 prepared/admission format 与 T34 run 根正则/任务文字。
+3. 新增唯一输出路径 `gui\state\projection-observer.json`，preflight 要求它
+   在 fresh run 中不存在，并校验观察器字节/SHA-256。
+4. 原冻结 suffix 末端追加一个 `t34-projection-observer` Cordis 行，插件使用
+   本目录 `projection-observer.mjs` 的精确 file URL；其位置在法律 UI replacement
+   之前。stateDir/outputPath 由该 run 明文字面生成，两个生产模块 URL 由该 run
+   的 profile/project `createRequire(baseUrl)` 解析，不接受任意新 lib。
+5. `prefix + suffix` 原始字节拼接检查保持启用，并新增 observe row、file URL、
+   stateDir、outputPath 的逐字唯一断言。
+
+以下既有内容保持原字节或语义：随机 loopback、fake in-memory B key、
+credentials disabled、lifespan off、OCR off、Retainer off、refuse outbound、
+固定 proxy、private profile、exact PID/exe/UTC birth、600 秒上限、精确端口
+关闭、24 staged outputs、private native 三模块、legal UI/Host/Agent/store
+路由、preset 替换、source case identity 与原 cleanup/finally。
+
+### `stop.ps1`
+
+仅把 allowlist、run 名正则和错误文字切到
+`T34-private-projection-observer-*`。exact identity、端口关闭、45 秒 stop-report
+等待、fallback 精确停止和 survivor 判据保持蓝图字节/语义。
+
+### `entry.py`
+
+仅改变 `EVIDENCE_ROOT`、T34 prepared/admission format 和 run 名正则。原
+admission、只读 service firewall、source/case/log/SQLite 最终观察、只监听
+owned loopback、精确关闭和私有 key stub 均保留。
+
+## 观察 seam 与模块同一性
+
+运行时先动态导入两个精确 file URL，并在 import 前重算 SHA-256：
+
+- `@deepseek-ai/dsh-config-editor/lib/index.js`
+  `bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5`
+- `@deepseek-ai/dsh-settings/lib/index.js`
+  `9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136`
+
+插件同时声明 `inject = ['configEditor', 'settings']`，由 Cordis 等待两个真实
+服务后再执行；不提供、替换或伪造任一服务。
+
+哈希不一致、export 形状不符、服务缺失，或
+`ctx.configEditor.constructor !== ConfigEditor`、
+`ctx.settings.constructor !== SettingsForms` 时，插件不安装包装，只写固定
+`bindingReason`。因此不会把平行副本、新 lib 或猜测服务当成生产 seam。
+
+绑定成功后只包装两个 class prototype：
+
+- `ConfigEditor.prototype.edit(entry, change)`
+- `SettingsForms.prototype.mutate(ns, ops, expectedRevision)`
+
+包装器只观察固定 namespace `llm-pi-ai`、可枚举 op 的 `op` 和已知 path
+segment；不读取或复制 set value。每次调用使用
+`Reflect.apply(original, this, arguments)`，原方法只执行一次。成功时返回原
+fulfilled value；同步 throw 或 Promise reject 时 rethrow 同一个 error object。
+观察器写入失败被局部吞掉，不改变产品返回/拒绝结果。
+
+插件在 Cordis 生命周期 disposer 中按逆序恢复；只有 prototype 当前值仍等于
+自己安装的 wrapper 时才恢复原 descriptor，绝不改 service 实例、其他 context、
+外部窗口或无关方法。
+
+## 唯一输出文件
+
+输出固定为本次 run 的
+`gui\state\projection-observer.json`。插件要求配置路径是绝对路径、文件名精确、
+位于同一 stateDir，且路径组件和输出文件不是 reparse/symlink；已存在文件拒绝
+覆盖。最多 8 个事件，最终 UTF-8 JSON 不超过 16 KiB；超限只增加
+`dropped`，不输出原始证据。
+
+顶层 schema：
+
+```json
+{
+  "schemaVersion": 1,
+  "task": "T34-private-projection-observer",
+  "observerFile": "projection-observer.mjs",
+  "eventLimit": 8,
+  "maxBytes": 16384,
+  "observerState": "ready",
+  "bindingReason": "same_service_classes",
+  "bindings": {
+    "configEditor": {
+      "identity": "@deepseek-ai/dsh-config-editor",
+      "sha256": "fixed approved literal",
+      "hashVerified": true,
+      "sameServiceClass": true,
+      "installed": true
+    },
+    "settings": {
+      "identity": "@deepseek-ai/dsh-settings",
+      "sha256": "fixed approved literal",
+      "hashVerified": true,
+      "sameServiceClass": true,
+      "installed": true
+    }
+  },
+  "counts": {
+    "configEditorEdit": 0,
+    "settingsMutate": 0
+  },
+  "events": [],
+  "dropped": 0,
+  "acceptanceProof": false
+}
+```
+
+事件只可有 `seam`、`phase`、`namespace`、有限 operation/path、
+`expectedRevisionPresent`、`changeCallable` 和有限 `error`。`error` 不含
+message/details/stack/config/credential/material/prompt/response 原文：
+
+- `name` 仅
+  `Error/TypeError/SyntaxError/AggregateError/ZodError/OTHER`；
+- `code`、`errno` 仅
+  `EACCES/EPERM/ENOENT/EBUSY/EINVAL/EBADF/ESTALE/ETIMEDOUT/OTHER`；
+- `category` 仅
+  `entry_unavailable/entry_changed/plugin_inactive/profile_not_sequence/`
+  `overlay_override/no_configurable_entry/no_volatile_fields/`
+  `nonvolatile_path/revision_conflict/other`；
+- `issues[].code` 仅固定 Zod issue-code 集，未知为 `OTHER`；
+- issue/path segment 仅已知字面键，数字下标固定为 `INDEX`，未知为 `OTHER`；
+- `moduleFrames` 只允许 `@deepseek-ai/dsh-config-editor/lib/index.js`、
+  `@deepseek-ai/dsh-settings/lib/index.js`、
+  `@deepseek-ai/dsh-api-settings-controller/lib/index.js` 三个 label 与数值
+  line/column；固定映射还接受上节列出的三个批准物理路径及其 file URL，
+  不含原始路径或完整 stack。
+
+`bindings.*.installed=false` 或文件缺失时不得声称观察成功；存在事件也不等于
+底层产品通过。`acceptanceProof` 恒为 `false`，GUI 动作与真实错误现场仍须根
+独立核对。
+
+## 根侧命令
+
+根必须先全量审阅本目录源码、与五个 `.before` 的逆变换 diff、typed output、
+setup/finally/cleanup、所有写面、source/profile identity 和字面 pins，再执行：
+
+```powershell
+& 'E:\node\node.exe' 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionObserver-20261030-061810\frame-classifier-finite.mjs'
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionObserver-20261030-061810\prepare.ps1'
+& 'C:\Users\morel\AppData\Local\Programs\Python\Python312\python.exe' -B -X utf8 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionObserver-20261030-061810\entry.py' --admit --root '<runRoot>'
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionObserver-20261030-061810\start.ps1' -RunRoot '<runRoot>' -LifetimeSeconds 600
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionObserver-20261030-061810\stop.ps1' -RunRoot '<runRoot>'
+```
+
+`<runRoot>` 必须直接位于本目录 `runs` 下，名为
+`T34-private-projection-observer-YYYYMMDD-HHMMSS`；不得复用旧 prepared、
+admission、served root 或旧事件。只允许根按原 T34 真实禁用投影路径做一次
+受控诊断，LifetimeSeconds 不得超过 600。
+
+## 非零与未运行
+
+- `author_runtime=0`
+- `product_changes=false`
+- `model_calls=0`
+- `http_calls=0`
+- `gui_actions=0`
+- `tool_test_build_import_calls=0`
+- `git_writes=0`
+- `installs_or_package_changes=0`
+- `credential_reads=0`
+- `old_evidence_rewrites=0`
+
+`NOT_RUN`：prepare、admission、start、GUI 设置动作、observer capture、safe
+classifier/有限助手实测、stop、任何 parser/import/test/type/build、runtime6、395、
+模型、私钥、真实案卷、原生投影 PASS 与整条 T34 PASS。
+
+## 局限
+
+本交回只提供一次真实失败的安全观察面。它不修复产品，不证明根因已消除；
+本补正只保证批准物理路径上的已知模块帧可被安全保留，不解释其他错误。
+成功抓到 `settings/rejected` 仍只是底层拒绝的现场证据。若插件无法绑定同一
+生产 class、输出路径被拒绝或运行中未命中 `llm-pi-ai`，应保留现场并以
+`BLOCKED/NOT_RUN` 回报，不以替代 runtime、伪造 configEditor、seed 成功、
+另设 settings API 或自动 retry 兜底。

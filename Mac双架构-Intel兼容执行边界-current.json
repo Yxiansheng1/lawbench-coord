@@ -1,0 +1,23 @@
+{
+  "state": "ADMITTED",
+  "ownerLatest": "No additional OCR probe; existing CI smoke only; both macOS minimum14; version differences documented",
+  "firstClockReadAfterOwnerMessage": "2026-11-03T23:35:56.6965434+08:00",
+  "deadline": "2026-11-04T00:20:00+08:00",
+  "deadlinePolicy": "Conservative rounding earlier than45minutes from first clock read",
+  "scope": [
+    "packaging/versions.lock",
+    "packaging/mac/build.sh"
+  ],
+  "IntelWheel": {
+    "version": "1.23.2",
+    "bytes": 19157705,
+    "sha256": "218295a8acae83905f6f1aed8cacb8e3eb3bd7513a13fe4ba3b2664a19fc4a6b",
+    "url": "https://files.pythonhosted.org/packages/91/9d/a81aafd899b900101988ead7fb14974c8a58695338ab6a0f3d6b0100f30b/onnxruntime-1.23.2-cp312-cp312-macosx_13_0_x86_64.whl"
+  },
+  "ARM": "1.24.4 unchanged",
+  "Windows": "1.24.4 unchanged",
+  "productChanges": 0,
+  "assertionChanges": 0,
+  "newOCRProbe": false,
+  "existingSmokeUnchanged": true
+}

@@ -1,0 +1,263 @@
+--- BEFORE/offline-controls.mjs
++++ CURRENT/offline-controls.mjs
+@@ -4,6 +4,7 @@
+   MODEL,
+   PARAMETERS,
+   ROUTE,
++  buildAuthorizationHeader,
+   buildRequestPayload,
+   buildStage1Envelope,
+   buildStage1Messages,
+@@ -13,6 +14,8 @@
+   parseModelJson,
+   redactCredential,
+   serializeForArtifact,
++  selectPilotInput,
++  unwrapChatCompletion,
+   validateStage1Result,
+   validateStage2Result,
+ } from "./review-consumer.mjs";
+@@ -47,12 +50,57 @@
+       quote: "EVIDENCE_SENTINEL exact first passage.",
+       description: "Neutral candidate description.",
+     },
++    {
++      id: "CANDIDATE_SENTINEL_2",
++      receipt_id: "RECEIPT_SENTINEL_2",
++      material_id: "MATERIAL_SENTINEL_2",
++      unit: "UNIT_SENTINEL_2",
++      quote: "EVIDENCE_SENTINEL scope limit passage.",
++      description: "Neutral scope candidate description.",
++    },
+   ],
+ };
+ 
+ function assertProtocolError(fn, expectedCode) {
+   assert.throws(fn, (error) => error && error.code === expectedCode);
+ }
++
++const fixedData = {
++  format: "T18_ISOLATED_REVIEW_ACTUAL_READS_AND_OLD_DRAFT_V1",
++  evidence: receipts,
++  draft: {
++    content: input.draft,
++    title: "DRAFT_TITLE_SENTINEL",
++    version: 3,
++  },
++  visible_selfcheck: input.visibleSelfcheck,
++  coverage: input.actualCoverage,
++};
++const selectedInput = selectPilotInput(fixedData);
++assert.equal(selectedInput.receipts, receipts);
++assert.equal(selectedInput.draft, input.draft);
++assert.equal(selectedInput.visibleSelfcheck, input.visibleSelfcheck);
++assert.equal(selectedInput.actualCoverage, input.actualCoverage);
++assertProtocolError(
++  () => selectPilotInput({ ...fixedData, draft: { ...fixedData.draft, version: "3" } }),
++  "ORIGINAL_DRAFT_NOT_TEXT",
++);
++assertProtocolError(
++  () => selectPilotInput({ ...fixedData, evidence_receipts: receipts, evidence: undefined }),
++  "EVIDENCE_RECEIPTS_MISSING",
++);
++assertProtocolError(
++  () => selectPilotInput({ ...fixedData, draft: { ...fixedData.draft, content: { text: input.draft } } }),
++  "ORIGINAL_DRAFT_NOT_TEXT",
++);
++assertProtocolError(
++  () => selectPilotInput({ ...fixedData, visible_selfcheck: { content: input.visibleSelfcheck } }),
++  "VISIBLE_SELFCHECK_NOT_TEXT",
++);
++assertProtocolError(
++  () => selectPilotInput({ ...fixedData, coverage: [] }),
++  "ACTUAL_COVERAGE_INVALID",
++);
+ 
+ const stage1Envelope = buildStage1Envelope(input.receipts);
+ assert.deepEqual(stage1Envelope, { evidence_receipts: receipts });
+@@ -86,8 +134,12 @@
+ assert.equal(stage2Messages.length, 2);
+ assert.ok(!stage2Messages[1].content.includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+ assert.ok(stage2Messages[1].content.includes("CANDIDATE_SENTINEL_1"));
++assert.ok(stage2Messages[0].content.includes(
++  "If stage1_candidate_id is present, receipt_id and evidence_quote must exactly equal that candidate's receipt_id and quote.",
++));
+ 
+ const payload = buildRequestPayload(stage1Messages);
++const requestBody = JSON.stringify(payload);
+ assert.equal(ROUTE, "http://10.126.126.1:8000/v1/chat/completions");
+ assert.equal(MAX_SEQUENTIAL_CALLS, 2);
+ assert.equal(payload.model, "qwen38-27b");
+@@ -101,6 +153,10 @@
+ assert.deepEqual(payload.messages, stage1Messages);
+ 
+ const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
++assert.equal(buildAuthorizationHeader(credentialSentinel), `Bearer ${credentialSentinel}`);
++assert.ok(!requestBody.includes(credentialSentinel));
++assert.ok(!JSON.stringify(stage2Messages).includes(credentialSentinel));
++assertProtocolError(() => buildAuthorizationHeader(` ${credentialSentinel}`), "CREDENTIAL_INVALID");
+ const redacted = serializeForArtifact({
+   direct: credentialSentinel,
+   nested: { [credentialSentinel]: [`prefix:${credentialSentinel}:suffix`] },
+@@ -108,6 +164,83 @@
+ assert.ok(!redacted.includes(credentialSentinel));
+ assert.ok(redacted.includes("[REDACTED_CREDENTIAL]"));
+ assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), "a[REDACTED_CREDENTIAL]b");
++
++const stage1Content = JSON.stringify(candidates);
++const stage1CompletionBody = JSON.stringify({
++  id: "CHAT_COMPLETION_SENTINEL_1",
++  object: "chat.completion",
++  created: 1,
++  model: MODEL,
++  choices: [{
++    index: 0,
++    message: { role: "assistant", content: stage1Content },
++    finish_reason: "stop",
++  }],
++  usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
++});
++assert.equal(unwrapChatCompletion(stage1CompletionBody), stage1Content);
++assert.equal(
++  unwrapChatCompletion(JSON.stringify({
++    choices: [{
++      message: { role: "assistant", content: stage1Content, tool_calls: [] },
++      finish_reason: "stop",
++    }],
++  })),
++  stage1Content,
++);
++assert.deepEqual(
++  validateStage1Result(parseModelJson(unwrapChatCompletion(stage1CompletionBody)), receipts),
++  candidates,
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({ findings: [] })),
++  "COMPLETION_INVALID",
++);
++assertProtocolError(() => unwrapChatCompletion("{"), "COMPLETION_INVALID");
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    choices: [{ message: { role: "assistant", reasoning_content: "REASONING_SENTINEL" }, finish_reason: "stop" }],
++  })),
++  "COMPLETION_CONTENT_INVALID",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    choices: [{ message: { role: "assistant", content: "TRUNCATED_CONTENT_SENTINEL" }, finish_reason: "length" }],
++  })),
++  "COMPLETION_NOT_FINISHED",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    error: { type: "SENTINEL_ERROR" },
++  })),
++  "COMPLETION_ERROR",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    choices: [{
++      message: {
++        role: "assistant",
++        content: stage1Content,
++        tool_calls: [{ id: "TOOL_CALL_SENTINEL" }],
++      },
++      finish_reason: "stop",
++    }],
++  })),
++  "COMPLETION_TOOL_CALLS_UNSUPPORTED",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    choices: [{
++      message: {
++        role: "assistant",
++        content: stage1Content,
++        tool_calls: { id: "TOOL_CALL_SENTINEL" },
++      },
++      finish_reason: "stop",
++    }],
++  })),
++  "COMPLETION_TOOL_CALLS_UNSUPPORTED",
++);
+ 
+ assert.deepEqual(parseModelJson('{"findings":[]}'), { findings: [] });
+ assert.deepEqual(parseModelJson('```json\n{"findings":[]}\n```'), { findings: [] });
+@@ -140,6 +273,77 @@
+ assert.deepEqual(emptyReview, { findings: [] });
+ assert.equal(outputStatusForFindings(emptyReview.findings), "EMPTY_REVIEW_NOT_QUALITY_PASS");
+ assert.notEqual(outputStatusForFindings(emptyReview.findings), "PASS");
++
++const stage2Context = {
++  receipts,
++  draft: input.draft,
++  visibleSelfcheck: input.visibleSelfcheck,
++  stage1Candidates: candidates.facts,
++};
++assertProtocolError(
++  () => validateStage2Result({
++    findings: [{
++      kind: "SCOPE",
++      issue: "Synthetic unknown candidate.",
++      receipt_id: "RECEIPT_SENTINEL_1",
++      evidence_quote: candidates.facts[0].quote,
++      draft_quote: input.draft,
++      stage1_candidate_id: "UNKNOWN_CANDIDATE_SENTINEL",
++    }],
++  }, stage2Context),
++  "UNKNOWN_STAGE1_CANDIDATE",
++);
++assertProtocolError(
++  () => validateStage2Result({
++    findings: [{
++      kind: "SCOPE",
++      issue: "Synthetic cross-candidate receipt.",
++      receipt_id: "RECEIPT_SENTINEL_2",
++      evidence_quote: candidates.facts[1].quote,
++      draft_quote: input.draft,
++      stage1_candidate_id: "CANDIDATE_SENTINEL_1",
++    }],
++  }, stage2Context),
++  "STAGE1_CANDIDATE_RECEIPT_MISMATCH",
++);
++assertProtocolError(
++  () => validateStage2Result({
++    findings: [{
++      kind: "SCOPE",
++      issue: "Synthetic cross-candidate quote.",
++      receipt_id: "RECEIPT_SENTINEL_1",
++      evidence_quote: candidates.facts[1].quote,
++      draft_quote: input.draft,
++      stage1_candidate_id: "CANDIDATE_SENTINEL_1",
++    }],
++  }, stage2Context),
++  "STAGE1_CANDIDATE_QUOTE_MISMATCH",
++);
++const sameCandidateReview = validateStage2Result({
++  findings: [{
++    kind: "SCOPE",
++    issue: "Synthetic same-candidate finding.",
++    receipt_id: "RECEIPT_SENTINEL_1",
++    evidence_quote: candidates.facts[0].quote,
++    draft_quote: input.draft,
++    stage1_candidate_id: "CANDIDATE_SENTINEL_1",
++  }],
++}, stage2Context);
++assert.equal(sameCandidateReview.findings[0].stage1_candidate_id, "CANDIDATE_SENTINEL_1");
++const stage2CompletionBody = JSON.stringify({
++  id: "CHAT_COMPLETION_SENTINEL_2",
++  object: "chat.completion",
++  choices: [{
++    index: 0,
++    message: { role: "assistant", content: JSON.stringify(sameCandidateReview) },
++    finish_reason: "stop",
++  }],
++});
++assert.deepEqual(
++  validateStage2Result(parseModelJson(unwrapChatCompletion(stage2CompletionBody)), stage2Context),
++  sameCandidateReview,
++);
++
+ assertProtocolError(
+   () => validateStage2Result({ findings: [], overallPASS: true }, {
+     receipts,

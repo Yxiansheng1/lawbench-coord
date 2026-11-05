@@ -1,0 +1,166 @@
+{
+  "at": "2026-10-28T16:04:09.423591+08:00",
+  "verdict": "PASS_ACTUAL_NATIVE_WORKFLOW_AND_ORIGINAL_FACTUAL_TARGETS_BUSINESS_HOLD_REMAINING_SELF_CHECK",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeReadingRuntime-root-20261028-155342",
+  "run": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-cbZba2",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18RepeatRuntime-root-20261028-160409",
+  "elapsed_s": 266.1560000000027,
+  "technicalPASS": true,
+  "businessQualityPASS": false,
+  "quality": {
+    "verdict": "ORIGINAL_FACTUAL_TWO_REGRESSIONS_PASS_BUT_BUSINESS_HOLD_SELF_CHECK_STATUS_INCONSISTENCY",
+    "full_final_draft_read": true,
+    "original_disputed_principal_silently_settled": false,
+    "original_month_reinterpretation_present": false,
+    "disputed_payment_parallel_source_rows": 4,
+    "dispute_paragraph_pending_marker_present": true,
+    "primary_party_statements_attributed": true,
+    "unconfirmed_stance_impacts_deferred_to_lawyer": true,
+    "remaining": [
+      {
+        "kind": "SUMMARY_CONFLICT_STATUS_SELF_CHECK_MISMATCH",
+        "rule": "Skill line72 and local selfcheck require pending verification status in conflict table rows",
+        "lines": [
+          95,
+          96,
+          97,
+          98
+        ],
+        "excerpts": [
+          "| 20,000元还款性质 | 李某乙称归还本金2万元 | 当事人陈述 | 〔情况说明 第5行〕 |",
+          "| 20,000元还款性质 | 还款记录备注\"归还部分本金\" | 材料记载 | 〔还款记录 第5行〕 |",
+          "| 20,000元还款性质 | 银行流水备注\"还款\"，汇总表列为\"已收回本金\" | 材料记载 | 〔银行流水 第9行〕〔银行流水 第18行〕 |",
+          "| 20,000元还款性质 | 案情摘要列为争议焦点：是归还本金还是支付利息 | 材料记载 | 〔案情摘要 第11行〕 |"
+        ],
+        "selfcheck_line": 124,
+        "selfcheck": "- 同一款项的归类、债务余款等冲突已在逐份笔录和要素汇总中并列原话、出处并标【待核实】：通过（20,000元性质争议已并列各方说法）。"
+      },
+      {
+        "kind": "FINAL_REPLY_MISCLASSIFIES_SIXTH_CITATION_HINT",
+        "actual_hint": "sixth hint concerns selfcheck, not a material contents-summary paragraph",
+        "final_reply_claim": "hints6均为各材料内容摘要段"
+      }
+    ],
+    "whole_business_quality_PASS": false
+  },
+  "draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-cbZba2\\case\\工作区\\任务\\T-20261028155348-befb\\草稿\\阅卷笔录-v4.md",
+    "bytes": 10437,
+    "sha256": "f578834bd40e20bc60de7d4549f3b30cee0fdeb819847592ddbcfd628a9c7d0a"
+  },
+  "nativeSession": "session-ea423190-15f1-40a3-ad3e-fcb964a67883",
+  "nativeR": "fcea7f2b-7452-481d-a7f9-156b02d80dcd",
+  "nativeTask": "T-20261028155348-befb",
+  "modelPost": 13,
+  "modelHttp200": 13,
+  "actualToolCalls": 12,
+  "budgetedToolCalls": 6,
+  "toolCounts": {
+    "skill": 1,
+    "case_list_materials": 1,
+    "ask_user_question": 1,
+    "case_read_material": 5,
+    "case_save_draft": 4
+  },
+  "question": {
+    "questionIds": [
+      "scope"
+    ],
+    "questionText": "本次阅卷范围为以下全部 5 份材料，请确认：",
+    "optionLabels": [
+      "确认，全部读完",
+      "只读部分材料"
+    ],
+    "answerIds": [
+      "scope"
+    ],
+    "answerText": "确认本次仅处理以下五份合成材料：借条、情况说明、案情摘要、还款记录、银行流水。全部读完，并保存阅卷笔录 Markdown 草稿。"
+  },
+  "coverage": {
+    "total": 5,
+    "fully_read": [
+      "借条",
+      "情况说明",
+      "案情摘要",
+      "还款记录",
+      "银行流水"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "citationStats": {
+    "citations": 65,
+    "must_fix": 0,
+    "hints": 6
+  },
+  "sourceGETs": 37,
+  "BProtocolCounts": {
+    "GET /api/materials": 1,
+    "GET /api/settings": 1,
+    "GET /api/source": 37,
+    "GET /api/tasks": 1,
+    "GET /health": 1,
+    "POST /api/case/open": 1,
+    "POST /api/materials/import": 1,
+    "POST /api/request/scope": 1,
+    "POST /api/task": 1,
+    "POST /core/context": 1,
+    "POST /core/progress": 1,
+    "POST /core/task/begin": 1,
+    "POST /core/task/end": 1,
+    "POST /core/tool": 10
+  },
+  "persistence": {
+    "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-cbZba2\\sessions",
+    "sessionReopened": true,
+    "liveEqualsReopened": true,
+    "physicalJsonlPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-cbZba2\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-NativeReadingWorkflow-20261028-133231-run-cbZba2-case--\\session-ea423190-15f1-40a3-ad3e-fcb964a67883\\session.v4.jsonl",
+    "physicalJsonlBytes": 349271,
+    "physicalJsonlSha256": "a164ff485ffc4a97b139a20e312174210620e444226c3e2a1a1ce8575c8927c0",
+    "physicalEventCount": 73
+  },
+  "initialFinalAdmission": {
+    "initial": {
+      "checkedAtUtc": "2026-10-28T07:53:43.862Z",
+      "manifestSha256": "757f3f1923f0aedb4082844dd1875badfe5b77d20a42ff9862c3033aeedef40e",
+      "fixtureCount": 5,
+      "dependencyCount": 52,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    },
+    "final": {
+      "checkedAtUtc": "2026-10-28T07:58:07.936Z",
+      "manifestSha256": "757f3f1923f0aedb4082844dd1875badfe5b77d20a42ff9862c3033aeedef40e",
+      "fixtureCount": 5,
+      "dependencyCount": 52,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    }
+  },
+  "standardReminderMessages": 0,
+  "no_counterfactual_recovery_claim": true,
+  "credentialExactScan": {
+    "owned_synthetic_files": 35,
+    "exact_key_hits": 0,
+    "only_dedicated_DPAPI_slot": true,
+    "full_memory_erasure_proven": false
+  },
+  "cleanup": {
+    "natural_driver": true,
+    "forced": false,
+    "completeExeUTCBirthGone": 7,
+    "OS_after": [],
+    "port": 54183,
+    "Listen": 0,
+    "BListenerClientLogsClosed": true,
+    "RetainerClosedIsSentinelOnly": true
+  },
+  "fullT18": false,
+  "wholeProject": false,
+  "Packaging": "HOLD",
+  "packet_files": 37,
+  "manifest_sha256": "b21bf2bc05ced2ee898b8cd2ce6b6dc99840acbe411b93f0c4d0d0e2826c1a6f"
+}

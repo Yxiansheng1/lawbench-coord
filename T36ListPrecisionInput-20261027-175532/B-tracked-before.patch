@@ -1,0 +1,3082 @@
+diff --git a/contracts/_build/gen_examples.py b/contracts/_build/gen_examples.py
+index 4d9ff6e..add13e1 100644
+--- a/contracts/_build/gen_examples.py
++++ b/contracts/_build/gen_examples.py
+@@ -10,6 +10,7 @@ SHA = "a" * 64
+ T = "T-20260928093000-7c1f"
+ P = "P-20260928100000-02ab"
+ J = "J-20260928094500-3e9d"
++REQUEST = "12ab34cd-56ef-4abc-8def-0123456789ab"
+ NOW = "2026-09-28T09:30:00+08:00"
+ PARAMS = {"thinking": "低", "window": "64K", "max_tokens": 16384}
+ CHECK = {"passed": False,
+@@ -25,6 +26,12 @@ def ex(file, schema, data, pointer="", expect="valid"):
+     M.append({"file": file, "schema": schema, "pointer": pointer, "expect": expect})
+ 
+ 
++def ex_one_space(file, schema, data, pointer="", expect="valid"):
++    """保留 1.5 候选项中 4 个 remote_access 样例的历史排版和原字节。"""
++    (EX / file).write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
++    M.append({"file": file, "schema": schema, "pointer": pointer, "expect": expect})
++
++
+ # 出处
+ for n, (txt, ok) in enumerate([
+         ("〔借条 第2页〕", 1), ("〔证据/借条 第3-4页〕", 1), ("〔银行流水 Sheet1!B12〕", 1),
+@@ -37,10 +44,21 @@ for n, (txt, ok) in enumerate([
+ 
+ # /core
+ ex("core_task_begin.req.json", "core/task_begin.schema.json",
++   {"session_id": "s_01HZX", "cwd": "D:\\案件\\张某诈骗案", "request_id": REQUEST}, "#/$defs/request")
++ex("core_task_begin.req_legacy.json", "core/task_begin.schema.json",
+    {"session_id": "s_01HZX", "cwd": "D:\\案件\\张某诈骗案"}, "#/$defs/request")
+ ex("core_task_begin.res.json", "core/task_begin.schema.json",
+    {"ok": True, "value": {"task_id": T, "case_id": CASE, "skill": "criminal-reading-notes", "params": PARAMS,
+-                          "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45}}}, "#/$defs/response")
++                          "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45},
++                          "route": "external", "request_id": REQUEST,
++                          "request_scope": {"request_id": REQUEST, "case_id": CASE, "kind": "materials",
++                                            "materials": [{"material_id": "M0001", "sha256": SHA},
++                                                          {"material_id": "M0002", "sha256": SHA}]}}},
++   "#/$defs/response")
++ex("core_task_begin.res_legacy.json", "core/task_begin.schema.json",
++   {"ok": True, "value": {"task_id": T, "case_id": CASE, "skill": "criminal-reading-notes", "params": PARAMS,
++                          "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45}}},
++   "#/$defs/response")
+ ex("core_task_begin.fail.json", "core/task_begin.schema.json",
+    {"ok": False, "error": {"code": "CASE_NOT_FOUND", "message": "当前会话不属于任何已打开的案件"}}, "#/$defs/response")
+ ex("core_context.res.json", "core/context.schema.json",
+@@ -73,6 +91,19 @@ ex("tool_edit_list.args.json", "tools/case_save_edit_list.schema.json",
+                                    "text": "三十日内付款", "comment": "付款期限过长，建议缩短"}]}, "#/$defs/args")
+ 
+ # /api
++ex("api_request_scope.req_prepare.json", "api/request_scope.schema.json",
++   {"action": "prepare", "case_id": CASE, "session_id": "s_01HZX", "request_id": REQUEST,
++    "material_ids": ["M0001", "M0002"]}, "#/$defs/request")
++ex("api_request_scope.req_release.json", "api/request_scope.schema.json",
++   {"action": "release", "case_id": CASE, "session_id": "s_01HZX", "request_id": REQUEST},
++   "#/$defs/request")
++ex("api_request_scope.res_prepare.json", "api/request_scope.schema.json",
++   {"ok": True, "value": {"action": "prepare", "case_id": CASE, "session_id": "s_01HZX",
++                          "request_id": REQUEST, "material_ids": ["M0001", "M0002"]}},
++   "#/$defs/response")
++ex("api_request_scope.res_release.json", "api/request_scope.schema.json",
++   {"ok": True, "value": {"action": "release", "case_id": CASE, "session_id": "s_01HZX",
++                          "request_id": REQUEST}}, "#/$defs/response")
+ ex("api_case_open.fail.json", "api/case_open.schema.json",
+    {"ok": False, "error": {"code": "CASE_IN_SYNC_FOLDER", "message": "该文件夹在 OneDrive 同步目录中，请移到本机普通文件夹后再打开"}},
+    "#/$defs/response")
+@@ -141,10 +172,28 @@ ex("file_material_index.json", "files/material_index.schema.json",
+        "note": None, "error": None, "imported_at": NOW, "updated_at": NOW}]})
+ ex("file_task.json", "files/task.json".replace("task.json", "task.schema.json"),
+    {"v": 1, "task_id": T, "case_id": CASE, "kind": "agent", "session_id": "s_01HZX", "entry": "case-analysis",
+-    "skill": "criminal-reading-notes", "step": None,
++    "skill": "criminal-reading-notes", "route": "external", "step": None,
+     "inputs": [{"index": 1, "title": "刑事阅卷笔录", "path": "成果/刑事阅卷笔录-v1.md", "version": 1, "sha256": SHA}],
+     "params": PARAMS, "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45}, "state": "pending",
+     "created_at": NOW})
++ex("file_task.legacy.json", "files/task.schema.json",
++   {"v": 1, "task_id": T, "case_id": CASE, "kind": "agent", "session_id": "s_01HZX", "entry": "case-analysis",
++    "skill": "criminal-reading-notes", "step": None, "inputs": [], "params": PARAMS,
++    "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45}, "state": "pending", "created_at": NOW})
++ex("file_task.request_scope.json", "files/task.schema.json",
++   {"v": 1, "task_id": T, "case_id": CASE, "kind": "agent", "session_id": "s_01HZX", "entry": None,
++    "skill": None, "step": None, "inputs": [], "params": PARAMS,
++    "budget": {"model_calls": 8, "tool_calls": 24, "minutes": 45}, "state": "running", "created_at": NOW,
++    "request_id": REQUEST,
++    "request_scope": {"request_id": REQUEST, "case_id": CASE, "kind": "materials",
++                      "materials": [{"material_id": "M0001", "sha256": SHA},
++                                    {"material_id": "M0002", "sha256": SHA}]}})
++ex("file_request_scope_store.json", "files/request_scope_store.schema.json",
++   {"v": 1, "records": {REQUEST: {
++       "case_id": CASE, "session_id": "s_01HZX", "state": "prepared",
++       "materials": [{"material_id": "M0001", "sha256": SHA},
++                     {"material_id": "M0002", "sha256": SHA}],
++       "task_id": None, "updated_at": NOW}}})
+ ex("file_reads.json", "files/reads.schema.json",
+    {"v": 1, "task_id": T, "reads": [{"material_id": "M0001", "material_version": SHA, "unit": "page",
+                                       "from": 1, "to": 3, "at": NOW}]})
+@@ -234,7 +283,13 @@ ex("api_task_current.req.json", "api/task_current.schema.json", {"session_id": "
+ ex("api_task_current.res.json", "api/task_current.schema.json",
+    {"ok": True, "value": {"selection": {"task_id": T, "entry": "criminal-reading", "skill": "criminal-reading-notes",
+                                         "inputs": [], "params": {"thinking": "中", "window": "64K", "max_tokens": 16384},
+-                                        "updated_at": NOW}}}, "#/$defs/response")
++                                        "route": "external", "updated_at": NOW}}}, "#/$defs/response")
++ex("api_task_create.req.json", "api/task_create.schema.json",
++   {"case_id": CASE, "session_id": "s_01HZX", "entry": "case-analysis", "skill": "criminal-reading-notes",
++    "inputs": [], "params": PARAMS, "route": "external"}, "#/$defs/request")
++ex("api_task_create.req_legacy.json", "api/task_create.schema.json",
++   {"case_id": CASE, "session_id": "s_01HZX", "entry": "case-analysis", "skill": "criminal-reading-notes",
++    "inputs": [], "params": PARAMS}, "#/$defs/request")
+ ex("api_task_current.res_free.json", "api/task_current.schema.json",
+    {"ok": True, "value": {"selection": None}}, "#/$defs/response")
+ newcap = json.loads(json.dumps(CAPS)); newcap["groups"][0]["items"][1]["new"] = True; newcap["groups"][0]["items"][1]["hidden"] = True
+@@ -321,6 +376,16 @@ ex("api_prompt_refine.res_original.json", "api/prompt_refine.schema.json",
+    {"ok": True, "value": {"text": "帮我写个起诉状，告张三还钱", "refined": False, "reason": "SERVER_BUSY"}},
+    "#/$defs/response")
+ 
++ex_one_space("api_remote_access.req_enabled.json", "api/remote_access.schema.json",
++             {"enabled": True}, "#/$defs/request")
++ex_one_space("api_remote_access.req_code_null.json", "api/remote_access.schema.json",
++             {"code": None}, "#/$defs/request")
++ex_one_space("api_remote_access.req_code_spaces.json", "api/remote_access.schema.json",
++             {"code": " 测试用单行值 "}, "#/$defs/request")
++ex_one_space("api_remote_access.res_failed.json", "api/remote_access.schema.json",
++             {"ok": True, "value": {"enabled": True, "has_code": True, "state": "failed", "reason": "PROCESS_EXITED"}},
++             "#/$defs/response")
++
+ ex("api_documents_save.req.json", "api/documents_save.schema.json",
+    {"case_id": CASE, "path": f"工作区/任务/{T}/草稿/刑事阅卷笔录-v2.md",
+     "content": "## 阅卷意见\n\n第二版正文。"}, "#/$defs/request")
+@@ -340,5 +405,15 @@ ex("file_settings.ports.json", "files/settings.schema.json",
+     "skill_presets": {}, "templates": {"文书": None, "合同": None}, "ocr_fallback_llm": False,
+     "profile": {"lawyer_name": None}, "office": {"dir": None, "invoice_buyer": None}, "converter": "auto"})
+ 
++ex("file_settings.external.json", "files/settings.schema.json",
++   {"v": 1, "servers": {
++       "llm_base_url": "http://192.168.8.77:8000/v1", "prep_base_url": "http://192.168.8.124:9000",
++       "llm_alt_base_url": "http://10.126.126.1:8000/v1", "prep_alt_base_url": "http://10.126.126.3:9000"},
++    "defaults": {"thinking": "中", "window": "64K", "max_tokens": 16384, "temperature": 0.6},
++    "skill_presets": {}, "templates": {"文书": None, "合同": None}, "ocr_fallback_llm": False,
++    "profile": {"lawyer_name": None}, "office": {"dir": None, "invoice_buyer": None}, "converter": "auto",
++    "external_llm": {"enabled": True, "base_url": "https://api.example.com/v1", "model": "example-model",
++                     "context_window": 65536, "supports_tools": True}})
++
+ (EX / "manifest.json").write_text(json.dumps(M, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+ print(len(M), "examples")
+diff --git a/contracts/_build/gen_schemas.py b/contracts/_build/gen_schemas.py
+index c0ecc5e..acab71f 100644
+--- a/contracts/_build/gen_schemas.py
++++ b/contracts/_build/gen_schemas.py
+@@ -95,6 +95,11 @@ common = {
+                  pattern="^[TP]-[0-9]{14}-[0-9a-f]{4}$"),
+     "job_id": s("识别任务编号", pattern="^J-[0-9]{14}-[0-9a-f]{4}$"),
+     "session_id": s("DSH 会话 ID，原样透传，不解析", minLength=1),
++    "request_id": s(
++        "DSH 原生一次提交的唯一 R（Session.beginSubmission 生成，Session.prompt 原样传给 Core）；"
++        "不得由工作台另造，也不得写进用户正文或任务 inputs",
++        pattern="^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
++    ),
+     "time": s("ISO 8601，带时区，如 2026-09-28T09:30:00+08:00", format="date-time"),
+     "abs_path": s("本机绝对路径（仅界面与工作台服务之间使用，不进 AI 工具）", minLength=3),
+     "rel_path": s("材料当前定位和检索索引键，分隔符一律用 /，不以 / 开头，不含 .. 段；它不承担稳定材料身份，"
+@@ -179,17 +184,36 @@ common = {
+ put("common.schema.json", "通用定义", "所有契约共用的类型；其他文件用 $ref 引用这里的 $defs", defs=common)
+ 
+ # ---------------------------------------------------------------- C2 插件 → 工作台服务 /core/*
+-def endpoint(path, title, desc, req, res):
+-    put(path, title, desc, defs={
++def request_scope_schema() -> dict:
++    return obj({
++        "request_id": ref("request_id"),
++        "case_id": ref("case_id"),
++        "kind": {"const": "materials"},
++        "materials": arr(obj({"material_id": ref("material_id"), "sha256": ref("sha256")}),
++                         minItems=1, uniqueItems=True),
++    }, desc="任务开始时由服务原子 claim 并固定的本批材料快照；后续 context、list/search/read、wiki 与 cache "
++            "只能按 task_id 读取这份快照，不能由模型参数或界面提示放宽到全案")
++
++
++def endpoint(path, title, desc, req, res, extra_defs=None):
++    defs = dict(extra_defs or {})
++    defs.update({
+         "request": req,
+         "response": {"oneOf": [obj({"ok": {"const": True}, "value": res}), ref("fail")]},
+         "value": res})
++    put(path, title, desc, defs=defs)
+ 
+ endpoint("core/task_begin.schema.json", "POST /core/task/begin",
+-         "Agent 插件在每轮第一步调用：由会话头 cwd 找到案件，按该会话当前的选择（待执行的任务单，不消耗、不删除）新建一个执行中的任务；没有则按'自由对话'默认值新建",
+-         obj({"session_id": ref("session_id"), "cwd": s("会话头的 cwd，原样传入；服务只用它查注册表")}),
+-         obj({"task_id": ref("task_id"), "case_id": ref("case_id"), "skill": nullable(s()),
+-              "params": ref("params"), "budget": ref("budget")}))
++         "Agent 插件在每轮第一步调用：由会话头 cwd 找到案件，按该会话当前的选择（待执行的任务单，不消耗、不删除）新建一个执行中的任务；"
++         "带 request_id 时，服务必须原子 claim 该 R 已准备的材料批次并把 scope 固化到任务；同一 R 重放返回同一任务和 scope，"
++         "不同会话/案件或不同材料集合不得挪用。没有 request_id 的旧调用仍按全案运行",
++         opt(obj({"session_id": ref("session_id"), "cwd": s("会话头的 cwd，原样传入；服务只用它查注册表")}),
++             request_id=ref("request_id")),
++         opt(obj({"task_id": ref("task_id"), "case_id": ref("case_id"), "skill": nullable(s()),
++                  "params": ref("params"), "budget": ref("budget")}),
++             route=enum("local", "external", desc="T38：会话选择的任务路由快照；旧响应缺省按 local"),
++             request_id=ref("request_id"), request_scope=nullable(ref("request_scope"))),
++         extra_defs={"request_scope": request_scope_schema()})
+ endpoint("core/context.schema.json", "POST /core/context",
+          "取首轮注入的 L0（案件卡片）和 L1（任务输入）文本",
+          obj({"task_id": ref("task_id")}),
+@@ -350,6 +374,37 @@ remote_access_request = {"oneOf": [
+         {"type": "null"},
+     ]}}),
+ ]}
++request_scope_prepare = obj({
++    "action": {"const": "prepare"},
++    "case_id": ref("case_id"),
++    "session_id": ref("session_id"),
++    "request_id": ref("request_id"),
++    "material_ids": arr(ref("material_id"), minItems=1, uniqueItems=True),
++})
++request_scope_release = obj({
++    "action": {"const": "release"},
++    "case_id": ref("case_id"),
++    "session_id": ref("session_id"),
++    "request_id": ref("request_id"),
++})
++request_scope_request = {"oneOf": [request_scope_prepare, request_scope_release]}
++request_scope_value = {
++    "oneOf": [
++        obj({
++            "action": {"const": "prepare"},
++            "request_id": ref("request_id"),
++            "case_id": ref("case_id"),
++            "session_id": ref("session_id"),
++            "material_ids": arr(ref("material_id"), minItems=1, uniqueItems=True),
++        }),
++        obj({
++            "action": {"const": "release"},
++            "request_id": ref("request_id"),
++            "case_id": ref("case_id"),
++            "session_id": ref("session_id"),
++        }),
++    ]
++}
+ api = [
+     ("case_open", "POST /api/case/open", "打开或新建案件；登记到 cases.json。云同步目录报 CASE_IN_SYNC_FOLDER，链接或 junction 报 CASE_ROOT_IS_LINK",
+      obj({"path": s("律师选的文件夹绝对路径"),
+@@ -376,7 +431,11 @@ api = [
+      obj({"added": i(minimum=0), "changed": i(minimum=0), "removed": i(minimum=0), "failed": i(minimum=0),
+           "review_needed": b("有材料变化，wiki 和已有成果需要复核")})),
+     ("materials_list", "GET /api/materials?case_id=", "材料列表（界面用，比 AI 工具多路径和页面信息）",
+-     obj({"case_id": ref("case_id")}),
++     opt(obj({"case_id": ref("case_id")}),
++         include_removed=enum(
++             "true", "false",
++             desc="可选查询字符串：true 额外列出已移除材料的墓碑，false 或省略只列当前材料。"
++                  "仅为界面列表兼容开关；墓碑不读取原件或派生文本，不适用于 AI 工具")),
+      obj({"materials": arr(opt(obj({
+          "material_id": ref("material_id"), "name": s(), "rel_path": ref("rel_path"), "type": ref("material_type"),
+          "status": ref("material_status"), "unit": ref("unit"), "unit_count": i("位置单位的数量；unit 为 cell 时是工作表的个数（1.2 写明）", minimum=0),
+@@ -396,16 +455,24 @@ api = [
+      obj({"jobs": arr(job_row)})),
+     ("ocr_cancel", "POST /api/ocr/jobs/{job_id}/cancel", "取消识别；已完成的页保留",
+      obj({"job_id": ref("job_id")}), obj({"job_id": ref("job_id"), "status": s()})),
+-    ("task_create", "POST /api/task", "设置该会话当前的选择（胶囊、Skill、输入、参数），写成一张待执行的任务单；同一会话只保留最新一张（新的顶掉旧的）；执行时不消耗：之后每条消息都按它运行，直到下一次设置或清除。entry 与 skill 都为 null 表示自由对话（1.2 起；1.1 是一条消息用掉一张）",
+-     obj({"case_id": ref("case_id"), "session_id": ref("session_id"), "entry": nullable(s("发起任务的胶囊 id（capsules.json 中的 id，改名不影响）；自由对话为 null")),
+-          "skill": nullable(s()), "inputs": arr(ref("rel_path"), description="选用的草稿或成果路径，服务端计算版本和 sha256"),
+-          "params": ref("params")}),
++    ("task_create", "POST /api/task", "设置该会话当前的选择（胶囊、Skill、输入、参数、模型路由），写成一张待执行的任务单；同一会话只保留最新一张（新的顶掉旧的）；执行时不消耗：之后每条消息都按它运行，直到下一次设置或清除。entry 与 skill 都为 null 表示自由对话（1.2 起；1.1 是一条消息用掉一张）",
++     opt(obj({"case_id": ref("case_id"), "session_id": ref("session_id"), "entry": nullable(s("发起任务的胶囊 id（capsules.json 中的 id，改名不影响）；自由对话为 null")),
++              "skill": nullable(s()), "inputs": arr(ref("rel_path"), description="选用的草稿或成果路径，服务端计算版本和 sha256"),
++              "params": ref("params")}),
++         route=enum("local", "external", desc="T38：任务路由留痕，缺省 local；不驱动本地流水线")),
+      obj({"task_id": ref("task_id")})),
++    ("request_scope", "POST /api/request/scope",
++     "按 DSH 原生 request_id 准备或释放下一条消息的材料批次（1.6/T31）。prepare 只绑定准备快照，不触发模型；"
++     "release 用于 prompt 失败或取消，不影响材料本身。同一元组幂等；同 session+request 改案、改材料或跨会话重放一律冲突，"
++     "task/begin 首次 claim 后固定，后续 queue/attempt/retry 只能沿用该任务快照",
++     request_scope_request, request_scope_value),
+     ("task_current", "GET /api/task/current?session_id=", "读该会话当前的选择（1.2 起）；界面每次显示之前都从这里读，不在本地记；selection 为 null 表示自由对话或还没设置过",
+      obj({"session_id": ref("session_id")}),
+-     obj({"selection": nullable(obj({"task_id": ref("task_id"), "entry": nullable(s("胶囊 id；自由对话为 null")),
+-                                     "skill": nullable(s()), "inputs": arr(ref("rel_path")), "params": ref("params"),
+-                                     "updated_at": ref("time")}))})),
++     obj({"selection": nullable(opt(obj({"task_id": ref("task_id"), "entry": nullable(s("胶囊 id；自由对话为 null")),
++                                         "skill": nullable(s()), "inputs": arr(ref("rel_path")), "params": ref("params"),
++                                         "updated_at": ref("time")}),
++                                     route=enum("local", "external",
++                                                desc="T38：任务路由快照；旧任务缺省按 local")))})),
+     ("pipeline_run", "POST /api/pipeline/run", "运行流水线（本次只有案件 wiki 的生成和更新）",
+      obj({"case_id": ref("case_id"), "step": enum("wiki_build", "wiki_update"),
+           "use_prep": b("字段抽取和分类用 395 的 9B（路由表：律师勾选即授权）"), "params": ref("params")}),
+@@ -632,13 +699,33 @@ ffile("material_refs", "工作区/材料/引用.json", "引用根登记（1.5 
+                             "added_at": ref("time"), "checked_at": ref("time")})),
+            "next_seq": i(minimum=1)}))
+ ffile("task", "工作区/任务/<任务ID>/task.json", "任务单（执行前写）",
+-      obj({"task_id": ref("task_id"), "case_id": ref("case_id"), "kind": enum("agent", "pipeline"),
+-           "session_id": nullable(ref("session_id")), "entry": nullable(s("胶囊 id")), "skill": nullable(s()),
+-           "step": nullable(enum("wiki_build", "wiki_update")),
+-           "inputs": arr(ref("input_ref")), "params": ref("params"), "budget": ref("budget"),
+-           "state": enum("pending", "running", "finished", "abnormal",
+-                         desc="abnormal=打开案件时发现仍为 running（上次硬退出）"),
+-           "created_at": ref("time")}))
++      opt(obj({"task_id": ref("task_id"), "case_id": ref("case_id"), "kind": enum("agent", "pipeline"),
++               "session_id": nullable(ref("session_id")), "entry": nullable(s("胶囊 id")), "skill": nullable(s()),
++               "step": nullable(enum("wiki_build", "wiki_update")),
++               "inputs": arr(ref("input_ref")), "params": ref("params"), "budget": ref("budget"),
++               "state": enum("pending", "running", "finished", "abnormal",
++                             desc="abnormal=打开案件时发现仍为 running（上次硬退出）"),
++               "created_at": ref("time")}),
++          route=enum("local", "external", desc="T38：任务路由快照；旧任务缺省按 local，不驱动流水线"),
++          request_id=ref("request_id"), request_scope=nullable(request_scope_schema())))
++scope_record = obj({
++    "case_id": ref("case_id"),
++    "session_id": ref("session_id"),
++    "state": enum("prepared", "claiming", "claimed", "released", "rejected"),
++    "materials": arr(obj({"material_id": ref("material_id"), "sha256": ref("sha256")}),
++                     uniqueItems=True),
++    "task_id": nullable(ref("task_id")),
++    "updated_at": ref("time"),
++})
++ffile("request_scope_store", "<应用数据>/request-scopes.json",
++      "T31 内部持久记录：只保存案件、会话、原生请求、任务、材料编号/版本和状态，不保存材料名、路径、正文或模型输入输出",
++      obj({
++          "records": {
++              "type": "object",
++              "propertyNames": ref("request_id"),
++              "additionalProperties": scope_record,
++          },
++      }))
+ ffile("reads", "工作区/任务/<任务ID>/reads.json", "读取记录：每次 case_read_material 追加一条",
+       obj({"task_id": ref("task_id"),
+            "reads": arr(obj({"material_id": ref("material_id"), "material_version": ref("sha256"),
+@@ -681,8 +768,27 @@ ffile("cases", "<应用数据>/cases.json", "案件注册表：只有编号和
+       obj({"cases": arr(opt(obj({"case_id": ref("case_id"), "root": s("realpath，Windows 反斜杠原样保存"),
+                                  "name": s(), "last_opened": ref("time")}),
+                             kind=nullable(ref("case_kind"))))}))
++external_llm = obj({
++    "enabled": b("该外部目标允许被显式选用；不等于全局切换所有会话"),
++    "base_url": nullable(s("OpenAI-compatible base URL，不含 /chat/completions；公网须 HTTPS，"
++                           "HTTP 仅限 RFC1918、CGNAT 100.64/10 或 IPv6 ULA 字面量")),
++    "model": nullable(s("发给外部 provider 的模型名", minLength=1, maxLength=200)),
++    "context_window": nullable(i("供 DSH 建 provider 条目；服务端不截断", minimum=2048, maximum=2000000)),
++    "supports_tools": b("供 T34 消费的外部 provider 能力声明，缺省 true；不代表已实测"),
++}, required=["enabled", "base_url", "model", "context_window"], desc="外部对话模型配置；不含 Key/has_key")
++external_llm["allOf"] = [{
++    "if": {"properties": {"enabled": {"const": True}}, "required": ["enabled"]},
++    "then": {"properties": {
++        "base_url": {"type": "string", "minLength": 1},
++        "model": {"type": "string", "minLength": 1},
++        "context_window": {"type": "integer", "minimum": 2048, "maximum": 2000000},
++    }},
++}]
++external_llm["default"] = {"enabled": False, "base_url": None, "model": None,
++                           "context_window": None, "supports_tools": True}
++
+ ffile("settings", "<应用数据>/settings.json", "设置；Key 不在这里（在 Windows 凭据管理器）",
+-      obj({"servers": opt(obj({"llm_base_url": s("6000D 所内地址（局域网）", pattern="^http://"),
++      opt(obj({"servers": opt(obj({"llm_base_url": s("6000D 所内地址（局域网）", pattern="^http://"),
+                                "prep_base_url": s("395 所内地址（局域网）", pattern="^http://"),
+                                "llm_alt_base_url": nullable(s("6000D 所外地址（EasyTier 虚拟 IP）；所内地址连不上时自动改用", pattern="^http://")),
+                                "prep_alt_base_url": nullable(s("395 所外地址（EasyTier 虚拟 IP）", pattern="^http://"))}),
+@@ -696,7 +802,8 @@ ffile("settings", "<应用数据>/settings.json", "设置；Key 不在这里（
+            "office": obj({"dir": nullable(s("日常办公文件夹（发票台账等），律师指定；不得位于云同步目录")),
+                           "invoice_buyer": nullable(s("发票购买方名称（律所全称），用于抬头核验"))}),
+            "converter": enum("auto", "word", "wps", "libreoffice",
+-                             desc="Word 转 PDF 用哪个程序；auto = Word → WPS → 内置 LibreOffice 依次尝试")}))
++                             desc="Word 转 PDF 用哪个程序；auto = Word → WPS → 内置 LibreOffice 依次尝试")}),
++          external_llm=external_llm))
+ 
+ # ---------------------------------------------------------------- C9 Skill 与入口
+ put("skill/frontmatter.schema.json", "SKILL.md 头部", "DSH 只读 name 和 description；其余字段由工作台服务读取",
+diff --git a/contracts/api/materials_list.schema.json b/contracts/api/materials_list.schema.json
+index f43740b..5321375 100644
+--- a/contracts/api/materials_list.schema.json
++++ b/contracts/api/materials_list.schema.json
+@@ -9,6 +9,13 @@
+       "properties": {
+         "case_id": {
+           "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
++        },
++        "include_removed": {
++          "enum": [
++            "true",
++            "false"
++          ],
++          "description": "可选查询字符串：true 额外列出已移除材料的墓碑，false 或省略只列当前材料。仅为界面列表兼容开关；墓碑不读取原件或派生文本，不适用于 AI 工具"
+         }
+       },
+       "additionalProperties": false,
+diff --git a/contracts/api/task_create.schema.json b/contracts/api/task_create.schema.json
+index 0aa3865..8d9d759 100644
+--- a/contracts/api/task_create.schema.json
++++ b/contracts/api/task_create.schema.json
+@@ -2,7 +2,7 @@
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "lawbench://contracts/api/task_create.schema.json",
+   "title": "POST /api/task",
+-  "description": "设置该会话当前的选择（胶囊、Skill、输入、参数），写成一张待执行的任务单；同一会话只保留最新一张（新的顶掉旧的）；执行时不消耗：之后每条消息都按它运行，直到下一次设置或清除。entry 与 skill 都为 null 表示自由对话（1.2 起；1.1 是一条消息用掉一张）",
++  "description": "设置该会话当前的选择（胶囊、Skill、输入、参数、模型路由），写成一张待执行的任务单；同一会话只保留最新一张（新的顶掉旧的）；执行时不消耗：之后每条消息都按它运行，直到下一次设置或清除。entry 与 skill 都为 null 表示自由对话（1.2 起；1.1 是一条消息用掉一张）",
+   "$defs": {
+     "request": {
+       "type": "object",
+@@ -43,6 +43,13 @@
+         },
+         "params": {
+           "$ref": "lawbench://contracts/common.schema.json#/$defs/params"
++        },
++        "route": {
++          "enum": [
++            "local",
++            "external"
++          ],
++          "description": "T38：任务路由留痕，缺省 local；不驱动本地流水线"
+         }
+       },
+       "additionalProperties": false,
+diff --git a/contracts/api/task_current.schema.json b/contracts/api/task_current.schema.json
+index 7528e44..4c24979 100644
+--- a/contracts/api/task_current.schema.json
++++ b/contracts/api/task_current.schema.json
+@@ -67,6 +67,13 @@
+                         },
+                         "updated_at": {
+                           "$ref": "lawbench://contracts/common.schema.json#/$defs/time"
++                        },
++                        "route": {
++                          "enum": [
++                            "local",
++                            "external"
++                          ],
++                          "description": "T38：任务路由快照；旧任务缺省按 local"
+                         }
+                       },
+                       "additionalProperties": false,
+@@ -145,6 +152,13 @@
+                 },
+                 "updated_at": {
+                   "$ref": "lawbench://contracts/common.schema.json#/$defs/time"
++                },
++                "route": {
++                  "enum": [
++                    "local",
++                    "external"
++                  ],
++                  "description": "T38：任务路由快照；旧任务缺省按 local"
+                 }
+               },
+               "additionalProperties": false,
+diff --git a/contracts/common.schema.json b/contracts/common.schema.json
+index e9c0be1..6cf7e14 100644
+--- a/contracts/common.schema.json
++++ b/contracts/common.schema.json
+@@ -34,6 +34,11 @@
+       "minLength": 1,
+       "description": "DSH 会话 ID，原样透传，不解析"
+     },
++    "request_id": {
++      "type": "string",
++      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
++      "description": "DSH 原生一次提交的唯一 R（Session.beginSubmission 生成，Session.prompt 原样传给 Core）；不得由工作台另造，也不得写进用户正文或任务 inputs"
++    },
+     "time": {
+       "type": "string",
+       "format": "date-time",
+diff --git a/contracts/core/task_begin.schema.json b/contracts/core/task_begin.schema.json
+index b0550dc..93eef91 100644
+--- a/contracts/core/task_begin.schema.json
++++ b/contracts/core/task_begin.schema.json
+@@ -2,8 +2,51 @@
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "$id": "lawbench://contracts/core/task_begin.schema.json",
+   "title": "POST /core/task/begin",
+-  "description": "Agent 插件在每轮第一步调用：由会话头 cwd 找到案件，按该会话当前的选择（待执行的任务单，不消耗、不删除）新建一个执行中的任务；没有则按'自由对话'默认值新建",
++  "description": "Agent 插件在每轮第一步调用：由会话头 cwd 找到案件，按该会话当前的选择（待执行的任务单，不消耗、不删除）新建一个执行中的任务；带 request_id 时，服务必须原子 claim 该 R 已准备的材料批次并把 scope 固化到任务；同一 R 重放返回同一任务和 scope，不同会话/案件或不同材料集合不得挪用。没有 request_id 的旧调用仍按全案运行",
+   "$defs": {
++    "request_scope": {
++      "type": "object",
++      "description": "任务开始时由服务原子 claim 并固定的本批材料快照。身份键是 DSH 原生 request_id；后续 context、list/search/read、wiki 与 cache 只能按 task_id 读取这份快照，不能由模型参数或界面提示放宽到全案",
++      "properties": {
++        "request_id": {
++          "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
++        },
++        "case_id": {
++          "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
++        },
++        "kind": {
++          "const": "materials"
++        },
++        "materials": {
++          "type": "array",
++          "items": {
++            "type": "object",
++            "properties": {
++              "material_id": {
++                "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
++              },
++              "sha256": {
++                "$ref": "lawbench://contracts/common.schema.json#/$defs/sha256"
++              }
++            },
++            "additionalProperties": false,
++            "required": [
++              "material_id",
++              "sha256"
++            ]
++          },
++          "minItems": 1,
++          "uniqueItems": true
++        }
++      },
++      "additionalProperties": false,
++      "required": [
++        "request_id",
++        "case_id",
++        "kind",
++        "materials"
++      ]
++    },
+     "request": {
+       "type": "object",
+       "properties": {
+@@ -13,6 +56,9 @@
+         "cwd": {
+           "type": "string",
+           "description": "会话头的 cwd，原样传入；服务只用它查注册表"
++        },
++        "request_id": {
++          "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+         }
+       },
+       "additionalProperties": false,
+@@ -53,6 +99,26 @@
+                 },
+                 "budget": {
+                   "$ref": "lawbench://contracts/common.schema.json#/$defs/budget"
++                },
++                "route": {
++                  "enum": [
++                    "local",
++                    "external"
++                  ],
++                  "description": "T38：会话选择的任务路由快照；旧响应缺省按 local"
++              },
++              "request_id": {
++                "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
++              },
++              "request_scope": {
++                "anyOf": [
++                  {
++                    "$ref": "#/$defs/request_scope"
++                  },
++                  {
++                    "type": "null"
++                  }
++                ]
+                 }
+               },
+               "additionalProperties": false,
+@@ -100,6 +166,26 @@
+         },
+         "budget": {
+           "$ref": "lawbench://contracts/common.schema.json#/$defs/budget"
++        },
++        "route": {
++          "enum": [
++            "local",
++            "external"
++          ],
++          "description": "T38：会话选择的任务路由快照；旧响应缺省按 local"
++              },
++              "request_id": {
++                "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
++              },
++              "request_scope": {
++                "anyOf": [
++                  {
++                    "$ref": "#/$defs/request_scope"
++                  },
++                  {
++                    "type": "null"
++                  }
++                ]
+         }
+       },
+       "additionalProperties": false,
+diff --git a/contracts/examples/api_task_current.res.json b/contracts/examples/api_task_current.res.json
+index bc436cf..210b28c 100644
+--- a/contracts/examples/api_task_current.res.json
++++ b/contracts/examples/api_task_current.res.json
+@@ -11,6 +11,7 @@
+         "window": "64K",
+         "max_tokens": 16384
+       },
++      "route": "external",
+       "updated_at": "2026-09-28T09:30:00+08:00"
+     }
+   }
+diff --git a/contracts/examples/core_task_begin.req.json b/contracts/examples/core_task_begin.req.json
+index ecab607..75fb31e 100644
+--- a/contracts/examples/core_task_begin.req.json
++++ b/contracts/examples/core_task_begin.req.json
+@@ -1,4 +1,5 @@
+ {
+   "session_id": "s_01HZX",
+-  "cwd": "D:\\案件\\张某诈骗案"
++  "cwd": "D:\\案件\\张某诈骗案",
++  "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab"
+ }
+diff --git a/contracts/examples/core_task_begin.res.json b/contracts/examples/core_task_begin.res.json
+index 385973b..d1ce4d0 100644
+--- a/contracts/examples/core_task_begin.res.json
++++ b/contracts/examples/core_task_begin.res.json
+@@ -13,6 +13,23 @@
+       "model_calls": 8,
+       "tool_calls": 24,
+       "minutes": 45
++    },
++    "route": "external",
++    "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab",
++    "request_scope": {
++      "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab",
++      "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
++      "kind": "materials",
++      "materials": [
++        {
++          "material_id": "M0001",
++          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
++        },
++        {
++          "material_id": "M0002",
++          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
++        }
++      ]
+     }
+   }
+ }
+diff --git a/contracts/examples/file_task.json b/contracts/examples/file_task.json
+index 93b4c05..97c9ad6 100644
+--- a/contracts/examples/file_task.json
++++ b/contracts/examples/file_task.json
+@@ -6,6 +6,7 @@
+   "session_id": "s_01HZX",
+   "entry": "case-analysis",
+   "skill": "criminal-reading-notes",
++  "route": "external",
+   "step": null,
+   "inputs": [
+     {
+diff --git a/contracts/examples/manifest.json b/contracts/examples/manifest.json
+index 3ec9fd1..8412711 100644
+--- a/contracts/examples/manifest.json
++++ b/contracts/examples/manifest.json
+@@ -89,6 +89,42 @@
+   "pointer": "#/$defs/response",
+   "expect": "valid"
+  },
++ {
++  "file": "core_task_begin.req_legacy.json",
++  "schema": "core/task_begin.schema.json",
++  "pointer": "#/$defs/request",
++  "expect": "valid"
++ },
++ {
++  "file": "core_task_begin.res_legacy.json",
++  "schema": "core/task_begin.schema.json",
++  "pointer": "#/$defs/response",
++  "expect": "valid"
++ },
++ {
++  "file": "api_request_scope.req_prepare.json",
++  "schema": "api/request_scope.schema.json",
++  "pointer": "#/$defs/request",
++  "expect": "valid"
++ },
++ {
++  "file": "api_request_scope.req_release.json",
++  "schema": "api/request_scope.schema.json",
++  "pointer": "#/$defs/request",
++  "expect": "valid"
++ },
++ {
++  "file": "api_request_scope.res_prepare.json",
++  "schema": "api/request_scope.schema.json",
++  "pointer": "#/$defs/response",
++  "expect": "valid"
++ },
++ {
++  "file": "api_request_scope.res_release.json",
++  "schema": "api/request_scope.schema.json",
++  "pointer": "#/$defs/response",
++  "expect": "valid"
++ },
+  {
+   "file": "core_task_begin.fail.json",
+   "schema": "core/task_begin.schema.json",
+@@ -287,6 +323,24 @@
+   "pointer": "",
+   "expect": "valid"
+  },
++ {
++  "file": "file_task.legacy.json",
++  "schema": "files/task.schema.json",
++  "pointer": "",
++  "expect": "valid"
++ },
++ {
++  "file": "file_task.request_scope.json",
++  "schema": "files/task.schema.json",
++  "pointer": "",
++  "expect": "valid"
++ },
++ {
++  "file": "file_request_scope_store.json",
++  "schema": "files/request_scope_store.schema.json",
++  "pointer": "",
++  "expect": "valid"
++ },
+  {
+   "file": "file_reads.json",
+   "schema": "files/reads.schema.json",
+@@ -425,6 +479,18 @@
+   "pointer": "#/$defs/response",
+   "expect": "valid"
+  },
++ {
++  "file": "api_task_create.req.json",
++  "schema": "api/task_create.schema.json",
++  "pointer": "#/$defs/request",
++  "expect": "valid"
++ },
++ {
++  "file": "api_task_create.req_legacy.json",
++  "schema": "api/task_create.schema.json",
++  "pointer": "#/$defs/request",
++  "expect": "valid"
++ },
+  {
+   "file": "api_task_current.res_free.json",
+   "schema": "api/task_current.schema.json",
+@@ -552,51 +618,57 @@
+   "expect": "valid"
+  },
+  {
+-  "file": "file_settings.ports.json",
+-  "schema": "files/settings.schema.json",
+-  "pointer": "",
++  "file": "api_remote_access.req_enabled.json",
++  "schema": "api/remote_access.schema.json",
++  "pointer": "#/$defs/request",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_documents_save.req.json",
+-  "schema": "api/documents_save.schema.json",
++  "file": "api_remote_access.req_code_null.json",
++  "schema": "api/remote_access.schema.json",
+   "pointer": "#/$defs/request",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_documents_save.res.json",
+-  "schema": "api/documents_save.schema.json",
+-  "pointer": "#/$defs/response",
++  "file": "api_remote_access.req_code_spaces.json",
++  "schema": "api/remote_access.schema.json",
++  "pointer": "#/$defs/request",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_documents_save.fail.json",
+-  "schema": "api/documents_save.schema.json",
++  "file": "api_remote_access.res_failed.json",
++  "schema": "api/remote_access.schema.json",
+   "pointer": "#/$defs/response",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_remote_access.req_enabled.json",
+-  "schema": "api/remote_access.schema.json",
++  "file": "api_documents_save.req.json",
++  "schema": "api/documents_save.schema.json",
+   "pointer": "#/$defs/request",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_remote_access.req_code_null.json",
+-  "schema": "api/remote_access.schema.json",
+-  "pointer": "#/$defs/request",
++  "file": "api_documents_save.res.json",
++  "schema": "api/documents_save.schema.json",
++  "pointer": "#/$defs/response",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_remote_access.req_code_spaces.json",
+-  "schema": "api/remote_access.schema.json",
+-  "pointer": "#/$defs/request",
++  "file": "api_documents_save.fail.json",
++  "schema": "api/documents_save.schema.json",
++  "pointer": "#/$defs/response",
+   "expect": "valid"
+  },
+  {
+-  "file": "api_remote_access.res_failed.json",
+-  "schema": "api/remote_access.schema.json",
+-  "pointer": "#/$defs/response",
++  "file": "file_settings.ports.json",
++  "schema": "files/settings.schema.json",
++  "pointer": "",
++  "expect": "valid"
++ },
++ {
++  "file": "file_settings.external.json",
++  "schema": "files/settings.schema.json",
++  "pointer": "",
+   "expect": "valid"
+  }
+ ]
+diff --git a/contracts/files/settings.schema.json b/contracts/files/settings.schema.json
+index 9218853..bdbb5cb 100644
+--- a/contracts/files/settings.schema.json
++++ b/contracts/files/settings.schema.json
+@@ -183,6 +183,102 @@
+         "libreoffice"
+       ],
+       "description": "Word 转 PDF 用哪个程序；auto = Word → WPS → 内置 LibreOffice 依次尝试"
++    },
++    "external_llm": {
++      "type": "object",
++      "properties": {
++        "enabled": {
++          "type": "boolean",
++          "description": "该外部目标允许被显式选用；不等于全局切换所有会话"
++        },
++        "base_url": {
++          "anyOf": [
++            {
++              "type": "string",
++              "description": "OpenAI-compatible base URL，不含 /chat/completions；公网须 HTTPS，HTTP 仅限 RFC1918、CGNAT 100.64/10 或 IPv6 ULA 字面量"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "model": {
++          "anyOf": [
++            {
++              "type": "string",
++              "minLength": 1,
++              "maxLength": 200,
++              "description": "发给外部 provider 的模型名"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "context_window": {
++          "anyOf": [
++            {
++              "type": "integer",
++              "minimum": 2048,
++              "maximum": 2000000,
++              "description": "供 DSH 建 provider 条目；服务端不截断"
++            },
++            {
++              "type": "null"
++            }
++          ]
++        },
++        "supports_tools": {
++          "type": "boolean",
++          "description": "供 T34 消费的外部 provider 能力声明，缺省 true；不代表已实测"
++        }
++      },
++      "additionalProperties": false,
++      "required": [
++        "enabled",
++        "base_url",
++        "model",
++        "context_window"
++      ],
++      "description": "外部对话模型配置；不含 Key/has_key",
++      "allOf": [
++        {
++          "if": {
++            "properties": {
++              "enabled": {
++                "const": true
++              }
++            },
++            "required": [
++              "enabled"
++            ]
++          },
++          "then": {
++            "properties": {
++              "base_url": {
++                "type": "string",
++                "minLength": 1
++              },
++              "model": {
++                "type": "string",
++                "minLength": 1
++              },
++              "context_window": {
++                "type": "integer",
++                "minimum": 2048,
++                "maximum": 2000000
++              }
++            }
++          }
++        }
++      ],
++      "default": {
++        "enabled": false,
++        "base_url": null,
++        "model": null,
++        "context_window": null,
++        "supports_tools": true
++      }
+     }
+   },
+   "additionalProperties": false,
+diff --git a/contracts/files/task.schema.json b/contracts/files/task.schema.json
+index 5db2b96..299a742 100644
+--- a/contracts/files/task.schema.json
++++ b/contracts/files/task.schema.json
+@@ -87,6 +87,66 @@
+     },
+     "created_at": {
+       "$ref": "lawbench://contracts/common.schema.json#/$defs/time"
++    },
++    "request_id": {
++      "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
++    },
++    "request_scope": {
++      "anyOf": [
++        {
++          "type": "object",
++          "description": "任务开始时由服务原子 claim 并固定的本批材料快照；后续 context、list/search/read、wiki 与 cache 只能按 task_id 读取这份快照",
++          "properties": {
++            "request_id": {
++              "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
++            },
++            "case_id": {
++              "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
++            },
++            "kind": {
++              "const": "materials"
++            },
++            "materials": {
++              "type": "array",
++              "items": {
++                "type": "object",
++                "properties": {
++                  "material_id": {
++                    "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
++                  },
++                  "sha256": {
++                    "$ref": "lawbench://contracts/common.schema.json#/$defs/sha256"
++                  }
++                },
++                "additionalProperties": false,
++                "required": [
++                  "material_id",
++                  "sha256"
++                ]
++              },
++              "minItems": 1,
++              "uniqueItems": true
++            }
++          },
++          "additionalProperties": false,
++          "required": [
++            "request_id",
++            "case_id",
++            "kind",
++            "materials"
++          ]
++        },
++        {
++          "type": "null"
++        }
++      ]
++    },
++    "route": {
++      "enum": [
++        "local",
++        "external"
++      ],
++      "description": "T38：任务路由快照；旧任务缺省按 local，不驱动流水线"
+     }
+   },
+   "additionalProperties": false,
+diff --git a/docs/src/Spec.md b/docs/src/Spec.md
+index a11ad2f..86ce307 100644
+--- a/docs/src/Spec.md
++++ b/docs/src/Spec.md
+@@ -783,6 +783,7 @@ JSON Lines 格式，写到 `C:\prep395\logs\access.log`，按天滚动，保留
+         thinkingFormat: qwen-chat-template   # pi-ai 支持的取值之一：按思考档位发送 chat_template_kwargs.enable_thinking
+   ```
+   配好后抓一次请求核对：关闭档是否发出 `enable_thinking: false`，低 / 中 / 高是否带上 `reasoning_effort`；带不上的，用 `chatTemplateKwargs` 补〔待验证〕。
++- **外部对话模型（T38，律师显式启用后）**：DSH 另配 `external` provider，仍只连 `127.0.0.1:<转发端口>/v1-ext`；工作台服务只转发 `/v1-ext/chat/completions` 和 `/v1-ext/models`。`settings.json` 的 `external_llm` 保存开关、OpenAI-compatible base URL、模型名、上下文窗口和可选的 `supports_tools`（缺省 true）；Key 只由凭据管理器保存，设置文件和 API 不含 Key 或 `has_key`。外部路由只影响按会话显式选用它的人机对话，不改变案件 wiki、识别、提示词优化等本地流水线。
+ - **流水线**：工作台服务直接调用 `<当前选用的 6000D 地址>/chat/completions`（地址选择见第 15 节），流式输出，请求体沿用 wiki 测试的 `run_pipeline_v2.py`。
+ - 请求头：`Authorization: Bearer <律师 Key>`。流水线另加 `X-Session-Id: <案件编号前 8 位>-<任务编号>`，让同一任务的请求落到同一张卡，命中前缀缓存；Agent 路由在 profile 里配置的请求头是固定的；DSH 会把会话 ID 作为 `sessionId` 交给 pi-ai，它是否会变成请求头，抓请求核对〔待验证〕，不会就不带，由网关按默认规则分卡。
+ - 温度：默认 0.6（设置里的全局默认值 `defaults.temperature`；Qwen3 系模型卡对思考模式推荐 0.6、非思考 0.7。2026-10-14 由 0.3 调为 0.6，原因是思考重复）。流水线的温度也取设置里的默认值（请求里没有温度时用 0.2）；Agent 用任务单参数里的温度，Skill 的 `params` 不写温度。
+@@ -1240,11 +1241,13 @@ inputs: [materials, wiki] # 需要哪些输入：materials 材料 / wiki / prior
+ - `case.db` 的结构升级见第 4.1 节（升级前自动备份）；回退到旧版本时，使用备份的 `case.db.bak-<版本>`。
+ - 每个版本的安装包都保留，用于回退。
+ 
+-### 14.3 只连两台服务器（SEC-03）
++### 14.3 默认只连律所服务器；显式外部模型单独放行（SEC-03）
+ 
+ **2026-09-30 用户定（候 owner 清单 N19）**：工作台服务导入旧版 `.doc` / `.wps` 维持 ②a"查到外链就拒绝"；对二进制文档做模式匹配可能漏判的两种写法（碎片表拆分、图形属性引用外链）记为**已知残留风险**，不在第一版补；上线前由用户决定要不要在律师电脑的系统防火墙里禁止转换程序（LibreOffice、pandoc）联网（T22）。
+ 
+-所有发出网络请求的地方都要做地址白名单检查（只允许设置中 6000D、395 的所内和所外地址，以及 `127.0.0.1`，第 15 节），并且**不自动跟随重定向**（收到 3xx 视为错误），防止跳转到白名单外的地址：
++所有发出网络请求的地方都要做地址白名单检查。默认白名单仍只允许设置中 6000D、395 的所内和所外地址，以及 `127.0.0.1`（第 15 节）。律师显式开启外部对话模型后，只有 `/v1-ext` 转发使用单独的外部目标政策；该目标**不并入** `Net.allow`，不影响本地模型、识别、流水线和提示词优化的地址选择。所有请求都**不自动跟随重定向**（收到 3xx 视为错误）。
++
++外部目标的 HTTPS 可使用公网或私网主机；HTTP 仅限 RFC1918、EasyTier 等虚拟网使用的 CGNAT `100.64.0.0/10`、IPv6 ULA 的 IP 字面量，且端口为 1–65535。loopback、link-local、unspecified、multicast 和保留地址不得作为外部目标；本切片不为 HTTP 内网 DNS 名做在线解析或推断。
+ 
+ | 请求来源 | 怎么限制 |
+ |---|---|
+@@ -1279,7 +1282,9 @@ inputs: [materials, wiki] # 需要哪些输入：materials 材料 / wiki / prior
+ **地址选择（所内 / 所外自动切换）**：设置中每台服务器有两个地址：所内地址（`llm_base_url`、`prep_base_url`，局域网）和所外地址（`llm_alt_base_url`、`prep_alt_base_url`，虚拟 IP），首次配置页两个都填，默认值分别为 `http://192.168.8.77:8000/v1`、`http://192.168.8.124:9000`、`http://10.126.126.1:8000/v1`、`http://10.126.126.3:9000`。
+ - 工作台服务的统一 HTTP 客户端（`net.py`）在启动时、网络变化时（Windows 网络状态变化通知）、以及请求出现连接错误时探测：先试所内地址（6000D 请求 `/v1/models`，395 请求 `/health`，各 1.5 秒超时），不通再试所外地址；选中的结果缓存 60 秒。两者都不通时报 `SERVER_UNREACHABLE`。
+ - 识别（395）和流水线（6000D）请求直接用选中的地址。
+-- **Agent 的模型请求**由 DSH 的适配器发出，而 DSH 的地址写在组合包配置里、运行时改不了，所以改为指向工作台服务的**本机转发**：工作台服务另开一个只监听 `127.0.0.1` 的固定端口（默认 18765；第一版由 Host 插件启动服务时用 `--forward-port` 或 `LB_FORWARD_PORT` 指定，设置页不提供修改，2026-09-29 用户定；端口绑定失败时服务进程以非零码退出，由 Host 按第 1.3 节处理），把 `/v1/*` 原样转发到当前选中的 6000D 地址（流式透传，请求头里的律师 Key 原样带过去，转发本身不记录请求和回答内容，只记元数据）。这个端口不需要启动令牌（DSH 的适配器加不了动态请求头），但只接受 `/v1/chat/completions` 和 `/v1/models` 两个路径，其余返回 404；没有律师 Key 的请求 6000D 会拒绝。转发端口只接受 `Host` 为 `127.0.0.1:<端口>` 或 `localhost:<端口>` 的请求，带 `Origin` 请求头的请求（来自网页）一律 404、不发往上游。
++- **Agent 的模型请求**由 DSH 的适配器发出，而 DSH 的地址写在组合包配置里、运行时改不了，所以改为指向工作台服务的**本机转发**：工作台服务另开一个只监听 `127.0.0.1` 的固定端口（默认 18765；第一版由 Host 插件启动服务时用 `--forward-port` 或 `LB_FORWARD_PORT` 指定，设置页不提供修改，2026-09-29 用户定；端口绑定失败时服务进程以非零码退出，由 Host 按第 1.3 节处理）。转发端口只接受 `Host` 为 `127.0.0.1:<端口>` 或 `localhost:<端口>` 的请求，带 `Origin` 请求头的请求一律 404、不发往上游。
++  - `/v1/chat/completions`、`/v1/models` 原样流式转发到当前选中的 6000D；请求头里的律师 Key 原样带过去，转发不记录请求和回答内容，只记元数据。
++  - `/v1-ext/chat/completions`、`/v1-ext/models` 仅在外部配置启用且能取得外部 Key 后，流式转发到该唯一固定目标；否则在读请求体、发上游之前返回 404。外部对话请求把 `model` 换成配置模型名，剥离 `chat_template_kwargs`、`enable_thinking`、`reasoning_effort`，删除继承的 `Authorization` 后换成外部 Key；律所 Key 绝不外发。上游 401/403/429/503 原状态透传，不伪造成本服务成功。
+ - "测试连接"返回实际连通的是所内还是所外地址（契约 `api/connection_test` 的 `route`），界面显示"已连接（所内）/（所外）"。
+ - 地址白名单（第 14.3 节）同时包含两组地址。
+ 
+diff --git a/service/lawbench/__main__.py b/service/lawbench/__main__.py
+index 83c4fe9..0c578ea 100644
+--- a/service/lawbench/__main__.py
++++ b/service/lawbench/__main__.py
+@@ -55,7 +55,11 @@ async def _serve(config: Config) -> int:
+     _silence_uvicorn()
+     app = create_app(config)
+     servers = {"main": _server(app, config.port),
+-               "forward": _server(forward_app(app.state.lb.net), config.forward_port)}
++               "forward": _server(forward_app(
++                   app.state.lb.net,
++                   external_policy=app.state.lb.external,
++                   external_key_getter=app.state.lb.external_key_getter,
++               ), config.forward_port)}
+     ports = {"main": config.port, "forward": config.forward_port}
+     failed: list[str] = []
+ 
+diff --git a/service/lawbench/api/core.py b/service/lawbench/api/core.py
+index 3ce0feb..ede002e 100644
+--- a/service/lawbench/api/core.py
++++ b/service/lawbench/api/core.py
+@@ -15,11 +15,11 @@ from .ui import _endpoint
+ 
+ def routes(st) -> list[Route]:
+     def task_begin(d: dict) -> dict:
+-        return st.tasks.begin(d["session_id"], d["cwd"])
++        return st.tasks.begin(d["session_id"], d["cwd"], d.get("request_id"))
+ 
+     def ctx(d: dict) -> dict:
+         case_id, root, task = st.tasks.locate(d["task_id"])
+-        return context.build(root, task, st.materials.index(case_id), st.tasks.read_input)
++        return context.build(root, task, st.tasks.index_for_task(task), st.tasks.read_input)
+ 
+     def tool(d: dict) -> dict:
+         case_id, root, task = st.tasks.locate(d["task_id"])
+diff --git a/service/lawbench/api/ui.py b/service/lawbench/api/ui.py
+index 86480d0..3d74654 100644
+--- a/service/lawbench/api/ui.py
++++ b/service/lawbench/api/ui.py
+@@ -70,6 +70,9 @@ def routes(st) -> list[Route]:
+     def task_create(d: dict) -> dict:
+         return st.tasks.create(d)
+ 
++    def request_scope(d: dict) -> dict:
++        return st.tasks.request_scope(d)
++
+     def tasks_list(d: dict) -> dict:
+         return st.tasks.list(d["case_id"])
+ 
+@@ -118,16 +121,34 @@ def routes(st) -> list[Route]:
+         return st.materials.scan(d["case_id"])
+ 
+     def materials_list(d: dict) -> dict:
+-        return st.materials.list(d["case_id"])
++        return st.materials.list(d["case_id"], include_removed=d.get("include_removed") == "true")
+ 
+     def materials_import(d: dict) -> dict:
+-        if d.get("mode", "copy") == "ref":
+-            raise ApiError("INVALID_ARGUMENT", "ref_mode_not_ready")
+-        return st.materials.import_(d["case_id"], d["paths"], d["target"], d["unzip"])
++        return st.materials.import_(
++            d["case_id"], d["paths"], d["target"], d["unzip"], mode=d.get("mode", "copy")
++        )
++
++    def materials_relocate(d: dict) -> dict:
++        return st.materials.relocate(d["case_id"], d["ref_id"], d["path"])
+ 
+     def materials_remove(d: dict) -> dict:    # 契约 1.4：律师移除材料（原件进回收站）
+         return st.materials.remove(d["case_id"], d["material_ids"])
+ 
++    def prompt_refine(d: dict) -> dict:
++        from ..pipeline import refine
++        material_names = (
++            [m["name"] for m in st.materials.index(d["case_id"])["materials"]]
++            if d.get("case_id") else []
++        )
++        return refine.refine(
++            st.net,
++            st.key_getter,
++            st.config.skills_dirs,
++            d["text"],
++            d.get("skill"),
++            material_names,
++        )
++
+     def connection_test(d: dict) -> dict:
+         return probe_connection(st, d["server"])
+ 
+@@ -189,8 +210,11 @@ def routes(st) -> list[Route]:
+         Route("/api/materials/scan", E("materials_scan", materials_scan), methods=["POST"]),
+         Route("/api/materials", E("materials_list", materials_list, query=True), methods=["GET"]),
+         Route("/api/materials/import", E("materials_import", materials_import), methods=["POST"]),
++        Route("/api/materials/relocate", E("materials_relocate", materials_relocate), methods=["POST"]),
+         Route("/api/materials/remove", E("materials_remove", materials_remove), methods=["POST"]),
++        Route("/api/prompt/refine", E("prompt_refine", prompt_refine), methods=["POST"]),
+         Route("/api/connection/test", E("connection_test", connection_test), methods=["POST"]),
++        Route("/api/request/scope", E("request_scope", request_scope), methods=["POST"]),
+         Route("/api/task", E("task_create", task_create), methods=["POST"]),
+         Route("/api/tasks", E("tasks_list", tasks_list, query=True), methods=["GET"]),
+         Route("/api/task/current", E("task_current", task_current, query=True), methods=["GET"]),
+diff --git a/service/lawbench/app.py b/service/lawbench/app.py
+index 1c5501a..fad8c33 100644
+--- a/service/lawbench/app.py
++++ b/service/lawbench/app.py
+@@ -27,10 +27,12 @@ from .case.registry import CaseRegistry
+ from .case.task import TaskStore
+ from .config import Config
+ from .errors import ApiError, fail_body
++from .external_llm import DEFAULT as EXTERNAL_LLM_DEFAULT, ExternalLLMPolicy
+ from .net import Net
+ from .settings import DEFAULTS, SettingsStore
+ 
+ KEYRING_SERVICE = "lawbench/LAWFIRM_KEY"  # Spec 8.1
++EXTERNAL_KEYRING_SERVICE = "lawbench/EXTERNAL_LLM_KEY"
+ KEYRING_USER = "lawbench"
+ 
+ 
+@@ -44,7 +46,18 @@ def keyring_key() -> str | None:
+         raise
+ 
+ 
+-def create_app(config: Config, *, key_getter=None, transport: httpx.BaseTransport | None = None) -> Starlette:
++def external_keyring_key() -> str | None:
++    """外部模型 Key 的默认只读 getter；由这里的代码静态定义，服务启动不主动读取。"""
++    try:
++        import keyring
++        return keyring.get_password(EXTERNAL_KEYRING_SERVICE, KEYRING_USER)
++    except Exception as e:
++        logs.event("app", "external_keyring_read", status="fail", error=type(e).__name__)
++        raise
++
++
++def create_app(config: Config, *, key_getter=None, external_key_getter=None,
++                transport: httpx.BaseTransport | None = None) -> Starlette:
+     contracts.set_contracts_dir(config.contracts_dir)
+     logs.setup(config.appdata)
+     config.appdata.mkdir(parents=True, exist_ok=True)
+@@ -54,7 +67,7 @@ def create_app(config: Config, *, key_getter=None, transport: httpx.BaseTranspor
+     st.cases = CaseRegistry(config.appdata, config.contracts_dir / "case_db.sql")
+     lo_base = config.appdata / "临时" / "lo"
+     libreoffice.cleanup_base(lo_base)  # 清掉上次留下的 LibreOffice 配置目录（里面有"最近打开的文件"记录，SEC-11）
+-    st.materials = Materials(st.cases, lo_base=lo_base)
++    st.materials = Materials(st.cases, lo_base=lo_base, ref_context=st.cases.ref_context_for)
+     st.settings = SettingsStore(config.appdata)
+     st.settings.migrate()  # 旧版默认温度 0.3 → 0.6（只改没动过的，只做一次）
+     st.tasks = TaskStore(st.cases, st.settings, st.materials)
+@@ -64,17 +77,31 @@ def create_app(config: Config, *, key_getter=None, transport: httpx.BaseTranspor
+     st.archive = ArchiveBuilder(st.cases, st.tasks, st.materials, st.settings, config.skills_dirs, lo_base)  # T23
+     st.exporter = Exporter(st.cases, st.tasks, st.materials, st.settings, config.skills_dirs)  # 确认保存、修订版（T15）
+     try:
+-        servers = st.settings.get()["servers"]
++        loaded_settings = st.settings.get()
++        servers = loaded_settings["servers"]
++        external_settings = loaded_settings.get("external_llm", EXTERNAL_LLM_DEFAULT)
+     except Exception as e:  # noqa: BLE001 settings.json 损坏：服务照常起来，先用默认地址，设置接口返回错误
+         logs.event("app", "settings_load", status="fail", error=type(e).__name__)
+         servers = copy.deepcopy(DEFAULTS["servers"])
++        external_settings = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
+     try:
+         st.net = Net(servers, transport=transport, forward_port=config.forward_port)
+     except Exception as e:  # noqa: BLE001 设置里的地址不合格（指向转发端口自己、解析时出了没预料到的错）：先用默认地址（N43）
+         logs.event("app", "settings_load", status="fail",
+                    error=f"{e.code}:{e.reason}" if isinstance(e, ApiError) else type(e).__name__)
+         st.net = Net(copy.deepcopy(DEFAULTS["servers"]), transport=transport, forward_port=config.forward_port)
+-    st.settings.on_change(lambda s: st.net.update(s["servers"]))
++    try:
++        st.external = ExternalLLMPolicy({"external_llm": external_settings})
++    except ValueError as e:
++        logs.event("app", "external_llm_policy_load", status="fail", error=type(e).__name__)
++        st.external = ExternalLLMPolicy({"external_llm": copy.deepcopy(EXTERNAL_LLM_DEFAULT)})
++    st.external_key_getter = external_key_getter or external_keyring_key
++
++    def settings_changed(s) -> None:
++        st.net.update(s["servers"])
++        st.external.update(s)
++
++    st.settings.on_change(settings_changed)
+     from .pipeline import Pipelines  # T16
+     st.pipelines = Pipelines(cases=st.cases, tasks=st.tasks, materials=st.materials, net=st.net,
+                              key_getter=lambda: st.key_getter(), skills_dirs=config.skills_dirs)
+diff --git a/service/lawbench/case/context.py b/service/lawbench/case/context.py
+index 7961389..11f2d3c 100644
+--- a/service/lawbench/case/context.py
++++ b/service/lawbench/case/context.py
+@@ -40,7 +40,24 @@ def changed_since_card(root: str, card: dict | None, index: dict) -> set[str]:
+             if seen.get(m["material_id"]) != m["sha256"] and texts.wiki_ready(root, m)}
+ 
+ 
+-def build_l0(root: str, index: dict) -> str:
++def build_l0(root: str, index: dict, *, restricted: bool = False) -> str:
++    if restricted:
++        lines = [
++            "# 本次请求材料范围",
++            "",
++            "本次提问按固定材料范围执行。案件卡片全文及无材料级版本证明的 wiki 内容未注入；",
++            "以下只列本次请求固定的材料。",
++            "",
++            "## 材料清单",
++        ]
++        for m in index["materials"]:
++            lines.append(f"- {m['name']}（{STATUS.get(m['status'], m['status'])}）")
++        text = "\n".join(lines).rstrip() + "\n"
++        if len(text) > L0_MAX_CHARS:
++            tail = "\n…（本次材料清单过长，已截断）\n"
++            text = text[:L0_MAX_CHARS - len(tail)] + tail
++        return text
++
+     card = load_card(root)
+     changed = changed_since_card(root, card, index)
+     lines = ["# 案件卡片", ""]
+@@ -68,6 +85,13 @@ def build_l0(root: str, index: dict) -> str:
+ 
+ def build_l1(root: str, task: dict, read_input) -> dict:
+     """read_input(root, ref) → 文本；选用后被改过的报 INPUT_CHANGED。"""
++    if task.get("request_scope") is not None:
++        text = (
++            "本次提问按固定材料范围执行；前序成果没有可核验的同范围材料来源，"
++            "因此未注入正文，也不能用 case_read_input 绕过范围。\n"
++        )
++        return {"text": text, "tokens": tokens.count(text), "truncated": bool(task["inputs"]), "toc": []}
++
+     budget = tokens.l1_budget(task["params"]["window"])
+     blocks: list[tuple[dict, str, int]] = []
+     for ref in task["inputs"]:
+@@ -99,5 +123,5 @@ def build_l1(root: str, task: dict, read_input) -> dict:
+ def build(root: str, task: dict, index: dict, read_input) -> dict:
+     if task["kind"] != "agent":
+         raise ApiError("INVALID_ARGUMENT", "not_agent_task")
+-    l0 = build_l0(root, index)
++    l0 = build_l0(root, index, restricted=task.get("request_scope") is not None)
+     return {"l0": {"text": l0, "chars": len(l0)}, "l1": build_l1(root, task, read_input)}
+diff --git a/service/lawbench/case/materials.py b/service/lawbench/case/materials.py
+index 16822df..63e37eb 100644
+--- a/service/lawbench/case/materials.py
++++ b/service/lawbench/case/materials.py
+@@ -163,10 +163,12 @@ def escape_marks(body: str) -> str:
+ 
+ 
+ class Materials:
+-    def __init__(self, cases: CaseRegistry, lo_base: pathlib.Path, *, ref_context: dict | None = None):
++    def __init__(self, cases: CaseRegistry, lo_base: pathlib.Path, *, ref_context=None):
+         self.lo_base = lo_base  # LibreOffice 配置目录的上级：<应用数据>/临时/lo（Spec 5.2）
+         self.cases = cases
+-        self._ref_context = self._snapshot_ref_context(ref_context)
++        # 应用装配传 CaseRegistry.ref_context_for，每次按当前 cases.json 重取；显式 dict
++        # 继续供旧独立验证使用，None 仍保持 fail closed。
++        self._ref_context = ref_context if callable(ref_context) else self._snapshot_ref_context(ref_context)
+         self._locks: dict[str, threading.Lock] = {}
+         self._guard = threading.Lock()
+         # 识别队列（T12）挂上：重新生成文本后把已有识别结果合并回去，签名 (root, index, material_ids)；持锁调用
+@@ -204,9 +206,14 @@ class Materials:
+             raise ApiError("INVALID_ARGUMENT", "ref_context_invalid") from None
+ 
+     def _registry(self, root: str) -> ref_registry.RefRegistry:
+-        if self._ref_context is None:
++        context = self._context(root)
++        if context is None:
+             raise ApiError("INVALID_ARGUMENT", "ref_context_required")
+-        return ref_registry.RefRegistry(root, **self._ref_context)
++        return ref_registry.RefRegistry(root, **context)
++
++    def _context(self, root: str) -> dict | None:
++        context = self._ref_context(root) if callable(self._ref_context) else self._ref_context
++        return self._snapshot_ref_context(context)
+ 
+     def _load_refs(self, root: str) -> tuple[ref_registry.RefRegistry | None, dict | None]:
+         path = gate.resolve_internal(root, ref_registry.REF_REL, op="refs_load")
+@@ -218,7 +225,7 @@ class Materials:
+     def _assert_refs_available_for_default_path(self, root: str) -> None:
+         """有登记文件却没有显式上下文时，默认 copy 也必须在写原件前停住。"""
+         path = gate.resolve_internal(root, ref_registry.REF_REL, op="refs_load")
+-        if path.exists() and self._ref_context is None:
++        if path.exists() and self._context(root) is None:
+             raise ApiError("INVALID_ARGUMENT", "ref_context_required")
+ 
+     # ---------- index.json ----------
+@@ -306,7 +313,7 @@ class Materials:
+             refs_doc or {},
+             original,
+             op="materials_read",
+-            **(self._ref_context or {}),
++            **(self._context(root) or {}),
+         )
+         if path.stat().st_size > MAX_BYTES:
+             raise ParseError("too_large")
+@@ -412,22 +419,72 @@ class Materials:
+             m for m in by_key.values()
+             if m.get("origin") == "ref"
+             and m.get("status") != "removed"
+-            and _key(m["rel_path"]) not in source_keys
++            and (
++                _key(m["rel_path"]) not in source_keys
++                or m["status"] == "missing"
++            )
+         ]
+         fresh = [
+             rel for rel in sorted(ref_rels)
+             if _key(rel) not in by_key
+         ]
+-        if not missing or not fresh:
++        if not missing:
+             return set()
+ 
++        sources_by_key: dict[str, str] = {}
++        source_rels_by_key: dict[str, list[str]] = {}
++        for rel, (actual, _info) in sources.items():
++            key = _key(rel)
++            sources_by_key[key] = actual
++            source_rels_by_key.setdefault(key, []).append(rel)
++        by_ref_tail: dict[tuple[str, str], list[dict]] = {}
++        for material in missing:
++            key = (material["ref_id"], _key(self._ref_tail(material)))
++            by_ref_tail.setdefault(key, []).append(material)
++        stable_ids: set[str] = set()
++        stable_rels: set[str] = set()
++        stable_paths: set[str] = set()
++        for (ref_id, _tail_key), materials in by_ref_tail.items():
++            if len(materials) != 1:
++                continue
++            material = materials[0]
++            prefix = f"{gate.WORK}/引用/{ref_id}/"
++            source_key = _key(f"{prefix}{self._ref_tail(material)}")
++            candidates = source_rels_by_key.get(source_key, [])
++            if len(candidates) != 1:
++                continue
++            rel = candidates[0]
++            if not rel.startswith(prefix):
++                continue
++            actual = sources_by_key.get(source_key)
++            digest = material.get("sha256")
++            if actual is None or not digest or digest == ZERO_SHA:
++                continue
++            try:
++                if sha256_file(actual) != digest:
++                    continue
++            except OSError:
++                continue
++            stable_ids.add(material["material_id"])
++            stable_rels.add(_key(rel))
++            if material["rel_path"] != rel:
++                by_key.pop(_key(material["rel_path"]), None)
++                material["rel_path"] = rel
++                material["updated_at"] = now_iso()
++                by_key[_key(rel)] = material
++                stable_paths.add(material["material_id"])
++
+         old_groups: dict[tuple[str, str], list[dict]] = {}
+         for material in missing:
++            if material["material_id"] in stable_ids:
++                continue
+             digest = material.get("sha256")
+             if digest and digest != ZERO_SHA:
+                 old_groups.setdefault((material["ref_id"], digest), []).append(material)
+         new_groups: dict[tuple[str, str], list[str]] = {}
+         for rel in fresh:
++            if _key(rel) in stable_rels:
++                continue
+             mtype = detect.material_type(pathlib.Path(rel))
+             if mtype is None:
+                 continue
+@@ -437,7 +494,7 @@ class Materials:
+             try:
+                 path = gate.resolve_original(
+                     root, refs_doc, shell, op="materials_ref_identity",
+-                    **(self._ref_context or {}),
++                    **(self._context(root) or {}),
+                 )
+                 digest = sha256_file(path)
+             except ApiError as error:
+@@ -448,7 +505,7 @@ class Materials:
+                 continue
+             new_groups.setdefault((ref_id, digest), []).append(rel)
+ 
+-        locked: set[str] = set()
++        locked: set[str] = stable_paths
+         for (ref_id, digest), olds in old_groups.items():
+             news = new_groups.get((ref_id, digest), [])
+             if len(olds) != 1 or len(news) != 1:
+@@ -483,6 +540,11 @@ class Materials:
+         for m in index["materials"]:
+             if m["status"] != "removed" and "text_path" in m:
+                 texts.text_rel(m)
++        removed_ref_keys = {
++            _key(m["rel_path"])
++            for m in index["materials"]
++            if m.get("origin") == "ref" and m["status"] == "removed"
++        }
+         by_key = {_key(m["rel_path"]): m for m in index["materials"] if m["status"] != "removed"}
+         found, unreadable_dirs = self.walk_all(root)
+         registry, refs_doc = self._load_refs(root)
+@@ -529,6 +591,10 @@ class Materials:
+         counts = {"added": 0, "changed": 0, "failed": 0, "recovered": 0, "removed": 0}
+         for rel, (_abspath, st) in sorted(sources.items()):
+             is_ref = rel in ref_rels
++            # 引用根尚活跃时普通扫描仍会枚举已取消的材料；同一虚拟身份不能重新登记，
++            # 但同根改名的当前活跃条目已在 _recover_ref_renames 关联到该路径时照常处理。
++            if _key(rel) in removed_ref_keys and _key(rel) not in by_key:
++                continue
+             try:
+                 ref_id = rel.split("/", 3)[2] if is_ref else None
+             except IndexError:
+@@ -541,12 +607,18 @@ class Materials:
+             refresh = live and stale_format and entry["type"] in REFORMAT_TYPES and entry["status"] != "failed"
+             redo = retry or refresh
+             mt = mtime_iso(st) if st is not None else None
+-            if live and not redo and st is not None and entry["size"] == st.st_size and entry["mtime"] == mt:
+-                if entry["status"] != "missing":
+-                    continue
+-                redo = True
++            if (
++                live
++                and not redo
++                and st is not None
++                and entry["status"] != "missing"
++                and entry["size"] == st.st_size
++                and entry["mtime"] == mt
++            ):
++                continue
+             mtype = detect.material_type(pathlib.Path(rel))
+-            if entry is None:
++            new_entry = entry is None
++            if new_entry:
+                 mtype = detect.material_type(pathlib.Path(rel))
+                 if mtype is None:
+                     continue
+@@ -566,7 +638,7 @@ class Materials:
+             try:
+                 checked = gate.resolve_original(
+                     root, refs_doc or {}, probe, op="materials_read",
+-                    **(self._ref_context or {}),
++                    **(self._context(root) or {}),
+                 )
+                 checked_st = checked.stat()
+                 st = checked_st
+@@ -581,6 +653,11 @@ class Materials:
+                 raise
+             except OSError:
+                 digest = None  # 被占用、没有权限：登记为失败（X8），下次扫描重试
++            if is_ref and entry["status"] == "missing":
++                # 重新定位后同相对路径必须先由内容确认身份。同名不同内容不能被当成
++                # 旧材料复活，也不能覆盖旧 ID；本路径的旧条目继续 missing。
++                if digest is None or entry["sha256"] == ZERO_SHA or digest != entry["sha256"]:
++                    continue
+             if entry["material_id"] == "":
+                 used = {m["material_id"] for m in index["materials"]}
+                 mid = ids.reuse(rel, digest, used) if digest else None  # index.json 重建后拿回原编号（N26）
+@@ -597,6 +674,18 @@ class Materials:
+                     counts["changed"] += 1
+                     if is_ref:
+                         ids.relocate(entry["material_id"], rel, digest)
++            if new_entry and any(
++                other is not entry
++                and other.get("origin") == "ref"
++                and other["status"] != "removed"
++                and _key(other["text_path"]) == _key(entry["text_path"])
++                for other in index["materials"]
++            ):
++                # 同尾新文件可能占用一个旧材料的持久 text_path；新材料另用
++                # 带编号的文本路径，旧身份的历史文本位置保持不变。
++                entry["text_path"] = (
++                    f"{TEXT_DIR}/{rel}.{entry['material_id']}.md"
++                )
+             if digest and entry.get("sha256") == ZERO_SHA:
+                 ids.fix_sha(entry["material_id"], digest)  # 第一次读不了时留底的是 64 个 0，现在更正
+             # 读不了的原件没有哈希：沿用上次的；第一次就读不了的先填 64 个 0（契约要求 sha256 格式），下次重试时更正
+@@ -819,7 +908,7 @@ class Materials:
+                 probe_refs,
+                 probe_meta,
+                 op=op,
+-                **(self._ref_context or {}),
++                **(self._context(root) or {}),
+             )
+         except ApiError as error:
+             if (
+@@ -831,8 +920,136 @@ class Materials:
+ 
+         if not path.is_file():
+             return None, "missing" if meta.get("origin") == "ref" else "deleted"
++        if meta.get("origin") == "ref" and meta["status"] == "missing":
++            # 同尾路径可能已被另一份内容占用。missing 条目只有当前字节仍与
++            # 持久身份一致时才可作为旧原件返回；恢复未扫描的同字节原件仍可读取。
++            if meta["sha256"] == ZERO_SHA:
++                return None, "missing"
++            try:
++                if sha256_file(path) != meta["sha256"]:
++                    return None, "missing"
++            except OSError:
++                return None, "missing"
+         return path, "ok"
+ 
++    # ---------- 引用根重新定位（内部服务） ----------
++
++    def relocate(self, case_id: str, ref_id: str, path: str) -> dict:
++        """把已缺失的引用根指向律师选出的新位置，并按材料身份重扫。
++
++        先由登记器完成四禁区、真实预扫描、类型、上限和现役根冲突校验；随后只用
++        相对子路径+sha256，或同根唯一同内容改名来认回旧材料。多候选、同名不同内容
++        和跨根情况都不猜，旧条目继续 missing。根路径与材料索引是两个文件，本方法
++        不承诺跨文件原子事务；根更新成功后扫描失败会如实向上传播。
++        """
++        root = self.cases.root_of(case_id)
++        t0 = time.monotonic()
++        with self._lock(case_id):
++            registry, refs_doc = self._load_refs(root)
++            if registry is None or refs_doc is None:
++                raise ApiError("INTERNAL", "refs_missing")
++            prepared = registry.prepare_relocate(ref_id, path)
++            index = self._load_index(root, case_id)
++            missing = [
++                material
++                for material in index["materials"]
++                if material.get("origin") == "ref"
++                and material.get("ref_id") == ref_id
++                and material["status"] == "missing"
++            ]
++
++            candidate_digests: dict[str, tuple[str, os.stat_result, str]] = {}
++            for tail, (actual, info) in prepared["children"].items():
++                try:
++                    digest = sha256_file(actual)
++                except OSError:
++                    continue
++                candidate_digests[tail] = (actual, info, digest)
++
++            restored_ids = self._match_relocated_refs(missing, candidate_digests)
++            registry.commit_relocate(ref_id, prepared["path"], prepared["kind"])
++            scan = self._scan(root, case_id)
++
++            refreshed = self._load_index(root, case_id)
++            remaining = {
++                material["material_id"]
++                for material in refreshed["materials"]
++                if material.get("origin") == "ref"
++                and material.get("ref_id") == ref_id
++                and material["status"] == "missing"
++            }
++            healthy = {
++                material["material_id"]
++                for material in refreshed["materials"]
++                if material.get("origin") == "ref"
++                and material.get("ref_id") == ref_id
++                and material["status"] not in
++                ("missing", "failed", "source_deleted", "removed")
++            }
++            value = {
++                "ref_id": ref_id,
++                "restored": len(restored_ids & healthy),
++                "still_missing": len(remaining),
++                "scan": scan,
++            }
++            contracts.validate(
++                "api/materials_relocate.schema.json",
++                "#/$defs/value",
++                value,
++            )
++        logs.event(
++            "materials",
++            "relocate",
++            case_id=case_id,
++            duration_ms=(time.monotonic() - t0) * 1000,
++        )
++        return value
++
++    def _match_relocated_refs(
++        self,
++        missing: list[dict],
++        candidates: dict[str, tuple[str, os.stat_result, str]],
++    ) -> set[str]:
++        """按相对子路径+sha 认回，再用未占用候选做唯一同内容改名匹配。"""
++        matched: set[str] = set()
++        used_keys: set[str] = set()
++        by_tail: dict[str, list[dict]] = {}
++        for material in missing:
++            by_tail.setdefault(_key(self._ref_tail(material)), []).append(material)
++
++        candidates_by_key: dict[
++            str, list[tuple[str, tuple[str, os.stat_result, str]]]
++        ] = {}
++        for tail, candidate in candidates.items():
++            candidates_by_key.setdefault(_key(tail), []).append((tail, candidate))
++
++        for key, materials in by_tail.items():
++            entries = candidates_by_key.get(key)
++            if entries is None or len(entries) != 1 or len(materials) != 1:
++                continue
++            tail, candidate = entries[0]
++            digest = candidate[2]
++            material = materials[0]
++            if material["sha256"] != ZERO_SHA and digest == material["sha256"]:
++                matched.add(material["material_id"])
++                used_keys.add(_key(tail))
++
++        old_remaining: dict[str, list[dict]] = {}
++        for material in missing:
++            if material["material_id"] in matched or material["sha256"] == ZERO_SHA:
++                continue
++            old_remaining.setdefault(material["sha256"], []).append(material)
++        new_remaining: dict[str, list[str]] = {}
++        for tail, (_actual, _info, digest) in candidates.items():
++            key = _key(tail)
++            if key not in used_keys:
++                new_remaining.setdefault(digest, []).append(key)
++        for digest, materials in old_remaining.items():
++            tails = new_remaining.get(digest, [])
++            if len(materials) == 1 and len(tails) == 1:
++                matched.add(materials[0]["material_id"])
++        return matched
++
+     # ---------- 移除（契约 1.4 materials_remove） ----------
+ 
+     def remove(self, case_id: str, material_ids: list[str]) -> dict:
+@@ -958,22 +1175,30 @@ class Materials:
+ 
+     # ---------- 列表 ----------
+ 
+-    def list(self, case_id: str) -> dict:
++    def list(self, case_id: str, *, include_removed: bool = False) -> dict:
++        if not isinstance(include_removed, bool):
++            raise ApiError("INVALID_ARGUMENT", "include_removed_invalid")
+         root = self.cases.root_of(case_id)
+         with self._lock(case_id):
+             index = self._load_index(root, case_id)
+             _, refs_doc = self._load_refs(root)
+             refs_by_id = {r["ref_id"]: r for r in (refs_doc or {}).get("refs", [])}
+         stale = self._stale_ocr(root, index)
+-        return {"materials": [{
+-            "material_id": m["material_id"], "name": m["name"], "rel_path": m["rel_path"], "type": m["type"],
+-            "status": m["status"], "unit": m["unit"], "unit_count": m["unit_count"], "is_ocr": m["is_ocr"],
+-            "stale_ocr": m["material_id"] in stale, "error": m["error"], "pages_need_ocr": m["pages_need_ocr"],
+-            "pages_mixed": m["pages_mixed"], "chars": self._chars(root, m),
+-            **({"origin": "ref", "ref_id": m["ref_id"],
+-                "location": self._ref_location(m, refs_by_id)}
+-               if m.get("origin") == "ref" else {})}
+-            for m in index["materials"] if m["status"] != "removed"]}     # 已移除的（契约 1.4）不列
++        rows = []
++        for m in index["materials"]:
++            removed = m["status"] == "removed"
++            if removed and not include_removed:
++                continue
++            rows.append({
++                "material_id": m["material_id"], "name": m["name"], "rel_path": m["rel_path"], "type": m["type"],
++                "status": m["status"], "unit": m["unit"], "unit_count": m["unit_count"], "is_ocr": m["is_ocr"],
++                "stale_ocr": False if removed else m["material_id"] in stale,
++                "error": m["error"], "pages_need_ocr": m["pages_need_ocr"],
++                "pages_mixed": m["pages_mixed"], "chars": None if removed else self._chars(root, m),
++                **({"origin": "ref", "ref_id": m["ref_id"],
++                    "location": self._ref_location(m, refs_by_id)}
++                   if m.get("origin") == "ref" else {})})
++        return {"materials": rows}
+ 
+     def _ref_location(self, material: dict, refs_by_id: dict[str, dict]) -> str:
+         ref = refs_by_id.get(material.get("ref_id"))
+diff --git a/service/lawbench/case/refs.py b/service/lawbench/case/refs.py
+index 583be60..ee07b18 100644
+--- a/service/lawbench/case/refs.py
++++ b/service/lawbench/case/refs.py
+@@ -351,6 +351,92 @@ class RefRegistry:
+                 payload = json.dumps(document, ensure_ascii=False, indent=2).encode("utf-8")
+                 gate.write_bytes(self._root, REF_REL, payload, op="refs_write")
+ 
++    def prepare_relocate(
++        self, ref_id: str, path: str | os.PathLike[str]
++    ) -> dict[str, Any]:
++        """只读校验一次引用根重新定位，返回候选枚举但不写登记文件。
++
++        只接受扫描时已标为 ``missing`` 的根；removed 根不得复活，ok 根也不在
++        “整体搬家”语义内。候选必须仍与旧根同类型、通过显式四禁区路径校验和
++        真实预扫描，且不能占用另一现役根的规范路径。
++        """
++        try:
++            contracts.validate("common.schema.json", "#/$defs/ref_id", ref_id)
++        except contracts.ContractError:
++            raise ApiError("INVALID_ARGUMENT", "ref_id") from None
++
++        with self._lock:
++            document = self._load_unlocked()
++            entry = next(
++                (ref for ref in document["refs"] if ref["ref_id"] == ref_id),
++                None,
++            )
++            if entry is None:
++                raise ApiError("MATERIAL_NOT_FOUND", "ref_not_found")
++            if entry["status"] == "removed":
++                raise ApiError("MATERIAL_NOT_FOUND", "ref_removed")
++            if entry["status"] != "missing":
++                raise ApiError("INVALID_ARGUMENT", "ref_not_missing")
++
++            canonical, kind, key = self._validate_candidate(path)
++            if kind != entry["kind"]:
++                raise ApiError("INVALID_ARGUMENT", "identity_changed")
++            if any(
++                other["ref_id"] != ref_id
++                and other["status"] != "removed"
++                and _path_key(other["path"]) == key
++                for other in document["refs"]
++            ):
++                raise ApiError("INVALID_ARGUMENT", "ref_path_conflict")
++            children = self._preflight_canonical(canonical, kind)
++            return {
++                "ref_id": ref_id,
++                "path": canonical,
++                "kind": kind,
++                "children": children,
++            }
++
++    def commit_relocate(
++        self,
++        ref_id: str,
++        expected_path: str,
++        expected_kind: str,
++    ) -> dict[str, Any]:
++        """提交已经过身份匹配的重新定位；写前重做路径、类型、上限与冲突校验。"""
++        with self._lock:
++            document = self._load_unlocked()
++            entry = next(
++                (ref for ref in document["refs"] if ref["ref_id"] == ref_id),
++                None,
++            )
++            if entry is None:
++                raise ApiError("MATERIAL_NOT_FOUND", "ref_not_found")
++            if entry["status"] == "removed":
++                raise ApiError("MATERIAL_NOT_FOUND", "ref_removed")
++            if entry["status"] != "missing":
++                raise ApiError("INVALID_ARGUMENT", "ref_not_missing")
++
++            canonical, kind, key = self._validate_candidate(expected_path)
++            if (
++                kind != expected_kind
++                or _path_key(canonical) != _path_key(expected_path)
++            ):
++                raise ApiError("INVALID_ARGUMENT", "identity_changed")
++            if any(
++                other["ref_id"] != ref_id
++                and other["status"] != "removed"
++                and _path_key(other["path"]) == key
++                for other in document["refs"]
++            ):
++                raise ApiError("INVALID_ARGUMENT", "ref_path_conflict")
++            self._preflight_canonical(canonical, kind)
++
++            entry.update(path=canonical, status="ok", checked_at=_now_with_timezone())
++            self._validate_document(document)
++            payload = json.dumps(document, ensure_ascii=False, indent=2).encode("utf-8")
++            gate.write_bytes(self._root, REF_REL, payload, op="refs_write")
++            return copy.deepcopy(entry)
++
+     def mark_removed(self, ref_ids: Iterable[str]) -> None:
+         """把一个或多个根标成 removed；只写登记状态，不访问引用根或外部原件。"""
+         with self._lock:
+diff --git a/service/lawbench/case/registry.py b/service/lawbench/case/registry.py
+index 6457600..9d6bbe7 100644
+--- a/service/lawbench/case/registry.py
++++ b/service/lawbench/case/registry.py
+@@ -4,6 +4,7 @@ from __future__ import annotations
+ import os
+ import pathlib
+ import sqlite3
++import sys
+ import threading
+ import uuid
+ from datetime import datetime
+@@ -67,9 +68,20 @@ def now_iso() -> str:
+ 
+ 
+ class CaseRegistry:
+-    def __init__(self, appdata: pathlib.Path, sql_path: pathlib.Path):
++    def __init__(
++        self,
++        appdata: pathlib.Path,
++        sql_path: pathlib.Path,
++        *,
++        ref_home: str | os.PathLike | None = None,
++        ref_appdata: str | os.PathLike | None = None,
++        ref_system_dirs: tuple[str, ...] | None = None,
++    ):
+         self.path = pathlib.Path(appdata) / "cases.json"
+         self.sql_path = pathlib.Path(sql_path)
++        self._ref_home = ref_home
++        self._ref_appdata = ref_appdata
++        self._ref_system_dirs = ref_system_dirs
+         self._lock = threading.Lock()
+ 
+     # ---------- cases.json ----------
+@@ -93,6 +105,43 @@ class CaseRegistry:
+                     return c["root"]
+         raise ApiError("CASE_NOT_FOUND", "unknown_case_id")
+ 
++    def ref_context_for(self, case_root: str) -> dict:
++        """返回当前请求可用的引用根四禁区上下文。
++
++        ``cases.json`` 每次现读，打开、忘掉或改址后下一次调用立即生效；当前案
++        不列入另案禁区，其余登记案根全部列入。环境事实只在这里转成显式路径，
++        下游的引用登记器仍不自行猜目录。
++        """
++        current = os.path.normcase(os.path.normpath(os.path.realpath(case_root)))
++        with self._lock:
++            case_roots = []
++            for case in self._load()["cases"]:
++                root = os.path.normcase(os.path.normpath(os.path.realpath(case["root"])))
++                if root != current and root not in case_roots:
++                    case_roots.append(root)
++
++        home = str(self._ref_home if self._ref_home is not None else pathlib.Path.home())
++        if self._ref_system_dirs is not None:
++            system_dirs = list(self._ref_system_dirs)
++        else:
++            names = ("SystemRoot", "ProgramFiles", "ProgramFiles(x86)", "ProgramData")
++            system_dirs = [
++                os.environ[name]
++                for name in names
++                if os.environ.get(name) and os.path.isabs(os.environ[name])
++            ]
++            if sys.platform == "darwin":
++                system_dirs.extend(
++                    path for path in ("/System", "/Library", "/Applications", "/usr", "/bin", "/sbin", "/etc", "/private")
++                    if os.path.isdir(path)
++                )
++        return {
++            "home": home,
++            "appdata": str(self._ref_appdata if self._ref_appdata is not None else self.path.parent),
++            "system_dirs": tuple(dict.fromkeys(system_dirs)),
++            "other_case_roots": tuple(case_roots),
++        }
++
+     def forget(self, case_id: str) -> dict:
+         """从 cases.json 删掉这条登记（契约 1.4 case_forget）。只动登记：案件文件夹、工作区、case.db 一概不碰，
+         以后再打开同一个文件夹还是原来的 case_id。没有登记的返回 already_forgotten（幂等）。"""
+diff --git a/service/lawbench/case/task.py b/service/lawbench/case/task.py
+index 2c89368..068a496 100644
+--- a/service/lawbench/case/task.py
++++ b/service/lawbench/case/task.py
+@@ -9,6 +9,7 @@ import copy
+ import hashlib
+ import json
+ import os
++import pathlib
+ import re
+ import secrets
+ import threading
+@@ -19,6 +20,7 @@ from .. import contracts, logs
+ from ..errors import ApiError
+ from . import gate, texts
+ from .registry import CaseRegistry
++from .request_scope import STORE_FILE, RequestScopeStore
+ 
+ TASK_DIR = "工作区/任务"
+ DEFAULT_BUDGET = {"model_calls": 32, "tool_calls": 48, "minutes": 45}  # Spec 9.2（F-RUN-05；2026-10-04 由 8/24 调为 16/24，2026-10-11 用户定 32/48）
+@@ -48,10 +50,24 @@ def sha256_file(path) -> str:
+ 
+ 
+ class TaskStore:
+-    def __init__(self, cases: CaseRegistry, settings, materials):
++    def __init__(self, cases: CaseRegistry, settings, materials, *, request_scopes=None):
+         self.cases = cases
+         self.settings = settings
+         self.materials = materials
++        settings_path = getattr(settings, "path", None)
++        case_registry_path = getattr(cases, "path", None)
++        settings_path = pathlib.Path(settings_path) if settings_path is not None else None
++        case_registry_path = (
++            pathlib.Path(case_registry_path) if case_registry_path is not None else None
++        )
++        appdata = (
++            settings_path.parent
++            if settings_path is not None
++            else (case_registry_path.parent if case_registry_path is not None else None)
++        )
++        self.scopes = request_scopes or RequestScopeStore(
++            cases, materials, appdata / STORE_FILE if appdata is not None else None
++        )
+         self._lock = threading.Lock()      # 建单、取单（begin）、作废、add_read
+         self._where: dict[str, str] = {}  # task_id → case_id
+         # 本进程 begin 过的任务 → begin 的时刻（P1-2：重开案件时不把它们当成上次硬退出留下的；P3-3：用时从这里算）
+@@ -84,9 +100,39 @@ class TaskStore:
+     def _read(root: str, rel: str, schema: str) -> dict:
+         p = gate.resolve_internal(root, rel, op="task")
+         data = contracts.read_json(p)
++        if schema == "files/task.schema.json":
++            data.setdefault("route", "local")  # T38：旧任务单缺字段按本地，内存兼容
+         contracts.validate(schema, "", data)
+         return data
+ 
++    def request_scope(self, request: dict) -> dict:
++        """POST /api/request/scope：prepare/release 的持久映射入口。"""
++        return self.scopes.handle(request)
++
++    def task_scope(self, task: dict) -> dict | None:
++        """返回经持久记录核验的任务范围；任务副本不能单独作为权限来源。"""
++        return self.scopes.task_scope(task)
++
++    def index_for_task(self, task: dict) -> dict:
++        """按持久 R 固定的材料快照裁剪索引；任务副本缺坏时失败关闭。"""
++        scope = self.task_scope(task)
++        index = self.materials.index(task["case_id"])
++        if scope is None:
++            return index
++
++        by_id = {m["material_id"]: m for m in index["materials"]}
++        scoped: list[dict] = []
++        for expected in scope["materials"]:
++            material = by_id.get(expected["material_id"])
++            if (
++                material is None
++                or material["status"] in ("source_deleted", "missing", "removed")
++                or material.get("sha256") != expected["sha256"]
++            ):
++                raise ApiError("INPUT_CHANGED", "task_scope_version_changed")
++            scoped.append(material)
++        return {**index, "materials": scoped}
++
+     def locate(self, task_id: str) -> tuple[str, str, dict]:
+         """task_id → (case_id, root, task.json)。"""
+         rel = self.rel(task_id, "task.json")
+@@ -142,7 +188,7 @@ class TaskStore:
+         root = self.cases.root_of(d["case_id"])
+         task_id = new_task_id("T")
+         task = {"v": 1, "task_id": task_id, "case_id": d["case_id"], "kind": "agent", "session_id": d["session_id"],
+-                "entry": d["entry"], "skill": d["skill"], "step": None,
++                "entry": d["entry"], "skill": d["skill"], "route": d.get("route", "local"), "step": None,
+                 "inputs": self.input_refs(root, d["inputs"]), "params": d["params"],
+                 "budget": copy.deepcopy(DEFAULT_BUDGET), "state": "pending", "created_at": now_iso()}
+         with self._lock:
+@@ -179,7 +225,7 @@ class TaskStore:
+             return {"selection": None}
+         return {"selection": {"task_id": best["task_id"], "entry": best["entry"], "skill": best["skill"],
+                               "inputs": [r["path"] for r in best["inputs"]], "params": best["params"],
+-                              "updated_at": best["created_at"]}}
++                              "route": best.get("route", "local"), "updated_at": best["created_at"]}}
+ 
+     def list(self, case_id: str) -> dict:
+         root = self.cases.root_of(case_id)
+@@ -231,49 +277,223 @@ class TaskStore:
+ 
+     # ---------- /core/task/begin ----------
+ 
+-    def begin(self, session_id: str, cwd: str) -> dict:
++    def begin(self, session_id: str, cwd: str, request_id: str | None = None) -> dict:
+         case_id, root = self.cases.find_by_root(cwd)
+         with self._lock:
+-            # 契约 1.2（N37）：按该会话当前的选择（待执行的任务单）复制出一个新的执行中任务，
+-            # 选择本身不消耗、不删除；没有选择就按自由对话默认值新建
+-            sel = self._pending_for(root, session_id)
+-            tid = new_task_id("T")
+-            if sel is not None:
+-                task = copy.deepcopy(sel)
+-                task.update(task_id=tid, created_at=now_iso())
++            if request_id is not None:
++                def prepare_task(task_id: str, scope: dict | None) -> None:
++                    self._prepare_claimed_task(
++                        root, case_id, session_id, task_id, request_id, scope
++                    )
++
++                def activate_task(task_id: str, scope: dict | None) -> dict:
++                    return self._activate_claimed_task(
++                        root, case_id, session_id, task_id, request_id, scope
++                    )
++
++                task = self.scopes.claim_or_replay(
++                    request_id, case_id, session_id, lambda: self._fresh_task_id(root),
++                    prepare_task, activate_task,
++                )
++                tid = task["task_id"]
+             else:
+-                task = {"v": 1, "task_id": tid, "case_id": case_id, "kind": "agent", "session_id": session_id,
+-                        "entry": None, "skill": None, "step": None, "inputs": [],
+-                        "params": self.default_params(None), "budget": copy.deepcopy(DEFAULT_BUDGET),
+-                        "created_at": now_iso()}
+-            task["state"] = "running"
+-            carried = self._carry_reads(root, session_id)
+-            # 先记下"本进程 begin 过"，再写任何文件：重开案件的 mark_abnormal 不会在写到一半时把它当成遗留任务（F1）
+-            self._begun[tid] = datetime.now().astimezone()
+-            try:
+-                self._write(root, self.rel(tid, "task.json"), task, "files/task.schema.json")
+-                self._write(root, self.rel(tid, "result.json"), {
+-                    "v": 1, "task_id": tid, "status": "running",
+-                    "usage": {"model_calls": 0, "tool_calls": 0, "elapsed_s": 0}, "drafts": [],
+-                    "citation_check": None, "coverage": None, "citations": [], "finished_at": None},
+-                    "files/result.schema.json")
+-                self._write(root, self.rel(tid, "reads.json"), {"v": 1, "task_id": tid, "reads": carried},
+-                            "files/reads.schema.json")
+-            except BaseException:
+-                # 写到一半失败：它不算"本进程正在执行"，重开案件时应按异常中断处理（T8 第三轮复核 P3）
+-                self._begun.pop(tid, None)
+-                raise
++                tid = new_task_id("T")
++                task = self._task_for_begin(
++                    root, case_id, session_id, tid, None, None, state="running"
++                )
++                self._begun[tid] = datetime.now().astimezone()
++                try:
++                    self._write_begin_files(root, session_id, task, None)
++                except BaseException:
++                    self._begun.pop(tid, None)
++                    raise
+             self._where[tid] = case_id
+         logs.event("task", "begin", case_id=case_id)
+-        return {"task_id": tid, "case_id": case_id, "skill": task["skill"], "params": task["params"],
+-                "budget": task["budget"]}
++        return self._begin_value(task, request_id)
++
++    def _fresh_task_id(self, root: str) -> str:
++        for _ in range(100):
++            task_id = new_task_id("T")
++            target = gate.resolve_internal(root, self.rel(task_id), op="task")
++            if not target.exists():
++                return task_id
++        raise ApiError("INTERNAL", "task_id_collision")
++
++    def _task_for_begin(
++        self,
++        root: str,
++        case_id: str,
++        session_id: str,
++        task_id: str,
++        request_id: str | None,
++        scope: dict | None,
++        *,
++        state: str,
++    ) -> dict:
++        """从会话当前选择复制任务，不消耗选择；范围只能由本次 R 注入。"""
++        sel = self._pending_for(root, session_id)
++        if sel is not None:
++            task = copy.deepcopy(sel)
++            task.pop("request_id", None)
++            task.pop("request_scope", None)
++            task.update(task_id=task_id, created_at=now_iso())
++        else:
++            task = {
++                "v": 1,
++                "task_id": task_id,
++                "case_id": case_id,
++                "kind": "agent",
++                "session_id": session_id,
++                "entry": None,
++                "skill": None,
++                "route": "local",
++                "step": None,
++                "inputs": [],
++                "params": self.default_params(None),
++                "budget": copy.deepcopy(DEFAULT_BUDGET),
++                "created_at": now_iso(),
++            }
++        task["state"] = state
++        if request_id is not None:
++            task["request_id"] = request_id
++            task["request_scope"] = copy.deepcopy(scope)
++        return task
++
++    def _begin_result(self, task_id: str) -> dict:
++        return {
++            "v": 1,
++            "task_id": task_id,
++            "status": "running",
++            "usage": {"model_calls": 0, "tool_calls": 0, "elapsed_s": 0},
++            "drafts": [],
++            "citation_check": None,
++            "coverage": None,
++            "citations": [],
++            "finished_at": None,
++        }
++
++    def _write_begin_files(
++        self,
++        root: str,
++        session_id: str,
++        task: dict,
++        scope: dict | None,
++    ) -> None:
++        carried = self._carry_reads(root, session_id, scope)
++        self._write(root, self.rel(task["task_id"], "task.json"), task, "files/task.schema.json")
++        self._write(
++            root, self.rel(task["task_id"], "result.json"),
++            self._begin_result(task["task_id"]), "files/result.schema.json",
++        )
++        self._write(
++            root, self.rel(task["task_id"], "reads.json"),
++            {"v": 1, "task_id": task["task_id"], "reads": carried},
++            "files/reads.schema.json",
++        )
++
++    def _prepare_claimed_task(
++        self,
++        root: str,
++        case_id: str,
++        session_id: str,
++        task_id: str,
++        request_id: str,
++        scope: dict | None,
++    ) -> None:
++        """claiming 阶段可重复执行；只替换尚未执行过的 pending 任务记录。"""
++        task = self._task_for_begin(
++            root, case_id, session_id, task_id, request_id, scope, state="pending"
++        )
++        task_path = gate.resolve_internal(root, self.rel(task_id, "task.json"), op="task")
++        if task_path.is_file():
++            existing = self._read(root, self.rel(task_id, "task.json"), "files/task.schema.json")
++            if (
++                existing["state"] != "pending"
++                or existing.get("request_id") != request_id
++                or existing.get("request_scope") != scope
++                or existing["session_id"] != session_id
++                or existing["case_id"] != case_id
++            ):
++                raise ApiError("INTERNAL", "request_scope_task_conflict")
++            task = existing
++        self._write_begin_files(root, session_id, task, scope)
++
++    def _activate_claimed_task(
++        self,
++        root: str,
++        case_id: str,
++        session_id: str,
++        task_id: str,
++        request_id: str,
++        scope: dict | None,
++    ) -> dict:
++        """pending→running 是 R 认领的最后一步；重复调用只返回同一运行任务。"""
++        task_rel = self.rel(task_id, "task.json")
++        try:
++            path = gate.resolve_internal(root, task_rel, op="task")
++        except ApiError:
++            raise ApiError("INTERNAL", "request_scope_task_missing") from None
++        if not path.is_file():
++            raise ApiError("INTERNAL", "request_scope_task_missing")
++        task = self._read(root, task_rel, "files/task.schema.json")
++        if (
++            task["case_id"] != case_id
++            or task["session_id"] != session_id
++            or task.get("request_id") != request_id
++            or task.get("request_scope") != scope
++        ):
++            raise ApiError("INTERNAL", "request_scope_task_conflict")
++        if task["state"] == "running":
++            self._begun.setdefault(task_id, datetime.now().astimezone())
++            return task
++        if task["state"] != "pending":
++            raise ApiError(
++                "TASK_NOT_FOUND", "request_scope_task_ended",
++                detail="这次请求已经结束，不能重复开始；请重新发起提问",
++            )
++
++        # pending 阶段尚未交给 Agent；上次若只写完 R/部分文件，重写辅助文件后再激活。
++        self._write(
++            root, self.rel(task_id, "result.json"), self._begin_result(task_id),
++            "files/result.schema.json",
++        )
++        carried = self._carry_reads(root, session_id, scope)
++        self._write(
++            root, self.rel(task_id, "reads.json"),
++            {"v": 1, "task_id": task_id, "reads": carried},
++            "files/reads.schema.json",
++        )
++        task["state"] = "running"
++        self._begun[task_id] = datetime.now().astimezone()
++        try:
++            self._write(root, task_rel, task, "files/task.schema.json")
++        except BaseException:
++            self._begun.pop(task_id, None)
++            raise
++        return task
+ 
+-    def _carry_reads(self, root: str, session_id: str) -> list[dict]:
++    @staticmethod
++    def _begin_value(task: dict, request_id: str | None) -> dict:
++        value = {
++            "task_id": task["task_id"],
++            "case_id": task["case_id"],
++            "skill": task["skill"],
++            "route": task.get("route", "local"),
++            "params": task["params"],
++            "budget": task["budget"],
++        }
++        if request_id is not None:
++            value["request_id"] = request_id
++            value["request_scope"] = copy.deepcopy(task.get("request_scope"))
++        return value
++
++    def _carry_reads(self, root: str, session_id: str, request_scope: dict | None = None) -> list[dict]:
+         """预算到顶后"继续"（第九版待办 26）：律师在同一个对话里接着发，Agent 照常开一个新任务、给一份新预算，
+         草稿版本号按标题接着往上加（next_draft_version）。这里补的是读取记录：同一对话里上一个结束的任务是到顶停下的，
+         把它的读取记录带过来——那些原文还在这个对话的上下文里，新任务存稿时"没读全"要把它们算上。
+         只看同一会话里最新的一个 Agent 任务（待执行的任务单不算）：它是已结束且到顶停下的才带；最新的是异常中断等别的状态，
+-        就不带，也不越过它去找更早的（复核 rv-B26 P3-3）。它本身带过来的也一并带上，所以连着继续几次是累计的。"""
++        就不带，也不越过它去找更早的（复核 rv-B26 P3-3）。它本身带过来的也一并带上，所以连着继续几次是累计的。
++        带 R 的任务再按本次固定材料编号和版本过滤，任何旧的全案读取都不会借预算续接进入新范围。"""
+         base = gate.resolve_internal(root, TASK_DIR, op="task")
+         last, last_key = None, None
+         for d in (base.iterdir() if base.is_dir() else []):
+@@ -292,9 +512,16 @@ class TaskStore:
+         try:
+             if self.result(root, last["task_id"])["status"] != "budget_stopped":
+                 return []
+-            return self._read(root, self.rel(last["task_id"], "reads.json"), "files/reads.schema.json")["reads"]
++            reads = self._read(root, self.rel(last["task_id"], "reads.json"), "files/reads.schema.json")["reads"]
+         except (ApiError, FileNotFoundError, contracts.ContractError, ValueError):
+             return []
++        if request_scope is None:
++            return reads
++        allowed = {m["material_id"]: m["sha256"] for m in request_scope["materials"]}
++        return [
++            r for r in reads
++            if allowed.get(r["material_id"]) == r["material_version"]
++        ]
+ 
+     def _pending_for(self, root: str, session_id: str) -> dict | None:
+         base = gate.resolve_internal(root, TASK_DIR, op="task")
+@@ -394,7 +621,8 @@ class TaskStore:
+         root = self.cases.root_of(case_id)
+         tid = new_task_id("P")
+         task = {"v": 1, "task_id": tid, "case_id": case_id, "kind": "pipeline", "session_id": None,
+-                "entry": skill, "skill": skill, "step": step, "inputs": [], "params": params, "budget": budget,
++                "entry": skill, "skill": skill, "route": "local", "step": step, "inputs": [],
++                "params": params, "budget": budget,
+                 "state": "running", "created_at": now_iso()}
+         with self._lock:
+             self._begun[tid] = datetime.now().astimezone()
+@@ -451,7 +679,8 @@ class TaskStore:
+ 
+     def coverage(self, root: str, case_id: str, task_id: str) -> dict:
+         """按 reads.json 的实际读取记录计算，不采信模型自报（Spec 9.2）。只认当前版本（sha256）的读取。"""
+-        index = self.materials.index(case_id)
++        task = self._read(root, self.rel(task_id, "task.json"), "files/task.schema.json")
++        index = self.index_for_task(task)
+         reads = self._read(root, self.rel(task_id, "reads.json"), "files/reads.schema.json")["reads"]
+         cov = {"total": 0, "fully_read": [], "partially_read": [], "not_read": [], "unreadable": []}
+         for m in index["materials"]:
+@@ -518,7 +747,17 @@ class TaskStore:
+         res = self.result(root, task_id)
+         res.update(status=status, finished_at=now_iso())
+         res["usage"] = {"model_calls": model_calls, "tool_calls": tool_calls, "elapsed_s": elapsed_s}
+-        res["coverage"] = self.coverage(root, case_id, task_id)
++        try:
++            res["coverage"] = self.coverage(root, case_id, task_id)
++        except ApiError as error:
++            if (
++                error.code != "INPUT_CHANGED"
++                or error.reason != "task_scope_version_changed"
++                or task.get("request_scope") is None
++                or status == "completed"
++            ):
++                raise
++            res["coverage"] = None
+         if not res["drafts"]:
+             # 没存过正式草稿：进行中.md 改名为 未完成-<时间>.md（F-RUN-04），由程序保存，不依赖模型
+             src = gate.resolve_internal(root, self.rel(task_id, f"草稿/{IN_PROGRESS}"), op="task_end")
+diff --git a/service/lawbench/net.py b/service/lawbench/net.py
+index cbbd61f..09c4cf2 100644
+--- a/service/lawbench/net.py
++++ b/service/lawbench/net.py
+@@ -4,8 +4,8 @@
+ - 不跟随重定向（follow_redirects=False），收到 3xx 视为错误；不读系统代理（trust_env=False）。
+ - 地址选择：先试所内地址（6000D 请求 /v1/models，395 请求 /health，各 1.5 秒），不通再试所外地址；
+   结果缓存 60 秒；请求出现连接错误时重新探测一次。两者都不通报 SERVER_UNREACHABLE。
+-- 本机转发：只监听 127.0.0.1，把 /v1/chat/completions、/v1/models 流式转发到选中的 6000D 地址，
+-  其余路径 404；不需要启动令牌；不记录请求和回答内容，只记元数据。
++- 本机转发：只监听 127.0.0.1，把 /v1/* 流式转发到选中的 6000D 地址；显式启用的 /v1-ext/*
++  经独立政策转发到一个外部目标。其余路径 404；不记录请求和回答内容，只记元数据。
+ """
+ from __future__ import annotations
+ 
+@@ -22,6 +22,7 @@ import httpx
+ 
+ from . import logs
+ from .errors import MESSAGES, ApiError
++from .external_llm import rewrite_chat_body, upstream_url
+ 
+ LOOPBACK = "127.0.0.1"
+ PROBE_TIMEOUT = 1.5
+@@ -256,8 +257,19 @@ class Net:
+             timeout=httpx.Timeout(REQUEST_TIMEOUT, connect=CONNECT_TIMEOUT),
+             event_hooks={"request": [check], "response": [_acheck_redirect]})
+ 
++    def async_external_client(self, transport: httpx.AsyncBaseTransport | None = None) -> httpx.AsyncClient:
++        """只给经过 ExternalLLMPolicy 校验的固定目标使用；不把目标并入全局 Net.allow。"""
++        return httpx.AsyncClient(
++            follow_redirects=False, trust_env=False, transport=transport,
++            timeout=httpx.Timeout(REQUEST_TIMEOUT, connect=CONNECT_TIMEOUT),
++            event_hooks={"response": [_acheck_redirect]})
++
+ 
+ _FORWARD_ROUTES = {("POST", "/v1/chat/completions"): "chat", ("GET", "/v1/models"): "models"}
++_EXTERNAL_FORWARD_ROUTES = {
++    ("POST", "/v1-ext/chat/completions"): "chat",
++    ("GET", "/v1-ext/models"): "models",
++}
+ 
+ 
+ def _error_body(code: str) -> bytes:
+@@ -272,10 +284,12 @@ async def _send_simple(send, status: int, body: bytes = b"", content_type: bytes
+     await send({"type": "http.response.body", "body": body, "more_body": False})
+ 
+ 
+-def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None):
++def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None, *,
++                external_policy=None, external_key_getter=None):
+     """本机转发（纯 ASGI）。
+ 
+-    - 只接受 POST /v1/chat/completions、GET /v1/models；Host 必须是 127.0.0.1:<本端口> 或 localhost:<本端口>；
++    - 本地只接受 POST /v1/chat/completions、GET /v1/models；外部只接受
++      POST /v1-ext/chat/completions、GET /v1-ext/models；Host 必须是 127.0.0.1:<本端口> 或 localhost:<本端口>；
+       带 Origin 请求头（来自网页）一律 404，不发往上游（Spec 第 15 节）。
+     - 全程监听客户端断开：断开时取消上游请求（包括还没回响应头的排队阶段）并关闭上游流，记 fail / CANCELLED。
+     - 失败都记 module=forward、status=fail：回响应头之前的失败返回 502 失败体；流式中途上游断开时直接断开客户端连接。
+@@ -287,11 +301,15 @@ def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None):
+             msg = await receive()
+             if msg["type"] == "lifespan.startup":
+                 state["client"] = net.async_client(transport)
++                state["external_client"] = net.async_external_client(transport)
+                 await send({"type": "lifespan.startup.complete"})
+             elif msg["type"] == "lifespan.shutdown":
+                 client = state.pop("client", None)
+                 if client is not None:
+                     await client.aclose()
++                external_client = state.pop("external_client", None)
++                if external_client is not None:
++                    await external_client.aclose()
+                 await send({"type": "lifespan.shutdown.complete"})
+                 return
+ 
+@@ -302,13 +320,30 @@ def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None):
+         if scope["type"] != "http":
+             return
+         headers = {k.decode("latin-1").lower(): v.decode("latin-1") for k, v in scope["headers"]}
+-        op = _FORWARD_ROUTES.get((scope["method"], scope["path"]))
++        route_key = (scope["method"], scope["path"])
++        op = _FORWARD_ROUTES.get(route_key)
++        external_op = _EXTERNAL_FORWARD_ROUTES.get(route_key)
+         port = (scope.get("server") or ("", 0))[1]
+         host = headers.get("host", "").lower()
+-        if op is None or host not in (f"{LOOPBACK}:{port}", f"localhost:{port}") or "origin" in headers:
++        if (op is None and external_op is None) or host not in (
++                f"{LOOPBACK}:{port}", f"localhost:{port}") or "origin" in headers:
++            await _send_simple(send, 404)
++            return
++        if op is not None:
++            await _forward(op, scope, headers, receive, send)
++            return
++        target = external_policy.target() if external_policy is not None else None
++        if target is None:
++            await _send_simple(send, 404)
++            return
++        try:
++            key = external_key_getter() if external_key_getter is not None else None
++        except Exception:  # noqa: BLE001 凭据读取错误也按不可用处理，绝不外发
++            key = None
++        if not key:
+             await _send_simple(send, 404)
+             return
+-        await _forward(op, scope, headers, receive, send)
++        await _forward_external(external_op, target, key, scope, headers, receive, send)
+ 
+     async def _forward(op: str, scope, headers: dict, receive, send) -> None:
+         t0 = time.monotonic()
+@@ -337,7 +372,9 @@ def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None):
+         up_headers = {k: v for k, v in headers.items() if k in FORWARD_REQ_HEADERS}
+         up_headers["accept-encoding"] = "identity"
+         query = scope.get("query_string", b"").decode("latin-1")
+-        client: httpx.AsyncClient = state["client"]
++        client: httpx.AsyncClient = state.get("client")
++        if client is None:
++            client = state["client"] = net.async_client(transport)
+ 
+         async def work(cancel_scope: anyio.CancelScope) -> None:
+             resp = None
+@@ -406,4 +443,104 @@ def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None):
+         finally:
+             log()
+ 
++    async def _forward_external(op: str, target: dict, key: str, scope, headers: dict, receive, send) -> None:
++        t0 = time.monotonic()
++        outcome = {"status": "fail", "error": "INTERNAL"}
++
++        def log() -> None:
++            logs.event("forward", "external_" + op, status=outcome["status"], error=outcome["error"],
++                       duration_ms=(time.monotonic() - t0) * 1000)
++
++        def finish(status: str, error: str | None) -> None:
++            outcome.update(status=status, error=error, final=True)
++
++        body = bytearray()
++        while True:
++            msg = await receive()
++            if msg["type"] == "http.disconnect":
++                outcome["error"] = "CANCELLED"
++                log()
++                return
++            body += msg.get("body", b"")
++            if not msg.get("more_body"):
++                break
++
++        up_headers = {k: v for k, v in headers.items() if k in FORWARD_REQ_HEADERS}
++        up_headers.pop("authorization", None)
++        up_headers["authorization"] = f"Bearer {key}"
++        up_headers["accept-encoding"] = "identity"
++        query = scope.get("query_string", b"").decode("latin-1")
++        suffix = "/chat/completions" if op == "chat" else "/models"
++        url = upstream_url(target, suffix) + (f"?{query}" if query else "")
++        content = bytes(body)
++        if op == "chat":
++            try:
++                content = rewrite_chat_body(content, target)
++            except ValueError:
++                finish("fail", "INVALID_ARGUMENT")
++                await _send_simple(send, 400, _error_body("INVALID_ARGUMENT"))
++                log()
++                return
++        client: httpx.AsyncClient = state.get("external_client")
++        if client is None:
++            client = state["external_client"] = net.async_external_client(transport)
++
++        async def work(cancel_scope: anyio.CancelScope) -> None:
++            resp = None
++            started = False
++
++            async def fail_502(code: str) -> None:
++                if not started:
++                    await _send_simple(send, 502, _error_body(code))
++
++            try:
++                up = client.build_request(scope["method"], url, headers=up_headers, content=content)
++                resp = await client.send(up, stream=True)
++                out = [(k.encode("latin-1"), v.encode("latin-1")) for k, v in resp.headers.items()
++                       if k.lower() in FORWARD_RESP_HEADERS]
++                await send({"type": "http.response.start", "status": resp.status_code, "headers": out})
++                started = True
++                try:
++                    async for chunk in resp.aiter_raw():
++                        await send({"type": "http.response.body", "body": chunk, "more_body": True})
++                except httpx.HTTPError as exc:
++                    finish("fail", type(exc).__name__)
++                    return
++                ok = resp.status_code < 400
++                finish("ok" if ok else "fail", None if ok else f"HTTP{resp.status_code}")
++                await send({"type": "http.response.body", "body": b"", "more_body": False})
++            except (httpx.ConnectError, httpx.ConnectTimeout):
++                finish("fail", "SERVER_UNREACHABLE")
++                await fail_502("SERVER_UNREACHABLE")
++            except ApiError as exc:
++                finish("fail", exc.code)
++                await fail_502(exc.code)
++            except httpx.HTTPError as exc:
++                finish("fail", type(exc).__name__)
++                await fail_502("SERVER_UNREACHABLE")
++            except Exception as exc:  # noqa: BLE001
++                finish("fail", type(exc).__name__)
++                await fail_502("INTERNAL")
++            finally:
++                if resp is not None:
++                    with anyio.CancelScope(shield=True):
++                        await resp.aclose()
++                cancel_scope.cancel()
++
++        async def watch(cancel_scope: anyio.CancelScope) -> None:
++            while True:
++                msg = await receive()
++                if msg["type"] == "http.disconnect":
++                    if not outcome.get("final"):
++                        outcome.update(status="fail", error="CANCELLED")
++                        cancel_scope.cancel()
++                    return
++
++        try:
++            async with anyio.create_task_group() as tg:
++                tg.start_soon(work, tg.cancel_scope)
++                tg.start_soon(watch, tg.cancel_scope)
++        finally:
++            log()
++
+     return app
+diff --git a/service/lawbench/search/fts.py b/service/lawbench/search/fts.py
+index d3540df..bc41935 100644
+--- a/service/lawbench/search/fts.py
++++ b/service/lawbench/search/fts.py
+@@ -225,19 +225,38 @@ def _fts_phrase(q: str) -> str:
+     return '"' + q.replace('"', '""') + '"'
+ 
+ 
+-def _candidates(con: sqlite3.Connection, q: str) -> list[tuple]:
++def _candidates(
++    con: sqlite3.Connection, q: str, material_ids: set[str] | None = None
++) -> list[tuple]:
+     cols = "u.rowid, u.material_id, u.unit, u.loc_from, u.loc_to, u.sheet, u.is_ocr, u.text"
++    scope_sql, scope_args = "", ()
++    if material_ids is not None:
++        ids = sorted(material_ids)
++        if not ids:
++            return []
++        groups = [
++            ids[start:start + 900]
++            for start in range(0, len(ids), 900)
++        ]
++        scope_sql = " AND (" + " OR ".join(
++            "u.material_id IN (" + ",".join("?" for _ in group) + ")"
++            for group in groups
++        ) + ")"
++        scope_args = tuple(ids)
+     if len(q) >= 3:
+         try:
+             return con.execute(f"SELECT {cols} FROM search_fts f JOIN search_units u ON u.rowid = f.rowid "
+-                               "WHERE search_fts MATCH ?", (_fts_phrase(q),)).fetchall()
++                               "WHERE search_fts MATCH ?" + scope_sql,
++                               (_fts_phrase(q), *scope_args)).fetchall()
+         except sqlite3.OperationalError as e:
+             # 只有 FTS5 不接受的查询串才算参数错误；锁、磁盘 I/O 等照常抛（T9 返修 P3-3，T10 令收窄）
+             if not any(s in str(e) for s in _QUERY_ERRORS):
+                 raise
+             raise ApiError("INVALID_ARGUMENT", "bad_query") from None
+-    return con.execute(f"SELECT {cols} FROM search_units u WHERE instr(lower(u.text_norm), ?) > 0",
+-                       (q.lower(),)).fetchall()
++    return con.execute(
++        f"SELECT {cols} FROM search_units u WHERE instr(lower(u.text_norm), ?) > 0" + scope_sql,
++        (q.lower(), *scope_args),
++    ).fetchall()
+ 
+ 
+ def _positions(norm: str, q: str, bounded: bool) -> list[int]:
+@@ -295,7 +314,14 @@ def _literal(s: str) -> str:
+     return normalize(s.replace("\\|", "|"), thousands=False).lower().strip()
+ 
+ 
+-def search(root: str, case_id: str, index: dict, query: str, max_hits: int = 20) -> dict:
++def search(
++    root: str,
++    case_id: str,
++    index: dict,
++    query: str,
++    max_hits: int = 20,
++    material_ids: set[str] | None = None,
++) -> dict:
+     t0 = time.monotonic()
+     vs = expand.variants(query)
+     if not vs[0][0]:
+@@ -310,7 +336,7 @@ def search(root: str, case_id: str, index: dict, query: str, max_hits: int = 20)
+             literal_q = _literal(query)
+             for q, kind0 in vs:
+                 bounded = kind0 == "expanded"
+-                for row in _candidates(con, q):
++                for row in _candidates(con, q, material_ids):
+                     mid = row[1]
+                     if mid not in names:
+                         continue
+diff --git a/service/lawbench/settings.py b/service/lawbench/settings.py
+index 70f2824..1373ab3 100644
+--- a/service/lawbench/settings.py
++++ b/service/lawbench/settings.py
+@@ -9,11 +9,13 @@ import threading
+ from . import contracts, logs
+ from .case import gate
+ from .errors import ApiError
++from .external_llm import DEFAULT as EXTERNAL_LLM_DEFAULT, ExternalLLMPolicy
+ 
+ SCHEMA = "files/settings.schema.json"
+ # 已做过的一次性迁移记在 settings.json 旁边（settings.json 契约不允许多字段）
+ MIGRATIONS = "settings-migrations.json"
+ TEMPERATURE_06 = "temperature-0.6"
++EXTERNAL_LLM_V1 = "external-llm-v1"
+ 
+ # 默认值：Spec 第 15 节"地址选择"的四个默认地址；参数默认值同契约样例 file_settings.json
+ DEFAULTS: dict = {
+@@ -31,13 +33,15 @@ DEFAULTS: dict = {
+     "profile": {"lawyer_name": None},
+     "office": {"dir": None, "invoice_buyer": None},
+     "converter": "auto",
++    "external_llm": copy.deepcopy(EXTERNAL_LLM_DEFAULT),
+ }
+ 
+ 
+ class SettingsStore:
+     def __init__(self, appdata: pathlib.Path):
+         self.path = pathlib.Path(appdata) / "settings.json"
+-        self._lock = threading.Lock()
++        # Listener may call get() in the saving thread; keep one serial notification boundary.
++        self._lock = threading.RLock()
+         self._listeners: list = []
+ 
+     def on_change(self, fn) -> None:
+@@ -49,40 +53,64 @@ class SettingsStore:
+             if not self.path.exists():
+                 return copy.deepcopy(DEFAULTS)
+             data = contracts.read_json(self.path)
++            if "external_llm" not in data:
++                data["external_llm"] = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
++            else:
++                data["external_llm"].setdefault("supports_tools", True)
+         contracts.validate(SCHEMA, "", data)
+         return data
+ 
+     def migrate(self) -> None:
+-        """服务启动时做一次：默认温度 0.3 → 0.6（2026-10-15 注记 1410）。只改恰好等于旧默认值 0.3 的
+-        （律师改过别的值的不动）；做过一次就记下，以后律师自己改回 0.3 也不再改。文件不在、坏了、v 不认识的都不动。"""
++        """一次性补旧设置的默认值。温度只改恰好等于旧默认值 0.3 的；外部模型字段缺失时
++        增加关闭状态的默认对象。文件不在、坏了、v 不认识的都不动。"""
+         mark = self.path.with_name(MIGRATIONS)
+         with self._lock:
+             try:
+                 done = json.loads(mark.read_text(encoding="utf-8")) if mark.exists() else []
+-                if TEMPERATURE_06 in done or not self.path.exists():
++                if not isinstance(done, list) or not self.path.exists():
+                     return
+                 data = contracts.read_json(self.path)
+                 contracts.validate(SCHEMA, "", data)
+             except Exception:  # noqa: BLE001 迁移失败不影响启动；get() 照常按原来的规矩报错
+                 return
+-            changed = data["defaults"].get("temperature") == 0.3
++            changed = False
++            marker_changed = False
++            if TEMPERATURE_06 not in done:
++                if data["defaults"].get("temperature") == 0.3:
++                    data["defaults"]["temperature"] = 0.6
++                    changed = True
++                done.append(TEMPERATURE_06)
++                marker_changed = True
++            if EXTERNAL_LLM_V1 not in done:
++                if "external_llm" not in data:
++                    data["external_llm"] = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
++                    changed = True
++                elif "supports_tools" not in data["external_llm"]:
++                    data["external_llm"]["supports_tools"] = True
++                    changed = True
++                done.append(EXTERNAL_LLM_V1)
++                marker_changed = True
+             if changed:
+-                data["defaults"]["temperature"] = 0.6
+                 contracts.write_json(self.path, data, SCHEMA)
+-            mark.write_text(json.dumps(done + [TEMPERATURE_06], ensure_ascii=False), encoding="utf-8")
+-        if changed:
+-            logs.event("settings", "migrate_temperature")
+-            for fn in self._listeners:
+-                fn(data)
++            if marker_changed:
++                mark.write_text(json.dumps(done, ensure_ascii=False), encoding="utf-8")
++            if changed:
++                logs.event("settings", "migrate_defaults")
++                for fn in self._listeners:
++                    fn(data)
+ 
+     def put(self, data: dict) -> dict:
+         office_dir = data["office"]["dir"]
+         if office_dir is not None:
+             gate.check_office_dir(office_dir)
++        try:
++            ExternalLLMPolicy(data)  # URL/模型配置与发请求使用同一政策
++        except ValueError:
++            raise ApiError("INVALID_ARGUMENT", "settings_external_llm_invalid") from None
+         with self._lock:
+             if self.path.exists() and contracts.read_json(self.path).get("v") != 1:
+                 raise ApiError("INVALID_ARGUMENT", "settings_unknown_v")  # 不认识的 v：只读、不写
+             contracts.write_json(self.path, data, SCHEMA)
+-        for fn in self._listeners:
+-            fn(data)
++            for fn in self._listeners:
++                fn(data)
+         return data
+diff --git a/service/lawbench/tools/__init__.py b/service/lawbench/tools/__init__.py
+index 89fc1ba..72f914d 100644
+--- a/service/lawbench/tools/__init__.py
++++ b/service/lawbench/tools/__init__.py
+@@ -23,7 +23,7 @@ class ToolContext:
+     skills_dirs: tuple = ()   # Skill 目录：出处核对按任务 Skill 的 kind 区分 G 类（T10）；空则按 analysis
+ 
+     def index(self) -> dict:
+-        return self.materials.index(self.case_id)
++        return self.tasks.index_for_task(self.task)
+ 
+     def material_by_name(self, name: str) -> dict:
+         for m in self.index()["materials"]:
+diff --git a/service/lawbench/tools/drafts.py b/service/lawbench/tools/drafts.py
+index ee1ea63..501f7a2 100644
+--- a/service/lawbench/tools/drafts.py
++++ b/service/lawbench/tools/drafts.py
+@@ -101,7 +101,7 @@ def save_document_ui(tasks, materials, skills_dirs, a: dict) -> dict:
+         saved = _save_locked(
+             tasks, root, a["case_id"], task, source["title"], a["content"],
+             check_fn=lambda: _citation_check(
+-                root, a["case_id"], task, materials.index(a["case_id"]), a["content"], skills_dirs),
++                root, a["case_id"], task, tasks.index_for_task(task), a["content"], skills_dirs),
+             coverage_fn=lambda: tasks.coverage(root, a["case_id"], tid),
+         )
+     return {"task_id": tid, **saved}
+diff --git a/service/lawbench/tools/inputs.py b/service/lawbench/tools/inputs.py
+index 4b42c88..abd2069 100644
+--- a/service/lawbench/tools/inputs.py
++++ b/service/lawbench/tools/inputs.py
+@@ -31,6 +31,11 @@ def _page_lines(lines: list[str], start: int, limit: int) -> tuple[str, int, boo
+ 
+ 
+ def read_input(ctx: ToolContext, a: dict) -> dict:
++    if ctx.tasks.task_scope(ctx.task) is not None:
++        raise ApiError(
++            "OUT_OF_CASE", "scoped_read_input",
++            detail="本次提问固定了材料范围，不能读取无法核验同范围的前序成果",
++        )
+     refs = ctx.task["inputs"]
+     if not 1 <= a["index"] <= len(refs):
+         raise ApiError("INVALID_ARGUMENT", "input_index")
+@@ -46,27 +51,50 @@ def read_input(ctx: ToolContext, a: dict) -> dict:
+ 
+ def read_wiki(ctx: ToolContext, a: dict) -> dict:
+     section = a["section"]
++    scoped = ctx.tasks.task_scope(ctx.task) is not None
+     index = ctx.index()
+     card = context.load_card(ctx.root)
+     stale = bool(context.changed_since_card(ctx.root, card, index))
++    material = None
+     if section == "卡片":
+-        text = context.build_l0(ctx.root, index)
+-        return {"section": section, "text": text[:MAX_CHARS], "updated_at": card["generated_at"] if card else None,
++        text = context.build_l0(ctx.root, index, restricted=scoped)
++        return {"section": section, "text": text[:MAX_CHARS],
++                "updated_at": None if scoped else (card["generated_at"] if card else None),
+                 "stale": stale}
+     if section == "材料摘要":
+         if not a.get("name"):
+             raise ApiError("INVALID_ARGUMENT", "name_required")
+-        rel = f"工作区/wiki/材料/{ctx.material_by_name(a['name'])['material_id']}.md"
++        material = ctx.material_by_name(a["name"])
++        rel = f"工作区/wiki/材料/{material['material_id']}.md"
+     elif section in WIKI_SECTIONS:
++        if scoped:
++            return {
++                "section": section,
++                "text": "本次提问按固定材料范围执行；这一案件级 wiki 节没有可核验的材料级版本证明，未返回正文。",
++                "updated_at": None,
++                "stale": stale,
++            }
+         rel = f"工作区/wiki/案件/{section}.md"
+     else:  # 契约的枚举已拦住，这里防御
+         raise ApiError("INVALID_ARGUMENT", "section")
+     p = gate.resolve_internal(ctx.root, rel, op="read_wiki")  # 路径由服务端按固定规则拼出
+     if not p.is_file():
+         return {"section": section, "text": "还没有生成 wiki（这一节不存在）。", "updated_at": None, "stale": stale}
++    # wiki_update 会沿用旧页，任务完成记录和卡片快照不能证明当前单页正文的来源。
++    if section == "材料摘要" and scoped:
++        return {
++            "section": section,
++            "text": "本次提问按固定材料范围执行；材料摘要正文没有可核验的单页生成来源与固定材料版本证明，未返回正文。",
++            "updated_at": None,
++            "stale": stale,
++        }
+     text = p.read_text(encoding="utf-8")
+     if len(text) > MAX_CHARS:
+         tail = "\n…（本节过长，已截断）"
+         text = text[:MAX_CHARS - len(tail)] + tail
+-    updated = datetime.fromtimestamp(p.stat().st_mtime).astimezone().isoformat(timespec="seconds")
++    updated = (
++        card["generated_at"]
++        if section == "材料摘要" and scoped
++        else datetime.fromtimestamp(p.stat().st_mtime).astimezone().isoformat(timespec="seconds")
++    )
+     return {"section": section, "text": text, "updated_at": updated, "stale": stale}
+diff --git a/service/lawbench/tools/search.py b/service/lawbench/tools/search.py
+index c1912c6..941b8d5 100644
+--- a/service/lawbench/tools/search.py
++++ b/service/lawbench/tools/search.py
+@@ -6,4 +6,9 @@ from . import ToolContext
+ 
+ 
+ def search(ctx: ToolContext, a: dict) -> dict:
+-    return fts.search(ctx.root, ctx.case_id, ctx.index(), a["query"], a.get("max_hits", 20))
++    scope = ctx.task.get("request_scope")
++    allowed = {m["material_id"] for m in scope["materials"]} if scope is not None else None
++    return fts.search(
++        ctx.root, ctx.case_id, ctx.index(), a["query"], a.get("max_hits", 20),
++        material_ids=allowed,
++    )
+diff --git a/service/tests/t37_remove_ref_standalone.py b/service/tests/t37_remove_ref_standalone.py
+index 2a8202a..1247124 100644
+--- a/service/tests/t37_remove_ref_standalone.py
++++ b/service/tests/t37_remove_ref_standalone.py
+@@ -42,7 +42,8 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
+ SERVICE_ROOT = REPO_ROOT / "service"
+ MATERIALS_REL = "service/lawbench/case/materials.py"
+ REFS_REL = "service/lawbench/case/refs.py"
+-BASE_REV = "6a64183e9225d725d098470fee01889c20787cf0"
++ORIGINAL_BASE_REV = "6a64183e9225d725d098470fee01889c20787cf0"
++BASE_REV = "dc56a93be4b07dbe7a48863e3135351659817fb5"
+ CASE_ID = "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90"
+ SOURCE_MODE = os.environ.get("LB_T37_REMOVE_SOURCE", "current").strip().lower()
+ 
+@@ -889,6 +890,238 @@ class RemoveRefStandaloneTest(unittest.TestCase):
+                 "retry=removed original=unchanged"
+             )
+ 
++    def test_ref_partial_removal_rescan_does_not_readd_removed_path(self) -> None:
++        with _temporary_directory() as raw:
++            base = pathlib.Path(raw)
++            root = _case(base)
++            context = _context(base)
++            external = base / "external-partial-rescan"
++            external.mkdir()
++            first = external / "a.txt"
++            second = external / "b.txt"
++            added = external / "c.txt"
++            first.write_text("同一份合成正文\n", encoding="utf-8")
++            second.write_text("未取消的合成正文\n", encoding="utf-8")
++            first_and_second_states = _states((first, second))
++
++            materials = _materials(root, context)
++            probe = RemovalProbe(root)
++            probe.attach(materials)
++            imported = materials.import_(
++                CASE_ID, [str(external)], None, False, mode="ref"
++            )
++            ref_id = imported["registered"][0]["ref_id"]
++            self.assertEqual(ref_id, "R01")
++            before_remove = _index(root)
++            by_tail = {
++                m["rel_path"].rsplit("/", 1)[-1]: m
++                for m in before_remove["materials"]
++            }
++            first_entry = by_tail["a.txt"]
++            second_entry = by_tail["b.txt"]
++            first_id = first_entry["material_id"]
++            second_id = second_entry["material_id"]
++            old_next_seq = before_remove["next_seq"]
++            self.assertEqual((first_id, second_id, old_next_seq), ("M0001", "M0002", 3))
++            self.assertEqual(first_entry["ref_id"], ref_id)
++            self.assertEqual(second_entry["ref_id"], ref_id)
++            self.assertEqual(first_entry["rel_path"], f"工作区/引用/{ref_id}/a.txt")
++            self.assertEqual(second_entry["rel_path"], f"工作区/引用/{ref_id}/b.txt")
++
++            first_text_rel = first_entry["text_path"]
++            second_text_rel = second_entry["text_path"]
++            first_text = root / first_text_rel
++            second_text = root / second_text_rel
++            first_page = _ocr_page(root, first_id)
++            second_page = _ocr_page(root, second_id)
++            self.assertTrue(first_text.is_file() and second_text.is_file())
++            self.assertTrue(first_page.is_file() and second_page.is_file())
++
++            with mock.patch.object(
++                gate,
++                "resolve_read",
++                side_effect=AssertionError("reference removal used the case-source gate"),
++            ):
++                removed = materials.remove(CASE_ID, [first_id])
++            _validate_remove(removed)
++            self.assertEqual(removed["removed"], [first_id])
++            after_remove = _index(root)
++            self.assertEqual(after_remove["next_seq"], old_next_seq)
++            first_removed = next(
++                m for m in after_remove["materials"] if m["material_id"] == first_id
++            )
++            second_live = next(
++                m for m in after_remove["materials"] if m["material_id"] == second_id
++            )
++            self.assertEqual(first_removed["status"], "removed")
++            self.assertEqual(first_removed["rel_path"], f"工作区/引用/{ref_id}/a.txt")
++            self.assertEqual(second_live["status"], "parsed")
++            self.assertEqual(second_live["rel_path"], f"工作区/引用/{ref_id}/b.txt")
++            self.assertEqual(
++                next(r for r in _refs(root)["refs"] if r["ref_id"] == ref_id)["status"],
++                "ok",
++            )
++            self.assertFalse(first_text.exists())
++            self.assertFalse(first_page.exists())
++            self.assertTrue(second_text.is_file() and second_page.is_file())
++            second_text_state = _state(second_text)
++            second_page_state = _state(second_page)
++
++            after_first_scan = materials.scan(CASE_ID)
++            self.assertEqual(
++                after_first_scan,
++                {
++                    "added": 0,
++                    "changed": 0,
++                    "removed": 0,
++                    "failed": 0,
++                    "review_needed": False,
++                },
++            )
++            index_after_first_scan = _index(root)
++            self.assertEqual(index_after_first_scan["next_seq"], old_next_seq)
++            self.assertEqual(len(index_after_first_scan["materials"]), 2)
++            by_id = {
++                m["material_id"]: m for m in index_after_first_scan["materials"]
++            }
++            self.assertEqual(set(by_id), {first_id, second_id})
++            self.assertEqual(by_id[first_id]["status"], "removed")
++            self.assertEqual(by_id[second_id]["status"], "parsed")
++            self.assertEqual(
++                next(r for r in _refs(root)["refs"] if r["ref_id"] == ref_id)["status"],
++                "ok",
++            )
++            self.assertEqual(
++                [m["material_id"] for m in materials.index(CASE_ID)["materials"]],
++                [second_id],
++            )
++            self.assertEqual(materials.original_path(CASE_ID, second_id)[1], "ok")
++            with self.assertRaises(ApiError) as hidden:
++                materials.original_path(CASE_ID, first_id)
++            self.assertEqual(
++                (hidden.exception.code, hidden.exception.reason),
++                ("MATERIAL_NOT_FOUND", "original_material"),
++            )
++            self.assertFalse(first_text.exists())
++            self.assertFalse(first_page.exists())
++            self.assertEqual(_state(second_text), second_text_state)
++            self.assertEqual(_state(second_page), second_page_state)
++            self.assertEqual(
++                NS["SearchProbe"].calls[-1][2],
++                [second_id],
++            )
++            self.assertEqual(_states((first, second)), first_and_second_states)
++            con = sqlite3.connect(root / "工作区" / "case.db")
++            try:
++                rows_after_first_scan = con.execute(
++                    "SELECT material_id, rel_path FROM material_ids ORDER BY material_id"
++                ).fetchall()
++            finally:
++                con.close()
++            self.assertEqual(
++                rows_after_first_scan,
++                [
++                    (first_id, f"工作区/引用/{ref_id}/a.txt"),
++                    (second_id, f"工作区/引用/{ref_id}/b.txt"),
++                ],
++            )
++
++            added.write_text("同一份合成正文\n", encoding="utf-8")
++            added_state = _state(added)
++            after_add_scan = materials.scan(CASE_ID)
++            self.assertEqual(
++                after_add_scan,
++                {
++                    "added": 1,
++                    "changed": 0,
++                    "removed": 0,
++                    "failed": 0,
++                    "review_needed": True,
++                },
++            )
++            index_after_add = _index(root)
++            by_path = {m["rel_path"]: m for m in index_after_add["materials"]}
++            self.assertEqual(index_after_add["next_seq"], old_next_seq + 1)
++            self.assertEqual(len(index_after_add["materials"]), 3)
++            self.assertEqual(
++                by_path[f"工作区/引用/{ref_id}/a.txt"]["status"],
++                "removed",
++            )
++            added_id = "M0003"
++            added_entry = by_path[f"工作区/引用/{ref_id}/c.txt"]
++            self.assertEqual(added_entry["material_id"], added_id)
++            self.assertEqual(added_entry["status"], "parsed")
++            self.assertEqual(added_entry["name"], "c")
++            self.assertNotEqual(added_entry["material_id"], first_id)
++            self.assertEqual(
++                added_entry["text_path"],
++                f"工作区/材料/文本/工作区/引用/{ref_id}/c.txt.md",
++            )
++            added_text = root / added_entry["text_path"]
++            self.assertTrue(added_text.is_file())
++            self.assertTrue((external / "c.txt").is_file())
++            self.assertEqual(materials.original_path(CASE_ID, added_id)[1], "ok")
++            self.assertEqual(
++                [m["material_id"] for m in materials.index(CASE_ID)["materials"]],
++                [second_id, added_id],
++            )
++            self.assertEqual(
++                NS["SearchProbe"].calls[-1][2],
++                [second_id, added_id],
++            )
++            self.assertFalse(first_text.exists())
++            self.assertFalse(first_page.exists())
++            self.assertEqual(_state(second_text), second_text_state)
++            self.assertEqual(_state(second_page), second_page_state)
++            self.assertEqual(_state(added), added_state)
++            self.assertEqual(_states((first, second)), first_and_second_states)
++            con = sqlite3.connect(root / "工作区" / "case.db")
++            try:
++                rows_after_add = con.execute(
++                    "SELECT material_id, rel_path FROM material_ids ORDER BY material_id"
++                ).fetchall()
++            finally:
++                con.close()
++            self.assertEqual(
++                rows_after_add,
++                [
++                    (first_id, f"工作区/引用/{ref_id}/a.txt"),
++                    (second_id, f"工作区/引用/{ref_id}/b.txt"),
++                    (added_id, f"工作区/引用/{ref_id}/c.txt"),
++                ],
++            )
++
++            added_text_state = _state(added_text)
++            stable_index = _index(root)
++            stable_scan = materials.scan(CASE_ID)
++            self.assertEqual(
++                stable_scan,
++                {
++                    "added": 0,
++                    "changed": 0,
++                    "removed": 0,
++                    "failed": 0,
++                    "review_needed": False,
++                },
++            )
++            self.assertEqual(_index(root), stable_index)
++            self.assertEqual(_state(added_text), added_text_state)
++            self.assertEqual(_states((first, second, added)),
++                             {
++                                 first: first_and_second_states[first],
++                                 second: first_and_second_states[second],
++                                 added: added_state,
++                             })
++            self.assertEqual(probe.before, [first_id])
++            self.assertEqual(probe.can_calls, [])
++            self.assertEqual(probe.recycle_calls, [])
++            print(
++                "CASE ref-partial-rescan removed=a active=b root=ok "
++                "first-scan=added0 next-seq-unchanged c-same-bytes=added1 "
++                "removed-a=not-revived stable-rescan=added0 originals=sha256/size/mtime-unchanged "
++                "read/recycle-probes=0"
++            )
++
+     def test_static_boundary_and_source_identity(self) -> None:
+         loaded = set(sys.modules)
+         forbidden = [
+@@ -901,6 +1134,8 @@ class RemoveRefStandaloneTest(unittest.TestCase):
+         self.assertTrue(all(name not in loaded for name in forbidden))
+         materials_source = MATERIALS_RAW.decode("utf-8")
+         refs_source = REFS_RAW.decode("utf-8")
++        self.assertEqual(ORIGINAL_BASE_REV, "6a64183e9225d725d098470fee01889c20787cf0")
++        self.assertEqual(BASE_REV, "dc56a93be4b07dbe7a48863e3135351659817fb5")
+         if SOURCE_MODE == "current":
+             self.assertIn("def mark_removed", refs_source)
+             self.assertIn("registry.mark_removed(close_refs)", materials_source)
+@@ -935,6 +1170,8 @@ class RemoveRefStandaloneTest(unittest.TestCase):
+                     "mode": SOURCE_MODE,
+                     "materials": MATERIALS_LABEL,
+                     "refs": REFS_LABEL,
++                    "repair_base": BASE_REV,
++                    "original_function_base": ORIGINAL_BASE_REV,
+                     "historical_env_vars": "cleared",
+                 },
+                 ensure_ascii=False,
+diff --git a/service/tests/test_api_case.py b/service/tests/test_api_case.py
+index 1a24db0..af4f507 100644
+--- a/service/tests/test_api_case.py
++++ b/service/tests/test_api_case.py
+@@ -294,7 +294,8 @@ def test_settings_migrate_old_default_temperature_once(appdata):
+     s = _saved(appdata, 0.3)
+     s.migrate()
+     assert s.get()["defaults"]["temperature"] == 0.6
+-    assert json.loads((appdata / "settings-migrations.json").read_text(encoding="utf-8")) == ["temperature-0.6"]
++    assert json.loads((appdata / "settings-migrations.json").read_text(encoding="utf-8")) == [
++        "temperature-0.6", "external-llm-v1"]
+     # 迁移过以后律师自己改回 0.3：不再改
+     data = s.get()
+     data["defaults"]["temperature"] = 0.3

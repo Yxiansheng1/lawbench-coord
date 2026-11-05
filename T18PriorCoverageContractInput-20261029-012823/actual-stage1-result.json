@@ -1,0 +1,90 @@
+{
+  "v": 1,
+  "task_id": "T-20261029012044-5869",
+  "status": "completed",
+  "usage": {
+    "model_calls": 10,
+    "tool_calls": 3,
+    "elapsed_s": 114
+  },
+  "drafts": [
+    {
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v1.md",
+      "version": 1
+    },
+    {
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v2.md",
+      "version": 2
+    },
+    {
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v3.md",
+      "version": 3
+    },
+    {
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+      "version": 4
+    }
+  ],
+  "citation_check": {
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "citations": 2,
+      "must_fix": 0,
+      "hints": 0
+    }
+  },
+  "coverage": {
+    "total": 2,
+    "fully_read": [],
+    "partially_read": [
+      {
+        "name": "采购合同",
+        "read_units": 26,
+        "total_units": 47
+      },
+      {
+        "name": "采购部内部意见",
+        "read_units": 4,
+        "total_units": 10
+      }
+    ],
+    "not_read": [],
+    "unreadable": []
+  },
+  "citations": [
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 22,
+        "to": 35
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 22
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 33
+      }
+    }
+  ],
+  "finished_at": "2026-10-29T01:22:39+08:00"
+}

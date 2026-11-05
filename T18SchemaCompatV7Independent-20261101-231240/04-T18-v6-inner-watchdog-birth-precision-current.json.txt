@@ -1,0 +1,11 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-v6-inner-watchdog-birth-precision-current.json
+SHA 5b559ac75d91c82de709a295b059877bf111acedc4bdcdb016fe97ab26185364
+FOCUSEDRANGES None
+0001 {
+0002   "actual_Node_PID": 3536,
+0003   "PS_DotNet_birth": "2026-11-01T15:01:57.3010291Z",
+0004   "independent_CIM_birth": "2026-11-01T15:01:57.3010290Z",
+0005   "same_PID_exe": true,
+0006   "exact_birth_strings_match": false,
+0007   "consequence": "PSinnerwatchdog exactCIMvs.NET birthcomparison wouldfail for thisidentity; outerRootcapturedCIMidentity+alloutcomeexactcleanup remains independent. No timeoutforceoccurred/no originalcleanupfailureclaim. NextRootdrivercapture CIMbirth BEFOREcredentialstdin soinnerwatchdog usesmatchedidentity; no weakercomparison/timewindow."
+0008 }

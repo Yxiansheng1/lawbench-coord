@@ -1,0 +1,46 @@
+{
+  "status": "OWNER_APPROVED_CAP_EXCEPTION",
+  "target": "WindowsP1RootTarget-20261102-032101",
+  "request": "Owner exception to two-round cap for packaging glue only; continue same fixed4 file scope and finite executions to candidate and actual P1-P8 results, without reopening T18",
+  "fixed_packet": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101\\build-private.mjs",
+      "bytes": 33483,
+      "sha256": "31eca8b4411d439d09cf3820136d27fec06a2cb457f8f7452db61f631c529934",
+      "frozen_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-Root-target-stopped-20261102-075259\\build-private.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101\\build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970",
+      "frozen_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-Root-target-stopped-20261102-075259\\build-config.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101\\build-windows-candidate.ps1",
+      "bytes": 56055,
+      "sha256": "133c5842eba2d57e6d912881676f345c076e29edaae37c2f188bb561759a3b1c",
+      "frozen_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-Root-target-stopped-20261102-075259\\build-windows-candidate.ps1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101\\builder.config.json",
+      "bytes": 30003,
+      "sha256": "937a6caf8754af408c7cc1393267399e0af9391546e72d9851a83b5568251e5a",
+      "frozen_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-Root-target-stopped-20261102-075259\\builder.config.json"
+    }
+  ],
+  "concrete_next_change": "In Expand-SevenArchiveIntoDirectory, when Label equals extract-local-wincodesign, append exact archive entry names rcedit-ia32.exe and rcedit-x64.exe to7za arguments. Do not extract Darwin symlinks; keep exit-code/hash/path/no-reparse checks. No global permission changes.",
+  "next_execution": "Fresh runroot; same pinned source component/archives; NSIS candidate then isolated install and P2-P8; all raw failures retained",
+  "maximum_process_timeouts_seconds": {
+    "component": 300,
+    "archive": 60,
+    "asar": 90,
+    "NSIS": 240
+  },
+  "T18": "CLOSED",
+  "publication": false,
+  "question_status": "ANSWERED_APPROVED",
+  "owner_answer_exact": "允许仅打包控制器继续，解除两轮上限",
+  "approved_at": "2026-11-02T08:02:52.067556+08:00",
+  "cap_removed_scope": "Packaging controller only; same fixed4 files. T18 cap/closure and every process timeout unchanged.",
+  "execution_boundaries": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-owner-execution-boundaries-current.json"
+}

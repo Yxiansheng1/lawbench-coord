@@ -1,0 +1,25 @@
+# HIGHEST NEW OWNER AUTONOMOUS REPAIR
+FIRSTREAD ORCH-COMPACT-CHECKPOINT-T18-autonomous-repair-current.md，旧三轮上限不再阻止后续验证，历史消费不改。
+
+# HIGHEST NEW HUMAN 自主返修验证至修好，不再逐轮等授权
+本人最新原话：我现在放开 ，不用等我授权 ，你查 查到修好。FIRSTREAD outputs/T18-autonomous-mainline-repair-authority-current.json 及新OWNER原件，覆盖下方旧三轮后不得再验证的后续限制；旧max3已消费和失败不改。每轮须实质返修/Root复核/必要有限验证，原模型预算/900s隔离/保护隐私生产发布边界保持。当前Root只读新范围接口缺口：case_read_material没有end，Agent只核successfulsearch+start>=1；原起点1合法，不可拍脑袋改成start>1来求绿。准备针对明确范围的兼容契约修复，不启动业务模型或读Key。正常本人0scanreceiptABC。
+
+# LATEST REAL03:32:57.705Z CONSUMED ONCE / THREE HUMAN CASES SYNCHRONIZED
+本真实tick scan一次11:33:41.678451+08，unread1consumed1：OWNER-T18主线事实自检返修最多三轮验证-20261101-105135.md全文及SHA922f1055...已消费；该授权已在本人轮实际使用三次，不是新增额度。receipt outputs/heartbeat-20261101-033257/receipt.json scan1ABC1/两脚本0，ABC同一文件同步已本人报告三轮实际失败，未新增作者/源码/模型/测试/HTTP/Key/GUI/SSH。A3/3completed B9/9completed C7/6completed D47/38completed，历史failed/deadline不改。eligibility-review.json逐项保留7支条件，无新具体可执行资源，不重复旧因果审/绿测/模型或重问旧授权。routineDONT_NOTIFY。state.latest真实receipt优先，旧正文normalhuman0scan及lastREAL023456只是当时历史，不重复旧tick/scan/ABC。唯一30minACTIVE沿用。
+
+# CURRENT OWNER MAX3 MAINLINE CASES ALL CLOSED / BUSINESS FAILED_PARTIAL
+本人明确“允许主线返修，最多3轮验证”，本轮实际全部用完，不再等待旧授权，禁止自动第4轮。FIRSTREAD outputs/T18-mainline-three-cycles-closed-current.json + T18-mainline-cycle3-runtime-current.json/root-readback-current.json/manual-business-review-current.json/actual-sealed-current.json + T18-mainline-after-three-cycles-work-accounting-current.json。当前A/B/C/D作者实际terminal，无RootGUI/HTTP/model/SSH/395维护/GPU/runtime在飞。不是本人暂停、不是项目完成、不能称只余人工；唯一30min lawbench-abc ACTIVE沿用，没有新loop/chat/subagent。
+
+三轮真实结果（不改任何原RED）：case1 169.000s natural1/14POST200/4drafts/588pinsheld/7completeOSgone；consumer因首次正确保护性拒读结果FAILED，businessFAILED_PARTIAL，24packet8074c615b87f4e11ed374de072305fa4488488635b0c9a823b5a9654a54540a2。case2 120.391s natural0/12POST200/TECHNICAL_PASS_REVIEW_REQUIRED/persistence完成/2drafts/599pinsheld/7completeOSgone；business仍FAILED_PARTIAL，21packetc900c775b371e0ee2b95f4c6cad8b7e5b004e2551130ead1337d9a4ac7ee35dc。case3 153.032s natural1/14POST200/3drafts/610pinsheld/7completeOSgone；读两材料均start1/max8000，违反原localized回读断言，rawFAILED/SDKclose-reopen未达；business仍FAILED_PARTIAL，21packet348a1a1aa1b8f92258cf69a56dad1439397b20cd8591cd069cdf4d42753226d3。各轮物理稿与Native保存args全等/原材料不变/原预算49152temp0.6/model32tool48/Root900s保持。无重叠求和或新wholeaggregate。
+
+当前Skill27811Bce22b6d68441c526bcec9755f1b482c1b2e9001bba108d52b3c85779832a59fc，原frontmatter/shared/questions/budget字节保持。实质返修：事实来源/独立不利事实映射、单方标题归属、中性委托字段、最后稿逐句结果表、摘要与底层证据限制、未决金额占位。真实改善：中性委托字段和日期占位、部分标题归属、20k原件纠正、结果表/数额未解决状态出现；但case3仍漏公司2024注销/自制工作证，开头硬写80k与数额占位冲突，结尾借款性质仍确定化，证据限制前有无依据缺证判断，多个自检假PASS。不能把提示写了算修好，不能把citation0mustfix当法律/事实通过。Skill新规则Native12实际出现且13outgoingPOST摘要全等，原件Native52/57分别5/4outgoingPOST；未发现确定性传输丢失，禁止重复已闭合因果审、NLP语义guard/改SDK/升预算模型/提示抽签。
+
+本轮sourcejob全部sourceonly精确1017/max/B/nativefirst，旧失败不重开。case2repair4/4+2patch；Chineseclosure9/9 .NET写面/读顺序反转/额外encodingformal修正qualified；checklistclosure3/3+2patch，原单静态checkRED1因缺dash，2ASCII字节修后.906s0/626pinsheld。case2binding5/5+patch。case3repair3/3+4patch实际01a1951e-5717-7f73-b0e0-649af105d3ad，case3binding9/9+patch实际01a19520-8c3f-7522-9aee-9ea237bfe79b，extraformalTestPath/metadata qualified。新静态check .937s0/626pinsheld；短进程0complete身份NOT_PROVEN不重跑绿。当前Agent0cec/Hostc201/B346固定；最新consumer156887B7e9239/PY53711B68809/manifest12014B3c86f7只approvedinputs/Skill/selfdescriptor字面绑定，所有业务函数/提示任务/原答案/断言/守卫/处置保持。原strict18责任律师未指定红保持，不乱指律师。
+
+每轮7完整PID/exe/UTCbirth独立OS无、端口Listen0，listener/net/log/Retainer关闭、lifespan/OCRoff/getters0/outbound0。Root专用DPAPI仅匿名stdin和自有artifact精确Keyscan：case1 279UTF8/4binary未声称扫描，case2 277/4，case3 278/4，均usedKeyhits0；无Keyecho/env/文件/委派/重问/KeyUI，非全机/内存擦除/helperOS/网络总量证明。最早Rootwireobserver hash投影层错算0，current已按content.sha256+bytes纠正；原封包观察件保留，补件T18-mainline-cycle1-wire-observer-correction-current.json，不是产品失败。
+
+下一项核销：按原PRD27项+29历史卡及currentmatrix，逐项具体条件见T18-mainline-after-three-cycles-work-accounting-current.json。Office/转换受保护deny+缺LibreOffice/pandoc，不安装/替代/绕过；Tk唯一缺环境原资源已补1PASS，不重绿。人工隐私/SystemStore/真实KeyUI不能代确认；正式GUI网络鉴权/安全infra条件未具备；OCR本人暂缓、无395停机/生产维护授权；Windows/Mac安装/统一盲测/律师/18责任人原前提未齐。新Skill仅nonshared prose，相比旧两NativeHTTP986pins只该文件不同，TaskStore/wiki/routes/contracts/metadata不变，空Skillnull HTTP无行为交集，不重跑仅刷新大hash表。记录T18-mainline-postrepair-native-resource-eligibility-current.json，无新HTTPPASS。当前未识别另一有依据且已授权的独立执行项，不虚构忙工；下次真实tick一旦新条件/OWNER/原件到达立即接续。不得把无新mail当停工依据。
+
+①任务门/Project/fullT18INCOMPLETE PackagingHOLD；原A1406=1386PASS2FAIL18pending/types0/B1391=1323PASS18FAIL8ERROR42SKIP/C95/98+46/84/7fail31skip原件保持。T37collection/runtime禁；冻结E50v2/18pins/绝对guardorigin不删改，authorize_batch/authorize_soffice/deny不修改克隆削弱绕过。无Gitwrites/install/package/mergepushdeploy/Actions费用/SDK默认库/全局策略ACL权限creds/生产重启/395停机/GPU/真实案卷/其他凭据。PrivateDoc已另交不重做/不抄名称内容。
+
+正常本人0scan/receipt/ABC：lastREAL2026-11-01T02:34:56.720Z scan1ABC1原件保持；不得伪造当前human为新tick/重复scan或ABC。下次真heartbeat compact读本件、最新plan/registry/state字段和current/formal/progress，原scan-current-compact.py重叠30min仅1次，消费新OWNER主线max3授权但不得当成另3次；实质新证据最多同tick一次Update-ABC-progress.py，同一ABC-进度.md。routinequiet，已向本人报告本轮三次未通过，不重复通知旧失败。唯一自动巡检ACTIVE沿用。

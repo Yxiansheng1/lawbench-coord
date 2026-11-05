@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\compaction\\compaction-basic\\src\\index.ts",
+    "bytes": 20589,
+    "sha256": "4136f3bb98964a0d1546795131da12364ed1e7ecc33b123dfdc860965ddf8a5b",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-01-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\compaction\\compaction-basic\\src\\region.ts",
+    "bytes": 23571,
+    "sha256": "295b53cc9e924f7cb2e843e0d0d296e89ead73da2aab9790282db30736e2e063",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-02-region.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\compaction\\compaction-basic\\src\\summarizer.ts",
+    "bytes": 10107,
+    "sha256": "9169a13cac6a168c6e758528524cc913bb04255e2d2f8c13af5c07fe0bf4b64f",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-03-summarizer.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\compaction\\compaction-basic\\src\\config.ts",
+    "bytes": 14220,
+    "sha256": "4972edc6447dcff87eab54c3a9c5984171238aa06aa0eb34ffde4bfac4ce1275",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-04-config.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\compaction\\compaction\\src\\index.ts",
+    "bytes": 8764,
+    "sha256": "1923cc2fd2400184760f321fb7df7a9ffbc6cff200012884dda09632756dc849",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-05-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "bytes": 31548,
+    "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-06-commands.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "bytes": 22822,
+    "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31GenuineCompactedForkInput-20261028-115217\\dependency-07-agent.ts"
+  }
+]

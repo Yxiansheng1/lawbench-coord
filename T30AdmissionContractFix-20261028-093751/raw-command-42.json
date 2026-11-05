@@ -1,0 +1,8 @@
+{
+  "id": "item_49",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Get-Item -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\.venv\\\\Scripts\\\\python.exe','D:\\\\Lawbeach\\\\lawbench-B\\\\.venv\\\\Scripts\\\\python.exe','C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe' -ErrorAction SilentlyContinue | Select-Object FullName,Length,LastWriteTimeUtc | Format-Table -AutoSize\"",
+  "aggregated_output": "\r\nFullName                                                          Length LastWriteTimeUtc\r\n--------                                                          ------ ----------------\r\nC:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe 104952 2025/4/8 4:57:36\r\n\r\n",
+  "exit_code": 1,
+  "status": "failed"
+}

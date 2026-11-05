@@ -1,0 +1,9 @@
+{
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamConsumerOfflineClosure-root-20261029-142538",
+  "files": 24,
+  "manifest_sha256": "c371322d6deddd2be5a3f9865cf5bb40675e9b8acbff32b4e8c09589566935b5",
+  "verdict": "CONSUMER_LISTING_AND_TASK_SETTLEMENT_OFFLINE_CLOSED_NO_NEW_MODEL",
+  "no_model": true,
+  "business": "FAILED_RETAINED",
+  "Packaging": "HOLD"
+}

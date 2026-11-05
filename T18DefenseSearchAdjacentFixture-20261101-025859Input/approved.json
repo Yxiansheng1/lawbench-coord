@@ -1,0 +1,23 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-question-order-20261031-224957.spec.ts",
+  "before": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18DefenseSearchAdjacentFixture-20261101-025859Input\\old-test.ts",
+    "bytes": 15186,
+    "sha256": "918cf23537b4a8b3f682081ddbf972cdd35f85c0c4382ed3fd1388dd5ffebb02"
+  },
+  "fixture": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_search.result.json",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18DefenseSearchAdjacentFixture-20261101-025859.md",
+  "root_actual_failure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\defense-search-adjacent-green-unit-current.json",
+  "product_nochange": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 59185,
+      "sha256": "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    }
+  ]
+}

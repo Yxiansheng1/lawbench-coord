@@ -1,0 +1,275 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+  "snapshots": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\entry.py",
+      "bytes": 88649,
+      "sha256": "667ef178b610b4b1bf88e8fd97dfd442a7f0c455f64467b0617453d9b740fe96"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\literal-inputs.json",
+      "bytes": 29350,
+      "sha256": "f83964a972834e17cf25c8024ce4f3d36280a73273029d98f4f67e81adc158ba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\prepare.ps1",
+      "bytes": 13558,
+      "sha256": "63b0aafdfb726ef4a1828cad77124791580814aa0b63c9161c97f3a0935f3168"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\README.md",
+      "bytes": 4752,
+      "sha256": "c2c62548d96e801a3fd4c9da4baeb515cec72aa3154a341ca7d080b8527590b4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\settings-read-observer.mjs",
+      "bytes": 11513,
+      "sha256": "4fac11cf4a8bd75d46f932a0ce3cbb1d5dd263d15a81c2c180953715bf8ce107"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\signature-finite.mjs",
+      "bytes": 5381,
+      "sha256": "d52d1848983de75a8fb30f4ce9ca0340a349fc7942972a06fa44a8588f1aefed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\start.ps1",
+      "bytes": 88150,
+      "sha256": "2e324a8bb0c5a4d8f7687018abc743fcc1dbeaa8559d0f3b051d61d4af31bbfb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\stop.ps1",
+      "bytes": 7175,
+      "sha256": "e6c99dab813cd424626b027640e0ae145b2626790e5dc758012964b7369bfbf9"
+    }
+  ],
+  "accepted_source": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-literal-route-GUI-source-accepted-current.json",
+    "bytes": 21827,
+    "sha256": "f64e408981d3ec6ba09fe4ffef498e7e3b7399b50f1490be198e59f3f0f84195"
+  },
+  "recovered_causal_control": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-platform-native-context-actual-closed-current.json",
+    "bytes": 16697,
+    "sha256": "d953246dce6715222d08dd8cce52496d490198894cbbcf158ff20d12d21d18ac"
+  },
+  "canonical_runtime": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\.desktop-build\\development\\project",
+  "canonical_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\package.json",
+      "bytes": 2297,
+      "sha256": "ae0558107b7036dbb20c32f418ffe29bf64e14ca6862e9426a17eba31b836f56"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\lib\\index.js",
+      "bytes": 181825,
+      "sha256": "b49e65913fff98a54313a4f94b9f9092f0e6aa9dc44a8b2a6e43d56b117967df"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\package.json",
+      "bytes": 1518,
+      "sha256": "9894880bb405c38a0aa304886f87caec5f47c1c3b628d96ee9a167739ac267ae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\lib\\index.js",
+      "bytes": 6853,
+      "sha256": "bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\package.json",
+      "bytes": 1831,
+      "sha256": "bbb4db5e548d6018c54da12f8a8e95e647ab9084d4b34c112320993f9a910a57"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\lib\\index.js",
+      "bytes": 22636,
+      "sha256": "9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\loader\\package.json",
+      "bytes": 1069,
+      "sha256": "964db46c6c911187b79e13d778b434e6f2eebb501d1a5ea285270a8ac19c2ddb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\loader\\lib\\index.js",
+      "bytes": 23896,
+      "sha256": "b57c5075e881b4ceb3a15382f506ce549bcbdcd2a0f5bae292f67e6a83a45b1f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\timer\\package.json",
+      "bytes": 878,
+      "sha256": "ea8b2580283686548b3d03849ecb786d0d9fd43f5879b1b0c5ae7c777b137113"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\timer\\lib\\index.js",
+      "bytes": 3961,
+      "sha256": "aab5832ebcefccd223b16ff3e8f09ca611841f53352c8439ea3acf7cc11ad002"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\hmr\\package.json",
+      "bytes": 1707,
+      "sha256": "bb2df033d388a2c1988534473757f4a413c3380c6f3cb419f43172bedd91109e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\hmr\\lib\\index.js",
+      "bytes": 24872,
+      "sha256": "75686a16199f90f5b580d96923d3d5c52a513402b399ad723d92506d00ea7676"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\package.json",
+      "bytes": 2243,
+      "sha256": "bacbbd4614e8a3c9f0b676280a4987253bbcef9640aa54ff521edfb26cd78d4d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\lib\\index.js",
+      "bytes": 104821,
+      "sha256": "314204a70152d3bb7efe921fee3078bfe73fb36784829c10aefc49cafe7017c6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\package.json",
+      "bytes": 2208,
+      "sha256": "8a44611647f2b8e4ddd46f76756b3aea0503fba70824f08d589ffc4701d75fd1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\lib\\index.js",
+      "bytes": 114078,
+      "sha256": "a86cc1bd55ae218b92eea3cad786c454a82b4450c351572c669f8c24d3ef1d9f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\package.json",
+      "bytes": 1004,
+      "sha256": "ff8440f98dcd25a9fd9beb02fd8b2549cc4db380f4b4e141ff7c09786d8c7c7d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\lib\\index.js",
+      "bytes": 12732,
+      "sha256": "108c717578f7a99ce747af5cb55cf8fcd21e909001341b26876df06311fd55b3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\web-app\\package.json",
+      "bytes": 9605,
+      "sha256": "cacfbb636c33a3af7bb17c9cabf77a945c38ef9d90b520d1a82d62430205749f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\web-app\\lib\\index.js",
+      "bytes": 10410,
+      "sha256": "50c7ce5b93e8a7ac0117e066699cd31b553a5a135d38b7051d6a8364ac691af4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\base\\cordis.patch.yml",
+      "bytes": 20894,
+      "sha256": "861414459d7f60af5421ac7a9735a7c0d80b52a2369623b8cda3ce6079c733b4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\web-app\\cordis.patch.yml",
+      "bytes": 21525,
+      "sha256": "f7b71d8301495e51138f1eeec6f0748937c4ee097d7af1f8a27a06f8afb46013"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\cordis.patch.yml",
+      "bytes": 19570,
+      "sha256": "e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\cli\\package.json",
+      "bytes": 7450,
+      "sha256": "ad54b35110f24045758e81770b446765b35d5c1a5ca27c311b6337782547f20c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\package.json",
+      "bytes": 2755,
+      "sha256": "7bc80e551a4184124ae7f40746b20bc7551b09705caa4f99e6f52ab00f711de4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\dist\\index.html",
+      "bytes": 824,
+      "sha256": "1bc8c83a2a9519d038a8481543e509730f43158fd965b634f289bb3ff64aedb2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\dist\\assets\\index-1Ls-b3YN.js",
+      "bytes": 629548,
+      "sha256": "3cb590994556c72c95d81a236ab4abd56ef2fe188968287aa6f624ba4e7e2f53"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\dist\\assets\\vendor-CCJJTK99.js",
+      "bytes": 740575,
+      "sha256": "38f95ea3ff85b49dc4d8f237db208bbaedd2cb8c31611215c246dde41786ff21"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\dist\\assets\\vendor-BNsW4eBh.css",
+      "bytes": 29288,
+      "sha256": "9860041e810431da5a6b83e63f883ab8ff4fc49b4af3fc76681b46f778783a9f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\web\\dist\\assets\\index-DUvMhLle.css",
+      "bytes": 74579,
+      "sha256": "3c1468cbd07b1a818f2ad300b847a95a702cc1561c4646011f189376959241af"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\node-addon-require-builtin-win32-x64-msvc@0.1.6\\node_modules\\node-addon-require-builtin-win32-x64-msvc\\package.json",
+      "bytes": 522,
+      "sha256": "2bc7ffb1043666d23ddd92bfe65513d210c6739d63479ce27bbd885609210840"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\node-addon-require-builtin-win32-x64-msvc@0.1.6\\node_modules\\node-addon-require-builtin-win32-x64-msvc\\index.js",
+      "bytes": 127,
+      "sha256": "1ca7929a06a837121c8dcc6e485a3ac9becfdaf2f3ded95e088d1df54019608a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\node-addon-require-builtin-win32-x64-msvc@0.1.6\\node_modules\\node-addon-require-builtin-win32-x64-msvc\\prebuilds.json",
+      "bytes": 222,
+      "sha256": "4c5f1a36419166c251bc315fda44c59bfe2101bab6c83ec735c1bfd714e1abfd"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\node-addon-require-builtin-win32-x64-msvc@0.1.6\\node_modules\\node-addon-require-builtin-win32-x64-msvc\\prebuilt\\win32-x64-msvc-napi-v9.node",
+      "bytes": 343552,
+      "sha256": "e23ba1b0c33c63940625aa954011b53c66d855f7dfac75b29c829b25e06f20df"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\cli\\lib\\profile-boot.js",
+      "bytes": 310,
+      "sha256": "c53d4e2caf21428e263b525e657dafaf63fd183f7ef016aabda56af7998b6c4f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\cli\\lib\\profile-boot-BZ2ZjNWi.js",
+      "bytes": 12593,
+      "sha256": "c394b2aa2ce08a3b1fcc8c544257c7d689dd4d0b1cfaf8602687e65eeaba5aa1"
+    }
+  ],
+  "resource_audit": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-canonical-GUI-resource-audit-current.json",
+    "bytes": 20506,
+    "sha256": "9efc64f11e60f5f071f0ed5a19defe10da7b90a4bc5f3057208e63cabe499c9b"
+  },
+  "blueprint": "D:\\Lawbeach\\lawbench-coord\\T34CanonicalGUIInput-20261031-022702\\root-approved-manifest-blueprint.json",
+  "environment_line_before": "$electronEnvironment['DSH_DESKTOP_DSH_DIR'] = $Project",
+  "environment_line_after": "$electronEnvironment['DSH_DESKTOP_DSH_DIR'] = $CanonicalOriginalRuntime",
+  "model_allowed": 0,
+  "Key_allowed": false,
+  "GUI_lifetime_max_s": 600
+}

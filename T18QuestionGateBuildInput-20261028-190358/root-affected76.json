@@ -1,0 +1,54 @@
+{
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateAffected-root-20261028-190248",
+  "at": "2026-10-28T19:03:01.0360551+08:00",
+  "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+  "model_calls": 0,
+  "results": [
+    {
+      "elapsed_s": 12.8486405,
+      "mode": "unit",
+      "forced": false,
+      "exit": 0,
+      "OS": [
+        {
+          "birthUTC": "2026-10-28T11:02:48.4949377Z",
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "pid": 44632,
+          "ticks": "639287821684949377"
+        },
+        {
+          "birthUTC": "2026-10-28T11:02:48.4921106Z",
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "pid": 43620,
+          "ticks": "639287821684921106"
+        },
+        {
+          "birthUTC": "2026-10-28T11:02:48.4859189Z",
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "pid": 42368,
+          "ticks": "639287821684859189"
+        },
+        {
+          "birthUTC": "2026-10-28T11:02:48.1905912Z",
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "gone": true,
+          "pid": 43564,
+          "ticks": "639287821681905912"
+        },
+        {
+          "birthUTC": "2026-10-28T11:02:48.1844481Z",
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "pid": 42196,
+          "ticks": "639287821681844481"
+        }
+      ]
+    }
+  ],
+  "source_changes": [],
+  "GUI": false,
+  "Packaging": "HOLD"
+}

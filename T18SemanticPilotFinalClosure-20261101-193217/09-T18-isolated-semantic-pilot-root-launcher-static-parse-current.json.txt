@@ -1,0 +1,9 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-isolated-semantic-pilot-root-launcher-static-parse-current.json
+SHA a38013ab49c7403edf1d63e95d3f79dbc534c6a6a00e79ab20668396541aaf2d
+0001 {
+0002   "operation": "Root launcher literal PS parse only, NO execution",
+0003   "errors": [],
+0004   "model_calls": 0,
+0005   "Key_read": false,
+0006   "Root_before_runtime_fixed": "overlapping ROOT_LITERAL/MODELROOT_LITERAL substitution"
+0007 }

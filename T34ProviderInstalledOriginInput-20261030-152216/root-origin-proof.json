@@ -1,0 +1,52 @@
+{
+  "verdict": "PRIVATE_BINDING_WRONG_ORIGIN_LITERAL_PROVEN_BY_PRIMARY_INSTALLATION_FIRST_RESOLUTION",
+  "runtime_DSH_dir": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project",
+  "old_hook": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\lib\\index.js",
+    "bytes": 114078,
+    "sha256": "a86cc1bd55ae218b92eea3cad786c454a82b4450c351572c669f8c24d3ef1d9f"
+  },
+  "actual_installation_module": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh-llm-pi-ai\\lib\\index.js",
+    "bytes": 114078,
+    "sha256": "a86cc1bd55ae218b92eea3cad786c454a82b4450c351572c669f8c24d3ef1d9f"
+  },
+  "byte_equal_original_copies": true,
+  "old_hook_fixedURL_cannot_match_installed_module_URL": true,
+  "actual_run_prior_bound_markers": 0,
+  "underlying_write_cause": "NOT_FIXED_OR_PROVEN_BY_PATH_CORRECTION",
+  "primary": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\src\\main.ts",
+      "bytes": 61945,
+      "sha256": "355e8aef7f5c31fec33b309ff52ac58f1b2a6a5195f6646f1968f409d2413c40"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\src\\host-process.ts",
+      "bytes": 14849,
+      "sha256": "6b9d3e558f526b7832020fb43d6682a07a68bf2d5657f26951f50a4f3eabfa28"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\src\\index.ts",
+      "bytes": 6715,
+      "sha256": "402d589beb8ea226dd6cd4aa249844a8ad23007185deefcdad868cddf0f47d75"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\profile.ts",
+      "bytes": 33889,
+      "sha256": "37219f354c9d39cbf3acc28c4537b8d2a5dc1eebf0838fdf1c3785e2126a506d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\base\\cordis.patch.yml",
+      "bytes": 20894,
+      "sha256": "861414459d7f60af5421ac7a9735a7c0d80b52a2369623b8cda3ce6079c733b4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh-base\\package.json",
+      "bytes": 6062,
+      "sha256": "2d6cc504b7acc4a2cd624c35c8b069a340e6f346854d16ade8ba2d31b2f8241b"
+    }
+  ],
+  "scope": "READ_ONLY_PRIMARY_SOURCE_AND_NODE_CJS_RESOLVE_ONLY_NO_MODULE_EXECUTION",
+  "short_resolution_helpers_OS_not_individually_sealed": true
+}

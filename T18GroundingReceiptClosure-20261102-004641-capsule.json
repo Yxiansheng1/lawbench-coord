@@ -1,0 +1,49 @@
+{
+  "allowed_reads": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "bytes": 25946,
+      "sha256": "611814ea7366f653d9935587dd3aa84bfdae252df412f8daffb41094605ac5cb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 30477,
+      "sha256": "8ba90b40310b10e51efd9e950e6e8f6a0cec4b9d20a1f58fc93631c3cc59de56"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_material.schema.json",
+      "bytes": 6090,
+      "sha256": "95fc7f5ee89b223b70d8eac74f1d16aa039abfefe5c1045f45e45b381bce7c5a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_wiki.schema.json",
+      "bytes": 1430,
+      "sha256": "f068983b652f85e7351450a8be5033bd39a1f5753fd71e2f92c4647e69534f6d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\REVIEW-C-T18GroundingCumulativeClosureC-20261102-003403.md",
+      "bytes": 4356,
+      "sha256": "85faeb4c366cf502e6a4afec0c8c42454e11fc23e33c6a139eff18954fcd94c1"
+    }
+  ],
+  "allowed_writes": [
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18GroundingReceiptClosure-20261102-004641.md"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18GroundingReceiptClosure-20261102-004641.md",
+  "baseline": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GroundingReceiptClosure-20261102-004641",
+  "current_root_result": "13PASS/types0; old lifecycle/budget/source cases closed; new C receipt/title/metadata defects remain",
+  "runtime_admitted": false
+}

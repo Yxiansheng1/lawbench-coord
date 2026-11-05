@@ -1,0 +1,50 @@
+{
+  "state": "OWNER_APPROVED_CURRENT_EXECUTING",
+  "cause": "Official onnxruntime1.24.4 has macOS ARM wheels only, no Intel; exact Intel Python3.12 pip failure observed",
+  "currentRun": 41665876425,
+  "currentSourceCommit": "562ef5f6d504696bfeb827311feb11831f3b6f16",
+  "originalDeadline": "2026-11-03T23:40:00+08:00",
+  "candidate": {
+    "filename": "onnxruntime-1.23.2-cp312-cp312-macosx_13_0_x86_64.whl",
+    "bytes": 19157705,
+    "sha256": "218295a8acae83905f6f1aed8cacb8e3eb3bd7513a13fe4ba3b2664a19fc4a6b",
+    "url": "https://files.pythonhosted.org/packages/91/9d/a81aafd899b900101988ead7fb14974c8a58695338ab6a0f3d6b0100f30b/onnxruntime-1.23.2-cp312-cp312-macosx_13_0_x86_64.whl"
+  },
+  "preferredOption": {
+    "change": "Mac Intel runtime packaging only: onnxruntime1.23.2; Windows and Mac ARM remain1.24.4",
+    "files": [
+      "packaging/versions.lock",
+      "packaging/mac/build.sh",
+      "packaging/mac/smoke.sh"
+    ],
+    "verification": [
+      "lock exact official wheel bytes/SHA",
+      "import/version check using installed Mac Intel Python",
+      "existing Mac install/GUI/service smoke",
+      "one arch=both run with both build/smoke/draft success",
+      "two DMG bytes/SHA/architecture/content proof"
+    ],
+    "risks": "New Intel runtime version needs actual compatibility proof; not yet verified",
+    "newBudgetRequestedMinutes": 45,
+    "budgetStarts": "only after explicit approval; original budget is not extended by this draft",
+    "noProductRuntimeOrTestAssertionChanges": true
+  },
+  "alternativeOption": {
+    "change": "Build onnxruntime1.24.4 from source for Intel",
+    "cost": "Separate native dependency/toolchain work; no ready official Intel wheel and no completion estimate verified",
+    "requiresNewScopeAndBudget": true
+  },
+  "deliveryRule": "All3hold; no Windows-only or ARM-only delivery",
+  "executedVersionChanges": true,
+  "latestOwnerOverride": "No extra OCR specialist validation; unchanged existing CI smoke only; both minimum macOS14; disclose CI-only/no human Mac acceptance.",
+  "supersededProposalVerification": [
+    "lock exact official wheel bytes/SHA",
+    "import/version check using installed Mac Intel Python",
+    "bounded purely synthetic CPU ONNX compatibility probe",
+    "existing Mac install/GUI/service smoke",
+    "one arch=both run with both build/smoke/draft success",
+    "two DMG bytes/SHA/architecture/content proof"
+  ],
+  "deadline": "2026-11-04T00:20:00+08:00",
+  "newQuestionRequired": false
+}

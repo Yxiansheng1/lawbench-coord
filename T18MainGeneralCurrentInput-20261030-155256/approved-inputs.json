@@ -1,0 +1,311 @@
+{
+  "old": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-cleanup-contract-1017-20261029-040438.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-cleanup-contract-order-20261029-040438.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-cleanup-contract-20261029-040438.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralCleanupContractInput-20261029-040438",
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\native-general-drafting.mts",
+    "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\b-service-general-drafting.py",
+    "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\literalfixed-inputs.json",
+    "helper": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\cleanup-context-finite.mts",
+    "old": {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-current-runtime-pins-1017-20261029-035529.job.json",
+      "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-current-runtime-pins-order-20261029-035529.md",
+      "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-current-runtime-pins-20261029-035529.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralCurrentRuntimeInput-20261029-035529",
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529",
+      "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\native-general-drafting.mts",
+      "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\b-service-general-drafting.py",
+      "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\literalfixed-inputs.json",
+      "private_output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404",
+      "old": {
+        "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-title-contract-1017-20261029-033824.job.json",
+        "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-title-contract-order-20261029-033824.md",
+        "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-title-contract-20261029-033824.md",
+        "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralTitleContractInput-20261029-033824",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingTitleContract-20261029-033824",
+        "state": "ORIGINAL_GENERAL_DRAFTING_CONFIRMED_GENERAL_TITLE_CONTRACT",
+        "author_runtime": 0
+      },
+      "state": "NEW_COPY_TWO_IMPORTS_FOUR_COMPILED_ROWS_ONLY",
+      "author_runtime": 0
+    },
+    "state": "CONFIRMED_POST_DISPOSE_CONSUMER_GUARD_AND_NO_MODEL_ACTUAL_CONTEXT_FINITE",
+    "author_runtime": 0
+  },
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155256",
+  "current_build": {
+    "verdict": "STATIC25_HOST_STARTUP_READY_ACCEPTED_BUILD0",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\private-output-20261030-142648",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34SettingsStartupPrivateBuild-root-20261030-142648",
+    "manifest_bytes": 58194,
+    "manifest_sha": "98fb7a0d47d553fefaa1d608c2e65a221679a4bce17b1987115b4cb8ee8f7e10",
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/client.js",
+      "profile-node_modules/lawbench-dsh/lib/host.js"
+    ],
+    "unchanged22_payloads": true,
+    "client_whole_stamp_inverse": true,
+    "sourceModules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "OS": [
+      {
+        "pid": 61800,
+        "parent": 56260,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-30T06:27:31.1248530Z"
+      },
+      {
+        "pid": 60156,
+        "parent": 61800,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birth_utc": "2026-10-30T06:27:31.1455880Z"
+      },
+      {
+        "pid": 41364,
+        "parent": 61800,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-30T06:27:31.7170540Z"
+      },
+      {
+        "pid": 50380,
+        "parent": 61800,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-30T06:27:32.5929980Z"
+      }
+    ],
+    "OS_complete_count": 4,
+    "OS_partial_NOT_PROVEN": [
+      {
+        "pid": 59748,
+        "parent": 61800,
+        "exe": null,
+        "birth_utc": "2026-10-30T06:27:31.9160240Z"
+      }
+    ],
+    "build_elapsed_s": 16.203000000008615,
+    "forced": false,
+    "AST_helper_OS_not_individually_sealed": true,
+    "GUI": false,
+    "necessary_unset": "NOT_YET_VERIFIED",
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "current_four": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\private-output-20261030-142648\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 557970,
+      "sha256": "0c403eacf1552a7fce0f628ca10044dc29fec9517394313fd4a809860f5da16d"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\private-output-20261030-142648\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904755,
+      "sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\private-output-20261030-142648\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\private-output-20261030-142648\\manifest.json",
+      "bytes": 58194,
+      "sha256": "98fb7a0d47d553fefaa1d608c2e65a221679a4bce17b1987115b4cb8ee8f7e10"
+    }
+  ],
+  "new_B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b"
+  },
+  "B346_exact_four_previously_accepted_changes": [
+    {
+      "path": "service/lawbench/checks/citations.py",
+      "old": {
+        "sha256": "67779ba41e35e2b6780a7b74ebe061e143a79dd5b8c97273329ae91059748758",
+        "bytes": 18609
+      },
+      "new": {
+        "sha256": "6171f0dd8c564cb9fe092a1c3d222217acaedab6bf500baf04afeafeca19b412",
+        "bytes": 19642
+      }
+    },
+    {
+      "path": "service/lawbench/checks/parse.py",
+      "old": {
+        "sha256": "3fd25b61a965abe5432b8d301448517dea003d77739f45a0331bbbf07fa123bc",
+        "bytes": 11974
+      },
+      "new": {
+        "sha256": "56f6ac85636eb5260db117067397fe5bad8cd1376360a1be8c52b92203b9db83",
+        "bytes": 14357
+      }
+    },
+    {
+      "path": "service/lawbench/pipeline/steps/wiki.py",
+      "old": {
+        "sha256": "aa1614baf9c2d28939b133f47cb5d3c86ac3f6003ed3c392298421ceb80ca76a",
+        "bytes": 33754
+      },
+      "new": {
+        "sha256": "96698902e8e0925376b742074fb7076edb41cf94f7ba83e0682d6c601607ef13",
+        "bytes": 33796
+      }
+    },
+    {
+      "path": "service/lawbench/tools/archive.py",
+      "old": {
+        "sha256": "f159e7e5e629df3f11554c35b10b432f0464ee67d73eae60d017988079311459",
+        "bytes": 1957
+      },
+      "new": {
+        "sha256": "1bc47967b17e238e71a95f7bbbe2f474e968b07a506ce849058220e8ff3173dd",
+        "bytes": 2393
+      }
+    }
+  ],
+  "original8": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\_任务说明.md",
+      "bytes": 918,
+      "sha256": "237401ade2d8f4799b80f66a7c089895ac6cb0203c0f78e56d4d5e9ccf59e20d",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\SKILL.md",
+      "bytes": 13495,
+      "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31",
+      "mtime_ns": "1792400314791379400"
+    },
+    {
+      "name": "借条",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\借条.txt",
+      "bytes": 831,
+      "sha256": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "name": "微信催款记录",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\微信催款记录.txt",
+      "bytes": 592,
+      "sha256": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "name": "情况说明",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\情况说明.txt",
+      "bytes": 528,
+      "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "name": "还款记录",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\还款记录.txt",
+      "bytes": 260,
+      "sha256": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "name": "银行流水",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\银行流水.txt",
+      "bytes": 600,
+      "sha256": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+      "mtime_ns": "1792379578820969100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18GeneralDraftingNativeInput-20261029-025642\\approved-sample-and-skill.json",
+      "bytes": 2130,
+      "sha256": "50a9c328e41d5ab52dbe31411c17d13e1b20d537c711cdc38d101a43e866edb6"
+    }
+  ],
+  "source_accepted": {
+    "verdict": "CLEANUP_CONSUMER_SINGLE_DISPOSAL_GUARD_AND_ACTUAL_CONTEXT_FINITE_ACCEPTED_OLD_OVERALL_FAILED_RETAINED",
+    "at_utc": "2026-10-28T20:24:50.389904+00:00",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralCleanupAccepted-root-20261029-042449",
+    "files": 51,
+    "manifest_sha256": "47826f0dd2f384c7e709224210069af57d616d6e587bad84500f980ea6a9d855",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\native-general-drafting.mts",
+    "entry_sha256": "9dc27eb332b0aedfbc520929b80ed88654d260f6aa0f6e24e109f4cf626c3b40",
+    "helper_sha256": "738b1f05cc648e7703214c35acd09cd0b99905928132b0bd7c19a363cb2392d0",
+    "consumer_manifest_sha256": "c56df90760ec5d80698de3b733d275e1164aca0d02e91a64b0a086bd01e31b17",
+    "single_predicate_whole_byte_inverse": true,
+    "helper_two_precise_corrections_whole_byte_inverses": true,
+    "manifest_four_self_fields_only": true,
+    "actual_old_disposed_Context_lookup_TypeError_reproduced": true,
+    "new_disposed_guard_lookup_skipped": true,
+    "actual_live_empty_AgentRegistry_get_list_branch_passed": true,
+    "setup_abort_guard_skipped": true,
+    "empty_context_only_no_running_agent_cancellation_test": true,
+    "finite_elapsed_s": 2.3289999999979045,
+    "finite_complete_OS_gone": 2,
+    "finite_source_changes": [],
+    "forced": false,
+    "consumer_ESM_lexical_exit0": true,
+    "consumer_ESM_lexical_elapsed_s": 1.1719999999986612,
+    "consumer_ESM_complete_OS_gone": 2,
+    "model_NOT_RERUN": true,
+    "new_full_consumer_RUN": false,
+    "original_model_run_overall_FAILED_held": true,
+    "original_functional_slices_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-general-gate-functional-slices-accepted-current.json",
+    "manual_business_review_pending": true,
+    "author_commands": 82,
+    "author_success": 76,
+    "author_nonzero": 6,
+    "author_runtime": 0,
+    "cumulative_commands": 3798,
+    "cumulative_success": 3309,
+    "cumulative_nonzero": 489,
+    "historical_author_runtime_violation_jobs": 5,
+    "qualifications": [
+      "One early helper SHA63 typo failed before Context import; no OS identities captured.",
+      "Proxy-facade reference assertion was not valid service identity; public symbols.original corrects it without fake registry. Earlier failures preserved.",
+      "Whole actual model run remains FAILED; independent source/finite and functional slices do not rewrite it.",
+      "Read-side helper checks empty registry lifecycle, not running-agent cancel."
+    ],
+    "full_T18": false,
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "reason": "NEW_CURRENT_PRODUCTION_HOST_AGENT_AND_B_SOURCE_VERSION_MAIN_FLOW_FUNCTIONAL_REGRESSION_NOT_SAME_SOURCE_GREEN_RETRY_NOT_FULL_SUITE"
+}

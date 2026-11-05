@@ -1,0 +1,7 @@
+# ASCII native first read — exact one finite namespace binding correction SOURCE ONLY
+Exact deepseek-v4.1-flash-1017/max/cwdA. First native absolute pwsh login=false read this order. Only source edits, no Node/Python/AST/parser/JSON parsing/tests/prepare/build/app/GUI/HTTP/model/credentials/probes/Git/alternate shells. Prior author terminal. No checking/asserting byte comparisons. Root runtime NONE begun.
+ROOT static rejected new finite BEFORE runtime: actual _policy calls expected_saved_settings and READ_ONLY_ROUTES/NO_QUERY_ROUTES, but separate policy_namespace only contains Any. Namespace created by selected_module already contains exact approved helper and literal route globals. Fix ONE line in D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\SettingsSaveGUI-20261031-115923/firewall-finite.py:
+OLD policy_namespace: dict[str, Any] = {"Any": Any}
+NEW policy_namespace: dict[str, Any] = dict(namespace)
+No other finite changes/production fixture change/assertion change. No evaluation or selftest. Then permitted GetItem/GetFileHash only OWN finite metadata; replace ONLY its literal bytes/SHA in DEST literal-inputs.json. Other11 source bytes unchanged. Originalcandidate before atD:\Lawbeach\lawbench-coord\T34SaveFiniteBindingInput-20261031-120642 immutable.
+Formal D:\Lawbeach\lawbench-coord\A-handback-T34-save-finite-binding-20261031-120642.md precise commands/runtime0 and no PASS claim. Stop after source handback. Root owns full inverse and actual finite.

@@ -1,0 +1,98 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\00-ui-documents.tsx",
+    "bytes": 20616,
+    "sha256": "698c7710f519a130bb0b8533a682f83fee76f308fdf54ca39883042878ce4af2"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\answer.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\01-ui-answer.tsx",
+    "bytes": 6985,
+    "sha256": "bb57f3806370815fe9b14251b805e15ea57164b33cad45ce110ac73d9c453377"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\02-ui-citation.ts",
+    "bytes": 7651,
+    "sha256": "d525f0cb5cfc5bc95f79bc2aeb859cbb8cf5b19f6646f117ce526ecc87f2a0b5"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation-deps.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\03-ui-citation-deps.ts",
+    "bytes": 1383,
+    "sha256": "c10922a9ab721a9dc1fbee982adcfd486e2cce3ce9a60d0f63fe4be6506134a0"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\source.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\04-ui-source.tsx",
+    "bytes": 5947,
+    "sha256": "0d9d319d90eb3b100e3c89afe9e5582d104c1a25672b93ce724e3b8044740d8a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\05-ui-state.ts",
+    "bytes": 18947,
+    "sha256": "dc1bfca134440714b4242a7e13d53dd4ca993841c7dc1197ce791c3fa3d5ce51"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\kit.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\06-ui-kit.tsx",
+    "bytes": 10336,
+    "sha256": "2c963a25cdf00a45409c41182056823f5e927028ee2dd7a7a44441f8a3000dd3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\documents.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\07-tests-documents.spec.tsx",
+    "bytes": 27208,
+    "sha256": "42fc98715f1e7524cb5ef56e4da19297b4686671216ff72115649801f02881da"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\primitives-stub.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\08-helpers-primitives-stub.ts",
+    "bytes": 1915,
+    "sha256": "d36e82f62fcbdb7880a0359d26cb8c111a21b1d23f2a4469e06b76b4c87e0ed5"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.config.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\09-dsh-ext-vitest.config.mjs",
+    "bytes": 2641,
+    "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\server.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\10-MixedMaterialsGui-20261027-164646-server.py",
+    "bytes": 151304,
+    "sha256": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\server.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\11-GuiDraftEntry-20261025-172934-server.py",
+    "bytes": 77868,
+    "sha256": "e041e2b27ea4b91b1cbae2be3abdc635475b830cf310ad0083b5caeb992ca86b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\probe.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\12-GuiDraftEntry-20261025-172934-probe.mjs",
+    "bytes": 19216,
+    "sha256": "b64a64e09d68ddb7f2d21ef5d275cc015e188470d47aafc6f2238c0a75bf52f2"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\13-T32TaskCancelSourcePinsInput-20261027-145932-reviewed-source-pins.json",
+    "bytes": 53547,
+    "sha256": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf"
+  },
+  {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-optin-reviewed-source56-map.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\14-outputs-T32-optin-reviewed-source56-map.json",
+    "bytes": 18238,
+    "sha256": "9fb72cd3720cc53f12948e9a51a31437b0f282245c0c6cb9a5df6c8c38d6cc32"
+  },
+  {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Params-root-pins-current.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\15-outputs-Params-root-pins-current.json",
+    "bytes": 5083,
+    "sha256": "b9c3f2a75f70568e2f166c3f8b5dc6ce7fcd838ff15ef1f05b4ebef2395b828c"
+  }
+]

@@ -1,0 +1,123 @@
+--- a/packages/api/session-controller/tests/fixtures/t31-claimed-native-context.finite.ts
++++ b/packages/api/session-controller/tests/fixtures/t31-claimed-native-context.finite.ts
+@@ -25,6 +25,12 @@
+ import { CoreClient, type CoreCommand, type CoreResult } from '../../../../../../dsh-ext/shared/core-client.ts'
+ import { toolId, validate } from '../../../../../../dsh-ext/shared/contracts.ts'
+ 
++type LegalInputMessage = Extract<Parameters<LegalAgent['preStep']>[2], { kind: 'enter' }>['messages'][number]
++
++function isLegalInputMessage(message: UserMessage): message is UserMessage & LegalInputMessage {
++  return message.content.every(block => block.type === 'text' && typeof block.text === 'string')
++}
++
+ const PREP_DIR = resolve(process.env.LAWBENCH_T31_ENTRY_ROOT ?? resolve(import.meta.dirname, '../../../../../../..', 'lawbench-B/docs/plan/evidence/T31/ScopeHttpEntry-20261026-031523'))
+ const RUNS_DIR = join(PREP_DIR, 'runs')
+ const RUN_NAME = /^T33-host-[0-9]{8}-[0-9]{6}$/
+@@ -392,7 +398,7 @@
+     let pending: ReturnType<NativeSession['beginSubmission']> | undefined
+     let host: ClaimedHost | undefined
+     let caseId = ''
+-    let requestId = ''
++    let requestId: SessionRequestId | '' = ''
+     let materialId = ''
+     let materialSha = ''
+     let taskId = ''
+@@ -510,6 +516,7 @@
+       expect(claimed).toHaveLength(1)
+       expect(claimed[0]).toBe(queued[0])
+       const claimedMessage = claimed[0]!
++      if (!isLegalInputMessage(claimedMessage)) throw new Error('Fixture expected a text-only legal input message')
+       expect(host.inbox.nextTurn).toEqual([])
+       expect(host.inbox.nextStep).toEqual([])
+       expect(host.claimed).toHaveLength(1)
+--- a/packages/api/session-controller/tests/fixtures/t32-invalid-scope-cancel-http.finite.ts
++++ b/packages/api/session-controller/tests/fixtures/t32-invalid-scope-cancel-http.finite.ts
+@@ -24,7 +24,7 @@
+ import { API_ROUTES, type ApiRoute } from '../../../../../../dsh-ext/shared/api-routes.ts'
+ import { CoreClient, type CoreCommand, type CoreResult } from '../../../../../../dsh-ext/shared/core-client.ts'
+ 
+-type LegalInputMessage = Parameters<LegalAgent['preStep']>[2]['messages'][number]
++type LegalInputMessage = Extract<Parameters<LegalAgent['preStep']>[2], { kind: 'enter' }>['messages'][number]
+ 
+ function isLegalInputMessage(message: UserMessage): message is UserMessage & LegalInputMessage {
+   return message.content.every(block => block.type === 'text' && typeof block.text === 'string')
+--- a/packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts
++++ b/packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts
+@@ -100,7 +100,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+@@ -134,7 +134,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+--- a/packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts
++++ b/packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts
+@@ -100,7 +100,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+@@ -134,7 +134,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+--- a/packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts
++++ b/packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts
+@@ -100,7 +100,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+@@ -134,7 +134,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+--- a/packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts
++++ b/packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts
+@@ -100,7 +100,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())
+@@ -134,7 +134,7 @@
+   expect(after.providers.lawfirm).toEqual(before.providers.lawfirm)
+ 
+   const document = parseDocument(readFileSync(profile.patchPath, 'utf8'), {
+-    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: value => value }],
++    customTags: [{ tag: 'tag:yaml.org,2002:js', resolve: (value: string) => value }],
+   })
+   expect(document.errors).toEqual([])
+   const persisted = JSON.stringify(document.toJS())

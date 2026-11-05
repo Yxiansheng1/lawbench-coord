@@ -1,0 +1,58 @@
+{
+  "sdk": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "sdk_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\lib\\index.js",
+      "bytes": 142847,
+      "sha256": "0845707017acc2b4a8a75eab2244fa3fd88587b8094ab32014321dce7ca1e31b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\package.json",
+      "bytes": 1544,
+      "sha256": "dce7d8100ed487c96bd37fc7715957071be5e7b68c0fa86c005b6de0a8bc2cba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    }
+  ],
+  "session_id": "session-b8463829-842a-4f07-bb33-cffd9689f090",
+  "request_id": "5d64029f-79b3-4d48-a922-e310ca22f90c",
+  "case_id": "14d78c28-8b7e-4a9c-b2c1-735d3d853e73",
+  "physical_native": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadyCountFix-20261029-205727\\run-MMU3Nf\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-PreIssueReadyCountFix-20261029-205727-run-MMU3Nf-case--\\session-b8463829-842a-4f07-bb33-cffd9689f090\\session.v4.jsonl",
+    "bytes": 152297,
+    "sha256": "684db5d67cf875fa0de383d56c8d34e8d791920573151b6df23b9cadf0ca0356"
+  },
+  "session_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadyCountFix-20261029-205727\\run-MMU3Nf\\sessions",
+  "task": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadyCountFix-20261029-205727\\run-MMU3Nf\\case\\工作区\\任务\\T-20261029210305-0427\\task.json",
+    "bytes": 856,
+    "sha256": "d6d2a1c9e35cb499c751c4d78d91439ece63c5d41f6f8e2bd929d713b055b141"
+  },
+  "expected_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-b8463829-842a-4f07-bb33-cffd9689f090",
+    "createdAt": 1793278985314,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadyCountFix-20261029-205727\\run-MMU3Nf\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "expected_rows": 59,
+  "expected_events": 58,
+  "original_model_consumer_status": "FAILED",
+  "original_reopen_status": "NOT_REACHED",
+  "purpose": "Only close original missing persistence check on genuine existing failed-run JSONL; no business green/model/GUI rerun"
+}

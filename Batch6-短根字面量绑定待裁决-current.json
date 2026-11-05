@@ -1,0 +1,27 @@
+{
+  "state": "PENDING_ROOT_LITERAL_BINDING_ONLY",
+  "ownerShortRoot": "D:/Lawbeach/_acceptance/b6br",
+  "previousRun": "B6-native-materials-20261103-174141 stopped before removal; remove requests 0",
+  "reason": "Existing preparation validates a hardcoded long runs parent; exact new owner-designated short parent requires binding literals",
+  "allowedFiles": [
+    "D:/Lawbeach/lawbench-B/docs/plan/evidence/Batch6/NativeMaterials-20261103/prepare.py",
+    "D:/Lawbeach/lawbench-B/docs/plan/evidence/Batch6/NativeMaterials-20261103/entry.py",
+    "D:/Lawbeach/lawbench-B/docs/plan/evidence/Batch6/NativeMaterials-20261103/start.ps1",
+    "D:/Lawbeach/lawbench-B/docs/plan/evidence/Batch6/NativeMaterials-20261103/stop.ps1"
+  ],
+  "bindingOnly": "Change runs-parent literals to exact D:/Lawbeach/_acceptance/b6br, retain original B6-native-materials timestamp child-name regex, and refresh entry bytes/SHA in launcher after this exact literal inverse verification",
+  "forbidden": [
+    "product changes",
+    "guard function or condition changes",
+    "skipping pins",
+    "new allowed routes",
+    "other directory permissions",
+    "reusing served roots",
+    "second attempt",
+    "repackaging for GUI"
+  ],
+  "guiSeconds": 600,
+  "absoluteDeadline": "2026-11-03T18:21:38+08:00",
+  "rootAuthorException": "Only these path literals and corresponding entry hash binding",
+  "onAnyFailure": "STOP and mark bulk removal unverified"
+}

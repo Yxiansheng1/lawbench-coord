@@ -1,0 +1,134 @@
+# T34 existing settings finite source contract
+
+状态：`SOURCE_ONLY_CONFIG_READY / AUTHOR_RUNTIME_ZERO / TARGET_NOT_RUN`
+
+本目录只准备一次由根执行器执行的源码级有限对照。它复用设置包已有的真实
+profile fixture、`ConfigEditor`/`Loader`/HMR、持久化编辑、重启、表达式保留和整表
+reset 契约，用来缩小原生 settings 写失败的排查面。它不是原生 GUI 证据，不构成
+native settings write PASS，也不验证 installed/built libraries，更不能据此宣称 T34
+或整条业务链通过。底层 `ConfigEditor.edit` 拒绝原因仍为 `UNKNOWN`。
+
+## 固定输入
+
+`literal-inputs.json` 原样固定批准输入中的 10 个 pin、唯一测试文件和 3 个精确测试名。
+作者在写配置前以只读方式复算，10 个文件的字节数和 SHA-256 全部匹配；测试正文、
+fixture、清理链和三份 setup 均未修改。
+
+| pin | bytes | SHA-256 |
+| --- | ---: | --- |
+| `configuration.spec.ts` | 22512 | `e598f9f5477954534ee2a77fcd88602a093e527fe01ffe3cbe65843c2fe6b8b6` |
+| `configuration-fixture.ts` | 3313 | `0ae7fca115bed2c14b48caf181e10e63feb93927125b3af914e381f6ebf1d954` |
+| `editor-failures.spec.ts` | 1781 | `988443b868149ebfb8c41726c36ed13f612c0914f5e692ebe04a35b98de962be` |
+| `vitest.shared.ts` | 1482 | `3e8900b7471bffab582974b3a0a6413140d8143d41f62f19a348c41ad3a316a0` |
+| `tsconfig.base.json` | 48244 | `2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e` |
+| `test-proxy-environment.ts` | 3045 | `56ff98ac7d1ac9db8df7a527e91a95792f8d3de39c018f487b05571cbce9c1fa` |
+| `test-invariants.ts` | 9762 | `983478b86d303e3e8939adee533564cca90bba71b810e0d3fcf7540f52d3e8a6` |
+| `test-dom-environment.ts` | 1585 | `b9f090e266d1f35d9a12384a77330a03ae875100940813c9e2a2f37fd238bdb1` |
+| `config-editor/lib/index.js` | 6853 | `bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5` |
+| `settings/lib/index.js` | 22636 | `9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136` |
+
+## 配置边界
+
+- `vitest.finite.config.mjs` 从绝对 ESM 文件加载已安装的 Vitest 4.1.8 和
+  `vite-tsconfig-paths` 6.1.1，不加载默认 `dsh/vitest.config.ts`。
+- 配置以 `D:/Lawbeach/lawbench-A/dsh` 为 root，`include` 恰为现有
+  `configuration.spec.ts` 一个文件；没有其他 project、glob、coverage、HTML report、
+  test generation 或 build。
+- 路径只由固定的 `tsconfig.base.json` 映射，装饰器和 `execArgv` 直接复用固定的
+  `vitest.shared.ts`；没有新增 alias 或 built-lib replacement。
+- 三份现有 setup 保持默认仓库语义；Vitest 使用 `forks`、`maxWorkers: 1`、
+  `fileParallelism: false`，并以已由安装类型契约确认的 `cache: false` 禁用缓存。
+- 3 个测试为：模型编辑持久化/不重挂载/重启恢复；编辑不同 live field 时保留表达式；
+  整表 reset 不丢普通字段且不钉住继承默认值。前两项启用 HMR，第三项关闭 HMR。
+
+## 根执行命令
+
+以下命令在本次作者运行中为 `NOT_RUN`。根执行器只应执行一次。命令在独立证据目录下
+建立 HOME、APPDATA、LOCALAPPDATA、TEMP/TMP，并在 `finally` 中恢复进程环境；同时
+移除启动前已采样的 `NODE_USE_ENV_PROXY`。fixture 用临时 `test` profile，只注册
+editor/settings/default-model/probe，普通 token 为固定虚构值，由
+`onTestFinished` 删除其 owned 临时目录。不得改为默认 profile、真实 Key、模型、
+HTTP 或安装产物。
+
+```powershell
+$Evidence = 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ExistingSettingsFinite-20261030-100927'
+$Runtime = Join-Path $Evidence 'runtime'
+$HomeDir = Join-Path $Runtime 'home'
+$AppDataDir = Join-Path $Runtime 'appdata'
+$LocalAppDataDir = Join-Path $Runtime 'localappdata'
+$TempDir = Join-Path $Runtime 'temp'
+New-Item -ItemType Directory -Force -Path $HomeDir,$AppDataDir,$LocalAppDataDir,$TempDir | Out-Null
+
+$Names = @('HOME','USERPROFILE','APPDATA','LOCALAPPDATA','TEMP','TMP','NODE_USE_ENV_PROXY')
+$Saved = @{}
+foreach ($Name in $Names) { $Saved[$Name] = [Environment]::GetEnvironmentVariable($Name, 'Process') }
+$ExitCode = 1
+try {
+  $env:HOME = $HomeDir
+  $env:USERPROFILE = $HomeDir
+  $env:APPDATA = $AppDataDir
+  $env:LOCALAPPDATA = $LocalAppDataDir
+  $env:TEMP = $TempDir
+  $env:TMP = $TempDir
+  Remove-Item Env:NODE_USE_ENV_PROXY -ErrorAction SilentlyContinue
+
+  & 'E:\node\node.exe' `
+    'D:\Lawbeach\lawbench-A\dsh\node_modules\vitest\vitest.mjs' run `
+    --config 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ExistingSettingsFinite-20261030-100927\vitest.finite.config.mjs' `
+    -t '^(persists a model edit, updates the real consumer without remounting, and restores it at restart|preserves configuration expressions while editing a different live field|resets a whole form without losing ordinary fields or pinning inherited defaults)$'
+  $ExitCode = $LASTEXITCODE
+}
+finally {
+  foreach ($Name in $Names) {
+    if ($null -eq $Saved[$Name]) { Remove-Item "Env:$Name" -ErrorAction SilentlyContinue }
+    else { Set-Item -Path "Env:$Name" -Value $Saved[$Name] }
+  }
+}
+exit $ExitCode
+```
+
+## 实际状态
+
+- runtime 0：作者未启动 Node、Vitest、Python、AST/parser、import、type check、test、
+  collect、build、GUI、HTTP、模型、SSH、DPAPI 或 process probe。
+- Vitest 退出码：`NOT_RUN`；三测试结果：`NOT_RUN`。没有把旧 GUI 失败改写成通过。
+- 既有实际失败只复用为事实指针：`settings.mutate` 进入 `ConfigEditor.edit` 后约
+  25 ms 返回 `Error/OTHER`；ordinary unset 未被接受，Validity 业务 PASS 不存在，
+  具体根因仍为 `UNKNOWN`。不得再跑等价 GUI/classifier 变体。
+- 只读 `git status --short --branch` 在 `dsh` 子模块入口遇到
+  `D:/Lawbeach/lawbench/.git/worktrees/lawbench-A/modules/dsh` Permission denied；
+  未修复权限或锁。改用 `--ignore-submodules=all` 只读确认工作树本就 dirty，既有
+  changes 全部保留。Git 写操作为 0：没有 add、commit、rebase、stash、reset、clean、
+  checkout 或 push。
+
+## 作者命令台账
+
+截至证据三文件定稿，共 56 次 `exec_command`，其中非零 12 次。该节点前的写入和复取
+均使用 `C:\Users\morel\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe`、
+`login=false`，工作目录为 `D:\Lawbeach\lawbench-A`。
+
+- exit 0：读取正式令、批准输入、固定测试/fixture/shared/setup/默认配置、源码导入图、
+  已安装 Vitest/tsconfig-paths 包元数据与类型契约；核对 10 pins；比较批准与 literal
+  inputs；检查依赖入口；创建唯一新证据目录；写入并静态复核三份证据。
+- exit 1：首次全树 `git status --short --branch` 被 `dsh` 子模块 `.git` 权限拒绝。
+  未修锁/ACL/审批；随后加 `--ignore-submodules=all` 的只读状态查询成功。
+- exit 1：一次 PowerShell pin 摘要循环和一个文件存在性循环各有语法错误，均在目标
+  结论前拒绝，没有写入；改用简单逐项命令后通过。
+- exit 1：一次假定 Vite 类型路径不存在；随后按实际安装包元数据定位并读取 Vitest
+  配置契约。
+- exit 1：一次未约束包名的只读路径检查因顶层 workspace symlink 不含目标而失败；改用
+  各源码包自己的 `node_modules` 后 9 个关键依赖入口全部存在。
+- exit 1：两个只读 `rg` 的宽泛模式无命中；改用逐包导入图后有命中。无命中不作为
+  源码结论。
+- exit 1：四次只读命令误把 `shell` 填成 bash，均在目标命令执行前被运行器以
+  `BASH/E_ACCESS_DENIED` 拒绝；随后均按令改用指定原生 PowerShell。没有执行
+  bash/cmd，没有因此产生读写或状态变化。
+- 定稿后有一次只读哈希重测的 `shell` 字段误填相对名 `pwsh.exe`，命令 exit 0 但
+  不符合绝对 shell 约束；其结果未被单独采信，随后用指定绝对 PowerShell 重测通过。
+
+## 交给根执行器
+
+若绝对 ESM 配置解析或 setup import 在运行前失败，保留具体错误并停止，不安装包、
+不构建 SDK、不替换 alias、不放宽断言、不切 alternate execution。若测试真实失败，
+保留失败输出和完整退出码；该结果只说明现有源码 SDK 契约的有限行为，不代表 native
+GUI 或 built-lib 结论。

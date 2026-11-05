@@ -1,0 +1,8 @@
+{
+  "id": "item_41",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"rg -n '\\\"type\\\":\\\"session/end-seed\\\"' 'D:\\\\Lawbeach\\\\lawbench-coord\\\\T30GenuineSessionInput-20261028-092536\\\\session-97c67db2-b8a6-428b-be48-04b4144d10bd.v4.jsonl' 'D:\\\\Lawbeach\\\\lawbench-coord\\\\T30GenuineSessionInput-20261028-092536\\\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl'\"",
+  "aggregated_output": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl:29:{\"type\":\"session/end-seed\",\"seq\":27,\"time\":1793149623169,\"data\":{\"inherited\":true}}\n",
+  "exit_code": 0,
+  "status": "completed"
+}

@@ -1,0 +1,76 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-PS-resolved-static-only.txt
+SHA 5cb863688ff8a6bd4ce03f4ec731ecd1872dab2f777531ca5ec873af9433806b
+0001 $ErrorActionPreference='Stop'
+0002 $bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$childStarted=$false;$ownedHandle=$null;$completed=$false;$forced=$false
+0003 $clock=[Diagnostics.Stopwatch]::StartNew();$phase='ROOT_GATE'
+0004 function Read-SharedOwnedBytes([string]$LiteralPath){
+0005  $inputStream=$null;$memory=$null
+0006  try{
+0007   $inputStream=[IO.FileStream]::new($LiteralPath,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite)
+0008   $memory=[IO.MemoryStream]::new();$inputStream.CopyTo($memory)
+0009   return ,($memory.ToArray())
+0010  }finally{if($memory){$memory.Dispose()};if($inputStream){$inputStream.Dispose()}}
+0011 }
+0012 try {
+0013  if([Console]::ReadLine() -cne 'ROOT_START'){throw 'Root gate invalid'}
+0014  $phase='DEDICATED_CREDENTIAL_INPUT'
+0015  Add-Type -AssemblyName System.Security.Cryptography.ProtectedData
+0016  $bytes=[Security.Cryptography.ProtectedData]::Unprotect([IO.File]::ReadAllBytes('C:/Users/morel/AppData/Local/LawbenchSyntheticTests/6000d.dpapi'),$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
+0017  if($bytes.Length -eq 0 -or $bytes.Length -gt 4096){throw 'Dedicated credential length invalid'}
+0018  foreach($v in $bytes){if($v -lt 33 -or $v -gt 126){throw 'Dedicated credential ASCII invalid'}}
+0019  $secret=[Text.Encoding]::ASCII.GetString($bytes)
+0020  $escaped=$secret.Replace('\','\\').Replace('"','\"')
+0021  function Redact-OwnedString([string]$s){
+0022   foreach($variant in @($secret,$escaped)|Sort-Object -Property Length -Descending -Unique){if($variant){$s=$s.Replace($variant,([char]0x2588).ToString())}}
+0023   return $s
+0024  }
+0025  $psi=[Diagnostics.ProcessStartInfo]::new();$psi.FileName='E:/node/node.exe';$psi.WorkingDirectory='C:/owned-synthetic-static-only'
+0026  $psi.UseShellExecute=$false;$psi.CreateNoWindow=$true;$psi.RedirectStandardInput=$true;$psi.RedirectStandardOutput=$true;$psi.RedirectStandardError=$true
+0027  $psi.StandardInputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardOutputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardErrorEncoding=[Text.UTF8Encoding]::new($false)
+0028  $psi.ArgumentList.Add('C:/owned-synthetic-static-only/review-consumer.mjs');$psi.ArgumentList.Add('--credential-stdin');$psi.ArgumentList.Add('--root');$psi.ArgumentList.Add('C:/owned-synthetic-static-only/model-output')
+0029  $phase='OWNED_NODE_START'
+0030  $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start();$childStarted=$true
+0031  $ownedHandle=$child.SafeHandle
+0032  $ownedChildIdentity=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0033  if(-not $ownedChildIdentity -or $ownedChildIdentity.ParentProcessId -ne $PID -or [IO.Path]::GetFullPath($ownedChildIdentity.ExecutablePath) -ine [IO.Path]::GetFullPath('E:/node/node.exe')){throw 'Owned child CIM identity unavailable'}
+0034  $birth=$ownedChildIdentity.CreationDate.ToUniversalTime().ToString('o')
+0035  [IO.File]::WriteAllText('C:/owned-synthetic-static-only/start.json',([pscustomobject]@{pid=$child.Id;exe='E:/node/node.exe';birth_utc=$birth;credential_transport='anonymous stdin only'}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+0036  $stdoutTask=$child.StandardOutput.ReadToEndAsync();$stderrTask=$child.StandardError.ReadToEndAsync()
+0037  $child.StandardInput.WriteLine($secret);$child.StandardInput.Close()
+0038  $remaining=[Math]::Max(1,900000-[int]$clock.ElapsedMilliseconds)
+0039  if(-not $child.WaitForExit($remaining)){
+0040   $child.Kill();$forced=$true
+0041   if(-not $child.WaitForExit(5000)){throw 'Owned child still active after watchdog'}
+0042  }
+0043  $stdout=Redact-OwnedString ($stdoutTask.GetAwaiter().GetResult());$stderr=Redact-OwnedString ($stderrTask.GetAwaiter().GetResult())
+0044  [IO.File]::WriteAllText('C:/owned-synthetic-static-only/stdout.txt',$stdout,[Text.UTF8Encoding]::new($false));[IO.File]::WriteAllText('C:/owned-synthetic-static-only/stderr.txt',$stderr,[Text.UTF8Encoding]::new($false))
+0045  $phase='OWNED_UTF8_ARTIFACT_SCAN'
+0046  $utf8=[Text.UTF8Encoding]::new($false,$true);$scanned=0;$binary=0;$hits=0;$escapedHits=0
+0047  foreach($f in Get-ChildItem -LiteralPath 'C:/owned-synthetic-static-only' -File -Recurse){
+0048   if(($f.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Owned artifact reparse point'}
+0049   try{$text=$utf8.GetString((Read-SharedOwnedBytes $f.FullName))}catch [Text.DecoderFallbackException]{$binary++;continue}
+0050   $scanned++;if($text.Contains($secret)){$hits++};if($escaped -cne $secret -and $text.Contains($escaped)){$escapedHits++}
+0051  }
+0052  [IO.File]::WriteAllText('C:/owned-synthetic-static-only/scan.json',([pscustomobject]@{UTF8_files=$scanned;binary_not_scanned=$binary;raw_usedKey_hit_files=$hits;JSONescaped_usedKey_hit_files=$escapedHits;scope='exact owned root only';full_memory_or_machine_claim=$false}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+0053  if($hits -ne 0 -or $escapedHits -ne 0){throw 'Owned artifact credential scan failed'}
+0054  $completed=$true
+0055  [pscustomobject]@{kind='ROOT_ISOLATED_SEMANTIC_DPAPI_STDIN';child_exit=$child.ExitCode;forced_stop=$forced;natural_child_exit=(-not $forced);credential_argv_env_file=$false;requests_cap=2}|ConvertTo-Json -Compress
+0056  exit $child.ExitCode
+0057 }catch{
+0058  [pscustomobject]@{kind='ROOT_DRIVER_FAILURE';phase=$phase;error_type=$_.Exception.GetType().Name;consumer_completed=$completed;credential_output=$false;forced_stop=$forced}|ConvertTo-Json -Compress
+0059  exit 91
+0060 }finally{
+0061  try{
+0062   if($null -ne $child){
+0063    try{
+0064     if($childStarted -and -not $child.HasExited){
+0065      $child.Kill();$forced=$true
+0066      if(-not $child.WaitForExit(5000)){throw 'Owned child still active after final cleanup'}
+0067     }
+0068    }finally{$child.Dispose()}
+0069   }
+0070  }finally{
+0071   $ownedHandle=$null
+0072   if($null -ne $bytes){[Array]::Clear($bytes,0,$bytes.Length)};$secret=$null;$escaped=$null
+0073  }
+0074 }

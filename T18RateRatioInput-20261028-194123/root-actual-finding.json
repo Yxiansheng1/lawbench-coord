@@ -1,0 +1,13 @@
+{
+  "status": "ACTUAL_MODEL_NUMERIC_ERROR_REPRODUCED_SECOND_TIME",
+  "original_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-Pa9aqb",
+  "calls": 12,
+  "http200": 12,
+  "actual_expression": "乙方逾期交货违约金为千分之一/日，甲方逾期付款违约金为万分之五/日，前者是后者的二十倍",
+  "mathematical_truth": "(1/1000)/(5/10000)=2",
+  "draft_sha256": "1228ea9eeac21ba79209ac061159fc758fba2036f8b7f4fa3abb5c738e48c3f5",
+  "question_gate_actual_correct_ids_and_answers_before_firstsave": true,
+  "manual_reason_consumer_exact_substring_false_positive": "actual draft says 该条需人工修改（find跨越超链接） for actual edit3 reason find 跨越域代码或超链接; semantic item present; strict consumer falsely requires exact reason bytes",
+  "redline_not_run": true,
+  "whole_project_PASS": false
+}

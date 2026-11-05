@@ -1,0 +1,8 @@
+{
+  "id": "item_65",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"rg -n \\\"B_CONTRACTS_ROOT|sourceBytes|childBytes|copyAcceptedLogs\\\\(|return \\\\{ format|format as any|process.argv|recycleBinAt|workspace/session-delete[\"'^-]\" '\"'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\admission.mts'\"",
+  "aggregated_output": "6: * implementation. It never emits workspace/session-delete.\n21:const B_CONTRACTS_ROOT = 'D:/Lawbeach/lawbench-B/contracts'\n527:async function copyAcceptedLogs(\n535:  const sourceBytes = await readFile(sourcePath)\n536:  const childBytes = await readFile(childPath)\n537:  const sourceHeader = firstHeader(sourceBytes)\n538:  const childHeader = firstHeader(childBytes)\n580:  return { format, sourceHeader, childHeader, sourceBytes, childBytes }\n731:  context.on('workspace/session-delete', () => {\n762:    if (deleteEventObserved) throw new Error('workspace/session-delete was emitted during preflight-only admission')\n780:  if (process.argv.length !== 2) throw new Error('admission.mts accepts no arguments')\n806:    await copyAcceptedLogs(registration, format as any)\n",
+  "exit_code": 0,
+  "status": "completed"
+}

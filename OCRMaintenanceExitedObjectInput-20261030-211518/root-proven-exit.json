@@ -1,0 +1,13 @@
+{
+  "pid": 36704,
+  "creation_filetime": 134375894605370111,
+  "exit_filetime": 134378393965817791,
+  "OpenProcess_success": true,
+  "GetProcessTimes_success": true,
+  "actual_QueryFullProcessImageName_error": 31,
+  "CIM_after_count": 0,
+  "actual_generation_POSTs": 0,
+  "services_restored": true,
+  "human_maintenance_consumed": true,
+  "new_maintenance_NOT_authorized": true
+}

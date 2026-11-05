@@ -1,0 +1,50 @@
+{
+  "credentials": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "failure": null,
+  "finishedAtUtc": "2026-10-28T07:23:17.263+00:00",
+  "forwardListener": false,
+  "host": "127.0.0.1",
+  "lifespan": "off",
+  "listenerClosed": true,
+  "logsClosed": true,
+  "netClientClosed": true,
+  "ocrStarted": false,
+  "outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "passed": true,
+  "pid": 8848,
+  "port": 63735,
+  "protocol": {
+    "caseBound": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/settings": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/import": 1,
+      "POST /api/request/scope": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 7
+    },
+    "denials": {},
+    "materialIdCount": 5,
+    "sessionBound": true,
+    "taskBound": true,
+    "violations": []
+  },
+  "retainerClosed": true,
+  "retainerStarted": false,
+  "sourcePinCount": 346,
+  "sourcePinsUnchanged": true,
+  "startedAtUtc": "2026-10-28T07:21:22.016+00:00",
+  "status": "STOPPED"
+}

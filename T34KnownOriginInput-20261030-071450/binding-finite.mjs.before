@@ -1,0 +1,63 @@
+import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+
+const CORDIS_PATH = 'D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js'
+const CORDIS_URL = 'file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js'
+const CORDIS_BYTES = 60361
+const CORDIS_SHA256 = '6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e'
+const SERVICE_NAME = 't34-binding-finite-owned-service'
+
+assert.equal(new URL(CORDIS_URL).href, CORDIS_URL)
+const cordisBytes = readFileSync(CORDIS_PATH)
+assert.equal(cordisBytes.byteLength, CORDIS_BYTES)
+const digest = Buffer.from(
+  await globalThis.crypto.subtle.digest('SHA-256', cordisBytes),
+).toString('hex')
+assert.equal(digest, CORDIS_SHA256)
+
+const { Context, Service } = await import(CORDIS_URL)
+assert.equal(typeof Context, 'function')
+assert.equal(typeof Service, 'function')
+
+const ctx = new Context()
+let disposed = false
+let traced
+let service
+try {
+  service = new Service(ctx, SERVICE_NAME)
+  service.finiteProbe = function finiteProbe(value) {
+    return { value }
+  }
+
+  traced = ctx.get(SERVICE_NAME, false)
+  assert.ok(traced)
+  assert.notEqual(traced, service)
+  assert.equal(service.constructor, Service)
+  assert.notEqual(traced.constructor, Service)
+  assert.equal(Object.getPrototypeOf(service), Service.prototype)
+  assert.equal(Object.getPrototypeOf(traced), Service.prototype)
+  assert.equal(Service.prototype.constructor, Service)
+
+  const rawOutput = service.finiteProbe(17)
+  const tracedOutput = traced.finiteProbe(17)
+  assert.notEqual(traced.finiteProbe, service.finiteProbe)
+  assert.deepEqual(tracedOutput, rawOutput)
+  assert.deepEqual(tracedOutput, { value: 17 })
+} finally {
+  await ctx.fiber.dispose()
+  disposed = true
+}
+
+assert.equal(disposed, true)
+assert.equal(ctx.get(SERVICE_NAME, false), undefined)
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  cordisBytes: CORDIS_BYTES,
+  cordisSha256: CORDIS_SHA256,
+  oldTracedConstructorIdentity: false,
+  tracedPrototypeIdentity: true,
+  rawServicePrototypeIdentity: true,
+  ordinaryFunctionOutputUnchanged: true,
+  disposedServiceRemoved: true,
+}))

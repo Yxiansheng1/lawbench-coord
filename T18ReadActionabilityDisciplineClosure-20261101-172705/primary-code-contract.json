@@ -1,0 +1,61 @@
+{
+  "current_copy_block": "                low, high = sorted((loc[\"from\"], loc.get(\"to\", loc[\"from\"])))\n                raise ApiError(\n                    \"INVALID_ARGUMENT\",\n                    \"defense_citation_not_read\",\n                    f\"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。\"\n                    f\"请先调用 case_list_materials，找到 material_id={material_id} 的材料，取其 name；\"\n                    f\"再用 case_read_material 的 name 参数传该名称，按升序区间第{low}至第{high}{unit_name}完整读取后重新保存。\"\n                    \"区间起止倒置请改为升序；若该范围仍是待识别占位文本，请待识别文本生成后再读取并保存。\",\n                )\n",
+  "public_read_args_schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "start": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "起始位置号（页 / 段 / 行；Excel 为整份材料里表格行的顺序号，跨工作表连续，1.2 起），默认 1"
+      },
+      "end": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "结束位置号（含本端，1.7 起，可选）：与 start 相同表示只读一个单元；省略时保持原有从 start 向后读的行为"
+      },
+      "offset": {
+        "type": "integer",
+        "minimum": 0,
+        "description": "从起始位置号那个单元内的第几个字开始读（0 起），默认 0；单元本身超过 max_chars 时用它接着读同一单元（1.2 起）"
+      },
+      "max_chars": {
+        "type": "integer",
+        "minimum": 500,
+        "maximum": 8000,
+        "description": "单次最多返回的字数，默认且最大 8000"
+      },
+      "more_names": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 1,
+        "maxItems": 9,
+        "uniqueItems": true,
+        "description": "同一次再读这几份材料（各从头读；1.4 起）：按顺序接在 name 后面，合计不超过 max_chars，放不下的不读、在 parts 里标 read=false。给了它就不能再给 start、end、offset"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "name"
+    ]
+  },
+  "old_full_A_review": "D:\\Lawbeach\\lawbench-coord\\REVIEW-A-T18BoundaryCurrentIndependent-20261101-164639-Discipline.md",
+  "old_whole_source": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CitationActionabilityCopyFix-20261101-170019Before\\drafts.py",
+    "bytes": 24502,
+    "sha256": "28011ed87968abf4138c1817301a8a58589f4ac3b6f7b8574d5435341ce35c45"
+  },
+  "new_whole_source": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+    "bytes": 24627,
+    "sha256": "1eb572b55aca29eac58b2909b723eedc86660a1003d4f0b0b4fd22923b9d31fb"
+  },
+  "whole_inverse_ONLY_copy": "Root independently proved full bytes old24502B28011->current24627B1eb572 differ only threeexistingerrorstrings; helper/locks/oncecheck/UI/TaskStore/SDK/guards held. Thisfreshclosure onlycloses your prior AMEND; priorfullcumulativeassessmentretained, notnewunrelatedscope.",
+  "Spec_paragraph": "- **辩护意见出处读取闸（T18）**：AI 保存辩护意见时，引用的页、段或行必须由本任务在当前材料版本中完整读取，读取区间按内含端点合并判断，只认升序的合法起止区间；程序标记的待识别占位单元不算已读，也不构成授权。授权只来自本任务在当前材料版本的读取记录：上一任务以预算停止结束后，按既定续接规则实际写入本任务读取记录的材料与版本区间随该记录一并生效；检索命中、其他任务读取、旧版本读取和区间缺口都不算读取。该闸只约束 AI 的 `case_save_draft`，律师在界面的手工保存不变；Excel 单元格的版本与读取归属尚未证明，不能据此宣称已通过；本闸也不代表事实或法律内容正确。",
+  "read_material_primary_source": "Original tools.materials.read_material uses ctx.material_by_name(a[\"name\"]); case_list_materials exposes material_id/name; currentcopyexplicitmatches ID->name before case_read_material.",
+  "no_C_review_shared": true
+}

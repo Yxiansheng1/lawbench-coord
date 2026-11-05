@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ManualReasonFinite-root-20261028-200038",
+  "exit": 0,
+  "elapsed_s": 1.1409999999996217,
+  "natural": true,
+  "forced": false,
+  "identities": [
+    {
+      "pid": 45904,
+      "parent": 38432,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:00:38.6227400Z"
+    },
+    {
+      "pid": 43324,
+      "parent": 45904,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:00:38.6823370Z"
+    }
+  ],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_function_and_one_callsite_only_inverse": true,
+  "source_sha256": "d1146fcfd9bc71e73de091e1fc578eb0faa66c71d4e562fe535016b7ffb80479",
+  "test_sha256": "1455f9e3bd683b0ce10b41ce1bf3f315c304bb39d9a537ece12a89c6322da890",
+  "stdout": "PASS manual-reason-observer: actual inputs and 16 focused cases\n",
+  "stderr": "",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

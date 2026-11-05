@@ -1,0 +1,60 @@
+{
+  "state": "STOPPED_TWO_CONSECUTIVE_AUTHOR_DEADLINES_PENDING_OWNER",
+  "generatedAt": "2026-11-02T22:17:13.8087341+08:00",
+  "noNewSourceDispatchAllowed": true,
+  "typesExit": 0,
+  "typesSeconds": 4.3083486,
+  "componentTestsPass": 84,
+  "componentTestsFail": 0,
+  "componentTestsSeconds": 3.0597823,
+  "GUI": "NOT_RUN",
+  "productPins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dock.tsx",
+      "bytes": 48591,
+      "sha256": "355a5efe84d3374c2b6f32a1b239144efa91fd2525efa8e9aaaca97904a56a83"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\wiki-card.tsx",
+      "bytes": 12623,
+      "sha256": "d325f3be51a3de5b0b65c2fe6762408ef65984083803e2c633822df2649638f1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\index.tsx",
+      "bytes": 30338,
+      "sha256": "734894851c63dc8628daa8300315aa14b64a245dcf9a29d16aaa7f7057a4ec22"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\intake.ts",
+      "bytes": 7283,
+      "sha256": "dfc8a47b9562b1f5e1eb9280fac16a8936cefdfc0a69d0586e94d83f0afb7e23"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\result-cards.tsx",
+      "bytes": 21917,
+      "sha256": "29d82788738cae03020f3261e4ef6570fa203b856d58e3e13480388a2daac77f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\batch2-display-policy.ts",
+      "bytes": 1553,
+      "sha256": "dfd86380b0187e77ea97b09be6f781e1050507afb40766492f0959c87df2915d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\brand.tsx",
+      "bytes": 4252,
+      "sha256": "3283647f32e46a55bc6eab861c4ca968cbdab687ca627e44917bec9369a05c5a"
+    }
+  ],
+  "requestedRootException": {
+    "productChanges": false,
+    "files": [
+      "dsh-ext/tests/dock.spec.ts append only two 5-cycle tests",
+      "dsh-ext/tests/owner-checklist-intake-confirm-batch2.spec.ts new synthetic tests",
+      "docs/平台支持范围-第二批.md new scope statement"
+    ],
+    "acceptance": "Only new tests once and types once; no unchanged84 rerun",
+    "deadline": "2026-11-02T23:19:50.0126131+08:00",
+    "needsExplicitApproval": true
+  },
+  "secondInstallerBuilt": 0
+}

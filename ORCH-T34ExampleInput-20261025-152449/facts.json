@@ -1,0 +1,42 @@
+{
+  "missing_entries": [
+    {
+      "file": "file_task.legacy.json",
+      "schema": "files/task.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_create.req.json",
+      "schema": "api/task_create.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_create.req_legacy.json",
+      "schema": "api/task_create.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "file_settings.external.json",
+      "schema": "files/settings.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    }
+  ],
+  "targets": [
+    "api_task_current.res.json",
+    "core_task_begin.res.json",
+    "file_task.json",
+    "manifest.json"
+  ],
+  "source_sha256": {
+    "api_task_current.res.json": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64",
+    "core_task_begin.res.json": "0064d8dd06850059cf7d605309ae49df6ef23f03e002a224524be84eb1e24a38",
+    "file_task.json": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034",
+    "manifest.json": "1c075616fdfea0775637f175741d9d502fa435ea5ad59d7dda04f17d7abfe30c"
+  },
+  "current_schema_count": 67,
+  "case": "sample coverage only, approved schemas unchanged"
+}

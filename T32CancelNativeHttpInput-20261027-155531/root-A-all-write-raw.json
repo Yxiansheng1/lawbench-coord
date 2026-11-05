@@ -1,0 +1,57 @@
+[
+  {
+    "id": "item_81",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.t32-invalid-scope-cancel-http-native.config.mjs",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_82",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\fixtures\\t32-invalid-scope-cancel-http.finite.ts",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_92",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\InvalidScopeCancelHttp-20261027-155531\\README.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_102",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-cancel-native-http-20261027-155531.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_104",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\InvalidScopeCancelHttp-20261027-155531\\README.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

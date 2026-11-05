@@ -1,0 +1,28 @@
+{
+  "kind": "ROOT_AUTHORIZED_SYNTHETIC_SELECTION_BEFORE_NATIVE_SUBMISSION",
+  "public_task_requests_selected_prior": true,
+  "selected_file": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\_上游成果-刑事阅卷笔录.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\3-_上游成果-刑事阅卷笔录.md",
+    "bytes": 1404,
+    "sha256": "5801888a5df0525d0b12071e7ad3691102aed915c3f020b2052dd0f7967c056a",
+    "mtime_ns": "1792379578811954800"
+  },
+  "destination_relative": "成果/刑事阅卷笔录.md",
+  "mode": "explicit ordinary prior-input selection; cancel material batch before beginSubmission",
+  "material_case_exactly": 2,
+  "material_names": [
+    "起诉意见书",
+    "讯问笔录"
+  ],
+  "material_batch_prepare_forbidden": true,
+  "automatic_scope_fallback_forbidden": true,
+  "production_task_input_refs_required": true,
+  "production_L1_build_required": true,
+  "prior_is_canonical_user_supplied_fixture_not_model_generated": true,
+  "no_fake_prior_task_or_result_metadata": true,
+  "primary_input_refs_source": "D:/Lawbeach/lawbench-B/service/lawbench/case/task.py:161",
+  "primary_L1_source": "D:/Lawbeach/lawbench-B/service/lawbench/case/context.py:86",
+  "previous_UI_choice_source": "D:/Lawbeach/lawbench-A/dsh-ext/ui/material-batch.ts",
+  "previous_UI_choice_sha": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796"
+}

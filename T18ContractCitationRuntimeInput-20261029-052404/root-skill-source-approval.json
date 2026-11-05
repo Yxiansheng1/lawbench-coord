@@ -1,0 +1,62 @@
+{
+  "verdict": "ACTUAL_CONTRACT_SKILL_FACT_CITATION_CLARITY_SOURCE_ACCEPTED_NOT_MODEL_PASS",
+  "at_utc": "2026-10-28T21:23:56.666090+00:00",
+  "skill": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\SKILL.md",
+  "skill_bytes": 13469,
+  "skill_sha256": "92bd83d9fcd18a05584595292bd56828835d347a2862353259816ca66213b912",
+  "skill_mtime_ns": "1793222466213523100",
+  "old_skill_sha256": "bfd44f5e3e970d95fe961df3d7298b67b9dc6f37cd5de7f825ea902c889b4012",
+  "full_skill_byte_inverse": true,
+  "only_two_step5_bullets_and_one_step7_sentence": true,
+  "frontmatter_questions_params_and_synced_commonblock_held": true,
+  "all_four_other_approved_inputs_held": true,
+  "canonical_request_and_answers_unchanged": true,
+  "approved_inputs": "D:\\Lawbeach\\lawbench-coord\\T18ContractCitationClarityInput-20261029-051904\\approved-sample-and-skill-current.json",
+  "approved_inputs_bytes": 1286,
+  "approved_inputs_sha256": "1266d329ae41e193f81b2ae0ae6cbd94ee285ad1444db5e03c738de3cb7a7b49",
+  "approved_rows": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\报价单.md",
+      "bytes": 775,
+      "sha256": "516f302d182c3d245c8402f36eae0b30d5574e8af2734a099c6acc8f12fc54f3",
+      "mtime_ns": "1792379578784315700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\询价往来邮件.txt",
+      "bytes": 712,
+      "sha256": "14392ec67e4be855f717d887efa1c8400185d716a9ca2ccdcae4293ab5d831e8",
+      "mtime_ns": "1792379578784315700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\_任务说明.md",
+      "bytes": 1200,
+      "sha256": "5f2a230bbdee7281cb8cf2caed89044cc7d212fb0b32b9b46646c4dceb730b5e",
+      "mtime_ns": "1792379578784315700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\SKILL.md",
+      "bytes": 13469,
+      "sha256": "92bd83d9fcd18a05584595292bd56828835d347a2862353259816ca66213b912",
+      "mtime_ns": "1793222466213523100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\要点.md",
+      "bytes": 8926,
+      "sha256": "f9ec3ea59b7107b4d731dacd054b76ffd338396590fb73591db30dfae6f04525",
+      "mtime_ns": "1792379578786316200"
+    }
+  ],
+  "full_author_source_all_commands_reviewed": true,
+  "author_commands": 40,
+  "author_success": 35,
+  "author_nonzero": 5,
+  "author_runtime": 0,
+  "extra_public_temp_preimage_write_outside_order_recorded": true,
+  "temp_path": "C:/Users/morel/AppData/Local/Packages/sandbox.{a906c522-6ef5-4919-82f8-3c3234c5fcc6}/AC/Temp/B-T18-contract-draft-SKILL-preimage-20261029-051904.md",
+  "temp_not_used_for_root_inverse": true,
+  "old_model_FAILURE_immutable": true,
+  "product51_types0_and_private25_reused_unchanged": true,
+  "model_started": false,
+  "full_T18": false,
+  "Packaging": "HOLD"
+}

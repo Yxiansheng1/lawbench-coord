@@ -1,0 +1,46 @@
+{
+  "verdict": "ROOT_MANUAL_STATUS_SCOPE_ACCEPTED_FINITE_ONLY",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ManualStatusAccepted-root-20261028-233259",
+  "source_sha": "1a1ed4c7b1b29e175c82d2a474f172b2a4c16f3d99c168a31b6ceffe34d679c1",
+  "test_sha": "ae77bbf28d1b5cb857e4bdacdccad254dc26879704895844a567a13c755adb1f",
+  "author_actual": "01a1831b-e7d1-7e30-bbef-1275b8fb7aa6",
+  "commands": 45,
+  "success": 38,
+  "nonzero": 7,
+  "author_runtime": 0,
+  "full45_commands_source_formal_writefaces_read": true,
+  "source_one_line_inverse": true,
+  "manual38_prefix_exact": true,
+  "added_actual_and_scoped_status_positives": 2,
+  "added_binding_status_negatives": 6,
+  "root_elapsed_s": 2.5310000000026776,
+  "OS": [
+    {
+      "pid": 31936,
+      "parent": 44448,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:29:28.0426240Z"
+    },
+    {
+      "pid": 12304,
+      "parent": 31936,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:29:28.2142900Z"
+    },
+    {
+      "pid": 46952,
+      "parent": 12304,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T15:29:28.8507580Z"
+    }
+  ],
+  "OS_after": [],
+  "forced": false,
+  "author_shell_child_PID_not_author_identity": true,
+  "B_product_pending_precedence_fix": true,
+  "actual_model_after_fix_NOT_RUN": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD",
+  "files": 16,
+  "manifest_sha": "58a69a72f23d5c94946c8d543af23733c687957c7fdda7253e704267b001ff56"
+}

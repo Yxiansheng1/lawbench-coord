@@ -1,0 +1,67 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910",
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\entry.py",
+      "bytes": 88657,
+      "sha256": "d7b334aebbeb39d289ce9ada1bad040bfde9aedeac76254195dbe602d49fef4b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\literal-inputs.json",
+      "bytes": 25656,
+      "sha256": "581fad3d55330f3976659f024af3e2649bd2c694ca082e43943fcc9f2287d899"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\prepare.ps1",
+      "bytes": 13566,
+      "sha256": "185fca19732ce43442049ab62aef9e48758079a3ee6de51992a64ec8b1711a53"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\README.md",
+      "bytes": 2334,
+      "sha256": "9c3f5c8d98d83a2850d5046e6c3135d056ebda341c1acb59d1988d286a3c9648"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\settings-read-observer.mjs",
+      "bytes": 11508,
+      "sha256": "d432716c870f45986b7a467b5d56e3c5baa26ab9b9feb33af8c7e83821cc1e80"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\start.ps1",
+      "bytes": 86055,
+      "sha256": "18ad536c18f6dda0d6ba056e84e95f052eb085bead5771acc4077007e9ad94da"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910\\stop.ps1",
+      "bytes": 7183,
+      "sha256": "edd3e9ddd31650246fdc726fad8cc1aab536af843e4f49c303b75290dbfd8bbc"
+    }
+  ],
+  "author": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T34-settings-read-boundary-GUI-1017-20261030-125910.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T34-settings-read-boundary-GUI-order-20261030-125910.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T34-settings-read-boundary-GUI-20261030-125910.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadBoundaryGUIInput-20261030-125910",
+    "old": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderPriorityGUI-20261030-121502",
+    "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadBoundaryGUI-20261030-125910",
+    "state": "SOURCE_ONLY_PINNED_HOST_GETSETTINGS_PASS_THROUGH_BOUNDARY",
+    "model": "deepseek-v4.1-flash-1017",
+    "effort": "max"
+  },
+  "defect": "Two actual identical stateDir lines but legacy table row still requires one; static rejection before runtime"
+}

@@ -1,0 +1,35 @@
+{
+  "verdict": "STATIC_REJECT_BEFORE_ANY_APP_OR_MODEL_TYPED_CARD_VERSION_MAP_AND_THREAD_JOIN_PROOF",
+  "source": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CurrentWikiPipeline-20261030-031059\\genuine-wiki-pipeline.py",
+    "bytes": 72535,
+    "sha256": "7925f51ac96401ee7479e3b91ef560b100d5f58544368dfd80a9e25587db5b1c",
+    "mtime_ns": "1793301919896190400"
+  },
+  "all_source_1894_lines_read": true,
+  "author_commands": 117,
+  "author_success": 99,
+  "author_nonzero": 18,
+  "author_runtime": 0,
+  "first_ASCII_read_and_1017_max_cwdB": true,
+  "all_commands_writefaces_formal_README_reviewed": true,
+  "raw_Bash_preexec_denials": 13,
+  "formal_Bash14_wrong_qualified": true,
+  "manifest_approved_data_exact_plus_own_helper": true,
+  "findings": [
+    {
+      "where": "execute case_card materials_at_generation predicate",
+      "cause": "Actual card keys material_id; expected_versions keys material NAME. Always unequal for canonical5.",
+      "required": "Bind expected ID->SHA using ids_by_name and version_by_name; keep exact set and values, no weak fallback."
+    },
+    {
+      "where": "execute finally after Pipelines.wait(timeout)",
+      "cause": "Production wait returns None after timed join; no is_alive observation in helper and cleanupOk can claim true without proven owned P-thread stop.",
+      "required": "Inspect actual owned private-case live P-threads, cancel/join actual alive workers on exception, re-observe is_alive false; record and fail cleanup if any alive, no fake thread/ID."
+    }
+  ],
+  "partial_mtime_concern_withdrawn": "Author corrected Unix-ns before handback; final approvedInputsmtime1793301059153612300 matches actual.",
+  "model_runs": 0,
+  "app_runs": 0,
+  "Packaging": "HOLD"
+}

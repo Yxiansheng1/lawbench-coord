@@ -1,0 +1,13 @@
+# T34 provider priority value assertion
+
+状态：`SOURCE_ONLY_VALUE_ASSERTION_FIX / ROOT_FINAL_PENDING`
+
+新测试逐字节复制旧测试，仅把一次 `toBe` 改为 `toEqual`。用例、名称、拒绝文本、patch
+字节、fiber identity、active 和 descriptor 值检查未改；源码候选 12 文件及原始 SDK 未改。
+
+- 新测试：7218 -> 7221 B，SHA-256 `437ea11efc459b5e27d345c1f5bb7359325abfcdffcbd80b7175215dc81faa45`
+- 新配置：1109 B，SHA-256 `4df06451d472ac0aa9d6152716f0d4b0227edaf9bd87c5a2f564da19f3724b8f`
+- 字面量：7686 B，SHA-256 `f44167b8c98ca16b22c5b7d23959e1cfb2426c46eefbd8229750f0718d951d14`
+- 私有候选 `index.ts`：SHA-256 `b1adfdf28162b6ce85735eb440fec6fa125cdf272de1ae89cda652e434ab804f`
+
+无 `runtime`，运行次数为 0；不宣称 native GUI、SDK 激活或整条 T34 已通过。

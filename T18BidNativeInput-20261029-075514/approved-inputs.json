@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\0-SKILL.md",
+    "bytes": 12998,
+    "sha256": "d4a562da3125f6c5f0f86ba47d9348c575a79ad9d9169197487ae91ba301748e",
+    "mtime_ns": "1792400314793379200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\tests\\样本03-物业投标函偏离表\\物业服务招标文件.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\1-物业服务招标文件.txt",
+    "bytes": 2371,
+    "sha256": "ab8bb07f9edf4fc82a1757aa63179e1209a4a5c864d8c28b2020e351167eea9a",
+    "mtime_ns": "1792379578759764100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\tests\\样本03-物业投标函偏离表\\采购需求.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\2-采购需求.txt",
+    "bytes": 1192,
+    "sha256": "b1447a5845214076a9aaaafd09e06335520a35459fc08f9b985bdfd4db46362c",
+    "mtime_ns": "1792379578759764100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\tests\\样本03-物业投标函偏离表\\公司简介.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\3-公司简介.txt",
+    "bytes": 320,
+    "sha256": "1bea9f9bf65fcb3f8f8c02eaab4e2f17352514988f1d85852eb6689fad2da2f5",
+    "mtime_ns": "1792379578758765200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\tests\\样本03-物业投标函偏离表\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\4-_任务说明.md",
+    "bytes": 695,
+    "sha256": "f97bbe2373bdaf49bc789a2a61837808b2fbe0f3d7c2cd77d6a58bfb1b6056b6",
+    "mtime_ns": "1792379578758765200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075514\\5-要点.md",
+    "bytes": 8429,
+    "sha256": "9e4458460ef4024df7925cc53a1a2a4386c45563b07fa00a773edbb8f95b87c4",
+    "mtime_ns": "1792379578760766400"
+  }
+]

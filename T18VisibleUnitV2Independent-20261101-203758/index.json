@@ -1,0 +1,317 @@
+{
+  "root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816",
+  "data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+    "mtime_ns": "1793529580412201500"
+  },
+  "target_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+      "bytes": 34800,
+      "sha256": "9c4d1e54f0fe6f412e9e7fc4641ce6868ee2680fe9db042cddf231444a7433e1",
+      "mtime_ns": "1793535346890854900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+      "bytes": 29274,
+      "sha256": "e9c41d4ca0f35b142751ad1a47bb1d0912c1d7e25a9f6fdb4b04d0d773d07742",
+      "mtime_ns": "1793536141350334000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\source-manifest.json",
+      "bytes": 505,
+      "sha256": "063c039988c8e736b11f26a721b1ea5d7ce2ac904c08b220e1577a815f99e050",
+      "mtime_ns": "1793536399198824000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-visible-unit-semantic-pilot-v2-saved-key-root-admin.py",
+      "bytes": 15689,
+      "sha256": "f1c14c2550120ec7f0bac15a1ec5346e0df7bc99eb1f1a17404ba530ac7495fa",
+      "mtime_ns": "1793534525375732500"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-visible-unit-semantic-pilot-v2-reviewed-runtime-root-admin.py",
+      "bytes": 3659,
+      "sha256": "75af3fe3b7b5485a7bc9aecbbb4f729870ec4a96f22111bcad0d19222a485c32",
+      "mtime_ns": "1793534525376731900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-visible-unit-semantic-pilot-v2-root-launcher-static-parse-current.json",
+      "bytes": 138,
+      "sha256": "eefded886ea3eec3ff89598bd1728dd4d7852c03e88a09c09c3eae1005f6da7e",
+      "mtime_ns": "1793536409379670700"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-visible-unit-semantic-pilot-v2-root-shared-read-probe-current.json",
+      "bytes": 134,
+      "sha256": "3c489e2d3356ff296bc4de781d1b9732eca6ba0a8bf11d1b5c23dd1ae7f7f8d1",
+      "mtime_ns": "1793536409748547100"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb",
+      "mtime_ns": "1793529580417735200"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-data-origin-root-adjudication-current.json",
+      "bytes": 2140,
+      "sha256": "b158726df7888615f16a3764e40a9d6354e52ed504304a9a3fef3a4ece1ca1bb",
+      "mtime_ns": "1793533106511767500"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-visible-unit-semantic-pilot-v2-source-reviewed-current.json",
+      "bytes": 3332,
+      "sha256": "a91c45cf97c8e8d395b0dde068b8bbcde4707943beb3ca413cfec0f221ae096c",
+      "mtime_ns": "1793536678567474400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-B-T18VisibleUnitSemanticPilotV2-20261101-195816.md",
+      "bytes": 6667,
+      "sha256": "11324f17a150bc28b8a6b0c32caf234982cc0b7cdb03b9b4355175d4a31d5751",
+      "mtime_ns": "1793534296550485400"
+    }
+  ],
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\00-review-consumer.mjs.txt",
+      "bytes": 40227,
+      "sha256": "5ee1d13ece1e53bcff785bd978c6bd56182fbfbdb67d24df6df812d7890b6db9",
+      "mtime_ns": "1793536678583752000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\01-offline-controls.mjs.txt",
+      "bytes": 34216,
+      "sha256": "3eb32d73b8453f3ccace4dfa437aea1473df8877d289381c42c56c4789fcfac6",
+      "mtime_ns": "1793536678592261900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\02-source-manifest.json.txt",
+      "bytes": 798,
+      "sha256": "789d43bf4ee38e19d49264b80d71ab6e536ae947a0cbb5297aead954878234e0",
+      "mtime_ns": "1793536678600272400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\03-run-visible-unit-semantic-pilot-v2-saved-key-root-admin.py.txt",
+      "bytes": 16810,
+      "sha256": "90bcfc4041e135d70cf4bdc21a980677b659c2e9ca358efcfacc10038de1ffde",
+      "mtime_ns": "1793536678606378400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\04-admit-visible-unit-semantic-pilot-v2-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4059,
+      "sha256": "eb9ce9fced3ea5befb9fd64add33cd2779896ca9f7b596235e60291034bfcd89",
+      "mtime_ns": "1793536678670652700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\05-T18-visible-unit-semantic-pilot-v2-root-launcher-static-parse-current.json.txt",
+      "bytes": 400,
+      "sha256": "7644a5735b9edb1bee3be9e896365852e06a2b5c4338cc009ea84dd8b289cdc2",
+      "mtime_ns": "1793536678678322600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\06-T18-visible-unit-semantic-pilot-v2-root-shared-read-probe-current.json.txt",
+      "bytes": 392,
+      "sha256": "fa0bf7e0b0f54438e85dbe0f3fccf6f50039cc3474ad7cedb51a3eb4e78cc663",
+      "mtime_ns": "1793536678682953400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793536678687095800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\08-T18-isolated-semantic-pilot-data-origin-root-adjudication-current.json.txt",
+      "bytes": 2578,
+      "sha256": "4147d226ed0ced48ef894cad841c752a8db6ee423f80583be92d4fdf8321fd4b",
+      "mtime_ns": "1793536678688881200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\09-T18-visible-unit-semantic-pilot-v2-source-reviewed-current.json.txt",
+      "bytes": 3773,
+      "sha256": "0fc3acc313a36d23edcaed1a70c92451b243c476638853f5510d064e397cd685",
+      "mtime_ns": "1793536678694818900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\10-ORCH-B-T18VisibleUnitSemanticPilotV2-20261101-195816.md.txt",
+      "bytes": 6871,
+      "sha256": "1d493f7d63e2654d7bfcf2f9fb948ff9ec6bbae888c5f4cee59bc9c3056a4d2d",
+      "mtime_ns": "1793536678699350200"
+    }
+  ],
+  "diffs": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\review-consumer.mjs.diff.txt",
+      "bytes": 25811,
+      "sha256": "fc2bba8a7a87ce3330992d3d0a7785cb282fb058ef08fc7edf06ef887aec26c4",
+      "mtime_ns": "1793536678706886900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\offline-controls.mjs.diff.txt",
+      "bytes": 32131,
+      "sha256": "6d598e0b80ad936b12c030137648910974ebb6c460c98de658867eab07f3aa9f",
+      "mtime_ns": "1793536678716310800"
+    }
+  ],
+  "root_driver_diff": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\Root-driver.diff.txt",
+    "bytes": 8327,
+    "sha256": "67cc3271351d1415b0bc6449f7013842c7ae0a38bc8408f4817541ef82c1f20d",
+    "mtime_ns": "1793536678724690800"
+  },
+  "requirements": [
+    "NEWunitinventory protocol not wordingvariant. Stage1 allvisible sourceunits ONLY, no draft/selfcheck/coverage/transcript/expectedlabels; exactoneassessmentperunitid. Stage2 freshcontext fullsameunits+validatedassessments+losslessdraft/selfcheckspans+coverage, exactoneunitreview and validspanrefs.",
+    "Numbereddisplayparser only, allrawslicesreassemblebyteexact, no trim/filter/dedup/blankheaderdrop. Unitlabel exactlyline. No semantic/NLP/keywordPASSclassifier; free prose for Rootjudgment, unknownrootPASS/treatmentPASS failstrictschema/enums. Machinejoinsoriginalsource/draft/selfcheck text fromids; suppliedquoteoverride prohibited.",
+    "FullIDsetcoverage/emptyissues/unitstatus NEVERbusiness/legal/factualcompletenessPASS. Originalselectedfacts omitteddetailandcorruptedquotes; V2 mustbeactuallyfalsified later, source/offline only. Do not adddeclaredledger guarantees.",
+    "Sameqwen38-27b0.6/49152/streamfalse, max2POST fixed10.126.126.1:8000/v1/chat/completions/no retry/redirecterror/health/fallback,400s eachremaining900s/4MiB/partialresponse/cancellation. Exactmodel/APIenvelope andONEouterfence permitted. Externalmanifest/source/data/knownNode/PW/driver7pins beforeKey/after.",
+    "DedicatedDPAPI6000D Rootanonymousstdin ONLY afterRootgate/pins; unicodeblockraw+JSONescapedredaction/ownUTF8scan, cleanenv/no proxy/preload, ownPID/exe/UTCbirth cleanup/watchdog. SharedReadWrite correctsownopenlogsharing, noACL/security/protectiveguardbypass. No owneronlyACL/hostilelocalactor/fullplatform claim.",
+    "ActualNativeexecution/draft data is approvedSYNTHETICfixture (provenance+originalreport.fixture.syntheticOnlytrue/sourceheader), notrealcasejustbecausephysicalNativeisreal. No realcase/privateDoc data or publishing/commits authorized.",
+    "Currentuser+existingCodexworkspace trustboundary withsharedwritableparent. No hostileactor securityguarantee/owneronlyACL mutation. Sourcecannotselfauthenticatemanifest; Rootexternaladmission mandatory. No sourceauthorruntime/test/Key/model/GUI orsourceedits; same model budget noraise."
+  ],
+  "A_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\00-review-consumer.mjs.txt",
+      "bytes": 40227,
+      "sha256": "5ee1d13ece1e53bcff785bd978c6bd56182fbfbdb67d24df6df812d7890b6db9",
+      "mtime_ns": "1793536678583752000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\01-offline-controls.mjs.txt",
+      "bytes": 34216,
+      "sha256": "3eb32d73b8453f3ccace4dfa437aea1473df8877d289381c42c56c4789fcfac6",
+      "mtime_ns": "1793536678592261900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\02-source-manifest.json.txt",
+      "bytes": 798,
+      "sha256": "789d43bf4ee38e19d49264b80d71ab6e536ae947a0cbb5297aead954878234e0",
+      "mtime_ns": "1793536678600272400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793536678687095800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\08-T18-isolated-semantic-pilot-data-origin-root-adjudication-current.json.txt",
+      "bytes": 2578,
+      "sha256": "4147d226ed0ced48ef894cad841c752a8db6ee423f80583be92d4fdf8321fd4b",
+      "mtime_ns": "1793536678688881200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\09-T18-visible-unit-semantic-pilot-v2-source-reviewed-current.json.txt",
+      "bytes": 3773,
+      "sha256": "0fc3acc313a36d23edcaed1a70c92451b243c476638853f5510d064e397cd685",
+      "mtime_ns": "1793536678694818900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\10-ORCH-B-T18VisibleUnitSemanticPilotV2-20261101-195816.md.txt",
+      "bytes": 6871,
+      "sha256": "1d493f7d63e2654d7bfcf2f9fb948ff9ec6bbae888c5f4cee59bc9c3056a4d2d",
+      "mtime_ns": "1793536678699350200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\review-consumer.mjs.diff.txt",
+      "bytes": 25811,
+      "sha256": "fc2bba8a7a87ce3330992d3d0a7785cb282fb058ef08fc7edf06ef887aec26c4",
+      "mtime_ns": "1793536678706886900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\offline-controls.mjs.diff.txt",
+      "bytes": 32131,
+      "sha256": "6d598e0b80ad936b12c030137648910974ebb6c460c98de658867eab07f3aa9f",
+      "mtime_ns": "1793536678716310800"
+    }
+  ],
+  "C_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\00-review-consumer.mjs.txt",
+      "bytes": 40227,
+      "sha256": "5ee1d13ece1e53bcff785bd978c6bd56182fbfbdb67d24df6df812d7890b6db9",
+      "mtime_ns": "1793536678583752000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\01-offline-controls.mjs.txt",
+      "bytes": 34216,
+      "sha256": "3eb32d73b8453f3ccace4dfa437aea1473df8877d289381c42c56c4789fcfac6",
+      "mtime_ns": "1793536678592261900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\02-source-manifest.json.txt",
+      "bytes": 798,
+      "sha256": "789d43bf4ee38e19d49264b80d71ab6e536ae947a0cbb5297aead954878234e0",
+      "mtime_ns": "1793536678600272400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\03-run-visible-unit-semantic-pilot-v2-saved-key-root-admin.py.txt",
+      "bytes": 16810,
+      "sha256": "90bcfc4041e135d70cf4bdc21a980677b659c2e9ca358efcfacc10038de1ffde",
+      "mtime_ns": "1793536678606378400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\04-admit-visible-unit-semantic-pilot-v2-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4059,
+      "sha256": "eb9ce9fced3ea5befb9fd64add33cd2779896ca9f7b596235e60291034bfcd89",
+      "mtime_ns": "1793536678670652700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\05-T18-visible-unit-semantic-pilot-v2-root-launcher-static-parse-current.json.txt",
+      "bytes": 400,
+      "sha256": "7644a5735b9edb1bee3be9e896365852e06a2b5c4338cc009ea84dd8b289cdc2",
+      "mtime_ns": "1793536678678322600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\06-T18-visible-unit-semantic-pilot-v2-root-shared-read-probe-current.json.txt",
+      "bytes": 392,
+      "sha256": "fa0bf7e0b0f54438e85dbe0f3fccf6f50039cc3474ad7cedb51a3eb4e78cc663",
+      "mtime_ns": "1793536678682953400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793536678687095800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\08-T18-isolated-semantic-pilot-data-origin-root-adjudication-current.json.txt",
+      "bytes": 2578,
+      "sha256": "4147d226ed0ced48ef894cad841c752a8db6ee423f80583be92d4fdf8321fd4b",
+      "mtime_ns": "1793536678688881200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\09-T18-visible-unit-semantic-pilot-v2-source-reviewed-current.json.txt",
+      "bytes": 3773,
+      "sha256": "0fc3acc313a36d23edcaed1a70c92451b243c476638853f5510d064e397cd685",
+      "mtime_ns": "1793536678694818900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\10-ORCH-B-T18VisibleUnitSemanticPilotV2-20261101-195816.md.txt",
+      "bytes": 6871,
+      "sha256": "1d493f7d63e2654d7bfcf2f9fb948ff9ec6bbae888c5f4cee59bc9c3056a4d2d",
+      "mtime_ns": "1793536678699350200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\review-consumer.mjs.diff.txt",
+      "bytes": 25811,
+      "sha256": "fc2bba8a7a87ce3330992d3d0a7785cb282fb058ef08fc7edf06ef887aec26c4",
+      "mtime_ns": "1793536678706886900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\offline-controls.mjs.diff.txt",
+      "bytes": 32131,
+      "sha256": "6d598e0b80ad936b12c030137648910974ebb6c460c98de658867eab07f3aa9f",
+      "mtime_ns": "1793536678716310800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2Independent-20261101-203758\\Root-driver.diff.txt",
+      "bytes": 8327,
+      "sha256": "67cc3271351d1415b0bc6449f7013842c7ae0a38bc8408f4817541ef82c1f20d",
+      "mtime_ns": "1793536678724690800"
+    }
+  ],
+  "scope": "SOURCE_ONLY_NEW_V2_ISOLATED_SYNTHETIC_DIAGNOSTIC_NOT_RUNTIME_OR_SEMANTIC_PASS"
+}

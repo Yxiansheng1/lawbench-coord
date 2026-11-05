@@ -1,0 +1,8 @@
+{
+  "id": "item_73",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command '$p='\"'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\fixed-inputs.json'; Select-String -LiteralPath \"'$p -Pattern '\"'3ce2e0193d228d4a8083ad243ebdbf9065f539aef80bd63e969c5c6a7a373c3a|f47b4750660d72a4cfd493dc0ed080fb72d44821811fd0b4889d185193141392'; Select-String -LiteralPath 'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\admission.mts' -Pattern 'MANIFEST_SHA256'; (Get-FileHash -Algorithm SHA256 -LiteralPath \"'$p).Hash.ToLowerInvariant(); (Get-FileHash -Algorithm SHA256 -LiteralPath '\"'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\prepare-case.py').Hash.ToLowerInvariant()\"",
+  "aggregated_output": "\r\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\fixed-inputs.json:238:      \"sha256\": \"f47b4750660d72a4c\r\nfd493dc0ed080fb72d44821811fd0b4889d185193141392\"\r\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:44:const MANIFEST_SHA256 = '3ce2e0193d228d\r\n4a8083ad243ebdbf9065f539aef80bd63e969c5c6a7a373c3a'\r\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:264:  if (!/^[0-9a-f]{64}$/.test(MANIFEST_\r\nSHA256)) {\r\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:273:  if (manifestSha256 !== MANIFEST_SHA2\r\n56) {\r\n3ce2e0193d228d4a8083ad243ebdbf9065f539aef80bd63e969c5c6a7a373c3a\r\nf47b4750660d72a4cfd493dc0ed080fb72d44821811fd0b4889d185193141392\r\n\r\n",
+  "exit_code": 0,
+  "status": "completed"
+}

@@ -1,0 +1,58 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseGenerationVerification-20261101-022802",
+  "oldroot": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546",
+  "old_consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546\\native-defense-opinion.mts",
+  "old_companion": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546\\b-service-defense-opinion.py",
+  "old_manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18DefenseDirectImportBinding-20261031-235546\\literalfixed-inputs.json",
+  "approvedInputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18DefenseGenerationVerification-20261101-022802Input\\approved-inputs.json",
+    "bytes": 2232,
+    "sha256": "5f320e43a677ed00d2894d472a1051632daa68f2a22a8319b36fd1ed01165f2f",
+    "mtime_ns": "1793471282250775600"
+  },
+  "sourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18DefenseGenerationVerification-20261101-022802Input\\reviewed-b346-current.json",
+    "bytes": 53548,
+    "sha256": "cf67afa48126253f21697eff0a10fb4f1879952be5b659610a72bd961348510b",
+    "mtime_ns": "1793471282298597000"
+  },
+  "newSkill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "bytes": 18178,
+    "sha256": "e656a4c19cd72cb84b5f3b58b986a9405e17c266c4449753f814ab119bf9ac96",
+    "mtime_ns": "1793471021126463900"
+  },
+  "runtime": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 566992,
+      "sha256": "b26f4484b34f366a80af72a546633dfddaa021ff879d566259e01c871e480558"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904836,
+      "sha256": "c20145ec00e0a3a48da996946cd31c2a4089361ec187cb608480c3ee94a472b4"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\manifest.json",
+      "bytes": 58588,
+      "sha256": "99a3e8ce0aa6fb61b55104ccd6c1435e066540391e375067c3785ae67354f39a"
+    }
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18DefenseGenerationVerification-20261101-022802.md",
+  "expected_diff_B346": [
+    "service/lawbench/case/task.py"
+  ],
+  "expected_diff_approved6": [
+    "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md"
+  ]
+}

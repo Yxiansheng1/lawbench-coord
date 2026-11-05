@@ -1,0 +1,27 @@
+{
+  "verdict": "FIVE_WIRE_FIXES_PARTIALLY_ACCEPTED_SOLE_MANIFEST_CONST_PATH_STILL_WRONG_STATIC_REJECT",
+  "actual_thread": "01a1870f-6c39-7280-96fd-b0ad43752460",
+  "commands": 52,
+  "success": 44,
+  "nonzero": 8,
+  "author_runtime": 0,
+  "all52commands_source_finite_formal_README_reviewed": true,
+  "helper_OpenAI_nested_and_bounded_clone_and_override_correct_static": true,
+  "finite_actual_hash_dependency_and14controls_source_correct": true,
+  "sole_remaining": "fourth const manifest path incorrectly adds profile-node_modules/lawbench-dsh; actual manifest is private-output root",
+  "expected_manifest_path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseQuestionPrivateBuild-20261029-172922\\private-output-20261029-173336\\manifest.json",
+  "wrong_candidate_path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseQuestionPrivateBuild-20261029-172922\\private-output-20261029-173336\\profile-node_modules\\lawbench-dsh\\manifest.json",
+  "expected_entry_bytes": 148710,
+  "expected_entry_sha256": "7d20cbed7b28602f3fd37ca52656440e09eb0651782339be12e0868588369cda",
+  "formal_inaccuracies": [
+    "private manifest hash prose 25b5b5...a1fdc2d typo not accepted; actual b5b5...1216c2",
+    "Two PowerShell parser failures at6/38, formal says one"
+  ],
+  "root_failed_inverse_preserved": true,
+  "finite_compiler_model_executed": false,
+  "cumulative_commands": 6896,
+  "cumulative_success": 5960,
+  "cumulative_nonzero": 936,
+  "historical_runtime_violating_jobs": 6,
+  "Packaging": "HOLD"
+}

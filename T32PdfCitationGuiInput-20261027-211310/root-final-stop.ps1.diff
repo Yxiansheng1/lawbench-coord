@@ -1,0 +1,16 @@
+--- 
++++ 
+@@ -7,10 +7,10 @@
+ $ErrorActionPreference = 'Stop'
+ 
+ $rootFull = [IO.Path]::GetFullPath($RunRoot)
+-$runsRoot = [IO.Path]::GetFullPath('D:\Lawbeach\lawbench-B\docs\plan\evidence\T32\NativeDocumentCitationEntry-20261027-190830\runs')
++$runsRoot = [IO.Path]::GetFullPath('D:\Lawbeach\lawbench-B\docs\plan\evidence\T32\NativePdfCitationEntry-20261027-204736\runs')
+ if ([IO.Path]::GetDirectoryName($rootFull).TrimEnd('\') -ine $runsRoot.TrimEnd('\') -or
+-    $rootFull -notmatch '\\T32-citation-[0-9]{8}-[0-9]{6}$') {
+-  throw "refusing non-T32-citation run root: $rootFull"
++    $rootFull -notmatch '\\T32-pdf-citation-[0-9]{8}-[0-9]{6}$') {
++  throw "refusing non-T32-pdf-citation run root: $rootFull"
+ }
+ 
+ $StateDir = Join-Path $rootFull 'gui\state'

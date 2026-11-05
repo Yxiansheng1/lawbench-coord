@@ -1,0 +1,101 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-driver-inverse.diff.txt
+SHA 17153d92b81e97ff92fd175436b289b931f179abc226059d7b7d83895dcd03eb
+0001 --- CLOSED_V6
+0002 +++ V7_CURRENT_HANDLE_CLOSURE
+0003 @@ -21,9 +21,9 @@
+0004      script="$p=Get-CimInstance Win32_Process -Filter 'ProcessId="+str(identity['pid'])+"';if($p -and $p.ExecutablePath -ceq "+quote(identity['exe'])+" -and $p.CreationDate.ToUniversalTime().ToString('o') -ceq "+quote(identity['birth_utc'])+"){Stop-Process -Id "+str(identity['pid'])+" -Force}"
+0005      subprocess.run([PW,'-NoProfile','-NonInteractive','-Command',script],capture_output=True,check=True,creationflags=subprocess.CREATE_NO_WINDOW)
+0006  
+0007 -admission_path=O/'T18-typed-reference-schema-v6-runtime-admission-current.json'
+0008 +admission_path=O/'T18-schema-keyword-compat-v7-runtime-admission-current.json'
+0009  a=r(admission_path)
+0010 -assert a['verdict']=='ADMITTED_ISOLATED_TYPED_REFERENCE_SCHEMA_TWO_SHARD_DIAGNOSTIC'
+0011 +assert a['verdict']=='ADMITTED_ISOLATED_SCHEMA_COMPAT_TWO_SHARD_DIAGNOSTIC'
+0012  assert a['admitted'] and not a['consumed'] and a['source_review_accepted']
+0013  assert a['max_requests']==2 and a['Root_timeout_seconds']==900
+0014  assert a['model']=='qwen38-27b' and a['temperature']==0.6 and a['max_tokens']==49152
+0015 @@ -41,7 +41,7 @@
+0016  assert authority['scope']=='AUTONOMOUS_MAINLINE_REPAIR_AND_NECESSARY_CHANGED_SOURCE_VERIFICATION_UNTIL_FIXED'
+0017  assert authority['per_cycle_owner_reapproval_required'] is False and not authority['current_runtime_active']
+0018  stamp=datetime.now(timezone(timedelta(hours=8))).strftime('%Y%m%d-%H%M%S')
+0019 -root=O/('T18TypedReferenceSchemaV6Actual-root-'+stamp)
+0020 +root=O/('T18SchemaKeywordCompatV7Actual-root-'+stamp)
+0021  assert not root.exists()
+0022  for p in [O,*O.parents]: assert not p.is_symlink() and not p.is_junction(), 'Reparse ancestor'
+0023  root.mkdir(); modelroot=root/'model-output'
+0024 @@ -51,7 +51,7 @@
+0025  env['NODE_USE_ENV_PROXY']='0'
+0026  assert not any(k.upper()in{'HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','NODE_OPTIONS','NODE_EXTRA_CA_CERTS'} for k in env)
+0027  driver=r'''$ErrorActionPreference='Stop'
+0028 -$bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$completed=$false;$forced=$false
+0029 +$bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$childStarted=$false;$ownedHandle=$null;$completed=$false;$forced=$false
+0030  $clock=[Diagnostics.Stopwatch]::StartNew();$phase='ROOT_GATE'
+0031  function Read-SharedOwnedBytes([string]$LiteralPath){
+0032   $inputStream=$null;$memory=$null
+0033 @@ -79,15 +79,17 @@
+0034   $psi.StandardInputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardOutputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardErrorEncoding=[Text.UTF8Encoding]::new($false)
+0035   $psi.ArgumentList.Add(SOURCE_LITERAL);$psi.ArgumentList.Add('--credential-stdin');$psi.ArgumentList.Add('--root');$psi.ArgumentList.Add(MODELROOT_LITERAL)
+0036   $phase='OWNED_NODE_START'
+0037 - $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start()
+0038 - $birth=$child.StartTime.ToUniversalTime().ToString('o')
+0039 + $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start();$childStarted=$true
+0040 + $ownedHandle=$child.SafeHandle
+0041 + $ownedChildIdentity=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0042 + if(-not $ownedChildIdentity -or $ownedChildIdentity.ParentProcessId -ne $PID -or [IO.Path]::GetFullPath($ownedChildIdentity.ExecutablePath) -ine [IO.Path]::GetFullPath(NODE_LITERAL)){throw 'Owned child CIM identity unavailable'}
+0043 + $birth=$ownedChildIdentity.CreationDate.ToUniversalTime().ToString('o')
+0044   [IO.File]::WriteAllText(START_LITERAL,([pscustomobject]@{pid=$child.Id;exe=NODE_LITERAL;birth_utc=$birth;credential_transport='anonymous stdin only'}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+0045   $stdoutTask=$child.StandardOutput.ReadToEndAsync();$stderrTask=$child.StandardError.ReadToEndAsync()
+0046   $child.StandardInput.WriteLine($secret);$child.StandardInput.Close()
+0047   $remaining=[Math]::Max(1,900000-[int]$clock.ElapsedMilliseconds)
+0048   if(-not $child.WaitForExit($remaining)){
+0049 -  $q=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0050 -  if($q -and [IO.Path]::GetFullPath($q.ExecutablePath) -ieq [IO.Path]::GetFullPath(NODE_LITERAL) -and $q.CreationDate.ToUniversalTime().ToString('o') -ceq $birth){$child.Kill();$forced=$true}
+0051 +  $child.Kill();$forced=$true
+0052    if(-not $child.WaitForExit(5000)){throw 'Owned child still active after watchdog'}
+0053   }
+0054   $stdout=Redact-OwnedString ($stdoutTask.GetAwaiter().GetResult());$stderr=Redact-OwnedString ($stderrTask.GetAwaiter().GetResult())
+0055 @@ -108,21 +110,29 @@
+0056   [pscustomobject]@{kind='ROOT_DRIVER_FAILURE';phase=$phase;error_type=$_.Exception.GetType().Name;consumer_completed=$completed;credential_output=$false;forced_stop=$forced}|ConvertTo-Json -Compress
+0057   exit 91
+0058  }finally{
+0059 - if($null -ne $child -and -not $child.HasExited -and $null -ne $birth){
+0060 -  $q=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0061 -  if($q -and [IO.Path]::GetFullPath($q.ExecutablePath) -ieq [IO.Path]::GetFullPath(NODE_LITERAL) -and $q.CreationDate.ToUniversalTime().ToString('o') -ceq $birth){$child.Kill()}
+0062 + try{
+0063 +  if($null -ne $child){
+0064 +   try{
+0065 +    if($childStarted -and -not $child.HasExited){
+0066 +     $child.Kill();$forced=$true
+0067 +     if(-not $child.WaitForExit(5000)){throw 'Owned child still active after final cleanup'}
+0068 +    }
+0069 +   }finally{$child.Dispose()}
+0070 +  }
+0071 + }finally{
+0072 +  $ownedHandle=$null
+0073 +  if($null -ne $bytes){[Array]::Clear($bytes,0,$bytes.Length)};$secret=$null;$escaped=$null
+0074   }
+0075 - if($null -ne $child){$child.Dispose()};if($null -ne $bytes){[Array]::Clear($bytes,0,$bytes.Length)};$secret=$null;$escaped=$null
+0076  }'''
+0077  for token,value in sorted([('NODE_LITERAL',NODE),('ROOT_LITERAL',root),('SOURCE_LITERAL',source),('MODELROOT_LITERAL',modelroot),('START_LITERAL',root/'child-start.json'),('STDOUT_LITERAL',root/'consumer-stdout.txt'),('STDERR_LITERAL',root/'consumer-stderr.txt'),('SCAN_LITERAL',root/'owned-usedKey-scan.json')],key=lambda item:len(item[0]),reverse=True): driver=driver.replace(token,quote(value))
+0078  # This program text contains no credential. Persist before admission consumption for reproducible review.
+0079  (root/'root-driver.ps1').write_text(driver,'utf-8')
+0080  before=a['pins'];diagnostics=authority.setdefault('diagnostic_records',[]);index=len(diagnostics)+1
+0081  authority['current_runtime_active']=True
+0082 -diagnostics.append(dict(index=index,purpose='TYPED_REFERENCE_SCHEMA_V6_CACHED_STAGE1_CAPABILITY_NOT_NATIVE_WORKFLOW',state='CONSUMED_STARTING',root=str(root),max_requests=2,consumer_sha256=fp(source)['sha256']))
+0083 +diagnostics.append(dict(index=index,purpose='SCHEMA_KEYWORD_COMPAT_V7_CACHED_STAGE1_CAPABILITY_NOT_NATIVE_WORKFLOW',state='CONSUMED_STARTING',root=str(root),max_requests=2,consumer_sha256=fp(source)['sha256']))
+0084  w(authority_path,authority);a.update(consumed=True,admitted=False,root=str(root),diagnostic_index=index);w(admission_path,a)
+0085  ids=set();seen={};forced=False;peers=[];start=time.monotonic();rc=None;error_code=None;p=None
+0086 -active_path=O/'T18-typed-reference-schema-v6-runtime-active-current.json'
+0087 +active_path=O/'T18-schema-keyword-compat-v7-runtime-active-current.json'
+0088  try:
+0089      with(root/'driver-stdout.txt').open('wb')as out,(root/'driver-stderr.txt').open('wb')as err:
+0090          p=subprocess.Popen([PW,'-NoProfile','-NonInteractive','-File',str(root/'root-driver.ps1')],cwd=root,env=env,stdin=subprocess.PIPE,stdout=out,stderr=err,creationflags=subprocess.CREATE_NO_WINDOW)
+0091 @@ -172,7 +182,7 @@
+0092      final=modelroot/'artifacts'/'final-report.json'
+0093      driver_result=r(root/'driver-stdout.txt')if(root/'driver-stdout.txt').exists()and(root/'driver-stdout.txt').stat().st_size else None
+0094      proof=dict(root=str(root),exit_code=rc,elapsed_s=time.monotonic()-start,forced_by_Root=forced,driver_result=driver_result,Root_error_type=error_code,identities=list(seen.values()),independent_OS_after=after,source_changes=changed,observed_owned_Node_TCP_peers=peers,report=str(final)if final.exists()else None,consumer_report=r(final)if final.exists()else None,usedKey_scan=r(root/'owned-usedKey-scan.json')if(root/'owned-usedKey-scan.json').exists()else None,not_Native_or_product_business_PASS=True,owner_only_ACL_or_full_platform_security_NOT_PROVEN=True,Packaging='HOLD')
+0095 -    w(root/'root-result.json',proof);w(O/'T18-typed-reference-schema-v6-actual-runtime-current.json',proof)
+0096 +    w(root/'root-result.json',proof);w(O/'T18-schema-keyword-compat-v7-actual-runtime-current.json',proof)
+0097      w(active_path,dict(state='CLOSED_REQUIRES_ROOT_MANUAL_REVIEW',root=str(root),exit_code=rc,forced_by_Root=forced))
+0098      authority=r(authority_path);authority['current_runtime_active']=False
+0099      record=authority['diagnostic_records'][index-1];assert record['root']==str(root)

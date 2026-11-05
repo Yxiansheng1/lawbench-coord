@@ -1,0 +1,69 @@
+{
+  "previous": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-read-observer-1017-20261030-164210.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-read-observer-20261030-164210.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-read-observer-20261030-164210.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadObserverInput-20261030-164210",
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\native-general-drafting.mts",
+    "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+    "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\literalfixed-inputs.json",
+    "finite": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\general-read-order-finite.mts",
+    "state": "SOURCE_ONLY_PRECISE_PRODUCTION_READ_DENIAL_CLASSIFIER_BEFORE_CURRENT_RUNTIME_PIN_REBIND"
+  },
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\native-general-drafting.mts",
+      "bytes": 108578,
+      "sha256": "89c152f7336368f5fa86e09097b294bd16b00a4ae601d5076c942fc688ede1fb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+      "bytes": 42437,
+      "sha256": "44bb8b5ff60309a7d7dc3c1474ab4efebe00995673927f59137dbb1f86346203"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\literalfixed-inputs.json",
+      "bytes": 11934,
+      "sha256": "18c1af32cecff0f4016577f6cef62b5dbbc8d7953e28ffbb76401105fd1c0873"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\general-read-order-finite.mts",
+      "bytes": 14005,
+      "sha256": "e07067dfa347f87466ed4fed6d2827365c22602f6efa10de2e5bbf41c2653090"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\README.md",
+      "bytes": 4528,
+      "sha256": "f96f3689667c3c1e0e475a761b1568b31ebc5fb4a01b85be01ee4a0011f9a2b8"
+    }
+  ],
+  "current_four": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 558006,
+      "sha256": "f395c8557d7095c9a98183c8dfaf01fd66344c1636bbb983d11eab0568ab7311"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904755,
+      "sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028\\manifest.json",
+      "bytes": 58199,
+      "sha256": "89725cac86267da39572a8e9e9fb3e855aca26199cac4e0df13dd84e2cf76d52"
+    }
+  ],
+  "build_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-general-read-private-static-accepted-current.json",
+  "source_classifier_ROOT_FINAL_REVIEW_PENDING_NO_RUNTIME_ADMISSION": true
+}

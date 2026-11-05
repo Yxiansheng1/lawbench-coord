@@ -1,0 +1,21 @@
+## line-C...origin/line-C [ahead 84, behind 1]
+ M packaging/THIRD-PARTY-LICENSES.md
+ M packaging/build.ps1
+ M packaging/gen_lock.py
+ M service/lawbench/app.py
+ M service/lawbench/net.py
+?? .agents/
+?? AGENTS.md
+?? docs/plan/evidence/T31/
+?? docs/plan/evidence/T40/本机验证-20261021-1536/baseline.txt
+?? docs/plan/evidence/T40/本机验证-20261021-1536/write-test.txt
+?? docs/plan/evidence/T40/本机验证-20261021-1536/开工前/files/.agents/
+?? docs/plan/evidence/T40/本机验证-20261021-1536/开工前/files/AGENTS.md
+?? docs/plan/evidence/T40/本机验证-20261021-1536/开工前/files/docs/
+?? dsh-ext/tests/t31-material-capture-disposal.spec.tsx
+?? dsh-ext/tests/t31-submission-registry-admit.spec.tsx
+?? dsh-ext/vitest.t31-submission-registry-admit.config.mjs
+?? packaging/licenses/
+?? service/lawbench/remote.py
+?? service/tests/fake_easytier.py
+?? service/tests/test_remote.py

@@ -1,0 +1,291 @@
+{
+  "v": 1,
+  "task_id": "T-20261028171237-61fd",
+  "status": "completed",
+  "usage": {
+    "model_calls": 10,
+    "tool_calls": 4,
+    "elapsed_s": 256
+  },
+  "drafts": [
+    {
+      "title": "合同审查意见",
+      "path": "工作区/任务/T-20261028171237-61fd/草稿/合同审查意见-v1.md",
+      "version": 1
+    },
+    {
+      "title": "合同审查意见",
+      "path": "工作区/任务/T-20261028171237-61fd/草稿/合同审查意见-v2.md",
+      "version": 2
+    },
+    {
+      "title": "合同审查意见",
+      "path": "工作区/任务/T-20261028171237-61fd/草稿/合同审查意见-v3.md",
+      "version": 3
+    },
+    {
+      "title": "合同审查意见",
+      "path": "工作区/任务/T-20261028171237-61fd/草稿/合同审查意见-v4.md",
+      "version": 4
+    }
+  ],
+  "citation_check": {
+    "passed": true,
+    "problems": [
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "。合同只写5月20日前分两批交付，未明确第一批时间，可能导致第一批延迟影响施工进度。",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批 HW200×200 热轧H型钢 150吨，于2026年5月10日前交付；第二批 HN300×150 热轧H型钢 150吨，于2026年5月20日前交付。」",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五个工作日内完成验收。如甲方委托第三方检测机构进行检测，验收期自甲方收到检测报告之日起计算，但最长不超过到货后三十日。逾期未提出书面异议的，视为验收合格。」",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%，即人民币壹佰壹拾玖万柒仟元整（￥1,197,000.00）。剩余5%即人民币陆万叁仟元整（￥63,000.00）作为质量保证金，于质保期满（验收合格之日起十二个月）且",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：「9.1 双方指定的通知地址如下：甲方：青禾建材采购部，地址：虚构省虚构市虚构区不存在大道100号，联系人：郑某，电话：【待补充】，电子邮件：【待补充】；乙方：某某钢构销售部，地址：虚构省虚构市虚构区无此路200号，联系人：【",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：在6.1后增加「6.1-1 乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，并要求乙方赔偿因此造成的损失。」",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：在2.2后增加「2.2-1 抽检合格的，检测费用由甲方承担。」",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      },
+      {
+        "class": "F",
+        "severity": "hint",
+        "excerpt": "- 推荐措辞：在2.3后增加「2.4 标的物质保期为验收合格之日起十二个月。质保期内出现质量问题的，乙方应在收到甲方通知后三日内免费更换或修理。」",
+        "citation": null,
+        "message": "含金额或日期但没有出处，确认是否需要补出处"
+      }
+    ],
+    "stats": {
+      "citations": 27,
+      "must_fix": 0,
+      "hints": 8
+    }
+  },
+  "coverage": {
+    "total": 2,
+    "fully_read": [
+      "采购合同",
+      "采购部内部意见"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "citations": [
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 3
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 6
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 12
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 26
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 19
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 20
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 27
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 23
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 39
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 30
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 16
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 24
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 5
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 7
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 8
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 13
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 9
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 10
+      }
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "name": "采购合同",
+      "loc": {
+        "unit": "para",
+        "from": 31
+      }
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "name": "采购部内部意见",
+      "loc": {
+        "unit": "line",
+        "from": 6
+      }
+    }
+  ],
+  "finished_at": "2026-10-28T17:16:53+08:00"
+}

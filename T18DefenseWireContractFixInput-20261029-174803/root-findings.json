@@ -1,0 +1,54 @@
+{
+  "verdict": "RECOVERY_CONSUMER_STATIC_REJECTED_BEFORE_ANY_RUNTIME",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-defense-gate-recovery-1017-20261029-173550.job.json",
+  "actual_thread": "01a18704-39cb-77d1-934d-ba7c41385fbe",
+  "commands": 78,
+  "success": 64,
+  "nonzero": 14,
+  "author_runtime": 0,
+  "full_source_delta_finite_formal_README_allcommands_reviewed": true,
+  "whole_MTS_inverse_except_explicit_runtime_and_observer_regions": true,
+  "manifest_inverse_only4runtime_and2own_rows": true,
+  "B_service_and_all_dirty_held": true,
+  "findings": [
+    {
+      "id": "WIRE_OPENAI_NESTED_FUNCTION",
+      "confirmed": true,
+      "source": "pi-ai dist/api/openai-completions.js convertTools1145..1178",
+      "actual": "wire tools=[{type:function,function:{name,parameters}}]",
+      "candidate": "checks flat tool.name/parameters only; valid actual wire falsely missing"
+    },
+    {
+      "id": "RUNTIME_PATH_LITERAL_MISMATCH",
+      "confirmed": true,
+      "actual": "approved/manifest Windows backslashes",
+      "candidate": "APPROVED_RUNTIME_PINS forward slashes + entry.path !== approved.path; all4 reject before workflow"
+    },
+    {
+      "id": "FINITE_HELPER_DEPENDENCY_UNBOUND",
+      "confirmed": true,
+      "actual": "helper calls sha256Bytes",
+      "candidate": "VM fragment extracts limit/helper only; context lacks sha256Bytes; positives become observer-error"
+    },
+    {
+      "id": "REQUEST_INIT_BODY_OVERRIDE",
+      "confirmed": true,
+      "actual": "non-string init.body overrides Request body in original fetch",
+      "candidate": "reads old Request clone as if actual request body; wrong evidence"
+    },
+    {
+      "id": "REQUEST_CLONE_BOUND_AFTER_READ",
+      "confirmed": true,
+      "actual": "2MiB observer cap required",
+      "candidate": "Request.clone().text reads all before cap check; not bounded read"
+    }
+  ],
+  "model_calls": 0,
+  "finite_executed": false,
+  "compiler_executed": false,
+  "cumulative_commands": 6844,
+  "cumulative_success": 5916,
+  "cumulative_nonzero": 928,
+  "historical_runtime_violating_jobs": 6,
+  "Packaging": "HOLD"
+}

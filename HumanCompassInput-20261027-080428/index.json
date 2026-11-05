@@ -1,0 +1,86 @@
+[
+  {
+    "original": "D:\\Lawbeach\\lawbench\\docs\\plan\\lawbench-工单集-第二期-20261019.md",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\00-input.md",
+    "sha256": "87d8c1eb5ad6c73bac7224c00a83cf457d8a0cd92a1c9a75f6052505b54f7cf2",
+    "bytes": 26313
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\checkpoint-compass-original-current.md",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\01-input.md",
+    "sha256": "f85acfd4c283e02a96a9cb466a6fb2231493c99d5c1d12395936390189af1f52",
+    "bytes": 6427
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-control-echo-accepted-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\02-input.json",
+    "sha256": "56f5fd9f8c7d630eec2d5a3309d4d29c046e631b5835053c4a1b5b481566f282",
+    "bytes": 4987
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-current-scoped-http-accepted-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\03-input.json",
+    "sha256": "bd7b3e1be4836fc87275080d101d497fd9d0c4accd7666cebe7ac4e70c15bfb6",
+    "bytes": 4012
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T33-cross-volume-root-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\04-input.json",
+    "sha256": "bc5da71a641c088514e1ce6c0511dd4abc509e120823172d6bde6a16d5ff1687",
+    "bytes": 825
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\checkpoint-T32-native-GUI-current.md",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\05-input.md",
+    "sha256": "0399490a3cfbe76f4b29b0529f36cfe1c532692ff058130d6ac6fff00fdb6e53",
+    "bytes": 5843
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\checkpoint-T32-save-rejection-current.md",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\06-input.md",
+    "sha256": "70cac3c30a27b5969b52b87870acd20183c2e99d4b401bf196ff2f844e62cc07",
+    "bytes": 4483
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\checkpoint-T38-GUI-current.md",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\07-input.md",
+    "sha256": "20f16e4f8fc2a2074632c33b1211c8524d0475b1c7c15842da3c2e105388c942",
+    "bytes": 1702
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T38-service-full-cumulative-accepted-20261023.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\08-input.json",
+    "sha256": "f9bbb89990518f3c2791e2e53fb2313c63b1f977f69492e922d22256e246e2c3",
+    "bytes": 2075
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T39-http-full-cumulative-accepted-20261023.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\09-input.json",
+    "sha256": "05c927c84754b7e8733497a2beda5e3059d114c63c5cc9654b66cc884bc8e4bc",
+    "bytes": 1992
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T37-legacy-mixed-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\10-input.json",
+    "sha256": "32906f7f583c898d9f787797252e58822515bfa806ad66694387e2775d3457da",
+    "bytes": 837
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24-core-tool-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\11-input.json",
+    "sha256": "f3f6e31f6c3460319579a90684cd415c3001cc35b5301681dfe811e8ce05c09b",
+    "bytes": 2208
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-current-effective-launcher-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\12-input.json",
+    "sha256": "cddb5b573b5b95a9cfa7c4eaa76c4c0080b3484d04668d1a595f27d7c987f453",
+    "bytes": 1084
+  },
+  {
+    "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-relay-log-redaction-accepted-current.json",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\HumanCompassInput-20261027-080428\\13-input.json",
+    "sha256": "63c1ee2b63b9ecb57dee56ad2060819b47ff2a40e62c9b9ca09cb68c6d8f1be8",
+    "bytes": 1629
+  }
+]

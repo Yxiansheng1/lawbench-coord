@@ -1,0 +1,13 @@
+{
+  "time": "2026-10-28T11:17:10.5941848+08:00",
+  "childAdditionalEvent": "session/end-seed seq37 observed after GUI open; not attributed to cancel",
+  "childSha": "bb5b14573c9a88f2eedf2d85ac29352d7e90cee77255a6518a05f6ad8232b6ec",
+  "fourTurnsVisible": true,
+  "action": "cancel",
+  "sidebarRealRows": 2,
+  "confirmationPending": true,
+  "originalParentSha": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee",
+  "actualDelete": false,
+  "dialogGone": true,
+  "childPhysicalLength": 16303
+}

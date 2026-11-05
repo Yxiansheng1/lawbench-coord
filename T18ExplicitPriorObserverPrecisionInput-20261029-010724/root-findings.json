@@ -1,0 +1,36 @@
+{
+  "status": "PROVISIONAL_SOURCE_REVIEW_NOT_RUNTIME",
+  "source": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T18/ExplicitPriorQualityRevision-20261029-004226/native-genuine-quality-revision.mts",
+  "observed_sha256": "99d7e2c1100dad4bbab0e70d4e1acd3eb10c5df1044d261a5f181a5b185fb6ae",
+  "author_still_active": true,
+  "findings": [
+    {
+      "function": "oneContiguousEdit",
+      "confirmed_static": true,
+      "problem": "Maximal common prefix/suffix removes the shared 第 and 条 from 第七条 -> 第4.1条. The actual delta is 七 -> 4.1, so oldText.includes(第七条) rejects the correct minimal replacement. Conversely, a 160-character changed region can permit unrelated edits inside that region, contrary to the whole-other-body equality requirement.",
+      "required": "Observe the genuine model output only; accept the exact necessary article-number delta with all remaining body bytes equal. Do not feed a corrected body to the model or alter its saved tool arguments."
+    },
+    {
+      "function": "setupProduction user-questions/request",
+      "confirmed_static": true,
+      "problem": "The source still maps required roles from question wording instead of binding the actual declared question IDs draft/doc_type and draft/opinions. This reintroduces a fixture wording classifier into an ID-based contract.",
+      "required": "Use actual declared IDs and preserve actual callback/answer-before-successful-save evidence. Do not fabricate answered events or weaken the production question gate."
+    },
+    {
+      "function": "executeStage/requestHeaderAtBoundary",
+      "confirmed_static": true,
+      "problem": "The prior authoritative same-session request/header anchor and provider/model/MAX assertions were removed, despite the explicit order preserving those observations. Configured provider alone does not prove actual request-header routing.",
+      "required": "Observe the effective native request/header from the same session prefix through each afterSeq, retain its genuine anchor, and validate provider/model/current task MAX. Stable reused headers remain legitimate."
+    },
+    {
+      "function": "executeStage/finally",
+      "confirmed_static": true,
+      "problem": "The agent variable is assigned only after awaiting commands.prompt. If that call throws after creating/resuming an agent, finally sees agent undefined, skips cancel/whenIdle, yet sets agentJoined=true. This can overstate cleanup and stop B before joining a live agent.",
+      "required": "Resolve the actual owned session agent again in finally before cancellation/join; mark join complete only after actual join or proof no owned agent exists. Preserve Context/B cleanup and original source immutability."
+    }
+  ],
+  "service_qualification": "Exact /core/task/begin cwd alias from the immutable original header to the owned copied case is a fixture routing seam. It must be reported explicitly and cannot prove unmodified production cwd relocation integration.",
+  "root_runtime": 0,
+  "product_failure_claim": false,
+  "must_recheck_final_source": true
+}

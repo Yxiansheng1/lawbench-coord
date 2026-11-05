@@ -1,0 +1,86 @@
+{
+  "old_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906",
+  "new_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalApplicationQuestionPrivateBuild-20261029-151130\\private-output-20261029-151656",
+  "changes": [
+    {
+      "old": {
+        "role": "current-compiled-agent",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+        "bytes": 552937,
+        "sha256": "8f6bcb5cda92ba88370a425205c74dabc8f699146b3fa68501deb64f62a6ddfe"
+      },
+      "new": {
+        "role": "current-compiled-agent",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalApplicationQuestionPrivateBuild-20261029-151130\\private-output-20261029-151656\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+        "bytes": 553084,
+        "sha256": "4f0c3cbe1801d718e50c4ee0a5f6fd354ee5ac92130fce53dd2077b1d8f5bee8"
+      }
+    },
+    {
+      "old": {
+        "role": "current-compiled-host",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+        "bytes": 902499,
+        "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+      },
+      "new": {
+        "role": "current-compiled-host",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalApplicationQuestionPrivateBuild-20261029-151130\\private-output-20261029-151656\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+        "bytes": 902499,
+        "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+      }
+    },
+    {
+      "old": {
+        "role": "current-compiled-package",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\package.json",
+        "bytes": 1257,
+        "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+      },
+      "new": {
+        "role": "current-compiled-package",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalApplicationQuestionPrivateBuild-20261029-151130\\private-output-20261029-151656\\profile-node_modules\\lawbench-dsh\\package.json",
+        "bytes": 1257,
+        "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+      }
+    },
+    {
+      "old": {
+        "role": "current-compiled-manifest",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\manifest.json",
+        "bytes": 58196,
+        "sha256": "3756191ed865dffadfadb964ba55272751b2ed3ae9d6b5b46a4fb07c767a926d"
+      },
+      "new": {
+        "role": "current-compiled-manifest",
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalApplicationQuestionPrivateBuild-20261029-151130\\private-output-20261029-151656\\manifest.json",
+        "bytes": 58206,
+        "sha256": "896f7cf20b187f9c96ea44a9c08796a9f36858fd67f84e073d225eeb71e01778"
+      }
+    }
+  ],
+  "old_manifest_sha": "3756191ed865dffadfadb964ba55272751b2ed3ae9d6b5b46a4fb07c767a926d",
+  "new_manifest_sha": "896f7cf20b187f9c96ea44a9c08796a9f36858fd67f84e073d225eeb71e01778",
+  "product_agent_sha": "ce2493cb60e652195779394bff50819924ceeff64e5bcf63e859928eb2c87294",
+  "compiled_agent_sha": "4f0c3cbe1801d718e50c4ee0a5f6fd354ee5ac92130fce53dd2077b1d8f5bee8",
+  "old_source_pins": {
+    "entry": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationContract-20261029-145430\\native-criminal-applications.mts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationRuntimeInput-20261029-151913\\native-criminal-applications.mts",
+      "bytes": 137924,
+      "sha256": "effd7e0e66c49bd1a12172e00180f83ff584034c513966e8a9570fef7edf135f"
+    },
+    "service": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationContract-20261029-145430\\b-service-criminal-applications.py",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationRuntimeInput-20261029-151913\\b-service-criminal-applications.py",
+      "bytes": 48430,
+      "sha256": "5841bfe21acd27ac6bc6dd468d8d2c1dedafbb28db52b176fb94d12032c7e28b"
+    },
+    "manifest": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationContract-20261029-145430\\literalfixed-inputs.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationRuntimeInput-20261029-151913\\literalfixed-inputs.json",
+      "bytes": 11652,
+      "sha256": "92dbec88557eece5c4971f3361f166d7378f957dfa7945e0a75c6d7e0feeb9c8"
+    }
+  }
+}

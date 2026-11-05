@@ -1,0 +1,29 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskListRecovery-20261101-013252\\test_public_task_list.py",
+  "test_before": "D:\\Lawbeach\\lawbench-coord\\T17TaskListSchemaNames-20261101-014415Input\\test-before.py",
+  "before_sha256": "7a2d01fd6509c7a53d578d0e03109512c685ccf08a9288ab0ab48f5a903d45d2",
+  "cause": "Original contracts.validator constructs BASE + schema_path + pointer; schema_path MUSTrelative STRING not Path",
+  "exact_changes": [
+    [
+      "contracts.validate(CONTRACTS / \"files\" / \"cases.schema.json\", \"#\", cases)",
+      "contracts.validate(\"files/cases.schema.json\", \"\", cases)"
+    ],
+    [
+      "contracts.validate(CONTRACTS / \"files\" / \"task.schema.json\", \"#\", good_task)",
+      "contracts.validate(\"files/task.schema.json\", \"\", good_task)"
+    ],
+    [
+      "contracts.validate(CONTRACTS / \"files\" / \"result.schema.json\", \"#\", good_result)",
+      "contracts.validate(\"files/result.schema.json\", \"\", good_result)"
+    ],
+    [
+      "contracts.validate(CONTRACTS / \"files\" / \"task.schema.json\", \"#\", bad_task)",
+      "contracts.validate(\"files/task.schema.json\", \"\", bad_task)"
+    ],
+    [
+      "contracts.validate(CONTRACTS / \"api\" / \"tasks_list.schema.json\",",
+      "contracts.validate(\"api/tasks_list.schema.json\","
+    ]
+  ],
+  "scope": "ONLY5 data-binding expressions; allotherbytesincludingConfigcontracts_dirandCaseRegistrySQLPathheld"
+}

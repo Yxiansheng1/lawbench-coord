@@ -1,0 +1,20 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TenderReviewQuestionTextBinding-20261029-073640\\native-tender-review.mts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\native-tender-review.mts",
+    "bytes": 117979,
+    "sha256": "19505d6ff1552b310463cefc6f7ff1d86372e810098e8c8e3b1639b08a8fa83a"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TenderReviewQuestionTextBinding-20261029-073640\\b-service-tender-review.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\b-service-tender-review.py",
+    "bytes": 46017,
+    "sha256": "3398e560aecb98d6e8a4d74dd225aed1b45482946f22e831031ff571c39d97bc"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TenderReviewQuestionTextBinding-20261029-073640\\literalfixed-inputs.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\literalfixed-inputs.json",
+    "bytes": 11289,
+    "sha256": "9a1b38a7de5a05a2a3ddfc31e6aa11fe12836194bf899dcbb71a5f59ef6faf23"
+  }
+}

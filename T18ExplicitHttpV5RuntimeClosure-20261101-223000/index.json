@@ -1,0 +1,96 @@
+{
+  "scope": "NEW_INDEPENDENT_RUNTIME_CLOSURE_NOT_REOPEN_OLD_DEADLINE_JOB",
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\00-review-consumer.mjs.txt",
+      "bytes": 19480,
+      "sha256": "9eb845e9f16db6b4dfddf125ccc7878fb01673fcef60ae1033ef1dc2ece3be6b",
+      "mtime_ns": "1793543400613654500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\01-offline-controls.mjs.txt",
+      "bytes": 14049,
+      "sha256": "5205242ffca181b72813fa37b8f479dbb774d41c01ea5b62fd707627eb381815",
+      "mtime_ns": "1793543400620486500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\02-run-explicit-deadline-http-v5-saved-key-root-admin.py.txt",
+      "bytes": 16917,
+      "sha256": "cbb1da6a10564cfccd1d87a22bfc8202424c583db3249e71e2835ab0b90dc883",
+      "mtime_ns": "1793543400629637300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\03-admit-explicit-deadline-http-v5-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4154,
+      "sha256": "d17eeb755faf9b1db7481db0d91b2b6f53550eab79a2172883e0fccd277ddbc9",
+      "mtime_ns": "1793543400685579600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\04-network-guard.cjs.txt",
+      "bytes": 9022,
+      "sha256": "ca5b7766f970f9e2d44a122247689e917c3162c257e336bbcdef1b3b3627ace0",
+      "mtime_ns": "1793543400695537000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\05-T18-explicit-deadline-http-v5-root-launcher-static-parse-current.json.txt",
+      "bytes": 900,
+      "sha256": "69b1b9dd16749de2f3856927571a7b37723cc6f01ea2c1e28a2d27884d4f707f",
+      "mtime_ns": "1793543400706994100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5RuntimeClosure-20261101-223000\\06-T18-explicit-deadline-http-v5-source-reviewed-current.json.txt",
+      "bytes": 5184,
+      "sha256": "a35cef808f33813cdae5504a3b5ff0b594b84ce628657a1fd78a84fae28973d0",
+      "mtime_ns": "1793543400712102100"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-root-driver-inverse.diff.txt",
+      "bytes": 4319,
+      "sha256": "f2d96f2156eb53a8fe37b2dc47e2f6b4939e83e965d2a2643ef8402726636fb4",
+      "mtime_ns": "1793542496367739700"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-root-admitter-inverse.diff.txt",
+      "bytes": 4725,
+      "sha256": "58d0d6a878a148139501924fbc7772553ed6dcc681500c432fae0e5adc91bb0e",
+      "mtime_ns": "1793542496377776000"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\review-consumer.mjs",
+      "bytes": 53968,
+      "sha256": "166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31",
+      "mtime_ns": "1793542358406267800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\offline-controls.mjs",
+      "bytes": 40367,
+      "sha256": "adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3",
+      "mtime_ns": "1793542458789326300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\source-manifest.json",
+      "bytes": 677,
+      "sha256": "74639b12e714b1fb9c6ebdd5c17c9ec33ea4948bb6baeb7cfb05a0cdcff41dc7",
+      "mtime_ns": "1793542475390540200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    }
+  ],
+  "requirements": [
+    "FULL currentnewperformRequest/lifecycle/staticdiagnostics/mainremaining plusallnewHTTPmemorycontrols. Exactfixedroute/requestheaders/body/agentfalse/one400sremaining900AbortSignal/no retry/redirect/fallback/library/globalpolicy modifications. Strictoriginalprotocolprefix byteheld andoutofthisfocusedreview; doNOTclaimfullprotocolreview.",
+    "FULLcurrentRootdriver/admitter/PS/newoutercode: external8pins/terminalauthors/admissiongatebeforeDPAPI/privateenv/noproxy/preload/dedicatedanonymousstdin/900s/exactPIDexeUTCbirthcleanup/ownUTF8raw+JSONescapedscan/failclosed. Guardfullsnapshot mediates http+lowernet/socket, unchanged; no denialbypass.",
+    "Identifyconcrete reachable currentbug only withline+trigger+minimalfix; optionalunreachablepreexisting/metadata/testcoverage limitations qualified. Sourceonlynotruntime/semantic/business/ACL/servercancel proof. Write conciseformal <=180lines; no rewritingcode or extraresources."
+  ]
+}

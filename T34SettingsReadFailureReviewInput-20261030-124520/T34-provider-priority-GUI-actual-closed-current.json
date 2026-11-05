@@ -1,0 +1,200 @@
+{
+  "verdict": "ACTUAL_UI_SETTINGS_READ_FAILED_BEFORE_REQUIRED_MUTATION_PRIVATE_COMPONENT_BINDING_NOT_PROVEN",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderPriorityGUI-20261030-121502\\runs\\T34-private-projection-observer-20261030-122651",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34PrivateProjectionGUI-root-20261030-122651",
+  "observer": {
+    "schemaVersion": 1,
+    "task": "T34-private-projection-observer",
+    "observerFile": "projection-observer.mjs",
+    "eventLimit": 8,
+    "maxBytes": 16384,
+    "observerState": "ready",
+    "bindingReason": "same_service_classes",
+    "bindings": {
+      "configEditor": {
+        "identity": "@deepseek-ai/dsh-config-editor",
+        "sha256": "bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5",
+        "hashVerified": true,
+        "sameServiceClass": true,
+        "installed": true
+      },
+      "settings": {
+        "identity": "@deepseek-ai/dsh-settings",
+        "sha256": "9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136",
+        "hashVerified": true,
+        "sameServiceClass": true,
+        "installed": true
+      }
+    },
+    "counts": {
+      "configEditorEdit": 0,
+      "settingsMutate": 0
+    },
+    "events": [],
+    "dropped": 0,
+    "acceptanceProof": false
+  },
+  "UI": {
+    "private_window": {
+      "app": "process:D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\electron@44.0.0\\node_modules\\electron\\dist\\electron.exe",
+      "id": 137301752,
+      "title": "连越律师工作台"
+    },
+    "UI_actions": 0,
+    "activation_only": true,
+    "settings_rejected_visible": false,
+    "external_settings_read_failed_visible": true,
+    "home_visible": true,
+    "isolated_startup_warning_count": 4,
+    "tree": "Window: \"连越律师工作台\", App: electron.exe.\n\t0 窗口 连越律师工作台 Secondary Actions: Raise\n\t\t1 窗格 (disabled)\n\t\t2 区域 连越律师工作台\n\t\t\t3 区域\n\t\t\t\t4 区域\n\t\t\t\t\t5 区域\n\t\t\t\t\t\t6 按钮 最小化\n\t\t\t\t\t\t7 按钮 最大化\n\t\t\t\t\t\t8 按钮 关闭\n\t\t\t\t\t9 区域\n\t\t\t\t\t\t10 区域\n\t\t\t\t\t\t\t11 区域\n\t\t\t\t\t\t\t\t12 区域\n\t\t\t\t\t\t\t\t\t13 文档 连越律师工作台 Value: dsh-app://app/ ID: RootWebArea\n\t\t\t\t\t\t\t\t\t\t41 组\n\t\t\t\t\t\t\t\t\t\t\t17 组 ID: root\n\t\t\t\t\t\t\t\t\t\t\t\t18 按钮 新建会话\n\t\t\t\t\t\t\t\t\t\t\t\t19 按钮 收起侧边栏\n\t\t\t\t\t\t\t\t\t\t\t\t20 导航 全局面板\n\t\t\t\t\t\t\t\t\t\t\t\t\t21 按钮 首页\n\t\t\t\t\t\t\t\t\t\t\t\t22 按钮 新建会话\n\t\t\t\t\t\t\t\t\t\t\t\t23 文本 案件\n\t\t\t\t\t\t\t\t\t\t\t\t24 组\n\t\t\t\t\t\t\t\t\t\t\t\t\t25 按钮 搜索会话\n\t\t\t\t\t\t\t\t\t\t\t\t\t26 编辑 (settable, string) 搜索会话名称 Description: 搜索会话名称\n\t\t\t\t\t\t\t\t\t\t\t\t27 按钮 视图选项\n\t\t\t\t\t\t\t\t\t\t\t\t28 按钮 添加案件\n\t\t\t\t\t\t\t\t\t\t\t\t29 树 会话\n\t\t\t\t\t\t\t\t\t\t\t\t\t47 树项目 case\n\t\t\t\t\t\t\t\t\t\t\t\t\t59 树项目 (selectable) 新会话\n\t\t\t\t\t\t\t\t\t\t\t\t31 按钮 设置\n\t\t\t\t\t\t\t\t\t\t\t\t60 标题\n\t\t\t\t\t\t\t\t\t\t\t\t\t61 图形 广东连越（深圳）律师事务所\n\t\t\t\t\t\t\t\t\t\t\t\t\t62 标题 连越律所工作台\n\t\t\t\t\t\t\t\t\t\t\t\t\t63 文本 2026年10月30日 星期五\n\t\t\t\t\t\t\t\t\t\t\t\t\t65 文本 公开法律研究、法条和案例查询建议使用线上大模型；涉及隐私、商业秘密或非公开案卷的材料进入本机案件。\n\t\t\t\t\t\t\t\t\t\t\t\t66 警报\n\t\t\t\t\t\t\t\t\t\t\t\t\t67 文本 启动检查发现\n\t\t\t\t\t\t\t\t\t\t\t\t\t68 文本 4\n\t\t\t\t\t\t\t\t\t\t\t\t\t69 文本 个问题\n\t\t\t\t\t\t\t\t\t\t\t\t\t70 按钮 知道了\n\t\t\t\t\t\t\t\t\t\t\t\t\t71 列表\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t72 列表项目 没找到 LibreOffice，旧版 Word、WPS 文件和表格公式的转换用不了。请重新安装律师工作台。\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t73 列表项目 没找到 pandoc，导出 Word 用不了。请重新安装律师工作台。\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t74 列表项目 管理员 Skill 目录普通用户也能改，统一下发的 Skill 可能被改动。请联系技术支持设置为只读。\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t75 列表项目 应用数据目录的路径太长（发票整理的缓存目录 154 个字符，超过 110），发票整理可能失败。请联系技术支持开启系统长路径支持，或把应用数据放到较短的位置。\n\t\t\t\t\t\t\t\t\t\t\t\t76 区域 欢迎\n\t\t\t\t\t\t\t\t\t\t\t\t\t77 文本 欢迎使用连越律所工作台。打开已有的案件文件夹，或新建一个案件开始。\n\t\t\t\t\t\t\t\t\t\t\t\t\t78 组 案件操作\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t79 按钮 打开案件…\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t80 按钮 新建民商事案件…\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t81 按钮 新建刑事案件…\n\t\t\t\t\t\t\t\t\t\t\t\t82 区域 最近案件\n\t\t\t\t\t\t\t\t\t\t\t\t\t83 标题 最近案件\n\t\t\t\t\t\t\t\t\t\t\t\t\t84 文本 把整理好的案子文件夹拖到空白处，可以直接建成案件。\n\t\t\t\t\t\t\t\t\t\t\t\t\t85 按钮 进入case\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t86 组\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t87 按钮 长截图切分\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t88 按钮 格式互转\n\t\t\t\t\t\t\t\t\t\t\t\t37 文本 技术支持：上海莫莱特智能科技有限公司\n\t\t\t\t\t\t\t\t\t\t\t38 菜单栏 应用菜单\n\t\t\t\t\t\t\t\t\t\t\t\t39 菜单项 应用\n\t\t\t\t\t\t\t\t\t\t\t\t40 菜单项 编辑\n\t\t\t\t\t\t\t\t\t\t\t42 对话框 外部模型当前不可用 Secondary Actions: Raise\n\t\t\t\t\t\t\t\t\t\t\t\t43 标题 外部模型当前不可用\n\t\t\t\t\t\t\t\t\t\t\t\t44 按钮 关闭\n\t\t\t\t\t\t\t\t\t\t\t\t45 文本 没能读取服务设置，外部模型路由没有同步。可在设置中重试同步。\n\t\t\t\t\t\t\t\t\t\t\t\t46 按钮 知道了\n\t\t\t\t\t\t\t\t16 区域\n\nDocument text: ```\n￼\n```"
+  },
+  "windows": {
+    "private_window_id": 137301752,
+    "private_window_gone": true,
+    "original_window_ids_preserved": true,
+    "original_count": 12,
+    "after_count": 12,
+    "automation_touched_other_windows": false,
+    "UI_actions": 0
+  },
+  "required_mutation_NOT_REACHED": true,
+  "settings_GET_HTTP200": 1,
+  "native_requests": 46,
+  "native_requests_all_200": true,
+  "writes": [
+    {
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200
+    }
+  ],
+  "physical_post": {
+    "overlay_bytes": 8358,
+    "overlay_sha256": "e3a8411898296bc8a4dc3e29a3bc1f6d0c669d00fdb3c6652f7273389665a9ac",
+    "exact_previous_overlay_after_owned_path_relocation": true,
+    "seeded_prefix_byte_hash_unchanged": true,
+    "synthetic_external_model_marker_count": 1,
+    "no_successful_external_removal": true
+  },
+  "controlled_complete_identities": [
+    {
+      "pid": 59052,
+      "parent": 51372,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-30T04:27:35.3164230Z"
+    },
+    {
+      "pid": 29976,
+      "parent": 59052,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-30T04:27:35.3310850Z"
+    },
+    {
+      "pid": 55920,
+      "parent": 59052,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-30T04:27:35.9552080Z"
+    },
+    {
+      "pid": 52416,
+      "parent": 55920,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-30T04:27:35.9722090Z"
+    },
+    {
+      "pid": 44960,
+      "parent": 55920,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-30T04:27:40.4135050Z"
+    },
+    {
+      "pid": 51876,
+      "parent": 44960,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-30T04:27:40.4289470Z"
+    },
+    {
+      "pid": 26972,
+      "parent": 44960,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:40.9613910Z"
+    },
+    {
+      "pid": 59220,
+      "parent": 26972,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:41.2753740Z"
+    },
+    {
+      "pid": 11496,
+      "parent": 26972,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:41.2801340Z"
+    },
+    {
+      "pid": 48080,
+      "parent": 26972,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:41.2996450Z"
+    },
+    {
+      "pid": 55540,
+      "parent": 26972,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:41.5084340Z"
+    },
+    {
+      "pid": 17224,
+      "parent": 55540,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_utc": "2026-10-30T04:27:43.1137380Z"
+    },
+    {
+      "pid": 45788,
+      "parent": 17224,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-30T04:27:43.1812610Z"
+    },
+    {
+      "pid": 61028,
+      "parent": 45788,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-30T04:27:43.1950790Z"
+    },
+    {
+      "pid": 53584,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birth_ticks": "639289313975079927"
+    }
+  ],
+  "OS_after": {
+    "rows": [],
+    "Listen": 0,
+    "exact_owned_rows": [],
+    "reused_PIDs_excluded": []
+  },
+  "checked_ports": [
+    52342,
+    52367,
+    53712,
+    63842
+  ],
+  "shutdown_service_spawns_observed": 3,
+  "fast_shutdown_restart_identity_coverage_NOT_PROVEN": true,
+  "binding_marker_in_forwarded_logs": 0,
+  "host_stderr_not_forwarded_primary": "apps/desktop/src/host-process.ts203..205 captures stderr in memory; stdout pipes to parent",
+  "binding_failure_cause_UNKNOWN": true,
+  "UI_settings_read_failure_cause": "UNKNOWN_HTTP200_DOES_NOT_PROVE_CLIENT_SUCCESS",
+  "source5_held": true,
+  "source148_currentB346_private25_legacy18_held": true,
+  "pythonForcedStop": true,
+  "pythonCleanupClaimed": false,
+  "no_Python_finally_or_wrapper_restore_claim": true,
+  "UI_actions": 0,
+  "model_turns": 0,
+  "actualKey_used": false,
+  "metadata_observer_OS_not_individually_sealed": true,
+  "whole_T34_PASS": false,
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD"
+}

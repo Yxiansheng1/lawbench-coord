@@ -1,0 +1,25 @@
+{
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-clause-prefix-runtime-1017-20261029-055659.job.json",
+  "status": {
+    "lane": "B",
+    "state": "failed",
+    "exit_code": 4294967295,
+    "thread_id": "01a15d16-0864-7c83-88a9-5d6ac8330628",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-clause-prefix-runtime-order-20261029-055659.md",
+    "finished_unix": 1793224812.917695,
+    "model": "deepseek-v4.1-flash-1017",
+    "reasoning_effort": "max"
+  },
+  "actual_thread": "01a18484-8af0-72e1-9ab6-77bb9a6c0967",
+  "commands": 44,
+  "success": 38,
+  "nonzero": 6,
+  "author_runtime": 0,
+  "formal_absent": true,
+  "root_stopped_exact_pid": 15968,
+  "exe": "C:/Users/morel/AppData/Local/OpenAI/Codex/bin/08d187884f2330d1/codex.exe",
+  "birth_utc": "2026-10-28T21:57:21.1115370Z",
+  "controlled_two_OS_gone": true,
+  "stop_reason": "Author misread root-only future validation as own task; stopped before any runtime/DPAPI call. Nonsecret metadata/driver reads retained; no raw credential read.",
+  "raw_unchanged": true
+}

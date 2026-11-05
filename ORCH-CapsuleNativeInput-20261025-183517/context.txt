@@ -1,0 +1,1114 @@
+===== D:\Lawbeach\lawbench-B\service\lawbench\capsules.py =====
+"""胶囊配置（Spec 10.3；契约 skill/capsules.schema.json）。
+
+默认配置 capsules.default.json 在第一个 Skill 目录（<安装目录>/skills/）；本机配置在 <应用数据>/capsules.json。
+首次启动和"恢复默认"从默认配置复制；默认配置新增的分组和胶囊，以隐藏状态补进本机配置。
+"""
+from __future__ import annotations
+
+import copy
+import pathlib
+import threading
+
+from . import contracts, logs
+from .errors import ApiError
+
+SCHEMA = "skill/capsules.schema.json"
+
+
+class CapsuleStore:
+    def __init__(self, appdata: pathlib.Path, skills_dirs: list[pathlib.Path]):
+        self.path = pathlib.Path(appdata) / "capsules.json"
+        self.skills_dirs = [pathlib.Path(d) for d in skills_dirs]
+        self._lock = threading.Lock()
+
+    # ---------- 默认配置与已安装 Skill ----------
+
+    def default(self) -> dict:
+        data = contracts.read_json(self.skills_dirs[0] / "capsules.default.json")
+        contracts.validate(SCHEMA, "", data)
+        return data
+
+    def skill_exists(self, name: str) -> bool:
+        return any((d / name / "SKILL.md").is_file() for d in self.skills_dirs)
+
+    # ---------- 本机配置 ----------
+
+    def ensure(self) -> dict:
+        """首次启动复制默认配置；已有本机配置时把默认配置新增的分组、胶囊以隐藏状态补进去。"""
+        with self._lock:
+            default = self.default()
+            if not self.path.exists():
+                contracts.write_json(self.path, default, SCHEMA)
+                return default
+            local = contracts.read_json(self.path)
+            contracts.validate(SCHEMA, "", local)  # 损坏或 v 不认识：抛异常，接口层返回 HTTP 500；恢复用 reset
+            merged, added = _merge_new(local, default)
+            if added:
+                contracts.write_json(self.path, merged, SCHEMA)
+                logs.event("capsules", "merge_new", status="ok")
+            return merged
+
+    def get(self) -> dict:
+        return self.ensure()
+
+    def put(self, data: dict) -> dict:
+        default = self.default()
+        reason = self._check(data, default)
+        if reason:
+            logs.event("capsules", "put", status="fail", error=f"INVALID_ARGUMENT:{reason}")
+            raise ApiError("INVALID_ARGUMENT", reason)
+        with self._lock:
+            contracts.write_json(self.path, data, SCHEMA)
+        return data
+
+    def reset(self) -> dict:
+        default = self.default()
+        with self._lock:
+            contracts.write_json(self.path, default, SCHEMA)
+        return default
+
+    # ---------- PUT 校验（Spec 10.3 服务端校验） ----------
+
+    def _check(self, data: dict, default: dict) -> str | None:
+        ids: list[str] = []
+        for g in data["groups"]:
+            ids.append(g["id"])
+            for it in g["items"]:
+                ids.append(it["id"])
+                # 工具只能是 invoice、retainer：由契约 tool_item 的枚举保证
+                if it["kind"] == "skill" and not all(self.skill_exists(s) for s in it["skills"]):
+                    return "unknown_skill"
+        if len(ids) != len(set(ids)):
+            return "duplicate_id"
+        present = set(ids)
+        for g in default["groups"]:
+            if g["id"] not in present:
+                return "default_removed"
+            for it in g["items"]:
+                if it["id"] not in present:
+                    return "default_removed"
+        if data["shared"] != default["shared"] or data["hint"] != default["hint"]:
+            return "shared_or_hint_changed"
+        if not all(self.skill_exists(s) for s in data["shared"]):
+            return "unknown_skill"
+        return None
+
+
+def _merge_new(local: dict, default: dict) -> tuple[dict, bool]:
+    """升级后默认配置里新增的胶囊补进本机配置：hidden=true、new=true（契约 1.2 N35②；律师显示或隐藏一次后由界面
+    PUT /api/capsules 清掉 new）。"""
+    merged = copy.deepcopy(local)
+    present = {g["id"] for g in merged["groups"]} | {it["id"] for g in merged["groups"] for it in g["items"]}
+    groups = {g["id"]: g for g in merged["groups"]}
+    added = False
+    for dg in default["groups"]:
+        if dg["id"] not in present:
+            g = copy.deepcopy(dg)
+            g["hidden"] = True
+            g["items"] = [dict(it, hidden=True, new=True) for it in g["items"] if it["id"] not in present]
+            merged["groups"].append(g)
+            groups[g["id"]] = g
+            present.add(g["id"])
+            present.update(it["id"] for it in g["items"])
+            added = True
+            continue
+        for it in dg["items"]:
+            if it["id"] not in present:
+                groups[dg["id"]]["items"].append(dict(copy.deepcopy(it), hidden=True, new=True))  # 契约 1.2 N35②
+                present.add(it["id"])
+                added = True
+    # shared、hint 律师不能改，始终与默认配置相同
+    if merged["shared"] != default["shared"] or merged["hint"] != default["hint"]:
+        merged["shared"] = copy.deepcopy(default["shared"])
+        merged["hint"] = default["hint"]
+        added = True
+    return merged, added
+
+
+===== D:\Lawbeach\lawbench-B\service\lawbench\api\ui.py =====
+"""给界面的接口 /api/*（Spec 4.3、20.5；契约 contracts/api/）。
+
+每个接口：按契约 $defs/request 校验请求（不合格 INVALID_ARGUMENT）→ 执行 → 包成 {ok, value}；
+开发和测试环境再按 $defs/response 校验返回（Spec 20.11）。本卡实现 case_open、case_recent、settings、
+capsules、capsules_reset、connection_test；T5 加 materials_scan、materials_list、materials_import。
+"""
+from __future__ import annotations
+
+import json
+import math
+import secrets
+import time
+from typing import Callable
+
+from starlette.concurrency import run_in_threadpool
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+from starlette.routing import Route
+
+from .. import contracts, logs
+from ..errors import MESSAGES, ApiError
+
+LLM_MODEL = "qwen38-27b"  # Spec 20.7：发给网关的模型名固定
+KEY_TIMEOUT = 10.0
+
+
+def _endpoint(app_state, name: str, fn: Callable[[dict], dict], *, query: bool = False,
+              no_input: bool = False, family: str = "api"):
+    """family：契约目录（api 或 core）；日志的模块名也用它。"""
+    schema = f"{family}/{name}.schema.json"
+
+    async def handler(request: Request) -> JSONResponse:
+        t0 = time.monotonic()
+        if query:
+            data: object = dict(request.query_params)
+        else:
+            raw = await request.body()
+            try:
+                data = json.loads(raw) if raw.strip() else {}
+            except ValueError:
+                raise ApiError("INVALID_ARGUMENT", "bad_json")
+        if request.path_params and isinstance(data, dict):
+            data = {**data, **request.path_params}   # /api/pipeline/{task_id} 等：路径里的参数并进请求（T16）
+        if no_input:
+            # settings、capsules 的 $defs/request 是 PUT 的请求体；GET 不带任何参数
+            if data:
+                raise ApiError("INVALID_ARGUMENT", "unexpected_query")
+        elif contracts.errors(schema, "#/$defs/request", data):
+            raise ApiError("INVALID_ARGUMENT", "request_contract")
+        value = await run_in_threadpool(fn, data)
+        body = {"ok": True, "value": value}
+        if app_state.config.validate_responses:
+            contracts.validate(schema, "#/$defs/response", body)
+        case_id = value.get("case_id") if isinstance(value, dict) else None
+        logs.event(family, name, case_id=case_id, duration_ms=(time.monotonic() - t0) * 1000)
+        return JSONResponse(body)
+
+    return handler
+
+
+def routes(st) -> list[Route]:
+    """st：app.state（带 config、cases、settings、capsules、net、key_getter）。"""
+
+    def case_open(d: dict) -> dict:
+        value = st.cases.open(d["path"], d.get("template"), d.get("folders"), d.get("kind"))
+        st.tasks.mark_abnormal(value["case_id"])  # 上次硬退出时仍在执行的任务标"异常中断"（Spec 9.2）
+        st.ocr.resume_case(value["case_id"])      # 案件文件夹拔掉又插回等：接着做它未完成的识别任务（T12 复核）
+        return value
+
+    def task_create(d: dict) -> dict:
+        return st.tasks.create(d)
+
+    def tasks_list(d: dict) -> dict:
+        return st.tasks.list(d["case_id"])
+
+    def task_current(d: dict) -> dict:
+        return st.tasks.current(d["session_id"])
+
+    def outputs_list(d: dict) -> dict:
+        return st.tasks.outputs(d["case_id"])
+
+    def documents_save(d: dict) -> dict:
+        from ..tools.drafts import save_document_ui
+        return save_document_ui(st.tasks, st.materials, st.config.skills_dirs, d)
+
+    def search(d: dict) -> dict:  # T9：律师检索，返回结构同 case_search
+        from ..search import fts
+        return fts.search(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]), d["q"])
+
+    def source(d: dict) -> dict:  # T9（T14 派修）：原文查看
+        from ..case import source as src
+        return src.view(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]),
+                        d["material_id"], d["citation"], d.get("task_id"), materials=st.materials)
+
+    def case_forget(d: dict) -> dict:        # 契约 1.4：从最近案件里移除（只删登记，不动案件文件夹）
+        return st.cases.forget(d["case_id"])
+
+    def case_recent(d: dict) -> dict:
+        return {"cases": st.cases.recent()}
+
+    def settings_get(d: dict) -> dict:
+        return st.settings.get()
+
+    def settings_put(d: dict) -> dict:
+        st.net.check_servers(d["servers"])  # 6000D 地址不能指向本机转发端口自己
+        return st.settings.put(d)
+
+    def capsules_get(d: dict) -> dict:
+        return st.capsules.get()
+
+    def capsules_put(d: dict) -> dict:
+        return st.capsules.put(d)
+
+    def capsules_reset(d: dict) -> dict:
+        return st.capsules.reset()
+
+    def materials_scan(d: dict) -> dict:
+        return st.materials.scan(d["case_id"])
+
+    def materials_list(d: dict) -> dict:
+        return st.materials.list(d["case_id"])
+
+    def materials_import(d: dict) -> dict:
+        return st.materials.import_(
+            d["case_id"], d["paths"], d["target"], d["unzip"], mode=d.get("mode", "copy")
+        )
+
+    def materials_relocate(d: dict) -> dict:
+        return st.materials.relocate(d["case_id"], d["ref_id"], d["path"])
+
+    def materials_remove(d: dict) -> dict:    # 契约 1.4：律师移除材料（原件进回收站）
+        return st.materials.remove(d["case_id"], d["material_ids"])
+
+    def prompt_refine(d: dict) -> dict:
+        from ..pipeline import refine
+        material_names = (
+            [m["name"] for m in st.materials.index(d["case_id"])["materials"]]
+            if d.get("case_id") else []
+        )
+        return refine.refine(
+            st.net,
+            st.key_getter,
+            st.config.skills_dirs,
+            d["text"],
+            d.get("skill"),
+            material_names,
+        )
+
+    def connection_test(d: dict) -> dict:
+        return probe_connection(st, d["server"])
+
+    # T16：流水线与 wiki 修改建议
+    def pipeline_run(d: dict) -> dict:
+        return st.pipelines.run(d)
+
+    def pipeline_status(d: dict) -> dict:
+        return st.pipelines.status(d["task_id"])
+
+    def pipeline_cancel(d: dict) -> dict:
+        return st.pipelines.cancel(d["task_id"])
+
+    def wiki_suggestions(d: dict) -> dict:
+        from ..wiki import suggestions
+        return suggestions.handle(st.cases.root_of(d["case_id"]), d.get("id"), d.get("accept"))
+    def wiki_review_get(d: dict) -> dict:     # 契约 1.4：wiki 核对状态（记在案件里）
+        from ..wiki import review
+        return review.get(st.cases.root_of(d["case_id"]), st.materials.index(d["case_id"]))
+
+    def wiki_review_mark(d: dict) -> dict:
+        from ..wiki import review
+        return review.mark(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]))
+
+    def invoice_run(d: dict) -> dict:
+        return st.invoice.run(d)
+
+    def retainer_driver(d: dict) -> dict:
+        return st.retainer.handle(d)
+
+    def outputs_confirm(d: dict) -> dict:
+        return st.exporter.confirm(d)
+
+    def redline(d: dict) -> dict:
+        return st.exporter.redline(d)
+
+    def archive_build(d: dict) -> dict:
+        return st.archive.build(d)
+
+    def ocr_submit(d: dict) -> dict:
+        return st.ocr.submit(d)
+
+    def ocr_list(d: dict) -> dict:
+        return st.ocr.list(d["case_id"])
+
+    def ocr_cancel(d: dict) -> dict:
+        return st.ocr.cancel(d["job_id"])
+
+    E = lambda name, fn, **kw: _endpoint(st, name, fn, **kw)  # noqa: E731
+    return [
+        Route("/api/case/open", E("case_open", case_open), methods=["POST"]),
+        Route("/api/case/recent", E("case_recent", case_recent, query=True), methods=["GET"]),
+        Route("/api/case/forget", E("case_forget", case_forget), methods=["POST"]),
+        Route("/api/settings", E("settings", settings_get, query=True, no_input=True), methods=["GET"]),
+        Route("/api/settings", E("settings", settings_put), methods=["PUT"]),
+        Route("/api/capsules", E("capsules", capsules_get, query=True, no_input=True), methods=["GET"]),
+        Route("/api/capsules", E("capsules", capsules_put), methods=["PUT"]),
+        Route("/api/capsules/reset", E("capsules_reset", capsules_reset), methods=["POST"]),
+        Route("/api/materials/scan", E("materials_scan", materials_scan), methods=["POST"]),
+        Route("/api/materials", E("materials_list", materials_list, query=True), methods=["GET"]),
+        Route("/api/materials/import", E("materials_import", materials_import), methods=["POST"]),
+        Route("/api/materials/relocate", E("materials_relocate", materials_relocate), methods=["POST"]),
+        Route("/api/materials/remove", E("materials_remove", materials_remove), methods=["POST"]),
+        Route("/api/prompt/refine", E("prompt_refine", prompt_refine), methods=["POST"]),
+        Route("/api/connection/test", E("connection_test", connection_test), methods=["POST"]),
+        Route("/api/task", E("task_create", task_create), methods=["POST"]),
+        Route("/api/tasks", E("tasks_list", tasks_list, query=True), methods=["GET"]),
+        Route("/api/task/current", E("task_current", task_current, query=True), methods=["GET"]),
+        Route("/api/outputs", E("outputs_list", outputs_list, query=True), methods=["GET"]),
+        Route("/api/outputs/confirm", E("outputs_confirm", outputs_confirm), methods=["POST"]),
+        Route("/api/documents/save", E("documents_save", documents_save), methods=["POST"]),
+        Route("/api/redline", E("redline", redline), methods=["POST"]),
+        Route("/api/archive/build", E("archive_build", archive_build), methods=["POST"]),
+        Route("/api/search", E("search", search, query=True), methods=["GET"]),
+        Route("/api/source", E("source", source, query=True), methods=["GET"]),
+        Route("/api/pipeline/run", E("pipeline_run", pipeline_run), methods=["POST"]),
+        Route("/api/pipeline/{task_id}", E("pipeline_status", pipeline_status, query=True), methods=["GET"]),
+        Route("/api/pipeline/{task_id}/cancel", E("pipeline_cancel", pipeline_cancel), methods=["POST"]),
+        Route("/api/wiki/review", E("wiki_review", wiki_review_get, query=True), methods=["GET"]),
+        Route("/api/wiki/review", E("wiki_review", wiki_review_mark), methods=["POST"]),
+        Route("/api/wiki/suggestions", E("wiki_suggestions", wiki_suggestions, query=True), methods=["GET"]),
+        Route("/api/wiki/suggestions/{id}", E("wiki_suggestions", wiki_suggestions), methods=["POST"]),
+        Route("/api/invoice/run", E("invoice_run", invoice_run), methods=["POST"]),
+        Route("/api/retainer/driver", E("retainer_driver", retainer_driver), methods=["POST"]),
+        Route("/api/ocr/jobs", E("ocr_submit", ocr_submit), methods=["POST"]),
+        Route("/api/ocr/jobs", E("ocr_list", ocr_list, query=True), methods=["GET"]),
+        Route("/api/ocr/jobs/{job_id}/cancel", E("ocr_cancel", ocr_cancel), methods=["POST"]),
+    ]
+
+
+def probe_connection(st, server: str) -> dict:
+    """对所内、所外地址依次探测；6000D 另发 max_tokens=1 请求判断 Key（Spec 20.7；6000D 目前不校验 Key）。"""
+    net = st.net
+    t0 = time.perf_counter()
+    try:
+        base, route = net.select(server, force=True)
+    except ApiError as e:
+        return {"reachable": False, "key_valid": None, "latency_ms": None, "route": None,
+                "message": MESSAGES[e.code]}
+    latency = math.ceil((time.perf_counter() - t0) * 1000)
+    where = "所内" if route == "primary" else "所外"
+    key_valid = None
+    note = ""
+    if server == "llm":
+        try:
+            key = st.key_getter()
+        except Exception:  # noqa: BLE001 凭据管理器读取出错（已按类名记日志）：不能说成"尚未设置"
+            key, note = None, "，Key 暂时无法验证"
+        else:
+            if not key:
+                note = "，尚未设置 Key"
+        if key:
+            try:
+                t1 = time.perf_counter()
+                code = _key_probe(net, base, key)
+                latency = math.ceil((time.perf_counter() - t1) * 1000)   # 真实请求的耗时；perf_counter：Windows 上 monotonic 约 16 毫秒一跳，快的请求会显示 0（T14）
+                if code in (401, 403):
+                    key_valid, note = False, "，" + MESSAGES["KEY_INVALID"]
+                elif code != 200:
+                    note = "，Key 暂时无法验证"
+                else:
+                    # 网关不校验 Key 时假 Key 也回 200：再发一次明显无效的 Key，它被拒才算真 Key 有效（T14 第二次实跑）
+                    bogus = _key_probe(net, base, "invalid-" + secrets.token_hex(8))
+                    if bogus in (401, 403):
+                        key_valid = True
+                    elif bogus == 200:
+                        note = "，网关当前未校验 Key，无法确认 Key 是否正确"
+                    else:
+                        note = "，Key 暂时无法验证"
+            except Exception as e:  # noqa: BLE001 连接中断等：连通性已确认，Key 状态未知
+                logs.event("api", "connection_test_key", status="fail", error=type(e).__name__)
+                note = "，Key 暂时无法验证"
+    return {"reachable": True, "key_valid": key_valid, "latency_ms": latency, "route": route,
+            "message": f"已连接（{where}）{note}"}
+
+
+def _key_probe(net, base: str, key: str) -> int:
+    """max_tokens=1 的非流式请求，返回状态码。Key 只放在请求头里，不进日志。"""
+    return net.client.post(base + "/chat/completions", timeout=KEY_TIMEOUT, headers={"Authorization": f"Bearer {key}"},
+                           json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "ping"}],
+                                 "max_tokens": 1, "stream": False}).status_code
+
+
+===== D:\Lawbeach\lawbench-B\contracts\api\capsules.schema.json =====
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/capsules.schema.json",
+  "title": "GET / PUT /api/capsules",
+  "description": "读写本机胶囊配置 <应用数据>/capsules.json；PUT 传完整对象，服务端校验 Skill 和工具是否存在",
+  "$defs": {
+    "request": {
+      "$ref": "lawbench://contracts/skill/capsules.schema.json"
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "lawbench://contracts/skill/capsules.schema.json"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "$ref": "lawbench://contracts/skill/capsules.schema.json"
+    }
+  }
+}
+
+
+===== D:\Lawbeach\lawbench-B\contracts\api\capsules_reset.schema.json =====
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/capsules_reset.schema.json",
+  "title": "POST /api/capsules/reset",
+  "description": "恢复默认胶囊（用安装目录里的 capsules.default.json 覆盖本机配置）",
+  "$defs": {
+    "request": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "required": []
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "lawbench://contracts/skill/capsules.schema.json"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "$ref": "lawbench://contracts/skill/capsules.schema.json"
+    }
+  }
+}
+
+
+===== D:\Lawbeach\lawbench-B\contracts\skill\capsules.schema.json =====
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/skill/capsules.schema.json",
+  "title": "skills/capsules.default.json 与 <应用数据>/capsules.json",
+  "description": "首页两级胶囊：一级为分组，二级为胶囊；胶囊打开一组 Skill（kind=skill）或一个内置工具（kind=tool）。律师只能排序、改名、隐藏和新增，不能删除；恢复默认用 capsules.default.json",
+  "$defs": {
+    "skill_item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12
+        },
+        "kind": {
+          "const": "skill"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "minItems": 1,
+          "description": "按推荐顺序；第一个是点胶囊后默认选中的 Skill"
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "custom": {
+          "type": "boolean",
+          "description": "律师自己新增的胶囊"
+        },
+        "new": {
+          "type": "boolean",
+          "description": "升级时由默认配置新补进本机配置、律师还没处理过的胶囊（补进来时 hidden=true）；首页据此提示“有新功能”；律师在管理胶囊里显示或隐藏它一次后清掉（1.2 起，可缺省）"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "skills",
+        "outputs",
+        "hidden",
+        "custom"
+      ]
+    },
+    "tool_item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 12
+        },
+        "kind": {
+          "const": "tool"
+        },
+        "tool": {
+          "enum": [
+            "invoice",
+            "retainer"
+          ],
+          "description": "invoice=发票整理面板；retainer=委托材料窗口"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "custom": {
+          "type": "boolean"
+        },
+        "new": {
+          "type": "boolean",
+          "description": "同 skill 胶囊（1.2 起，可缺省）"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "tool",
+        "hidden",
+        "custom"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "hint": {
+      "type": "string",
+      "description": "首页顶部的分流提示语"
+    },
+    "shared": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "description": "每个 Skill 胶囊里都能用的共用 Skill"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/skill_item"
+                },
+                {
+                  "$ref": "#/$defs/tool_item"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "hidden",
+          "items"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "v",
+    "hint",
+    "shared",
+    "groups"
+  ]
+}
+
+
+===== D:\Lawbeach\lawbench-B\skills\capsules.default.json =====
+{
+  "v": 1,
+  "hint": "公开法律研究、法条和案例查询建议使用线上大模型；涉及隐私、商业秘密或非公开案卷的材料进入本机案件。",
+  "shared": ["case-wiki-build", "legal-workflow"],
+  "groups": [
+    {
+      "id": "civil",
+      "name": "民事与商事",
+      "hidden": false,
+      "items": [
+        {"id": "contract-review", "name": "合同审查", "kind": "skill", "skills": ["contract-review", "pre-issue-check", "doc-revise"], "outputs": ["合同审查意见", "带修订痕迹的 Word"], "hidden": false, "custom": false},
+        {"id": "contract-draft", "name": "合同起草", "kind": "skill", "skills": ["contract-draft", "contract-review", "pre-issue-check", "doc-revise"], "outputs": ["合同初稿", "待补事实清单"], "hidden": false, "custom": false},
+        {"id": "litigation-docs", "name": "诉讼文书起草", "kind": "skill", "skills": ["litigation-docs", "pre-issue-check", "doc-revise"], "outputs": ["起诉状", "答辩状", "上诉状", "代理词"], "hidden": false, "custom": false}
+      ]
+    },
+    {
+      "id": "criminal",
+      "name": "刑事案件",
+      "hidden": false,
+      "items": [
+        {"id": "case-analysis", "name": "案卷分析", "kind": "skill", "skills": ["criminal-reading-notes", "criminal-evidence-review", "pre-issue-check", "doc-revise"], "outputs": ["刑事阅卷笔录", "证据审查意见"], "hidden": false, "custom": false},
+        {"id": "sentence-calc", "name": "刑期计算", "kind": "skill", "skills": ["sentence-calc"], "outputs": ["刑期计算表", "量刑分析"], "hidden": false, "custom": false},
+        {"id": "bail-application", "name": "取保候审/不予逮捕申请", "kind": "skill", "skills": ["criminal-applications", "pre-issue-check", "doc-revise"], "outputs": ["取保候审申请书", "不予批准逮捕法律意见书"], "hidden": false, "custom": false},
+        {"id": "defense-opinion", "name": "辩护词起草", "kind": "skill", "skills": ["defense-opinion", "pre-issue-check", "doc-revise"], "outputs": ["辩护词"], "hidden": false, "custom": false},
+        {"id": "cross-exam", "name": "质证意见起草", "kind": "skill", "skills": ["cross-exam-opinion", "pre-issue-check", "doc-revise"], "outputs": ["质证意见"], "hidden": false, "custom": false}
+      ]
+    },
+    {
+      "id": "office",
+      "name": "日常办公",
+      "hidden": false,
+      "items": [
+        {"id": "invoice", "name": "发票整理", "kind": "tool", "tool": "invoice", "hidden": false, "custom": false},
+        {"id": "lawyer-letter", "name": "律师函起草", "kind": "skill", "skills": ["general-drafting", "pre-issue-check", "doc-revise"], "outputs": ["律师函"], "hidden": false, "custom": false},
+        {"id": "bidding", "name": "招投标材料处理", "kind": "skill", "skills": ["tender-review", "bid-drafting", "pre-issue-check", "doc-revise"], "outputs": ["招标文件审查意见", "投标文件初稿"], "hidden": false, "custom": false},
+        {"id": "retainer", "name": "文件生成", "kind": "tool", "tool": "retainer", "hidden": false, "custom": false},
+        {"id": "archiving", "name": "案卷归档", "kind": "skill", "skills": ["case-archiving"], "outputs": ["结案报告", "归档目录", "卷宗 PDF", "立卷申请书"], "hidden": false, "custom": false},
+        {"id": "general-docs", "name": "通用文书", "kind": "skill", "skills": ["general-drafting", "case-reading-notes", "pre-issue-check", "doc-revise"], "outputs": ["法律意见书", "案件分析报告", "民事阅卷笔录"], "hidden": false, "custom": false}
+      ]
+    }
+  ]
+}
+
+
+===== D:\Lawbeach\lawbench-A\dsh-ext\ui\home.tsx =====
+// 首页（PRD 6.3、7.9；Spec U-11、U-12；令 1426 升级为大首页，见 home-page.tsx）："发票整理"在这里换成发票页（U-13）。
+// 用户 10-04 改版（执行令 1156 第 3 条）：两层胶囊和分流提示挪到输入框上方（dock.tsx），胶囊管理挪到设置页（CapsuleSettings）。
+import { useEffect, useMemo, useState, type DragEvent } from 'react'
+import { Modal } from '@deepseek-ai/dsh-client-ui-primitives'
+import { addCapsule, checkBeforeSave, moveCapsule, moveGroup, newCapsules, rename, toggleHidden, TOOL_WORD, type Capsules } from './capsules.ts'
+import { Badge, Button, C, Empty, ErrorLine, Loading, S, useLoad } from './kit.tsx'
+import { call, confirm, lb, MODE_AGENT, notice, type SkillInfo } from './state.ts'
+import { useStore } from './store.ts'
+import { errorText, lawyerMessage } from './format.ts'
+import { forgetDockCache } from './dock.tsx'
+import { homeView } from './invoice-logic.ts'
+import { InvoicePage } from './invoice.tsx'
+import { HomeLanding } from './home-page.tsx'
+
+export function HomePage() {
+  const view = useStore(homeView, (v) => v)
+  return view === 'invoice' ? <InvoicePage /> : <HomeLanding banner={<SelfCheckBanner />} />
+}
+
+/** 设置页"胶囊"一节（U-11 保留在设置页）：点"管理胶囊"进入排序、改名、隐藏、新增；保存后输入区重读。 */
+export function CapsuleSettings() {
+  const [caps, reload] = useLoad(() => call<Capsules>('getCapsules'), [])
+  const [skills] = useLoad(async () => { try { return await lb().listSkills() } catch (e) { return { ok: false as const, error: { code: 'SERVICE_UNAVAILABLE', message: lawyerMessage((e as Error).message) } } } }, [])
+  const [managing, setManaging] = useState(false)
+  const skillList = skills.state === 'ok' ? skills.value.skills : []
+  if (!managing) {
+    const fresh = caps.state === 'ok' ? newCapsules(caps.value) : []
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        {fresh.length ? <div role="note" style={{ color: C.text }}>有新功能，可在管理胶囊中显示：{fresh.map((x) => x.name).join('、')}</div> : null}
+        <div><Button size="sm" variant="outline" disabled={caps.state !== 'ok'} onClick={() => setManaging(true)}>管理胶囊</Button></div>
+        {caps.state === 'fail' ? <ErrorLine error={caps.error} /> : null}
+      </div>
+    )
+  }
+  return (
+    <Loading data={caps}>{(c) => <CapsuleManager initial={c} skills={skillList} onDone={() => { setManaging(false); forgetDockCache(); void reload() }} />}</Loading>
+  )
+}
+
+/** 胶囊管理（U-11、F-CAP-02）：拖动排序（同组、跨组）、点名字改名、眼睛图标隐藏 / 显示、新增、恢复默认。没有删除。 */
+function CapsuleManager({ initial, skills, onDone }: { initial: Capsules; skills: SkillInfo[]; onDone: () => void }) {
+  const [c, setC] = useState(initial)
+  const [editing, setEditing] = useState<string | null>(null)
+  const [dragging, setDragging] = useState<{ kind: 'item' | 'group'; id: string } | null>(null)
+  const [adding, setAdding] = useState(false)
+  const [err, setErr] = useState<string | null>(null)
+  const installed = useMemo(() => new Set(skills.map((s) => s.name)), [skills])
+  const title = (name: string) => skills.find((s) => s.name === name)?.title ?? name
+  const dirty = JSON.stringify(c) !== JSON.stringify(initial)
+
+  const doRename = (id: string, name: string) => {
+    const r = rename(c, id, name)
+    if (typeof r === 'string') { setErr(r); return }
+    setErr(null); setC(r); setEditing(null)
+  }
+  const dropOn = (groupId: string, index: number) => (e: DragEvent) => {
+    e.preventDefault(); e.stopPropagation()
+    if (!dragging) return
+    if (dragging.kind === 'item') setC(moveCapsule(c, dragging.id, groupId, index))
+    else setC(moveGroup(c, dragging.id, c.groups.findIndex((g) => g.id === groupId)))
+    setDragging(null)
+  }
+  const save = async () => {
+    const problems = checkBeforeSave(c, initial)
+    if (problems.length) { setErr(problems.join('；')); return }
+    const r = await call<Capsules>('putCapsules', c)
+    if (!r.ok) { setErr(errorText(r.error)); return }
+    onDone()
+  }
+  const reset = async () => {
+    if (!await confirm('恢复默认胶囊', '用默认配置覆盖你对胶囊做的排序、改名、隐藏和新增。恢复后不能撤销。', '恢复默认')) return
+    const r = await call<Capsules>('capsulesReset', {})
+    if (!r.ok) { setErr(errorText(r.error)); return }
+    onDone()
+  }
+  const cancel = async () => { if (!dirty || await confirm('放弃修改', '刚才对胶囊做的修改还没保存，要放弃吗？', '放弃')) onDone() }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={S.between}>
+        <div>
+          <h2 style={S.h2}>管理胶囊</h2>
+          <div style={S.sub}>拖动胶囊或分组调整顺序；点名字改名；点"隐藏 / 显示"切换首页是否显示。只影响这台电脑。</div>
+        </div>
+        <div style={S.row}>
+          <Button variant="outline" size="sm" onClick={() => setAdding(true)}>新增胶囊</Button>
+          <Button variant="outline" size="sm" onClick={() => void reset()}>恢复默认</Button>
+          <Button variant="outline" size="sm" onClick={() => void cancel()}>取消</Button>
+          <Button variant="primary" size="sm" disabled={!dirty} onClick={() => void save()}>保存</Button>
+        </div>
+      </div>
+      {err ? <div role="alert" style={{ color: C.err, fontSize: 12 }}>{err}</div> : null}
+      <div style={{ ...S.card, color: C.faint, fontSize: 12 }}>分流提示（不能修改）：{c.hint}</div>
+      {c.groups.map((g) => (
+        <div key={g.id} draggable onDragStart={(e) => { e.stopPropagation(); setDragging({ kind: 'group', id: g.id }) }}
+          onDragOver={(e) => e.preventDefault()} onDrop={dropOn(g.id, g.items.length)}
+          style={{ ...S.card, opacity: g.hidden ? 0.55 : 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={S.between}>
+            <NameEdit id={g.id} name={g.name} editing={editing === g.id} onEdit={setEditing} onSave={doRename} strong />
+            <HideToggle hidden={g.hidden} onClick={() => setC(toggleHidden(c, g.id))} />
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+            {g.items.map((item, i) => (
+              <div key={item.id} draggable onDragStart={(e) => { e.stopPropagation(); setDragging({ kind: 'item', id: item.id }) }}
+                onDragOver={(e) => e.preventDefault()} onDrop={dropOn(g.id, i)}
+                title="拖动调整顺序"
+                style={{ border: `1px dashed ${C.border}`, borderRadius: C.rMd, padding: '6px 10px', minWidth: 170, cursor: 'grab', opacity: item.hidden ? 0.55 : 1, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <div style={S.between}>
+                  <span style={S.row}>
+                    <NameEdit id={item.id} name={item.name} editing={editing === item.id} onEdit={setEditing} onSave={doRename} />
+                    {item.new ? <Badge tone="info">新</Badge> : null}
+                  </span>
+                  <HideToggle hidden={item.hidden} onClick={() => setC(toggleHidden(c, item.id))} />
+                </div>
+                <span style={S.sub}>{item.kind === 'skill' ? item.skills.map(title).join(' → ') : `内置工具：${TOOL_WORD[item.tool]}`}{item.custom ? '（自己新增的）' : ''}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      {adding ? <AddCapsule c={c} skills={skills} installed={installed} onClose={() => setAdding(false)} onAdd={(next) => { setC(next); setAdding(false) }} /> : null}
+    </div>
+  )
+}
+
+function NameEdit({ id, name, editing, onEdit, onSave, strong }: { id: string; name: string; editing: boolean; onEdit: (id: string | null) => void; onSave: (id: string, name: string) => void; strong?: boolean }) {
+  const [v, setV] = useState(name)
+  useEffect(() => setV(name), [name, editing])
+  if (!editing) {
+    return <button type="button" title="点击改名" onClick={() => onEdit(id)} style={{ font: 'inherit', fontWeight: strong ? 600 : 500, color: C.text, background: 'none', border: 'none', padding: 0, cursor: 'text' }}>{name}</button>
+  }
+  return (
+    <input autoFocus aria-label="新名称" style={{ ...S.input, width: 140 }} value={v} onChange={(e) => setV(e.target.value)}
+      onKeyDown={(e) => { if (e.key === 'Enter') onSave(id, v); if (e.key === 'Escape') onEdit(null) }} onBlur={() => onSave(id, v)} />
+  )
+}
+
+function HideToggle({ hidden, onClick }: { hidden: boolean; onClick: () => void }) {
+  return (
+    <button type="button" onClick={onClick} aria-pressed={hidden} title={hidden ? '现在隐藏，点击显示' : '现在显示，点击隐藏'}
+      style={{ font: 'inherit', fontSize: 12, color: hidden ? C.faint : C.sub, background: 'none', border: `1px solid ${C.border}`, borderRadius: 999, padding: '0 8px', cursor: 'pointer' }}>
+      {hidden ? '◌ 已隐藏' : '◉ 显示中'}
+    </button>
+  )
+}
+
+/** 新增胶囊：选一组 Skill（按顺序）或一个内置工具，并起名（F-CAP-02）。 */
+function AddCapsule({ c, skills, installed, onClose, onAdd }: { c: Capsules; skills: SkillInfo[]; installed: ReadonlySet<string>; onClose: () => void; onAdd: (c: Capsules) => void }) {
+  const [name, setName] = useState('')
+  const [groupId, setGroupId] = useState(c.groups[0]?.id ?? '')
+  const [kind, setKind] = useState<'skill' | 'tool'>('skill')
+  const [picked, setPicked] = useState<string[]>([])
+  const [tool, setTool] = useState<'invoice' | 'retainer'>('invoice')
+  const [err, setErr] = useState<string | null>(null)
+  const toggle = (n: string) => setPicked((p) => p.includes(n) ? p.filter((x) => x !== n) : [...p, n])
+  const add = () => {
+    const r = addCapsule(c, groupId, name, kind === 'skill' ? { kind, skills: picked } : { kind, tool }, installed)
+    if (typeof r === 'string') setErr(r); else onAdd(r)
+  }
+  return (
+    <Modal open onClose={onClose} title="新增胶囊" closeLabel="关闭"
+      footer={<><Button variant="outline" onClick={onClose}>取消</Button><Button variant="primary" onClick={add}>加入</Button></>}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <label style={S.row}>名称<input style={{ ...S.input, flex: 1 }} maxLength={12} value={name} onChange={(e) => setName(e.target.value)} placeholder="最多 12 个字" /></label>
+        <label style={S.row}>放在
+          <select style={S.input} value={groupId} onChange={(e) => setGroupId(e.target.value)}>
+            {c.groups.map((g) => <option key={g.id} value={g.id}>{g.name}</option>)}
+          </select>
+        </label>
+        <div style={S.row}>
+          <label style={S.row}><input type="radio" checked={kind === 'skill'} onChange={() => setKind('skill')} />一组 Skill</label>
+          <label style={S.row}><input type="radio" checked={kind === 'tool'} onChange={() => setKind('tool')} />内置工具</label>
+        </div>
+        {kind === 'skill' ? (
+          <div style={{ maxHeight: 240, overflow: 'auto', display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <div style={S.sub}>按勾选顺序排列，第一个是点胶囊后默认选中的。</div>
+            {skills.filter((s) => s.mode === MODE_AGENT).map((s) => (
+              <label key={s.name} style={S.row}>
+                <input type="checkbox" checked={picked.includes(s.name)} onChange={() => toggle(s.name)} />
+                {s.title}{picked.includes(s.name) ? <Badge tone="info">第 {picked.indexOf(s.name) + 1}</Badge> : null}
+              </label>
+            ))}
+            {skills.length === 0 ? <Empty>没有读到已安装的 Skill</Empty> : null}
+          </div>
+        ) : (
+          <div style={S.row}>
+            {(['invoice', 'retainer'] as const).map((t) => (
+              <label key={t} style={S.row}><input type="radio" checked={tool === t} onChange={() => setTool(t)} />{TOOL_WORD[t]}</label>
+            ))}
+          </div>
+        )}
+        {err ? <div role="alert" style={{ color: C.err, fontSize: 12 }}>{err}</div> : null}
+      </div>
+    </Modal>
+  )
+}
+
+export { notice }
+
+type CheckItem = { id: string; level: 'ok' | 'warn' | 'error'; message: string }
+/** 律师点过"知道了"就不再显示（本次运行内）。 */
+let selfCheckDismissed = false
+
+/** 启动自检（T20 准备）：内置 Python、分词文件、LibreOffice、pandoc、管理员 Skill 目录、缓存路径有问题时在首页提示，不拦使用。 */
+export function SelfCheckBanner() {
+  const [items, setItems] = useState<CheckItem[]>([])
+  const [hidden, setHidden] = useState(selfCheckDismissed)
+  useEffect(() => { void call<{ items: CheckItem[] }>('selfCheck').then((r) => { if (r.ok) setItems(r.value.items) }) }, [])
+  if (hidden || items.length === 0) return null
+  return (
+    <div role="alert" style={{ ...S.card, borderColor: items.some((i) => i.level === 'error') ? C.err : C.warn, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={S.between}>
+        <span style={{ fontWeight: 600 }}>启动检查发现 {items.length} 个问题</span>
+        <Button size="sm" variant="outline" onClick={() => { selfCheckDismissed = true; setHidden(true) }}>知道了</Button>
+      </div>
+      <ul style={{ ...S.list, fontSize: 12 }}>
+        {items.map((i) => <li key={i.id} style={{ color: i.level === 'error' ? C.err : C.text }}>{i.message}</li>)}
+      </ul>
+    </div>
+  )
+}
+
+
+===== Exact native app/state/auth source (root read, no runtime) =====
+"""工作台服务的 ASGI 应用：令牌校验、/health、统一返回体与错误码（Spec 1.3、20.1）。"""
+from __future__ import annotations
+
+import contextlib
+import copy
+import hmac
+import types
+
+import httpx
+from starlette.applications import Starlette
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.requests import Request
+from starlette.responses import JSONResponse, Response
+from starlette.routing import Route
+
+from . import contracts, logs
+from .api import core, ui
+from .archive.build import ArchiveBuilder
+from .capsules import CapsuleStore
+from .case.materials import Materials
+from .export.outputs import Exporter
+from .ingest import libreoffice
+from .invoice.runner import InvoiceRunner
+from .ocr.queue import OcrQueue
+from .retainer.driver import RetainerDriver
+from .case.registry import CaseRegistry
+from .case.task import TaskStore
+from .config import Config
+from .errors import ApiError, fail_body
+from .external_llm import DEFAULT as EXTERNAL_LLM_DEFAULT, ExternalLLMPolicy
+from .net import Net
+from .settings import DEFAULTS, SettingsStore
+
+KEYRING_SERVICE = "lawbench/LAWFIRM_KEY"  # Spec 8.1
+EXTERNAL_KEYRING_SERVICE = "lawbench/EXTERNAL_LLM_KEY"
+KEYRING_USER = "lawbench"
+
+
+def keyring_key() -> str | None:
+    """从 Windows 凭据管理器读律师 Key；只读，不缓存到文件（Spec 8.1）。没设置返回 None，读取出错照常抛出。"""
+    try:
+        import keyring
+        return keyring.get_password(KEYRING_SERVICE, KEYRING_USER)
+    except Exception as e:
+        logs.event("app", "keyring_read", status="fail", error=type(e).__name__)
+        raise
+
+
+def external_keyring_key() -> str | None:
+    """外部模型 Key 的默认只读 getter；由这里的代码静态定义，服务启动不主动读取。"""
+    try:
+        import keyring
+        return keyring.get_password(EXTERNAL_KEYRING_SERVICE, KEYRING_USER)
+    except Exception as e:
+        logs.event("app", "external_keyring_read", status="fail", error=type(e).__name__)
+        raise
+
+
+def create_app(config: Config, *, key_getter=None, external_key_getter=None,
+                transport: httpx.BaseTransport | None = None) -> Starlette:
+    contracts.set_contracts_dir(config.contracts_dir)
+    logs.setup(config.appdata)
+    config.appdata.mkdir(parents=True, exist_ok=True)
+
+    st = types.SimpleNamespace()
+    st.config = config
+    st.cases = CaseRegistry(config.appdata, config.contracts_dir / "case_db.sql")
+    lo_base = config.appdata / "临时" / "lo"
+    libreoffice.cleanup_base(lo_base)  # 清掉上次留下的 LibreOffice 配置目录（里面有"最近打开的文件"记录，SEC-11）
+    st.materials = Materials(st.cases, lo_base=lo_base, ref_context=st.cases.ref_context_for)
+    st.settings = SettingsStore(config.appdata)
+    st.settings.migrate()  # 旧版默认温度 0.3 → 0.6（只改没动过的，只做一次）
+    st.tasks = TaskStore(st.cases, st.settings, st.materials)
+    st.capsules = CapsuleStore(config.appdata, config.skills_dirs)
+    st.invoice = InvoiceRunner(st.settings, config.appdata)
+    st.retainer = RetainerDriver()
+    st.archive = ArchiveBuilder(st.cases, st.tasks, st.materials, st.settings, config.skills_dirs, lo_base)  # T23
+    st.exporter = Exporter(st.cases, st.tasks, st.materials, st.settings, config.skills_dirs)  # 确认保存、修订版（T15）
+    try:
+        loaded_settings = st.settings.get()
+        servers = loaded_settings["servers"]
+        external_settings = loaded_settings.get("external_llm", EXTERNAL_LLM_DEFAULT)
+    except Exception as e:  # noqa: BLE001 settings.json 损坏：服务照常起来，先用默认地址，设置接口返回错误
+        logs.event("app", "settings_load", status="fail", error=type(e).__name__)
+        servers = copy.deepcopy(DEFAULTS["servers"])
+        external_settings = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
+    try:
+        st.net = Net(servers, transport=transport, forward_port=config.forward_port)
+    except Exception as e:  # noqa: BLE001 设置里的地址不合格（指向转发端口自己、解析时出了没预料到的错）：先用默认地址（N43）
+        logs.event("app", "settings_load", status="fail",
+                   error=f"{e.code}:{e.reason}" if isinstance(e, ApiError) else type(e).__name__)
+        st.net = Net(copy.deepcopy(DEFAULTS["servers"]), transport=transport, forward_port=config.forward_port)
+    try:
+        st.external = ExternalLLMPolicy({"external_llm": external_settings})
+    except ValueError as e:
+        logs.event("app", "external_llm_policy_load", status="fail", error=type(e).__name__)
+        st.external = ExternalLLMPolicy({"external_llm": copy.deepcopy(EXTERNAL_LLM_DEFAULT)})
+    st.external_key_getter = external_key_getter or external_keyring_key
+
+    def settings_changed(s) -> None:
+        st.net.update(s["servers"])
+        st.external.update(s)
+
+    st.settings.on_change(settings_changed)
+    from .pipeline import Pipelines  # T16
+    st.pipelines = Pipelines(cases=st.cases, tasks=st.tasks, materials=st.materials, net=st.net,
+                             key_getter=lambda: st.key_getter(), skills_dirs=config.skills_dirs)
+    st.key_getter = key_getter or keyring_key
+    st.ocr = OcrQueue(st.cases, st.materials, st.net, st.key_getter)  # 识别队列（Spec 7）；随服务启停
+    st.settings.on_change(lambda s: st.ocr.resume_key_invalid())    # 保存设置后，因 Key 暂停的识别任务再试
+    try:
+        st.capsules.ensure()  # 首次启动复制默认胶囊配置；已有配置则补进默认配置新增的胶囊
+    except Exception as e:  # noqa: BLE001 capsules.json 损坏：服务照常起来，/api/capsules/reset 可恢复
+        logs.event("app", "capsules_load", status="fail", error=type(e).__name__)
+
+    async def health(request: Request) -> JSONResponse:
+        return JSONResponse({"status": "ok", "contract_version": contracts.version()})
+
+    @contextlib.asynccontextmanager
+    async def lifespan(app):
+        st.ocr.start()                   # 恢复最近案件里未完成的识别任务（Spec 7.2 第 2 条）
+        try:
+            yield
+        finally:
+            st.ocr.stop()                # 未完成的任务标"已暂停（退出软件）"，下次启动接着做
+            st.retainer.close()          # 证件识别驱动随服务退出（T25 复核 A-P2-2）
+
+    app = Starlette(routes=[Route("/health", health, methods=["GET"]), *ui.routes(st), *core.routes(st)],
+                    lifespan=lifespan)
+    app.state.lb = st
+    token = config.token.encode("utf-8")
+
+    async def auth(request: Request, call_next):
+        if request.url.path != "/health":
+            got = request.headers.get("authorization", "")
+            if not (got.startswith("Bearer ") and hmac.compare_digest(got[7:].encode("utf-8"), token)):
+                return Response(status_code=401)
+        try:
+            return await call_next(request)
+        except Exception as exc:  # noqa: BLE001 内部异常：返回失败体后不再抛出（否则 uvicorn 会断开这条 keep-alive 连接）
+            logs.event("api", _op(request), status="fail", error=type(exc).__name__)  # 只记异常类名
+            return JSONResponse(fail_body("INTERNAL"), status_code=500)
+
+    app.add_middleware(BaseHTTPMiddleware, dispatch=auth)
+
+    async def on_api_error(request: Request, exc: ApiError) -> JSONResponse:
+        error = f"{exc.code}:{exc.reason}" if exc.reason else exc.code  # 原因是固定代号，不含内容
+        logs.event("api", _op(request), status="denied" if exc.code == "OUT_OF_CASE" else "fail", error=error)
+        return JSONResponse(fail_body(exc.code, exc.message), status_code=200)
+
+    async def on_contract_error(request: Request, exc: contracts.ContractError) -> JSONResponse:
+        logs.event("api", _op(request), status="fail", error=f"CONTRACT:{exc.schema}{exc.field_path}")
+        return JSONResponse(fail_body("INTERNAL"), status_code=500)
+
+    async def on_404(request: Request, exc) -> JSONResponse:
+        return JSONResponse(fail_body("INVALID_ARGUMENT"), status_code=404)
+
+    app.add_exception_handler(ApiError, on_api_error)
+    app.add_exception_handler(contracts.ContractError, on_contract_error)
+    app.add_exception_handler(404, on_404)
+    app.add_exception_handler(405, on_404)
+    return app
+
+
+def _op(request: Request) -> str:
+    # 操作名取路由路径（固定字符串，不含查询参数和请求体）
+    return request.scope.get("route").path if request.scope.get("route") else "unknown"

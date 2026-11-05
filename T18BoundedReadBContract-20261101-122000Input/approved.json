@@ -1,0 +1,23 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\_build\\gen_schemas.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\gen_schemas.py",
+      "sha256": "6902e298c64573473c3898768099093126241f69c1e3faeb8e143795fde86762"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\Spec.md",
+      "sha256": "022be19131f2aa1d4d5619383145793f91c2b9705b8c8b54889a193a0c058e9e"
+    }
+  ],
+  "expected_schemas": [
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\task_begin.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\request_scope.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\task.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\request_scope_store.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContract-20261101-122000Input\\request_scope_intent.schema.json"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadBContract-20261101-122000.md",
+  "root_approved_optional_end": true
+}

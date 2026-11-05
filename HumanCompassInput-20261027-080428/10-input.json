@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-27T08:02:32.154807+08:00",
+  "state": "DISPATCHED_NEW_ORIGINAL_T37_NATIVE_COMPATIBILITY_CONSUMER_NOT_RUN",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T37-legacy-mixed-1017-20261027-080232.job.json",
+  "order": "D:\\Lawbeach\\lawbench-coord\\T37-legacy-mixed-order-20261027-080232.md",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T37-legacy-mixed-20261027-080232.md",
+  "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\LegacyMixed-20261027-080232",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T37LegacyMixed-20261027-080232",
+  "GUI_pass": false,
+  "whole_T37_pass": false,
+  "packaging": "HOLD",
+  "context_verified": false,
+  "human_turn": true
+}

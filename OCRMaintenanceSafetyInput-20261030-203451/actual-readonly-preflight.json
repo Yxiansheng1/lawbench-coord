@@ -1,0 +1,115 @@
+{
+  "utc": "2026-10-30T12:22:41.4217105Z",
+  "services": [
+    {
+      "name": "prep395",
+      "state": "Running",
+      "pid": 9768
+    },
+    {
+      "name": "prep395-llm9b",
+      "state": "Running",
+      "pid": 7040
+    },
+    {
+      "name": "prep395-ocr",
+      "state": "Running",
+      "pid": 29236
+    }
+  ],
+  "processes": [
+    {
+      "pid": 9652,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-14T09:33:07.8751930Z",
+      "creation_filetime": "134364439878751930"
+    },
+    {
+      "pid": 36704,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-27T15:44:20.5370110Z",
+      "creation_filetime": "134375894605370110"
+    },
+    {
+      "pid": 2932,
+      "exe": "C:\\prep395\\python\\python.exe",
+      "birth_utc": "2026-10-14T09:33:08.5013960Z",
+      "creation_filetime": "134364439885013960"
+    },
+    {
+      "pid": 9768,
+      "exe": "C:\\prep395\\services\\prep395.exe",
+      "birth_utc": "2026-10-14T09:33:07.9190200Z",
+      "creation_filetime": "134364439879190200"
+    },
+    {
+      "pid": 7040,
+      "exe": "C:\\prep395\\services\\prep395-llm9b.exe",
+      "birth_utc": "2026-10-14T09:33:07.1270360Z",
+      "creation_filetime": "134364439871270360"
+    },
+    {
+      "pid": 29236,
+      "exe": "C:\\prep395\\services\\prep395-ocr.exe",
+      "birth_utc": "2026-10-27T15:44:18.6568690Z",
+      "creation_filetime": "134375894586568690"
+    }
+  ],
+  "files": [
+    {
+      "path": "C:\\prep395\\services\\prep395-ocr.xml",
+      "bytes": 738,
+      "sha256": "6f38260bf02c49b6e8a64fe9c4deae7bdf3a08970719b456e372e516ed02bc98",
+      "mtime_utc": "2026-10-10T05:46:27.1912935Z"
+    },
+    {
+      "path": "C:\\prep395\\services\\prep395-ocr.exe",
+      "bytes": 18243033,
+      "sha256": "05b82d46ad331cc16bdc00de5c6332c1ef818df8ceefcd49c726553209b3a0da",
+      "mtime_utc": "2026-09-30T04:20:05.5759581Z"
+    },
+    {
+      "path": "C:\\prep395\\services\\prep395.exe",
+      "bytes": 18243033,
+      "sha256": "05b82d46ad331cc16bdc00de5c6332c1ef818df8ceefcd49c726553209b3a0da",
+      "mtime_utc": "2026-09-30T04:20:05.5759581Z"
+    },
+    {
+      "path": "C:\\prep395\\python\\python.exe",
+      "bytes": 91648,
+      "sha256": "4796bc182e858e4440f638fe5dab250d6172745ddec84e41c6afbc192a3198f9",
+      "mtime_utc": "2024-01-01T00:00:00.0000000Z"
+    },
+    {
+      "path": "C:\\prep395\\llama\\llama-server.exe",
+      "bytes": 9216,
+      "sha256": "9d7ec1f038329210f6be353a89752ea4a762f9defa80560d37102ccce7b09a06",
+      "mtime_utc": "2026-09-29T17:02:16.0000000Z"
+    }
+  ],
+  "freeGiB": 14.014,
+  "ports": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9102,
+      "OwningProcess": 9652
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9101,
+      "OwningProcess": 36704
+    },
+    {
+      "LocalAddress": "192.168.8.124",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    },
+    {
+      "LocalAddress": "10.126.126.3",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    }
+  ],
+  "outage_started": false,
+  "changes": 0
+}

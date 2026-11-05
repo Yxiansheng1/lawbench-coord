@@ -1,0 +1,39 @@
+{
+  "v": 1,
+  "task_id": "T-20260928093000-7c1f",
+  "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+  "kind": "agent",
+  "session_id": "s_01HZX",
+  "entry": null,
+  "skill": null,
+  "step": null,
+  "inputs": [],
+  "params": {
+    "thinking": "低",
+    "window": "64K",
+    "max_tokens": 16384
+  },
+  "budget": {
+    "model_calls": 8,
+    "tool_calls": 24,
+    "minutes": 45
+  },
+  "state": "running",
+  "created_at": "2026-09-28T09:30:00+08:00",
+  "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab",
+  "request_scope": {
+    "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab",
+    "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+    "kind": "materials",
+    "materials": [
+      {
+        "material_id": "M0001",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      {
+        "material_id": "M0002",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  }
+}

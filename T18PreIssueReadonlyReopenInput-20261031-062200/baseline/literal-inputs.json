@@ -1,0 +1,61 @@
+{
+  "sdk": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "sdk_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\lib\\index.js",
+      "bytes": 142847,
+      "sha256": "0845707017acc2b4a8a75eab2244fa3fd88587b8094ab32014321dce7ca1e31b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\package.json",
+      "bytes": 1544,
+      "sha256": "dce7d8100ed487c96bd37fc7715957071be5e7b68c0fa86c005b6de0a8bc2cba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    }
+  ],
+  "session_id": "session-73fb6eee-a824-4756-9025-9819e49251c5",
+  "request_id": "afbc784d-4238-419f-a10a-756fe8be0418",
+  "case_id": "872b161f-27d4-40bf-879e-ee457ef6454b",
+  "physical_native": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059\\runs\\T34-private-projection-observer-20261031-054545\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-GuiScopePreparedGuard-20261031-054059-runs-T34-private-projection-observer-20261031-054545-case--\\session-73fb6eee-a824-4756-9025-9819e49251c5\\session.v4.jsonl",
+    "bytes": 20682,
+    "sha256": "19c473ccf2a75280c7405dab5ad6af2823bdd38cf3ac34984dfe9ff1a2180d36"
+  },
+  "session_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059\\runs\\T34-private-projection-observer-20261031-054545\\case\\工作区\\会话",
+  "task": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059\\runs\\T34-private-projection-observer-20261031-054545\\case\\工作区\\任务\\T-20261031055533-0099\\task.json",
+    "bytes": 1045,
+    "sha256": "c47b19053c6240b264950e99f9070717d09780bea9052cd41d36680192a61ab5"
+  },
+  "scope": {
+    "request_id": "afbc784d-4238-419f-a10a-756fe8be0418",
+    "case_id": "872b161f-27d4-40bf-879e-ee457ef6454b",
+    "kind": "materials",
+    "materials": [
+      {
+        "material_id": "M0001",
+        "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+      },
+      {
+        "material_id": "M0002",
+        "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+      }
+    ]
+  },
+  "consumer_scope": "READONLY original JsonlPersistence open/read/close twice, compare actual current events; no Session/Agent/server/GUI/model or reconstructed history",
+  "source_actual_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-GUI-physical-scope-actual-closed-current.json"
+}

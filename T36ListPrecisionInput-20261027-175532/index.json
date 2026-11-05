@@ -1,0 +1,38 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\00-guide-连越律所工作台功能清单.md",
+    "bytes": 8886,
+    "sha256": "b1c32478771b80aa8a4b5f71798903894e33ce0b95230189722511ea912da702"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillList-20261027-174444\\source-map.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\01-LawyerSkillList-20261027-174444-source-map.md",
+    "bytes": 16319,
+    "sha256": "ab00682d9c58782453be45d0edaba642b697210491a7e2a1d645fce801332b2d"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T36-lawyer-skill-list-20261027-174444.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\02-lawbench-coord-B-handback-T36-lawyer-skill-list-20261027-174444.md",
+    "bytes": 4062,
+    "sha256": "78ebd34261c36eaf3bf03c12479db83ba5999fed89824447051a87963409524c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\03-case-wiki-build-SKILL.md",
+    "bytes": 10884,
+    "sha256": "739f3cf6a62546dba9c43ff2f1bcd9c3a5913f59fcafcf3ed7a1c32ee9b6ad20"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\04-cross-exam-opinion-SKILL.md",
+    "bytes": 12390,
+    "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\05-sentence-calc-SKILL.md",
+    "bytes": 15249,
+    "sha256": "3f280837b8b424443a03fe55729293f8112e36b98a6f44dd48c7f66b5a017d43"
+  }
+]

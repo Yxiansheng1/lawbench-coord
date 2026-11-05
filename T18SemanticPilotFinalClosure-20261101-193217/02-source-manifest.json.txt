@@ -1,0 +1,20 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18IsolatedSemanticPilot-20261101-183940\source-manifest.json
+SHA e4b04dff3ea2399cc195b03a0f4b5c1eb742b1e4d96d4f398f7783324dbf5d10
+0001 {
+0002   "algorithm": "sha256",
+0003   "consumer": {
+0004     "path": "review-consumer.mjs",
+0005     "bytes": 28483,
+0006     "sha256": "e4284da357bcf7b9d37f61a7f31dc23e3be1e9d84d5470e484fae6b7e3035ee6"
+0007   },
+0008   "fixed_data": {
+0009     "path": "fixed-data.json",
+0010     "bytes": 17427,
+0011     "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+0012   },
+0013   "offline_controls": {
+0014     "path": "offline-controls.mjs",
+0015     "bytes": 21443,
+0016     "sha256": "b7b7722ff8b745911b023fc1bc699e26ad5be257b31173cfe7e001c917bd6cac"
+0017   }
+0018 }

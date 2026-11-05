@@ -1,0 +1,29 @@
+{
+  "changed_trees": [
+    {
+      "id": "lawbench-agent-source",
+      "before": {
+        "files": 4,
+        "bytes": 72301,
+        "sha256": "8378b6a90d85afea4c0c866bdf7678fdbcc166ac46dfc43a78b93513d960e78c"
+      },
+      "after": {
+        "files": 4,
+        "bytes": 74824,
+        "sha256": "4afb993817f195acce41a6b3c9b03ffe08243ce0553105a3135ca8f8a85f2eb7"
+      }
+    }
+  ],
+  "oldconfig": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\build-config.mjs",
+  "oldconfig_sha": "d4a4ea44ec126f8329e5d9109d017d89647d5b3ad68f3b0fe0d5e1c51a2e5402",
+  "builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\build-private.mjs",
+  "builder_sha": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "all18inverseheld": true,
+  "all53refsheld": true,
+  "legacy18held": true,
+  "source_pins": {
+    "dsh-ext/agent/index.ts": "5e53fbe9d1833c6533143a2e87d7c39a4f2cf1ce4ede4b421572664aab9fdcfb",
+    "dsh-ext/agent/task-state.ts": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b",
+    "dsh-ext/tests/draft-feedback-recovery.spec.ts": "6e23e5d532ef4e79f02606dddac472252a9737f6d9d125356e3a85923e8e5f94"
+  }
+}

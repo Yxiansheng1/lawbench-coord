@@ -1,0 +1,6 @@
+{
+  "full42commands_source_test_formal_writefaces_reviewed": true,
+  "author_runtime": 0,
+  "outside_purehelpers_exact": true,
+  "confirmed_static_issue": "rates.end points after number BEFORE /日; bridge fullmatch at first rate.end and claim.match at second rate.end cannot consume /日. Actual direct sentence still skips before arithmetic. Add supported unit suffix consumption to BOTH exact regex prefixes. No runtime yet."
+}

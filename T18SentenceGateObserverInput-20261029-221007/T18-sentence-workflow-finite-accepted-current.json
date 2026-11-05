@@ -1,0 +1,20 @@
+{
+  "verdict": "SENTENCE_WORKFLOW47_UNIT_PASS_TYPES0_NOT_ACTUAL_NATIVE",
+  "fresh_tests": 47,
+  "failed": 0,
+  "unit_elapsed_s": 1.639578,
+  "types_elapsed_s": 3.524117,
+  "types_exit0": true,
+  "source_changes": [],
+  "complete_OS_gone": 8,
+  "forced": false,
+  "Core_in_memory": true,
+  "actual_ToolRuntime_regression_included": true,
+  "network_processwide_metered": false,
+  "source_byte_frozen": {
+    "dsh-ext/agent/index.ts": "140584362c259b6f2909f32f6c8489f47e447ceb2106db1475b76e3971c909ab",
+    "dsh-ext/agent/task-state.ts": "866a15366ba37b44f1c611c5b4ba48b51cf995f89b4931aaaf38e5bc1cb8cd99"
+  },
+  "full_T18": false,
+  "Packaging": "HOLD"
+}

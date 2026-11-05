@@ -1,0 +1,50 @@
+{
+  "utc": "2026-10-30T12:01:49.8781238Z",
+  "pid": 36704,
+  "exe": "C:\\prep395\\llama\\llama-server.exe",
+  "birth_utc": "2026-10-27T15:44:20.5370110Z",
+  "approved_flags": [
+    {
+      "flag": "-m",
+      "value": "C:\\prep395\\models\\Xiaomi-OCR-0.BF16.gguf"
+    },
+    {
+      "flag": "--mmproj",
+      "value": "C:\\prep395\\models\\Xiaomi-OCR-0.mmproj-bf16.gguf"
+    },
+    {
+      "flag": "--port",
+      "value": "9101"
+    },
+    {
+      "flag": "-np",
+      "value": "2"
+    },
+    {
+      "flag": "-c",
+      "value": "32768"
+    },
+    {
+      "flag": "-ngl",
+      "value": "99"
+    }
+  ],
+  "approved_switches": [
+    "--no-webui",
+    "--log-disable"
+  ],
+  "backend_source_files": [
+    {
+      "path": "C:\\prep395\\python\\Lib\\site-packages\\prep395\\backends.py",
+      "bytes": 10931,
+      "sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200"
+    },
+    {
+      "path": "C:\\prep395\\src\\prep395\\prep395\\backends.py",
+      "bytes": 10931,
+      "sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200"
+    }
+  ],
+  "inference_requests": 0,
+  "production_changes": 0
+}

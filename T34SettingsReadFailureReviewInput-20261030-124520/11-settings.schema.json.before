@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/files/settings.schema.json",
+  "title": "<应用数据>/settings.json",
+  "description": "设置；Key 不在这里（在 Windows 凭据管理器）",
+  "type": "object",
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "servers": {
+      "type": "object",
+      "properties": {
+        "llm_base_url": {
+          "type": "string",
+          "pattern": "^http://",
+          "description": "6000D 所内地址（局域网）"
+        },
+        "prep_base_url": {
+          "type": "string",
+          "pattern": "^http://",
+          "description": "395 所内地址（局域网）"
+        },
+        "llm_alt_base_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^http://",
+              "description": "6000D 所外地址（EasyTier 虚拟 IP）；所内地址连不上时自动改用"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prep_alt_base_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^http://",
+              "description": "395 所外地址（EasyTier 虚拟 IP）"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "service_port": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1024,
+              "maximum": 65535,
+              "description": "工作台服务监听的本机端口（1.5 起，候项 16）；null 或缺省 = 默认（由 Host 分配）"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "forward_port": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1024,
+              "maximum": 65535,
+              "description": "本机转发端口（1.5 起，候项 16）；null 或缺省 = 默认 18765。改了要重启工作台，DSH 侧模型地址跟着改（线 A 补丁）"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "llm_base_url",
+        "prep_base_url",
+        "llm_alt_base_url",
+        "prep_alt_base_url"
+      ]
+    },
+    "defaults": {
+      "$ref": "lawbench://contracts/common.schema.json#/$defs/params"
+    },
+    "skill_presets": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "lawbench://contracts/common.schema.json#/$defs/params"
+      }
+    },
+    "templates": {
+      "type": "object",
+      "properties": {
+        "文书": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "合同": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "文书",
+        "合同"
+      ]
+    },
+    "ocr_fallback_llm": {
+      "type": "boolean",
+      "description": "395 不可用时由 6000D 接管识别；管理员开启，默认 false"
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "lawyer_name": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "本机律师姓名：结案报告、立卷申请书默认的承办律师"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "lawyer_name"
+      ]
+    },
+    "office": {
+      "type": "object",
+      "properties": {
+        "dir": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "日常办公文件夹（发票台账等），律师指定；不得位于云同步目录"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "invoice_buyer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "发票购买方名称（律所全称），用于抬头核验"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "dir",
+        "invoice_buyer"
+      ]
+    },
+    "converter": {
+      "enum": [
+        "auto",
+        "word",
+        "wps",
+        "libreoffice"
+      ],
+      "description": "Word 转 PDF 用哪个程序；auto = Word → WPS → 内置 LibreOffice 依次尝试"
+    },
+    "external_llm": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "该外部目标允许被显式选用；不等于全局切换所有会话"
+        },
+        "base_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "OpenAI-compatible base URL，不含 /chat/completions；公网须 HTTPS，HTTP 仅限 RFC1918、CGNAT 100.64/10 或 IPv6 ULA 字面量"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "description": "发给外部 provider 的模型名"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "context_window": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 2048,
+              "maximum": 2000000,
+              "description": "供 DSH 建 provider 条目；服务端不截断"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "supports_tools": {
+          "type": "boolean",
+          "description": "供 T34 消费的外部 provider 能力声明，缺省 true；不代表已实测"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "base_url",
+        "model",
+        "context_window"
+      ],
+      "description": "外部对话模型配置；不含 Key/has_key",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            },
+            "required": [
+              "enabled"
+            ]
+          },
+          "then": {
+            "properties": {
+              "base_url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1
+              },
+              "context_window": {
+                "type": "integer",
+                "minimum": 2048,
+                "maximum": 2000000
+              }
+            }
+          }
+        }
+      ],
+      "default": {
+        "enabled": false,
+        "base_url": null,
+        "model": null,
+        "context_window": null,
+        "supports_tools": true
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "v",
+    "servers",
+    "defaults",
+    "skill_presets",
+    "templates",
+    "ocr_fallback_llm",
+    "profile",
+    "office",
+    "converter"
+  ]
+}

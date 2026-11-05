@@ -1,0 +1,20 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\native-litigation-docs.mts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationObserverInput-20261029-192800\\native-litigation-docs.mts",
+    "bytes": 119392,
+    "sha256": "b8994f1ef1f72314d43ba26cb2cda3bedff7b73addeccf095fc14491c6be5f88"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\b-service-litigation-docs.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationObserverInput-20261029-192800\\b-service-litigation-docs.py",
+    "bytes": 46327,
+    "sha256": "c9e8faa0b998eff4ed893a439e5030a76c0a04dda8e438e6bc2af563e29105f2"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\literalfixed-inputs.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationObserverInput-20261029-192800\\literalfixed-inputs.json",
+    "bytes": 11246,
+    "sha256": "c2840fbd1ab6908d6b7dcd8f9cf3fcbf33ab9459ac0c9d92b3982fcfce7cb26e"
+  }
+}

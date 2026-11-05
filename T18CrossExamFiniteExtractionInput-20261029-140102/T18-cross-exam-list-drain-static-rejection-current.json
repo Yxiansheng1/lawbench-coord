@@ -1,0 +1,43 @@
+{
+  "verdict": "STATIC_REJECTED_BEFORE_RUNTIME",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-cross-exam-list-drain-1017-20261029-133256.job.json",
+  "actual": "01a18625-c7f5-7562-8b52-d4b96e43624d",
+  "commands": 69,
+  "success": 54,
+  "nonzero": 15,
+  "all_commands_reviewed": true,
+  "whole_source_delta_finite_formal_reviewed": true,
+  "pins": {
+    "entry": {
+      "bytes": 146650,
+      "sha256": "7ecfc51ec1e14f651332fbac1df269e38dfd434d8381dee3550297d9ab830139"
+    },
+    "service": {
+      "bytes": 48345,
+      "sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d"
+    },
+    "manifest": {
+      "bytes": 12262,
+      "sha256": "f7b05ccf8cf43defa8a75bf7f011214c57e589c8486950e88768862cb5c43a06"
+    },
+    "finite": {
+      "bytes": 29935,
+      "sha256": "f3b212e92a220eb985487f263cb0a7fcddb349f19d7b0b63504586434999232f"
+    },
+    "drain_finite": {
+      "bytes": 28013,
+      "sha256": "a496ed827f4daf615988695c602430191c9cf127ec0c28cc2fe99814753a922a"
+    }
+  },
+  "findings": [
+    "fractional unit seq contradict safe-integer parser",
+    "first valid tool break hides later before-read wrong batch",
+    "non-atomic task/result/status reads reject legitimate end transition",
+    "second cached VM object compared directly to host JSON data",
+    "finite constants copied rather than extracted; settlement awaits lack existing watchdog"
+  ],
+  "new_author": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-cross-exam-list-drain-boundaries-1017-20261029-134935.job.json",
+  "runtime_executed": false,
+  "product_defect_claim": false,
+  "Packaging": "HOLD"
+}

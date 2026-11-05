@@ -1,0 +1,83 @@
+{
+  "model_calls": 0,
+  "source_changes": [],
+  "results": [
+    {
+      "mode": "unit",
+      "forced": false,
+      "exit": 0,
+      "elapsed_s": 1.7218302,
+      "OS": [
+        {
+          "pid": 21484,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932711962741",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:51.1962741Z"
+        },
+        {
+          "pid": 808,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932714246615",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:51.4246615Z"
+        },
+        {
+          "pid": 17976,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932701773103",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:50.1773103Z"
+        },
+        {
+          "pid": 20032,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932704956275",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:50.4956275Z"
+        },
+        {
+          "pid": 16784,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "ticks": "639287932701856119",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:50.1856119Z"
+        },
+        {
+          "pid": 7820,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932709383438",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:50.9383438Z"
+        }
+      ]
+    },
+    {
+      "mode": "types",
+      "forced": false,
+      "exit": 0,
+      "elapsed_s": 3.9913918,
+      "OS": [
+        {
+          "pid": 25996,
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639287932719021649",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:51.9021649Z"
+        },
+        {
+          "pid": 37200,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "ticks": "639287932719089113",
+          "gone": true,
+          "birthUTC": "2026-10-28T14:07:51.9089113Z"
+        }
+      ]
+    }
+  ],
+  "Packaging": "HOLD",
+  "new_test_scope": "CURRENT_COPY_T7_LOOPBACK_FAKE_HTTP_LIFECYCLE_ONLY_NO_REAL_MODEL_NATIVE_R_OR_GUI",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18FeedbackLocalFixtureUnit-root-20261028-220750",
+  "at": "2026-10-28T22:07:55.8928922+08:00",
+  "GUI": false
+}

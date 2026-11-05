@@ -1,0 +1,86 @@
+{
+  "at": "2026-11-03T20:59:01.908986+08:00",
+  "commit": "b2bf9d9e787fc896a36c5335330bfc9926b843be",
+  "branch": "release/1.0.0-macos-20261103",
+  "repo": "Yxiansheng1/lawbench",
+  "archive": {
+    "name": "lawbench-1.0.0-macos-source-b2bf9d9.zip",
+    "bytes": 132692525,
+    "sha256": "9b3fd5313aaa1a28f332fbc4ea346635c29ecb01d766ed2c8a65a03372ddf4b1"
+  },
+  "ownerDecision": "保留现状，先交源码和失败记录",
+  "additionalSourceEdits": 0,
+  "additionalBuildDispatches": 0,
+  "cancellation": "confirmed completed/cancelled",
+  "macInstallers": 0,
+  "jobs": [
+    {
+      "name": "build (arm64)",
+      "conclusion": "failure"
+    },
+    {
+      "name": "build (x64)",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "release",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "smoke",
+      "conclusion": "cancelled"
+    }
+  ],
+  "files": [
+    {
+      "name": "arm64-first-failure.log",
+      "bytes": 56770,
+      "sha256": "514cce54a1b9e5d9f819601616841ff5acaddd5a8fe25420143afc12958ee9ad"
+    },
+    {
+      "name": "arm64-generation2.log",
+      "bytes": 459759,
+      "sha256": "0a6c1aeff52a1361d7c45d89ecbbd11420e7e1229a855263de6c883e229ef31b"
+    },
+    {
+      "name": "client-assembly-admission-pending.json",
+      "bytes": 3411,
+      "sha256": "a9172dadc227f40d66db31da175d334e8a5db35d82cd2a12add6ecbdf8ecb95d"
+    },
+    {
+      "name": "cloud-build-generation2.json",
+      "bytes": 623,
+      "sha256": "e12b94ca447bdccd6cfcc016d61d80e4ee9fe9d59349d925295579d2c234d85a"
+    },
+    {
+      "name": "cloud-generation2-final-status.json",
+      "bytes": 9683,
+      "sha256": "3c01ebe781e6d68d58c9d2f0e941e4be36c7cf3d8c368de35900bd88ce8f9fe2"
+    },
+    {
+      "name": "github-run-41637800827-logs.zip",
+      "bytes": 84069,
+      "sha256": "c7d12b668fc8f94c3bd87421b076808c4007666398514ac370c19886b6f4246d"
+    },
+    {
+      "name": "github-run-41639004913-logs.zip",
+      "bytes": 176302,
+      "sha256": "7688ad842f7c4aefeeb474386c7529b35bc655c1eb1e959497b907590ccb40a8"
+    },
+    {
+      "name": "lawbench-1.0.0-macos-source-b2bf9d9.zip",
+      "bytes": 132692525,
+      "sha256": "9b3fd5313aaa1a28f332fbc4ea346635c29ecb01d766ed2c8a65a03372ddf4b1"
+    },
+    {
+      "name": "local-verification-curation.json",
+      "bytes": 2588,
+      "sha256": "51c2dbc113781b98062a7779fd4f251decb0523e163b0a802e73a454db7018a8"
+    },
+    {
+      "name": "owner-decision.json",
+      "bytes": 3513,
+      "sha256": "0ea0a9c3656d2178571e3619741d958feb221bd177e07e5c2b970967c02da638"
+    }
+  ]
+}

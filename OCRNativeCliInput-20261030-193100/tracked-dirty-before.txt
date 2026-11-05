@@ -1,0 +1,5 @@
+ M packaging/THIRD-PARTY-LICENSES.md
+ M packaging/build.ps1
+ M packaging/gen_lock.py
+ M service/lawbench/app.py
+ M service/lawbench/net.py

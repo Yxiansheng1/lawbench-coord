@@ -1,0 +1,40 @@
+{
+  "verdict": "ACTUAL_THREE_ANSWERS_AND_PRIMARY_L0_LIST_PROVEN_NOT_OVERALL_PASS",
+  "actual_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamCallbackRecovery-20261029-122319\\run-zs09S1",
+  "native_session": "session-80a6b5e7-bedf-48f3-8ca0-416a28e14afc",
+  "request_id": "32f7ecb5-b38d-466e-bef6-a7d37c0a59cb",
+  "case_id": "6b927e80-60d5-4c51-a328-5bba64ca8f1c",
+  "question_call_seq": 16,
+  "actual_answer_seq": 17,
+  "actual_invited_three_IDs": [
+    "stance",
+    "scope",
+    "need_questions"
+  ],
+  "actual_answers_exact_authorized": true,
+  "actual_LegalAgent_final_tool_result_accepted": true,
+  "all_three_confirmations_before_every_material_read_and_save": true,
+  "provided_stance_scope_no_outline_jointly_confirmed": true,
+  "actual_L0_context_event_seq": 5,
+  "actual_L0_source_kind": "lawbench-context/snapshot",
+  "actual_L0_section": "案件卡片（L0）",
+  "actual_L0_material_names": [
+    "价格认定结论书",
+    "扣押清单",
+    "监控视频截图说明",
+    "被害人王某丙询问笔录",
+    "起诉书"
+  ],
+  "actual_context_before_current_R_user_seq6_and_first_read": true,
+  "primary_Skill_step1_allows_L0_OR_case_list": true,
+  "case_list_tool_count": 0,
+  "consumer_unconditional_case_list_requirement_CONFIRMED_FALSE_POSITIVE": true,
+  "producer_question_observer_NOT_REACHED": true,
+  "collector_questions_before_false_means_observer_unproven_NOT_actual_missing_answers": true,
+  "physical_native_rows": 49,
+  "physical_native_bytes": 203065,
+  "physical_native_sha256": "adbca9d61673e8d4768446905d61c0c8da79c74651e0426d2cdb3437596f5f29",
+  "production_JSONL_reopen_NOT_REACHED": true,
+  "original_report_FAILED_immutable": true,
+  "Packaging": "HOLD"
+}

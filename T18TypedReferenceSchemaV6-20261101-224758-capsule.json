@@ -1,0 +1,47 @@
+{
+  "scope": "SOURCE_ONLY_NEW_DIAGNOSTIC_TYPED_EVIDENCE_GRAPH_AND_REQUEST_SCOPED_JSON_SCHEMA",
+  "old_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758",
+  "old_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\review-consumer.mjs",
+      "bytes": 53968,
+      "sha256": "166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31",
+      "mtime_ns": "1793542358406267800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\offline-controls.mjs",
+      "bytes": 40367,
+      "sha256": "adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3",
+      "mtime_ns": "1793542458789326300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\source-manifest.json",
+      "bytes": 677,
+      "sha256": "74639b12e714b1fb9c6ebdd5c17c9ec33ea4948bb6baeb7cfb05a0cdcff41dc7",
+      "mtime_ns": "1793542475390540200"
+    }
+  ],
+  "primary_reference": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-v6-typed-reference-structured-output-primary-reference-current.json",
+  "observed_failure": "V5firstshardHTTP200360403ms183rows/11SUPPORTEDemptyrefs/3Csamefamilyrefs. RawFAIL_POSITIVE_TREATMENT_WITHOUT_REF/secondshardNOTSENT. V2also usedselfcheckasFcoverage; currentallowedRefKindsF->C/Q,C->F/Q enables inappropriateevidencegraph. No specificcasecontent/expectedlabels supplied.",
+  "write_allowlist": [
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\review-consumer.mjs",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\offline-controls.mjs",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\fixed-data.json",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\stage1-assessments.json",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\source-manifest.json",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18TypedReferenceSchemaV6-20261101-224758.md"
+  ]
+}

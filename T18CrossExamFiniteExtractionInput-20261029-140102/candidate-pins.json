@@ -1,0 +1,22 @@
+{
+  "entry": {
+    "bytes": 148127,
+    "sha256": "446ae939d9a30369d0d119600b8cab69e7bc25d460c2f5e6d77e8c24e14ca2f9"
+  },
+  "service": {
+    "bytes": 48345,
+    "sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d"
+  },
+  "manifest": {
+    "bytes": 12282,
+    "sha256": "0e6f9e838eb5fd3a56a3a8ffebd3b42a975b5bde9baa59643221311380e8d2a5"
+  },
+  "finite": {
+    "bytes": 32607,
+    "sha256": "900b248204f6bc7e29f15f47ac0a4f15fec8902ec7264eddb885d4d95bc7665e"
+  },
+  "drain_finite": {
+    "bytes": 35319,
+    "sha256": "f628739e63e294b0b1f99865fafd1253809d144418995878c6809a25a2f5ba5b"
+  }
+}

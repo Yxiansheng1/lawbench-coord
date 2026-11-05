@@ -1,0 +1,139 @@
+{
+  "old_readonly_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508",
+  "new_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929",
+  "old_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\review-consumer.mjs",
+      "bytes": 41790,
+      "sha256": "a9e8398643f8139aa6b9a36ba1daca7940a8c4b3d1e4dc6057441e25bd120d1a",
+      "mtime_ns": "1793539225924986500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\offline-controls.mjs",
+      "bytes": 25223,
+      "sha256": "13ac577aacb787d3fb290a0a389f110bab55339cbac52cb11f1c9fb43ca1f1cf",
+      "mtime_ns": "1793539193299636000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\source-manifest.json",
+      "bytes": 699,
+      "sha256": "6d541e8545f2e7f6d8182903d3d00e51da7d6673f85c0455b8d21246b4ec1aed",
+      "mtime_ns": "1793539265478044500"
+    }
+  ],
+  "actual_failure": {
+    "at": "2026-11-01T21:39:29.440413+08:00",
+    "status": "CLOSED_TRANSPORT_FAILURE_SEMANTIC_NOT_REACHED",
+    "actual": {
+      "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18FragmentBidirectionalV3Actual-root-20261101-213018",
+      "exit_code": 1,
+      "elapsed_s": 313.3899999999994,
+      "forced_by_Root": false,
+      "driver_result": {
+        "kind": "ROOT_ISOLATED_SEMANTIC_DPAPI_STDIN",
+        "child_exit": 1,
+        "forced_stop": false,
+        "natural_child_exit": true,
+        "credential_argv_env_file": false,
+        "requests_cap": 1
+      },
+      "Root_error_type": null,
+      "identities": [
+        {
+          "pid": 33992,
+          "parent": 38840,
+          "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "birth_utc": "2026-11-01T13:30:18.2229900Z"
+        },
+        {
+          "pid": 38548,
+          "parent": 33992,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T13:30:18.2353660Z"
+        },
+        {
+          "pid": 20116,
+          "parent": 33992,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T13:30:19.0136170Z"
+        },
+        {
+          "pid": 27192,
+          "parent": 20116,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T13:30:19.0199050Z"
+        }
+      ],
+      "independent_OS_after": [],
+      "source_changes": [],
+      "observed_owned_Node_TCP_peers": [
+        {
+          "OwningProcess": 20116,
+          "RemoteAddress": "10.126.126.1",
+          "RemotePort": 8000,
+          "State": 5
+        }
+      ],
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18FragmentBidirectionalV3Actual-root-20261101-213018\\model-output\\artifacts\\final-report.json",
+      "consumer_report": {
+        "status": "FAIL_TRANSPORT_FAILURE",
+        "protocol_capability_only": true,
+        "legal_or_business_pass": false,
+        "stage": "stage2",
+        "code": "TRANSPORT_FAILURE"
+      },
+      "usedKey_scan": {
+        "UTF8_files": 15,
+        "binary_not_scanned": 3,
+        "raw_usedKey_hit_files": 0,
+        "JSONescaped_usedKey_hit_files": 0,
+        "scope": "exact owned root only",
+        "full_memory_or_machine_claim": false
+      },
+      "not_Native_or_product_business_PASS": true,
+      "owner_only_ACL_or_full_platform_security_NOT_PROVEN": true,
+      "Packaging": "HOLD"
+    },
+    "response": {
+      "status": null,
+      "body": "",
+      "bodyOverflow": false,
+      "capturedBytes": 0,
+      "transportError": "TRANSPORT_FAILURE"
+    },
+    "timings": {
+      "stage2Ms": 307650,
+      "totalMs": 307666
+    },
+    "actual_POST_attempts": 1,
+    "actual_HTTP_statuses_received": 0,
+    "server_received_payload_or_model_generation_NOT_PROVEN": true,
+    "server_side_cause_and_cancel_NOT_PROVEN": true,
+    "semantic_reviews_NOT_REACHED": true,
+    "diagnosis": "307650ms request transport failure below400000ms localtimeout; no headers/status/body. Not evidence of temperature/selfcheck fix/regression, not a proven server/proxy timeout. No unchangedretry/health/SSH/modelprobe.",
+    "next_structural_hypothesis": "Deterministic183+182 partitions of SAME365 targets with fullcanonicalcontext and strictsubset+union coverage. Separate boundedresponses plus safe fixed errorcategories. Sourceprep only, not admitted.",
+    "no_product_or_business_PASS": true,
+    "Packaging": "HOLD"
+  },
+  "old_request_upper_bound1_consumed_immutable": true,
+  "new_preparation_only": {
+    "original_diagnostic_upper_bound2_restored": true,
+    "Native_product_model32_tool48_budget_unchanged": true,
+    "same_parameters49152_temp06": true,
+    "percall400_total900": true,
+    "no_retries": true
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18ShardedBidirectionalV4-20261101-213929.md"
+}

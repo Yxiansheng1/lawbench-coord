@@ -1,0 +1,1213 @@
+# Exact immutable base Firewall
+class Firewall:
+    def __init__(
+        self,
+        app,
+        *,
+        root: pathlib.Path,
+        case: pathlib.Path,
+        case_id: str,
+        host_token: str,
+    ) -> None:
+        self.app = app
+        self.root = root
+        self.case = case
+        self.case_id = case_id
+        self.expected_auth = ("Bearer " + host_token).encode()
+        self.ledger = root / "requests.ndjson"
+        self.lock = threading.RLock()
+        self.records: list[dict[str, Any]] = []
+        self.case_open_attempts = 0
+        self.case_open_ok = 0
+        self.read_ok = 0
+        self.auth_denials = 0
+        self.policy_denials: dict[str, int] = {}
+        with self.ledger.open("x", encoding="utf-8"):
+            pass
+
+    def _record(
+        self, method: str, path: str, status: int | None, disposition: str, started: float
+    ) -> None:
+        row = {
+            "method": method,
+            "path": path,
+            "status": status,
+            "disposition": disposition,
+            "elapsed_ms": int((time.monotonic() - started) * 1000),
+        }
+        with self.lock:
+            self.records.append(row)
+            with self.ledger.open("a", encoding="utf-8", newline="\n") as stream:
+                stream.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    def _deny(self, code: str) -> None:
+        with self.lock:
+            self.policy_denials[code] = self.policy_denials.get(code, 0) + 1
+
+    def _authorized(self, scope) -> bool:
+        values = [
+            value
+            for key, value in scope.get("headers", [])
+            if key.lower() == b"authorization"
+        ]
+        if len(values) == 1 and hmac.compare_digest(values[0], self.expected_auth):
+            return True
+        with self.lock:
+            self.auth_denials += 1
+        return False
+
+    def _policy(self, method: str, path: str, data: Any, query: bytes) -> str | None:
+        if method == "POST" and path == "/api/case/open":
+            if query:
+                return "CASE_OPEN_QUERY"
+            if not (
+                isinstance(data, dict)
+                and set(data).issubset({"path", "template", "kind"})
+                and {"path", "template"}.issubset(data)
+                and data.get("template") is None
+                and data.get("kind") in {None, "daily"}
+                and isinstance(data.get("path"), str)
+                and _norm(data["path"]) == _norm(self.case)
+            ):
+                return "CASE_OPEN_BODY"
+            with self.lock:
+                if self.case_open_attempts >= 2:
+                    return "CASE_OPEN_LIMIT"
+                self.case_open_attempts += 1
+            return None
+        if method != "GET" or path not in READ_ONLY_ROUTES:
+            return "ROUTE_OR_METHOD_NOT_ALLOWED"
+        if path in NO_QUERY_ROUTES:
+            return None if not query else "UNEXPECTED_QUERY"
+        if path == "/api/task/current":
+            values = _query_values(query, required={"session_id"}, optional=None)
+            if values is None or len(values["session_id"]) > 128:
+                return "SESSION_ID_QUERY"
+            return None
+        if path in CASE_QUERY_ROUTES:
+            values = _query_values(query, required={"case_id"}, optional=None)
+            if values is None:
+                return "CASE_QUERY_EXACT"
+            if values["case_id"] != self.case_id:
+                return "CASE_ID_OUTSIDE_RUN"
+        return None
+
+    def _complete(self, method: str, path: str, status: int | None, response: Any) -> None:
+        if path == "/health":
+            return
+        if method == "POST" and path == "/api/case/open":
+            value = response.get("value") if isinstance(response, dict) else None
+            if (
+                status == 200
+                and isinstance(response, dict)
+                and response.get("ok") is True
+                and isinstance(value, dict)
+                and value.get("case_id") == self.case_id
+                and value.get("created") is False
+            ):
+                with self.lock:
+                    self.case_open_ok += 1
+            return
+        if status == 200 and isinstance(response, dict) and response.get("ok") is True:
+            with self.lock:
+                self.read_ok += 1
+
+    async def __call__(self, scope, receive, send) -> None:
+        if scope["type"] != "http":
+            return
+        method, path, started = scope["method"], scope["path"], time.monotonic()
+        if not self._authorized(scope):
+            self._record(method, path, 401, "auth_not_forwarded", started)
+            await _deny_reply(send, 401, "AUTH_REQUIRED")
+            return
+
+        body = b""
+        data = None
+        if method == "POST":
+            try:
+                body = await _read_body(receive)
+            except Deny:
+                self._deny("BODY_TOO_LARGE")
+                self._record(method, path, 413, "BODY_TOO_LARGE", started)
+                await _deny_reply(send, 413, "BODY_TOO_LARGE")
+                return
+            if body is None:
+                self._record(method, path, None, "disconnected", started)
+                return
+            data = _json(body)
+            used = False
+
+            async def replay():
+                nonlocal used
+                if not used:
+                    used = True
+                    return {"type": "http.request", "body": body, "more_body": False}
+                return await original_receive()
+
+            original_receive = receive
+            receive = replay
+
+        query = scope.get("query_string", b"")
+        denial = self._policy(method, path, data, query)
+        if denial:
+            self._deny(denial)
+            self._record(method, path, 403, denial, started)
+            await _deny_reply(send, 403, denial)
+            return
+
+        status: int | None = None
+        captured = bytearray()
+        overflow = False
+
+        async def observed(message):
+            nonlocal status, overflow
+            if message["type"] == "http.response.start":
+                status = int(message["status"])
+            elif message["type"] == "http.response.body":
+                chunk = message.get("body", b"")
+                room = max(0, MAX_CAPTURE - len(captured))
+                if len(chunk) > room:
+                    overflow = True
+                captured.extend(chunk[:room])
+            await send(message)
+
+        try:
+            await self.app(scope, receive, observed)
+        finally:
+            self._record(method, path, status, "native_app", started)
+        if overflow:
+            self._deny("RESPONSE_CAPTURE_OVERFLOW")
+            return
+        self._complete(method, path, status, _json(bytes(captured)))
+
+    def evidence(self) -> dict[str, Any]:
+        with self.lock:
+            return {
+                "requests": len(self.records),
+                "read_ok": self.read_ok,
+                "case_open_attempts": self.case_open_attempts,
+                "case_open_ok": self.case_open_ok,
+                "auth_denials": self.auth_denials,
+                "policy_denials": dict(sorted(self.policy_denials.items())),
+                "delete_route_observed": any(
+                    "session-delete" in row["path"] for row in self.records
+                ),
+            }
+
+
+# D:\Lawbeach\lawbench-B\service\lawbench\api\ui.py
+def routes(st) -> list[Route]:
+    """st：app.state（带 config、cases、settings、capsules、net、key_getter）。"""
+
+    def case_open(d: dict) -> dict:
+        value = st.cases.open(d["path"], d.get("template"), d.get("folders"), d.get("kind"))
+        st.tasks.mark_abnormal(value["case_id"])  # 上次硬退出时仍在执行的任务标"异常中断"（Spec 9.2）
+        st.ocr.resume_case(value["case_id"])      # 案件文件夹拔掉又插回等：接着做它未完成的识别任务（T12 复核）
+        return value
+
+    def task_create(d: dict) -> dict:
+        return st.tasks.create(d)
+
+    def request_scope(d: dict) -> dict:
+        return st.tasks.request_scope(d)
+
+    def tasks_list(d: dict) -> dict:
+        return st.tasks.list(d["case_id"])
+
+    def task_current(d: dict) -> dict:
+        return st.tasks.current(d["session_id"])
+
+    def outputs_list(d: dict) -> dict:
+        return st.tasks.outputs(d["case_id"])
+
+    def documents_save(d: dict) -> dict:
+        from ..tools.drafts import save_document_ui
+        return save_document_ui(st.tasks, st.materials, st.config.skills_dirs, d)
+
+    def search(d: dict) -> dict:  # T9：律师检索，返回结构同 case_search
+        from ..search import fts
+        return fts.search(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]), d["q"])
+
+    def source(d: dict) -> dict:  # T9（T14 派修）：原文查看
+        from ..case import source as src
+        return src.view(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]),
+                        d["material_id"], d["citation"], d.get("task_id"), materials=st.materials)
+
+    def case_forget(d: dict) -> dict:        # 契约 1.4：从最近案件里移除（只删登记，不动案件文件夹）
+        return st.cases.forget(d["case_id"])
+
+    def case_recent(d: dict) -> dict:
+        return {"cases": st.cases.recent()}
+
+    def settings_get(d: dict) -> dict:
+        return st.settings.get()
+
+    def settings_put(d: dict) -> dict:
+        st.net.check_servers(d["servers"])  # 6000D 地址不能指向本机转发端口自己
+        return st.settings.put(d)
+
+    def capsules_get(d: dict) -> dict:
+        return st.capsules.get()
+
+    def capsules_put(d: dict) -> dict:
+        return st.capsules.put(d)
+
+    def capsules_reset(d: dict) -> dict:
+        return st.capsules.reset()
+
+    def materials_scan(d: dict) -> dict:
+        return st.materials.scan(d["case_id"])
+
+    def materials_list(d: dict) -> dict:
+        return st.materials.list(d["case_id"], include_removed=d.get("include_removed") == "true")
+
+    def materials_import(d: dict) -> dict:
+        return st.materials.import_(
+            d["case_id"], d["paths"], d["target"], d["unzip"], mode=d.get("mode", "copy")
+        )
+
+    def materials_relocate(d: dict) -> dict:
+        return st.materials.relocate(d["case_id"], d["ref_id"], d["path"])
+
+    def materials_remove(d: dict) -> dict:    # 契约 1.4：律师移除材料（原件进回收站）
+        return st.materials.remove(d["case_id"], d["material_ids"])
+
+    def prompt_refine(d: dict) -> dict:
+        from ..pipeline import refine
+        material_names = (
+            [m["name"] for m in st.materials.index(d["case_id"])["materials"]]
+            if d.get("case_id") else []
+        )
+        return refine.refine(
+            st.net,
+            st.key_getter,
+            st.config.skills_dirs,
+            d["text"],
+            d.get("skill"),
+            material_names,
+        )
+
+    def connection_test(d: dict) -> dict:
+        return probe_connection(st, d["server"])
+
+    # T16：流水线与 wiki 修改建议
+    def pipeline_run(d: dict) -> dict:
+        return st.pipelines.run(d)
+
+    def pipeline_status(d: dict) -> dict:
+        return st.pipelines.status(d["task_id"])
+
+    def pipeline_cancel(d: dict) -> dict:
+        return st.pipelines.cancel(d["task_id"])
+
+    def wiki_suggestions(d: dict) -> dict:
+        from ..wiki import suggestions
+        return suggestions.handle(st.cases.root_of(d["case_id"]), d.get("id"), d.get("accept"))
+    def wiki_review_get(d: dict) -> dict:     # 契约 1.4：wiki 核对状态（记在案件里）
+        from ..wiki import review
+        return review.get(st.cases.root_of(d["case_id"]), st.materials.index(d["case_id"]))
+
+    def wiki_review_mark(d: dict) -> dict:
+        from ..wiki import review
+        return review.mark(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]))
+
+
+# D:\Lawbeach\lawbench-B\service\lawbench\api\core.py
+"""Agent 插件调用的 /core/*（Spec 20.3；契约 contracts/core/）。
+
+五个命令：task/begin、context、tool、progress、task/end。返回体、令牌、错误码与 /api/* 相同（Spec 20.1）。
+/core/tool 按工具契约校验 args，不合格 INVALID_ARGUMENT；开发和测试环境再按 $defs/result 校验返回。
+"""
+from __future__ import annotations
+
+from starlette.routing import Route
+
+from .. import tools
+from ..case import context
+from ..errors import ApiError
+from .ui import _endpoint
+
+
+def routes(st) -> list[Route]:
+    def task_begin(d: dict) -> dict:
+        return st.tasks.begin(d["session_id"], d["cwd"], d.get("request_id"))
+
+    def ctx(d: dict) -> dict:
+        case_id, root, task = st.tasks.locate(d["task_id"])
+        return context.build(root, task, st.tasks.index_for_task(task), st.tasks.read_input)
+
+    def tool(d: dict) -> dict:
+        case_id, root, task = st.tasks.locate(d["task_id"])
+        if task["state"] != "running":
+            raise ApiError("TASK_NOT_FOUND", "task_not_running")
+        tc = tools.ToolContext(root=root, case_id=case_id, task=task, tasks=st.tasks, materials=st.materials,
+                               skills_dirs=tuple(st.config.skills_dirs))
+        return tools.run(tc, d["tool"], d["args"], validate_result=st.config.validate_responses)
+
+    def progress(d: dict) -> dict:
+        return st.tasks.progress(d["task_id"], d["text"], d["model_calls"], d["tool_calls"])
+
+    def task_end(d: dict) -> dict:
+        return st.tasks.end(d["task_id"], d["reason"], d["model_calls"], d["tool_calls"], d["elapsed_s"])
+
+    E = lambda name, fn: _endpoint(st, name, fn, family="core")  # noqa: E731
+    return [
+        Route("/core/task/begin", E("task_begin", task_begin), methods=["POST"]),
+        Route("/core/context", E("context", ctx), methods=["POST"]),
+        Route("/core/tool", E("tool", tool), methods=["POST"]),
+        Route("/core/progress", E("progress", progress), methods=["POST"]),
+        Route("/core/task/end", E("task_end", task_end), methods=["POST"]),
+    ]
+
+# D:\Lawbeach\lawbench-B\service\lawbench\case\request_scope.py
+            record = data["records"].get(request_id)
+            intent = self._load_intent(request_id)
+            if record is None and intent is not None:
+                self._assert_intent_identity(intent, case_id, session_id)
+                if set(material_ids) != set(self._material_ids(intent)):
+                    raise self._conflict("request_scope_material_set")
+                if intent["state"] != "pending":
+                    raise ApiError("INTERNAL", "request_scope_intent_without_record")
+                snapshot = self._snapshot(case_id, material_ids)
+                if self._versions(intent) != self._versions({"materials": snapshot}):
+                    raise ApiError("INPUT_CHANGED", "request_scope_version_changed")
+                if intent["materials"] != snapshot:
+                    intent["materials"] = [dict(item) for item in snapshot]
+                    intent["updated_at"] = _now()
+                    self._save_intent(intent)
+                record = self._new_record(
+                    case_id, session_id, "prepared", snapshot, None
+                )
+                data["records"][request_id] = record
+                self._save(data)
+                self._mark_intent_prepared(intent)
+                return self._prepare_value(request_id, record)
+
+            if record is not None:
+                self._assert_identity(record, case_id, session_id)
+                self._ensure_record_evidence(request_id, record)
+                self._assert_live_state(record)
+                if set(material_ids) != set(self._material_ids(record)):
+                    raise self._conflict("request_scope_material_set")
+                if record["state"] in ("claiming", "claimed"):
+                    return self._prepare_value(request_id, record)
+
+            try:
+                snapshot = self._snapshot(case_id, material_ids)
+            except ApiError as error:
+                if record is None:
+                    data["records"][request_id] = self._new_record(
+                        case_id, session_id, "rejected", [], None
+                    )
+                    self._save(data)
+                    raise
+                if error.reason in (
+                    "request_scope_material_unavailable",
+                    "request_scope_material_version",
+                ):
+                    raise ApiError("INPUT_CHANGED", "request_scope_material_changed") from None
+                raise
+
+            if record is None:
+                pending = self._new_intent(
+                    request_id, case_id, session_id, snapshot, "pending"
+                )
+                self._save_intent(pending)
+                record = self._new_record(case_id, session_id, "prepared", snapshot, None)
+                data["records"][request_id] = record
+                self._save(data)
+                self._mark_intent_prepared(pending)
+                return self._prepare_value(request_id, record)
+
+            if record["state"] == "prepared":
+                if self._versions(record) != self._versions({"materials": snapshot}):
+                    raise ApiError("INPUT_CHANGED", "request_scope_version_changed")
+                return self._prepare_value(request_id, record)
+            raise self._gone()
+
+    def release(self, request: dict) -> dict:
+        request_id = request["request_id"]
+        case_id = request["case_id"]
+        session_id = request["session_id"]
+        with self._lock:
+            data = self._load()
+            record = data["records"].get(request_id)
+            intent = self._load_intent(request_id)
+            if record is None and intent is not None:
+                self._assert_intent_identity(intent, case_id, session_id)
+                record = self._new_record(
+                    case_id, session_id, "released", intent["materials"], None
+                )
+                data["records"][request_id] = record
+                self._save(data)
+                self._mark_intent_prepared(intent)
+                return {
+                    "action": "release",
+                    "request_id": request_id,
+                    "case_id": case_id,
+                    "session_id": session_id,
+                }
+            if record is None:
+                record = self._new_record(case_id, session_id, "released", [], None)
+                data["records"][request_id] = record
+                self._save(data)
+            else:
+                self._assert_identity(record, case_id, session_id)
+                self._ensure_record_evidence(request_id, record)
+                # 已开始认领/执行的任务不因 release 改权限；重复 release 也不删材料。
+                if record["state"] in ("prepared", "rejected"):
+                    record["state"] = "released"
+                    record["updated_at"] = _now()
+                    self._save(data)
+            return {"action": "release", "request_id": request_id, "case_id": case_id,
+                    "session_id": session_id}
+
+    def claim_or_replay(
+        self,
+        request_id: str,
+        case_id: str,
+        session_id: str,
+        task_id_factory: Callable[[], str],
+        prepare_task: Callable[[str, dict | None], None],
+        activate_task: Callable[[str, dict | None], dict],
+    ) -> dict:
+        """在持久状态锁内认领，返回已激活或已运行的任务。
+
+        先落 ``claiming`` 和确定性任务编号，再写 pending 任务；写全后才落
+        ``claimed``，最后把任务置为 running。任一步失败，同 R 重试都沿本记录
+        恢复，不会转成整案，也不会因进程重开把 pending 误标异常。
+        """
+        with self._lock:
+            data = self._load()
+            record = data["records"].get(request_id)
+            intent = self._load_intent(request_id)
+            if record is None and intent is not None:
+                self._assert_intent_identity(intent, case_id, session_id)
+                raise ApiError("INTERNAL", "request_scope_intent_without_record")
+            if record is None:
+                task_id = task_id_factory()
+                record = self._new_record(case_id, session_id, "claiming", [], task_id)
+                data["records"][request_id] = record
+                self._save(data)
+            else:
+                self._assert_identity(record, case_id, session_id)
+                self._ensure_record_evidence(request_id, record)
+                self._assert_live_state(record)
+                if record["state"] == "prepared":
+                    self._assert_snapshot_current(record)
+                    task_id = task_id_factory()
+                    record["state"] = "claiming"
+                    record["task_id"] = task_id
+                    record["updated_at"] = _now()
+                    self._save(data)
+                else:
+                    task_id = record.get("task_id")
+                    if not task_id:
+                        raise ApiError("INTERNAL", "request_scope_task_missing")
+                    if record["state"] == "claiming" and record["materials"]:
+                        self._assert_snapshot_current(record)
+                    if record["state"] == "claimed":
+                        return activate_task(task_id, self._scope(request_id, record))
+                    if record["state"] != "claiming":
+                        raise self._gone()
+
+            scope = self._scope(request_id, record)
+            prepare_task(task_id, scope)
+            record["state"] = "claimed"
+            record["updated_at"] = _now()
+            self._save(data)
+
+        # activate_task 只碰本任务文件；持久 R 已固定，失败时下一次同 R 会续做。
+        return activate_task(task_id, scope)
+
+    # ---------- 快照与比较 ----------
+
+    def _snapshot(self, case_id: str, material_ids: list[str]) -> list[dict]:
+        if not material_ids or len(material_ids) != len(set(material_ids)):
+            raise ApiError("INVALID_ARGUMENT", "request_scope_material_ids")
+
+# D:\Lawbeach\lawbench-B\service\lawbench\case\task.py
+            try:
+                os.rmdir(folder)  # 空目录；闸门已核对它在 工作区/任务/ 下、不是链接
+            except OSError as e:
+                logs.event("task", "void", status="fail", case_id=case_id, error=f"{type(e).__name__}:{tid}")
+            self._where.pop(tid, None)
+            logs.event("task", "void", case_id=case_id)
+
+    # ---------- /core/task/begin ----------
+
+    def begin(self, session_id: str, cwd: str, request_id: str | None = None) -> dict:
+        case_id, root = self.cases.find_by_root(cwd)
+        with self._lock:
+            if request_id is not None:
+                def prepare_task(task_id: str, scope: dict | None) -> None:
+                    self._prepare_claimed_task(
+                        root, case_id, session_id, task_id, request_id, scope
+                    )
+
+                def activate_task(task_id: str, scope: dict | None) -> dict:
+                    return self._activate_claimed_task(
+                        root, case_id, session_id, task_id, request_id, scope
+                    )
+
+                task = self.scopes.claim_or_replay(
+                    request_id, case_id, session_id, lambda: self._fresh_task_id(root),
+                    prepare_task, activate_task,
+                )
+                tid = task["task_id"]
+            else:
+                tid = new_task_id("T")
+                task = self._task_for_begin(
+                    root, case_id, session_id, tid, None, None, state="running"
+                )
+                self._begun[tid] = datetime.now().astimezone()
+                try:
+                    self._write_begin_files(root, session_id, task, None)
+                except BaseException:
+                    self._begun.pop(tid, None)
+                    raise
+            self._where[tid] = case_id
+        logs.event("task", "begin", case_id=case_id)
+        return self._begin_value(task, request_id)
+
+    def _fresh_task_id(self, root: str) -> str:
+        for _ in range(100):
+            task_id = new_task_id("T")
+            target = gate.resolve_internal(root, self.rel(task_id), op="task")
+            if not target.exists():
+                return task_id
+        raise ApiError("INTERNAL", "task_id_collision")
+
+    def _task_for_begin(
+        self,
+        root: str,
+        case_id: str,
+        session_id: str,
+        task_id: str,
+        request_id: str | None,
+        scope: dict | None,
+        *,
+        state: str,
+    ) -> dict:
+        """从会话当前选择复制任务，不消耗选择；范围只能由本次 R 注入。"""
+        sel = self._pending_for(root, session_id)
+        if sel is not None:
+            task = copy.deepcopy(sel)
+            task.pop("request_id", None)
+            task.pop("request_scope", None)
+            task.update(task_id=task_id, created_at=now_iso())
+        else:
+            task = {
+                "v": 1,
+                "task_id": task_id,
+                "case_id": case_id,
+                "kind": "agent",
+                "session_id": session_id,
+                "entry": None,
+                "skill": None,
+                "route": "local",
+                "step": None,
+                "inputs": [],
+                "params": self.default_params(None),
+                "budget": copy.deepcopy(DEFAULT_BUDGET),
+                "created_at": now_iso(),
+            }
+        task["state"] = state
+        if request_id is not None:
+            task["request_id"] = request_id
+            task["request_scope"] = copy.deepcopy(scope)
+        return task
+
+    def _begin_result(self, task_id: str) -> dict:
+        return {
+            "v": 1,
+            "task_id": task_id,
+            "status": "running",
+            "usage": {"model_calls": 0, "tool_calls": 0, "elapsed_s": 0},
+            "drafts": [],
+            "citation_check": None,
+            "coverage": None,
+            "citations": [],
+            "finished_at": None,
+        }
+
+    def _write_begin_files(
+        self,
+        root: str,
+        session_id: str,
+        task: dict,
+        scope: dict | None,
+    ) -> None:
+        carried = self._carry_reads(root, session_id, scope)
+        self._write(root, self.rel(task["task_id"], "task.json"), task, "files/task.schema.json")
+        self._write(
+            root, self.rel(task["task_id"], "result.json"),
+            self._begin_result(task["task_id"]), "files/result.schema.json",
+        )
+        self._write(
+            root, self.rel(task["task_id"], "reads.json"),
+            {"v": 1, "task_id": task["task_id"], "reads": carried},
+            "files/reads.schema.json",
+        )
+
+    def _prepare_claimed_task(
+        self,
+
+# D:\Lawbeach\lawbench-B\contracts\api\materials_import.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/materials_import.schema.json",
+  "title": "POST /api/materials/import",
+  "description": "拖入或点'导入'选中的文件、文件夹。mode=copy（缺省，1.4 的做法）：复制到案件文件夹（不移动、不覆盖、原文件不动）；mode=ref（1.5 起，客户端一律用它）：只登记路径不复制，原件留在原处只读。之后都按 materials_scan 解析。已在案件文件夹内的直接解析",
+  "$defs": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+        },
+        "paths": {
+          "type": "array",
+          "items": {
+            "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+          },
+          "minItems": 1
+        },
+        "target": {
+          "anyOf": [
+            {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unzip": {
+          "type": "boolean",
+          "description": "源为 ZIP 时先解压再复制其中的文件（委托材料窗口的下载用）；ZIP 顶层含标准目录文件夹（如 01委托手续）时按其结构放到案件根目录；mode=ref 时不用"
+        },
+        "mode": {
+          "enum": [
+            "copy",
+            "ref"
+          ],
+          "description": "1.5 起：copy=复制，ref=只登记不复制",
+          "default": "copy"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "paths",
+        "target",
+        "unzip"
+      ]
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "copied": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+                      },
+                      "to": {
+                        "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "from",
+                      "to"
+                    ]
+                  }
+                },
+                "skipped": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+                      },
+                      "reason": {
+                        "enum": [
+                          "链接或快捷方式",
+                          "同名同内容已存在",
+                          "无法读取",
+                          "超过大小上限",
+                          "不能登记的位置",
+                          "已经登记过",
+                          "文件太多"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "path",
+                      "reason"
+                    ]
+                  }
+                },
+                "scan": {
+                  "$ref": "lawbench://contracts/api/materials_scan.schema.json#/$defs/value"
+                },
+                "registered": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+                      },
+                      "ref_id": {
+                        "$ref": "lawbench://contracts/common.schema.json#/$defs/ref_id"
+                      },
+                      "kind": {
+                        "enum": [
+                          "dir",
+                          "file"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "path",
+                      "ref_id",
+                      "kind"
+                    ]
+                  },
+                  "description": "mode=ref 时新登记的引用根（1.5 起）"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "copied",
+                "skipped",
+                "scan"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "type": "object",
+      "properties": {
+        "copied": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+              },
+              "to": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "from",
+              "to"
+            ]
+          }
+        },
+        "skipped": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+              },
+              "reason": {
+                "enum": [
+                  "链接或快捷方式",
+                  "同名同内容已存在",
+                  "无法读取",
+                  "超过大小上限",
+                  "不能登记的位置",
+                  "已经登记过",
+                  "文件太多"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "reason"
+            ]
+          }
+        },
+        "scan": {
+          "$ref": "lawbench://contracts/api/materials_scan.schema.json#/$defs/value"
+        },
+        "registered": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/abs_path"
+              },
+              "ref_id": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/ref_id"
+              },
+              "kind": {
+                "enum": [
+                  "dir",
+                  "file"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "ref_id",
+              "kind"
+            ]
+          },
+          "description": "mode=ref 时新登记的引用根（1.5 起）"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "copied",
+        "skipped",
+        "scan"
+      ]
+    }
+  }
+}
+
+
+# D:\Lawbeach\lawbench-B\contracts\api\request_scope.schema.json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/request_scope.schema.json",
+  "title": "POST /api/request/scope",
+  "description": "按 DSH 原生 request_id 准备或释放下一条消息的材料批次（1.6/T31）。prepare 只绑定准备快照，不触发模型；release 用于 prompt 失败或取消，不影响材料本身。同一元组幂等；同 session+request 改案、改材料或跨会话重放一律冲突，task/begin 首次 claim 后固定，后续 queue/attempt/retry 只能沿用该任务快照",
+  "$defs": {
+    "request": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "prepare"
+            },
+            "case_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+            },
+            "session_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+            },
+            "request_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+            },
+            "material_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "action",
+            "case_id",
+            "session_id",
+            "request_id",
+            "material_ids"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "release"
+            },
+            "case_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+            },
+            "session_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+            },
+            "request_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "action",
+            "case_id",
+            "session_id",
+            "request_id"
+          ]
+        }
+      ]
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "$ref": "#/$defs/value"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "prepare"
+            },
+            "request_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+            },
+            "case_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+            },
+            "session_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+            },
+            "material_ids": {
+              "type": "array",
+              "items": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "action",
+            "request_id",
+            "case_id",
+            "session_id",
+            "material_ids"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "action": {
+              "const": "release"
+            },
+            "request_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+            },
+            "case_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+            },
+            "session_id": {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "action",
+            "request_id",
+            "case_id",
+            "session_id"
+          ]
+        }
+      ]
+    }
+  }
+}
+
+
+# D:\Lawbeach\lawbench-A\dsh-ext\ui\material-batch.ts
+ * 在 DSH 原生 beginSubmission 生成 R 后、prompt 开始前调用。
+ * 成功后才建立 reservation；prompt 被拒时 release 同一 R，并把界面批次留给律师重试。
+ */
+export function makeMaterialSubmissionHook(
+  cwdOf: (sessionId: string) => string | undefined,
+): MaterialSubmissionHook {
+  return {
+    async prepare(event) {
+      const activePrepare = preparing.get(event.requestId)
+      if (activePrepare) {
+        if (activePrepare.sessionId === event.sessionId) {
+          await activePrepare.promise
+          return
+        }
+        throw new Error('这次提交的材料范围正在另一个会话准备，已停止发送。')
+      }
+      const existing = reservations.get(event.requestId)
+      if (existing) {
+        if (existing.sessionId === event.sessionId) return
+        throw new Error('这次提交的材料范围已绑定到另一个会话，已停止发送。')
+      }
+
+      const root = cwdOf(event.sessionId)
+      const caseRef = root ? app.get().cases.find((candidate) => samePath(candidate.root, root)) : undefined
+      const block = caseRef ? materialBatchBlockFor(event.sessionId, caseRef.case_id) : undefined
+      if (block) throw new Error(materialBatchBlockText(block.reason))
+      const batch = caseRef ? app.get().materialBatches[event.sessionId] : undefined
+      if (!batch) return
+      if (!caseRef || batch.case_id !== caseRef.case_id) {
+        clearMaterialBatch(event.sessionId, batch.batch_id)
+        throw new Error('案件已经切换，原批次已经取消。请重新导入材料后再发送。')
+      }
+      if (event.mode === 'steer') {
+        throw new Error('本批材料只能随新的一问发送。本条是插话，本轮任务范围开始后不能再扩大；请等本轮结束后发送，或先取消本批。')
+      }
+      if (batch.selected_ids.length === 0) {
+        clearMaterialBatch(event.sessionId, batch.batch_id)
+        return
+      }
+
+      const occupiedKey = sessionKey(caseRef.case_id, event.sessionId)
+      if (occupiedSessions.has(occupiedKey)) {
+        throw new Error('上一批材料正在随另一条消息准备或发送，请稍后再发。')
+      }
+      occupiedSessions.set(occupiedKey, event.requestId)
+
+      const operation = (async (): Promise<void> => {
+        let releaseNeeded = true
+        try {
+          const r = await call<{
+            action: 'prepare'
+            request_id: string
+            case_id: string
+            session_id: string
+            material_ids: string[]
+          }>('requestScope', {
+            action: 'prepare',
+            case_id: caseRef.case_id,
+            session_id: event.sessionId,
+            request_id: event.requestId,
+            material_ids: batch.selected_ids,
+          })
+          if (!r.ok) throw new Error(errorText(r.error))
+          if (r.value.action !== 'prepare' || r.value.request_id !== event.requestId ||
+            r.value.case_id !== caseRef.case_id || r.value.session_id !== event.sessionId ||
+            !sameIds(r.value.material_ids, batch.selected_ids)) {
+            throw new Error('材料范围没有按本次提交正确绑定，已停止发送。')
+          }
+          const currentRoot = cwdOf(event.sessionId)
+          const currentCase = currentRoot
+            ? app.get().cases.find((candidate) => samePath(candidate.root, currentRoot))
+            : undefined
+          const currentBatch = currentCase
+            ? app.get().materialBatches[event.sessionId]
+            : undefined
+          const currentBlock = currentCase
+            ? materialBatchBlockFor(event.sessionId, currentCase.case_id)
+            : undefined
+          if (!currentCase ||
+            currentCase.case_id !== caseRef.case_id ||
+            !samePath(currentCase.root, caseRef.root) ||
+            currentBlock !== undefined ||
+            !currentBatch ||
+            currentBatch.case_id !== currentCase.case_id ||
+            currentBatch.batch_id !== batch.batch_id ||
+            !sameIds(currentBatch.selected_ids, batch.selected_ids)) {
+            throw new Error('本次材料批次、选择或案件已经改变，原提交已停止，请重新发送当前批次。')
+          }
+          reservations.set(event.requestId, { ...event, batch })
+          releaseNeeded = false
+        } finally {
+          // 服务可能已经准备但响应在网络里丢失；任何未确认成功的准备都尝试释放同一个 R。
+          if (releaseNeeded) {
+            await call('requestScope', {
+              action: 'release',
+              case_id: caseRef.case_id,
+              session_id: event.sessionId,
+              request_id: event.requestId,
+            })
+          }
+        }
+      })()
+      preparing.set(event.requestId, { sessionId: event.sessionId, promise: operation })
+      try {
+        await operation
+      } catch (error) {
+        releaseSession(occupiedKey, event.requestId)
+        throw error
+      } finally {
+        if (preparing.get(event.requestId)?.promise === operation) preparing.delete(event.requestId)
+      }
+    },
+
+    // The caller still has paint/attachment awaits after prepare. Recheck at
+    // the final synchronous point; failed() releases this R exactly once and
+    // deliberately leaves the current batch available for a fresh retry.
+    admit(event) {
+      const reservation = reservations.get(event.requestId)
+      if (!reservation) return
+      const currentRoot = cwdOf(event.sessionId)
+      const currentCase = currentRoot
+        ? app.get().cases.find((candidate) => samePath(candidate.root, currentRoot))
+        : undefined
+      const currentBatch = currentCase
+        ? app.get().materialBatches[event.sessionId]
+        : undefined
+      const currentBlock = currentCase
+        ? materialBatchBlockFor(event.sessionId, currentCase.case_id)
+        : undefined
+      if (reservation.sessionId !== event.sessionId ||
+        reservation.mode !== event.mode ||
+        !currentRoot ||
+        !currentCase ||
+        currentCase.case_id !== reservation.batch.case_id ||
+        !samePath(currentCase.root, currentRoot) ||
+        currentBlock !== undefined ||
+        !currentBatch ||
+        currentBatch.case_id !== currentCase.case_id ||
+        currentBatch.batch_id !== reservation.batch.batch_id ||
+        !sameIds(currentBatch.selected_ids, reservation.batch.selected_ids) ||
+        occupiedSessions.get(sessionKey(reservation.batch.case_id, event.sessionId)) !== event.requestId) {
+        throw new Error('材料提交在最终接纳前已经失效，原请求已停止，请重新发送当前批次。')
+      }
+      return 'next-turn-only'
+    },
+
+    async accepted(event) {
+      const reservation = reservations.get(event.requestId)
+      if (!reservation || reservation.sessionId !== event.sessionId) return
+      reservations.delete(event.requestId)
+      releaseSession(sessionKey(reservation.batch.case_id, event.sessionId), event.requestId)
+      clearMaterialBatch(event.sessionId, reservation.batch.batch_id)

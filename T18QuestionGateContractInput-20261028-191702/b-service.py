@@ -1,0 +1,797 @@
+#!/usr/bin/env python3
+"""Finite current-B HTTP entry for the T18 native contract-review workflow.
+
+The parent Node process supplies a random local-only bearer token on stdin.
+This process starts the current B ASGI application on a random 127.0.0.1
+port with product lifespan disabled, a refusing outbound HTTP transport, and
+no credential, OCR, or retainer operation. The proxy admits only the exact
+two-material case, contract-review tools, and the owned task's redline route.
+It exits only after a parent ``stop`` line, stdin EOF, or a service failure,
+then closes HTTP and logs.
+"""
+from __future__ import annotations
+
+import asyncio
+import hashlib
+import json
+import os
+import pathlib
+import re
+import socket
+import stat
+import sys
+import threading
+import time
+from datetime import datetime, timezone
+from typing import Any
+from urllib.parse import parse_qsl
+
+import httpx
+import uvicorn
+
+
+EVIDENCE_ROOT = pathlib.Path(__file__).resolve().parent
+B_ROOT = pathlib.Path(r"D:\Lawbeach\lawbench-B")
+B_SERVICE = B_ROOT / "service"
+B_CONTRACTS = B_ROOT / "contracts"
+B_SKILLS = B_ROOT / "skills"
+SOURCE_PINS = pathlib.Path(
+    r"D:\Lawbeach\lawbench-coord\T32TaskCancelSourcePinsInput-20261027-145932"
+    r"\reviewed-source-pins.json"
+)
+SOURCE_PINS_BYTES = 53_547
+SOURCE_PINS_SHA256 = "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf"
+SOURCE_PINS_ENTRIES = 346
+RUN_NAME = re.compile(r"^run-[A-Za-z0-9_-]{6,64}$")
+MAX_TOKEN_BYTES = 4096
+MAX_REQUEST_BODY = 4 * 1024 * 1024
+MAX_RESPONSE_CAPTURE = 4 * 1024 * 1024
+FIXTURE_IDENTITIES = (
+    (
+        B_ROOT / "tests" / "fixtures" / "contract-01" / "采购合同.docx",
+        39_994,
+        "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+        1_792_379_578_857_675_200,
+    ),
+    (
+        B_ROOT
+        / "skills"
+        / "contract-review"
+        / "tests"
+        / "样本01-钢材采购"
+        / "采购部内部意见.txt",
+        823,
+        "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+        1_792_379_578_787_315_800,
+    ),
+)
+FIXTURE_PATHS = tuple(str(row[0]) for row in FIXTURE_IDENTITIES)
+TASK_SKILL = "contract-review"
+TASK_PARAMS = {
+    "thinking": "高",
+    "window": "128K",
+    "max_tokens": 32_768,
+    "temperature": 0.6,
+}
+REDLINE_PATH = re.compile(
+    r"^工作区/任务/T-[0-9]{14}-[0-9a-f]{4}/草稿/采购合同-修订版-v[1-9][0-9]*\.docx$"
+)
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="milliseconds")
+
+
+def sha256(path: pathlib.Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def ordinary_file(path: pathlib.Path) -> bool:
+    try:
+        info = os.lstat(path)
+    except OSError:
+        return False
+    return stat.S_ISREG(info.st_mode) and not stat.S_ISLNK(info.st_mode)
+
+
+def assert_private_root(raw: str) -> pathlib.Path:
+    root = pathlib.Path(raw)
+    if not root.is_absolute() or root.parent.resolve() != EVIDENCE_ROOT:
+        raise RuntimeError("private run root must be a direct child of the evidence directory")
+    if RUN_NAME.fullmatch(root.name) is None:
+        raise RuntimeError("private run root has an invalid name")
+    info = os.lstat(root)
+    if not stat.S_ISDIR(info.st_mode) or stat.S_ISLNK(info.st_mode):
+        raise RuntimeError("private run root is not an ordinary directory")
+    if root.resolve() != root:
+        raise RuntimeError("private run root resolves through a reparse point")
+    return root
+
+
+def verify_source_pins() -> int:
+    if not ordinary_file(SOURCE_PINS):
+        raise RuntimeError("reviewed B source pins file is missing or redirected")
+    if SOURCE_PINS.stat().st_size != SOURCE_PINS_BYTES:
+        raise RuntimeError("reviewed B source pins byte count changed")
+    if sha256(SOURCE_PINS) != SOURCE_PINS_SHA256:
+        raise RuntimeError("reviewed B source pins SHA-256 changed")
+    pins = json.loads(SOURCE_PINS.read_text(encoding="utf-8"))
+    if not isinstance(pins, dict) or len(pins) != SOURCE_PINS_ENTRIES:
+        raise RuntimeError("reviewed B source pin count changed")
+    for relative, expected in pins.items():
+        if not isinstance(relative, str) or not isinstance(expected, dict):
+            raise RuntimeError("reviewed B source pin row is invalid")
+        pure = pathlib.PurePosixPath(relative)
+        if pure.is_absolute() or ".." in pure.parts:
+            raise RuntimeError("reviewed B source pin path escapes B")
+        path = B_ROOT.joinpath(*pure.parts)
+        if not ordinary_file(path):
+            raise RuntimeError(f"reviewed B source is missing or redirected: {relative}")
+        if path.stat().st_size != expected.get("bytes") or sha256(path) != expected.get("sha256"):
+            raise RuntimeError(f"reviewed B source identity changed: {relative}")
+    return len(pins)
+
+
+def verify_fixture_inputs() -> int:
+    for path, expected_bytes, expected_sha, expected_mtime_ns in FIXTURE_IDENTITIES:
+        if not ordinary_file(path):
+            raise RuntimeError("fixed contract input is missing or redirected")
+        info = path.stat()
+        if (
+            info.st_size != expected_bytes
+            or info.st_mtime_ns != expected_mtime_ns
+            or sha256(path) != expected_sha
+        ):
+            raise RuntimeError("fixed contract input identity changed")
+    return len(FIXTURE_IDENTITIES)
+
+
+def read_local_token() -> str:
+    if sys.stdin is None or sys.stdin.isatty():
+        raise RuntimeError("local B token must arrive on a non-interactive stdin pipe")
+    line = sys.stdin.buffer.readline(MAX_TOKEN_BYTES + 2)
+    if not line.endswith(b"\n"):
+        raise RuntimeError("local B token line is incomplete")
+    raw = line[:-1]
+    if raw.endswith(b"\r"):
+        raw = raw[:-1]
+    if not raw or len(raw) > MAX_TOKEN_BYTES:
+        raise RuntimeError("local B token has an invalid length")
+    if any(byte < 0x21 or byte > 0x7E for byte in raw):
+        raise RuntimeError("local B token is not printable ASCII")
+    return raw.decode("ascii")
+
+
+def scrub_environment(root: pathlib.Path) -> None:
+    keep = {}
+    for name in ("SYSTEMROOT", "WINDIR", "COMSPEC", "PATHEXT"):
+        value = os.environ.get(name)
+        if value:
+            keep[name] = value
+    os.environ.clear()
+    os.environ.update(keep)
+    dirs = {
+        "HOME": root / "home",
+        "USERPROFILE": root / "home",
+        "APPDATA": root / "appdata",
+        "LOCALAPPDATA": root / "localappdata",
+        "TEMP": root / "temp",
+        "TMP": root / "temp",
+        "TMPDIR": root / "temp",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONUTF8": "1",
+    }
+    for name, path in dirs.items():
+        if name.startswith("PYTHON"):
+            os.environ[name] = path
+        else:
+            path.mkdir(mode=0o700, parents=True, exist_ok=True)
+            os.environ[name] = str(path)
+    os.environ["PATH"] = str(pathlib.Path(sys.executable).parent)
+    os.environ["NODE_USE_ENV_PROXY"] = "0"
+
+
+def write_json_exclusive(path: pathlib.Path, value: dict[str, Any]) -> None:
+    if os.path.lexists(path):
+        raise RuntimeError(f"refusing to overwrite {path.name}")
+    with path.open("x", encoding="utf-8", newline="\n") as stream:
+        json.dump(value, stream, ensure_ascii=False, indent=2, sort_keys=True)
+        stream.write("\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+class DisabledRetainer:
+    closed = False
+
+    def close(self) -> None:
+        self.closed = True
+
+
+class FiniteFirewall:
+    """Reject every route and identity transition outside this one workflow."""
+
+    POST_PATHS = frozenset(
+        {
+            "/api/case/open",
+            "/api/materials/import",
+            "/api/request/scope",
+            "/api/task",
+            "/api/redline",
+            "/core/task/begin",
+            "/core/context",
+            "/core/tool",
+            "/core/progress",
+            "/core/task/end",
+        }
+    )
+    GET_PATHS = frozenset(
+        {
+            "/health",
+            "/api/settings",
+            "/api/materials",
+            "/api/tasks",
+            "/api/source",
+        }
+    )
+    WORKFLOW_TOOLS = frozenset(
+        {
+            "case_list_materials",
+            "case_read_material",
+            "case_search",
+            "case_read_wiki",
+            "case_save_draft",
+            "case_save_edit_list",
+            "case_suggest_wiki",
+        }
+    )
+
+    def __init__(self, app: Any, case_root: pathlib.Path):
+        self.app = app
+        self.case_root = os.path.normcase(os.path.realpath(case_root))
+        self.case_id: str | None = None
+        self.task_id: str | None = None
+        self.session_id: str | None = None
+        self.request_id: str | None = None
+        self.material_ids: set[str] = set()
+        self.redline_path: str | None = None
+        self.counts: dict[str, int] = {}
+        self.denials: dict[str, int] = {}
+        self.violations: list[str] = []
+
+    def _count(self, key: str) -> None:
+        self.counts[key] = self.counts.get(key, 0) + 1
+
+    def _deny(self, code: str) -> None:
+        self.denials[code] = self.denials.get(code, 0) + 1
+
+    def _check_get(self, path: str, query: list[tuple[str, str]]) -> str | None:
+        values: dict[str, list[str]] = {}
+        for key, value in query:
+            values.setdefault(key, []).append(value)
+        if path == "/health":
+            return None if not query else "HEALTH_QUERY"
+        if path == "/api/settings":
+            return None if not query else "SETTINGS_QUERY"
+        if path in {"/api/materials", "/api/tasks"}:
+            if set(values) != {"case_id"} or len(values["case_id"]) != 1:
+                return "CASE_URI_EXACT"
+            return None if values["case_id"][0] == self.case_id else "CASE_ID_OUTSIDE_RUN"
+        if path == "/api/source":
+            if (
+                not {"case_id", "material_id", "citation"}.issubset(values)
+                or not set(values).issubset({"case_id", "material_id", "citation", "task_id"})
+                or any(len(items) != 1 for items in values.values())
+            ):
+                return "SOURCE_URI_EXACT"
+            if values["case_id"][0] != self.case_id:
+                return "CASE_ID_OUTSIDE_RUN"
+            if values["material_id"][0] not in self.material_ids:
+                return "MATERIAL_ID_OUTSIDE_RUN"
+            if values.get("task_id", [self.task_id])[0] != self.task_id:
+                return "TASK_ID_OUTSIDE_RUN"
+            return None
+        return "QUERY_NOT_ALLOWED"
+
+    @staticmethod
+    def _exact_keys(value: dict[str, Any], required: set[str], optional: set[str] | None = None) -> bool:
+        allowed = required | (optional or set())
+        return required.issubset(value) and set(value).issubset(allowed)
+
+    def _check_post(self, path: str, data: Any) -> str | None:
+        if not isinstance(data, dict):
+            return "BODY_OBJECT"
+        if path == "/api/case/open":
+            if self.case_id is not None:
+                return "CASE_OPEN_LIMIT"
+            if (
+                not self._exact_keys(data, {"path", "template"}, {"kind"})
+                or data.get("template") != "civil"
+                or data.get("kind") != "civil"
+                or not isinstance(data.get("path"), str)
+                or os.path.normcase(os.path.realpath(data["path"])) != self.case_root
+            ):
+                return "CASE_OPEN_BODY"
+            return None
+        if self.case_id is None:
+            return "CASE_NOT_BOUND"
+        if path == "/api/materials/import":
+            if self.counts.get("POST /api/materials/import", 0) != 0:
+                return "IMPORT_LIMIT"
+            if (
+                not self._exact_keys(data, {"case_id", "paths", "target", "unzip"}, {"mode"})
+                or data.get("case_id") != self.case_id
+                or data.get("target") != "02案件材料"
+                or data.get("unzip") is not False
+                or data.get("mode") != "copy"
+                or not isinstance(data.get("paths"), list)
+                or tuple(data["paths"]) != FIXTURE_PATHS
+            ):
+                return "IMPORT_BODY"
+            return None
+        if path == "/api/request/scope":
+            ids = data.get("material_ids")
+            if (
+                not self._exact_keys(data, {"action", "case_id", "session_id", "request_id", "material_ids"})
+                or data.get("action") != "prepare"
+                or data.get("case_id") != self.case_id
+                or data.get("session_id") != self.session_id
+                or not isinstance(data.get("request_id"), str)
+                or not isinstance(ids, list)
+                or len(ids) != 2
+                or any(not isinstance(item, str) for item in ids)
+                or len(set(ids)) != 2
+                or set(ids) != self.material_ids
+            ):
+                return "REQUEST_SCOPE_BODY"
+            self.request_id = data["request_id"]
+            return None
+        if path == "/api/task":
+            params = data.get("params")
+            if (
+                self.counts.get("POST /api/task", 0) != 0
+                or not self._exact_keys(data, {"case_id", "session_id", "entry", "skill", "inputs", "params"})
+                or data.get("case_id") != self.case_id
+                or not isinstance(data.get("session_id"), str)
+                or data.get("entry") is not None
+                or data.get("skill") != TASK_SKILL
+                or data.get("inputs") != []
+                or not isinstance(params, dict)
+                or params != TASK_PARAMS
+            ):
+                return "TASK_SELECTION_BODY"
+            self.session_id = data["session_id"]
+            return None
+        if path == "/api/redline":
+            expected_edit_list = (
+                f"工作区/任务/{self.task_id}/修改清单/采购合同.json"
+                if self.task_id is not None
+                else None
+            )
+            if (
+                self.counts.get("POST /api/redline", 0) != 0
+                or self.redline_path is not None
+                or not self._exact_keys(data, {"case_id", "task_id", "edit_list"})
+                or data.get("case_id") != self.case_id
+                or data.get("task_id") != self.task_id
+                or data.get("edit_list") != expected_edit_list
+            ):
+                return "REDLINE_BODY"
+            return None
+        if path == "/core/task/begin":
+            if self.task_id is not None or self.counts.get("POST /core/task/begin", 0) != 0:
+                return "TASK_BEGIN_LIMIT"
+            if (
+                not self._exact_keys(data, {"session_id", "cwd", "request_id"})
+                or data.get("session_id") != self.session_id
+                or not isinstance(data.get("request_id"), str)
+                or data.get("request_id") != self.request_id
+                or not isinstance(data.get("cwd"), str)
+                or os.path.normcase(os.path.realpath(data["cwd"])) != self.case_root
+            ):
+                return "TASK_BEGIN_BODY"
+            return None
+        if self.task_id is None:
+            return "TASK_NOT_BOUND"
+        if data.get("task_id") != self.task_id:
+            return "TASK_ID_OUTSIDE_RUN"
+        if path == "/core/tool":
+            if (
+                not self._exact_keys(data, {"task_id", "tool", "args"})
+                or not isinstance(data.get("tool"), str)
+                or data.get("tool") not in self.WORKFLOW_TOOLS
+                or not isinstance(data.get("args"), dict)
+            ):
+                return "TOOL_BODY"
+            return None
+        if path == "/core/context":
+            return None if self._exact_keys(data, {"task_id"}) else "CONTEXT_BODY"
+        if path == "/core/progress":
+            return None if self._exact_keys(
+                data, {"task_id", "text", "model_calls", "tool_calls"}
+            ) else "PROGRESS_BODY"
+        if path == "/core/task/end":
+            return None if self._exact_keys(
+                data, {"task_id", "reason", "model_calls", "tool_calls", "elapsed_s"}
+            ) else "TASK_END_BODY"
+        return "POST_NOT_ALLOWED"
+
+    @staticmethod
+    async def _deny_reply(send: Any, code: str) -> None:
+        body = json.dumps(
+            {"ok": False, "error": {"code": "INVALID_ARGUMENT", "message": code}},
+            separators=(",", ":"),
+        ).encode("utf-8")
+        await send(
+            {
+                "type": "http.response.start",
+                "status": 403,
+                "headers": [(b"content-type", b"application/json")],
+            }
+        )
+        await send({"type": "http.response.body", "body": body, "more_body": False})
+
+    async def __call__(self, scope: dict[str, Any], receive: Any, send: Any) -> None:
+        if scope.get("type") != "http":
+            self._deny("NON_HTTP_SCOPE")
+            return
+        method = str(scope.get("method", ""))
+        path = str(scope.get("path", ""))
+        key = f"{method} {path}"
+        query = parse_qsl(scope.get("query_string", b"").decode("utf-8", "strict"), keep_blank_values=True)
+        body = b""
+        data: Any = None
+        if method == "POST":
+            chunks: list[bytes] = []
+            size = 0
+            while True:
+                message = await receive()
+                if message["type"] != "http.request":
+                    self._deny("REQUEST_DISCONNECTED")
+                    return
+                chunks.append(message.get("body", b""))
+                size += len(chunks[-1])
+                if size > MAX_REQUEST_BODY:
+                    self._deny("REQUEST_BODY_TOO_LARGE")
+                    await self._deny_reply(send, "REQUEST_BODY_TOO_LARGE")
+                    return
+                if not message.get("more_body", False):
+                    break
+            body = b"".join(chunks)
+            try:
+                data = json.loads(body)
+            except Exception:
+                self._deny("BODY_JSON")
+                await self._deny_reply(send, "BODY_JSON")
+                return
+            original_receive = receive
+            replayed = False
+
+            async def replay_receive() -> dict[str, Any]:
+                nonlocal replayed
+                if not replayed:
+                    replayed = True
+                    return {"type": "http.request", "body": body, "more_body": False}
+                return await original_receive()
+
+            receive = replay_receive
+
+        if method == "GET":
+            denial = "METHOD_OR_PATH" if path not in self.GET_PATHS else self._check_get(path, query)
+        elif method == "POST":
+            denial = "METHOD_OR_PATH" if path not in self.POST_PATHS else self._check_post(path, data)
+        else:
+            denial = "METHOD_OR_PATH"
+        if denial:
+            self._deny(denial)
+            await self._deny_reply(send, denial)
+            return
+
+        self._count(key)
+        status: int | None = None
+        captured = bytearray()
+        overflow = False
+
+        async def observed_send(message: dict[str, Any]) -> None:
+            nonlocal status, overflow
+            if message["type"] == "http.response.start":
+                status = int(message["status"])
+            elif message["type"] == "http.response.body":
+                chunk = message.get("body", b"")
+                room = max(0, MAX_RESPONSE_CAPTURE - len(captured))
+                if len(chunk) > room:
+                    overflow = True
+                captured.extend(chunk[:room])
+            await send(message)
+
+        await self.app(scope, receive, observed_send)
+        if overflow:
+            self.violations.append("RESPONSE_CAPTURE_OVERFLOW")
+            return
+        if status != 200:
+            return
+        try:
+            response = json.loads(bytes(captured))
+        except Exception:
+            self.violations.append("RESPONSE_NOT_JSON")
+            return
+        if not isinstance(response, dict) or response.get("ok") is not True:
+            return
+        value = response.get("value")
+        if path == "/api/case/open" and isinstance(value, dict):
+            case_id = value.get("case_id")
+            if not isinstance(case_id, str) or value.get("created") is not True:
+                self.violations.append("CASE_OPEN_RESPONSE")
+            else:
+                self.case_id = case_id
+        elif path == "/api/materials" and isinstance(value, dict):
+            rows = value.get("materials")
+            if not isinstance(rows, list) or len(rows) != 2:
+                self.violations.append("MATERIAL_LIST_RESPONSE")
+            else:
+                ids = {
+                    row.get("material_id")
+                    for row in rows
+                    if isinstance(row, dict)
+                }
+                if len(ids) != 2 or not all(isinstance(item, str) for item in ids):
+                    self.violations.append("MATERIAL_ID_RESPONSE")
+                else:
+                    self.material_ids = set(ids)
+        elif path == "/core/task/begin" and isinstance(value, dict):
+            task_id = value.get("task_id")
+            if (
+                not isinstance(task_id, str)
+                or value.get("case_id") != self.case_id
+                or value.get("request_id") != self.request_id
+                or value.get("skill") != TASK_SKILL
+            ):
+                self.violations.append("TASK_BEGIN_RESPONSE")
+            else:
+                self.task_id = task_id
+        elif path == "/api/redline" and isinstance(value, dict):
+            out_path = value.get("path")
+            applied = value.get("applied")
+            manual = value.get("manual")
+            if (
+                not isinstance(out_path, str)
+                or REDLINE_PATH.fullmatch(out_path) is None
+                or not out_path.startswith(f"工作区/任务/{self.task_id}/草稿/")
+                or not isinstance(applied, int)
+                or applied < 1
+                or not isinstance(manual, list)
+            ):
+                self.violations.append("REDLINE_RESPONSE")
+            else:
+                self.redline_path = out_path
+
+    def evidence(self) -> dict[str, Any]:
+        return {
+            "caseBound": self.case_id is not None,
+            "sessionBound": self.session_id is not None,
+            "taskBound": self.task_id is not None,
+            "materialIdCount": len(self.material_ids),
+            "redlinePath": self.redline_path,
+            "counts": dict(sorted(self.counts.items())),
+            "denials": dict(sorted(self.denials.items())),
+            "violations": list(self.violations),
+        }
+
+
+async def run_service(root: pathlib.Path, token: str) -> tuple[int, dict[str, Any]]:
+    source_pin_count = verify_source_pins()
+    fixture_count = verify_fixture_inputs()
+    sock: socket.socket | None = None
+    lb: Any | None = None
+    imported_logs: Any | None = None
+    retainer: DisabledRetainer | None = None
+    try:
+        sys.path.insert(0, str(B_SERVICE))
+        from lawbench import contracts as imported_contracts
+        from lawbench import logs as imported_logs
+        from lawbench.app import create_app
+        from lawbench.config import Config
+
+        appdata = root / "appdata"
+        outbound: dict[str, int] = {"attempts": 0, "denied": 0}
+        credentials: dict[str, int] = {"keyGetter": 0, "externalKeyGetter": 0}
+
+        def refuse_transport(request: httpx.Request) -> httpx.Response:
+            outbound["attempts"] += 1
+            outbound["denied"] += 1
+            raise RuntimeError(f"outbound B HTTP denied: {request.method}")
+
+        def refuse_key() -> str:
+            credentials["keyGetter"] += 1
+            raise RuntimeError("model credential access is disabled in the finite B entry")
+
+        def refuse_external_key() -> str:
+            credentials["externalKeyGetter"] += 1
+            raise RuntimeError("external credential access is disabled in the finite B entry")
+
+        native = create_app(
+            Config(
+                token=token,
+                appdata=appdata,
+                port=0,
+                forward_port=18_765,
+                skills_dirs=[B_SKILLS],
+                contracts_dir=B_CONTRACTS,
+                validate_responses=True,
+            ),
+            key_getter=refuse_key,
+            external_key_getter=refuse_external_key,
+            transport=httpx.MockTransport(refuse_transport),
+        )
+        if imported_contracts.version() != "1.6":
+            raise RuntimeError("current B contract version is not 1.6")
+        lb = native.state.lb
+        retainer = DisabledRetainer()
+        lb.retainer = retainer
+        firewall = FiniteFirewall(native, root / "case")
+
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind(("127.0.0.1", 0))
+        sock.listen(128)
+        sock.set_inheritable(False)
+        port = int(sock.getsockname()[1])
+        server = uvicorn.Server(
+            uvicorn.Config(
+                app=firewall,
+                host="127.0.0.1",
+                port=port,
+                lifespan="off",
+                loop="asyncio",
+                http="h11",
+                ws="none",
+                proxy_headers=False,
+                access_log=False,
+                log_level="error",
+                log_config=None,
+                server_header=False,
+                date_header=False,
+                workers=1,
+            )
+        )
+
+        def watch_parent_stdin() -> None:
+            try:
+                for line in sys.stdin:
+                    if line.strip().lower() == "stop":
+                        break
+            except Exception:
+                pass
+            server.should_exit = True
+
+        threading.Thread(target=watch_parent_stdin, name="finite-b-stop", daemon=True).start()
+        started_at = utc_now()
+        service_task = asyncio.create_task(server.serve(sockets=[sock]))
+        while not server.started:
+            if service_task.done():
+                await service_task
+                raise RuntimeError("B HTTP listener exited before readiness")
+            await asyncio.sleep(0.01)
+        ready = {
+            "status": "ready",
+            "pid": os.getpid(),
+            "executable": os.path.realpath(sys.executable),
+            "startedAtUtc": started_at,
+            "host": "127.0.0.1",
+            "port": port,
+            "contractVersion": imported_contracts.version(),
+            "lifespan": "off",
+            "sourcePinCount": source_pin_count,
+            "fixtureCount": fixture_count,
+            "forwardListener": False,
+            "ocrStarted": False,
+            "retainerStarted": False,
+        }
+        print(json.dumps(ready, ensure_ascii=False, sort_keys=True), flush=True)
+        await service_task
+        if not server.started or server.should_exit is not True:
+            raise RuntimeError("B HTTP service did not stop through its supported stop path")
+        sock.close()
+        listener_closed = sock.fileno() == -1
+
+        failure: str | None = None
+        net_closed = False
+        logs_closed = False
+        try:
+            lb.net.client.close()
+            net_closed = bool(lb.net.client.is_closed)
+        except Exception:
+            failure = "net_close_failed"
+        try:
+            imported_logs.close()
+            logs_closed = True
+        except Exception:
+            failure = failure or "logs_close_failed"
+        lb.retainer.close()
+        protocol = firewall.evidence()
+        if protocol["denials"] or protocol["violations"]:
+            failure = failure or "request_protocol_violation"
+        if not listener_closed:
+            failure = failure or "listener_not_closed"
+        if outbound["attempts"] or any(credentials.values()):
+            failure = failure or "outbound_or_credential_access"
+        if verify_fixture_inputs() != fixture_count:
+            failure = failure or "fixture_inputs_changed"
+        final = {
+            "status": "STOPPED" if failure is None else "FAILED",
+            "pid": os.getpid(),
+            "executable": ready["executable"],
+            "startedAtUtc": started_at,
+            "finishedAtUtc": utc_now(),
+            "failure": failure,
+            "host": "127.0.0.1",
+            "port": port,
+            "listenerClosed": listener_closed,
+            "netClientClosed": net_closed,
+            "logsClosed": logs_closed,
+            "retainerClosed": retainer.closed,
+            "sourcePinCount": source_pin_count,
+            "sourcePinsUnchanged": verify_source_pins() == source_pin_count,
+            "fixtureCount": fixture_count,
+            "fixtureInputsUnchanged": verify_fixture_inputs() == fixture_count,
+            "outbound": outbound,
+            "credentials": credentials,
+            "protocol": protocol,
+            "lifespan": "off",
+            "ocrStarted": False,
+            "retainerStarted": False,
+            "forwardListener": False,
+            "passed": failure is None,
+        }
+        write_json_exclusive(root / "b-service-final.json", final)
+        return (0 if final["passed"] else 1), final
+    finally:
+        if sock is not None:
+            sock.close()
+        if lb is not None:
+            try:
+                lb.net.client.close()
+            except Exception:
+                pass
+        if imported_logs is not None:
+            try:
+                imported_logs.close()
+            except Exception:
+                pass
+        if retainer is not None:
+            retainer.close()
+
+
+def main() -> int:
+    if len(sys.argv) != 3 or sys.argv[1] != "--root":
+        print("usage: b-service.py --root <evidence/run-id>", file=sys.stderr)
+        return 2
+    root = assert_private_root(sys.argv[2])
+    token = read_local_token()
+    scrub_environment(root)
+    try:
+        code, _ = asyncio.run(run_service(root, token))
+        return code
+    except BaseException as error:
+        failure = {
+            "status": "FAILED",
+            "failure": type(error).__name__,
+            "finishedAtUtc": utc_now(),
+            "passed": False,
+        }
+        try:
+            write_json_exclusive(root / "b-service-final.json", failure)
+        except BaseException:
+            pass
+        print(f"finite B service failed: {type(error).__name__}", file=sys.stderr)
+        return 1
+    finally:
+        token = ""
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

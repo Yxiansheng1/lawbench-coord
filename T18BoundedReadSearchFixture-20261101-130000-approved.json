@@ -1,0 +1,8 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-read-order-20261101-024639.spec.ts",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadSearchFixture-20261101-130000-before.ts",
+  "mapping": {
+    "const READ_WITH_START = { name: '\u501f\u6761', start: 1 }": "const READ_WITH_START = { name: '\u501f\u6761', start: 1, end: 1 }"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadSearchFixture-20261101-130000.md"
+}

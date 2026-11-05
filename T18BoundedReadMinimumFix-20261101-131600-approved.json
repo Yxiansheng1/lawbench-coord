@@ -1,0 +1,8 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\materials.py",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadMinimumFix-20261101-131600-before.py",
+  "mapping": {
+    "if isinstance(start, bool) or not isinstance(start, int):": "if isinstance(start, bool) or not isinstance(start, int) or start < 1:"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadMinimumFix-20261101-131600.md"
+}

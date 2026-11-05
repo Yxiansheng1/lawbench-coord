@@ -1,0 +1,33 @@
+{
+  "not_a_heartbeat": true,
+  "tests_run": true,
+  "at": "2026-10-26T12:53:14.7752447+08:00",
+  "target": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T24/CoreToolCheck-20261026-125234",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T24-core-tool-amend-1017-20261026-130251.job.json",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24CoreTool-20261026-125234\\before",
+  "runner_pid": 29908,
+  "evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24CoreTool-20261026-125234",
+  "order": "D:/Lawbeach/lawbench-coord/T24-core-tool-amend-order-20261026-130251.md",
+  "production_changes_allowed": false,
+  "human_turn": true,
+  "state": "completed_root_real_core_tool_local_lifecycle_pass_only",
+  "purpose": "Original T24 actual core endpoint/tool registry and real local task lifecycle; no TCP/app/model/GUI claim",
+  "formal": "D:/Lawbeach/lawbench-coord/B-handback-T24-core-tool-amend-20261026-130251.md",
+  "actual_thread": "01a17697-07d9-7d83-b799-dc6fa580bfc5",
+  "actual_context": [
+    {
+      "cwd": "D:\\Lawbeach\\lawbench-B",
+      "effort": "max",
+      "model": "deepseek-v4.1-flash-1017"
+    }
+  ],
+  "commands": 40,
+  "success": 37,
+  "main_job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T24-core-tool-1017-20261026-125234.job.json",
+  "main_formal": "D:/Lawbeach/lawbench-coord/B-handback-T24-core-tool-20261026-125234.md",
+  "main_actual": "01a1768e-3b15-7ca3-a22b-54a8802c0cfd",
+  "amend_before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24CoreTool-20261026-125234\\amend-20261026-130251",
+  "root_run": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24CoreTool-20261026-125234\\root-run-20261026-130841\\root-result.json",
+  "root_result": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T24CoreTool-20261026-125234\\root-accepted.json",
+  "whole_T24_pass": false
+}

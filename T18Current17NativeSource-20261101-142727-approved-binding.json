@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "T34",
+    "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\CoreHttpEntry-20261025-163357\\server.py",
+    "old_sha256": "2e9d542ff0449fe5041f0cc6869a5470f610ed4ee7b5cd477332efc5f5bfd4cd",
+    "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\CoreHttpEntryCurrent17-20261101-142727\\server.py",
+    "expected_bytes": 55023,
+    "expected_sha256": "bf7a8c285269b87f9d148c6500f1a416c4b945dd57d63f0feffc7437000d0af8",
+    "mappings": {
+      "contract_version != \"1.6\"": "contract_version != \"1.7\"",
+      "contract_version_not_1_6": "contract_version_not_1_7"
+    }
+  },
+  {
+    "kind": "T32",
+    "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDraftEntry-20261025-165327\\server.py",
+    "old_sha256": "30dc704d919bf8a242d3a4e5a75f19866da66dcbff8cee8c57ae754cca3cd62f",
+    "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDraftEntryCurrent17-20261101-142727\\server.py",
+    "expected_bytes": 67606,
+    "expected_sha256": "f1ea3f0784a9178457bf1f1e85cb9faddec7b2d11fd75013aa2522818c87baf5",
+    "mappings": {
+      "contract_version != \"1.6\"": "contract_version != \"1.7\"",
+      "contract_version_not_1_6": "contract_version_not_1_7"
+    }
+  }
+]

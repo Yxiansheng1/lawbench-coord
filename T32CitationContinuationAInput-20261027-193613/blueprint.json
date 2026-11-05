@@ -1,0 +1,17 @@
+{
+  "id": "lawbench-ui-source",
+  "before": {
+    "files": 92,
+    "bytes": 635866,
+    "sha256": "ca47a1390b26dcfa70676ddab251e94ea007606b6acb841dc1783b906a7d1c9a"
+  },
+  "after": {
+    "files": 92,
+    "bytes": 637026,
+    "sha256": "605ff86d3e3587c99a8e2ac5d742461d811d81602d6f1d8ef81e6e4914fa7dc9"
+  },
+  "config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\build-config.mjs",
+  "builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\build-private.mjs",
+  "builder_frozen_sha": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "accepted_documents_sha": "a276632db5ae38af61d0e81b743c960b539c5d76c11f170a3d7cdc10dbe85d55"
+}

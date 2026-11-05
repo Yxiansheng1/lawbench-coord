@@ -1,0 +1,26 @@
+[
+  {
+    "role": "current-compiled-agent",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+    "bytes": 552937,
+    "sha256": "8f6bcb5cda92ba88370a425205c74dabc8f699146b3fa68501deb64f62a6ddfe"
+  },
+  {
+    "role": "current-compiled-host",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+    "bytes": 902499,
+    "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+  },
+  {
+    "role": "current-compiled-package",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\profile-node_modules\\lawbench-dsh\\package.json",
+    "bytes": 1257,
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+  },
+  {
+    "role": "current-compiled-manifest",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamQuestionPrivateBuild-20261029-122319\\private-output-20261029-123906\\manifest.json",
+    "bytes": 58196,
+    "sha256": "3756191ed865dffadfadb964ba55272751b2ed3ae9d6b5b46a4fb07c767a926d"
+  }
+]

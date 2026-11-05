@@ -1,0 +1,13 @@
+# HUMAN T32 PDF真实出处界面验收闭合 — 2026-10-27T22:01:32.147879+08:00
+最高优先原目标持续：1.0按律师要的样子全部做完再发，不卡日期。人类“你又没活了吗”本轮0scan/receipt/trigger/authority变更。Gate1/整T32/全项目未通过，Packaging HOLD。
+原卡T32步骤3要求点出处临时打开原文、关闭即消失；PRD要求引用能回读原文。本次实际补齐真实登记PDF第2页的图片和文字，不用接口/编译/首页冒GUI。
+Root累计完整独审六DS作者242实际commands/202success/40nonzero/authorruntime0；全部source/formal/raw/writefaces/setupcleanup/固定输入与逆向bytes已审。主B77/63、layout36/29、主A52/45、variable39/34、private18/15、repin20/16均终态。所有原始异常与正式件计数偏差保持，原job/status不改。
+有限场景已实际33TCP=16native200/4auth401/13guard403、bootstrap6通过，25.0584118s自然退出/6完整OSgone，真实5页PDF第2页PNG223934B已目视核对；只对应当时entry165565，不倒改成新entry94fb，不重跑同场景。
+首GUI212929因root设计漏计冻结profile创建的roaming/programdata导致private_inventory；51.2986628s启动失败、无B启动/ready/HTTP/bootstrap、0GUIinputs，失败24件3ab454...原留，非产品bug或已证端口冲突。精确GUI/private6兼容修复与两固定entry身份repin后换新根，不放宽default/noGUI严格4目录。
+当前实际GUI根D:\Lawbeach\lawbench-B\docs\plan\evidence\T32\NativePdfCitationEntry-20261027-204736\runs\T32-pdf-citation-20261027-214454：prepare0/2.8620675s/3完整OSgone，start0/11.8735034s，Electron596/Native41612/window854412与OSexeUTCbirth及sky精确匹配。6click+1scroll，真实观察“起诉意见书·第2页”页面图片与经依法侦查查明/126,500原文；关闭原文查看后文稿及出处按钮保留。0typing/Send/save/remove/picker/settingschange。已知settings/rejected普通提示关闭不证明原因，不盲修。
+TCP75全部native200，exactsourceGET1，写仅caseopen2；真实bootstrap6是旧unscoped夹具任务不是NativeR；model0/tool2/taskfinished/resultcancelled。PDF/JPEG原件与ready合成副本sha/size/mtime_ns同，draft113B同，无case原件副本。source56/B347/18legacy及25compiled保持，24staged全bytes同194112manifest526036，无build。
+600s前stop0；13完整exeUTCbirth全部gone，56591/65127/65126 Listen0，私有window854412消失，sky另6业务窗口未触碰，不冒sky全部空。PythonforcedTRUE/cleanupClaimedFALSE/noFinalmetadata/noLoopclosed，绝不冒finally；GUIgetter/Keyring/outbound未计量。served根不可复用。
+证据72件 C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T32NativePdfCitationGUI-root-20261027-214454，manifest 8d528954a33c860a696e1b48477a47bbde9df94219b8b053e57136d9c67f51e5。正式proof C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T32-native-PDF-citation-GUI-accepted-current.json。实际观察JPEG/tree和动作记录已保全。该PDF切片闭合不重跑或无限追加页码变体；非整T32/全项目/默认包。
+当前全部作者终态、无GUI/HTTP服务/业务模型，不伪造四线忙或重新打开结束job。下一原卡资源约束：T30需已真实启动的非空准确合成会话及移动盘，禁止造history/modelmessages；T32保存挂起不能重试T52已拒慢资源；T34无新cause元数据不重开诊断纸链；T33改名和同卷目录moveGUI、T31/37等既有同SHA证据沿用。真实OCR/业务模型/正式网络/Mac/整合打包仍依既有资源及禁区，不宣称只余人工或全部工程结束。
+原T43裁决原话已核：OWNER-T37T38方案裁决-20261019-1745.md、OWNER-T40密钥与产品名裁决-20261019-1712.md、OWNER-T40连接断开持久语义-20261021-193255.md确已存在；不能伪造新OWNER许可或为显忙重复方案paper。本次只核原话，未宣称全部方案与实现验收完成。
+唯一lawbench-abc30minACTIVE复用。最后真实trigger12:19:10.656Z/scan20:19:53.798778保持；本HUMAN不scan或倒填。此closure后同一ABC只实际更新一次。routine DONT_NOTIFY，确切新结论/失败/专属人工动作才通知。

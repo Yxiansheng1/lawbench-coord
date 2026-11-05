@@ -1,0 +1,201 @@
+diff --git a/packaging/THIRD-PARTY-LICENSES.md b/packaging/THIRD-PARTY-LICENSES.md
+index f10099b..dae6611 100644
+--- a/packaging/THIRD-PARTY-LICENSES.md
++++ b/packaging/THIRD-PARTY-LICENSES.md
+@@ -16,6 +16,7 @@
+ | 发票整理引擎（invoice-ledger-db 3.9.4.1） | 作者授权 | 律所周海沺律师提供，原样使用；署名保留 |
+ | 委托材料网页与证件识别驱动（retainer-offline 3.4.1） | 作者授权 | 同上；驱动内附 RapidOCR 及模型，许可证见驱动目录 |
+ | Qwen3 分词文件 tokenizer.json | Apache-2.0 | |
++| EasyTier 2.6.4（所外接入，T40） | LGPL-3.0 | 只带官方发布包里的 `easytier-core.exe`、`easytier-cli.exe`，原样、作为独立程序调用，未修改、未链接；版本与哈希见 `versions.lock`。LGPL-3.0 与其所依的 GPL-3.0 全文随包在 `tools\easytier\LICENSE.txt`、`GPL-3.0.txt`；源码见 https://github.com/EasyTier/EasyTier 标签 v2.6.4 |
+ 
+ ## 客户端 Python 依赖
+ 
+diff --git a/packaging/build.ps1 b/packaging/build.ps1
+index e86199d..a91bdc4 100644
+--- a/packaging/build.ps1
++++ b/packaging/build.ps1
+@@ -32,6 +32,9 @@ param(
+   [string]$LibreOfficeDir = '',
+   [string]$PandocExe = '',
+   [string]$Tokenizer = '',
++  # T40 remote access (built-in EasyTier): the official EasyTier release zip (easytier-windows-x86_64-v2.6.4.zip, github.com/EasyTier/EasyTier
++  # releases); checked against the pinned sha256 below, only easytier-core.exe and easytier-cli.exe are shipped.
++  [string]$EasyTierZip = '',
+   # 'package' step: list what would be packaged instead of running electron-builder.
+   [switch]$DryRun,
+   # 'dsh' step: pnpm content-addressable store for the offline install (the folder that holds v11\). Default: the
+@@ -48,6 +51,8 @@ param(
+   [string]$TimestampUrl = 'http://timestamp.digicert.com'
+ )
+ $ErrorActionPreference = 'Stop'
++# EasyTier 2.6.4 Windows x64 release zip, sha256 = the GitHub release asset digest (see docs\plan\evidence\T40)
++$EasyTierZipSha256 = '27af91e270e554709b048bd32327fefd2dfce5062ae1e8701af7550c6f525f84'
+ $Root = Split-Path -Parent $PSScriptRoot
+ $Dsh = Join-Path $Root 'dsh'
+ $AppId = 'cn.lianyue.lawbench'
+@@ -224,6 +229,23 @@ $Steps = [ordered]@{
+       New-Item -ItemType Directory -Force (Join-Path $Stage 'service\lawbench\llm') | Out-Null
+       Copy-Item -Force $Tokenizer (Join-Path $Stage 'service\lawbench\llm\tokenizer.json')
+     } else { $missing += 'tokenizer.json (-Tokenizer <file>)' }
++    if ($EasyTierZip -and (Test-Path $EasyTierZip)) {
++      if ((Get-FileHash -Algorithm SHA256 $EasyTierZip).Hash.ToLower() -ne $EasyTierZipSha256) { throw "EasyTier zip does not match the pinned sha256: $EasyTierZip" }
++      $etTmp = Join-Path ([IO.Path]::GetTempPath()) ('lb-easytier-' + [guid]::NewGuid().ToString('N'))
++      try {
++        Expand-Archive -LiteralPath $EasyTierZip -DestinationPath $etTmp
++        Reset-Dir (Join-Path $Stage 'tools\easytier')
++        # no-tun mode (T40): wintun.dll / Packet.dll / WinDivert64.sys and the web console are not needed
++        foreach ($f in 'easytier-core.exe', 'easytier-cli.exe') {
++          $src = Get-ChildItem -Recurse -File $etTmp -Filter $f | Select-Object -First 1
++          if (-not $src) { throw "EasyTier zip has no $f" }
++          Copy-Item -Force $src.FullName (Join-Path $Stage "tools\easytier\$f")
++        }
++        # LGPL-3.0 (with the GPL-3.0 it builds on) ships next to the program; source: github.com/EasyTier/EasyTier tag v2.6.4
++        Copy-Item -Force (Join-Path $Root 'packaging\licenses\EasyTier-LICENSE.txt') (Join-Path $Stage 'tools\easytier\LICENSE.txt')
++        Copy-Item -Force (Join-Path $Root 'packaging\licenses\GPL-3.0.txt') (Join-Path $Stage 'tools\easytier\GPL-3.0.txt')
++      } finally { Remove-Item -Recurse -Force -ErrorAction SilentlyContinue $etTmp }
++    } else { $missing += 'EasyTier (-EasyTierZip <easytier-windows-x86_64-v2.6.4.zip>)' }
+     if ($missing) { Pending ('payload sources not given: ' + ($missing -join '; ')) }
+   }
+   # The two small tools (tools\splitter, tools\convert) as windowed PyInstaller one-folder programs under
+@@ -327,7 +349,7 @@ $Steps = [ordered]@{
+     $missingPayload = @()
+     foreach ($need in 'python\python.exe', 'python\python312._pth', 'service\lawbench\__main__.py', 'service\lawbench\llm\tokenizer.json',
+                       'contracts\VERSION', 'skills', 'engines', 'tools\libreoffice\program\soffice.exe', 'tools\pandoc\pandoc.exe',
+-                      'installer\set-skills-acl.ps1', 'tools\splitter\splitter.exe', 'tools\convert\convert.exe') {
++                      'tools\easytier\easytier-core.exe', 'tools\easytier\LICENSE.txt', 'installer\set-skills-acl.ps1', 'tools\splitter\splitter.exe', 'tools\convert\convert.exe') {
+       if (-not (Test-Path (Join-Path $Stage $need))) { Say "  MISSING: $need"; $missingPayload += $need }
+     }
+     Say 'admin Skill folder: run packaging\installer\set-skills-acl.ps1 elevated once per machine (the NSIS installer is per-user)'
+diff --git a/packaging/gen_lock.py b/packaging/gen_lock.py
+index 2f4e491..9a9fc5b 100644
+--- a/packaging/gen_lock.py
++++ b/packaging/gen_lock.py
+@@ -38,7 +38,12 @@ EXTRA_ROOTS = ["pywin32", "pypdf", "reportlab", "onnxruntime", "opencv-python-he
+ OTHER = [
+     ("libreoffice", PENDING, PENDING, "documentfoundation.org", "MPL-2.0"),
+     ("pandoc", PENDING, PENDING, "github.com/jgm/pandoc releases", "GPL-2.0-or-later"),
++    # T40 所外接入：官方发布包 easytier-windows-x86_64-v2.6.4.zip（build.ps1 -EasyTierZip，按钉住的 sha256 核对）里的 core
++    ("easytier", "2.6.4", PENDING, "github.com/EasyTier/EasyTier releases（easytier-windows-x86_64-v2.6.4.zip "
++     "sha256 27af91e270e554709b048bd32327fefd2dfce5062ae1e8701af7550c6f525f84）", "LGPL-3.0"),
+ ]
++TOOL_EXES = {"libreoffice": "libreoffice/program/soffice.exe", "pandoc": "pandoc/pandoc.exe",
++             "easytier": "easytier/easytier-core.exe"}
+ 
+ 
+ def file_version(exe: pathlib.Path) -> str:
+@@ -54,13 +59,14 @@ def tools_rows(stage: pathlib.Path | None) -> list[tuple[str, str, str, str, str
+     for name, v, sha, src, lic in OTHER:
+         exe = None
+         if stage is not None:
+-            exe = stage / "tools" / ("libreoffice/program/soffice.exe" if name == "libreoffice" else "pandoc/pandoc.exe")
++            exe = stage / "tools" / TOOL_EXES[name]
+         if exe is not None and exe.is_file():
+             ver = file_version(exe)
+-            if name == "pandoc":
++            if name in ("pandoc", "easytier"):
+                 out = subprocess.run([str(exe), "--version"], capture_output=True, text=True).stdout.split()
+                 ver = out[1] if len(out) > 1 else ver
+-            rows.append((name, ver, str(exe.relative_to(stage)), sha256(exe), src + "（本机现有安装拷入；正式构建以选定的发布包为准）", lic))
++            note = "" if name == "easytier" else "（本机现有安装拷入；正式构建以选定的发布包为准）"
++            rows.append((name, ver, str(exe.relative_to(stage)), sha256(exe), src + note, lic))
+         else:
+             rows.append((name, v, "-", sha, src, lic))
+     return rows
+@@ -197,6 +203,7 @@ def write_licenses(rows: list[tuple[str, str, str]], missing: list[str]) -> None
+         "| 发票整理引擎（invoice-ledger-db 3.9.4.1） | 作者授权 | 律所周海沺律师提供，原样使用；署名保留 |",
+         "| 委托材料网页与证件识别驱动（retainer-offline 3.4.1） | 作者授权 | 同上；驱动内附 RapidOCR 及模型，许可证见驱动目录 |",
+         "| Qwen3 分词文件 tokenizer.json | Apache-2.0 | |",
++        "| EasyTier 2.6.4（所外接入，T40） | LGPL-3.0 | 只带官方发布包里的 `easytier-core.exe`、`easytier-cli.exe`，原样、作为独立程序调用，未修改、未链接；版本与哈希见 `versions.lock`。LGPL-3.0 与其所依的 GPL-3.0 全文随包在 `tools\\easytier\\LICENSE.txt`、`GPL-3.0.txt`；源码见 https://github.com/EasyTier/EasyTier 标签 v2.6.4 |",
+         "",
+         "## 客户端 Python 依赖",
+         "",
+diff --git a/service/lawbench/app.py b/service/lawbench/app.py
+index 1c5501a..0e6c1c0 100644
+--- a/service/lawbench/app.py
++++ b/service/lawbench/app.py
+@@ -28,6 +28,7 @@ from .case.task import TaskStore
+ from .config import Config
+ from .errors import ApiError, fail_body
+ from .net import Net
++from .remote import RemoteAccess
+ from .settings import DEFAULTS, SettingsStore
+ 
+ KEYRING_SERVICE = "lawbench/LAWFIRM_KEY"  # Spec 8.1
+@@ -75,6 +76,8 @@ def create_app(config: Config, *, key_getter=None, transport: httpx.BaseTranspor
+                    error=f"{e.code}:{e.reason}" if isinstance(e, ApiError) else type(e).__name__)
+         st.net = Net(copy.deepcopy(DEFAULTS["servers"]), transport=transport, forward_port=config.forward_port)
+     st.settings.on_change(lambda s: st.net.update(s["servers"]))
++    st.remote = RemoteAccess(config.appdata, st.net)              # 所外接入（T40）；随服务起停
++    st.settings.on_change(lambda s: st.remote.servers_changed())
+     from .pipeline import Pipelines  # T16
+     st.pipelines = Pipelines(cases=st.cases, tasks=st.tasks, materials=st.materials, net=st.net,
+                              key_getter=lambda: st.key_getter(), skills_dirs=config.skills_dirs)
+@@ -92,11 +95,13 @@ def create_app(config: Config, *, key_getter=None, transport: httpx.BaseTranspor
+     @contextlib.asynccontextmanager
+     async def lifespan(app):
+         st.ocr.start()                   # 恢复最近案件里未完成的识别任务（Spec 7.2 第 2 条）
++        st.remote.start()                # 所外接入：开关开着才真的起 EasyTier
+         try:
+             yield
+         finally:
+             st.ocr.stop()                # 未完成的任务标"已暂停（退出软件）"，下次启动接着做
+             st.retainer.close()          # 证件识别驱动随服务退出（T25 复核 A-P2-2）
++            st.remote.stop()             # 结束自带的 EasyTier
+ 
+     app = Starlette(routes=[Route("/health", health, methods=["GET"]), *ui.routes(st), *core.routes(st)],
+                     lifespan=lifespan)
+diff --git a/service/lawbench/net.py b/service/lawbench/net.py
+index cbbd61f..2edd7c2 100644
+--- a/service/lawbench/net.py
++++ b/service/lawbench/net.py
+@@ -6,6 +6,8 @@
+   结果缓存 60 秒；请求出现连接错误时重新探测一次。两者都不通报 SERVER_UNREACHABLE。
+ - 本机转发：只监听 127.0.0.1，把 /v1/chat/completions、/v1/models 流式转发到选中的 6000D 地址，
+   其余路径 404；不需要启动令牌；不记录请求和回答内容，只记元数据。
++- 所外接入（T40）：工作台自带的 EasyTier 在跑时，把所外地址转发到 127.0.0.1 的端口（remote.py 设
++  set_alt_forwards）；这时所外候选改为该本机端口，route 仍是 alternate。设置里的地址和白名单都不变。
+ """
+ from __future__ import annotations
+ 
+@@ -146,6 +148,7 @@ class Net:
+         self._lock = threading.Lock()
+         self._routes: dict[str, tuple[str, str, float]] = {}
+         self._servers: dict = {}
++        self._alt_forwards: dict[str, int] = {}  # kind -> 本机端口（所外接入在跑时）
+         self.update(servers)
+         self._transport = transport
+         self.client = httpx.Client(
+@@ -194,13 +197,31 @@ class Net:
+         with self._lock:
+             self._routes.pop(kind, None)
+ 
++    def alt_target(self, kind: str) -> tuple[str, int] | None:
++        """设置里该服务器所外地址的 (主机, 端口)；没填返回 None。所外接入按它建端口转发。"""
++        with self._lock:
++            url = self._servers.get(KINDS[kind][1])
++        return _host_port(url) if url else None
++
++    def set_alt_forwards(self, ports: dict[str, int] | None) -> None:
++        """所外接入起来时传 {kind: 本机端口}，停掉时传 None；已缓存的地址选择作废。"""
++        with self._lock:
++            self._alt_forwards = dict(ports or {})
++            self._routes.clear()
++
+     # ---------- 地址选择 ----------
+ 
+     def candidates(self, kind: str) -> list[tuple[str, str]]:
+         primary_key, alt_key, _ = KINDS[kind]
+         out = [(self._servers[primary_key].rstrip("/"), "primary")]
+-        if self._servers.get(alt_key):
+-            out.append((self._servers[alt_key].rstrip("/"), "alternate"))
++        alt = self._servers.get(alt_key)
++        forward = self._alt_forwards.get(kind)
++        if alt and forward is not None:
++            # 所外接入在跑：所外地址经本机端口转发过去，路径（如 /v1）照设置里的
++            path = urlsplit(alt).path.rstrip("/")
++            out.append((f"http://{LOOPBACK}:{forward}{path}", "alternate"))
++        elif alt:
++            out.append((alt.rstrip("/"), "alternate"))
+         return out
+ 
+     def probe(self, kind: str, base: str) -> bool:

@@ -1,0 +1,97 @@
+{
+  "source_changes": [],
+  "model_calls": 0,
+  "Packaging": "HOLD",
+  "at": "2026-10-29T04:55:10.7610878+08:00",
+  "results": [
+    {
+      "mode": "unit",
+      "elapsed_s": 5.5051724,
+      "forced": false,
+      "OS": [
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991900121",
+          "gone": true,
+          "pid": 46664,
+          "birthUTC": "2026-10-28T20:54:59.1900121Z"
+        },
+        {
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "ticks": "639288176970654000",
+          "gone": true,
+          "pid": 41444,
+          "birthUTC": "2026-10-28T20:54:57.0654000Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176970575722",
+          "gone": true,
+          "pid": 39760,
+          "birthUTC": "2026-10-28T20:54:57.0575722Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991944842",
+          "gone": true,
+          "pid": 28860,
+          "birthUTC": "2026-10-28T20:54:59.1944842Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991703445",
+          "gone": true,
+          "pid": 16924,
+          "birthUTC": "2026-10-28T20:54:59.1703445Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991779498",
+          "gone": true,
+          "pid": 47284,
+          "birthUTC": "2026-10-28T20:54:59.1779498Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991854788",
+          "gone": true,
+          "pid": 47724,
+          "birthUTC": "2026-10-28T20:54:59.1854788Z"
+        },
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288176991817411",
+          "gone": true,
+          "pid": 21864,
+          "birthUTC": "2026-10-28T20:54:59.1817411Z"
+        }
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "types",
+      "elapsed_s": 8.1879803,
+      "forced": false,
+      "OS": [
+        {
+          "exe": "E:\\node\\node.exe",
+          "ticks": "639288177025691939",
+          "gone": true,
+          "pid": 23048,
+          "birthUTC": "2026-10-28T20:55:02.5691939Z"
+        },
+        {
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "ticks": "639288177025757095",
+          "gone": true,
+          "pid": 44600,
+          "birthUTC": "2026-10-28T20:55:02.5757095Z"
+        }
+      ],
+      "exit": 0
+    }
+  ],
+  "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+  "GUI": false,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ContractDraftQuestionRecoveryUnit-root-20261029-045457"
+}

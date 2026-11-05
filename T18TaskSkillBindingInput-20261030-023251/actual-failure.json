@@ -1,0 +1,365 @@
+{
+  "verdict": "ACTUAL_NAVIGATION_WRONG_SKILL_AND_NON_NAVIGATION_ACTIONS_FAILED",
+  "at_utc": "2026-10-29T18:30:39.356195+00:00",
+  "run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\NavigationNative-20261030-020000\\run-nG8s6X",
+  "elapsed_s": 23.85899999999674,
+  "driver_exit_code": 1,
+  "status": "FAILED",
+  "error": {
+    "name": "Error",
+    "message": "the Skill tool did not load legal-workflow"
+  },
+  "secondary_errors": [
+    {
+      "message": "cleanup failed",
+      "failures": [
+        "B HTTP service did not stop cleanly"
+      ]
+    }
+  ],
+  "model_POST": 12,
+  "model_HTTP200": 12,
+  "actual_tool_counts": {
+    "skill": 1,
+    "case_read_wiki": 2,
+    "case_search": 2,
+    "case_read_material": 5,
+    "ask_user_question": 1
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "seq": 11,
+      "arguments": {
+        "name": "litigation-docs"
+      },
+      "result_seq": 12,
+      "is_error": false,
+      "result_text_sha256": "61d019f155f17cb5a1082c0377328cb2c57f8964ca2cf82314ae918712d0385d"
+    },
+    {
+      "name": "case_read_wiki",
+      "seq": 16,
+      "arguments": {
+        "section": "概览"
+      },
+      "result_seq": 17,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_wiki",
+      "seq": 21,
+      "arguments": {
+        "section": "当事人"
+      },
+      "result_seq": 22,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_search",
+      "seq": 26,
+      "arguments": {
+        "query": "法院 案号"
+      },
+      "result_seq": 27,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_search",
+      "seq": 31,
+      "arguments": {
+        "query": "代理词"
+      },
+      "result_seq": 32,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_material",
+      "seq": 36,
+      "arguments": {
+        "name": "案情摘要"
+      },
+      "result_seq": 37,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_material",
+      "seq": 41,
+      "arguments": {
+        "name": "借条"
+      },
+      "result_seq": 42,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_material",
+      "seq": 46,
+      "arguments": {
+        "name": "银行流水"
+      },
+      "result_seq": 47,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_material",
+      "seq": 51,
+      "arguments": {
+        "name": "还款记录"
+      },
+      "result_seq": 52,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "case_read_material",
+      "seq": 56,
+      "arguments": {
+        "name": "情况说明"
+      },
+      "result_seq": 57,
+      "is_error": true,
+      "result_text_sha256": "3dd3311706cd8d4337aa542a6ba076bf6a91d8cc84cd2cfc2a7c13867ed43238",
+      "error_text": "Error: TOOL_BODY"
+    },
+    {
+      "name": "ask_user_question",
+      "seq": 61,
+      "arguments": {
+        "questions": [
+          {
+            "id": "doc_type",
+            "question": "要起草的文书类型是？",
+            "options": [
+              {
+                "label": "代理词（一审）",
+                "description": "本案已立案，开庭前准备代理词"
+              },
+              {
+                "label": "民事起诉状",
+                "description": "立案用的起诉状"
+              },
+              {
+                "label": "其他",
+                "description": "上诉状、答辩状等"
+              }
+            ]
+          },
+          {
+            "id": "court",
+            "question": "受理法院全称是什么？（材料里没找到）"
+          },
+          {
+            "id": "case_no",
+            "question": "案号是什么？（材料里没找到）"
+          }
+        ]
+      },
+      "result_seq": 62,
+      "is_error": true,
+      "result_text_sha256": "60fd536b5763761dd2c55e4cc2e7269c2429156f5eb590e2628d9bced92c3199",
+      "error_text": "Error: navigation scenario forbids ask_user_question callbacks"
+    }
+  ],
+  "legal_workflow_present_in_actual_catalog": true,
+  "catalog_event_seq": 7,
+  "actual_first_skill": {
+    "name": "litigation-docs"
+  },
+  "visible_final_seq": 65,
+  "visible_final": "根据诉讼文书起草流程，准备代理词前需要先确认以下信息：\n\n1. **文书类型**：您提到的是代理词（一审），对吗？\n2. **受理法院**：材料中没有找到法院全称，请告知。\n3. **案号**：材料中没有找到案号，请告知。\n\n另外，我需要先阅读本案材料来整理事实。材料清单显示有借条、情况说明、案情摘要、还款记录、银行流水，但读取时都返回了错误。请问这些材料是否已上传完成？\n\n如果材料没问题，确认上述信息后，我会：\n- 阅读全部案件材料\n- 整理争议焦点和证据\n- 起草代理词初稿并保存为草稿\n\n您先告诉我法院和案号，我就可以开始起草了。",
+  "normal_unscoped_inputs0": true,
+  "native_session": {
+    "sessionId": "session-fe61a6e8-18b5-4d04-9867-476dd25dd70b",
+    "uuid": "fe61a6e8-18b5-4d04-9867-476dd25dd70b",
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\NavigationNative-20261030-020000\\run-nG8s6X\\case",
+    "freshCreated": true
+  },
+  "native_request": "af79f7c0-31d3-4087-8b57-80438307267c",
+  "task_id": "T-20261030022843-61c4",
+  "task_result": {
+    "v": 1,
+    "task_id": "T-20261030022843-61c4",
+    "status": "completed",
+    "usage": {
+      "model_calls": 12,
+      "tool_calls": 9,
+      "elapsed_s": 16
+    },
+    "drafts": [],
+    "citation_check": null,
+    "coverage": {
+      "total": 5,
+      "fully_read": [],
+      "partially_read": [],
+      "not_read": [
+        "借条",
+        "情况说明",
+        "案情摘要",
+        "还款记录",
+        "银行流水"
+      ],
+      "unreadable": []
+    },
+    "citations": [],
+    "finished_at": "2026-10-30T02:29:00+08:00"
+  },
+  "physical_rows": 69,
+  "events": 68,
+  "physical_log": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\NavigationNative-20261030-020000\\run-nG8s6X\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-NavigationNative-20261030-020000-run-nG8s6X-case--\\session-fe61a6e8-18b5-4d04-9867-476dd25dd70b\\session.v4.jsonl",
+    "bytes": 78359,
+    "sha256": "a0b34d8d7918045c2d7fd0f10161ae6f7b920d3afab0782a6beb4d813eceb560",
+    "mtime_ns": "1793298541091730400"
+  },
+  "production_JSONL_reopen": "NOT_REACHED",
+  "sourceGETs": "NOT_REACHED",
+  "B_passed": false,
+  "B_failure": "request_protocol_violation",
+  "B_protocol": {
+    "archiveMatchArgs": [],
+    "archiveMatchResults": [],
+    "archivePlanArgs": [],
+    "archivePlanResults": [],
+    "caseBound": true,
+    "contextCalls": 1,
+    "contextL1Exact": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/tasks": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/scan": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1
+    },
+    "denials": {
+      "TOOL_BODY": 9
+    },
+    "draftPaths": [],
+    "draftSaves": [],
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003",
+      "M0004",
+      "M0005"
+    ],
+    "materialNames": {
+      "M0001": "借条",
+      "M0002": "情况说明",
+      "M0003": "案情摘要",
+      "M0004": "还款记录",
+      "M0005": "银行流水"
+    },
+    "materialVersions": {
+      "M0001": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+      "M0002": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+      "M0003": "0720b647487e10e423da3024f2920220067404a25c14d75538d74482c9ad8ab7",
+      "M0004": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+      "M0005": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24"
+    },
+    "requestBound": true,
+    "requestId": "af79f7c0-31d3-4087-8b57-80438307267c",
+    "requestScopeNone": true,
+    "requestScopePrepareCalls": 0,
+    "selectionId": "T-20261030022843-d72a",
+    "sessionBound": true,
+    "taskBound": true,
+    "taskId": "T-20261030022843-61c4",
+    "toolSequence": [],
+    "violations": []
+  },
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credentials": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_close_flags": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "identities": [
+    {
+      "pid": 15332,
+      "parent": 42304,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-29T18:28:38.8859390Z"
+    },
+    {
+      "pid": 58640,
+      "parent": 15332,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T18:28:39.3771070Z"
+    },
+    {
+      "pid": 57572,
+      "parent": 58640,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T18:28:39.3838200Z"
+    },
+    {
+      "pid": 48092,
+      "parent": 58640,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T18:28:39.4575870Z"
+    },
+    {
+      "pid": 61264,
+      "parent": 48092,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-29T18:28:39.5644330Z"
+    },
+    {
+      "pid": 42996,
+      "parent": 48092,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-29T18:28:39.8895730Z"
+    },
+    {
+      "pid": 61424,
+      "parent": 42996,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T18:28:39.8992380Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 51781,
+  "Listen_count": 0,
+  "forced_stop": false,
+  "original8_SHA_size_mtime_ns_held": true,
+  "fixed_admission_rows_held": 517,
+  "private25_held": true,
+  "owned_text_key_scan": {
+    "files": 31,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "service_cleanup_qualification": "B natural exit1 represents request protocol failure; listener/net/logs/retainer all actually closed, not a stuck process",
+  "business_quality_all_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

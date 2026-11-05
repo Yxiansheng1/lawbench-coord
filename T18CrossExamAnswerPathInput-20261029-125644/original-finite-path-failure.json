@@ -1,0 +1,35 @@
+{
+  "exit": 1,
+  "CoreAgentSessionCreated": false,
+  "NativeResourceClaimed": false,
+  "forced": false,
+  "source_unchanged": true,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamCallbackFinite-root-20261029-125554",
+  "elapsed_s": 0.9598135,
+  "global_network_metered": false,
+  "OS": [
+    {
+      "ticks": "639288465541411477",
+      "gone": true,
+      "birthUTC": "2026-10-29T04:55:54.1411477Z",
+      "pid": 50004,
+      "exe": "C:\\Windows\\system32\\conhost.exe"
+    },
+    {
+      "ticks": "639288465542490515",
+      "gone": true,
+      "birthUTC": "2026-10-29T04:55:54.2490515Z",
+      "pid": 39356,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe"
+    },
+    {
+      "ticks": "639288465541333396",
+      "gone": true,
+      "birthUTC": "2026-10-29T04:55:54.1333396Z",
+      "pid": 51992,
+      "exe": "E:\\node\\node.exe"
+    }
+  ],
+  "source": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/CrossExamCallbackRecovery-20261029-122319/verify-callback-finite.mts",
+  "source_sha256": "4d9a7da607ab7906b80eaf4ce3fad2fedd3d723255ea9964ae30d9ad0904decc"
+}

@@ -1,0 +1,823 @@
+{
+  "verdict": "ACTUAL_GENERAL_DRAFTING_FAILED_REQUIRES_ROOT_REVIEW",
+  "at_utc": "2026-10-28T20:01:31.095128+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\run-FjV3fC",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralGateRuntime-root-20261029-035916",
+  "elapsed_s": 98.04699999999866,
+  "driver_exit_code": 1,
+  "consumer_status": "FAILED",
+  "error": {
+    "message": "cleanup failed",
+    "failures": [
+      "agent cancel/join failed: TypeError"
+    ]
+  },
+  "secondary_errors": [],
+  "model_POST": 10,
+  "model_HTTP200": 10,
+  "native_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-57ef5c80-b325-4a9f-8a29-2366ac6d6846",
+    "createdAt": 1793217560874,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\run-FjV3fC\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "native_session": "session-57ef5c80-b325-4a9f-8a29-2366ac6d6846",
+  "task": "T-20261029035920-7fdc",
+  "task_case": "8267f6fa-a120-4442-a17d-e264992779b6",
+  "native_request": "b76851dc-78d0-4116-81ee-656cdb4730b7",
+  "actual_tool_counts": {
+    "skill": 1,
+    "case_list_materials": 1,
+    "case_read_material": 5,
+    "case_save_draft": 5,
+    "ask_user_question": 1
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "call_id": "chatcmpl-tool-bc6aa1df251fe733",
+      "seq": 11,
+      "arguments_sha256": "7fefd61e6f0d5f85c9485406e256f502e93ae172e0662bb380d017234b2d706a",
+      "result_seq": 12,
+      "is_error": false,
+      "result_sha256": "eece24d85c401f6f86ade84c7abdfadc8d2e1c122ff30aeb2b8ec148f28baf8a"
+    },
+    {
+      "name": "case_list_materials",
+      "call_id": "chatcmpl-tool-bc57044df1c21c5a",
+      "seq": 16,
+      "arguments_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_seq": 17,
+      "is_error": false,
+      "result_sha256": "3bdc83f7bd206864a4decb7e733d9aa4ed690f140ebf548af11b865cc456a703"
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-ae69a293e0687bd3",
+      "seq": 21,
+      "arguments_sha256": "2c4cd98187eef99ea8d1b0195dab2e1645c20405acb53009234b29111b3a37bd",
+      "result_seq": 22,
+      "is_error": false,
+      "result_sha256": "fe838fbff60da8d691c8e1c767727c605c0d72afde27f09a84b159884fd4db74",
+      "name_argument": "借条",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-b53dbd1b3d187354",
+      "seq": 23,
+      "arguments_sha256": "c256af85add885f320e4401f69f1b8525144b3931418608ba62ff4d326788a6a",
+      "result_seq": 24,
+      "is_error": false,
+      "result_sha256": "f11f1ae8e76c58ca2df21f324b358a68620c0297599e2b6252a15e42b8c11f1e",
+      "name_argument": "微信催款记录",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-b58599686c6fad5c",
+      "seq": 25,
+      "arguments_sha256": "30b23ff553ea194c58a7f05ba8124e0e3f5273c5089721858d31cd03e9674735",
+      "result_seq": 26,
+      "is_error": false,
+      "result_sha256": "2547a5ca3ec113596e29ae92f1b9a1ef91ca919f85fc3bfbbc0c30277ae37dd3",
+      "name_argument": "情况说明",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-b14a3ef805bdde09",
+      "seq": 27,
+      "arguments_sha256": "1f6bbb875223d9c3b2548e3682154fa870f45846c3738366d1ea0a495f9b2ab9",
+      "result_seq": 28,
+      "is_error": false,
+      "result_sha256": "3976cca460664f46caff95ba05a954db3c036a6aca2d3955c33caf4ee059a620",
+      "name_argument": "还款记录",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-8fa3d5b13a7f815b",
+      "seq": 29,
+      "arguments_sha256": "19acadc5730a4d8efedfa61141bc32c1ac69b6d8a53bff12c16e59b8b5fdfd92",
+      "result_seq": 30,
+      "is_error": false,
+      "result_sha256": "c146a0f5c67e42b0a2dad142df5711acc438f0f851a7c339a910e0c129d36f0f",
+      "name_argument": "银行流水",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a9b95833b2b74b61",
+      "seq": 34,
+      "arguments_sha256": "e742aeb1e14cc80f7e1a25aa2d6cdeaf446ce266389914afbd0826b7c624da0e",
+      "result_seq": 35,
+      "is_error": true,
+      "result_sha256": "bded56cdb4cfac187a6aff5f4b07344f27e492ac1e0f3ca393867478430a0c0c",
+      "title": "律师函",
+      "path": null,
+      "version": null,
+      "citation_check": null
+    },
+    {
+      "name": "ask_user_question",
+      "call_id": "chatcmpl-tool-9b275c403e2e693c",
+      "seq": 39,
+      "arguments_sha256": "9942571679b717c70c46365684973033eff408bdf34bd1929acf90647fd23a13",
+      "result_seq": 40,
+      "is_error": false,
+      "result_sha256": "622d15db37a5ecee3aebe8a8a59edf0603d1d30880c31a3ed6289988be9db26a",
+      "question_ids": [
+        "doc_type",
+        "recipient",
+        "goal"
+      ],
+      "answer_ids": [
+        "doc_type",
+        "recipient",
+        "goal"
+      ]
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-9825a9125010257d",
+      "seq": 44,
+      "arguments_sha256": "e742aeb1e14cc80f7e1a25aa2d6cdeaf446ce266389914afbd0826b7c624da0e",
+      "result_seq": 45,
+      "is_error": false,
+      "result_sha256": "b524f158cf369070d06b610cc6e58eaadbac4be8dfa58c5bbd4a39450f426dc8",
+      "title": "律师函",
+      "path": "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v1.md",
+      "version": 1,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "2025年3月10日，王某丙向李某乙借款人民币80,000元，双方约定借款年利率为12%，按月付息，到期还本，还款期限为2025年9月10日前一次性归还全部本金",
+            "citation": "〔借条 第5行、第11行、第14行〕",
+            "message": "出处格式不对：〔借条 第5行、第11行、第14行〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "借款后，王某丙支付了2025年3月至5月利息共计2,200元，并于2025年6月10日归还本金20,000元",
+            "citation": "〔还款记录 第3-6行、银行流水 第5-8行〕",
+            "message": "2025年3月 标的是 还款记录 第3-6行、银行流水 第5-8行，实际在 还款记录 第2行、银行流水 第1行、银行流水 第3行、银行流水 第4行"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "借款后，王某丙支付了2025年3月至5月利息共计2,200元，并于2025年6月10日归还本金20,000元",
+            "citation": "〔还款记录 第3-6行、银行流水 第5-8行〕",
+            "message": "2200 在所引材料（还款记录 第3-6行、银行流水 第5-8行）中找不到"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "。截至2025年9月10日还款期限届满，王某丙尚欠本金60,000元未还",
+            "citation": "〔推断：80,000元-20,000元〕",
+            "message": "出处格式不对：〔推断：80,000元-20,000元〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "截至本函发出之日，王某丙尚欠本金60,000元及自2025年9月10日起算的逾期利息。逾期利息的计算标准及具体金额，法律依据待律师核实。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. 于收到本函之日起7日内，向李某乙清偿全部剩余借款本金人民币60,000元；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2. 同时支付自2025年9月10日起至实际清偿之日止的逾期利息（计算标准待律师核实）；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 9,
+          "must_fix": 4,
+          "hints": 3
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-82344d204e6e91a1",
+      "seq": 49,
+      "arguments_sha256": "4083713f046cd8f859118b6944b48238f6dbb8c779c67621c95e24a027d14958",
+      "result_seq": 50,
+      "is_error": false,
+      "result_sha256": "1f2df7cb3168112320bc7fa7d9da3843f57510c861ec577feee6b2bdb03a6408",
+      "title": "律师函",
+      "path": "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v2.md",
+      "version": 2,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "2025年3月10日，王某丙向李某乙借款人民币80,000元",
+            "citation": "〔借条 第5行〕",
+            "message": "2025年3月10日 标的是 借条 第5行，实际在 借条 第8行、借条 第29行"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "借款后，王某丙分别于2025年4月10日、5月10日、7月10日支付利息共计2,200元",
+            "citation": "〔推断：还款记录 第3-4行、第6行合计〕",
+            "message": "出处格式不对：〔推断：还款记录 第3-4行、第6行合计〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "。截至2025年9月10日还款期限届满，王某丙尚欠本金60,000元未还",
+            "citation": "〔推断：借条 第5行借款80,000元减去还款记录 第5行已还20,000元〕",
+            "message": "出处格式不对：〔推断：借条 第5行借款80,000元减去还款记录 第5行已还20,000元〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "截至本函发出之日，王某丙尚欠本金60,000元及自2025年9月10日起算的逾期利息。逾期利息的计算标准及具体金额，法律依据待律师核实。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. 于收到本函之日起7日内，向李某乙清偿全部剩余借款本金人民币60,000元；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2. 同时支付自2025年9月10日起至实际清偿之日止的逾期利息（计算标准待律师核实）；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 11,
+          "must_fix": 3,
+          "hints": 3
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-b94c983e65ec51c7",
+      "seq": 54,
+      "arguments_sha256": "eaa709c72fa3c002705ba9d98f7746b7b2e2c9b374583beab86632503b0e63a7",
+      "result_seq": 55,
+      "is_error": false,
+      "result_sha256": "ee093019145ce5259bdf89a93c6c7108b77a2afce8bf1019d5df21f4b88fdacf",
+      "title": "律师函",
+      "path": "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v3.md",
+      "version": 3,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "。截至2025年9月10日还款期限届满，王某丙尚欠本金60,000元未还",
+            "citation": "〔推断：借款80,000元减去已还本金20,000元〕",
+            "message": "出处格式不对：〔推断：借款80,000元减去已还本金20,000元〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "截至本函发出之日，王某丙尚欠本金60,000元及自2025年9月10日起算的逾期利息。逾期利息的计算标准及具体金额，法律依据待律师核实。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. 于收到本函之日起7日内，向李某乙清偿全部剩余借款本金人民币60,000元；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2. 同时支付自2025年9月10日起至实际清偿之日止的逾期利息（计算标准待律师核实）；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 18,
+          "must_fix": 1,
+          "hints": 3
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-91748d335fa5d0f1",
+      "seq": 59,
+      "arguments_sha256": "1ffad53b6984cf7149bb5ad07e541925950dd52306702711e2014d492340c2ee",
+      "result_seq": 60,
+      "is_error": false,
+      "result_sha256": "8a469bd320dba07e7b7b01c0271f67170f73d3993220753eef49f0bda93e99c9",
+      "title": "律师函",
+      "path": "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v4.md",
+      "version": 4,
+      "citation_check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "截至本函发出之日，王某丙尚欠本金60,000元及自2025年9月10日起算的逾期利息。逾期利息的计算标准及具体金额，法律依据待律师核实。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. 于收到本函之日起7日内，向李某乙清偿全部剩余借款本金人民币60,000元；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2. 同时支付自2025年9月10日起至实际清偿之日止的逾期利息（计算标准待律师核实）；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 18,
+          "must_fix": 0,
+          "hints": 3
+        }
+      }
+    }
+  ],
+  "questions_answered_before_first_successful_save": true,
+  "final_draft": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\run-FjV3fC\\case\\工作区\\任务\\T-20261029035920-7fdc\\草稿\\律师函-v4.md",
+    "bytes": 2901,
+    "sha256": "f18893681026e881c6c667c242f40b64602952b6200a0661fb55768917cf9ee6",
+    "mtime_ns": "1793217642608473300",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "截至本函发出之日，王某丙尚欠本金60,000元及自2025年9月10日起算的逾期利息。逾期利息的计算标准及具体金额，法律依据待律师核实。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "1. 于收到本函之日起7日内，向李某乙清偿全部剩余借款本金人民币60,000元；",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "2. 同时支付自2025年9月10日起至实际清偿之日止的逾期利息（计算标准待律师核实）；",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 18,
+        "must_fix": 0,
+        "hints": 3
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+        "name": "情况说明",
+        "loc": {
+          "unit": "line",
+          "from": 4
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 2
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 4
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 3,
+          "to": 6
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 5,
+          "to": 8
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+        "name": "微信催款记录",
+        "loc": {
+          "unit": "line",
+          "from": 2,
+          "to": 9
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+        "name": "情况说明",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 17
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 11
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 14
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 3
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 4
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      }
+    ]
+  },
+  "coverage_actual": {
+    "total": 5,
+    "fully_read": [
+      "借条",
+      "微信催款记录",
+      "情况说明",
+      "还款记录",
+      "银行流水"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "read_ranges": {
+    "v": 1,
+    "task_id": "T-20261029035920-7fdc",
+    "reads": [
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "unit": "line",
+        "from": 1,
+        "to": 29,
+        "at": "2026-10-29T03:59:32+08:00"
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+        "unit": "line",
+        "from": 1,
+        "to": 9,
+        "at": "2026-10-29T03:59:32+08:00"
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+        "unit": "line",
+        "from": 1,
+        "to": 10,
+        "at": "2026-10-29T03:59:32+08:00"
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "unit": "line",
+        "from": 1,
+        "to": 7,
+        "at": "2026-10-29T03:59:32+08:00"
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "unit": "line",
+        "from": 1,
+        "to": 10,
+        "at": "2026-10-29T03:59:32+08:00"
+      }
+    ]
+  },
+  "physical_rows": 67,
+  "events": 66,
+  "event_types": {
+    "agent/inbox/spliced": 2,
+    "turn/start": 1,
+    "step/start": 10,
+    "system/message": 1,
+    "user/message": 3,
+    "request/header": 1,
+    "request/context": 1,
+    "assistant/message": 10,
+    "tool/call": 13,
+    "tool/result": 13,
+    "step/end": 10,
+    "turn/end": 1
+  },
+  "production_JSONL_reopen": {
+    "sessionReopened": true,
+    "liveEqualsReopened": true,
+    "physicalJsonlPath": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\run-FjV3fC\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-GeneralDraftingCurrentRuntime-20261029-035529-run-FjV3fC-case--\\session-57ef5c80-b325-4a9f-8a29-2366ac6d6846\\session.v4.jsonl",
+    "physicalJsonlBytes": 185422,
+    "physicalJsonlSha256": "ddba75a0ff3b68d942629a87bb4e2523d98ee2ffb304974fa79dca9430185bcd",
+    "physicalEventCount": 66,
+    "headerId": "session-57ef5c80-b325-4a9f-8a29-2366ac6d6846",
+    "headerCwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\run-FjV3fC\\case"
+  },
+  "identities": [
+    {
+      "pid": 39684,
+      "parent": 41132,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T19:59:16.3188300Z"
+    },
+    {
+      "pid": 43560,
+      "parent": 39684,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T19:59:16.7823050Z"
+    },
+    {
+      "pid": 27500,
+      "parent": 43560,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T19:59:16.7884490Z"
+    },
+    {
+      "pid": 39112,
+      "parent": 43560,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T19:59:16.8547790Z"
+    },
+    {
+      "pid": 2840,
+      "parent": 39112,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T19:59:16.9566170Z"
+    },
+    {
+      "pid": 4856,
+      "parent": 39112,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T19:59:17.2509990Z"
+    },
+    {
+      "pid": 45140,
+      "parent": 4856,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T19:59:17.2583350Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 60607,
+  "Listen_count": 0,
+  "B_passed": true,
+  "B_failure": null,
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credential_getters": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_protocol": {
+    "caseBound": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/source": 20,
+      "GET /api/tasks": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/scan": 1,
+      "POST /api/request/scope": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 10
+    },
+    "denials": {},
+    "draftPaths": [
+      "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v1.md",
+      "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v2.md",
+      "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v3.md",
+      "工作区/任务/T-20261029035920-7fdc/草稿/律师函-v4.md"
+    ],
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003",
+      "M0004",
+      "M0005"
+    ],
+    "materialNames": {
+      "M0001": "借条",
+      "M0002": "微信催款记录",
+      "M0003": "情况说明",
+      "M0004": "还款记录",
+      "M0005": "银行流水"
+    },
+    "materialVersions": {
+      "M0001": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+      "M0002": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+      "M0003": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+      "M0004": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+      "M0005": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24"
+    },
+    "requestBound": true,
+    "requestId": "b76851dc-78d0-4116-81ee-656cdb4730b7",
+    "scopePrepared": true,
+    "selectionId": "T-20261029035920-df45",
+    "sessionBound": true,
+    "taskBound": true,
+    "taskId": "T-20261029035920-7fdc",
+    "violations": []
+  },
+  "B_cleanup": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "forced_stop": false,
+  "original_source8_SHA_size_mtime_ns_held": true,
+  "fixed_admission_rows_held": 504,
+  "private25_held": true,
+  "owned_text_key_scan": {
+    "files": 35,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_quality_all_PASS": false,
+  "manual_review_required": true,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

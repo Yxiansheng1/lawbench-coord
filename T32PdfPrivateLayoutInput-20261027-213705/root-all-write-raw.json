@@ -1,0 +1,28 @@
+[
+  {
+    "id": "item_18",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_26",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\root-private-layout-correction-20261027-213705.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-private-layout-20261027-213705.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

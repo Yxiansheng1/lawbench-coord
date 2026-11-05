@@ -1,0 +1,152 @@
+{
+  "verdict": "PASS_PRIVATE_SOURCE_BUILD_AND_STATIC_OUTPUTS_ONLY",
+  "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261026-054741",
+  "manifestSHA": "50c04674f198278e3e426448fa265729243c89386045534bb9810951783c7401",
+  "inventory": [
+    {
+      "path": "manifest.json",
+      "bytes": 57729,
+      "sha256": "50c04674f198278e3e426448fa265729243c89386045534bb9810951783c7401"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js",
+      "bytes": 143937,
+      "sha256": "70b9b6c50249b6b16dbd36202bd496c0aaa09c6ed3605bcf0453851ee5fc56fb"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js.map",
+      "bytes": 371217,
+      "sha256": "02e0285aca13da9918d0e5562c6dba08c7b0a7f05c02e67f8c3388f2082917a3"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/index.js",
+      "bytes": 122733,
+      "sha256": "e36df49e0ab0a129ad6900b3806c24e0aac0b3516ff4b6519c784518c0511569"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.d.ts",
+      "bytes": 123,
+      "sha256": "5e2d26ee86d0fe170dac8cd3f5854e67bdea334c57f40a5766ace57b8304c17d"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.js",
+      "bytes": 157484,
+      "sha256": "289d7befd30c716d881ad2918d966deb34f0a5dafff04112a64f878b99f4a431"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts",
+      "bytes": 6413,
+      "sha256": "e6f7d2b5a6b35d7b1a28edf3afe10dbf73289775622f326c104d1855f9342fc3"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts.map",
+      "bytes": 891,
+      "sha256": "a0b9ae0ec7312dea0beb6a4e5ef063e30bf54bfbb093157583c4b0932b29ca48"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.js",
+      "bytes": 59040,
+      "sha256": "64808baa5e3add56ac2addf36a1da2bba2901d02a97fef65879f33722432dcd1"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/remote-events.js",
+      "bytes": 11,
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/types.js",
+      "bytes": 327,
+      "sha256": "147e061a2b698ee71442c71f4512a8f7e750f9e6cd6ca75545cd3805486e7f46"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-api-session-controller/package.json",
+      "bytes": 6030,
+      "sha256": "ef7d21eec0e9b35212cc773f984afd7e24daca7063de8fad69a287e661c55a81"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js",
+      "bytes": 716595,
+      "sha256": "74f9b21d6a74a9353d512f88599588f76dcc2b7ef2eb5ee832ce5d8e74746557"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js.map",
+      "bytes": 1334557,
+      "sha256": "e9313c7e70ad6a71e8675fa310e8cddd2a97aa8e75661e2a5b63a51f3aed5d82"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/index.js",
+      "bytes": 1512,
+      "sha256": "da3e4ed509e4da59cfaf5564d983e40cef422c0965c0561faab45cd61f28d3d2"
+    },
+    {
+      "path": "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/package.json",
+      "bytes": 3665,
+      "sha256": "9e002e9f9c09ec329e82995cbf1fe47d64dd5f516c8912bc98f73db327f567d1"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/cordis.patch.yml",
+      "bytes": 19570,
+      "sha256": "e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "bytes": 537141,
+      "sha256": "43561af340996eab90043d031f0669efe8e8d50e05b75bd4015d489ec0c73ca8"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/client.js",
+      "bytes": 528465,
+      "sha256": "17a43e69d0065f8cbb0d41bfe4ba2bfb1a8391b0f085ba9d6cc9019dbb3ca2a7"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/credentials.js",
+      "bytes": 15774,
+      "sha256": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/host.js",
+      "bytes": 900186,
+      "sha256": "7c2f1a2c2e4825a5626a8deba279d0a75b38b060620269c71a1c2c5beea7bb63"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/index.js",
+      "bytes": 208,
+      "sha256": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/session-store.js",
+      "bytes": 44858,
+      "sha256": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/persona.md",
+      "bytes": 2706,
+      "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+    }
+  ],
+  "embeddedContracts": [
+    {
+      "name": "agent",
+      "schemas": 68,
+      "version": "1.6"
+    },
+    {
+      "name": "host",
+      "schemas": 68,
+      "version": "1.6"
+    }
+  ],
+  "sourceModules": {
+    "lawbench": 258,
+    "uiConversation": 91,
+    "sessionController": 42
+  },
+  "GUI": false,
+  "wholeT31": false,
+  "requiredLauncherOverride": "Do not activate legal-credentials. Frozen T50 memory credentials stays sole provider; runtimeDelivery five-row suggestion is not admission."
+}

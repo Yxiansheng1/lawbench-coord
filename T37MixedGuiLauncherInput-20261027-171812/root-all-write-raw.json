@@ -1,0 +1,46 @@
+[
+  {
+    "id": "item_37",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812\\README.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_46",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812\\README.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_47",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T37-mixed-materials-GUI-launcher-20261027-171812.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_53",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T37-mixed-materials-GUI-launcher-20261027-171812.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

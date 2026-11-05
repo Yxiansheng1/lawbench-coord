@@ -1,0 +1,64 @@
+{
+  "Packaging": "HOLD",
+  "nativePort": 0,
+  "portClosureMeasured": false,
+  "requestLedger": false,
+  "started": false,
+  "reason": "Native failed at _host_values before app/listener; no native port published",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+  "controlledOS": [
+    {
+      "gone": true,
+      "pid": 31760,
+      "birthTicks": "639287522248750557",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    },
+    {
+      "gone": true,
+      "pid": 6756,
+      "birthTicks": "639287522248928202",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    },
+    {
+      "gone": true,
+      "pid": 42464,
+      "birthTicks": "639287522163485727",
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+    },
+    {
+      "gone": true,
+      "pid": 36344,
+      "birthTicks": "639287522253177932",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    },
+    {
+      "gone": true,
+      "pid": 32888,
+      "birthTicks": "639287522698297858",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    },
+    {
+      "gone": true,
+      "pid": 14724,
+      "birthTicks": "639287522219151798",
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe"
+    },
+    {
+      "gone": true,
+      "pid": 9304,
+      "birthTicks": "639287522224398153",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    },
+    {
+      "gone": true,
+      "pid": 12088,
+      "birthTicks": "639287522248707869",
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe"
+    }
+  ],
+  "pythonCleanupClaimed": false,
+  "nativePortPublished": false,
+  "ready": false,
+  "allControlledGone": true,
+  "GUI_PASS": false
+}

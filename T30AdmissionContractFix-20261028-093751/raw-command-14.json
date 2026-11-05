@@ -1,0 +1,8 @@
+{
+  "id": "item_18",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"rg --files 'docs\\\\plan\\\\evidence\\\\T31\\\\NativeAdmission-20261026-155618' 'docs\\\\plan\\\\evidence\\\\T31\\\\NativeAdmissionFix-20261026-165555' 'docs\\\\plan\\\\evidence\\\\T31\\\\NativeDiskReplay-20261026-220945' 'docs\\\\plan\\\\evidence\\\\T31\\\\DisposalAndNativeFixture-20261026-162611' | Sort-Object\"",
+  "aggregated_output": "docs\\plan\\evidence\\T31\\DisposalAndNativeFixture-20261026-162611\\README.md\r\ndocs\\plan\\evidence\\T31\\NativeAdmission-20261026-155618\\README.md\r\ndocs\\plan\\evidence\\T31\\NativeAdmissionFix-20261026-165555\\README.md\r\ndocs\\plan\\evidence\\T31\\NativeDiskReplay-20261026-220945\\README.md\r\n",
+  "exit_code": 0,
+  "status": "completed"
+}

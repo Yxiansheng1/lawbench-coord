@@ -1,0 +1,57 @@
+[
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\00-settings.tsx",
+    "sha256": "af20dbd621065bc36880215f99229ca7c071112cd76363f44795af720066e64d"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-projection-error.spec.ts",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\01-t34-projection-error.spec.ts",
+    "sha256": "6e9733c4e843d8b910c8fac785cc93836426f72fb629a95d588522aec5989ed0"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\start.ps1",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\02-start.ps1",
+    "sha256": "95ce7bac006be1e8a36b6ae5e5966412ca6a0edc4cdecdf6022cbc3eb412ebf0"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\agent.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\03-agent.js",
+    "sha256": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\client.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\04-client.js",
+    "sha256": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\credentials.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\05-credentials.js",
+    "sha256": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\host.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\06-host.js",
+    "sha256": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\index.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\07-index.js",
+    "sha256": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\session-store.js",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\08-session-store.js",
+    "sha256": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-provider.spec.ts",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\09-t34-provider.spec.ts",
+    "sha256": "85ab25a0e3b3b360d35630fd6996187ac8f30e33e2b35379ff93f8082780b716"
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\settings-t34.spec.ts",
+    "frozen": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-projection-root-full-20261025-065119\\current\\10-settings-t34.spec.ts",
+    "sha256": "14b9e21982a6ec0d4cf51ebde716f82c1e91cddeac660eb7f3a6a312f94751c3"
+  }
+]

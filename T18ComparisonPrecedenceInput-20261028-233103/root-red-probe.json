@@ -1,0 +1,13 @@
+{
+  "scope": "ROOT_OFFLINE_PURE_ACTUAL_SOURCE_OLD_FORM_REGRESSION_PROBE_NO_PRODUCT_IMPORT",
+  "line": "- 问题：乙方违约金率为日千分之一，甲方违约金率为日万分之五，两者相差二倍，乙方违约金率是甲方的二十倍。",
+  "baseline_sha": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "candidate_sha": "8424b48289707fb206a2e8fc49d6abb5ac97c38da507e557b0404d18dbc853a8",
+  "baseline_result": "违约金比例换算不一致：前者=1/1000/日，后者=1/2000/日；按乙方/甲方计算的准确倍数为2倍，草稿表述为20倍。请核对原文比例后重新保存。",
+  "candidate_result": null,
+  "regression": true,
+  "OS_identity_not_captured": true,
+  "author_still_active_snapshot": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

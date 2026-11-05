@@ -1,0 +1,24 @@
+# T33 原生HTTP鉴权、案件、扫描与图片复制：root独立局部通过
+2026-10-25T09:11:41.288665+08:00；真实heartbeat 2026-10-25T00:45:40.909Z。本tick一次compact scan08:45:49.738865+08:00，无新未读；旧绿不重跑。
+
+结论 PASS_NATIVE_HTTP_AUTH_CASE_SCAN_COPY_LIST_SLICE_ONLY。真实IPv4 loopback HTTP，不是直接方法或预制假API返回。不是GUI/Host/Gateway/RPC/剪贴板/HTTP ref/OCR/真实provider/默认服务生命周期或整单通过，Packaging HOLD。
+
+## 准入与作者终态
+root已完整回源OfficeConverter构造仅保存路径；TaskStore.mark_abnormal只新case内任务，空case无旧任务；CapsuleStore.ensure只将B默认配置写新appdata；Settings migrate只该新文件/marker。OcrQueue无start，resume_case在_threads空直接return；Net惰性构造+拒出站MockTransport。Retainer.close即使未own也会探测17801，因此本入口不调用它/不运行任何真实产品lifespan。默认__main__双监听/lifespan on禁用，没有使用。
+B唯一prepare job actual 01a1708a-4aff-7661-b68b-dafb164874d4，turn_context精确1017/max已核，89命令/76成功；12分钟绝对界截止状态deadline_exceeded。server.py及README已落盘，正式mail不存在，不能改completed或伪造作者交回。原job没有重开，没有追加忙碌单。root用已冻结两件作独立不完整交付审查：完整最终720行、完整README、当前全部source身份/dirty before差异、主App真实调用/边界/cleanup均核对后，只准许一次60s根有限运行，不依作者自证。script SHAa43e46b20edc43094f7ffbf27523b56624b08c7219ea4fda67d2e0d675b77ff8，README SHAe4bcae7c85f9911579ff4a5b17fb1b8a8684d1c702305d6b42ad5341d31ed7ff。
+中间版本一度缺云目录发现限定，root提前评论后发现作者进行中的最新代码已自己补上，已在当前聊天即时纠正；没有以这个过期中间版本发返修。最终静态源Gate云注册表发现固定空、LO发现关闭，原路径/契约/业务规则保持。
+
+## 实际根有限运行与独立磁盘验证
+准确run D:\Lawbeach\lawbench-B\docs\plan\evidence\T33\原生HTTP入口准备-20261025-085103\runs\T33-http-20261025-090517，端口62943，Python PID16660。真实原生create_app/auth/_endpoint/contracts/Registry/Materials；一个listener，lifespan off，无forward/websocket，无模型/Keyring或真实6000D395。上层准入只拒本实验外路线/路径，没有伪造获准请求的成功响应。UI/E50/原生产品源码均不改。
+9个实际HTTP请求原始requests.ndjson：health200；无token settings401；带fakeToken settings200、capsules200；case/open200；case/recent200；materials/scan200；materials/import(copy)200；materials GET200。原生case_id=97120829-cacc-4e49-bd6d-8648e7df11be。root请求没照README的kind=criminal样例，而按真实契约仅传path/template=civil并省略kind，成功。首个摘要因PowerShell对OrderedDictionary的Select-Object显示null，原始落盘JSON正确，下一调用重新读原件核真401/200，未因此重复HTTP或改产品。
+47,379字节JPEG真实复制目标02案件材料/粘贴图片/转账截图.jpg，root重新读取磁盘SHAfeeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad，与固定合成原件一致；持久index只有M0001，needs_ocr/error=null，未识别。请求走真实Native API契约，非fixture copied列表。root独立核service/contracts全部before身份和tracked.patch无变化。
+出站违规0、两个fake getter调用0、Keyring调用0、OCR线程0/真实lifespan未启动、Retainer未起未close。必要AnyIO框架worker真实启动1个，不冒称全进程从无线程；事件循环仅预初始化自管通道。60s自动退出（记录elapsed61.942s），根命令exit0，listener/Net client/log/event loop全部关闭。Get-NetTCPConnection该端口Listen数量0，原PID已不存在。无GUI或服务残留；新run全保留不删。
+附加尝试一次mode=ref请求时服务已自动退出，得到HttpRequestException，没有进入native请求日志，没有重启/重试，不算ref API失败/通过；HTTP ref仍未验。旧100MiB ref服务层物理绿沿用，不偷换。
+
+完整累计包 C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T33-native-http-root-full-20261025-091141，snapshot 9375b9f24b4d7ca53c2bcee5c85202e5cb243a8ea04f01a4d47797e5e157bb72。包含当前完整准备件、原执行令/job/status、实际模型命令实证、根准入/9HTTP响应/退出状态/源基线/持久索引；缺作者正式交回如实保留。
+
+## 下一独立动作与边界
+由root只读核现有Host服务启动端口协议、dailyCase/当前案件绑定、importPastedImage临时源路径与此短时HTTP入口的精确兼容点，准确列最小测试接线需求；不立即改E50冻结启动器、产品Guard/网络/PDF/全局环境或把HTTP局部冒成GUI。确需新的隔离启动准备，仍仅DS1017/max白名单先交root审，不再造代理/泛化mock，不为补刚才过时窗口的ref请求重开同server。一个卡点不暂停全部，30分钟唯一lawbench-abc ACTIVE。
+T31本批下一问未实现/纸面链停止、无case与多轮资源不足；T34 settings/rejected底层未明；T52旧拒绝不绕过；真实删除不做；同SHA既有Office/MD/Search/T35等不重跑。所有真实数据/凭据/模型/付费Search和打包禁区保持。
+
+记录：D:\Lawbeach\lawbench-coord\ORCH-复核-T33原生HTTP鉴权案件与图片复制局部通过-20261025-091141.md

@@ -1,0 +1,78 @@
+--- old-drafts.py
++++ new-drafts.py
+@@ -321,6 +321,37 @@
+     return list(out.values())
+ 
+ 
++def _defense_unread_numeric_citation(tasks, root: str, task: dict,
++                                     cites: list[dict]) -> tuple[str, dict] | None:
++    """返回首个未被本任务当前版本完整读取的数值型出处，不解析材料正文或材料名。"""
++    tid = task["task_id"]
++    reads = tasks._read(root, tasks.rel(tid, "reads.json"), "files/reads.schema.json")["reads"]
++    by_material_unit: dict[tuple[str, str, str], list[tuple[int, int]]] = {}
++    for rec in reads:
++        key = (rec["material_id"], rec["material_version"], rec["unit"])
++        by_material_unit.setdefault(key, []).append((rec["from"], rec["to"]))
++    for cite in cites:
++        loc = cite["loc"]
++        unit = loc["unit"]
++        if unit not in ("page", "para", "line"):
++            continue
++        start = loc["from"]
++        end = loc.get("to", start)
++        next_unit = start
++        for read_start, read_end in sorted(
++                by_material_unit.get((cite["material_id"], cite["material_version"], unit), ())):
++            if read_end < next_unit:
++                continue
++            if read_start > next_unit:
++                break
++            next_unit = max(next_unit, read_end + 1)
++            if next_unit > end:
++                break
++        if next_unit <= end:
++            return cite["material_id"], loc
++    return None
++
++
+ def save_draft(ctx: ToolContext, a: dict) -> dict:
+     title = a["title"].strip()
+     if not title:
+@@ -333,9 +364,26 @@
+         task = ctx.tasks.locate(tid)[2]
+         if task["state"] != "running":
+             raise ApiError("TASK_NOT_FOUND", "not_running")
++        cached_citation = None
++        if task.get("skill") == "defense-opinion":
++            cached_citation = citation_check(ctx, a["content"])
++            unread = _defense_unread_numeric_citation(
++                ctx.tasks, ctx.root, task, cached_citation[1])
++            if unread is not None:
++                material_id, loc = unread
++                unit_name = {"page": "页", "para": "段", "line": "行"}[loc["unit"]]
++                loc_text = (f"第{loc['from']}{unit_name}" if loc.get("to", loc["from"]) == loc["from"]
++                            else f"第{loc['from']}-{loc['to']}{unit_name}")
++                raise ApiError(
++                    "INVALID_ARGUMENT",
++                    "defense_citation_not_read",
++                    f"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。"
++                    f"请先用 case_read_material 完整读取材料 {material_id} 的{loc_text}，再保存辩护意见。",
++                )
+         return _save_locked(
+             ctx.tasks, ctx.root, ctx.case_id, task, title, a["content"],
+-            check_fn=lambda: citation_check(ctx, a["content"]),
++            check_fn=lambda: cached_citation if cached_citation is not None
++            else citation_check(ctx, a["content"]),
+             coverage_fn=lambda: ctx.tasks.coverage(ctx.root, ctx.case_id, tid),
+         )
+ 
+--- old-Spec.md
++++ new-Spec.md
+@@ -903,6 +903,7 @@
+ 
+ **2026-09-30 T7 合并时回写**：工具预算只数 `case_*`（`case_save_draft` 除外），被拒绝的不计；碰到过上限的任务结束原因报 `budget`。进度保存传的是本任务到目前为止全部回复的拼接，空文本不传。`task/begin` 或 `context` 失败时插件拒绝整轮（DSH 的拒绝不能附带消息，界面提示归 T13）；工具在没有任务时返回"工作台服务未启动"。
+ - **结果清单**（`result.json`，执行后）：状态（完成 / 取消 / 预算停止 / 输出上限 / 失败）、实际用量、草稿、出处核对结果、覆盖清单。覆盖清单按 `reads.json` 的实际读取记录计算，不采信模型自报。
++- **辩护意见出处读取闸（T18）**：AI 保存辩护意见时，引用的页、段或行必须由本任务在当前材料版本中完整读取，读取区间按内含端点合并判断；检索命中、其他任务读取、旧版本读取和区间缺口都不算读取。该闸只约束 AI 的 `case_save_draft`，律师在界面的手工保存不变；Excel 单元格的版本与读取归属尚未证明，不能据此宣称已通过；本闸也不代表事实或法律内容正确。
+ - 正常完成前应调用 `case_save_draft`；返回有 A–E、G 类问题或有未读完的材料时，修正后用同一标题再保存（最多 2 轮）。
+ - **中断时由程序保存**（F-RUN-04）：不依赖模型调用工具。
+   - 执行中：插件监听 `session/event` 中的 `assistant/message` 事件（模型每完成一次回复就有一条），把回复文本交给工作台服务，覆盖写入 `草稿/进行中.md`，并更新结果清单中的进度（已用调用次数、已读材料）。

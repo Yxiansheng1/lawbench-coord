@@ -1,0 +1,26 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 48102,
+    "sha256": "ba30eff62c89e2969caffa37feb6eedf5ea4af6ddebe5db426d4dcb3f238e014",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18SentenceWorkflowGateInput-20261029-215838\\dsh-ext\\agent\\index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 21427,
+    "sha256": "b111686981b2b14cce2eefdcc721c55c03d2bcc367d20da343b34953e66d5d3b",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18SentenceWorkflowGateInput-20261029-215838\\dsh-ext\\agent\\task-state.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\litigation-question-order-20261029-192258.spec.ts",
+    "bytes": 25768,
+    "sha256": "58576d67eefd99d1b40139a0d82aa7b5462d485d4a2017da134a305108584ebf",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18SentenceWorkflowGateInput-20261029-215838\\dsh-ext\\tests\\litigation-question-order-20261029-192258.spec.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\skills\\sentence-calc\\SKILL.md",
+    "bytes": 14269,
+    "sha256": "c96837b1957b7c7a4891086d1a4c11ba5af16b14d32e55b206e8a21bb281f54e",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18SentenceWorkflowGateInput-20261029-215838\\skills\\sentence-calc\\SKILL.md"
+  }
+]

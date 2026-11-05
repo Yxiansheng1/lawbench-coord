@@ -1,0 +1,33 @@
+{
+  "state": "STOPPED_SAME_MISSING_OLD_ROOT_TWICE_PENDING_OWNER",
+  "generatedAt": "2026-11-03T00:50:03.4725088+08:00",
+  "reason": "Old default installation removed; baseline root plus two public runtime resource source paths still referenced it",
+  "onlyChanges": [
+    {
+      "from": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\python\\Lib\\site-packages\\certifi\\cacert.pem",
+      "to": "D:\\Lawbeach\\_acceptance\\B2-20261102-210146\\python\\Lib\\site-packages\\certifi\\cacert.pem",
+      "destination": "python/Lib/site-packages/certifi/cacert.pem",
+      "bytes": 240216,
+      "sha256": "9cc2a774b5198dcff14d9be1e66091f538975d867ce029a96bce15a55dfd730f",
+      "fixedPinUnchanged": true
+    },
+    {
+      "from": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\python\\Lib\\site-packages\\docx\\templates\\default.docx",
+      "to": "D:\\Lawbeach\\_acceptance\\B2-20261102-210146\\python\\Lib\\site-packages\\docx\\templates\\default.docx",
+      "destination": "python/Lib/site-packages/docx/templates/default.docx",
+      "bytes": 38116,
+      "sha256": "2094b5bddffe9cf973d61fe03388413804f034160718494a65db7e98da40d35d",
+      "fixedPinUnchanged": true
+    }
+  ],
+  "actualConfigNotYetChanged": true,
+  "sourceProductChanges": false,
+  "coreOrNetworkChanges": false,
+  "repeatLimitExceptionNeeded": true,
+  "newRunRootRequired": true,
+  "deadline": "2026-11-03T01:00:01.4975311+08:00",
+  "deadlineExtensionRequested": false,
+  "proposedAttempts": 1,
+  "NSISInstallersGenerated": 0,
+  "allPriorFailuresPreserved": true
+}

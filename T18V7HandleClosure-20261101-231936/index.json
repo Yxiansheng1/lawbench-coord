@@ -1,0 +1,108 @@
+{
+  "scope": "C_AMEND_A1_ROOT_OWNED_PROCESS_HANDLE_CLEANUP_CLOSURE_ONLY_NOT_PRODUCT_OR_RUNTIME",
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\00-run-schema-keyword-compat-v7-saved-key-root-admin.py.txt",
+      "bytes": 16997,
+      "sha256": "6ff03f18936f9a14feeb26effcee50196dfa53657ddcd8fa694264e68b1755b8",
+      "mtime_ns": "1793546376088557800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\01-T18-schema-keyword-compat-v7-root-PS-literal-source-only.txt.txt",
+      "bytes": 6046,
+      "sha256": "4830b7ec4786be1c52e320dbdfd8fd46e44d82c4e9b17c143ee1685ba62bad2e",
+      "mtime_ns": "1793546376156330200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\02-T18-schema-keyword-compat-v7-root-PS-resolved-static-only.txt.txt",
+      "bytes": 6289,
+      "sha256": "e91318c74f75508f3dd328945c9084b2e10b29905d72991bbaa14a1377bb1a60",
+      "mtime_ns": "1793546376166782400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\03-T18-schema-keyword-compat-v7-root-launcher-static-parse-current.json.txt",
+      "bytes": 564,
+      "sha256": "66d8af9006421f3149656119145533cdb87a1b3728f83ddee4d4fab2249d1062",
+      "mtime_ns": "1793546376177691700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\04-T18-schema-keyword-compat-v7-root-handle-closure.diff.txt.txt",
+      "bytes": 4500,
+      "sha256": "65933114cf0572367510c034c0e1c9cb7ee196282fad193e6caa9b537d48ca0f",
+      "mtime_ns": "1793546376196866300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\05-T18-schema-keyword-compat-v7-root-driver-inverse.diff.txt.txt",
+      "bytes": 9340,
+      "sha256": "beabbb6dce0daf9f15638acb24783e7620d407a54987f7a61ec916a45c807189",
+      "mtime_ns": "1793546376236724900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\06-T18-schema-keyword-compat-v7-root-driver-draft-current.json.txt",
+      "bytes": 1838,
+      "sha256": "c8ac752eed7169ba6e82bdf5d0d52f765145090d104aa4078039ce9414003caa",
+      "mtime_ns": "1793546376263274300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18V7HandleClosure-20261101-231936\\07-REVIEW-C-T18SchemaCompatV7ReviewC-20261101-231240.md.txt",
+      "bytes": 5004,
+      "sha256": "673856da0c4fff586010940c9994216b3ab8db60ccdab5bfaeaf98d6571df3c6",
+      "mtime_ns": "1793546376268558400"
+    }
+  ],
+  "pins": [
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-schema-keyword-compat-v7-saved-key-root-admin.py",
+      "bytes": 15832,
+      "sha256": "e60e2c4f6a14a80ecb8bdaf52d2c57dc3f3f8b8c8e8fa8786bcfee1feb877ae2",
+      "mtime_ns": "1793546318130376100"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-PS-literal-source-only.txt",
+      "bytes": 5456,
+      "sha256": "243bb4aabab476262923f58624f662a143024d884ddaa08e02b3cd77fe2d0603",
+      "mtime_ns": "1793546318133905400"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-PS-resolved-static-only.txt",
+      "bytes": 5698,
+      "sha256": "5cb863688ff8a6bd4ce03f4ec731ecd1872dab2f777531ca5ec873af9433806b",
+      "mtime_ns": "1793546318134910900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-launcher-static-parse-current.json",
+      "bytes": 293,
+      "sha256": "ebe5a2816621cc61f10a8410cf227c6029fa3b80fc8c27eb72b2f3986756e6d0",
+      "mtime_ns": "1793546318258323800"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-handle-closure.diff.txt",
+      "bytes": 4010,
+      "sha256": "7b26b5c6ca1879086205f7dc44072e0c876da5b44c7828a5712a9e68e87b7816",
+      "mtime_ns": "1793546318131401000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-driver-inverse.diff.txt",
+      "bytes": 8630,
+      "sha256": "17153d92b81e97ff92fd175436b289b931f179abc226059d7b7d83895dcd03eb",
+      "mtime_ns": "1793546318132400900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-root-driver-draft-current.json",
+      "bytes": 1491,
+      "sha256": "7c1d44735c96267be5f81ffe7a88b28ca92060ea42f1b0d00868aac93e4a4995",
+      "mtime_ns": "1793546318200970200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\REVIEW-C-T18SchemaCompatV7ReviewC-20261101-231240.md",
+      "bytes": 4445,
+      "sha256": "4685e3c3aa5132115d2a8f9370c7e3eedafffeef50d83f2270d775077af2fc35",
+      "mtime_ns": "1793546173496934700"
+    }
+  ],
+  "requirements": [
+    "FULLcurrentRootdriver/PS lifecycle: ownedProcessHandle retainedviachild.SafeHandleimmediatelyafterStart, childStartedflag protectsnotstartedHasExited; timeoutandfinallyKill+Wait5000 onONLYownedstartedProcessobject independentofCIMavailability/birth; no arbitraryPIDkill/tree/globalpolicy. CIMstrictPID/exe/parent/birth retainedbeforechildKeyfeed/readback; rootouterPIDchecksunchanged. ResolvepriorA1providererrorpath; inspectanycurrentnewreachablebug.",
+    "NestedfinallyalwayschildDispose+credentialbyteArrayClear/secret/escapednull evenifcleanupthrows; noKeyargv/env/file/log. Rootmemoryunprotectphaseoriginal/sourcepins/oneuse/gate/privateenv/900/max2/400held. Staticparse0 notforcedwatchdogruntimeproof. FullremainingouterRootunchangedexceptaliases/currentnewPS.",
+    "No rereviewconsumer/providerkeyword/localassertions/frozenguard/semanticresources alreadyclosed. PriorCformalREADONLY suppliedONLYtoresolveA1, notconflatewholePASS. Optionalunreachablepreexistingnotbusyblockers; concretecurrentbugsline/trigger/minfix. Public.NETProcess.SafeHandle/Kill mayreferenceknownsemantics, noexternalbrowsing/toolruntime fromauthor."
+  ]
+}

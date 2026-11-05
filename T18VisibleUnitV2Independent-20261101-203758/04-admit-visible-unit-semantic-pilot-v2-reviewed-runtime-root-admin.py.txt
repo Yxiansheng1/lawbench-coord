@@ -1,0 +1,37 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\admit-visible-unit-semantic-pilot-v2-reviewed-runtime-root-admin.py
+SHA 75af3fe3b7b5485a7bc9aecbbb4f729870ec4a96f22111bcad0d19222a485c32
+0001 from pathlib import Path
+0002 from datetime import datetime,timezone,timedelta
+0003 import json,hashlib
+0004 O=Path(__file__).resolve().parent
+0005 def r(p):return json.loads(Path(p).read_text('utf-8-sig'))
+0006 def w(p,x):Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n','utf-8')
+0007 def fp(p):
+0008  p=Path(p);b=p.read_bytes();return dict(path=str(p),bytes=len(b),sha256=hashlib.sha256(b).hexdigest(),mtime_ns=str(p.stat().st_mtime_ns))
+0009 sourceproof=r(O/'T18-visible-unit-semantic-pilot-v2-final-source-reviewed-current.json')
+0010 reviews=r(O/'T18-visible-unit-semantic-pilot-v2-final-closure-accepted-current.json')
+0011 assert sourceproof['accepted'] and reviews['accepted']
+0012 assert reviews['scope']=='SOURCE_ONLY_ISOLATED_SYNTHETIC_DIAGNOSTIC_NOT_BUSINESS_PASS'
+0013 consumer=Path(sourceproof['consumer']);root=consumer.parent
+0014 assert sourceproof['fixed_data_sha256']=='e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69'
+0015 assert fp(root/'fixed-data.json')['sha256']==sourceproof['fixed_data_sha256']
+0016 for pin in sourceproof['pins']:assert fp(pin['path'])==pin
+0017 for pin in reviews['reviewed_target_pins']:assert fp(pin['path'])==pin
+0018 for j in reviews['terminal_source_jobs']:assert r(Path(j).with_suffix('.status.json'))['state']=='completed'
+0019 offline=r(sourceproof['offline_proof'])
+0020 assert offline['exit_code']==0 and not offline['forced']and not offline['source_changes']and not offline['network_guard_denials']and offline['modelrequests']==0 and not offline['Keyread']
+0021 assert not r(O/'T18-visible-unit-semantic-pilot-v2-root-launcher-static-parse-current.json')['errors']
+0022 authority=r(O/'T18-autonomous-mainline-repair-authority-current.json')
+0023 assert authority['per_cycle_owner_reapproval_required']is False and not authority['current_runtime_active']
+0024 assert not any(d['state'].startswith('CONSUMED')for d in authority.get('diagnostic_records',[]))
+0025 dest=O/'T18-visible-unit-semantic-pilot-v2-runtime-admission-current.json'
+0026 assert not dest.exists(),'Never reuse admission'
+0027 node=Path('E:/node/node.exe');pw=Path('C:/Users/morel/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe');driver=O/'run-visible-unit-semantic-pilot-v2-saved-key-root-admin.py'
+0028 assert fp(node)['sha256']=='ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32'
+0029 assert fp(driver)['sha256']==reviews['driver_sha256']
+0030 paths=[root/n for n in ['review-consumer.mjs','offline-controls.mjs','fixed-data.json','source-manifest.json']]+[node,pw,driver]
+0031 assert len(paths)==len({str(p.resolve())for p in paths})==7
+0032 pins=[fp(p)for p in paths]
+0033 for p in paths:assert not p.is_symlink()and not p.is_junction()
+0034 a=dict(verdict='ADMITTED_ISOLATED_TWO_STAGE_SEMANTIC_CAPABILITY_DIAGNOSTIC',at=datetime.now(timezone(timedelta(hours=8))).isoformat(),admitted=True,consumed=False,source_review_accepted=True,consumer=str(consumer),driver_sha256=fp(driver)['sha256'],pins=pins,terminal_source_jobs=reviews['terminal_source_jobs'],offline_proof=sourceproof['offline_proof'],independent_closure_accepted=str(O/'T18-visible-unit-semantic-pilot-v2-final-closure-accepted-current.json'),max_requests=2,Root_timeout_seconds=900,model='qwen38-27b',temperature=0.6,max_tokens=49152,route='http://10.126.126.1:8000/v1/chat/completions',purpose='VISIBLE_UNIT_V2_SEMANTIC_CAPABILITY_NOT_NATIVE_WORKFLOW',owner_authority=str(O/'T18-autonomous-mainline-repair-authority-current.json'),no_per_case_owner_reapproval=True,production_or_Native_R_or_business_PASS=False,owner_only_ACL_or_hostile_local_actor_security_NOT_PROVEN=True,Packaging='HOLD')
+0035 w(dest,a);print(json.dumps(dict(admission=str(dest),pins=len(pins),consumed=False,Keyread=False,model_requests=0)))

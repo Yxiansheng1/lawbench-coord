@@ -1,0 +1,1 @@
+        expected = self.expected_source_files[CASE_SOURCE_FILE]

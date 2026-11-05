@@ -1,0 +1,52 @@
+{
+  "verdict": "BUSINESS_REVIEW_FAILED_REQUIRES_CONCRETE_ORDER_FIX_AND_LAWYER_REVIEW",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ArchiveTaskSymbol-20261030-000456\\run-tePzKq",
+  "reviewed": [
+    "all10canonicalTXT",
+    "final1725bytechecklist",
+    "actual13field1589byteplan",
+    "fullvisiblefinalreply",
+    "twoactualquestioncallsandrawresults",
+    "actualtooltimeline"
+  ],
+  "confirmed_positive": [
+    "parties/cause and entrust2026-02-10/close2026-06-18 correctly grounded",
+    "catalog/result/jzl/fee actual authorized synthetic answers before both successful writes",
+    "code7 actualfolder evidence threefiles and ignored temporary/messy files correct",
+    "lawyer null and settings placeholder warning disclosed",
+    "signature and three-month instructions visible"
+  ],
+  "confirmed_failures": [
+    {
+      "kind": "workflow",
+      "primary": "case-archiving step2",
+      "evidence": "actual skill11 then archive_match16, no case_list_materials anywhere in53events"
+    },
+    {
+      "kind": "confirmation",
+      "primary": "step4",
+      "evidence": "valid four-ID joint ask36 does not display extracted party/cause/dates with sources; prior invalid ask31 included them but was rejected before actual answer callback. Already supplied jzl number is asked as how much/what number with reminder rather than solely confirmation."
+    },
+    {
+      "kind": "format_warning",
+      "primary": "step2",
+      "evidence": "contract actualoriginaltypeTXT; no reminder to supply stamped PDF in checklist or visible reply"
+    },
+    {
+      "kind": "selfcheck",
+      "primary": "commonrules/selfcheck8",
+      "evidence": "visible checklist and finalreply lack per-item passed/problem-handling selfcheck"
+    }
+  ],
+  "qualified": [
+    "F2 are hints, not automaticallyfatal",
+    "planopinion facts-clear/evidence-sufficient/achieved-objective is professional assessment needing lawyer review; no independent merits certification",
+    "missingrequired[] is actual tool result, not proof all sourceformatsready",
+    "SourceGET and productionJSONLreopen NOT_REACHED after strict list gate; physical53events not reopenedPASS",
+    "invalid-question denial is consumer hook, not a tenth product gate"
+  ],
+  "legal_merits_certified": false,
+  "full_business_PASS": false,
+  "T23": "NOT_RUN",
+  "Packaging": "HOLD"
+}

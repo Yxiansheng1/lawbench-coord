@@ -1,0 +1,11 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-launcher-static-parse-current.json
+SHA ebe5a2816621cc61f10a8410cf227c6029fa3b80fc8c27eb72b2f3986756e6d0
+0001 {
+0002   "operation": "Root NEW handle-closure PS resolved-literal STATIC parse only",
+0003   "errors": [],
+0004   "Keyread": false,
+0005   "modelrequests": 0,
+0006   "owned_process_handle_cleanup": true,
+0007   "runtime_forced_watchdog_NOT_PROVEN": true,
+0008   "original_unsubstituted_admin_failure_retained": true
+0009 }

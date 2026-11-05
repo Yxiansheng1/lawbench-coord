@@ -1,0 +1,26 @@
+{
+  "old_host": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\private-output-20261031-231753\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+  "old_sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba",
+  "new_host": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+  "new_sha256": "c20145ec00e0a3a48da996946cd31c2a4089361ec187cb608480c3ee94a472b4",
+  "new_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211\\private-output-20261101-005415\\manifest.json",
+    "bytes": 58588,
+    "sha256": "99a3e8ce0aa6fb61b55104ccd6c1435e066540391e375067c3785ae67354f39a"
+  },
+  "original_public_method": "async taskAnswer(request) { const r=request; const out=readTaskAnswer(r?.root,r?.task_id); this.log(out.ok?'info':'warn','task.answer_read',{ok:out.ok,code:out.ok?undefined:out.error.code,draft:out.ok?out.value.draft!==null:undefined}); return out; }",
+  "test_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-answer-null-20261101-003736.spec.ts",
+  "test_sha256": "78dccf9ec63f8306a638cf7fc933344372c21a315f4e18f7cd263c8cc2fd4be0",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14CompiledTaskAnswerClosure-20261101-005919",
+  "scope": "4-case compiled original LawbenchRemote.prototype.taskAnswer boundary: no constructor/app/apply/service start; call with ONLY memory log sink",
+  "task_id": "T-20261101004000-a001",
+  "draft_name": "answer.md",
+  "draft_title": "synthetic answer",
+  "draft_text": "# answer\nsecond line\n",
+  "NO_TASK": "没有找到这个任务的结果，请到\"成果\"里查看。",
+  "valid_status": "completed",
+  "session_id": "sess-2026-0001",
+  "model_calls": 5,
+  "limit": 8,
+  "version": 2
+}

@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-29T14:25:38.162918+08:00",
+  "verdict": "CONSUMER_LISTING_AND_TASK_SETTLEMENT_OFFLINE_CLOSED_NO_NEW_MODEL",
+  "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CrossExamFiniteExtraction-20261029-140102\\native-cross-exam.mts",
+  "source_sha256": "0da719ca45ae93dfa87fe4405dc14b0badffe55eabbc2268bab24d1d19c33bfb",
+  "source_review": "T18-cross-exam-finite-extraction-source-review-current.json",
+  "source_admission": "T18-cross-exam-finite-extraction-admission-current.json",
+  "L0": {
+    "exit": 0,
+    "elapsed_s": 0.6793246,
+    "actual_trace_old_observer_RED_new_L0_PASS": true,
+    "actual_L0_seq": 5,
+    "current_R_seq": 6,
+    "actual_answers_seq": 17,
+    "first_read_seq": 21,
+    "control_items": 21,
+    "control_items_include_positive_alternatives": true,
+    "OS": [
+      {
+        "ticks": "639288515290997478",
+        "gone": true,
+        "exe": "E:\\node\\node.exe",
+        "birthUTC": "2026-10-29T06:18:49.0997478Z",
+        "pid": 47632
+      },
+      {
+        "ticks": "639288515291073687",
+        "gone": true,
+        "exe": null,
+        "birthUTC": "2026-10-29T06:18:49.1073687Z",
+        "pid": 10872
+      }
+    ]
+  },
+  "settlement": {
+    "exit": 0,
+    "elapsed_s": 0.7677277,
+    "cases": 24,
+    "actual_class_AST_fragments": true,
+    "controlled_CoreClient_call_override": true,
+    "base_CoreClient_fetch_not_exercised": true,
+    "old_stop_sequence_unit_plus_source_ordering_only": true,
+    "OS": [
+      {
+        "birthUTC": "2026-10-29T06:12:14.7572540Z",
+        "gone": true,
+        "exe": "E:\\node\\node.exe",
+        "pid": 42520,
+        "ticks": "639288511347572540"
+      }
+    ]
+  },
+  "ESM": {
+    "exit": 0,
+    "elapsed_s": 1.7660000000032596,
+    "full_typecheck": false
+  },
+  "all_three_ESM_binding_checks_green": true,
+  "main_not_executed": true,
+  "no_new_model": true,
+  "no_new_HTTP_server": true,
+  "no_new_build": true,
+  "no_credential_read": true,
+  "global_network_metered": false,
+  "original_actual_FAILED_report_unchanged": true,
+  "original_source_GET_and_production_JSONL_reopen": "NOT_REACHED",
+  "prior_actual_question_slice": "3_ANSWERS_BEFORE_ALL_READS_AND_SAVES_PASS_REUSED",
+  "manual_business": "FAILED_UNSUPPORTED_PROSECUTION_PURPOSES",
+  "historical_runtime_violating_jobs": 6,
+  "author_runtime_violation7_stop_packet": {
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamAuthorRuntimeStopped-root-20261029-140407",
+    "files": 12,
+    "manifest_sha256": "7a2937a91b1c5b3655013e327a6e8404a76c836b5e85696d2c7d45da6464915a",
+    "runtime_violations": 7,
+    "historical_runtime_violating_jobs": 6,
+    "original_failed_status_kept": true,
+    "no_model": true,
+    "Packaging": "HOLD"
+  },
+  "current_two_B_authors_runtime": 0,
+  "current_B_commands": 91,
+  "current_B_success": 76,
+  "current_B_nonzero": 15,
+  "cumulative_author_commands": 6173,
+  "cumulative_author_success": 5327,
+  "cumulative_author_nonzero": 846,
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,103 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsSaveGUI-20261031-115923",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\PolicyValidSaveGUI-20261031-121314",
+  "names": [
+    "README.md",
+    "entry.py",
+    "firewall-finite.py",
+    "literal-inputs.json",
+    "observer-finite.mjs",
+    "prepare.ps1",
+    "private-provider-binding.mjs",
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "signature-finite.mjs",
+    "start.ps1",
+    "stop.ps1"
+  ],
+  "frozen_helpers": [
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "private-provider-binding.mjs",
+    "observer-finite.mjs",
+    "signature-finite.mjs",
+    "firewall-finite.py"
+  ],
+  "expected_initial_settings": {
+    "v": 1,
+    "servers": {
+      "llm_base_url": "http://127.0.0.1:65001/v1",
+      "prep_base_url": "http://127.0.0.1:65002",
+      "llm_alt_base_url": "http://127.0.0.1:65003/v1",
+      "prep_alt_base_url": "http://127.0.0.1:65004"
+    },
+    "defaults": {
+      "thinking": "中",
+      "window": "64K",
+      "max_tokens": 16384,
+      "temperature": 0.6
+    },
+    "skill_presets": {},
+    "templates": {
+      "文书": null,
+      "合同": null
+    },
+    "ocr_fallback_llm": false,
+    "profile": {
+      "lawyer_name": null
+    },
+    "office": {
+      "dir": null,
+      "invoice_buyer": null
+    },
+    "converter": "auto",
+    "external_llm": {
+      "enabled": true,
+      "base_url": "https://t34-settings-save.invalid/v1",
+      "model": "t34-enabled-ui-synthetic",
+      "context_window": 32768,
+      "supports_tools": true
+    }
+  },
+  "expected_saved_settings": {
+    "v": 1,
+    "servers": {
+      "llm_base_url": "http://127.0.0.1:65001/v1",
+      "prep_base_url": "http://127.0.0.1:65002",
+      "llm_alt_base_url": "http://127.0.0.1:65003/v1",
+      "prep_alt_base_url": "http://127.0.0.1:65004"
+    },
+    "defaults": {
+      "thinking": "中",
+      "window": "64K",
+      "max_tokens": 16384,
+      "temperature": 0.6
+    },
+    "skill_presets": {},
+    "templates": {
+      "文书": null,
+      "合同": null
+    },
+    "ocr_fallback_llm": false,
+    "profile": {
+      "lawyer_name": null
+    },
+    "office": {
+      "dir": null,
+      "invoice_buyer": null
+    },
+    "converter": "auto",
+    "external_llm": {
+      "enabled": true,
+      "base_url": "https://t34-settings-save.invalid/v1",
+      "model": "t34-enabled-ui-synthetic",
+      "context_window": 65536,
+      "supports_tools": true
+    }
+  },
+  "unchanged_max_tokens": 16384,
+  "real_model_calls_allowed": 0,
+  "source_root_review": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-enabled-settings-GUI-source-accepted-current.json",
+  "expected_runtime_writes": "One original B PUT /api/settings, only external context_window32768->65536 in owned private settings; one GUI Save. No Key/consent/route/Send/model.",
+  "correction_evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-settings-save-GUI-actual-closed-current.json"
+}

@@ -1,0 +1,116 @@
+"""<应用数据>/settings.json 的读写（契约 files/settings.schema.json）。Key 不在这里（Spec 8.1）。"""
+from __future__ import annotations
+
+import copy
+import json
+import pathlib
+import threading
+
+from . import contracts, logs
+from .case import gate
+from .errors import ApiError
+from .external_llm import DEFAULT as EXTERNAL_LLM_DEFAULT, ExternalLLMPolicy
+
+SCHEMA = "files/settings.schema.json"
+# 已做过的一次性迁移记在 settings.json 旁边（settings.json 契约不允许多字段）
+MIGRATIONS = "settings-migrations.json"
+TEMPERATURE_06 = "temperature-0.6"
+EXTERNAL_LLM_V1 = "external-llm-v1"
+
+# 默认值：Spec 第 15 节"地址选择"的四个默认地址；参数默认值同契约样例 file_settings.json
+DEFAULTS: dict = {
+    "v": 1,
+    "servers": {
+        "llm_base_url": "http://192.168.8.77:8000/v1",
+        "prep_base_url": "http://192.168.8.124:9000",
+        "llm_alt_base_url": "http://10.126.126.1:8000/v1",
+        "prep_alt_base_url": "http://10.126.126.3:9000",
+    },
+    "defaults": {"thinking": "中", "window": "64K", "max_tokens": 16384, "temperature": 0.6},  # Qwen3 系思考模式推荐 0.6（2026-10-14 由 0.3 调）
+    "skill_presets": {},
+    "templates": {"文书": None, "合同": None},
+    "ocr_fallback_llm": False,
+    "profile": {"lawyer_name": None},
+    "office": {"dir": None, "invoice_buyer": None},
+    "converter": "auto",
+    "external_llm": copy.deepcopy(EXTERNAL_LLM_DEFAULT),
+}
+
+
+class SettingsStore:
+    def __init__(self, appdata: pathlib.Path):
+        self.path = pathlib.Path(appdata) / "settings.json"
+        # Listener may call get() in the saving thread; keep one serial notification boundary.
+        self._lock = threading.RLock()
+        self._listeners: list = []
+
+    def on_change(self, fn) -> None:
+        self._listeners.append(fn)
+
+    def get(self) -> dict:
+        """文件损坏或 v 不认识时抛异常（接口层按内部异常返回 HTTP 500，Spec 20.1）。"""
+        with self._lock:
+            if not self.path.exists():
+                return copy.deepcopy(DEFAULTS)
+            data = contracts.read_json(self.path)
+            if "external_llm" not in data:
+                data["external_llm"] = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
+            else:
+                data["external_llm"].setdefault("supports_tools", True)
+        contracts.validate(SCHEMA, "", data)
+        return data
+
+    def migrate(self) -> None:
+        """一次性补旧设置的默认值。温度只改恰好等于旧默认值 0.3 的；外部模型字段缺失时
+        增加关闭状态的默认对象。文件不在、坏了、v 不认识的都不动。"""
+        mark = self.path.with_name(MIGRATIONS)
+        with self._lock:
+            try:
+                done = json.loads(mark.read_text(encoding="utf-8")) if mark.exists() else []
+                if not isinstance(done, list) or not self.path.exists():
+                    return
+                data = contracts.read_json(self.path)
+                contracts.validate(SCHEMA, "", data)
+            except Exception:  # noqa: BLE001 迁移失败不影响启动；get() 照常按原来的规矩报错
+                return
+            changed = False
+            marker_changed = False
+            if TEMPERATURE_06 not in done:
+                if data["defaults"].get("temperature") == 0.3:
+                    data["defaults"]["temperature"] = 0.6
+                    changed = True
+                done.append(TEMPERATURE_06)
+                marker_changed = True
+            if EXTERNAL_LLM_V1 not in done:
+                if "external_llm" not in data:
+                    data["external_llm"] = copy.deepcopy(EXTERNAL_LLM_DEFAULT)
+                    changed = True
+                elif "supports_tools" not in data["external_llm"]:
+                    data["external_llm"]["supports_tools"] = True
+                    changed = True
+                done.append(EXTERNAL_LLM_V1)
+                marker_changed = True
+            if changed:
+                contracts.write_json(self.path, data, SCHEMA)
+            if marker_changed:
+                mark.write_text(json.dumps(done, ensure_ascii=False), encoding="utf-8")
+            if changed:
+                logs.event("settings", "migrate_defaults")
+                for fn in self._listeners:
+                    fn(data)
+
+    def put(self, data: dict) -> dict:
+        office_dir = data["office"]["dir"]
+        if office_dir is not None:
+            gate.check_office_dir(office_dir)
+        try:
+            ExternalLLMPolicy(data)  # URL/模型配置与发请求使用同一政策
+        except ValueError:
+            raise ApiError("INVALID_ARGUMENT", "settings_external_llm_invalid") from None
+        with self._lock:
+            if self.path.exists() and contracts.read_json(self.path).get("v") != 1:
+                raise ApiError("INVALID_ARGUMENT", "settings_unknown_v")  # 不认识的 v：只读、不写
+            contracts.write_json(self.path, data, SCHEMA)
+            for fn in self._listeners:
+                fn(data)
+        return data

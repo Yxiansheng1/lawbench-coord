@@ -1,0 +1,34 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NamedComparisonFinite-root-20261028-210126",
+  "results": [
+    {
+      "name": "rate-unit",
+      "exit": 1,
+      "elapsed_s": 1.7030000000013388,
+      "natural": true,
+      "forced": false,
+      "identities": [
+        {
+          "pid": 6320,
+          "parent": 46352,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-10-28T13:01:26.5859780Z"
+        }
+      ],
+      "OS_after": [],
+      "stdout": "CASE direct-actual rejected=true chinese20=true corrected2=saved save-ui-before-mutation=true\nCASE actual-red rejected=true exact=1/1000,5/10000,2,20 side-effects=false\nCASE corrected=save other-skill=unchanged ui-shared=guard-before-write ui-corrected=saved\nCASE direct-direction exact=true reversed-correct=accepted reversed-wrong=rejected ascii-brackets=accepted direct-rates=accepted\nCASE direct-negative-controls quote,question,hypothetical,negation,third-rate,unmatched-subject,unit-mismatch=unchanged\nCASE exact-percent arabic,chinese reversed=accepted\nCASE metadata-failure rollback=true progress-untouched=true\nCASE named-negative-controls missing,sameparty,unintroduced,thirdparty,thirdrate,order,units,quote,negation,hypothetical,generic,duplicates=unchanged\nCASE named-direction swapped20=rejected exact=1/2 swapped0.5=accepted\nCASE negative-controls quoted,code,blockquote,ambiguous,question,negation,hypothetical,units,zero,unsupported,embedded,oversized,signed,order=unchanged\n",
+      "stderr": "test_actual_direct_subject_sentence_is_rejected_before_save_and_ui (__main__.RateRatioGuardTests.test_actual_direct_subject_sentence_is_rejected_before_save_and_ui) ... ok\ntest_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation (__main__.RateRatioGuardTests.test_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation) ... FAIL\ntest_actual_reported_sentence_is_rejected_before_any_save_mutation (__main__.RateRatioGuardTests.test_actual_reported_sentence_is_rejected_before_any_save_mutation) ... ok\ntest_corrected_ratio_other_skill_and_ui_share_the_write_seam (__main__.RateRatioGuardTests.test_corrected_ratio_other_skill_and_ui_share_the_write_seam) ... ok\ntest_direct_subject_direction_and_bracket_variants_use_exact_positions (__main__.RateRatioGuardTests.test_direct_subject_direction_and_bracket_variants_use_exact_positions) ... ok\ntest_direct_subject_nonassertions_and_unbound_rates_are_not_blocked (__main__.RateRatioGuardTests.test_direct_subject_nonassertions_and_unbound_rates_are_not_blocked) ... ok\ntest_exact_arabic_percentage_chinese_and_reversed_ratio_are_accepted (__main__.RateRatioGuardTests.test_exact_arabic_percentage_chinese_and_reversed_ratio_are_accepted) ... ok\ntest_existing_metadata_rollback_semantics_remain (__main__.RateRatioGuardTests.test_existing_metadata_rollback_semantics_remain) ... ok\ntest_named_party_comparison_ambiguities_are_not_blocked (__main__.RateRatioGuardTests.test_named_party_comparison_ambiguities_are_not_blocked) ... ok\ntest_named_party_comparison_resolves_direction_by_labels (__main__.RateRatioGuardTests.test_named_party_comparison_resolves_direction_by_labels) ... ok\ntest_quotes_code_ambiguity_question_negation_units_and_unsupported_forms_are_not_blocked (__main__.RateRatioGuardTests.test_quotes_code_ambiguity_question_negation_units_and_unsupported_forms_are_not_blocked) ... ok\n\n======================================================================\nFAIL: test_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation (__main__.RateRatioGuardTests.test_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"D:\\Lawbeach\\lawbench-B\\service\\tests\\t18_rate_ratio_20261028_194123.py\", line 434, in test_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation\n    self.assertEqual(ui.tasks.events, [])\nAssertionError: Lists differ: [('lock', 'T-20261028194123-b18b')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\n('lock', 'T-20261028194123-b18b')\n\n- [('lock', 'T-20261028194123-b18b')]\n+ []\n\n----------------------------------------------------------------------\nRan 11 tests in 0.094s\n\nFAILED (failures=1)\n"
+    }
+  ],
+  "current_source_sha256": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "test_sha256": "12ea5b4ce2bf26b71f5260bd00ad72c091f0557a9e03d404a67026301a3e99f1",
+  "source_unchanged": true,
+  "production_delta_exact_inverse_preserves_all_other_old_bytes": true,
+  "B346_changed_only_reviewed_drafts": [
+    "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py"
+  ],
+  "temporary_owned_dirs_no_residue": true,
+  "scope": "PURE_STANDALONE_ACTUAL_DRAFT_SAVE_AND_AFFECTED_UI_SAVE_ONLY_NOT_HTTP_MODEL_GUI",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

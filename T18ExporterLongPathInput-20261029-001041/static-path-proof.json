@@ -1,0 +1,13 @@
+{
+  "source_sha": "fe1282280325928fa78032433e74abc3bdff933784ba385bbb6f3399987e8564",
+  "test_sha": "b1bb6fbd554b0b9cb675ee8fefeee691534ab0b2c07904c58b8b317194801812",
+  "one_line_inverse_exact": true,
+  "old46_prefix_exact": true,
+  "fixed459_held": true,
+  "B346_held": true,
+  "normal_session_count": 0,
+  "extended_session_count": 1,
+  "extended_session_lengths": [
+    282
+  ]
+}

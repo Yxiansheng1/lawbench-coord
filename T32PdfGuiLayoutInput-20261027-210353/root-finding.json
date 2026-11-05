@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-27T21:01:41.7895227+08:00",
+  "state": "STATIC_GUI_LAYOUT_MISMATCH_IDENTIFIED_BEFORE_ANY_ROOT_RUN",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entry_sha": "bada298eb3e018f36ca0c4bf3ddb4d15da61a0e9aed399f2919e2f65a6a85e0e",
+  "coverage_candidate_was_5_material_count_but_author_self_corrected_to_1": true,
+  "GUI_issue": "_verify_prepared calls _assert_root_inventory requiring exactly private/case/input/prepared.json, while pinned existing launcher creates root/gui before native hook",
+  "primary_launcher": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T32/NativeDocumentCitationGui-20261027-194505/start.ps1",
+  "required_GUI_top_dirs": [
+    "dsh-home",
+    "electron-user-data",
+    "host-skills",
+    "logs",
+    "private-native",
+    "state"
+  ],
+  "required_root_fix": "Keep strict four-item prepare inventory; verification may accept only precisely validated owned optional gui layout/state. No blanket skip or root directory allowlist relaxation.",
+  "root_runtime": 0,
+  "product_bug_proven": false,
+  "author_still_active": true
+}

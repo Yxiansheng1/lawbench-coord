@@ -1,0 +1,64 @@
+{
+  "sdk": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "sdk_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\lib\\index.js",
+      "bytes": 142847,
+      "sha256": "0845707017acc2b4a8a75eab2244fa3fd88587b8094ab32014321dce7ca1e31b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\package.json",
+      "bytes": 1544,
+      "sha256": "dce7d8100ed487c96bd37fc7715957071be5e7b68c0fa86c005b6de0a8bc2cba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    }
+  ],
+  "session_id": "session-eba7f2cc-3818-4d4d-b0b5-6940c5438513",
+  "request_id": "e6bf8681-a085-420b-9db7-cde83eadc2d4",
+  "case_id": "df4b15d7-e357-41c2-87ed-fbd8339424e3",
+  "physical_native": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceReadContract-20261029-224308\\run-GvCj3X\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-SentenceReadContract-20261029-224308-run-GvCj3X-case--\\session-eba7f2cc-3818-4d4d-b0b5-6940c5438513\\session.v4.jsonl",
+    "bytes": 190814,
+    "sha256": "3e0f8932f76f9101da62c073cb0a03ba90a99071deebe6493ed19ba1b82ccd71"
+  },
+  "session_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceReadContract-20261029-224308\\run-GvCj3X\\sessions",
+  "task": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceReadContract-20261029-224308\\run-GvCj3X\\case\\工作区\\任务\\T-20261029230107-6e70\\task.json",
+    "bytes": 625,
+    "sha256": "0ae139e23fbec0a8080ed0f84d15960056a96ec169ac6715f6a1d616a04e5928"
+  },
+  "expected_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-eba7f2cc-3818-4d4d-b0b5-6940c5438513",
+    "createdAt": 1793286067603,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceReadContract-20261029-224308\\run-GvCj3X\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "expected_rows": 64,
+  "expected_events": 63,
+  "original_model_consumer_status": "FAILED",
+  "original_reopen_status": "NOT_REACHED",
+  "purpose": "Only close original missing persistence check on genuine existing failed-run JSONL; no business green/model/GUI rerun",
+  "original_proof": {
+    "path": "\\\\?\\C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sentence-native-actual-root-closed-current.json",
+    "bytes": 34187,
+    "sha256": "69d60c8acbcf2682755dde66866907bfc262eff6af45ca19aed235335e70f1ea"
+  },
+  "original_case": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceReadContract-20261029-224308\\run-GvCj3X\\case"
+}

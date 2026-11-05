@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-28T09:24:24.295834+08:00",
+  "verdict": "PASS_REAL_NATIVE_THREE_TURNS_PRODUCTION_FORK_FOURTH_TURN_AND_PHYSICAL_JSONL",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\NativeFourTurnAccepted-root-20261028-092424",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7",
+  "consumer_sha256": "80c603f94c42f19ce635d245fc0520559aa9bb72fed55d2ef91685ae4d3c2343",
+  "source_session": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+  "child_session": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+  "native_UUID_R_count": 4,
+  "actual_model_POST": 4,
+  "actual_HTTP200": 4,
+  "responses": [
+    "已记住",
+    "LB-SYN-FORK-27",
+    "林岚/2700 元",
+    "LB-SYN-FORK-27|林岚|2700 元"
+  ],
+  "source_events": 27,
+  "child_events": 37,
+  "physical_log_review": {
+    "verdict": "PASS_ROOT_PHYSICAL_JSONL_HEADERS_EVENTS_AND_NATIVE_R_INDEPENDENT_COMPARISON",
+    "checked_at": "2026-10-28T01:22:49.798205+00:00",
+    "checks": {
+      "source_header": true,
+      "source_events": true,
+      "child_header": true,
+      "child_events": true,
+      "inherited_prefix": true,
+      "end_seed": true,
+      "source_seq": true,
+      "child_seq": true,
+      "four_posts": true,
+      "natural_cleanup": true,
+      "turn1_native_R": true,
+      "turn1_completed": true,
+      "turn1_one_POST200": true,
+      "turn2_native_R": true,
+      "turn2_completed": true,
+      "turn2_one_POST200": true,
+      "turn3_native_R": true,
+      "turn3_completed": true,
+      "turn3_one_POST200": true,
+      "turn4_native_R": true,
+      "turn4_completed": true,
+      "turn4_one_POST200": true
+    },
+    "physical_logs": [
+      {
+        "session_id": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+        "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9\\session.v4.jsonl",
+        "bytes": 16235,
+        "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461",
+        "events": 37
+      },
+      {
+        "session_id": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+        "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd\\session.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee",
+        "events": 27
+      }
+    ],
+    "header_encoding": "Installed session-persistence-jsonl/src/format.ts toHeaderLine adds delegationDepth: header.delegationDepth ?? 0. Other header fields compared exactly; physical bytes never modified.",
+    "root_admin_correction": "Normal Python rglob omitted overlong descendants. Same owned paths read using Windows extended path prefix. No global policy change; proposed repair dispatch failed before job/order/registry writes. No product defect or model rerun.",
+    "scope": "Actual native three-turn source plus production fork fourth turn; physical persisted headers/events equal independently observed snapshots. No GUI/case-trash/compression/whole-project claim.",
+    "whole_project_PASS": false,
+    "Packaging": "HOLD"
+  },
+  "natural_exit": true,
+  "elapsed_s": 7.936999999998079,
+  "complete_exe_UTCbirth_gone": 5,
+  "forced_stop": false,
+  "fixed46_dependency6_same": true,
+  "exact_test_credential_absence_checked_owned_outputs_and_two_logs": true,
+  "dedicated_saved_key": "CurrentUser DPAPI outside repository; automatic anonymous child stdin only; no plaintext persistence or global provider change",
+  "memory_erasure_not_claimed": true,
+  "GUI_PASS": false,
+  "case_trash_admission_PASS": false,
+  "full_T31_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "root_admin_corrections": [
+    "Normal Python rglob missed overlong descendants; extended path read found genuine files; repair proposal stopped before dispatch.",
+    "Raw physical header includes delegationDepth=0 added by installed toHeaderLine; exact comparison uses that documented encoding. Events compared byte-structure exact."
+  ],
+  "manifest_sha256": "82d5fc3f28ab938521b4c7cb82612a0ce1fc9882381879d61a0fcd495d25d904",
+  "files": 21
+}

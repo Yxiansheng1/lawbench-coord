@@ -1,0 +1,197 @@
+{
+  "before": "D:\\Lawbeach\\lawbench-coord\\T31TaskStoreBindingInput-20261031-051914",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeTaskStoreBinding-20261031-051914",
+  "old_module_sha256": "3d6e215a6e15024768d4b29c005505358d83c6f64893963ade1da9ecd6ef586f",
+  "planned_GUI_evidence_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+  "old_literal": {
+    "format": "lawbench-t31-direct-gui-scope-literal-inputs-v1",
+    "approved_core": {
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeDirectService-20261031-051008",
+      "planned_GUI_evidence_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+      "source_pins": [
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+          "bytes": 88654,
+          "sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658\\scope-policy.py",
+          "bytes": 24402,
+          "sha256": "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py",
+          "bytes": 25896,
+          "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\app.py",
+          "bytes": 8723,
+          "sha256": "b2ccc942a3d52588c339ce6d74eb3d1333add17a83691c761fbd4059fc96e09f"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\materials.py",
+          "bytes": 84378,
+          "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+        }
+      ],
+      "policy": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658\\scope-policy.py",
+      "policy_sha256": "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb",
+      "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+      "baseline_sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64",
+      "current_B346": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+        "bytes": 53548,
+        "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+        "mtime_ns": "1793302647316836800"
+      },
+      "actual_model_POST_allowed": 0,
+      "actual_credentials_allowed": 0,
+      "seconds": 600,
+      "before_source": "D:\\Lawbeach\\lawbench-coord\\T31DirectGuiScopeInput-20261031-051008\\entry.py",
+      "before_source_sha256": "4bcdce13b654b6bd8f4e4378b3a313057b727e1f5d0069de9ea13f5628e08b3a",
+      "direct_contract_pins": [
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658\\scope-policy.py",
+          "bytes": 24402,
+          "sha256": "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\materials.py",
+          "bytes": 84378,
+          "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\task.py",
+          "bytes": 40607,
+          "sha256": "7b6ee04ba53f45b1f7e6624d2c9bf60b122dfc68c12e26331431a84eed36bf04"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py",
+          "bytes": 25896,
+          "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+        }
+      ]
+    },
+    "fixture_pins": {
+      "scope-a.txt": {
+        "bytes": 37,
+        "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+      },
+      "scope-b.txt": {
+        "bytes": 37,
+        "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+      },
+      "scope-c.txt": {
+        "bytes": 39,
+        "sha256": "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439"
+      }
+    },
+    "correction_contract": {
+      "canonical_binding": {
+        "EVIDENCE_ROOT": "SELF_ROOT",
+        "RUNS_ROOT": "SELF_ROOT/runs",
+        "planned_root_equality": "main/admit/serve only"
+      },
+      "policy_factory": {
+        "public_function": "make_scope_firewall",
+        "positional_base": "ORIGINAL.Firewall",
+        "source_root": "root/scope-source",
+        "source_sha_by_name": "literal three TXT SHA-256 pins",
+        "generic_discovery_removed": true
+      },
+      "materials": {
+        "native_index": "lb.materials.index(ORIGINAL.EXPECTED_CASE_ID)",
+        "native_path": "lb.materials.original_path(case_id, material_id, op='materials_original')",
+        "required_state": "ok",
+        "required_rows": 3,
+        "bind_once": true,
+        "preimport_empty_get": "NORMAL",
+        "second_import_added": "response['value']['scan']['added']",
+        "native_display_name": "preserved separately; not compared to source filename"
+      },
+      "task_store": {
+        "task_identity_source": "policy.evidence()['task']['task_id']",
+        "native_api": [
+          "lb.tasks.locate(task_id)",
+          "lb.tasks.rel(task_id, 'task.json')"
+        ],
+        "max_bytes": 1048576,
+        "generic_scan_removed": true
+      },
+      "forwarder": {
+        "import": "from lawbench.net import forward_app",
+        "transport": "RefusingModelTransport",
+        "external_policy": "lb.external",
+        "external_key_getter": "external_key",
+        "observed_lifespan_messages": [
+          "lifespan.startup.complete",
+          "lifespan.shutdown.complete"
+        ]
+      },
+      "scope_evidence": {
+        "path": "root/scope-evidence.json",
+        "never_under_source_root": true,
+        "fields": [
+          "scope_tuple",
+          "task",
+          "materials",
+          "scope_nativeResponseVerified",
+          "task_nativeScopeResponseVerified",
+          "counts",
+          "denials",
+          "violations",
+          "native_failures"
+        ]
+      },
+      "inventory": {
+        "original_key": "relativePath",
+        "old_no_send_inventory_rule_applied": false
+      },
+      "routing": {
+        "protected_write_routes_exact": [
+          "/api/request/scope",
+          "/core/task/begin",
+          "/core/context",
+          "/core/progress",
+          "/core/task/end",
+          "/core/tool"
+        ],
+        "substring_send_core_filter": false,
+        "both_listeners_required": true
+      }
+    },
+    "source_not_run": {
+      "original_adapter_executed": false,
+      "original_adapter_imported": false,
+      "original_adapter_parsed": false,
+      "corrected_entry_executed": false,
+      "corrected_entry_imported": false,
+      "gui_started": false,
+      "http_requests": 0,
+      "actual_model_posts": 0,
+      "actual_credentials": 0,
+      "product_sources_changed": false,
+      "planned_gui_root_served": false,
+      "planned_gui_root_changed": false,
+      "status": "STATIC_SOURCE_CORRECTION_ONLY"
+    },
+    "reused_existing_evidence": {
+      "root_pure_policy_groups": "PASS",
+      "root_pure_policy_group_count": 13,
+      "source_holds": 4,
+      "original_pid": 14088,
+      "original_process_state": "OS_GONE",
+      "rerun": false,
+      "modified": false
+    },
+    "metadata": {
+      "entry_self_sha256": "OMITTED_TO_AVOID_SELF_REFERENCE",
+      "whole_T31_pass_claimed": false,
+      "current_native_behavior_claimed_correct": false,
+      "original_author_result": "4/4/0",
+      "original_command_4_included_prohibited_readonly_git": true,
+      "git_write_authorized": false
+    }
+  }
+}

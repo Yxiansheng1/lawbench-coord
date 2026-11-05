@@ -1,0 +1,30 @@
+{
+  "base_commit": "a23271abee333a9a256fd46a3141da16975c2380",
+  "fixed_packet": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-private.mjs",
+      "bytes": 32635,
+      "sha256": "f66ff91110bbc0c6f7f1103fcc900cf4b27c26b830a75699310396d6180be1e2",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-private.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-config.mjs"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\build-windows-candidate.ps1",
+      "bytes": 52227,
+      "sha256": "baaab08ca57afc96cce4c5bc4576bf20e303a96051797d2b728195d3283c4a5a",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\build-windows-candidate.ps1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\builder.config.json",
+      "bytes": 27024,
+      "sha256": "10ae82827795dedbe57aec99302ed6f3399109f37ca1f3e33aae16ad654dd4aa",
+      "frozen_base_copy": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-controller-failed-frozen-20261102-032101\\builder.config.json"
+    }
+  ],
+  "status": "FROZEN_FAILED_BASE_ONLY_NOT_NEW_TARGET_ADMISSION"
+}

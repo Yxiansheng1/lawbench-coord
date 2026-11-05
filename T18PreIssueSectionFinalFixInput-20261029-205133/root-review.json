@@ -1,0 +1,17 @@
+{
+  "verdict": "SOURCE_REJECTED_BEFORE_ANY_RUNTIME_TWO_EXACT_PREPARATION_DEFECTS",
+  "commands": 40,
+  "success": 31,
+  "nonzero": 9,
+  "author_runtime": 0,
+  "full_source_all_commands_writefaces_README_formal_reviewed": true,
+  "findings": [
+    "Manifest remains old own paths and old consumer identity; must copy previously explicit approved manifest, not freeze wrong self-binding.",
+    "Missing-table negative removes table and entire section body, triggering two predicates; preserve a nonempty placeholder to isolate table predicate."
+  ],
+  "entry_and_service_accepted_unchanged": true,
+  "cumulative_commands": 7383,
+  "cumulative_success": 6373,
+  "cumulative_nonzero": 1010,
+  "historical_runtime_violating_jobs": 6
+}

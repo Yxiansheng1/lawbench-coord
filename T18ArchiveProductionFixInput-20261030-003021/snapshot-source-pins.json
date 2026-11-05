@@ -1,0 +1,27 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 49572,
+    "sha256": "140584362c259b6f2909f32f6c8489f47e447ceb2106db1475b76e3971c909ab"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 22115,
+    "sha256": "866a15366ba37b44f1c611c5b4ba48b51cf995f89b4931aaaf38e5bc1cb8cd99"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\archive.py",
+    "bytes": 1957,
+    "sha256": "f159e7e5e629df3f11554c35b10b432f0464ee67d73eae60d017988079311459"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\build-private.mjs",
+    "bytes": 32121,
+    "sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\build-config.mjs",
+    "bytes": 20472,
+    "sha256": "1fc565b02d4b0a3c76cac73ff36fa92230da266a8ddc6ec1568aa3bcec3ad358"
+  }
+]

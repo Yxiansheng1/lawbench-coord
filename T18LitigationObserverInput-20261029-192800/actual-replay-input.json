@@ -1,0 +1,11 @@
+{
+  "path": "D:\\Lawbeach\\lawbench-coord\\T18LitigationObserverInput-20261029-192800\\original-actual-session.v4.jsonl",
+  "bytes": 197963,
+  "sha256": "c449784caf29430657eb65ab5265a155027f68857f4304312a8ac8b05a773f1b",
+  "producer": "UNCHANGED_ACTUAL_NATIVE_RUN_KE_DSBH_NOT_GENERATED_EVENTS",
+  "events": 68,
+  "actual_joint_question_seq": 41,
+  "actual_answer_seq": 42,
+  "first_material_read_seq": 27,
+  "expected_read_order_pass": false
+}

@@ -1,0 +1,70 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948",
+  "before": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\start.ps1",
+      "bytes": 88133,
+      "sha256": "fd558f5e60d85b16ac06fc7ddc4d758ab299dac408750be9c6c55d277e8a6526"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\literal-inputs.json",
+      "bytes": 28869,
+      "sha256": "161fa86cde7c31cd9d17f8407c8c807e6cb6add5f8a998b74f0559b5924d2afa"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\README.md",
+      "bytes": 4209,
+      "sha256": "cff9baab82d4ee7a8f313b043fd526cf56b807798b88f73485cdfefa7362a26a"
+    }
+  ],
+  "held_other8": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\entry.py",
+      "bytes": 88649,
+      "sha256": "667ef178b610b4b1bf88e8fd97dfd442a7f0c455f64467b0617453d9b740fe96"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\prepare.ps1",
+      "bytes": 13558,
+      "sha256": "63b0aafdfb726ef4a1828cad77124791580814aa0b63c9161c97f3a0935f3168"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\settings-read-observer.mjs",
+      "bytes": 11513,
+      "sha256": "4fac11cf4a8bd75d46f932a0ce3cbb1d5dd263d15a81c2c180953715bf8ce107"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\signature-finite.mjs",
+      "bytes": 5381,
+      "sha256": "d52d1848983de75a8fb30f4ce9ca0340a349fc7942972a06fa44a8588f1aefed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\LiteralRouteGUI-20261030-225948\\stop.ps1",
+      "bytes": 7175,
+      "sha256": "e6c99dab813cd424626b027640e0ae145b2626790e5dc758012964b7369bfbf9"
+    }
+  ],
+  "old": "@{ Line = $literalLine; Label = 'production-shape literal route' },",
+  "new": "@{ Line = $literalLine; Label = 'production-shape literal route'; Occurrences = 2 },",
+  "previous_raw_counts": [
+    53,
+    42,
+    11
+  ],
+  "previous_audit": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-literal-route-GUI-author-audit-current.json"
+}

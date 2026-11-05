@@ -1,0 +1,77 @@
+{
+  "stoppedAt": "2026-10-28T02:44:54.4900598Z",
+  "reason": "exception",
+  "processRecords": [
+    {
+      "pid": 14724,
+      "role": "relay",
+      "executablePath": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "startTimeUtcTicks": "639287522219151798",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\gui\\state\\electron-relay-20261028-104341798.json",
+      "recordedAt": "2026-10-28T02:43:42.1152142Z"
+    },
+    {
+      "pid": 9304,
+      "role": "electron",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522224398153",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\gui\\electron-user-data",
+      "recordedAt": "2026-10-28T02:43:42.5592287Z"
+    },
+    {
+      "pid": 12088,
+      "role": "electron-child",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522248707869",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+      "recordedAt": "2026-10-28T02:43:45.8556478Z"
+    },
+    {
+      "pid": 31760,
+      "role": "electron-child",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522248750557",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+      "recordedAt": "2026-10-28T02:43:46.0388699Z"
+    },
+    {
+      "pid": 6756,
+      "role": "electron-child",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522248928202",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+      "recordedAt": "2026-10-28T02:43:46.2198735Z"
+    },
+    {
+      "pid": 36344,
+      "role": "host",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522253177932",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+      "recordedAt": "2026-10-28T02:43:46.4020746Z"
+    },
+    {
+      "pid": 32888,
+      "role": "electron-child",
+      "executablePath": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "startTimeUtcTicks": "639287522698297858",
+      "marker": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+      "recordedAt": "2026-10-28T02:44:42.9729474Z"
+    }
+  ],
+  "stoppedPids": [
+    12088,
+    31760,
+    6756,
+    36344,
+    32888,
+    9304
+  ],
+  "remainingPids": [],
+  "nativePort": 0,
+  "portClosed": false,
+  "portVerificationAvailable": false,
+  "portVerificationError": "port_not_recorded",
+  "pythonForcedStop": false,
+  "pythonCleanupClaimed": false
+}

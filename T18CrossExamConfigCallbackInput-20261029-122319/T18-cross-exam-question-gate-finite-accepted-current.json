@@ -1,0 +1,42 @@
+{
+  "verdict": "CURRENT_CROSS_EXAM_GATE_FIVE_UNIT_PASS_TYPES0_NOT_NATIVE_MODEL",
+  "product_sha256": "5366f8454189cbfeecd5d71142c026549fe010e9853b1d9a119a461cc1fd630c",
+  "test_sha256": "670c9f5573ec8530e088a3735b68aca2c63efbb0a94b3927c825ef24f186870c",
+  "fresh_five_tests_PASS": true,
+  "unit_elapsed_s": 5.5779134,
+  "types_exit0": true,
+  "types_elapsed_s": 7.8515341,
+  "source_changes": [],
+  "complete_validated_OBSERVED_OS_gone": 4,
+  "one_types_PID_reported_DLL_path_NOT_validated_executable": [
+    {
+      "birthUTC": "2026-10-29T04:18:58.5920515Z",
+      "ticks": "639288443385920515",
+      "pid": 42992,
+      "gone": true,
+      "exe": "C:\\Windows\\SYSTEM32\\ntdll.dll"
+    }
+  ],
+  "all_recorded_births_gone": true,
+  "forced": false,
+  "global_network_metered": false,
+  "Core_is_in_memory": true,
+  "actual_ToolRuntime_pipeline_test_PASS": true,
+  "old_four_Skill_predicates_unchanged_by_exact_inverse": true,
+  "old51_full_new_source_runtime_NOT_claimed": true,
+  "old_actual_red": "run-zMFEDU zeroanswers/fivewrites",
+  "author_commands": 58,
+  "author_success": 56,
+  "author_nonzero": 2,
+  "author_runtime": 0,
+  "cumulative_commands": 5570,
+  "cumulative_success": 4814,
+  "cumulative_nonzero": 756,
+  "historical_runtime_violating_jobs": 5,
+  "formal_hash_has_extra_e_65chars": "5366f8454189cbfeeecd5d71142c026549fe010e9853b1d9a119a461cc1fd630c",
+  "actual_64char_product_hash": "5366f8454189cbfeecd5d71142c026549fe010e9853b1d9a119a461cc1fd630c",
+  "root_first_static_literal_guard_failed_before_unit_not_product_red": true,
+  "original_formal_unchanged": true,
+  "full_T18_PASS": false,
+  "Packaging": "HOLD"
+}

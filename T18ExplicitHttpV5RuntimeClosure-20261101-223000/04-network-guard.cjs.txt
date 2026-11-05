@@ -1,0 +1,201 @@
+D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\runtime\network-guard.cjs
+SHA cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130
+EXPLICIT currentlines 1..198; earlier unchangedpureprotocol outside thisfocusedreview
+0001 'use strict'
+0002 
+0003 // Process-local network guard. It is loaded through NODE_OPTIONS into the
+0004 // Electron main process and the Desktop Host. Loopback is allowed; the two
+0005 // fixed DeepSeek Search URLs are redirected to the T50 fake sidecar. Every
+0006 // other Node HTTP/HTTPS/socket destination is refused before connection.
+0007 
+0008 const fs = require('node:fs')
+0009 const http = require('node:http')
+0010 const https = require('node:https')
+0011 const net = require('node:net')
+0012 const tls = require('node:tls')
+0013 const dgram = require('node:dgram')
+0014 const { syncBuiltinESMExports } = require('node:module')
+0015 
+0016 const SEARCH_ENDPOINT = 'https://api.deepseek.com/v1/tools/search'
+0017 const FETCH_ENDPOINT = 'https://api.deepseek.com/v1/tools/fetch'
+0018 const fakeSearchPort = Number(process.env.T50_FAKE_SEARCH_PORT)
+0019 
+0020 function appendAudit(kind, origin) {
+0021   const target = process.env.T50_NETWORK_DENIAL_LOG
+0022   if (!target) return
+0023   try {
+0024     fs.appendFileSync(target, `${new Date().toISOString()}\t${process.pid}\t${kind}\t${origin}\n`, 'utf8')
+0025   } catch {}
+0026 }
+0027 
+0028 function normalizedHost(host) {
+0029   return String(host || '').trim().toLowerCase().replace(/^\[(.*)\]$/, '$1').replace(/\.$/, '')
+0030 }
+0031 
+0032 function isLoopbackHost(host) {
+0033   const value = normalizedHost(host)
+0034   return value === 'localhost' || value === '::1' || value === '0:0:0:0:0:0:0:1'
+0035     || /^127(?:\.\d{1,3}){3}$/.test(value)
+0036 }
+0037 
+0038 function parseDestination(value) {
+0039   if (value instanceof URL) return { protocol: value.protocol, host: value.hostname, origin: value.origin, url: value }
+0040   if (typeof value === 'string') {
+0041     try {
+0042       const parsed = new URL(value)
+0043       return { protocol: parsed.protocol, host: parsed.hostname, origin: parsed.origin, url: parsed }
+0044     } catch {}
+0045   }
+0046   if (value && typeof value === 'object') {
+0047     const protocol = String(value.protocol || 'http:').replace(/:$/, '') + ':'
+0048     const host = value.hostname || value.host || 'localhost'
+0049     return { protocol, host, origin: `${protocol}//${host}`, url: undefined }
+0050   }
+0051   return { protocol: 'unknown:', host: '', origin: 'unknown', url: undefined }
+0052 }
+0053 
+0054 function fakeSearchDestination(value) {
+0055   let parsed
+0056   try { parsed = new URL(value) } catch { return undefined }
+0057   if (parsed.origin !== 'https://api.deepseek.com') return undefined
+0058   if (parsed.pathname !== '/v1/tools/search' && parsed.pathname !== '/v1/tools/fetch') return undefined
+0059   if (!Number.isInteger(fakeSearchPort) || fakeSearchPort < 1 || fakeSearchPort > 65535) {
+0060     throw new Error('T50 fake Search port is unavailable')
+0061   }
+0062   return new URL(`${parsed.pathname}${parsed.search}`, `http://127.0.0.1:${fakeSearchPort}`)
+0063 }
+0064 
+0065 function denied(kind, destination) {
+0066   appendAudit(`denied:${kind}`, destination.origin || destination.host || 'unknown')
+0067   const error = new Error(`T50 network denied (${kind}): ${destination.origin || destination.host || 'unknown'}`)
+0068   error.code = 'T50_NETWORK_DENIED'
+0069   return error
+0070 }
+0071 
+0072 const originalFetch = globalThis.fetch
+0073 if (typeof originalFetch === 'function') {
+0074   globalThis.fetch = async function t50Fetch(input, init) {
+0075     const raw = typeof input === 'string' || input instanceof URL ? String(input) : input?.url
+0076     if (typeof raw !== 'string') throw denied('fetch-invalid', { origin: 'invalid' })
+0077     const fake = fakeSearchDestination(raw)
+0078     if (fake) {
+0079       appendAudit('redirect:fixed-search', 'https://api.deepseek.com')
+0080       return originalFetch.call(this, fake, init)
+0081     }
+0082     const destination = parseDestination(raw)
+0083     if (!isLoopbackHost(destination.host)) throw denied('fetch', destination)
+0084     return originalFetch.call(this, input, init)
+0085   }
+0086 }
+0087 
+0088 function requestHost(args) {
+0089   if (typeof args[0] === 'string' || args[0] instanceof URL) return parseDestination(args[0])
+0090   return parseDestination(args[0])
+0091 }
+0092 
+0093 for (const [scheme, module] of [['http', http], ['https', https]]) {
+0094   const originalRequest = module.request.bind(module)
+0095   const originalGet = module.get.bind(module)
+0096   module.request = function t50Request(...args) {
+0097     const destination = requestHost(args)
+0098     if (!isLoopbackHost(destination.host)) throw denied(`${scheme}-request`, destination)
+0099     return originalRequest(...args)
+0100   }
+0101   module.get = function t50Get(...args) {
+0102     const destination = requestHost(args)
+0103     if (!isLoopbackHost(destination.host)) throw denied(`${scheme}-get`, destination)
+0104     return originalGet(...args)
+0105   }
+0106 }
+0107 
+0108 function socketDestinations(args) {
+0109   if (args.length === 0) return
+0110   const first = args[0]
+0111   if (typeof first === 'string') return undefined
+0112   if (first instanceof URL) return [parseDestination(first)]
+0113   if (first && typeof first === 'object') {
+0114     if (typeof first.path === 'string' && first.path.length > 0) {
+0115       return undefined
+0116     }
+0117     const hosts = [first.host, first.hostname]
+0118       .filter((host) => host !== undefined && host !== null && String(host) !== '')
+0119       .map(String)
+0120     if (hosts.length === 0) hosts.push('localhost')
+0121     return hosts.map((host) => ({ protocol: 'unknown:', host, origin: `tcp://${host}`, url: undefined }))
+0122   }
+0123   if (typeof first === 'number') {
+0124     const second = args[1]
+0125     let host = 'localhost'
+0126     if (typeof second === 'string' && second !== '') {
+0127       host = second
+0128     } else if (second !== undefined && typeof second !== 'function') {
+0129       return [{ protocol: 'unknown:', host: '[invalid numeric host]', origin: 'tcp://invalid', url: undefined }]
+0130     }
+0131     return [{ protocol: 'unknown:', host, origin: `tcp://${host}`, url: undefined }]
+0132   }
+0133   return [{ protocol: 'unknown:', host: '', origin: 'tcp://invalid', url: undefined }]
+0134 }
+0135 
+0136 function assertSocketTarget(args, kind) {
+0137   const destinations = socketDestinations(args)
+0138   if (!destinations) return
+0139   for (const destination of destinations) {
+0140     if (!isLoopbackHost(destination.host)) throw denied(kind, destination)
+0141   }
+0142 }
+0143 
+0144 for (const name of ['connect', 'createConnection']) {
+0145   const original = net[name].bind(net)
+0146   net[name] = function t50Net(...args) {
+0147     assertSocketTarget(args, `net-${name}`)
+0148     return original(...args)
+0149   }
+0150 }
+0151 
+0152 const originalSocketConnect = net.Socket.prototype.connect
+0153 net.Socket.prototype.connect = function t50SocketConnect(...args) {
+0154   assertSocketTarget(args, 'net-socket-connect')
+0155   return originalSocketConnect.apply(this, args)
+0156 }
+0157 
+0158 const originalTlsConnect = tls.connect.bind(tls)
+0159 tls.connect = function t50TlsConnect(...args) {
+0160   assertSocketTarget(args, 'tls-connect')
+0161   return originalTlsConnect(...args)
+0162 }
+0163 
+0164 const originalCreateSocket = dgram.createSocket.bind(dgram)
+0165 dgram.createSocket = function t50DgramSocket(...args) {
+0166   const socket = originalCreateSocket(...args)
+0167   const originalSend = socket.send.bind(socket)
+0168   socket.send = function t50DgramSend(...sendArgs) {
+0169     const hostIndex = typeof sendArgs[1] === 'number' ? 2 : 4
+0170     const host = sendArgs[hostIndex]
+0171     if (host !== undefined && !isLoopbackHost(host)) {
+0172       throw denied('dgram-send', { origin: `udp://${host}`, host })
+0173     }
+0174     return originalSend(...sendArgs)
+0175   }
+0176   return socket
+0177 }
+0178 
+0179 if (typeof globalThis.WebSocket === 'function') {
+0180   const OriginalWebSocket = globalThis.WebSocket
+0181   globalThis.WebSocket = class T50WebSocket extends OriginalWebSocket {
+0182     constructor(url, protocols) {
+0183       const destination = parseDestination(url)
+0184       if (!isLoopbackHost(destination.host)) throw denied('websocket', destination)
+0185       super(url, protocols)
+0186     }
+0187   }
+0188 }
+0189 
+0190 syncBuiltinESMExports()
+0191 
+0192 const readyFile = process.env.T50_GUARD_READY_FILE
+0193 if (readyFile) {
+0194   try {
+0195     fs.mkdirSync(require('node:path').dirname(readyFile), { recursive: true })
+0196     fs.writeFileSync(readyFile, `${process.pid}\n`, { encoding: 'utf8', mode: 0o600 })
+0197   } catch {}
+0198 }

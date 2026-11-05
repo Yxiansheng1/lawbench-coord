@@ -1,0 +1,41 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralCleanupFinite-root-20261029-041534",
+  "helper": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\cleanup-context-finite.mts",
+  "helper_sha256": "7f28979a88e96ca88769c6941edad4eeb7ad891452889fc56a765e7b79797c72",
+  "exit": 1,
+  "elapsed_s": 2.2810000000026776,
+  "identities": [
+    {
+      "pid": 10276,
+      "parent": 8652,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T20:15:34.1185530Z"
+    },
+    {
+      "pid": 39916,
+      "parent": 10276,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T20:15:35.2634030Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "OS_after": [],
+  "source_changes": [],
+  "forced": false,
+  "fixture_result": null,
+  "wrapper": {
+    "helper_completed": false,
+    "denied_attempts": [],
+    "error": {
+      "name": "Error",
+      "message": "cannot get property \"href\" without inject",
+      "stack": "Error: cannot get property \"href\" without inject"
+    }
+  },
+  "scope": "ACTUAL_EMPTY_CORDIS_CONTEXT_REGISTRY_LIFECYCLE_ONLY",
+  "whole_consumer_RUN": false,
+  "model": 0,
+  "Key": 0,
+  "HTTP": 0,
+  "Packaging": "HOLD"
+}

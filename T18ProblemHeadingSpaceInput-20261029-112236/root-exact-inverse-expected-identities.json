@@ -1,0 +1,21 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\native-criminal-evidence.mts",
+    "bytes": 123264,
+    "sha256": "69e80a8e1fea9d04f8cbdde3e73a066a43d22de3e998958603dd9c46c3de70d1"
+  },
+  "finite": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\verify-problem-records-finite.mts",
+    "bytes": 13933,
+    "sha256": "638b8db2f43f3fc9c5e9359c6d88007cc7131c23401ea61b622608a924ab0983"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\literalfixed-inputs.json",
+    "bytes": 12239,
+    "sha256": "a3e5567dfd0726e135253d1cde1cf679d0150e5f1cff8108854176f1095fa9ee"
+  },
+  "source_change": {
+    "left": "[\uff1a:][ \\t]*(.*)$/.exec(line)",
+    "right": "[\uff1a:](.*)$/.exec(line)"
+  }
+}

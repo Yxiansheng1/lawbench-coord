@@ -1,0 +1,23 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+  "old_entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830",
+  "fixture": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\criminal-01\\起诉意见书.pdf",
+  "fixture_bytes": 57132,
+  "fixture_sha256": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191",
+  "material_name": "起诉意见书",
+  "source_file": "起诉意见书.pdf",
+  "citation": "〔起诉意见书 第2页〕",
+  "expected_loc": {
+    "unit": "page",
+    "from": 2
+  },
+  "expected_pages": 5,
+  "expected_text_fragments": [
+    "经依法侦查查明",
+    "126,500"
+  ],
+  "expected_not_first_page": "虚构市公安局虚构区分局",
+  "runtime": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T31/PrivateRuntimeBuild-20261026-043910/private-output-20261027-194112",
+  "runtime_manifest_sha": "5260367f4b54d1d7a384dd427dd743e20094fd7138b2780a6074e858a5d96a0f",
+  "future_GUI_base": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T32/NativeDocumentCitationGui-20261027-194505"
+}

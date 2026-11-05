@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-29T14:21:18.497124+08:00",
+  "verdict": "CURRENT_CROSS_EXAM_FINITE_EXTRACTION_SOURCE_ACCEPTED_FOR_FINITE_ADMISSION",
+  "entry_sha256": "0da719ca45ae93dfa87fe4405dc14b0badffe55eabbc2268bab24d1d19c33bfb",
+  "service_sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d",
+  "manifest_sha256": "33103a5a03c00f3854e0d0dc4d813ec2ece3164f20036a3bc69553ce16507058",
+  "finite_sha256": "96932989b2dfb0bc3106c910a5ee8419642aea293066577fa38048cb79536058",
+  "drain_finite_sha256": "1141f3e4e1c516d355eddd1d9446cbe37caa45ed527608b4cb876c17c133f872",
+  "full_source_all_commands_reviewed": true,
+  "whole_manifest_inverse": true,
+  "B_scenario_wholebyte_inverse": true,
+  "setup_finally_controlled_inverse": true,
+  "whole_MTS_inverse_only_285_byte_strict_status_block": true,
+  "whole_L0_inverse_one_numeric_literal_two_ASCII_bytes": true,
+  "author_runtime": 0,
+  "current_B_author_commands": 91,
+  "current_B_author_success": 76,
+  "current_B_author_nonzero": 15,
+  "prior_A51_author_runtime_violation7_retained": true,
+  "historical_runtime_violating_jobs": 6,
+  "cumulative_commands": 6173,
+  "cumulative_success": 5327,
+  "cumulative_nonzero": 846,
+  "finite_results": {
+    "L0": {
+      "exit": 0,
+      "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamL0Finite-root-20261029-141849",
+      "global_network_metered": false,
+      "forced": false,
+      "source_sha256": "96932989b2dfb0bc3106c910a5ee8419642aea293066577fa38048cb79536058",
+      "source_unchanged": true,
+      "OS": [
+        {
+          "ticks": "639288515290997478",
+          "gone": true,
+          "exe": "E:\\node\\node.exe",
+          "birthUTC": "2026-10-29T06:18:49.0997478Z",
+          "pid": 47632
+        },
+        {
+          "ticks": "639288515291073687",
+          "gone": true,
+          "exe": null,
+          "birthUTC": "2026-10-29T06:18:49.1073687Z",
+          "pid": 10872
+        }
+      ],
+      "elapsed_s": 0.6793246,
+      "unit_role": "L0",
+      "AgentLoopCreated": false,
+      "source": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T18/CrossExamFiniteExtraction-20261029-140102/verify-L0-result-seq-20261029-141406.mts",
+      "NativeSessionCreated": false,
+      "LegalAgentClassUnitExecutionExpected": false,
+      "NativeResourceClaimed": false
+    },
+    "settlement": {
+      "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamSettlementFinite-root-20261029-141214",
+      "elapsed_s": 0.7677277,
+      "LegalAgentClassUnitExecutionExpected": true,
+      "source": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T18/CrossExamFiniteExtraction-20261029-140102/verify-task-settlement-finite.mts",
+      "exit": 0,
+      "unit_role": "Settlement",
+      "NativeSessionCreated": false,
+      "OS": [
+        {
+          "birthUTC": "2026-10-29T06:12:14.7572540Z",
+          "gone": true,
+          "exe": "E:\\node\\node.exe",
+          "pid": 42520,
+          "ticks": "639288511347572540"
+        }
+      ],
+      "AgentLoopCreated": false,
+      "source_unchanged": true,
+      "forced": false,
+      "global_network_metered": false,
+      "NativeResourceClaimed": false,
+      "source_sha256": "1141f3e4e1c516d355eddd1d9446cbe37caa45ed527608b4cb876c17c133f872"
+    }
+  },
+  "settlement_cases": 24,
+  "L0_control_items": 21,
+  "qualifications": [
+    "L0 control list contains positive alternatives as well as negative controls",
+    "scope IDs and versions bind actual private task batch; not literal ID/version fields in L0 text",
+    "actual LegalAgent/TaskState/CoreClient class AST fragments with controlled overridden CoreClient.call; base call/fetch and real HTTP not tested",
+    "old stop sequence is controlled unit plus actual primary-source ordering, not whole old consumer main execution",
+    "one complete Node exe/birth per finite; L0 also has one partial exe NULL PID retained NOT_PROVEN",
+    "ESM/lexical checks are not full tsc or full workflow"
+  ],
+  "no_new_model": true,
+  "no_new_build": true,
+  "original_FAILED_preserved": true,
+  "manual_business": "FAILED_UNSUPPORTED_PROSECUTION_PURPOSES",
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD"
+}

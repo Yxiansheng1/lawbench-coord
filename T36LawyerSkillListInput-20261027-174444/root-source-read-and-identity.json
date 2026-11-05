@@ -1,0 +1,118 @@
+{
+  "at": "2026-10-27T17:49:04.482557+08:00",
+  "all21_inputs_snapshot_current_exact": true,
+  "root_shared_once_and_18_unique_bodies_read": true,
+  "18_embedded_shared_exact": true,
+  "rows": [
+    {
+      "id": "bid-drafting",
+      "title": "投标文件起草",
+      "sha256": "d4a562da3125f6c5f0f86ba47d9348c575a79ad9d9169197487ae91ba301748e",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "case-archiving",
+      "title": "案卷归档",
+      "sha256": "7ede544356b715f4aae7e4ebd54eb8e07ef4c7c6038590c47ad2a440c4caa7dd",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "case-reading-notes",
+      "title": "阅卷笔录",
+      "sha256": "b9f93c88ce85e68cbd331c38006e6416573c47cfc4e31ea6ed61f4a4c50936c0",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "case-wiki-build",
+      "title": "案件 wiki",
+      "sha256": "739f3cf6a62546dba9c43ff2f1bcd9c3a5913f59fcafcf3ed7a1c32ee9b6ad20",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "contract-draft",
+      "title": "合同初稿",
+      "sha256": "bfd44f5e3e970d95fe961df3d7298b67b9dc6f37cd5de7f825ea902c889b4012",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "contract-review",
+      "title": "合同审查意见",
+      "sha256": "339e3f09001421424c319ef17d9082084b54e6b6d90938afff92a3c7b33575c9",
+      "exact_approved_analysis_flag": true
+    },
+    {
+      "id": "criminal-applications",
+      "title": "刑事申请书",
+      "sha256": "535591d51956174f4820d0cb31b7249f98eb8f9819609b120a5923c608c11754",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "criminal-evidence-review",
+      "title": "证据审查意见",
+      "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2",
+      "exact_approved_analysis_flag": true
+    },
+    {
+      "id": "criminal-reading-notes",
+      "title": "刑事阅卷笔录",
+      "sha256": "0bc8ee2b56b5900fe7d20ce3b6310ec864b8afa789393028f945bf332e291d10",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "cross-exam-opinion",
+      "title": "质证意见",
+      "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a",
+      "exact_approved_analysis_flag": true
+    },
+    {
+      "id": "defense-opinion",
+      "title": "辩护词",
+      "sha256": "e49d280e4f09f2a2aeeb94bef8f188aca7ce84a773fab410703d59d59a4da04a",
+      "exact_approved_analysis_flag": true
+    },
+    {
+      "id": "doc-revise",
+      "title": "修改稿",
+      "sha256": "9107ea54962a12521f4d4a0b824c494100359fb3a0a9968a3db1cf86c65fe1f7",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "general-drafting",
+      "title": "通用法律文书",
+      "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "legal-workflow",
+      "title": "业务导航",
+      "sha256": "46639190956bdd517742ef89a5f598e9e7a0a2466ad92e4a5190169c90a3c25f",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "litigation-docs",
+      "title": "诉讼文书起草",
+      "sha256": "3a97dae221b074c79c35f5a99ee035de220ae04aba6489e273bee034f47a86d8",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "pre-issue-check",
+      "title": "出稿前审查",
+      "sha256": "81be87f93b4114df6b644789f66379cbde9c4d143e41c542bbda4a7229818243",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "sentence-calc",
+      "title": "刑期计算",
+      "sha256": "3f280837b8b424443a03fe55729293f8112e36b98a6f44dd48c7f66b5a017d43",
+      "exact_approved_analysis_flag": false
+    },
+    {
+      "id": "tender-review",
+      "title": "招标文件审查",
+      "sha256": "a7f19dc17bac500bb66e2dc7eb2bfe07653c6165d3c452e40b996649966ccdf6",
+      "exact_approved_analysis_flag": false
+    }
+  ],
+  "runtime_runs": 0,
+  "source_changed": false
+}

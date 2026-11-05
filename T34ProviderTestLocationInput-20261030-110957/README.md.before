@@ -1,0 +1,38 @@
+# T34 provider layers finite evidence
+
+状态：`SOURCE_ONLY_CONFIG_READY / AUTHOR_RUNTIME_ZERO / ROOT_RUN_PENDING`
+
+本目录只修正一次源码级有限对照的 fixture 层，不声明 native GUI、安装后 runtime 或整条 T34
+通过。旧 target 为 `NOT_RUN`；旧 artifacts、原文、状态与正式件均保持不变。旧顺序把实际 GUI
+普通 override 写成 `insert` 行内配置，导致 `ConfigEditor.inherited` 将其视为下层继承值，而
+`Settings.mutate` 的 `unset` 按设计会恢复该继承成员。这是旧 fixture 的层级错误，不能据旧
+target 判产品失败，也不是已证明的 native 原因。
+
+修正后的组合严格分为两层：
+
+- 现有 fixture 自己的 `test-bundle/cordis.patch.yml` 保持 1 个 patch、原有 5 个 `insert`
+  entry 原样不变，只追加 `{ id: "llm-pi-ai", name: "cordis:t34-llm-pi-ai" }` 裸声明，不带
+  `config` 或 `providers`。
+- 测试再向 `profile.patchPath` 写入普通 profile override：首行
+  `- id: llm-pi-ai`，随后是 `config.providers` 下的 `lawfirm`、`external` 两行虚构配置。
+  两个 route 都只指向 `127.0.0.1:1`，不启动服务或发送请求。
+
+该 setup 在真实 `configurationFixture`、真实 `LlmRuntime` 和 `LlmPiAi` builtin registration
+之后，实际读取、解析并写回下层 JSON fixture，再沿用原 `hmr.runExclusive`、
+`readProfilePatches`、`reconcileProfilePatches` 和每个 case 一次真实
+`ctx.settings.mutate`。未增加 fake API、额外 fixture、helper、case、模型调用、
+凭据存储或 default profile。
+
+两个 case 名称仍为：
+
+1. `removes a synthetic external provider through real Settings with literal route URLs`
+2. `removes a synthetic external provider through real Settings with expression route URLs`
+
+两个 case body 的 assertions 保持逐字一致；相对旧 spec，仅在两个字面 route 输入中减少 4 个
+缩进空格，并包含上述 helper、`node:path` import 与 setup 层级修正。配置由旧 1106 字节版本
+逐行复制，仅 `cacheDir` 与 `include` 的私有目录名改为本目录；`envDir: false`、三份 setup、
+`execArgv`、单 worker、关闭并行、cache 与 coverage 均保持。
+
+作者未创建 `runtime`，未启动 Node、Vitest、Python、parser/import、type check、collect、
+build、GUI、HTTP、模型、SSH、DPAPI、凭据或 process probe；两测试结果均为 `NOT_RUN`。
+根执行器应完成静态核对后，按规定的一次两项 finite 运行做最终判读。

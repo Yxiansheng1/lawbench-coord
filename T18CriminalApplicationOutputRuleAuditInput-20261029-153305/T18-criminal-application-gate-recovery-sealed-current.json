@@ -1,0 +1,20 @@
+{
+  "verdict": "SIXTH_GATE_ACTUAL_IDS_WRITE_ORDER_ACCEPTED_OVERALL_LEGAL_MARKER_AND_MANUAL_QUALITY_FAILED",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CriminalApplicationGateRecoveryClosed-root-20261029-153041",
+  "files": 20,
+  "manifest_sha256": "6ed9f45587dbf0cf612fe10579536ea2aa155bf8bc736d66894e78e9ce2816ba",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx",
+  "elapsed_s": 64.82800000000861,
+  "model_POST": 11,
+  "model_HTTP200": 11,
+  "successful_actual_joint_callback": 1,
+  "source6_held": true,
+  "pins510_held": true,
+  "private25_held": true,
+  "all7_complete_owned_OS_gone": true,
+  "Listen_count": 0,
+  "exact_key_hits": 0,
+  "old_reports_never_rewritten": true,
+  "wholeProject": false,
+  "Packaging": "HOLD"
+}

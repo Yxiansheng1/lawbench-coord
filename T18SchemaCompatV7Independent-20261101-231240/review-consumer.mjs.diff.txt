@@ -1,0 +1,10 @@
+--- CLOSED_V6
++++ V7
+@@ -676,7 +676,6 @@
+     type: "array",
+     minItems: minimumRefs,
+     maxItems: referenceIds.length,
+-    uniqueItems: true,
+   };
+   if (referenceIds.length > 0) {
+     refsSchema.items = {

@@ -1,0 +1,24 @@
+{
+  "scope": "BOUNDED_SOURCE_ONLY_MAINLINE_REPAIR_FEASIBILITY_NOT_BUSY_AUDIT_OR_RUNTIME",
+  "allowed_reads": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\review-consumer.mjs",
+      "bytes": 56665,
+      "sha256": "cba474a6babb427c11d461e7945b29edc5313071599a92771247645dce2129ec",
+      "mtime_ns": "1793545537454437900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+      "bytes": 28447,
+      "sha256": "5c6fe8ee70076e2b491adb4e4e4ed5e76ca056317ea4e8bbcf3028b56aecbc11",
+      "mtime_ns": "1793511684189710500"
+    }
+  ],
+  "constraints": [
+    "Owneracceptedinternalbatchtimeoutnonblocking; doNOTchaseitsgreen orproposeunchangedretrial. Realfact-support/selfcheck failures remain.",
+    "Knownobservedcurrentfailuretypes: reference points to whitespaceoramountstatement while claim concerns a date; modellabelsSUPPORTED for globalabsence/onlycertain evidence fromsource merelylistingexistence. Sourceformat/schema/transportalreadyfixednotsemanticfix.",
+    "Currentmodel0.6/qwen38-27b/49152/400remaining900, originalNative32model48tool; title/contentonlysavedraftargs, soleNativeSession.beginSubmissionR, no HostR/newSession/context/history/SDK changes.",
+    "DoNOTrespondwithpromptwordingvariants/warnings-as-qualityPASS/newgenericframework/semanticregex/NLP classifier/extraauthasks. Chooseconcretesmallestdataflowrepairorstateexactcapabilityblock. OriginalsemanticcasesandreadcoverageRedsremainimmutable."
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18GroundingRepairFeasibilityB-20261101-234912.md"
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "item_19",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-navigation.spec.tsx",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_26",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-citation-typepath-20261027-191703.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-note-T32-citation-typepath-20261027-191703.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

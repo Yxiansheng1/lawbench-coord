@@ -1,0 +1,67 @@
+{
+    "manual_restore":  {
+                           "finish_utc":  "2026-10-30T13:11:12.9116442Z",
+                           "original_xml_exact":  true,
+                           "old_pid_count_present":  0,
+                           "ocr_health":  "{\"status\":\"ok\"}",
+                           "old_pids":  [
+                                            9768,
+                                            2932,
+                                            2768,
+                                            29236,
+                                            36704,
+                                            34244
+                                        ],
+                           "api_health":  "{\"status\":\"ok\",\"ocr\":\"ok\",\"llm9b\":\"ok\",\"queue\":0,\"version\":\"1.0.0\",\"contract_version\":\"1.4\",\"ocr_model\":\"Xiaomi-OCR-0.BF16.gguf\"}",
+                           "start_utc":  "2026-10-30T13:11:00.7460452Z"
+                       },
+    "xml_mtime":  "2026-10-10T05:46:27.1912935Z",
+    "xml_sddl":  "O:BAG:S-1-5-21-990054491-3026245525-1456164594-513D:AI(A;ID;0x1200a9;;;S-1-5-21-990054491-3026245525-1456164594-1003)(A;ID;FA;;;SY)(A;ID;FA;;;BA)",
+    "utc":  "2026-10-30T13:11:47.6454034Z",
+    "ports":  [
+                  {
+                      "LocalAddress":  "127.0.0.1",
+                      "LocalPort":  9102,
+                      "OwningProcess":  9652
+                  },
+                  {
+                      "LocalAddress":  "127.0.0.1",
+                      "LocalPort":  9101,
+                      "OwningProcess":  4356
+                  },
+                  {
+                      "LocalAddress":  "192.168.8.124",
+                      "LocalPort":  9000,
+                      "OwningProcess":  12624
+                  },
+                  {
+                      "LocalAddress":  "10.126.126.3",
+                      "LocalPort":  9000,
+                      "OwningProcess":  12624
+                  }
+              ],
+    "xml_fileid":  "文件 ID 为 0x0000000000000000000800000005bbb9",
+    "health":  "{\"status\":\"ok\",\"ocr\":\"ok\",\"llm9b\":\"ok\",\"queue\":0,\"version\":\"1.0.0\",\"contract_version\":\"1.4\",\"ocr_model\":\"Xiaomi-OCR-0.BF16.gguf\"}",
+    "old_owned_present":  [
+
+                          ],
+    "xml_bytes":  738,
+    "xml_sha":  "6f38260bf02c49b6e8a64fe9c4deae7bdf3a08970719b456e372e516ed02bc98",
+    "services":  [
+                     {
+                         "Name":  "prep395",
+                         "State":  "Running",
+                         "ProcessId":  36268
+                     },
+                     {
+                         "Name":  "prep395-llm9b",
+                         "State":  "Running",
+                         "ProcessId":  7040
+                     },
+                     {
+                         "Name":  "prep395-ocr",
+                         "State":  "Running",
+                         "ProcessId":  29180
+                     }
+                 ]
+}

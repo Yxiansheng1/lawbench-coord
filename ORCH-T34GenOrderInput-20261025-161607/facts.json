@@ -1,0 +1,23 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-A\\contracts\\_build\\gen_examples.py",
+  "capture": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ExampleGenerator-20261025-160738\\capture.py",
+  "source_before_sha256": "6e7d786c983386f846326db019d4515693bf413d0db0bed4775f73688d648fde",
+  "capture_before_sha256": "c23599f3f07d69a63ded57df5b6d0e25c9a4a1a42b70e3e608c04c622707bb63",
+  "move_exact_block": "ex(\"file_settings.ports.json\", \"files/settings.schema.json\",\n   {\"v\": 1, \"servers\": {\n       \"llm_base_url\": \"http://192.168.8.77:8000/v1\", \"prep_base_url\": \"http://192.168.8.124:9000\",\n       \"llm_alt_base_url\": \"http://10.126.126.1:8000/v1\", \"prep_alt_base_url\": \"http://10.126.126.3:9000\",\n       \"service_port\": None, \"forward_port\": None},\n    \"defaults\": {\"thinking\": \"中\", \"window\": \"64K\", \"max_tokens\": 16384, \"temperature\": 0.6},\n    \"skill_presets\": {}, \"templates\": {\"文书\": None, \"合同\": None}, \"ocr_fallback_llm\": False,\n    \"profile\": {\"lawyer_name\": None}, \"office\": {\"dir\": None, \"invoice_buyer\": None}, \"converter\": \"auto\"})\n",
+  "insert_before_exact_marker": "ex(\"api_documents_save.req.json\", \"api/documents_save.schema.json\",\n",
+  "current_manifest_tail_files": [
+    "file_settings.ports.json",
+    "api_documents_save.req.json",
+    "api_documents_save.res.json",
+    "api_documents_save.fail.json",
+    "api_remote_access.req_enabled.json",
+    "api_remote_access.req_code_null.json",
+    "api_remote_access.req_code_spaces.json",
+    "api_remote_access.res_failed.json",
+    "file_task.legacy.json",
+    "api_task_create.req.json",
+    "api_task_create.req_legacy.json",
+    "file_settings.external.json"
+  ],
+  "only_changes": "move one unchanged file_settings.ports ex call before documents_save req; then one source SHA literal in capture"
+}

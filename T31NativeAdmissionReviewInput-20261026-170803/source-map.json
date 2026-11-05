@@ -1,0 +1,50 @@
+[
+  {
+    "sha256": "3447ca541cb32694416e33e1b808468a7930323c63a3d2b4a44b1f563c5368af",
+    "source": "D:/Lawbeach/lawbench-A/dsh-ext/ui/material-batch.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+    "bytes": 18385
+  },
+  {
+    "sha256": "dbaf0b4121f11dda040ef9475ec8b1d52c64e757c9959392e26c573764a957fb",
+    "source": "D:/Lawbeach/lawbench-A/dsh-ext/ui/index.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh-ext\\ui\\index.tsx",
+    "bytes": 29811
+  },
+  {
+    "sha256": "9263521b80781489a071d411c14b7d3e85ef484a37f4a03046aa40a44a977414",
+    "source": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/service.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src\\client\\service.ts",
+    "bytes": 27978
+  },
+  {
+    "sha256": "92d61e26087dd7d150a43f7e505ab07faa3114f90ca5a9318459b991f9703bb0",
+    "source": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/apply.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src\\client\\apply.ts",
+    "bytes": 29591
+  },
+  {
+    "sha256": "1166b065c97ef634d7b0e2829927e148e56f3a3f851148fad92134205b45fc7b",
+    "source": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-material-admission.client.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\t31-material-admission.client.spec.ts",
+    "bytes": 22825
+  },
+  {
+    "sha256": "6ba11ae09a9e7adec05831479a84541adac0e72297f1729415718d95ecfcdf1d",
+    "source": "D:/Lawbeach/lawbench-A/dsh-patches/P-29-submission-admission-revalidation.patch",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh-patches\\P-29-submission-admission-revalidation.patch",
+    "bytes": 3561
+  },
+  {
+    "sha256": "ed1c57bbb492e28caf43725896ba265905d126a16126dc8824eaea9be961cdb9",
+    "source": "D:/Lawbeach/lawbench-A/dsh-ext/vitest.t31-material-admission.config.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-A\\dsh-ext\\vitest.t31-material-admission.config.mjs",
+    "bytes": 1510
+  },
+  {
+    "sha256": "469118449395bcd0d6ca77d8d98bb43bddac949a6dcc2a7b47e041096b0d00de",
+    "source": "D:/Lawbeach/lawbench-C/dsh-ext/tests/t31-material-capture-disposal.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31NativeAdmissionReviewInput-20261026-170803\\lawbench-C\\dsh-ext\\tests\\t31-material-capture-disposal.spec.tsx",
+    "bytes": 4639
+  }
+]

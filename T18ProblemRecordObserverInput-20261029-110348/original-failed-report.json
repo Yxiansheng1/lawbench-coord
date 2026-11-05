@@ -1,0 +1,994 @@
+{
+  "format": "lawbench-t18-criminal-evidence-native-report-v1",
+  "task": "A-T18-criminal-evidence-native-20261029-100253",
+  "status": "FAILED",
+  "authoredStatus": "AUTHORED_NOT_RUN",
+  "startedAtUtc": "2026-10-29T02:56:24.302Z",
+  "process": {
+    "executable": "E:\\node\\node.exe",
+    "pid": 51824,
+    "birthUtc": "2026-10-29T02:56:24.302Z",
+    "node": "v24.21.0",
+    "cwd": "D:\\Lawbeach\\lawbench-A\\dsh"
+  },
+  "fixture": {
+    "syntheticOnly": true,
+    "freshCase": true,
+    "freshNativeSession": true,
+    "materialNames": [
+      "价格认定结论书",
+      "扣押清单",
+      "监控视频截图说明",
+      "被告人李某乙讯问笔录（第一次）",
+      "被告人李某乙讯问笔录（第二次）"
+    ],
+    "materialCopiesBeforeCaseOpen": true,
+    "materialImportCalls": 0
+  },
+  "modelRoute": {
+    "provider": "lawfirm",
+    "model": "qwen38-27b",
+    "baseURL": "http://10.126.126.1:8000/v1",
+    "thinking": "高",
+    "contextWindow": 131072,
+    "maxTokens": 32768,
+    "modelCallsPerSkill": 32,
+    "requestTimeoutMs": 1200000,
+    "streamIdleTimeoutMs": 1200000
+  },
+  "runRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM",
+  "admission": {
+    "initial": {
+      "checkedAtUtc": "2026-10-29T02:56:24.694Z",
+      "manifestSha256": "b1ee91e2f28c1f0f54758119e9f03c43c28049c74c43f021e447f567503ed083",
+      "approvedInputsSha256": "782daed01cc78593fc747583362fc77674e8677d8a2345dfb68ef31184e2502b",
+      "sourcePinsSha256": "6b07e5773dc77c6b13fd6688e4febca847af250f8a37ce13d3a4af4d581c5205",
+      "materialCount": 5,
+      "dependencyCount": 26,
+      "compilerPrivateCount": 4,
+      "runtimeExecutableCount": 3,
+      "consumerSha256": "788b18db4587e0aa44185ab85e8713f4785ca81781dac81589029b9063af2060",
+      "bServiceSha256": "c437b9390b2d9c9fbe4afd1ae538c65be30bc4fff6c911ae6e77b69ac236ebdb"
+    },
+    "final": {
+      "checkedAtUtc": "2026-10-29T02:58:10.159Z",
+      "manifestSha256": "b1ee91e2f28c1f0f54758119e9f03c43c28049c74c43f021e447f567503ed083",
+      "approvedInputsSha256": "782daed01cc78593fc747583362fc77674e8677d8a2345dfb68ef31184e2502b",
+      "sourcePinsSha256": "6b07e5773dc77c6b13fd6688e4febca847af250f8a37ce13d3a4af4d581c5205",
+      "materialCount": 5,
+      "dependencyCount": 26,
+      "compilerPrivateCount": 4,
+      "runtimeExecutableCount": 3,
+      "consumerSha256": "788b18db4587e0aa44185ab85e8713f4785ca81781dac81589029b9063af2060",
+      "bServiceSha256": "c437b9390b2d9c9fbe4afd1ae538c65be30bc4fff6c911ae6e77b69ac236ebdb"
+    }
+  },
+  "originalInputsHeld": true,
+  "prompt": {
+    "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\_任务说明.md",
+    "sha256": "db1842f423be9097453bdf9fa749efeaf5ae18bcf7eaafd3cc7702e6e1544453",
+    "length": 84,
+    "excludesTestExplanation": true
+  },
+  "modelPosts": {
+    "attempts": 11,
+    "http200": 11,
+    "observations": [
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:29.308Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:29.421Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:31.662Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:31.749Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:34.880Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:34.934Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:37.132Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:37.283Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:38.673Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:38.727Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:41.351Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:41.406Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:43.521Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:43.578Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:46.442Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:46.499Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:56:49.248Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:56:49.307Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:57:30.179Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:57:30.241Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-29T02:58:02.230Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-29T02:58:02.296Z"
+      }
+    ]
+  },
+  "networkSummary": {
+    "observations": 24,
+    "modelPostAttempts": 11,
+    "modelPostHttp200": 11,
+    "coreCalls": 12,
+    "healthCalls": 1,
+    "deniedAttempts": 0
+  },
+  "apiCalls": [
+    {
+      "method": "caseOpen",
+      "http": "POST",
+      "path": "/api/case/open",
+      "ok": true
+    },
+    {
+      "method": "materialsScan",
+      "http": "POST",
+      "path": "/api/materials/scan",
+      "ok": true
+    },
+    {
+      "method": "materialsList",
+      "http": "GET",
+      "path": "/api/materials",
+      "ok": true
+    },
+    {
+      "method": "taskCreate",
+      "http": "POST",
+      "path": "/api/task",
+      "ok": true
+    },
+    {
+      "method": "requestScope",
+      "http": "POST",
+      "path": "/api/request/scope",
+      "ok": true
+    },
+    {
+      "method": "tasksList",
+      "http": "GET",
+      "path": "/api/tasks",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    },
+    {
+      "method": "source",
+      "http": "GET",
+      "path": "/api/source",
+      "ok": true
+    }
+  ],
+  "secondaryErrors": [],
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "claims": {
+    "oneSyntheticWorkflowOnly": true,
+    "actualSingleCriminalEvidenceConsumer": false,
+    "actualModelAuthoredCriminalEvidenceReview": false,
+    "businessAcceptance": false,
+    "legalAcceptance": false,
+    "manualCriminalEvidenceBusinessLegalReviewRequired": true,
+    "fullT18": false,
+    "gate1": "INCOMPLETE",
+    "packaging": "HOLD",
+    "gui": false
+  },
+  "case": {
+    "caseId": "e01fa5de-0ebf-46a6-a6f3-d02fdc005553",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case",
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003",
+      "M0004",
+      "M0005"
+    ],
+    "materials": [
+      {
+        "materialId": "M0001",
+        "name": "价格认定结论书",
+        "type": "md",
+        "unit": "line",
+        "unitCount": 17,
+        "relPath": "02案件材料/价格认定结论书.md",
+        "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\价格认定结论书.md",
+        "originalBytes": 759,
+        "originalSha256": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+        "sourceMtimeNs": "1792379578798921000"
+      },
+      {
+        "materialId": "M0002",
+        "name": "扣押清单",
+        "type": "md",
+        "unit": "line",
+        "unitCount": 10,
+        "relPath": "02案件材料/扣押清单.md",
+        "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\扣押清单.md",
+        "originalBytes": 346,
+        "originalSha256": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+        "sourceMtimeNs": "1792379578798921000"
+      },
+      {
+        "materialId": "M0003",
+        "name": "监控视频截图说明",
+        "type": "md",
+        "unit": "line",
+        "unitCount": 12,
+        "relPath": "02案件材料/监控视频截图说明.md",
+        "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\监控视频截图说明.md",
+        "originalBytes": 951,
+        "originalSha256": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "sourceMtimeNs": "1792379578799920500"
+      },
+      {
+        "materialId": "M0004",
+        "name": "被告人李某乙讯问笔录（第一次）",
+        "type": "md",
+        "unit": "line",
+        "unitCount": 23,
+        "relPath": "02案件材料/被告人李某乙讯问笔录（第一次）.md",
+        "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\被告人李某乙讯问笔录（第一次）.md",
+        "originalBytes": 977,
+        "originalSha256": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+        "sourceMtimeNs": "1792379578799920500"
+      },
+      {
+        "materialId": "M0005",
+        "name": "被告人李某乙讯问笔录（第二次）",
+        "type": "md",
+        "unit": "line",
+        "unitCount": 19,
+        "relPath": "02案件材料/被告人李某乙讯问笔录（第二次）.md",
+        "originalPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\被告人李某乙讯问笔录（第二次）.md",
+        "originalBytes": 646,
+        "originalSha256": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+        "sourceMtimeNs": "1792379578799920500"
+      }
+    ],
+    "originalAreaFiles": [
+      "02案件材料/价格认定结论书.md",
+      "02案件材料/扣押清单.md",
+      "02案件材料/监控视频截图说明.md",
+      "02案件材料/被告人李某乙讯问笔录（第一次）.md",
+      "02案件材料/被告人李某乙讯问笔录（第二次）.md"
+    ],
+    "caseDb": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\工作区\\case.db",
+      "bytes": 0,
+      "sha256": ""
+    }
+  },
+  "session": {
+    "sessionId": "session-c00d92e1-4ccd-4670-8dbf-1e94f77126e3",
+    "uuid": "c00d92e1-4ccd-4670-8dbf-1e94f77126e3",
+    "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case",
+    "freshCreated": true
+  },
+  "skillSource": {
+    "name": "criminal-evidence-review",
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\SKILL.md",
+    "bytes": 13276,
+    "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2",
+    "listed": true,
+    "loaded": true
+  },
+  "question": {
+    "callIds": [
+      "chatcmpl-tool-94e94141efc96c37"
+    ],
+    "answeredCallIds": [
+      "chatcmpl-tool-94e94141efc96c37"
+    ],
+    "rejectedCalls": [],
+    "questionIds": [
+      "stance"
+    ],
+    "questionTexts": [
+      "本方立场：被害人诉讼代理人（代理被害人王某丙），对吗？"
+    ],
+    "answerIds": [
+      "stance"
+    ],
+    "unsupportedQuestionIds": [],
+    "primaryCatalog": true,
+    "actualCallbackInvocations": 1,
+    "questionTextSha256": "745bd8b3257a28348a5e217a568ff7a580b4e4d200f505422ea7d48036895248",
+    "answerTextSha256": "add3c21be3986f600cc8d773b7c474bc3aabf7bbc4b64a9e93631990af6e71bd",
+    "providedStance": "被害人王某丙的诉讼代理方",
+    "stanceSource": "canonical-task",
+    "beforeFirstSuccessfulSave": true,
+    "stanceAnswerBeforeAnyMaterialRead": true,
+    "providedStanceConfirmationQuestionManualReviewRequired": true,
+    "listingBeforeAnyMaterialRead": true
+  },
+  "suggestions": {
+    "actualSuccessfulCallCount": 0,
+    "calls": [],
+    "validatedLawyerFacts": false,
+    "lawyerConfirmedCard": false
+  },
+  "citationCheck": {
+    "stats": {
+      "citations": 28,
+      "must_fix": 0,
+      "hints": 0
+    },
+    "qualityHints": [],
+    "problems": []
+  },
+  "coverage": {
+    "total": 5,
+    "fully_read": [
+      "价格认定结论书",
+      "扣押清单",
+      "监控视频截图说明",
+      "被告人李某乙讯问笔录（第一次）",
+      "被告人李某乙讯问笔录（第二次）"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "reads": [
+    {
+      "material_id": "M0001",
+      "material_version": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+      "unit": "line",
+      "from": 1,
+      "to": 17,
+      "at": "2026-10-29T10:56:38+08:00"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+      "unit": "line",
+      "from": 1,
+      "to": 10,
+      "at": "2026-10-29T10:56:41+08:00"
+    },
+    {
+      "material_id": "M0003",
+      "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+      "unit": "line",
+      "from": 1,
+      "to": 12,
+      "at": "2026-10-29T10:56:43+08:00"
+    },
+    {
+      "material_id": "M0004",
+      "material_version": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+      "unit": "line",
+      "from": 1,
+      "to": 23,
+      "at": "2026-10-29T10:56:46+08:00"
+    },
+    {
+      "material_id": "M0005",
+      "material_version": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+      "unit": "line",
+      "from": 1,
+      "to": 19,
+      "at": "2026-10-29T10:56:49+08:00"
+    }
+  ],
+  "sourceReads": [
+    {
+      "names": [
+        "价格认定结论书"
+      ],
+      "parts": [
+        {
+          "name": "价格认定结论书",
+          "material_id": "M0001",
+          "unit": "line",
+          "start": 1,
+          "end": 17,
+          "read": true
+        }
+      ],
+      "textSha256": "7e5f8b3ba92e950f9776cadd87488136d10923ec1b03d3e4cb9c84e479e58eab",
+      "textLength": 561
+    },
+    {
+      "names": [
+        "扣押清单"
+      ],
+      "parts": [
+        {
+          "name": "扣押清单",
+          "material_id": "M0002",
+          "unit": "line",
+          "start": 1,
+          "end": 10,
+          "read": true
+        }
+      ],
+      "textSha256": "e6a3707aaad930e43c6b74eea4c6a596adc8186a448f15509e9478e4baf40567",
+      "textLength": 358
+    },
+    {
+      "names": [
+        "监控视频截图说明"
+      ],
+      "parts": [
+        {
+          "name": "监控视频截图说明",
+          "material_id": "M0003",
+          "unit": "line",
+          "start": 1,
+          "end": 12,
+          "read": true
+        }
+      ],
+      "textSha256": "4af181b090b1cfe6505df9e917dbfbeaf03869794cc62f68e3ebc8087b51d158",
+      "textLength": 625
+    },
+    {
+      "names": [
+        "被告人李某乙讯问笔录（第一次）"
+      ],
+      "parts": [
+        {
+          "name": "被告人李某乙讯问笔录（第一次）",
+          "material_id": "M0004",
+          "unit": "line",
+          "start": 1,
+          "end": 23,
+          "read": true
+        }
+      ],
+      "textSha256": "c54e843872baebed16c3dc1298fbe1fe50cd23a603bb99858e0fa3ececb42433",
+      "textLength": 704
+    },
+    {
+      "names": [
+        "被告人李某乙讯问笔录（第二次）"
+      ],
+      "parts": [
+        {
+          "name": "被告人李某乙讯问笔录（第二次）",
+          "material_id": "M0005",
+          "unit": "line",
+          "start": 1,
+          "end": 19,
+          "read": true
+        }
+      ],
+      "textSha256": "56c3dbc57059ba3afa6b6fe0638b817e27a36c4694b1fc60cabbb38d359cb6de",
+      "textLength": 545
+    }
+  ],
+  "citations": [
+    {
+      "materialId": "M0004",
+      "name": "被告人李某乙讯问笔录（第一次）",
+      "citation": "〔被告人李某乙讯问笔录（第一次） 第14行〕",
+      "loc": {
+        "unit": "line",
+        "from": 14
+      },
+      "textSha256": "4d131fb8ba35800f80e416d72c7b894554b27e91642d7ed6d7f1576cd2049739",
+      "textLength": 8,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0005",
+      "name": "被告人李某乙讯问笔录（第二次）",
+      "citation": "〔被告人李某乙讯问笔录（第二次） 第10行〕",
+      "loc": {
+        "unit": "line",
+        "from": 10
+      },
+      "textSha256": "ba925c4ba235ed2f51bdec69d18c58c024df4ba87bd0115aa03a79d88e3e958e",
+      "textLength": 25,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0004",
+      "name": "被告人李某乙讯问笔录（第一次）",
+      "citation": "〔被告人李某乙讯问笔录（第一次） 第16行〕",
+      "loc": {
+        "unit": "line",
+        "from": 16
+      },
+      "textSha256": "fdb22686dae4688ee5b345b35280cd3e08fbc5d8134d38b8d3a573d5f6371888",
+      "textLength": 12,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0005",
+      "name": "被告人李某乙讯问笔录（第二次）",
+      "citation": "〔被告人李某乙讯问笔录（第二次） 第12行〕",
+      "loc": {
+        "unit": "line",
+        "from": 12
+      },
+      "textSha256": "208e73444f60097f6c463dc0bcb772ce2be544dc520b69b1ff23ea76c535552a",
+      "textLength": 24,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0001",
+      "name": "价格认定结论书",
+      "citation": "〔价格认定结论书 第8行〕",
+      "loc": {
+        "unit": "line",
+        "from": 8
+      },
+      "textSha256": "ca3c2aef4bb1af987e470af300e8ecb9082a4bb70fabf03e7807816a24537268",
+      "textLength": 26,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0002",
+      "name": "扣押清单",
+      "citation": "〔扣押清单 第7行〕",
+      "loc": {
+        "unit": "line",
+        "from": 7
+      },
+      "textSha256": "f3b3f7141ad211f884a84cc116a8d33634a58cea8dd3eeb06d5e33a502bbfd30",
+      "textLength": 32,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0001",
+      "name": "价格认定结论书",
+      "citation": "〔价格认定结论书 第15-17行〕",
+      "loc": {
+        "unit": "line",
+        "from": 15,
+        "to": 17
+      },
+      "textSha256": "c94655f1c3b6c0dcc9e53a7d113d20c4c47c8bc21601ae48ab0c0565f3df0481",
+      "textLength": 53,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0001",
+      "name": "价格认定结论书",
+      "citation": "〔价格认定结论书 第17行〕",
+      "loc": {
+        "unit": "line",
+        "from": 17
+      },
+      "textSha256": "120bdf5dfe04ecc3784ffe40677aff92a3817e14fddffe7ad2061a6eb313f733",
+      "textLength": 28,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0002",
+      "name": "扣押清单",
+      "citation": "〔扣押清单 第10行〕",
+      "loc": {
+        "unit": "line",
+        "from": 10
+      },
+      "textSha256": "b7a7f2cc7ce4f3eb4012c6b810188ad8ded6b0e8668c8e6feb42a83dba36486b",
+      "textLength": 8,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0003",
+      "name": "监控视频截图说明",
+      "citation": "〔监控视频截图说明 第10行〕",
+      "loc": {
+        "unit": "line",
+        "from": 10
+      },
+      "textSha256": "159bfbdae6046eb73cba20a641baf0978c77074c3c4f1bf08084999af1436b99",
+      "textLength": 33,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0003",
+      "name": "监控视频截图说明",
+      "citation": "〔监控视频截图说明 第12行〕",
+      "loc": {
+        "unit": "line",
+        "from": 12
+      },
+      "textSha256": "97dd945e3bb6e3f722aac5150748a9cbfb0eb5ce6ddfa7ddd37165bd2b11f50c",
+      "textLength": 25,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0003",
+      "name": "监控视频截图说明",
+      "citation": "〔监控视频截图说明 第7行〕",
+      "loc": {
+        "unit": "line",
+        "from": 7
+      },
+      "textSha256": "08b4f921eb8e9d34b6865994c6451832b64d6366eacd6f765c3b635d8cd77557",
+      "textLength": 51,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0003",
+      "name": "监控视频截图说明",
+      "citation": "〔监控视频截图说明 第8行〕",
+      "loc": {
+        "unit": "line",
+        "from": 8
+      },
+      "textSha256": "148114b621438b21ee818f47fb41bfc6d4fbe9de72beec52dfee67b07758ed34",
+      "textLength": 57,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0001",
+      "name": "价格认定结论书",
+      "citation": "〔价格认定结论书 第11行〕",
+      "loc": {
+        "unit": "line",
+        "from": 11
+      },
+      "textSha256": "6e457c96797eb1e3b9dfa73a67209bbc8320d7e61531493448de27838649ec45",
+      "textLength": 27,
+      "sourceChanged": false
+    },
+    {
+      "materialId": "M0003",
+      "name": "监控视频截图说明",
+      "citation": "〔监控视频截图说明 第7-8行〕",
+      "loc": {
+        "unit": "line",
+        "from": 7,
+        "to": 8
+      },
+      "textSha256": "2d4d781dc4615864efa80b19326c07ca7c8e4b45162fdd5b35631afe5a3fa215",
+      "textLength": 109,
+      "sourceChanged": false
+    }
+  ],
+  "error": {
+    "name": "Error",
+    "message": "draft machine checks failed: hasProblemRecords"
+  },
+  "bService": {
+    "ready": {
+      "contractVersion": "1.6",
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "fixtureCount": 5,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "ocrStarted": false,
+      "pid": 37044,
+      "port": 51936,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "startedAtUtc": "2026-10-29T02:56:26.825+00:00",
+      "status": "ready"
+    },
+    "final": {
+      "copiedMaterials": [
+        {
+          "bytes": 759,
+          "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\价格认定结论书.md",
+          "mtime_ns": "1792379578798921000",
+          "relative": "02案件材料/价格认定结论书.md",
+          "sha256": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+          "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\价格认定结论书.md"
+        },
+        {
+          "bytes": 346,
+          "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\扣押清单.md",
+          "mtime_ns": "1792379578798921000",
+          "relative": "02案件材料/扣押清单.md",
+          "sha256": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+          "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\扣押清单.md"
+        },
+        {
+          "bytes": 951,
+          "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\监控视频截图说明.md",
+          "mtime_ns": "1792379578799920500",
+          "relative": "02案件材料/监控视频截图说明.md",
+          "sha256": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+          "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\监控视频截图说明.md"
+        },
+        {
+          "bytes": 977,
+          "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\被告人李某乙讯问笔录（第一次）.md",
+          "mtime_ns": "1792379578799920500",
+          "relative": "02案件材料/被告人李某乙讯问笔录（第一次）.md",
+          "sha256": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+          "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第一次）.md"
+        },
+        {
+          "bytes": 646,
+          "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\02案件材料\\被告人李某乙讯问笔录（第二次）.md",
+          "mtime_ns": "1792379578799920500",
+          "relative": "02案件材料/被告人李某乙讯问笔录（第二次）.md",
+          "sha256": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+          "source": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第二次）.md"
+        }
+      ],
+      "credentials": {
+        "externalKeyGetter": 0,
+        "keyGetter": 0
+      },
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "failure": null,
+      "finishedAtUtc": "2026-10-29T02:58:09.518+00:00",
+      "fixtureCount": 5,
+      "fixtureInputsUnchanged": true,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "listenerClosed": true,
+      "logsClosed": true,
+      "netClientClosed": true,
+      "ocrStarted": false,
+      "outbound": {
+        "attempts": 0,
+        "denied": 0
+      },
+      "passed": true,
+      "pid": 37044,
+      "port": 51936,
+      "protocol": {
+        "caseBound": true,
+        "counts": {
+          "GET /api/materials": 1,
+          "GET /api/source": 15,
+          "GET /api/tasks": 1,
+          "GET /health": 1,
+          "POST /api/case/open": 1,
+          "POST /api/materials/scan": 1,
+          "POST /api/request/scope": 1,
+          "POST /api/task": 1,
+          "POST /core/context": 1,
+          "POST /core/progress": 1,
+          "POST /core/task/begin": 1,
+          "POST /core/task/end": 1,
+          "POST /core/tool": 8
+        },
+        "denials": {},
+        "draftPaths": [
+          "工作区/任务/T-20261029105628-c7f9/草稿/证据审查意见-v1.md",
+          "工作区/任务/T-20261029105628-c7f9/草稿/证据审查意见-v2.md"
+        ],
+        "draftSaves": [
+          {
+            "contentLength": 3250,
+            "contentSha256": "32cd9f694adb9082dc9a9ac81dc24d5e17d3716b11159eab5d6c93fcc15bbede",
+            "path": "工作区/任务/T-20261029105628-c7f9/草稿/证据审查意见-v1.md",
+            "titleLength": 6,
+            "version": 1
+          },
+          {
+            "contentLength": 3232,
+            "contentSha256": "59f95a086aba1f39ba90068f759f8d20a5b83f3759b36cf98b1586cc5dcadebc",
+            "path": "工作区/任务/T-20261029105628-c7f9/草稿/证据审查意见-v2.md",
+            "titleLength": 6,
+            "version": 2
+          }
+        ],
+        "materialIds": [
+          "M0001",
+          "M0002",
+          "M0003",
+          "M0004",
+          "M0005"
+        ],
+        "materialNames": {
+          "M0001": "价格认定结论书",
+          "M0002": "扣押清单",
+          "M0003": "监控视频截图说明",
+          "M0004": "被告人李某乙讯问笔录（第一次）",
+          "M0005": "被告人李某乙讯问笔录（第二次）"
+        },
+        "materialVersions": {
+          "M0001": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+          "M0002": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+          "M0003": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+          "M0004": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+          "M0005": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348"
+        },
+        "requestBound": true,
+        "requestId": "d6351e9e-9b59-4663-83bd-4f59777e67cb",
+        "scopePrepared": true,
+        "selectionId": "T-20261029105628-0c95",
+        "sessionBound": true,
+        "taskBound": true,
+        "taskId": "T-20261029105628-c7f9",
+        "violations": []
+      },
+      "retainerClosed": true,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "sourcePinsUnchanged": true,
+      "startedAtUtc": "2026-10-29T02:56:26.825+00:00",
+      "status": "STOPPED"
+    },
+    "exitCode": 0,
+    "forcedStop": false
+  },
+  "finishedAtUtc": "2026-10-29T02:58:10.160Z"
+}

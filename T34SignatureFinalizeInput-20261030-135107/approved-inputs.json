@@ -1,0 +1,75 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212",
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\entry.py",
+      "bytes": 88658,
+      "sha256": "13c85e3964cd4bca46443a956ffdb6adb76ca4a6c38f233df330b2a9006c9c1b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\literal-inputs.json",
+      "bytes": 25661,
+      "sha256": "27d73931c520777e4944e6c16405dccfd961f7117716593bad60da45b10595e2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\prepare.ps1",
+      "bytes": 13567,
+      "sha256": "bf1f5e414eb62f522120f0c2772ed30f3140b6c459f81eaee108bf8e64a36711"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\README.md",
+      "bytes": 3375,
+      "sha256": "0223696f43dd68d548ad88a53ba1cb3ed51d6f8efe19105612aec0cf87e24fa4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\settings-read-observer.mjs",
+      "bytes": 11513,
+      "sha256": "fea7c264923a67c725bc6eba62b1089ad7ebbc7bd614b588683c5811ef78f9bb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\signature-finite.mjs",
+      "bytes": 5381,
+      "sha256": "d52d1848983de75a8fb30f4ce9ca0340a349fc7942972a06fa44a8588f1aefed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\start.ps1",
+      "bytes": 86074,
+      "sha256": "7bffe2fb058eb29fb1f3f2e3c58d5d4feae97cab5ef37c17ad9de2d728a7197b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212\\stop.ps1",
+      "bytes": 7184,
+      "sha256": "6da2b92cee2aef388e667ab7b75bea65e73b327db4a4a431eddd1dcc3d6e14e9"
+    }
+  ],
+  "prior_author": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T34-read-signature-1017-20261030-134212.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T34-read-signature-order-20261030-134212.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T34-read-signature-20261030-134212.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T34ReadSignatureInput-20261030-134212",
+    "old": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137",
+    "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadSignatureGUI-20261030-134212",
+    "state": "SOURCE_ONLY_PRESERVE_ACTUAL_SRC_ZERO_ARGUMENT_SIGNATURE"
+  },
+  "source_author_counts": [
+    38,
+    33,
+    5
+  ],
+  "source_author_runtime_violation": 2
+}

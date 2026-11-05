@@ -1,0 +1,18 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-answer-null-20261101-003736.spec.ts",
+  "before_sha256": "3a1ec64b2ac6e2b235a0e1e16f67f8463e379e249b19e0baf2bcb01499fe458c",
+  "before_bytes": 7698,
+  "literal_replacements": [
+    {
+      "old": "import { afterEach, describe, expect, it } from 'vitest'\n",
+      "new": ""
+    },
+    {
+      "old": "from '../host/task-answer'",
+      "new": "from '../host/task-answer.ts'"
+    }
+  ],
+  "expected_bytes": 7644,
+  "expected_sha256": "78dccf9ec63f8306a638cf7fc933344372c21a315f4e18f7cd263c8cc2fd4be0",
+  "reason": "Originalproject NodeNext requires relative .ts extension; originalglobal APIs supplied by tests/globals.d.ts. No source/test assertion change."
+}

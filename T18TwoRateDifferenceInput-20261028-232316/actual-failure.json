@@ -1,0 +1,701 @@
+{
+  "verdict": "QUESTION_AND_CITATION_RECOVERY_PASS_ACTUAL_MODEL_RATIO_ERROR_AND_MANUAL_OBSERVER_FALSE_NEGATIVE",
+  "at": "2026-10-28T23:21:18.975978+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-231413",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-Vet7pA",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ComparisonManualFailure-root-20261028-232118",
+  "error": {
+    "name": "Error",
+    "message": "out-of-scope edit 4 does not state its actual reason"
+  },
+  "elapsed_s": 238.63999999999942,
+  "model_POST": 12,
+  "model_HTTP200": 12,
+  "tool_calls": 11,
+  "physical_rows": 70,
+  "actual_questions": {
+    "questionIds": [
+      "our_party",
+      "purpose",
+      "focus"
+    ],
+    "questionText": "请确认我方代表合同哪一方：\n请确认审查目的：\n采购部内部意见提到以下关注点，请确认本次审查是否覆盖这些，以及是否有其他需要特别关注的条款：",
+    "optionLabels": [
+      "甲方（采购方）青禾建材（推荐）",
+      "签约前把关（推荐）",
+      "以上全部（推荐）",
+      "仅交货时间",
+      "仅验收期限",
+      "仅质量保证金",
+      "仅通知地址附件缺失",
+      "仅逾期交货解除权"
+    ],
+    "rolesByQuestion": [
+      [
+        "our_party"
+      ],
+      [
+        "purpose"
+      ],
+      [
+        "focus"
+      ]
+    ],
+    "answerIds": [
+      "our_party",
+      "purpose",
+      "focus"
+    ],
+    "answerText": "确认：我方为甲方青禾建材，即采购方。\n确认：本次是签约前把关，并需要生成修订版。\n特别关注交付与分批到货、验收安排、质量保证金留存、逾期解除；允许直接修改合同条款。"
+  },
+  "question_order": {
+    "answerCallId": "chatcmpl-tool-bf69c8c0d7e2d277",
+    "answerCallSeq": 36,
+    "answerResultSeq": 37,
+    "draftCallId": "chatcmpl-tool-9acca2e7942265b6",
+    "draftCallSeq": 41,
+    "draftResultSeq": 42
+  },
+  "mandatory_answers_before_draft": true,
+  "failed_asks": 1,
+  "successful_callbacks": 1,
+  "feedback_notice_seq": 45,
+  "save_checks": [
+    {
+      "seq": 41,
+      "version": 1,
+      "check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 单价：4,200元/吨（含增值税及运费）",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 总价：人民币壹佰贰拾陆万元整（￥1,260,000.00）",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 交货时间：2026年5月20日前分两批交付",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 问题：采购部要求第一批HW200×200 150吨须于2026年5月10日前到货，第二批HN300×150 150吨须于2026年5月20日前到货。合同仅规定5月20日前分两批交付，未明确第一批的截止时间。乙方可能将全部货物集中于5月2",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批HW200×200规格150吨须于2026年5月10日前交付；第二批HN300×150规格150吨须于2026年5月20日前交付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 问题：合同未安排质量保证金。采购部按惯例要求留5%作为质量保证金，质保期满无质量问题后支付，以保障钢材使用过程中的质量风险。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，自验收合格之日起满十二个月且无质量问题的，甲方于期满后十五日内支付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「9.1 双方指定的电子邮件通知地址如下：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：在6.1条后增加：「乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，乙方应在收到通知后五日内退还甲方已支付的全部款项，并按合同总价款的百分之十向甲方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：将6.2条修改为「甲方逾期付款的，每逾期一日，按逾期付款金额的千分之一向乙方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.2 交货地点：虚构省虚构市虚构区不存在大道100号青禾建材一号仓库。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.3 乙方应在甲方付款前五个工作日开具等额增值税专用发票并交付甲方。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 质保期条款：合同第4.2条提及\"隐蔽瑕疵的异议期为验收合格之日起六个月\"，但未明确约定质保期。建议增加质保期条款，与质量保证金的支付条件衔接。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 13,
+          "must_fix": 0,
+          "hints": 14
+        }
+      }
+    },
+    {
+      "seq": 47,
+      "version": 2,
+      "check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "- 问题：采购部要求第一批HW200×200 150吨须于2026年5月10日前到货，第二批HN300×150 150吨须于2026年5月20日前到货",
+            "citation": "〔采购部内部意见 第5行、第6行〕",
+            "message": "出处格式不对：〔采购部内部意见 第5行、第6行〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "。合同仅规定5月20日前分两批交付，未明确第一批的截止时间。乙方可能将全部货物集中于5月20日交付，影响甲方项目进度。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批HW200×200规格150吨须于2026年5月10日前交付；第二批HN300×150规格150吨须于2026年5月20日前交付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，自验收合格之日起满十二个月且无质量问题的，甲方于期满后十五日内支付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「9.1 双方指定的电子邮件通知地址如下：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：在6.1条后增加：「乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，乙方应在收到通知后五日内退还甲方已支付的全部款项，并按合同总价款的百分之十向甲方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：将6.2条修改为「甲方逾期付款的，每逾期一日，按逾期付款金额的千分之一向乙方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.2 交货地点：虚构省虚构市虚构区不存在大道100号青禾建材一号仓库。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.3 乙方应在甲方付款前五个工作日开具等额增值税专用发票并交付甲方。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 质保期条款：合同第4.2条提及\"隐蔽瑕疵的异议期为验收合格之日起六个月\"，但未明确约定质保期。建议增加质保期条款，与质量保证金的支付条件衔接。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 20,
+          "must_fix": 1,
+          "hints": 10
+        }
+      }
+    },
+    {
+      "seq": 52,
+      "version": 3,
+      "check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "。合同仅规定5月20日前分两批交付，未明确第一批的截止时间。乙方可能将全部货物集中于5月20日交付，影响甲方项目进度。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批HW200×200规格150吨须于2026年5月10日前交付；第二批HN300×150规格150吨须于2026年5月20日前交付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，自验收合格之日起满十二个月且无质量问题的，甲方于期满后十五日内支付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「9.1 双方指定的电子邮件通知地址如下：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：在6.1条后增加：「乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，乙方应在收到通知后五日内退还甲方已支付的全部款项，并按合同总价款的百分之十向甲方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：将6.2条修改为「甲方逾期付款的，每逾期一日，按逾期付款金额的千分之一向乙方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.2 交货地点：虚构省虚构市虚构区不存在大道100号青禾建材一号仓库。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.3 乙方应在甲方付款前五个工作日开具等额增值税专用发票并交付甲方。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 质保期条款：合同第4.2条提及\"隐蔽瑕疵的异议期为验收合格之日起六个月\"，但未明确约定质保期。建议增加质保期条款，与质量保证金的支付条件衔接。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 22,
+          "must_fix": 0,
+          "hints": 10
+        }
+      }
+    },
+    {
+      "seq": 62,
+      "version": 4,
+      "check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "。合同仅规定5月20日前分两批交付，未明确第一批的截止时间。乙方可能将全部货物集中于5月20日交付，影响甲方项目进度。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批HW200×200规格150吨须于2026年5月10日前交付；第二批HN300×150规格150吨须于2026年5月20日前交付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，自验收合格之日起满十二个月且无质量问题的，甲方于期满后十五日内支付。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「9.1 双方指定的电子邮件通知地址如下：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：在6.1条后增加：「乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，乙方应在收到通知后五日内退还甲方已支付的全部款项，并按合同总价款的百分之十向甲方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：将6.2条修改为「甲方逾期付款的，每逾期一日，按逾期付款金额的千分之一向乙方支付违约金。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「3.2 交货地点：虚构省虚构市虚构区不存在大道100号青禾建材一号仓库。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 推荐措辞：「5.3 乙方应在甲方付款前五个工作日开具等额增值税专用发票并交付甲方。」",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 质保期条款：合同第4.2条提及\"隐蔽瑕疵的异议期为验收合格之日起六个月\"，但未明确约定质保期。建议增加质保期条款，与质量保证金的支付条件衔接。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 22,
+          "must_fix": 0,
+          "hints": 10
+        }
+      }
+    }
+  ],
+  "final_draft_path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-Vet7pA\\case\\工作区\\任务\\T-20261028231418-ee4b\\草稿\\合同审查意见-v4.md",
+  "final_draft_sha": "2d7660b092eb6a8452d1ecc46d04a9d84660e238eecb55487905774c6e93377b",
+  "final_draft_bytes": 8919,
+  "final_draft_fully_read": true,
+  "edit_list_arguments": {
+    "name": "采购合同",
+    "edits": [
+      {
+        "id": 1,
+        "para": 19,
+        "action": "replace",
+        "find": "3.1 交货时间：2026年5月20日前分两批交付。",
+        "text": "3.1 交货时间：分两批交付。第一批HW200×200规格150吨须于2026年5月10日前交付；第二批HN300×150规格150吨须于2026年5月20日前交付。",
+        "comment": "风险1：明确两批货物交货时间，第一批须于5月10日前交付"
+      },
+      {
+        "id": 2,
+        "para": 23,
+        "action": "replace",
+        "find": "4.1 甲方应于到货后七日内完成验收，逾期未提出书面异议的，视为验收合格。",
+        "text": "4.1 甲方应于到货后十五日内完成验收，逾期未提出书面异议的，视为验收合格。",
+        "comment": "风险2：验收期限延长至15日，与实际检测周期匹配"
+      },
+      {
+        "id": 3,
+        "para": 27,
+        "action": "replace",
+        "find": "5.2 甲方应于收到货物后九十日内付款。",
+        "text": "5.2 甲方应于收到货物后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，自验收合格之日起满十二个月且无质量问题的，甲方于期满后十五日内支付。",
+        "comment": "风险3：增加5%质量保证金条款"
+      },
+      {
+        "id": 4,
+        "para": 39,
+        "action": "replace",
+        "find": "9.1 双方指定的电子邮件通知地址以本合同附件为准，附件的电子版可在http://127.0.0.1/lbfx-attachment查阅，通知自发出之日起视为送达。",
+        "text": "9.1 双方指定的电子邮件通知地址如下：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。",
+        "comment": "风险4：删除对附件的引用，直接在合同中写明通知地址"
+      },
+      {
+        "id": 5,
+        "para": 30,
+        "action": "insert_after",
+        "find": "6.1 乙方逾期交货的，每逾期一日，按逾期交货部分价款的千分之一向甲方支付违约金。",
+        "text": "乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，乙方应在收到通知后五日内退还甲方已支付的全部款项，并按合同总价款的百分之十向甲方支付违约金。",
+        "comment": "风险5：增加逾期超过20日甲方可解除合同的权利"
+      },
+      {
+        "id": 6,
+        "para": 31,
+        "action": "replace",
+        "find": "6.2 甲方逾期付款的，每逾期一日，按逾期付款金额的万分之五向乙方支付违约金。",
+        "text": "6.2 甲方逾期付款的，每逾期一日，按逾期付款金额的千分之一向乙方支付违约金。",
+        "comment": "风险6：将甲方逾期付款违约金调整为每日千分之一，与乙方标准一致"
+      },
+      {
+        "id": 7,
+        "para": 20,
+        "action": "replace",
+        "find": "3.2 交货地点：虚构市虚构区不存在大道100号青禾建材一号仓库。",
+        "text": "3.2 交货地点：虚构省虚构市虚构区不存在大道100号青禾建材一号仓库。",
+        "comment": "风险7：交货地点补充\"省\"字，与甲方住所表述一致"
+      },
+      {
+        "id": 8,
+        "para": 28,
+        "action": "replace",
+        "find": "5.3 乙方应在甲方付款前开具等额增值税专用发票。",
+        "text": "5.3 乙方应在甲方付款前五个工作日开具等额增值税专用发票并交付甲方。",
+        "comment": "风险8：明确发票开具时间为付款前五个工作日"
+      }
+    ]
+  },
+  "edit_list_result": {
+    "path": "工作区/任务/T-20261028231418-ee4b/修改清单/采购合同.json",
+    "accepted": 7,
+    "out_of_scope": [
+      {
+        "id": 4,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "actual_manual_statement": "该条需人工修改（find跨越超链接，系统修改清单未收下）",
+  "matching_edit_id": 4,
+  "matching_risk": 4,
+  "matching_para": 39,
+  "manual_observer_false_negative": true,
+  "actual_arithmetic_error": "千分之一/万分之五=2 not二十",
+  "current_guard_AST_gap_proof": {
+    "verdict": "ACTUAL_TWO_RATE_COMPARISON_NOT_RECOGNIZED_CHINESE_NUMBER_PARSER_ALREADY_WORKS",
+    "source_sha": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+    "actual_line": "- 问题：乙方逾期交货违约金为每日千分之一，甲方逾期付款违约金为每日万分之五，两者相差二十倍，明显不对等，对甲方不利。",
+    "current_guard_result": null,
+    "exact_ratio": "2",
+    "absolute_relative_gap_larger_over_smaller_minus_one": "1",
+    "claimed_multiple": 20,
+    "chinese_number_20_parser_already_supported": true,
+    "no_product_module_import": true,
+    "OS_identity_not_captured": true,
+    "scope": "ROOT_FINITE_PURE_SOURCE_AST_ACTUAL_SYNTHETIC_DRAFT_ONLY",
+    "whole_T18_PASS": false,
+    "Packaging": "HOLD"
+  },
+  "chinese_numeric_parser_is_NOT_missing": true,
+  "actual_rate_guard_trigger": false,
+  "task_status": "completed",
+  "usage": {
+    "model_calls": 12,
+    "tool_calls": 4,
+    "elapsed_s": 231
+  },
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "JSONL_reopen_NOT_REACHED": true,
+  "OS": [
+    {
+      "pid": 8792,
+      "parent": 38884,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T15:14:13.5112330Z"
+    },
+    {
+      "pid": 16944,
+      "parent": 8792,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:14:13.9993250Z"
+    },
+    {
+      "pid": 39836,
+      "parent": 16944,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T15:14:14.0060890Z"
+    },
+    {
+      "pid": 22024,
+      "parent": 16944,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:14:14.0764880Z"
+    },
+    {
+      "pid": 7348,
+      "parent": 22024,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T15:14:14.1820720Z"
+    },
+    {
+      "pid": 31164,
+      "parent": 22024,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T15:14:14.5875220Z"
+    },
+    {
+      "pid": 38988,
+      "parent": 31164,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T15:14:14.5959920Z"
+    }
+  ],
+  "complete_OS_gone": 7,
+  "ports": {
+    "port": 52301,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T15:18:10.458+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 31164,
+    "port": 52301,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /api/tasks": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/progress": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/task/end": 1,
+        "POST /core/tool": 8
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T15:14:16.692+00:00",
+    "status": "STOPPED"
+  },
+  "sentinelRetainer_only": true,
+  "sources": [
+    {
+      "role": "fixture",
+      "id": "采购合同",
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200",
+      "same": true
+    },
+    {
+      "role": "fixture",
+      "id": "采购部内部意见",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800",
+      "same": true
+    }
+  ],
+  "key_scan": {
+    "files": 29,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "source_held": true,
+  "forced": false,
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 15,
+  "manifest_sha": "51b22ce7416306afcaafefa998fb7eeeb9ca461da9301c2acf4871ae17d5d572"
+}

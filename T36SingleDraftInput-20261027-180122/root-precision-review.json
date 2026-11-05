@@ -1,0 +1,11 @@
+{
+  "state": "AMEND_ONLY_ROW10_UNSUPPORTED_SEPARATE_DRAFT",
+  "commands": 39,
+  "zero_exits": 37,
+  "Bash_preexec_denied": 1,
+  "expected_diff_exit1": 1,
+  "author_runtime": 0,
+  "three_cell_byte_check": "D:\\Lawbeach\\lawbench-coord\\T36ListPrecisionInput-20261027-175532\\root-three-cell-and-source-check.json",
+  "source_step4_optional_section_step5_one_opinion_save": true,
+  "old_note_inference_not_accepted": true
+}

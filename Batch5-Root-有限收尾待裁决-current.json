@@ -1,0 +1,40 @@
+{
+  "GUIPreparation": {
+    "allowed": "fresh isolated clone/rebind metadata for current compiled UI and accepted B4 backend; preserve native Electron/product and all guards; no fake HTML/DOM event injection/privacy confirmation",
+    "basis": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIExactGUI-20261031-102438",
+    "files": [
+      "prepare.ps1",
+      "start.ps1",
+      "stop.ps1",
+      "entry.py",
+      "private-provider-binding.mjs",
+      "literal-inputs.json",
+      "Root-binding-admission.json"
+    ],
+    "limits": {
+      "realCases": false,
+      "GUISeconds": 600,
+      "keyring": false,
+      "modelCalls": 0,
+      "globalConfig": false
+    },
+    "newRoot": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch5\\RootBoundedVisual-20261103"
+  },
+  "sameCauseStop": 2,
+  "source": {
+    "beforeSHA": "09475745d95f1cffc9502fd0c85d586429bb8c4f21afdae5661a04088a6a0fde",
+    "reason": "tsc TS2345 closure loses root narrowing, original caseRef.root is known string, same original case binding",
+    "exactOld": "samePath(currentRoot, root)",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\intake.ts",
+    "exactNew": "samePath(currentRoot, caseRef.root)"
+  },
+  "rootExceptionNotYetApproved": true,
+  "deadline": "2026-11-03T15:27:31+08:00",
+  "state": "PENDING_OWNER_ROOT_NARROW_FINISH",
+  "authorResults": "A three-feature author deadline with landed code11unitPASS, one typeerror; B GUI author deadline no fixturewrites",
+  "packaging": {
+    "unchanged": "FIRM_NAME VENDOR_NAME EasyTier parameters P0-7 ASCIIvalidation T18 source and global SDK/security",
+    "scope": "fresh private controller, current product name metadata and three compiled desktop LAWBENCH_PRODUCT literals only; original executable only renamed/stamped in private stage; one Batch5 installer",
+    "currentName": "连越律所AI工作台"
+  }
+}

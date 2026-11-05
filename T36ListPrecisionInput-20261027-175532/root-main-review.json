@@ -1,0 +1,13 @@
+{
+  "state": "AMEND_THREE_OUTPUT_BOUNDARIES_AND_HISTORICAL_EVIDENCE_INFERENCE",
+  "main_commands": 71,
+  "main_zero_exits": 62,
+  "main_nonzero": 9,
+  "main_preexec_Bash_denied": 4,
+  "main_formal_claim_three_preserved": true,
+  "author_runtime": 0,
+  "all21inputs_current_equal": true,
+  "B_tracked_patch_equal": true,
+  "root_full_source_doc_formal_raw_writefaces_reviewed": true,
+  "main_old_evidence_reuse_claim_not_accepted": true
+}

@@ -1,0 +1,86 @@
+{
+  "state": "RESOURCE_REPAIR_PROVEN_IN_FRESH_PRIVATE_COPY_NOT_REBUILT",
+  "originalArchive": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\libreoffice-kit-win32-x64.0.2.2.tgz",
+  "archiveSHA": "150f10f3b33da3ad7346a2b80e9906be7a9b4664481658064ddb0cbce5ad1609",
+  "version": "0.2.2",
+  "required": [
+    {
+      "path": "program/share/config/soffice.cfg/modules/scalc/ui/inputbar.ui",
+      "sha256": "a2e87921de415b9ba0a4ee6ce4968a61ac8532706282c7c4c4471511bb78cb35",
+      "bytes": 5227,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/modules/scalc/ui/posbox.ui",
+      "sha256": "1c9083abb65809e71d048c5805c6866d1fbb1abeadc035e953ebe649ac44d89b",
+      "bytes": 1101,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/modules/simpress/ui/tabviewbar.ui",
+      "sha256": "90b5b37d690ae59fe5cd24e8c9078499cab25056c28be0126a86dc823109b1ec",
+      "bytes": 1701,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/modules/swriter/ui/annotation.ui",
+      "sha256": "39d73bbff406d94bbf1f3dfab5b841749a8e448da79e99892cc9f03abe6280e5",
+      "bytes": 11021,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/sfx/ui/extrabutton.ui",
+      "sha256": "8af476766ca52e71395166f7835d1b0b86156d81ae9402e6feb7b96ec2106a1a",
+      "bytes": 885,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/sfx/ui/infobar.ui",
+      "sha256": "307915baf625cbac7233314e8657551ff012e6c309b46465fad1162ffcc33fc5",
+      "bytes": 9035,
+      "action": "unchanged_present",
+      "original_installed_exists": true
+    },
+    {
+      "path": "program/share/config/soffice.cfg/svx/ui/selectionmenu.ui",
+      "sha256": "94a27f1d3b89453fe3edbbe8bb5abf8256d2083ed47310b7c54259f77ad2177f",
+      "bytes": 1960,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    },
+    {
+      "path": "program/share/config/soffice.cfg/svt/ui/scrollbars.ui",
+      "sha256": "824312c6f1ee585c1b588d01343180576ae917ede0bb51c5d91c1e6c35675231",
+      "bytes": 1759,
+      "action": "unchanged_present",
+      "original_installed_exists": true
+    },
+    {
+      "path": "program/share/config/soffice.cfg/svt/ui/tabbuttons.ui",
+      "sha256": "913ef1ce910ac6b3219344b64a68c6d8111bdd713fd8f71631115a5ab2f9ebe8",
+      "bytes": 5288,
+      "action": "unchanged_present",
+      "original_installed_exists": true
+    },
+    {
+      "path": "program/share/config/soffice.cfg/svt/ui/tabbuttonsmirrored.ui",
+      "sha256": "069f19245e5598924ad7eaec9f0d46ca7c03492fb48a9a18d11b5bebeccb4d94",
+      "bytes": 5286,
+      "action": "restored_exact_original",
+      "original_installed_exists": false
+    }
+  ],
+  "sourceAndExistingSDKCodeUnchanged": true,
+  "futureSingleCombinedPackageRequirements": [
+    "Verify all required10 files against original prebuilds SHA in stage and installed root",
+    "Treat manifest-missing runtime resources as failure even if NSIS exit0",
+    "Original stage had inputbar/posbox; exact loss step not established",
+    "Do not hotpatch previous owner trial or accepted installed directory"
+  ],
+  "newCombinedPackagesBuilt": 0
+}

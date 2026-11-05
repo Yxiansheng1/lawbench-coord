@@ -1,0 +1,14 @@
+[
+  {
+    "old": "                if self.tool_sequence or args != {}:\n",
+    "new": "                if args != {}:\n"
+  },
+  {
+    "old": "                    self.tool_sequence != [\"case_list_materials\"]\n                    or set(args) != {\"name\", \"more_names\"}\n",
+    "new": "                    set(args) != {\"name\", \"more_names\"}\n"
+  },
+  {
+    "old": "                if (\n                    self.tool_sequence != [\"case_list_materials\", \"case_read_material\"]\n                    or \"case_calc_sentence\" in self.tool_sequence\n                ):\n",
+    "new": "                if \"case_calc_sentence\" in self.tool_sequence:\n"
+  }
+]

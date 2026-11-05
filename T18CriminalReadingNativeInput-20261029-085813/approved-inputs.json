@@ -1,0 +1,51 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\0-SKILL.md",
+    "bytes": 13853,
+    "sha256": "0bc8ee2b56b5900fe7d20ce3b6310ec864b8afa789393028f945bf332e291d10",
+    "mtime_ns": "1792400314785867900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\样本01-张某甲诈骗全卷\\起诉意见书.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\1-起诉意见书.md",
+    "bytes": 3033,
+    "sha256": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+    "mtime_ns": "1792379578802422600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\样本01-张某甲诈骗全卷\\讯问笔录.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\2-讯问笔录.md",
+    "bytes": 1454,
+    "sha256": "f2949baa0f7f6faddb8f675f550db246e3e2c2d49ca84169040ff0051622ba48",
+    "mtime_ns": "1792379578802422600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\样本01-张某甲诈骗全卷\\现场勘验图文.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\3-现场勘验图文.md",
+    "bytes": 396,
+    "sha256": "2679d8c0fd896a4c2cae632742aa90134cb825cbced77ba981ea8051e34c070c",
+    "mtime_ns": "1792379578802422600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\样本01-张某甲诈骗全卷\\转账截图.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\4-转账截图.md",
+    "bytes": 230,
+    "sha256": "8886609975be061cfa20015efea5ead6ba6bf08a461ac316f3c3b0cc5af11b35",
+    "mtime_ns": "1792379578802422600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\样本01-张某甲诈骗全卷\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\5-_任务说明.md",
+    "bytes": 775,
+    "sha256": "76be730e804c3953f7c94f32ee7141da127bc0e74357bd02e98455be67af2d56",
+    "mtime_ns": "1792379578801919300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalReadingNativeInput-20261029-085813\\6-要点.md",
+    "bytes": 10867,
+    "sha256": "05534f1d511777d4910103ca53be4f6fe30b9044bfe09f8785784ffcf22d7e02",
+    "mtime_ns": "1792379578805930000"
+  }
+]

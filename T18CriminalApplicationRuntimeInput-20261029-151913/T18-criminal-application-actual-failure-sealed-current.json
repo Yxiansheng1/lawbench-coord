@@ -1,0 +1,20 @@
+{
+  "verdict": "ACTUAL_MISSING_QUESTIONS_AND_BUSINESS_FAILURE_SEALED_ORIGINAL_UNCHANGED",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CriminalApplicationActualFailure-root-20261029-150610",
+  "files": 17,
+  "manifest_sha256": "09ec6e110cb4e272f4e0a43ba36053031705742f5bcfe36ede5f25de95921328",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationContract-20261029-145430\\run-sVxmpy",
+  "original_report_status": "FAILED",
+  "model_POST": 8,
+  "model_HTTP200": 8,
+  "actual_ask_count": 0,
+  "actual_saves": 2,
+  "complete_owned_OS_gone": 7,
+  "Listen_count": 0,
+  "source6_held": true,
+  "pins510_held": true,
+  "exact_key_hits": 0,
+  "manual": "MANUAL_BUSINESS_FAILED_REQUIRES_CORRECTION",
+  "next": "Exact sixth required-question Skill activation source repair; no semantic NLP patch/prompt variant",
+  "Packaging": "HOLD"
+}

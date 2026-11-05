@@ -1,0 +1,19 @@
+# Independent V3 Source Review - A
+
+## Verdict: PASS (source-only)
+
+No blocking new in-scope defect was found in the supplied A views. This verdict is limited to the reviewed source and authored controls; it is not a runtime, semantic, legal, business, or private-ACL PASS.
+
+| Area | Exact evidence | Trigger / minimal fix |
+|---|---|---|
+| Lossless F/C/Q inventory | `review-consumer.mjs:196-249` preserves delimiter runs, excludes only the exact source header, uses UTF-16 offsets, and assigns global F/C/Q ids; `:251-335` retains every source and draft/self-check parent, including blank and empty parents; `:338-344` enforces the 400-target cap. | A reconstruction, offset, duplicate-id, empty-parent, or count-cap failure must remain a hard pre-request failure. Minimal fix for any regression: fail closed; never filter, waive missing targets, or change granularity silently. |
+| Three target obligations | `review-consumer.mjs:71-91` gives distinct F/C/Q instructions and forbids trust in a visible PASS or related-parent support; `:519-649` requires exact root/record keys, one review for every known target, family-specific treatments, other-family refs only, nonempty positive refs, bounded assessments, and rejects unknown/duplicate ids, same-family refs, quote overrides, and root PASS. | Any missing target, extra/unknown target, invalid ref, invalid treatment, or extra PASS/quote field must fail. Minimal fix: terminate with the existing protocol error; do not add a partial-coverage waiver or semantic classifier. |
+| Stage-1 reuse and one-request gate | `review-consumer.mjs:554-584` validates the pinned Stage-1 cache against the same visible-unit id set; `:699-735` pins the cache bytes with the other source inputs; `:925-1031` builds and validates the inventory, applies the cap before credential/request handling, emits one fresh stage2 system/user request, and makes one stage2 call with no Stage-1 HTTP path. The Stage-1 builders and validator shown in `:58-69` and `:532-552` are unchanged. | Missing cache, changed pin, id/schema mismatch, over-cap inventory, or any attempted Stage-1 request must stop before the request. Minimal fix: retain these fail-closed gates and the single `stage2` request path. |
+| Meaningful offline controls | `offline-controls.mjs:164-258` exercises delimiter runs, numeric commas/dots, emoji UTF-16 offsets, headers/blanks/empty bodies, reconstruction, and the 400 cap; `:281-348` covers cache and manifest rejection; `:370-500` covers full target set, cross-family refs, and required negative obligations; `:586-704` exercises partial, complete, overflow, and expired response paths against the exported request function. | These controls are authored but not executed here. Minimal fix if later execution fails: amend the source or control and rerun the finite offline suite; do not reinterpret a failure as semantic PASS. |
+
+## Limits
+
+- **Source/evidence:** The manifest cannot authenticate itself; acceptance depends on the external Root pins. The reported F=117, C=134, Q=114 total=365 was not independently recomputed in this source-only run because execution and reading the fixed data were forbidden. It is retained only as pinned prior evidence.
+- **Runtime:** No Node, parser, test, build, HTTP, model, key, or GUI action was performed. Actual cache parsing, the 365-target request size, response behavior, and failure artifacts remain runtime-unverified.
+- **Semantic:** Refs are structurally valid target ids, not proof of entailment, truth, relevance, or complete coverage. Root must still manually review all 365 targets and the original counterexample before any semantic conclusion.
+- **Private ACL / platform:** DPAPI/key handling, launcher/driver hardening, clean-environment and ownership controls, hostile-local-actor resistance, owner-only ACL guarantees, and full-platform safety were outside these A views and remain unproven.

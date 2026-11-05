@@ -1,0 +1,49 @@
+{
+  "evidence": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\RelayForwardBoundedActual-20261031-030549",
+  "product_root": "D:\\Lawbeach\\lawbench-B",
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py",
+      "bytes": 25896,
+      "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\external_llm.py",
+      "bytes": 6693,
+      "sha256": "ed34db4f63f3f5db580660b3fc1256c154f5533c8aa83834a7dd7539b7c2ce6e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\logs.py",
+      "bytes": 2455,
+      "sha256": "7576265fd8bf4967d9d99b7b67c22607af36fc640ccd8333602ba4ff15bdcdc6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\errors.py",
+      "bytes": 3204,
+      "sha256": "f580d733d88a15a70df089f8b1bcd6bfffcac6b8a78013532aab61d2d20d33f4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\config.py",
+      "bytes": 2701,
+      "sha256": "c65355fb2335356955e717f22780358605a7e56d775b878e9fb9d69fdfabcfce"
+    }
+  ],
+  "B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+    "mtime_ns": "1793302647316836800"
+  },
+  "only_upstream": "https://www.tokenav.ai/v1/chat/completions",
+  "model": "deepseek-v4.1-flash-1017",
+  "max_model_POST": 1,
+  "max_tokens": 256,
+  "total_s": 120,
+  "setup_s": 30,
+  "root_credential_anonymous_stdin": true,
+  "no_author_key": true,
+  "prompt": "这是软件连通性测试，请只回复：连接测试成功。",
+  "owner": "D:\\Lawbeach\\lawbench-coord\\OWNER-单项后继续余下测试-20261031-024506.md",
+  "scope": "REAL_SERVICE_NET_EXTERNAL_POLICY_FORWARD_APP_ONE_SYNTHETIC_REQUEST_NOT_NATIVE_SDK_GUI_AGENT_OR_SYSTEM_CREDENTIAL_STORAGE",
+  "original_source_job_stopped": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-relay-forward-original-source-stopped-current.json"
+}

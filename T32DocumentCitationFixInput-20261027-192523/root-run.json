@@ -1,0 +1,39 @@
+{
+  "packaging": "HOLD",
+  "private_temp_files": [],
+  "HTTP": false,
+  "source_changes": [],
+  "GUI": false,
+  "OS": [
+    {
+      "pid": 36440,
+      "role": "child",
+      "utcTicks": "639286970489731393",
+      "gone": true,
+      "exe": "C:\\Windows\\system32\\conhost.exe"
+    },
+    {
+      "pid": 11908,
+      "role": "child",
+      "utcTicks": "639286970492607763",
+      "gone": true,
+      "exe": "E:\\node\\node.exe"
+    },
+    {
+      "pid": 39060,
+      "role": "node-parent",
+      "utcTicks": "639286970489330373",
+      "gone": true,
+      "exe": "E:\\node\\node.exe"
+    }
+  ],
+  "scope": "actualDocuments component plus existing primitives stub and synthetic API; not real native or GUI",
+  "expectation": "Two behavior regressions expected at missing accessible citation button. Import/fixture/unhandled failures are gray, not product red. LOCAL_UI_UNIT only; not NativeR/HTTP/GUI.",
+  "forced": false,
+  "test_exit": 1,
+  "model_calls": 0,
+  "elapsed_s": 12.7377306,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32DocumentCitationUnit-root-20261027-192408",
+  "at": "2026-10-27T19:24:21.6706986+08:00",
+  "test_sha_after": "6c438973fd59868a9fb5ca596c842c4bf8314e5127a9807b654cfe7bec0114b7"
+}

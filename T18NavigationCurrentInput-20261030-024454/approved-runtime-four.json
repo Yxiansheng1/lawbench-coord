@@ -1,0 +1,26 @@
+[
+  {
+    "role": "current-compiled-agent",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TaskSkillPrivateBuild-20261030-023904\\private-output-20261030-024244\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+    "bytes": 557970,
+    "sha256": "0c403eacf1552a7fce0f628ca10044dc29fec9517394313fd4a809860f5da16d"
+  },
+  {
+    "role": "current-compiled-host",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TaskSkillPrivateBuild-20261030-023904\\private-output-20261030-024244\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+    "bytes": 902499,
+    "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+  },
+  {
+    "role": "current-compiled-package",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TaskSkillPrivateBuild-20261030-023904\\private-output-20261030-024244\\profile-node_modules\\lawbench-dsh\\package.json",
+    "bytes": 1257,
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+  },
+  {
+    "role": "current-compiled-manifest",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\TaskSkillPrivateBuild-20261030-023904\\private-output-20261030-024244\\manifest.json",
+    "bytes": 58197,
+    "sha256": "30d4c52a7ee8ae31f1e2dddd03cc9e948fbcdc1c9852d564a9e33d43327932a0"
+  }
+]

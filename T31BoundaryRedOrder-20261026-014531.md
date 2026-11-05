@@ -1,0 +1,7 @@
+# A唯一当前接续：先补T31边界回归源码，root跑真实红再修产品
+精确1017/max。原施工job已经真实completed，不重开/不篡原交回。当前是原目标必要红绿步骤，不设分钟/命令量上限。
+首读本令后完整读 C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T31Implementation-20261026-004247\root-findings-current.md、现有A/dsh-ext/ui/material-batch.ts与cases.ts相关两函数、现有tests/material-batch.spec.tsx即可；必要读原生apply/service与对应测试，不读巨型历史或重写方案。
+只允许写 D:\Lawbeach\lawbench-A\dsh-ext\tests\material-batch-boundaries.spec.tsx、必要的DSH packages/client/ui-conversation/tests/service-orchestration.client.spec.ts新增失败清理用例及 D:\Lawbeach\lawbench-coord\A-交回-T31BoundaryRed-20261026-014531.md。禁止改当前产品/source/contracts/lib/patch/preset/fixture/mock基线以让测试通过；不要修改现有7条已绿断言。回归要调用真实makeMaterialSubmissionHook/capture/runRefImport和本机stub API，模拟HTTP响应/延迟可以但不得手抄实现或造history/task/result/index。所有数据仅测试内合成，无服务器/HTTP/模型。
+写能按root四条断言现实现错误的测试；它们当前应红，由root独立执行。测试代码完成交回即交给root跑，不自修产品，不先猜root结果。不要无意义阻塞缺资源，若某条静态不能构造就准确说明并继续可构造条。
+每个exec单独调用，显式shell=C:/Users/morel/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe、login=false，禁止multi_tool_use.parallel/并行调用，因为它多次丢shell字段误走Bash。可在同一pwsh读取相关文件，不限必要读取量。禁止Bash/短名、Vitest/tsc/pytest/parser/collect/测试/prepare/serve/probe/GUI/HTTP/模型/build，禁止git写/权限/审批/API配置变化。
+唯一正式交回 D:\Lawbeach\lawbench-coord\A-交回-T31BoundaryRed-20261026-014531.md；包含实际测试落点/每条预期红/未运行声明及剩余。后续产品返修在root取得红证据后派发，不自行续写新产品。

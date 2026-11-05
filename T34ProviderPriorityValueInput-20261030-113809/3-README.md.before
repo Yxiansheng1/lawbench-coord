@@ -1,0 +1,20 @@
+# T34 provider priority candidate
+
+状态：`SOURCE_CANDIDATE_READY / ROOT_ACTUAL_PENDING`
+
+这是私有源码候选，不是原始 SDK 已应用，也不表示 native GUI 或整条 T34 已通过。原
+`T34ProviderCompositionFinite-root-20261030-111703` 仍保留为
+`1 literal PASS + 1 expression FAIL`，未重跑同一旧源码。
+
+候选逐字节复制原 12 个 `.ts` 文件，只在 `index.ts` 的 `internal/config` 监听器尾部增加
+`{ prepend: true }`。这样外层 Loader 先完成表达式插值，现有 `Config`、
+`assertServiceable`、自 fiber 检查和返回路径保持不变；没有手工二次插值、额外 import、
+schema 或 guard 改动。撤销该选项可逐字节恢复原文件。
+
+新测试保留旧测试前两例，只把 `LlmPiAi` 导入指向私有候选，并追加一个真实无效写入负例，
+要求按 `$.providers.external.baseURL expected string` 拒绝，同时 patch 原始字节、
+descriptor、fiber identity 与 active 状态均不变。旧配置副本只改私有 `cacheDir` 和单一
+`include`。
+
+作者未创建 `runtime`，未启动 Node、Vitest、Python、GUI、HTTP、模型或凭据。
+`literal-inputs.json` 记录了源与候选哈希、旧实际失败以及逆变换，不引用自身。

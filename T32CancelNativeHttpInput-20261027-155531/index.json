@@ -1,0 +1,62 @@
+[
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\00-server.py",
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\ScopeHttpEntry-20261026-031523\\server.py",
+    "bytes": 92343,
+    "sha256": "f0bcbb7fc2745ea1957167b2d5a247b1866a53a2d147e77ebdaa24cbb65bab89"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\01-server.py",
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809\\server.py",
+    "bytes": 141021,
+    "sha256": "399f49b59097c87548c2dec307cbfac8cbe828f1fb4845b5d2c23c99f5c5947d"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\02-t31-native-scope-http.spec.ts",
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t31-native-scope-http.spec.ts",
+    "bytes": 27856,
+    "sha256": "055d65ba57fa6e625fcc59d44a791c76c58f3e2889d65adf9aa11edc15b69eb1"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\03-vitest.t31-scope-http.config.mjs",
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.t31-scope-http.config.mjs",
+    "bytes": 1531,
+    "sha256": "ca433f29e9d5a7228eda2cc70447eeed23e8947bc6224e69274ab4c38079f629"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\04-t31-claimed-native-context.finite.ts",
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\fixtures\\t31-claimed-native-context.finite.ts",
+    "bytes": 36278,
+    "sha256": "ce48a50e6f09946f2981249c2c7125bb176aee65b669fbc2a938fdc7c4770af6"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\05-vitest.t31-claimed-native-context-native.config.mjs",
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.t31-claimed-native-context-native.config.mjs",
+    "bytes": 1316,
+    "sha256": "cba02e258d76361ab2be3225aa580a3ce8cf3a6272ceaf469ea0a3ddbbbad1f0"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\06-task.py",
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\task.py",
+    "bytes": 40607,
+    "sha256": "7b6ee04ba53f45b1f7e6624d2c9bf60b122dfc68c12e26331431a84eed36bf04"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\07-T32-invalid-scope-cancel-root-accepted-current.json",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-invalid-scope-cancel-root-accepted-current.json",
+    "bytes": 5606,
+    "sha256": "088ffd8bfdb3d0337361a1bd0e921d2054deb2faf71716662f76224a791482a6"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\08-T32-current-task-scoped-http-accepted-current.json",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-current-task-scoped-http-accepted-current.json",
+    "bytes": 7216,
+    "sha256": "647a88c2ca99571b5ae6af396558bae02f922ef52a726e18fffffa820f59d76e"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32CancelNativeHttpInput-20261027-155531\\09-reviewed-source-pins.json",
+    "source": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+    "bytes": 53547,
+    "sha256": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf"
+  }
+]

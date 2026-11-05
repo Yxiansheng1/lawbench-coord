@@ -1,0 +1,21 @@
+{
+  "verdict": "PURE_OBSERVER_FRAGMENT_EMIT_FORMAT_FAILED_BEFORE_CONTROLS_NOT_PRODUCT_FAILURE",
+  "at_utc": "2026-10-29T08:50:58.894401+00:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18DefenseObserverFinite-root-20261029-164403",
+  "elapsed_s": 0.40699999999196734,
+  "exit_code": 2,
+  "forced": false,
+  "OS_complete_identities_captured": 0,
+  "full_OS_identity_cleanup_proven": false,
+  "controls_not_reached": true,
+  "consumer_main_executed": false,
+  "model": 0,
+  "HTTP": 0,
+  "Key": 0,
+  "author_runtime": 0,
+  "error": "SyntaxError: Unexpected token export",
+  "primary_source": "Pinned typescript.js getImpliedNodeFormatForEmitWorker130370..130380: .mts forces ESNext even when requested CommonJS; .cts forces CommonJS",
+  "no_security_policy_refusal": true,
+  "original_failed_root_preserved": true,
+  "Packaging": "HOLD"
+}

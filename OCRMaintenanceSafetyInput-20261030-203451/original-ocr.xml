@@ -1,0 +1,15 @@
+﻿<service>
+  <id>prep395-ocr</id>
+  <name>prep395 OCR backend (llama-server)</name>
+  <description>lawbench 395 node. Processes requests in memory; logs metadata only.</description>
+  <executable>C:\prep395\llama\llama-server.exe</executable>
+  <arguments>-m &quot;C:\prep395\models\Xiaomi-OCR-0.BF16.gguf&quot; --mmproj &quot;C:\prep395\models\Xiaomi-OCR-0.mmproj-bf16.gguf&quot; --port 9101 -np 2 -c 32768 --host 127.0.0.1 -ngl 99 --no-webui --log-disable</arguments>
+  <workingdirectory>C:\prep395</workingdirectory>
+  <startmode>Automatic</startmode>
+  <onfailure action="restart" delay="10 sec"/>
+  <onfailure action="restart" delay="30 sec"/>
+  <resetfailure>1 hour</resetfailure>
+  <log mode="none"/>
+
+
+</service>

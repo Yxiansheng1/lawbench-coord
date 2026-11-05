@@ -1,0 +1,25 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionOrderFinite-root-20261028-223737",
+  "exit": 1,
+  "elapsed_s": 1.4069999999992433,
+  "natural": true,
+  "forced": false,
+  "identities": [
+    {
+      "pid": 43408,
+      "parent": 2904,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T14:37:37.7275570Z"
+    }
+  ],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_only_observer_function_inverse_all_other_bytes_held": true,
+  "source_sha256": "207cd958ef0d4040396455d80ca6db377a58517177aea4fdae32b4e3bf02ab45",
+  "test_sha256": "1a7830de70c5c8bef763ef9ea4ce8a8d4afd8ed3ca74960b5783470e11eb8e9a",
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: the previous false-negative actual run must now accept the real answer-before-successful-draft order\n\n{\n  answerCallId: 'chatcmpl-tool-8bf1d3305c4b0b75',\n  answerCallSeq: 36,\n  answerResultSeq: 37,\n  draftCallId: 'chatcmpl-tool-843985056bef794e',\n  draftCallSeq: 41,\n  draftResultSeq: 42\n}\n\n    at <anonymous> (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\question-order-observer.spec.mts:144:8) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: {\n    answerCallId: 'chatcmpl-tool-8bf1d3305c4b0b75',\n    answerCallSeq: 36,\n    answerResultSeq: 37,\n    draftCallId: 'chatcmpl-tool-843985056bef794e',\n    draftCallSeq: 41,\n    draftResultSeq: 42\n  },\n  expected: {\n    answerCallId: 'chatcmpl-tool-8bf1d3305c4b0b75',\n    answerCallSeq: 36,\n    answerResultSeq: 37,\n    draftCallId: 'chatcmpl-tool-843985056bef794e',\n    draftCallSeq: 41,\n    draftResultSeq: 42\n  },\n  operator: 'deepStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.21.0\n",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

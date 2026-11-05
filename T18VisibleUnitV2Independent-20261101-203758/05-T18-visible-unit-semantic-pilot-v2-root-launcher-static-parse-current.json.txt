@@ -1,0 +1,8 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-visible-unit-semantic-pilot-v2-root-launcher-static-parse-current.json
+SHA eefded886ea3eec3ff89598bd1728dd4d7852c03e88a09c09c3eae1005f6da7e
+0001 {
+0002   "operation": "RootV2 PS literal staticparse only, no main execution",
+0003   "errors": [],
+0004   "Key_read": false,
+0005   "model_calls": 0
+0006 }

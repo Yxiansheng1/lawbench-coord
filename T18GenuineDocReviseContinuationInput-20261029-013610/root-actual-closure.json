@@ -1,0 +1,366 @@
+{
+  "verdict": "ACTUAL_TWO_STAGE_FAILED_FIXTURE_COVERAGE_CONTRACT_PRIMARY",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ExplicitPriorQualityRuntime-root-20261029-012032",
+  "elapsed_s": 128.73500000000058,
+  "model_POST": 10,
+  "model_HTTP200": 10,
+  "native_case": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+  "native_session": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "native_request": "b91ca8e9-4d23-47bb-b249-c8e46fb7dd06",
+  "task": "T-20261029012044-5869",
+  "stage1_task_completed": true,
+  "stage2_started": false,
+  "actual_tool_counts": {
+    "skill": 1,
+    "ask_user_question": 1,
+    "case_read_input": 1,
+    "case_read_material": 2,
+    "case_save_draft": 4
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "call_id": "chatcmpl-tool-b47e215708956f38",
+      "seq": 68,
+      "result_seq": 69,
+      "is_error": false,
+      "arguments_sha256": "b962d9824da06c433c86efbf3d5af9bce07ea4e2544e3d0d3ad46758dd634bdb",
+      "result_sha256": "7ebd30f6e520e2052c873b48efcdd1530d9e5058b46a72dc1be627bf8e14a86e"
+    },
+    {
+      "name": "ask_user_question",
+      "call_id": "chatcmpl-tool-ba6ae5735fc04b3a",
+      "seq": 73,
+      "result_seq": 74,
+      "is_error": false,
+      "arguments_sha256": "ac094da219a5c87fcca3faa5a872112dd77ea57e5a25426c186fa80d7a6dd08b",
+      "result_sha256": "63e8c663d34263acdb65ec1d4d1348e1a64c24bec7f6e25ff0dcd337552832e4",
+      "question_ids": [
+        "draft",
+        "doc_type"
+      ],
+      "answer_ids": [
+        "draft",
+        "doc_type"
+      ]
+    },
+    {
+      "name": "case_read_input",
+      "call_id": "chatcmpl-tool-9bfabb3957ca47b7",
+      "seq": 78,
+      "result_seq": 79,
+      "is_error": false,
+      "arguments_sha256": "9caf1f672d20295b64f5671e7ac13b5ce4788a1758a88aa35e7f52e6f547fbe0",
+      "result_sha256": "c1164cf5cf0ef5da902b9e23df0880e9f1b373ed0d124f8301480349007898d8",
+      "index": 1,
+      "start": 1,
+      "end": 105,
+      "has_more": false
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-bce21e13b4998c22",
+      "seq": 83,
+      "result_seq": 84,
+      "is_error": false,
+      "arguments_sha256": "7ae67b0db2af947bfa2b353bd1b82af54ffbb9885d6b3de22ea1e7ffb1417bf3",
+      "result_sha256": "fca73c990a3eea55dfddbd53692a8492cc0d8f66a5cce4579de19e586226f287",
+      "material_name": "采购合同",
+      "start": 22
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-ab2fe9e2033db4db",
+      "seq": 88,
+      "result_seq": 89,
+      "is_error": false,
+      "arguments_sha256": "db7f7cf7437b4109ec1f1048276a51b16989229162cfc044d1d4e56ed7442009",
+      "result_sha256": "5c3734a87607ce0162b4421aae3bcdc5adeec245f98fb13a25c231cbca1d7ead",
+      "material_name": "采购部内部意见",
+      "start": 7
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-9423cd7289483d9e",
+      "seq": 93,
+      "result_seq": 94,
+      "is_error": false,
+      "arguments_sha256": "0a84dd417daac80fffc1b84772b94a018924e8db88d3b3cc7912c405bca539b8",
+      "result_sha256": "57f0783e48ecf6e4a4cad44018e012d81ec6d630d45af9003ff2bf4b3e4234a3",
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v1.md",
+      "version": 1,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段为\"4.1 甲方应于到货后七日内完成验收……\"），第七条为不可抗力条款（第34段\"7.1 因不可抗力不能履行合同的",
+            "citation": "〔采购合同 第22-35段〕",
+            "message": "引语“若按合同第七条执行” 在所引材料（采购合同 第22-35段）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段为\"4.1 甲方应于到货后七日内完成验收……\"），第七条为不可抗力条款（第34段\"7.1 因不可抗力不能履行合同的",
+            "citation": "〔采购合同 第22-35段〕",
+            "message": "引语“4.1 甲方应于到货后七日内完成验收……” 在所引材料（采购合同 第22-35段）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段为\"4.1 甲方应于到货后七日内完成验收……\"），第七条为不可抗力条款（第34段\"7.1 因不可抗力不能履行合同的",
+            "citation": "〔采购合同 第22-35段〕",
+            "message": "引语“7.1 因不可抗力不能履行合同的……” 在所引材料（采购合同 第22-35段）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段为\"4.1 甲方应于到货后七日内完成验收……\"），第七条为不可抗力条款（第34段\"7.1 因不可抗力不能履行合同的",
+            "citation": "〔采购合同 第22-35段〕",
+            "message": "引语“若按合同第四条执行” 在所引材料（采购合同 第22-35段）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段为\"4.1 甲方应于到货后七日内完成验收……\"），第七条为不可抗力条款（第34段\"7.1 因不可抗力不能履行合同的",
+            "citation": "〔采购合同 第22-35段〕",
+            "message": "引语“若按合同第4.1条执行” 在所引材料（采购合同 第22-35段）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. **出处核对**：已回读采购合同第22-35段（验收、价款、违约责任、不可抗力条款），核实风险3所引原文\"4.1 甲方应于到货后七日内完成验收，逾期未提出书面异议的，视为验收合格。\"与合同第23段一致；已回读采购部内部意见第7行，核实",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "- 原件内容的出处写成",
+            "citation": "〔材料名 第N段〕",
+            "message": "出处格式不对：〔材料名 第N段〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          }
+        ],
+        "stats": {
+          "citations": 1,
+          "must_fix": 6,
+          "hints": 1
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-9d474c1418f726e9",
+      "seq": 98,
+      "result_seq": 99,
+      "is_error": false,
+      "arguments_sha256": "4acfb2e671c53466b0f207fb663118a39c20d7485358f9f88b2aa7ff04404255",
+      "result_sha256": "2277ed53ade6dfc42536e7651e7a47a1043f848361452014f4765ea798f034c0",
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v2.md",
+      "version": 2,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段），第七条为不可抗力条款（第34段） 。条款编号引用错误，可能导致读者误解。 | 将\"若按合同第七条执行\"改为\"若",
+            "citation": "〔采购合同 第22段、第33段〕",
+            "message": "出处格式不对：〔采购合同 第22段、第33段〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "- 原件内容的出处写成",
+            "citation": "〔材料名 第N段〕",
+            "message": "出处格式不对：〔材料名 第N段〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          }
+        ],
+        "stats": {
+          "citations": 0,
+          "must_fix": 2,
+          "hints": 0
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a52f18631ca5ba41",
+      "seq": 103,
+      "result_seq": 104,
+      "is_error": false,
+      "arguments_sha256": "0e113b2439e945237be816c2ba226a1f3e78a16b8ace5dbbe9d386f84e1a005a",
+      "result_sha256": "362f7db1b99fc33771455e549bfe3a20cff0f782f23f5d7ff7f66ed9c247432d",
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v3.md",
+      "version": 3,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段），第七条为不可抗力条款（第34段）  。条款编号引用错误，可能导致读者误解。 | 将\"若按合同第七条执行\"改为\"",
+            "citation": "〔采购合同 第22段〕〔采购合同 第33段〕",
+            "message": "引语“若按合同第七条执行” 在所引材料（采购合同 第22段、采购合同 第33段）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 1 | 风险3\"问题\"段 | 条款编号引用错误 | 草稿写道\"若按合同第七条执行\"，但验收条款实际位于合同第四条（第23段），第七条为不可抗力条款（第34段）  。条款编号引用错误，可能导致读者误解。 | 将\"若按合同第七条执行\"改为\"",
+            "citation": "〔采购合同 第22段〕〔采购合同 第33段〕",
+            "message": "引语“若按合同第四条执行” 在所引材料（采购合同 第22段、采购合同 第33段）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 2,
+          "must_fix": 2,
+          "hints": 0
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-be21fd6181155a6a",
+      "seq": 108,
+      "result_seq": 109,
+      "is_error": false,
+      "arguments_sha256": "35dd60d7abe747f41360cd13ec5a51bc742dec3a80ff5a82f33df5b18d56f09b",
+      "result_sha256": "9df8811e19c72aa8159d407617fa1369a1d4f7863a3382cbd8d4b25861508165",
+      "title": "出稿前审查-合同审查意见",
+      "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+      "version": 4,
+      "citation_check": {
+        "passed": true,
+        "problems": [],
+        "stats": {
+          "citations": 2,
+          "must_fix": 0,
+          "hints": 0
+        }
+      }
+    }
+  ],
+  "questions_answered_before_first_successful_save": true,
+  "final_checklist": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v4.md",
+    "bytes": 2351,
+    "sha256": "b01af533b523c9752a84fd3801d3de1cfd46db5fb75642888aaa6bad493abe2f",
+    "mtime_ns": "1793208147740880400"
+  },
+  "coverage_actual": {
+    "total": 2,
+    "fully_read": [],
+    "partially_read": [
+      {
+        "name": "采购合同",
+        "read_units": 26,
+        "total_units": 47
+      },
+      {
+        "name": "采购部内部意见",
+        "read_units": 4,
+        "total_units": 10
+      }
+    ],
+    "not_read": [],
+    "unreadable": []
+  },
+  "primary_fixture_cause": "assertTaskCoverage passes partially_read objects to asString; source contract returns name/read_units/total_units objects, so stage one cannot reach later assertions.",
+  "primary_error_masked_in_raw_report": true,
+  "secondary_protocol_failure": "two_stage_protocol_incomplete because stage2 never started; this is not proof of resource cleanup leak",
+  "physical_rows": 116,
+  "events": 115,
+  "new_events": 56,
+  "event_types_new": {
+    "session/end-seed": 1,
+    "agent/inbox/spliced": 2,
+    "turn/start": 1,
+    "step/start": 10,
+    "user/message": 2,
+    "request/header": 1,
+    "assistant/message": 10,
+    "tool/call": 9,
+    "tool/result": 9,
+    "step/end": 10,
+    "turn/end": 1
+  },
+  "original_prefix_byteexact": true,
+  "production_JSONL_reopen": "NOT_REACHED",
+  "strict_stage1_literal4_1_criterion": "NOT_MET: actual checklist names chapter four, no literal 4.1; do not weaken or claim old full run PASS",
+  "identities": [
+    {
+      "pid": 15496,
+      "parent": 40752,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T17:20:32.1847870Z"
+    },
+    {
+      "pid": 21040,
+      "parent": 15496,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T17:20:32.6935810Z"
+    },
+    {
+      "pid": 12696,
+      "parent": 21040,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T17:20:32.7060450Z"
+    },
+    {
+      "pid": 2288,
+      "parent": 21040,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T17:20:32.7769820Z"
+    },
+    {
+      "pid": 4468,
+      "parent": 2288,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T17:20:32.8908730Z"
+    },
+    {
+      "pid": 43932,
+      "parent": 2288,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T17:20:33.3508590Z"
+    },
+    {
+      "pid": 41652,
+      "parent": 43932,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T17:20:33.3626290Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 55225,
+  "Listen_count": 0,
+  "B_listener_net_logs_closed": true,
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credential_getters": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_denials": {},
+  "B_violations": [],
+  "forced_stop": false,
+  "original_source_files_SHA_size_mtime_ns_held": 19,
+  "external_fixture_files_held": 2,
+  "private_compiled_outputs_held": 25,
+  "owned_text_key_scan": {
+    "files": 34,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_quality_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

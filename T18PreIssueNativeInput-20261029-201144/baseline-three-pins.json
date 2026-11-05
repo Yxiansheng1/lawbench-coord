@@ -1,0 +1,20 @@
+{
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseGateRecovery-20261029-173550\\native-defense-opinion.mts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\native-defense-opinion.mts",
+    "bytes": 148710,
+    "sha256": "7d20cbed7b28602f3fd37ca52656440e09eb0651782339be12e0868588369cda"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseGateRecovery-20261029-173550\\b-service-defense-opinion.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\b-service-defense-opinion.py",
+    "bytes": 53717,
+    "sha256": "7b96e25683a9f6f26587fb6a5e8d4fce059b4a6fa6b02698f44e5f07ac446049"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseGateRecovery-20261029-173550\\literalfixed-inputs.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\literalfixed-inputs.json",
+    "bytes": 11741,
+    "sha256": "0459c97f81f8a9020a6e655e63e5cae6bc22cdd5aa564198f1c66c1969f8b6f7"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-27T21:03:53.217313+08:00",
+  "state": "STATIC_GUI_LAYOUT_COMPAT_FIX_NOT_RUN",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T32-PDF-GUI-layout-fix-1017-20261027-210353.job.json",
+  "order": "D:\\Lawbeach\\lawbench-coord\\B-T32-PDF-GUI-layout-order-20261027-210353.md",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-GUI-layout-20261027-210353.md",
+  "note": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\root-layout-correction-20261027-210353.md",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T32PdfGuiLayoutInput-20261027-210353",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+  "probe": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\probe.mjs",
+  "prior_main": {
+    "at": "2026-10-27T20:47:36.500259+08:00",
+    "state": "NEW_NATIVE_PDF_PAGE2_CITATION_ENTRY_NOT_RUN",
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T32-native-PDF-citation-1017-20261027-204736.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T32-native-PDF-citation-order-20261027-204736.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-native-PDF-citation-20261027-204736.md",
+    "note": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\README.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736",
+    "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+    "probe": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\probe.mjs",
+    "targets": "D:\\Lawbeach\\lawbench-coord\\T32NativePdfCitationInput-20261027-204736\\targets.json",
+    "context_verified": true,
+    "packaging": "HOLD",
+    "actual_thread": "01a17d67-0c69-7fc2-bf81-1c6ba4708701",
+    "context": [
+      {
+        "cwd": "D:\\Lawbeach\\lawbench-B",
+        "model": "deepseek-v4.1-flash-1017",
+        "effort": "max"
+      }
+    ],
+    "commands_snapshot": 71,
+    "success_snapshot": 58
+  },
+  "context_verified": true,
+  "packaging": "HOLD",
+  "actual_thread": "01a17d76-30cc-7bd2-9526-d8134cbddce2",
+  "context": [
+    {
+      "cwd": "D:\\Lawbeach\\lawbench-B",
+      "model": "deepseek-v4.1-flash-1017",
+      "effort": "max"
+    }
+  ],
+  "commands_snapshot": 36,
+  "success_snapshot": 29
+}

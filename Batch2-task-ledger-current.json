@@ -1,0 +1,42 @@
+{
+  "items": [
+    {
+      "trueMachineAcceptance": "ACTUAL_UNPACK_INSTALL_ENV_AND_SYNTHETIC_LEDGER_VERIFIED_UI_NOT_RUN",
+      "gate": 1,
+      "source": "D:\\Lawbeach\\lawbench-coord\\第二批-env.lock-20261102-210729.md",
+      "n": 1,
+      "task": "env.lock"
+    },
+    {
+      "trueMachineAcceptance": "NOT_RUN_OWNER_REAL_CASE_GUI",
+      "gate": 1,
+      "source": "D:\\Lawbeach\\lawbench-coord\\第二批-P0-6页码-20261102-212800.md",
+      "n": 2,
+      "task": "P0-6"
+    },
+    {
+      "trueMachineAcceptance": "BUNDLE_DISK_MATCH_GUI_REMOVE_RESTORE_NOT_RUN",
+      "gate": 1,
+      "source": "D:\\Lawbeach\\lawbench-coord\\第二批-EasyTier随包-20261102-214950.md",
+      "n": 3,
+      "task": "EasyTier2.6.4 detection only"
+    },
+    {
+      "trueMachineAcceptance": "SOURCE_COMPONENT_READY_GUI_NOT_RUN",
+      "gate": 1,
+      "source": "D:\\Lawbeach\\lawbench-coord\\第二批-清单7条-20261102-222302.md",
+      "n": 4,
+      "task": "Checklist7"
+    }
+  ],
+  "ownerOrder": "OWNER-第二批-今晚收尾-20261102-205800.md",
+  "firstBatch6": "OWNER_MACHINE_PASS_FROZEN",
+  "secondBatchInstallersBuilt": 1,
+  "finalReceipt": "D:\\Lawbeach\\lawbench-coord\\第二批-统一安装包-20261102-223914.md",
+  "artifact": {
+    "path": "D:\\Lawbeach\\lawbench-A\\.p\\B2-20261102-210146\\runs\\20261102-222435\\out\\LawBench-BATCH2-0.1.0-20261102222435-win-x64.exe",
+    "bytes": 836832533,
+    "sha256": "1d007ebade9d14fa403ff6a0271f7c460ad11fa1f28eef98f8d97581eff3808f"
+  },
+  "fullProjectPass": false
+}

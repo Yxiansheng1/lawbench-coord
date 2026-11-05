@@ -1,0 +1,91 @@
+{
+  "new_RED2": {
+    "verdict": "REAL_FS_TWO_BOUNDARY_BUGS_REPRODUCED",
+    "failed": 2,
+    "passed": 0,
+    "deselected": 11,
+    "pytest_s": 1.737,
+    "controller_s": 3.985000000000582,
+    "source_pins_held": 519,
+    "completeIdentities": [
+      {
+        "pid": 37240,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.452825+00:00",
+        "birth_filetime_ticks": "134379949204528253",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 37292,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.660585+00:00",
+        "birth_filetime_ticks": "134379949206605851",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "guard_denials": 0,
+    "forced": false,
+    "actual_inverted_failed_page_saved_v1": true,
+    "actual_program_placeholder_page_saved_v1": true,
+    "fixture_assertions_passed_before_main_failure": true,
+    "source_process_qualifications": [
+      "Root caught public metadata passed to private texts.text_rel BEFORE runtime; corrected private index lookup exact full-byte inverse",
+      "Latest fixture author exceeded read boundaries with materials/texts/gate/app/helper source searches, coordination metadata, repeated hashes and prohibited git status/branch (read intent; no explicit Git write commands, index refresh not proven absent); raw deadline/noformal retained",
+      "Root independently reviewed complete ready test/preparer code and setup/finally, author lifecycle deviation NOT accepted as completed handback; finite TEST admission only, not source-process compliance PASS"
+    ],
+    "scope": "Actual public Core tools + owned real FS; no actual OCR/model/default lifespan/GUI/HTTP service or business quality PASS",
+    "Packaging": "HOLD"
+  },
+  "new_current_same13": {
+    "verdict": "REAL_FS_SAME_THIRTEEN_PASS_PROVEN_BOUNDARY_RECOVERY",
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "errors": 0,
+    "pytest_s": 7.152,
+    "controller_s": 9.5,
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadBoundaryGREEN-root-20261101-164348",
+    "source_pins_held": 526,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 14868,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:43:49.037983+00:00",
+        "birth_filetime_ticks": "134379962290379830",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 36828,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:43:49.243022+00:00",
+        "birth_filetime_ticks": "134379962292430222",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "red2_original_preserved": true,
+    "test_source_bytes_held": true,
+    "real_page_after_placeholder_rejection_saves_v1": true,
+    "no_overlapping_count_sum": true,
+    "scope": "Original realFS public tools, current-task numeric citations only; no actual OCR/model/GUI/NativeR recovery or factual/legal quality PASS",
+    "cleanup_limits": "Original Env.close ignores rmtree failures; no blanket fullmachine/helperOS/client/Net/thread/traffic cleanup claim",
+    "business_quality": "FAILED_PARTIAL",
+    "Packaging": "HOLD"
+  },
+  "old6": "Original full public Core/FS2FAIL4PASS vs first provenancefix6PASS; current same13 includes original6 immutableprefix8985B.",
+  "old5": "Original save_draft function only counterfactual4FAIL1PASS vs current actual11 prior; current same13 includes original11 immutable18000Bprefix. No summed counts.",
+  "case4_limit": "Actual3savedversions allcitesalreadyread; new save-denial nevertriggered. BusinessFAILED_PARTIAL independentadversefact/selfcheck/unsupportedabsenceclaim; no factual/legal/NativeRdenialrecovery or semanticPASS.",
+  "whole": "Current Root shared wholeB running separate; old1412raw26failure/error baseline retained. Do not claim currentwholePASS.",
+  "scope": "Cumulative new numeric citation read-provenance code compared to original20481B; current added range/placeholder boundary. Not entire SDK/history/prompt or fullproject. Do not repeat closed transmission/modelsemantic audits.",
+  "docs": "Existing paragraph has no explicit placeholder/carry note; evaluate whether clarification needed, do not edit it.",
+  "frozen": "No TaskStore/checks/texts/auth/guards/SDK/schema/UI_save_locked changes; tests real owned FS without actual OCR/defaultlifespan/model. Frozen38 safetyfunctions and T37preexclusion remain."
+}

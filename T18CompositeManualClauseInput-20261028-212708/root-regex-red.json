@@ -1,0 +1,21 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ActualManualClauseProbe-root-20261028-212537",
+  "exit": 1,
+  "natural": true,
+  "forced": false,
+  "OS": {
+    "pid": 21136,
+    "exe": "E:\\node\\node.exe",
+    "birth_utc": "2026-10-28T13:25:37.7224140Z"
+  },
+  "OS_gone": true,
+  "result": {
+    "scope": "EXACT_CURRENT_CAUSE_REGEX_ONLY_NOT_FULL_MODEL_OR_FUNCTION",
+    "actualClause": "find跨越超链接域代码，系统未纳入修改清单",
+    "accepted": false
+  },
+  "source_sha256": "d194cc74bc445c9e9fbf0241faaf105d67e770f3bccc4afe646cc1d772df6002",
+  "model_HTTP": 0,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,152 @@
+--- BEFORE/review-consumer.mjs
++++ CURRENT/review-consumer.mjs
+@@ -160,6 +160,11 @@
+   return `Bearer ${rawKey}`;
+ }
+ 
++export function requestTimeoutForDeadline(now, deadline) {
++  if (!Number.isFinite(now) || !Number.isFinite(deadline)) return 0;
++  return Math.max(0, Math.min(PER_CALL_TIMEOUT_MS, deadline - now));
++}
++
+ export function unwrapChatCompletion(rawBody) {
+   if (typeof rawBody !== "string") fail("completion", "COMPLETION_INVALID");
+   let envelope;
+@@ -169,6 +174,7 @@
+     fail("completion", "COMPLETION_INVALID");
+   }
+   if (!isPlainObject(envelope)) fail("completion", "COMPLETION_INVALID");
++  if (envelope.model !== MODEL) fail("completion", "COMPLETION_MODEL_MISMATCH");
+   if (Object.prototype.hasOwnProperty.call(envelope, "error")) {
+     fail("completion", "COMPLETION_ERROR");
+   }
+@@ -313,7 +319,13 @@
+ 
+ export function redactCredential(value, credential) {
+   if (typeof value !== "string" || !credential) return value;
+-  return value.split(credential).join(REDACTION);
++  const renderings = [...new Set([
++    credential,
++    JSON.stringify(credential).slice(1, -1),
++  ])].sort((left, right) => right.length - left.length);
++  return renderings.reduce((redacted, rendering) => (
++    redacted.split(rendering).join(REDACTION)
++  ), value);
+ }
+ 
+ export function serializeForArtifact(value, credential) {
+@@ -366,6 +378,7 @@
+     ["fixed_data", FIXED_DATA_NAME, manifest.fixed_data],
+     ["offline_controls", CONTROLS_NAME, manifest.offline_controls],
+   ];
++  let fixedDataBytes;
+   for (const [label, fileName, pin] of pins) {
+     if (!pin || pin.path !== fileName || !Number.isSafeInteger(pin.bytes) ||
+         pin.bytes < 0 || !/^[0-9a-f]{64}$/.test(pin.sha256)) {
+@@ -374,8 +387,9 @@
+     const bytes = await fs.readFile(new URL(fileName, import.meta.url));
+     const actual = { bytes: bytes.byteLength, sha256: crypto.createHash("sha256").update(bytes).digest("hex") };
+     if (actual.bytes !== pin.bytes || actual.sha256 !== pin.sha256) fail("source", `${label.toUpperCase()}_PIN_MISMATCH`);
+-  }
+-  return fs.readFile(new URL(FIXED_DATA_NAME, import.meta.url), "utf8");
++    if (label === "fixed_data") fixedDataBytes = bytes;
++  }
++  return fixedDataBytes.toString("utf8");
+ }
+ 
+ async function prepareOutputRoot(root) {
+@@ -468,15 +482,17 @@
+   });
+ }
+ 
+-async function performRequest(stage, requestBody, credential) {
++async function performRequest(stage, requestBody, credential, deadline) {
+   const startedAt = Date.now();
++  const timeoutMs = requestTimeoutForDeadline(startedAt, deadline);
++  if (timeoutMs <= 0) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+   try {
+     const response = await fetch(ROUTE, {
+       method: "POST",
+       redirect: "error",
+       headers: { Authorization: buildAuthorizationHeader(credential), "Content-Type": "application/json" },
+       body: requestBody,
+-      signal: AbortSignal.timeout(PER_CALL_TIMEOUT_MS),
++      signal: AbortSignal.timeout(timeoutMs),
+     });
+     const chunks = [];
+     let capturedBytes = 0;
+@@ -509,13 +525,17 @@
+       transportError: null,
+     };
+   } catch (error) {
++    const wholeDeadlineExpired = Date.now() >= deadline ||
++      (error && error.name === "TimeoutError" && timeoutMs < PER_CALL_TIMEOUT_MS);
+     return {
+       status: null,
+       body: "",
+       capturedBytes: 0,
+       responseOverflow: false,
+       durationMs: Date.now() - startedAt,
+-      transportError: error && error.name === "TimeoutError" ? "TIMEOUT" : "TRANSPORT_FAILURE",
++      transportError: wholeDeadlineExpired
++        ? "ENTIRE_CALL_CAP_EXCEEDED"
++        : error && error.name === "TimeoutError" ? "TIMEOUT" : "TRANSPORT_FAILURE",
+     };
+   }
+ }
+@@ -545,6 +565,7 @@
+ 
+ async function runMain() {
+   const runStartedAt = Date.now();
++  const deadline = runStartedAt + ENTIRE_CALL_CAP_MS;
+   let artifactsDir = null;
+   let credential = "";
+   let timings = {};
+@@ -580,7 +601,8 @@
+       messages: digest(JSON.stringify(stage1Payload.messages)),
+       requestBody: digest(stage1Body),
+     }, credential);
+-    const stage1Response = await performRequest("stage1", stage1Body, credential);
++    const stage1Response = await performRequest("stage1", stage1Body, credential, deadline);
++    if (Date.now() >= deadline) fail("stage1", "ENTIRE_CALL_CAP_EXCEEDED");
+     await writeArtifact(artifactsDir, "stage1-response.json", {
+       status: stage1Response.status,
+       body: stage1Response.body,
+@@ -589,6 +611,9 @@
+       transportError: stage1Response.transportError,
+     }, credential);
+     timings = { stage1Ms: stage1Response.durationMs };
++    if (stage1Response.transportError === "ENTIRE_CALL_CAP_EXCEEDED") {
++      fail("stage1", "ENTIRE_CALL_CAP_EXCEEDED");
++    }
+     if (stage1Response.transportError === "TIMEOUT") fail("stage1", "TIMEOUT");
+     if (stage1Response.transportError) fail("stage1", "TRANSPORT_FAILURE");
+     if (stage1Response.status !== 200) fail("stage1", "HTTP_NON_200");
+@@ -599,7 +624,6 @@
+     );
+     await writeArtifact(artifactsDir, "stage1-parsed.json", stage1Parsed, credential);
+ 
+-    if (Date.now() - runStartedAt >= ENTIRE_CALL_CAP_MS) fail("stage2", "ENTIRE_CALL_CAP_EXCEEDED");
+     const stage2Payload = buildRequestPayload(buildStage2Messages(input, stage1Parsed.facts));
+     const stage2Body = JSON.stringify(stage2Payload);
+     await writeArtifact(artifactsDir, "stage2-request.json", { body: stage2Body }, credential);
+@@ -607,7 +631,8 @@
+       messages: digest(JSON.stringify(stage2Payload.messages)),
+       requestBody: digest(stage2Body),
+     }, credential);
+-    const stage2Response = await performRequest("stage2", stage2Body, credential);
++    const stage2Response = await performRequest("stage2", stage2Body, credential, deadline);
++    if (Date.now() >= deadline) fail("stage2", "ENTIRE_CALL_CAP_EXCEEDED");
+     await writeArtifact(artifactsDir, "stage2-response.json", {
+       status: stage2Response.status,
+       body: stage2Response.body,
+@@ -616,6 +641,9 @@
+       transportError: stage2Response.transportError,
+     }, credential);
+     timings = { ...timings, stage2Ms: stage2Response.durationMs };
++    if (stage2Response.transportError === "ENTIRE_CALL_CAP_EXCEEDED") {
++      fail("stage2", "ENTIRE_CALL_CAP_EXCEEDED");
++    }
+     if (stage2Response.transportError === "TIMEOUT") fail("stage2", "TIMEOUT");
+     if (stage2Response.transportError) fail("stage2", "TRANSPORT_FAILURE");
+     if (stage2Response.status !== 200) fail("stage2", "HTTP_NON_200");

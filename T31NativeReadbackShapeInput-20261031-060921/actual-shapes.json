@@ -1,0 +1,112 @@
+{
+  "task": {
+    "v": 1,
+    "task_id": "T-20261031055533-0099",
+    "case_id": "872b161f-27d4-40bf-879e-ee457ef6454b",
+    "kind": "agent",
+    "session_id": "session-73fb6eee-a824-4756-9025-9819e49251c5",
+    "entry": null,
+    "skill": null,
+    "route": "local",
+    "step": null,
+    "inputs": [],
+    "params": {
+      "thinking": "中",
+      "window": "64K",
+      "max_tokens": 16384,
+      "temperature": 0.6
+    },
+    "budget": {
+      "model_calls": 32,
+      "tool_calls": 48,
+      "minutes": 45
+    },
+    "created_at": "2026-10-31T05:55:33+08:00",
+    "state": "finished",
+    "request_id": "afbc784d-4238-419f-a10a-756fe8be0418",
+    "request_scope": {
+      "request_id": "afbc784d-4238-419f-a10a-756fe8be0418",
+      "case_id": "872b161f-27d4-40bf-879e-ee457ef6454b",
+      "kind": "materials",
+      "materials": [
+        {
+          "material_id": "M0001",
+          "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+        },
+        {
+          "material_id": "M0002",
+          "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+        }
+      ]
+    }
+  },
+  "header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-73fb6eee-a824-4756-9025-9819e49251c5",
+    "createdAt": 1793396788032,
+    "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059\\runs\\T34-private-projection-observer-20261031-054545\\case",
+    "isSeeded": false,
+    "delegationDepth": 0,
+    "agentPreset": "lawbench"
+  },
+  "actual_user_message": {
+    "type": "user/message",
+    "seq": 6,
+    "time": 1793397334194,
+    "data": {
+      "content": [
+        {
+          "type": "text",
+          "text": "仅验证当前所选两份合成材料的请求范围，不生成文书。"
+        }
+      ],
+      "source": {
+        "kind": "user",
+        "rpcId": "afbc784d-4238-419f-a10a-756fe8be0418",
+        "clientTimeZone": "Asia/Taipei",
+        "deliveryRestriction": "next-turn-only"
+      },
+      "role": "user",
+      "id": "27a6be6d-5331-4d12-ad5d-a795554007d7"
+    },
+    "surfaceOp": "append"
+  },
+  "actual_context_message": {
+    "type": "user/message",
+    "seq": 5,
+    "time": 1793397334194,
+    "data": {
+      "id": "8254a49f-d217-472a-b5c9-13d29567066b",
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "## 案件卡片（L0）\n\n# 本次请求材料范围\n\n本次提问按固定材料范围执行。案件卡片全文及无材料级版本证明的 wiki 内容未注入；\n以下只列本次请求固定的材料。\n\n## 材料清单\n- scope-a（已解析）\n- scope-b（已解析）\n\n\n## 任务输入（L1）\n\n本次提问按固定材料范围执行；前序成果没有可核验的同范围材料来源，因此未注入正文，也不能用 case_read_input 绕过范围。\n\n\n## 能力边界\n\n对话里能做的只有你手上这些工具做得到的事（读案件材料、检索、计算刑期、保存草稿和归档方案等）。律师要求文件改名或批量改名、把图片拼合或合并成 PDF、转换文件格式、移动删除文件、处理案件以外的文件时，用一句话说明对话里做不了，并指路：多张图片合并成 PDF 用首页\"工具\"里\"格式互转\"的\"多张图片 → 一个 PDF\"（选文件夹，按子文件夹各出一个、以子文件夹名命名）；图片转 PDF（每张图片各出一个 PDF）、Word / PDF / Markdown 互转、xls 转 xlsx 也用\"格式互转\"；长截图切成几段用首页\"工具\"里的\"长截图切分\"；改名、移动文件请在资源管理器或其他软件里做（Mac 版没有这两个小工具）。请求里同时要识别材料内容的（例如各文件夹里有没有合同、押金单、身份信息），告诉律师把这个文件夹拖进工作台建成案件后直接问，会读完逐个文件夹列出并带出处；合并和识别分开做，先合并后识别。不要用 case_save_archive_plan、case_save_draft 等工具变通凑出结果；说明完就结束本次回复，不反复尝试。"
+        }
+      ],
+      "source": {
+        "kind": "lawbench-context",
+        "form": "snapshot",
+        "sections": [
+          {
+            "name": "案件卡片（L0）",
+            "text": "# 本次请求材料范围\n\n本次提问按固定材料范围执行。案件卡片全文及无材料级版本证明的 wiki 内容未注入；\n以下只列本次请求固定的材料。\n\n## 材料清单\n- scope-a（已解析）\n- scope-b（已解析）\n"
+          },
+          {
+            "name": "任务输入（L1）",
+            "text": "本次提问按固定材料范围执行；前序成果没有可核验的同范围材料来源，因此未注入正文，也不能用 case_read_input 绕过范围。\n"
+          },
+          {
+            "name": "能力边界",
+            "text": "对话里能做的只有你手上这些工具做得到的事（读案件材料、检索、计算刑期、保存草稿和归档方案等）。律师要求文件改名或批量改名、把图片拼合或合并成 PDF、转换文件格式、移动删除文件、处理案件以外的文件时，用一句话说明对话里做不了，并指路：多张图片合并成 PDF 用首页\"工具\"里\"格式互转\"的\"多张图片 → 一个 PDF\"（选文件夹，按子文件夹各出一个、以子文件夹名命名）；图片转 PDF（每张图片各出一个 PDF）、Word / PDF / Markdown 互转、xls 转 xlsx 也用\"格式互转\"；长截图切成几段用首页\"工具\"里的\"长截图切分\"；改名、移动文件请在资源管理器或其他软件里做（Mac 版没有这两个小工具）。请求里同时要识别材料内容的（例如各文件夹里有没有合同、押金单、身份信息），告诉律师把这个文件夹拖进工作台建成案件后直接问，会读完逐个文件夹列出并带出处；合并和识别分开做，先合并后识别。不要用 case_save_archive_plan、case_save_draft 等工具变通凑出结果；说明完就结束本次回复，不反复尝试。"
+          }
+        ]
+      }
+    },
+    "surfaceOp": "append"
+  },
+  "physical_rows": 17,
+  "events": 16,
+  "notes": "Actual original records, not invented history; Native message fields live in event.data; no context/l0 event and no material SHA in L0 text. Task request_scope carries actual SHA."
+}

@@ -1,0 +1,606 @@
+{
+  "entry": [
+    {
+      "old_start": 1,
+      "old_end": 2,
+      "new_start": 1,
+      "new_end": 2,
+      "old": " * Finite T18 native tender-review consumer.\n",
+      "new": " * Finite T18 native bid-drafting consumer.\n"
+    },
+    {
+      "old_start": 3,
+      "old_end": 4,
+      "new_start": 3,
+      "new_end": 4,
+      "old": " * One fresh private case receives three approved synthetic tender materials.\n",
+      "new": " * One fresh private case receives three approved synthetic bid-drafting materials.\n"
+    },
+    {
+      "old_start": 5,
+      "old_end": 6,
+      "new_start": 5,
+      "new_end": 6,
+      "old": " * LegalAgent, AgentLoop, and one real 6000D turn form one tender-review\n",
+      "new": " * LegalAgent, AgentLoop, and one real 6000D turn form one bid-drafting\n"
+    },
+    {
+      "old_start": 38,
+      "old_end": 39,
+      "new_start": 38,
+      "new_end": 39,
+      "old": "const B_SERVICE_SCRIPT = join(EVIDENCE_DIR, 'b-service-tender-review.py')\n",
+      "new": "const B_SERVICE_SCRIPT = join(EVIDENCE_DIR, 'b-service-bid-drafting.py')\n"
+    },
+    {
+      "old_start": 40,
+      "old_end": 44,
+      "new_start": 40,
+      "new_end": 44,
+      "old": "const FIXED_INPUTS_FORMAT = 'lawbench-t18-tender-review-native-inputs-v1'\nconst TASK_NAME = 'A-T18-tender-native-20261029-070224'\nconst REVIEW_ID = 'T18TenderReviewNative-20261029-070224'\nconst SKILL = 'tender-review'\n",
+      "new": "const FIXED_INPUTS_FORMAT = 'lawbench-t18-bid-drafting-native-inputs-v1'\nconst TASK_NAME = 'A-T18-bid-native-20261029-075529'\nconst REVIEW_ID = 'T18BidDraftingNative-20261029-075529'\nconst SKILL = 'bid-drafting'\n"
+    },
+    {
+      "old_start": 54,
+      "old_end": 55,
+      "new_start": 54,
+      "new_end": 55,
+      "old": "const TASK_MAX_TOKENS = 32_768\n",
+      "new": "const TASK_MAX_TOKENS = 49_152\n"
+    },
+    {
+      "old_start": 60,
+      "old_end": 62,
+      "new_start": 60,
+      "new_end": 62,
+      "old": "  'D:\\\\Lawbeach\\\\lawbench-coord\\\\T18TenderNativeInput-20261029-070224\\\\approved-inputs.json'\nconst APPROVED_INPUTS_BYTES = 2_184\n",
+      "new": "  'D:\\\\Lawbeach\\\\lawbench-coord\\\\T18BidNativeInput-20261029-075529\\\\approved-inputs.json'\nconst APPROVED_INPUTS_BYTES = 2_201\n"
+    },
+    {
+      "old_start": 63,
+      "old_end": 64,
+      "new_start": 63,
+      "new_end": 64,
+      "old": "  '0939aebc1e1d3c611cccb641261809eee6e0c1a3ffc16f27d0aef1c62e001e5d'\n",
+      "new": "  'ee2cf7c3a268206b54922b788cd5958a2aa481622c59f5a2433db787ecfc08ab'\n"
+    },
+    {
+      "old_start": 70,
+      "old_end": 71,
+      "new_start": 70,
+      "new_end": 71,
+      "old": "const TENDER_SAMPLE_DIR = join(\n",
+      "new": "const BID_SAMPLE_DIR = join(\n"
+    },
+    {
+      "old_start": 73,
+      "old_end": 74,
+      "new_start": 73,
+      "new_end": 74,
+      "old": "  'tender-review',\n",
+      "new": "  'bid-drafting',\n"
+    },
+    {
+      "old_start": 75,
+      "old_end": 76,
+      "new_start": 75,
+      "new_end": 76,
+      "old": "  '样本01-智慧法院投标',\n",
+      "new": "  '样本03-物业投标函偏离表',\n"
+    },
+    {
+      "old_start": 77,
+      "old_end": 80,
+      "new_start": 77,
+      "new_end": 80,
+      "old": "const TENDER_TASK_PATH = join(TENDER_SAMPLE_DIR, '_任务说明.md')\nconst TENDER_SKILL_PATH = join(B_ROOT, 'skills', 'tender-review', 'SKILL.md')\nconst TENDER_REFERENCE_NOTES_PATH = join(B_ROOT, 'skills', 'tender-review', 'tests', '要点.md')\n",
+      "new": "const BID_TASK_PATH = join(BID_SAMPLE_DIR, '_任务说明.md')\nconst BID_SKILL_PATH = join(B_ROOT, 'skills', 'bid-drafting', 'SKILL.md')\nconst BID_REFERENCE_NOTES_PATH = join(B_ROOT, 'skills', 'bid-drafting', 'tests', '要点.md')\n"
+    },
+    {
+      "old_start": 81,
+      "old_end": 84,
+      "new_start": 81,
+      "new_end": 84,
+      "old": "  '招标文件',\n  '补充通知',\n  '投标人情况',\n",
+      "new": "  '物业服务招标文件',\n  '采购需求',\n  '公司简介',\n"
+    },
+    {
+      "old_start": 85,
+      "old_end": 86,
+      "new_start": 85,
+      "new_end": 86,
+      "old": "const QUESTION_IDS = ['side', 'focus'] as const\n",
+      "new": "const QUESTION_IDS = ['bidder', 'parts'] as const\n"
+    },
+    {
+      "old_start": 88,
+      "old_end": 90,
+      "new_start": 88,
+      "new_end": 90,
+      "old": "  side: '我们代表原任务所述投标人。',\n  focus: '重点审查原任务所述投标人资格和合同条款。',\n",
+      "new": "  bidder: '我选择公司简介正文中的“虚构市某某物业服务有限公司”作为投标人全称；落款“虚构市某某物业管理有限公司”另请核对文件印章。',\n  parts: '只起草投标函和偏离表。',\n"
+    },
+    {
+      "old_start": 92,
+      "old_end": 94,
+      "new_start": 92,
+      "new_end": 94,
+      "old": "  side: false,\n  focus: false,\n",
+      "new": "  bidder: true,\n  parts: false,\n"
+    },
+    {
+      "old_start": 95,
+      "old_end": 95,
+      "new_start": 95,
+      "new_end": 99,
+      "old": "",
+      "new": "const ANSWER_CHOICE_PROVENANCE = 'SYNTHETIC_TEST_LAWYER_CHOICE' as const\nconst BIDDER_ANSWER_SELECTION = 'FIRST_FULL_NAME_FROM_COMPANY_DESCRIPTION' as const\nconst OTHER_BIDDER_NAME_FLAGGED_FOR_SEAL_VERIFICATION = true as const\nconst PUBLIC_PARTS = ['投标函', '偏离表'] as const\n"
+    },
+    {
+      "old_start": 308,
+      "old_end": 309,
+      "new_start": 312,
+      "new_end": 313,
+      "old": "  format: 'lawbench-t18-tender-review-native-report-v1'\n",
+      "new": "  format: 'lawbench-t18-bid-drafting-native-report-v1'\n"
+    },
+    {
+      "old_start": 335,
+      "old_end": 336,
+      "new_start": 339,
+      "new_end": 340,
+      "old": "    readonly maxTokens: 32_768\n",
+      "new": "    readonly maxTokens: 49_152\n"
+    },
+    {
+      "old_start": 400,
+      "old_end": 400,
+      "new_start": 404,
+      "new_end": 409,
+      "old": "",
+      "new": "    readonly answerChoiceProvenance: typeof ANSWER_CHOICE_PROVENANCE\n    readonly bidderAnswerSelection: typeof BIDDER_ANSWER_SELECTION\n    readonly otherBidderNameFlaggedForSealVerification:\n      typeof OTHER_BIDDER_NAME_FLAGGED_FOR_SEAL_VERIFICATION\n    readonly publicParts: readonly string[]\n"
+    },
+    {
+      "old_start": 479,
+      "old_end": 481,
+      "new_start": 488,
+      "new_end": 490,
+      "old": "    actualSingleTenderReviewConsumer: boolean\n    actualModelAuthoredTenderReview: boolean\n",
+      "new": "    actualSingleBidDraftingConsumer: boolean\n    actualModelAuthoredBidDrafting: boolean\n"
+    },
+    {
+      "old_start": 483,
+      "old_end": 484,
+      "new_start": 492,
+      "new_end": 493,
+      "old": "    manualTenderBusinessLegalReviewRequired: true\n",
+      "new": "    manualBidBusinessLegalReviewRequired: true\n"
+    },
+    {
+      "old_start": 617,
+      "old_end": 618,
+      "new_start": 626,
+      "new_end": 627,
+      "old": "      entry.role === 'tender-review-skill'\n",
+      "new": "      entry.role === 'bid-drafting-skill'\n"
+    },
+    {
+      "old_start": 734,
+      "old_end": 741,
+      "new_start": 743,
+      "new_end": 750,
+      "old": "    pathKey(manifest.canonicalTask.path) !== pathKey(TENDER_TASK_PATH)\n    || pathKey(manifest.skill.path) !== pathKey(TENDER_SKILL_PATH)\n    || pathKey(manifest.referenceNotes.path) !== pathKey(TENDER_REFERENCE_NOTES_PATH)\n    || manifest.materials.some(row => pathKey(dirname(row.path)) !== pathKey(TENDER_SAMPLE_DIR))\n    || manifest.dependencies.filter(row => row.role === 'tender-review-skill').length !== 1\n    || pathKey(manifest.dependencies.find(row => row.role === 'tender-review-skill')!.path)\n      !== pathKey(TENDER_SKILL_PATH)\n",
+      "new": "    pathKey(manifest.canonicalTask.path) !== pathKey(BID_TASK_PATH)\n    || pathKey(manifest.skill.path) !== pathKey(BID_SKILL_PATH)\n    || pathKey(manifest.referenceNotes.path) !== pathKey(BID_REFERENCE_NOTES_PATH)\n    || manifest.materials.some(row => pathKey(dirname(row.path)) !== pathKey(BID_SAMPLE_DIR))\n    || manifest.dependencies.filter(row => row.role === 'bid-drafting-skill').length !== 1\n    || pathKey(manifest.dependencies.find(row => row.role === 'bid-drafting-skill')!.path)\n      !== pathKey(BID_SKILL_PATH)\n"
+    },
+    {
+      "old_start": 742,
+      "old_end": 743,
+      "new_start": 751,
+      "new_end": 752,
+      "old": "    throw new Error('tender-review task, Skill, notes, or material source escaped its approved B lane paths')\n",
+      "new": "    throw new Error('bid-drafting task, Skill, notes, or material source escaped its approved B lane paths')\n"
+    },
+    {
+      "old_start": 2016,
+      "old_end": 2016,
+      "new_start": 2025,
+      "new_end": 2031,
+      "old": "",
+      "new": "  const hasOtherRequestedPartHeading = [\n    '实质性要求响应表',\n    '服务方案',\n    '技术方案',\n    '项目团队与业绩',\n  ].some(name => new RegExp(`(?:^|\\\\n)#{1,6}\\\\s*(?:[一二三四五六七八九十]+、)?${name}`, 'u').test(text))\n"
+    },
+    {
+      "old_start": 2017,
+      "old_end": 2030,
+      "new_start": 2032,
+      "new_end": 2039,
+      "old": "    hasTenderReviewHeading: text.includes('招标文件审查意见'),\n    hasBidderIdentity: text.includes('投标人'),\n    hasProjectOverview: text.includes('一、项目概况'),\n    hasTimeNodes: text.includes('二、关键时间节点'),\n    hasQualification: text.includes('三、投标人资格条件'),\n    hasSubstantiveRequirements: text.includes('四、实质性要求与否决投标情形'),\n    hasScoringRules: text.includes('五、评分办法要点'),\n    hasContractRisk: text.includes('六、合同条款风险'),\n    hasIssues: text.includes('七、问题与建议'),\n    hasPreparationChecklist: text.includes('八、投标准备清单'),\n    citesTenderSource: citations.some(row => row.name === '招标文件'),\n    citesSupplementSource: citations.some(row => row.name === '补充通知'),\n    citesBidderSource: citations.some(row => row.name === '投标人情况'),\n",
+      "new": "    hasBidDraftingHeading: /(?:^|\\n)# 投标文件/u.test(text),\n    hasBidLetter: text.includes('投标函'),\n    hasDeviationTable: text.includes('偏离表'),\n    onlyRequestedPublicParts: !hasOtherRequestedPartHeading,\n    citesTenderSource: citations.some(row => row.name === '物业服务招标文件'),\n    citesRequirementsSource: citations.some(row => row.name === '采购需求'),\n    citesCompanySource: citations.some(row => row.name === '公司简介'),\n"
+    },
+    {
+      "old_start": 2058,
+      "old_end": 2061,
+      "new_start": 2067,
+      "new_end": 2071,
+      "old": "    || prompt.includes('派生自 `tests')\n    || !prompt.includes('我们代理某某虚构信息技术有限公司')\n    || !prompt.includes('重点看投标人资格和合同条款')\n",
+      "new": "    || prompt.includes('本样本没有上游审查意见')\n    || !prompt.includes('起草这个学校物业项目的投标函和偏离表')\n    || !prompt.includes('驻场人员最多只能安排8个人')\n    || !prompt.includes('保洁设备是租的，不是自己的')\n"
+    },
+    {
+      "old_start": 2067,
+      "old_end": 2068,
+      "new_start": 2077,
+      "new_end": 2078,
+      "old": "async function runNativeTenderReview(): Promise<void> {\n",
+      "new": "async function runNativeBidDrafting(): Promise<void> {\n"
+    },
+    {
+      "old_start": 2069,
+      "old_end": 2070,
+      "new_start": 2079,
+      "new_end": 2080,
+      "old": "    throw new Error('usage: native-tender-review.mts --credential-stdin')\n",
+      "new": "    throw new Error('usage: native-bid-drafting.mts --credential-stdin')\n"
+    },
+    {
+      "old_start": 2113,
+      "old_end": 2114,
+      "new_start": 2123,
+      "new_end": 2124,
+      "old": "    format: 'lawbench-t18-tender-review-native-report-v1',\n",
+      "new": "    format: 'lawbench-t18-bid-drafting-native-report-v1',\n"
+    },
+    {
+      "old_start": 2177,
+      "old_end": 2179,
+      "new_start": 2187,
+      "new_end": 2189,
+      "old": "      actualSingleTenderReviewConsumer: false,\n      actualModelAuthoredTenderReview: false,\n",
+      "new": "      actualSingleBidDraftingConsumer: false,\n      actualModelAuthoredBidDrafting: false,\n"
+    },
+    {
+      "old_start": 2181,
+      "old_end": 2182,
+      "new_start": 2191,
+      "new_end": 2192,
+      "old": "      manualTenderBusinessLegalReviewRequired: true,\n",
+      "new": "      manualBidBusinessLegalReviewRequired: true,\n"
+    },
+    {
+      "old_start": 2481,
+      "old_end": 2482,
+      "new_start": 2491,
+      "new_end": 2492,
+      "old": "    const runtimeSkill = manifest.dependencies.find(entry => entry.role === 'tender-review-skill')\n",
+      "new": "    const runtimeSkill = manifest.dependencies.find(entry => entry.role === 'bid-drafting-skill')\n"
+    },
+    {
+      "old_start": 2487,
+      "old_end": 2488,
+      "new_start": 2497,
+      "new_end": 2498,
+      "old": "      throw new Error('runtime tender-review Skill identity differs from the approved input')\n",
+      "new": "      throw new Error('runtime bid-drafting Skill identity differs from the approved input')\n"
+    },
+    {
+      "old_start": 2535,
+      "old_end": 2535,
+      "new_start": 2545,
+      "new_end": 2549,
+      "old": "",
+      "new": "      answerChoiceProvenance: ANSWER_CHOICE_PROVENANCE,\n      bidderAnswerSelection: BIDDER_ANSWER_SELECTION,\n      otherBidderNameFlaggedForSealVerification: OTHER_BIDDER_NAME_FLAGGED_FOR_SEAL_VERIFICATION,\n      publicParts: [...PUBLIC_PARTS],\n"
+    },
+    {
+      "old_start": 2550,
+      "old_end": 2551,
+      "new_start": 2564,
+      "new_end": 2565,
+      "old": "      if (candidates.length > 1) throw new Error('more than one completed tender-review task exists')\n",
+      "new": "      if (candidates.length > 1) throw new Error('more than one completed bid-drafting task exists')\n"
+    },
+    {
+      "old_start": 2555,
+      "old_end": 2556,
+      "new_start": 2569,
+      "new_end": 2570,
+      "old": "    if (completedTask === undefined) throw new Error('tender-review task produced no completed task')\n",
+      "new": "    if (completedTask === undefined) throw new Error('bid-drafting task produced no completed task')\n"
+    },
+    {
+      "old_start": 2562,
+      "old_end": 2563,
+      "new_start": 2576,
+      "new_end": 2577,
+      "old": "      throw new Error('tender-review task identity or terminal state is invalid')\n",
+      "new": "      throw new Error('bid-drafting task identity or terminal state is invalid')\n"
+    },
+    {
+      "old_start": 2623,
+      "old_end": 2624,
+      "new_start": 2637,
+      "new_end": 2638,
+      "old": "      throw new Error('tender-review coverage did not fully read all three current materials')\n",
+      "new": "      throw new Error('bid-drafting coverage did not fully read all three current materials')\n"
+    },
+    {
+      "old_start": 2629,
+      "old_end": 2630,
+      "new_start": 2643,
+      "new_end": 2644,
+      "old": "    if (readRows.length === 0) throw new Error('tender-review task has no actual material reads')\n",
+      "new": "    if (readRows.length === 0) throw new Error('bid-drafting task has no actual material reads')\n"
+    },
+    {
+      "old_start": 2728,
+      "old_end": 2729,
+      "new_start": 2742,
+      "new_end": 2743,
+      "old": "    const tenderRead = sourceTextByName.get('招标文件') ?? ''\n",
+      "new": "    const tenderRead = sourceTextByName.get('物业服务招标文件') ?? ''\n"
+    },
+    {
+      "old_start": 2730,
+      "old_end": 2732,
+      "new_start": 2744,
+      "new_end": 2746,
+      "old": "      !tenderRead.includes('虚构市虚构区智慧法院信息化建设项目')\n      || !tenderRead.includes('招标编号：XG-ZB-2026-0931')\n",
+      "new": "      !tenderRead.includes('虚构市某某中学（虚构）校园物业服务项目招标文件')\n      || !tenderRead.includes('招标编号：XG-WY-2026-0215')\n"
+    },
+    {
+      "old_start": 2735,
+      "old_end": 2736,
+      "new_start": 2749,
+      "new_end": 2750,
+      "old": "    const supplementRead = sourceTextByName.get('补充通知') ?? ''\n",
+      "new": "    const requirementsRead = sourceTextByName.get('采购需求') ?? ''\n"
+    },
+    {
+      "old_start": 2737,
+      "old_end": 2739,
+      "new_start": 2751,
+      "new_end": 2753,
+      "old": "      !supplementRead.includes('补充通知（第1号）')\n      || !supplementRead.includes('现对本项目招标文件作如下修改')\n",
+      "new": "      !requirementsRead.includes('附件：采购需求')\n      || !requirementsRead.includes('★二、驻场服务人员不少于10人')\n"
+    },
+    {
+      "old_start": 2740,
+      "old_end": 2741,
+      "new_start": 2754,
+      "new_end": 2755,
+      "old": "      throw new Error('actual supplement read does not contain its approved source identity')\n",
+      "new": "      throw new Error('actual requirements read does not contain its approved source identity')\n"
+    },
+    {
+      "old_start": 2742,
+      "old_end": 2743,
+      "new_start": 2756,
+      "new_end": 2757,
+      "old": "    const bidderRead = sourceTextByName.get('投标人情况') ?? ''\n",
+      "new": "    const companyRead = sourceTextByName.get('公司简介') ?? ''\n"
+    },
+    {
+      "old_start": 2744,
+      "old_end": 2745,
+      "new_start": 2758,
+      "new_end": 2761,
+      "old": "      !bidderRead.includes('某某虚构信息技术有限公司 投标人情况（公司提供，律师整理）')\n",
+      "new": "      !companyRead.includes('虚构物业 公司简介')\n      || !companyRead.includes('虚构市某某物业服务有限公司')\n      || !companyRead.includes('落款：虚构市某某物业管理有限公司（盖章）')\n"
+    },
+    {
+      "old_start": 2746,
+      "old_end": 2747,
+      "new_start": 2762,
+      "new_end": 2763,
+      "old": "      throw new Error('actual bidder read does not contain its approved source identity')\n",
+      "new": "      throw new Error('actual company read does not contain its approved source identity')\n"
+    },
+    {
+      "old_start": 2753,
+      "old_end": 2754,
+      "new_start": 2769,
+      "new_end": 2770,
+      "old": "      throw new Error('completed task has no final titled tender review')\n",
+      "new": "      throw new Error('completed task has no final titled bid draft')\n"
+    },
+    {
+      "old_start": 2757,
+      "old_end": 2758,
+      "new_start": 2773,
+      "new_end": 2774,
+      "old": "      throw new Error('completed task has no nonempty tender-review title')\n",
+      "new": "      throw new Error('completed task has no nonempty bid-drafting title')\n"
+    },
+    {
+      "old_start": 2759,
+      "old_end": 2761,
+      "new_start": 2775,
+      "new_end": 2780,
+      "old": "    if (!actualTitle.includes('招标文件审查意见')) {\n      throw new Error('final tender-review title does not follow the Skill')\n",
+      "new": "    if (\n      !/^投标文件（.+）$/u.test(actualTitle.trim())\n      || PUBLIC_PARTS.some(part => !actualTitle.includes(part))\n    ) {\n      throw new Error('final bid-drafting title does not follow the public parts')\n"
+    },
+    {
+      "old_start": 2775,
+      "old_end": 2776,
+      "new_start": 2794,
+      "new_end": 2795,
+      "old": "    if (draftText.trim().length === 0) throw new Error('saved tender review is empty')\n",
+      "new": "    if (draftText.trim().length === 0) throw new Error('saved bid draft is empty')\n"
+    },
+    {
+      "old_start": 2790,
+      "old_end": 2791,
+      "new_start": 2809,
+      "new_end": 2810,
+      "old": "      throw new Error('saved tender review is not a post-answer model-authored tool argument')\n",
+      "new": "      throw new Error('saved bid draft is not a post-answer model-authored tool argument')\n"
+    },
+    {
+      "old_start": 2812,
+      "old_end": 2813,
+      "new_start": 2831,
+      "new_end": 2832,
+      "old": "    if (citationRows.length === 0) throw new Error('saved tender review has no parsed citations')\n",
+      "new": "    if (citationRows.length === 0) throw new Error('saved bid draft has no parsed citations')\n"
+    },
+    {
+      "old_start": 2932,
+      "old_end": 2933,
+      "new_start": 2951,
+      "new_end": 2952,
+      "old": "      throw new Error('finite B tender-review service did not stop cleanly')\n",
+      "new": "      throw new Error('finite B bid-drafting service did not stop cleanly')\n"
+    },
+    {
+      "old_start": 2999,
+      "old_end": 3001,
+      "new_start": 3018,
+      "new_end": 3020,
+      "old": "    report.claims.actualSingleTenderReviewConsumer = true\n    report.claims.actualModelAuthoredTenderReview = true\n",
+      "new": "    report.claims.actualSingleBidDraftingConsumer = true\n    report.claims.actualModelAuthoredBidDrafting = true\n"
+    },
+    {
+      "old_start": 3161,
+      "old_end": 3162,
+      "new_start": 3180,
+      "new_end": 3181,
+      "old": "  await runNativeTenderReview()\n",
+      "new": "  await runNativeBidDrafting()\n"
+    }
+  ],
+  "service": [
+    {
+      "old_start": 1,
+      "old_end": 2,
+      "new_start": 1,
+      "new_end": 2,
+      "old": "\"\"\"Finite current-B HTTP entry for one T18 tender-review native scenario.\n",
+      "new": "\"\"\"Finite current-B HTTP entry for one T18 bid-drafting native scenario.\n"
+    },
+    {
+      "old_start": 5,
+      "old_end": 6,
+      "new_start": 5,
+      "new_end": 6,
+      "old": "opened, this process copies the three approved synthetic tender source\n",
+      "new": "opened, this process copies the three approved synthetic bid source\n"
+    },
+    {
+      "old_start": 8,
+      "old_end": 9,
+      "new_start": 8,
+      "new_end": 9,
+      "old": "approved task description, Skill and review notes are not case materials and\n",
+      "new": "approved task description, Skill and scoring notes are not case materials and\n"
+    },
+    {
+      "old_start": 42,
+      "old_end": 46,
+      "new_start": 42,
+      "new_end": 46,
+      "old": "RUNTIME_SKILL = B_SKILLS / \"tender-review\" / \"SKILL.md\"\nTENDER_SAMPLE_DIR = B_SKILLS / \"tender-review\" / \"tests\" / \"样本01-智慧法院投标\"\nTENDER_TASK = TENDER_SAMPLE_DIR / \"_任务说明.md\"\nTENDER_REFERENCE_NOTES = B_SKILLS / \"tender-review\" / \"tests\" / \"要点.md\"\n",
+      "new": "RUNTIME_SKILL = B_SKILLS / \"bid-drafting\" / \"SKILL.md\"\nBID_SAMPLE_DIR = B_SKILLS / \"bid-drafting\" / \"tests\" / \"样本03-物业投标函偏离表\"\nBID_TASK = BID_SAMPLE_DIR / \"_任务说明.md\"\nBID_REFERENCE_NOTES = B_SKILLS / \"bid-drafting\" / \"tests\" / \"要点.md\"\n"
+    },
+    {
+      "old_start": 54,
+      "old_end": 55,
+      "new_start": 54,
+      "new_end": 55,
+      "old": "    r\"D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\"\n",
+      "new": "    r\"D:\\Lawbeach\\lawbench-coord\\T18BidNativeInput-20261029-075529\"\n"
+    },
+    {
+      "old_start": 57,
+      "old_end": 59,
+      "new_start": 57,
+      "new_end": 59,
+      "old": "APPROVED_INPUTS_BYTES = 2_184\nAPPROVED_INPUTS_SHA256 = \"0939aebc1e1d3c611cccb641261809eee6e0c1a3ffc16f27d0aef1c62e001e5d\"\n",
+      "new": "APPROVED_INPUTS_BYTES = 2_201\nAPPROVED_INPUTS_SHA256 = \"ee2cf7c3a268206b54922b788cd5958a2aa481622c59f5a2433db787ecfc08ab\"\n"
+    },
+    {
+      "old_start": 77,
+      "old_end": 78,
+      "new_start": 77,
+      "new_end": 78,
+      "old": "    \"max_tokens\": 32_768,\n",
+      "new": "    \"max_tokens\": 49_152,\n"
+    },
+    {
+      "old_start": 80,
+      "old_end": 81,
+      "new_start": 80,
+      "new_end": 81,
+      "old": "TASK_SKILL = \"tender-review\"\n",
+      "new": "TASK_SKILL = \"bid-drafting\"\n"
+    },
+    {
+      "old_start": 82,
+      "old_end": 85,
+      "new_start": 82,
+      "new_end": 85,
+      "old": "    \"招标文件\",\n    \"补充通知\",\n    \"投标人情况\",\n",
+      "new": "    \"物业服务招标文件\",\n    \"采购需求\",\n    \"公司简介\",\n"
+    },
+    {
+      "old_start": 230,
+      "old_end": 231,
+      "new_start": 230,
+      "new_end": 231,
+      "old": "            or path.parent.resolve() != TENDER_SAMPLE_DIR.resolve()\n",
+      "new": "            or path.parent.resolve() != BID_SAMPLE_DIR.resolve()\n"
+    },
+    {
+      "old_start": 240,
+      "old_end": 241,
+      "new_start": 240,
+      "new_end": 241,
+      "old": "        task_path.resolve() != TENDER_TASK.resolve()\n",
+      "new": "        task_path.resolve() != BID_TASK.resolve()\n"
+    },
+    {
+      "old_start": 255,
+      "old_end": 256,
+      "new_start": 255,
+      "new_end": 256,
+      "old": "        raise RuntimeError(\"current B tender-review Skill identity changed\")\n",
+      "new": "        raise RuntimeError(\"current B bid-drafting Skill identity changed\")\n"
+    },
+    {
+      "old_start": 259,
+      "old_end": 260,
+      "new_start": 259,
+      "new_end": 260,
+      "old": "        notes_path.resolve() != TENDER_REFERENCE_NOTES.resolve()\n",
+      "new": "        notes_path.resolve() != BID_REFERENCE_NOTES.resolve()\n"
+    },
+    {
+      "old_start": 384,
+      "old_end": 385,
+      "new_start": 384,
+      "new_end": 385,
+      "old": "    \"\"\"Allow only the exact fresh-case tender-review workflow.\"\"\"\n",
+      "new": "    \"\"\"Allow only the exact fresh-case bid-drafting workflow.\"\"\"\n"
+    },
+    {
+      "old_start": 1027,
+      "old_end": 1028,
+      "new_start": 1027,
+      "new_end": 1028,
+      "old": "            failure = failure or \"tender_review_route_count\"\n",
+      "new": "            failure = failure or \"bid_drafting_route_count\"\n"
+    },
+    {
+      "old_start": 1038,
+      "old_end": 1039,
+      "new_start": 1038,
+      "new_end": 1039,
+      "old": "            failure = failure or \"tender_review_protocol_incomplete\"\n",
+      "new": "            failure = failure or \"bid_drafting_protocol_incomplete\"\n"
+    },
+    {
+      "old_start": 1103,
+      "old_end": 1104,
+      "new_start": 1103,
+      "new_end": 1104,
+      "old": "            \"usage: b-service-tender-review.py --root <evidence/run-id>\",\n",
+      "new": "            \"usage: b-service-bid-drafting.py --root <evidence/run-id>\",\n"
+    }
+  ]
+}

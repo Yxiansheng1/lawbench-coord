@@ -1,0 +1,23 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-typed-reference-schema-v6-root-driver-draft-current.json
+SHA 9475ddb653785fa37d5cb65f7726a351d1ae6e2b4a462b8eb501109df15e7029
+EXPLICITFOCUSEDLINES None; unchangedfunctions outside exactinverse/oldclosedproof, doNOTclaimfullconsumerreview
+0001 {
+0002   "status": "DRAFT_NOT_EXECUTED_OR_ADMITTED",
+0003   "driver": {
+0004     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-typed-reference-schema-v6-saved-key-root-admin.py",
+0005     "bytes": 15714,
+0006     "sha256": "76147f3885244df35ef732a74161dd20a388d1eecce0bfcaecd92d283d6562a2",
+0007     "mtime_ns": "1793544556289448300"
+0008   },
+0009   "admitter": {
+0010     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-typed-reference-schema-v6-reviewed-runtime-root-admin.py",
+0011     "bytes": 3673,
+0012     "sha256": "e35b411e77274a540868bfb87684a61a46a76965ef8ca72807e41e8115eb20a6",
+0013     "mtime_ns": "1793544556289972800"
+0014   },
+0015   "inverse": "ONLYV6aliases/root/purpose/verdict; ALLlogic/PSliteral/8pins/max2/400remaining900/key/gates/cleanup/scanheld",
+0016   "no_runtime_or_Key": true,
+0017   "requires": "V6typedgraph/schemafulldelta+offline+currentindependentreview beforeanyadmission",
+0018   "frozen_guard_original_C_AMEND_retained": "outputs/T18-explicit-deadline-http-v5-root-review-adjudication-current.json",
+0019   "Packaging": "HOLD"
+0020 }

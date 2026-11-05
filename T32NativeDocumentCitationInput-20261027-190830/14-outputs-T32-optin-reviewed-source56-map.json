@@ -1,0 +1,392 @@
+[
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/ui/material-batch.ts",
+    "bytes": 18759,
+    "sha256": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796",
+    "before_sha": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/ui/index.tsx",
+    "bytes": 30047,
+    "sha256": "165bdbb32254a7be826d929cbd4861761cd82a82f2868c3eb5acd5994606edf0",
+    "before_sha": "165bdbb32254a7be826d929cbd4861761cd82a82f2868c3eb5acd5994606edf0",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/service.ts",
+    "bytes": 29198,
+    "sha256": "5d1cc54069a51353cb346071ce7c2ae1ca5e0f96e6b77ec27f92a0471e6d28f0",
+    "before_sha": "5d1cc54069a51353cb346071ce7c2ae1ca5e0f96e6b77ec27f92a0471e6d28f0",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/apply.ts",
+    "bytes": 30352,
+    "sha256": "089b52686cb492332e8cb11516c9b2b3513f4b5fe4686fc535373530715acc8c",
+    "before_sha": "089b52686cb492332e8cb11516c9b2b3513f4b5fe4686fc535373530715acc8c",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/core/agent-loop/src/inbox.ts",
+    "bytes": 9327,
+    "sha256": "70c07ea75ebcf18df353bbccf7c2aa3ecf6cb0d687b96e3520b675680c29f662",
+    "before_sha": "70c07ea75ebcf18df353bbccf7c2aa3ecf6cb0d687b96e3520b675680c29f662",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "bytes": 22822,
+    "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "before_sha": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\archived-session-gate.ts",
+    "bytes": 2426,
+    "sha256": "1445070c0a9da7ebe7e3032a24ab9fcc4a803973ac12d4adf4b872ea0f0d0e18",
+    "before_sha": "1445070c0a9da7ebe7e3032a24ab9fcc4a803973ac12d4adf4b872ea0f0d0e18",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\assistant-stream.ts",
+    "bytes": 3392,
+    "sha256": "ebe1cfa8156abdd1cc677cba8c8f08991120632d510554c05f0be772993e9272",
+    "before_sha": "ebe1cfa8156abdd1cc677cba8c8f08991120632d510554c05f0be772993e9272",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\catalog.ts",
+    "bytes": 4834,
+    "sha256": "0554b609a5b46b8209e06a4be7c645931a71aece267f53d7be241957eb2dcf6b",
+    "before_sha": "0554b609a5b46b8209e06a4be7c645931a71aece267f53d7be241957eb2dcf6b",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "bytes": 31548,
+    "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c",
+    "before_sha": "05e9913b3e28aac27b5561641a74fd55065fb2f2a8a1f19e42b4dba6840995ec",
+    "changed": true
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\control.ts",
+    "bytes": 3592,
+    "sha256": "1c68ae048ae911ac2e169b92b0e038ae0a3adc13a02c25ceb0b46536c5821b57",
+    "before_sha": "1c68ae048ae911ac2e169b92b0e038ae0a3adc13a02c25ceb0b46536c5821b57",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\file-references.ts",
+    "bytes": 1520,
+    "sha256": "870a790822334996b731d05901e4dc4b6a8ac6dec431b697b2c95db41739d91b",
+    "before_sha": "870a790822334996b731d05901e4dc4b6a8ac6dec431b697b2c95db41739d91b",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\history.ts",
+    "bytes": 16577,
+    "sha256": "20a2b002816817b04d7bae25e429034f79dbfa445ec2f7d90e4525a9c1652db8",
+    "before_sha": "20a2b002816817b04d7bae25e429034f79dbfa445ec2f7d90e4525a9c1652db8",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\index.ts",
+    "bytes": 22912,
+    "sha256": "476bd968693ed4f290f8bb7b7c3b30fffcc470730aaec21db9f29a62f6368b02",
+    "before_sha": "476bd968693ed4f290f8bb7b7c3b30fffcc470730aaec21db9f29a62f6368b02",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\list.ts",
+    "bytes": 13557,
+    "sha256": "d3590501fd305210a30c92a92d408db719852ca562079b31996ec11fde25d15a",
+    "before_sha": "d3590501fd305210a30c92a92d408db719852ca562079b31996ec11fde25d15a",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\media-references.ts",
+    "bytes": 5893,
+    "sha256": "1e50e7f3bb81875652821f7ad2ccaa4b9afbe8fb58cc582d44079a0fb229c6dd",
+    "before_sha": "1e50e7f3bb81875652821f7ad2ccaa4b9afbe8fb58cc582d44079a0fb229c6dd",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+    "bytes": 3041,
+    "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f",
+    "before_sha": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\remote-events.ts",
+    "bytes": 396,
+    "sha256": "c44915bb22ce3bb812932fa3901de01b69da03a82e9aac3f14d92a906e226fb5",
+    "before_sha": "c44915bb22ce3bb812932fa3901de01b69da03a82e9aac3f14d92a906e226fb5",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\skill-catalog.ts",
+    "bytes": 4415,
+    "sha256": "58ef2e2ae82b4a2440c6e09a93a21c19c3fa46e8cb42ac9933ade3ed643301d0",
+    "before_sha": "58ef2e2ae82b4a2440c6e09a93a21c19c3fa46e8cb42ac9933ade3ed643301d0",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\types.ts",
+    "bytes": 22724,
+    "sha256": "221f869b04c353e77271b95aa9a5b0b15299148710a112ba89f6c08ca1ea7a51",
+    "before_sha": "221f869b04c353e77271b95aa9a5b0b15299148710a112ba89f6c08ca1ea7a51",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\index.ts",
+    "bytes": 5311,
+    "sha256": "d90c6dcb93af854c6789240556e0f483be142e9bfadbf1b50eeb10bd7cf09c53",
+    "before_sha": "d90c6dcb93af854c6789240556e0f483be142e9bfadbf1b50eeb10bd7cf09c53",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\ordered-baseline.ts",
+    "bytes": 1694,
+    "sha256": "0a7903af3ccce78150fed0d82d1eeab1784da4b434ab8db4f89edb1805678066",
+    "before_sha": "0a7903af3ccce78150fed0d82d1eeab1784da4b434ab8db4f89edb1805678066",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\scope.ts",
+    "bytes": 2879,
+    "sha256": "b28c4b20cd640de8ee369aa5f60672c866d0ea6cce8190f849b7a62347f8649c",
+    "before_sha": "b28c4b20cd640de8ee369aa5f60672c866d0ea6cce8190f849b7a62347f8649c",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\session-wire-event.ts",
+    "bytes": 2007,
+    "sha256": "22dc43f3fc68a28b366dee96a9e3450bc083dfdc7301c6cc5b48ce2acf73f534",
+    "before_sha": "22dc43f3fc68a28b366dee96a9e3450bc083dfdc7301c6cc5b48ce2acf73f534",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\time-zone.ts",
+    "bytes": 514,
+    "sha256": "f050fc997ef97c8e2d6ebbc964933f30f6140978487bec993642016bc8724d6a",
+    "before_sha": "f050fc997ef97c8e2d6ebbc964933f30f6140978487bec993642016bc8724d6a",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\transport.ts",
+    "bytes": 8759,
+    "sha256": "a3c5886db9b10a357a2026278ed88884600fcdb1bac3b78e4ff9c2151cefd5ac",
+    "before_sha": "a3c5886db9b10a357a2026278ed88884600fcdb1bac3b78e4ff9c2151cefd5ac",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\events.ts",
+    "bytes": 7054,
+    "sha256": "64acca2457e9853a5a0159e13a335412ab622e55b88f4a0ab71eb6d9c8430d8d",
+    "before_sha": "64acca2457e9853a5a0159e13a335412ab622e55b88f4a0ab71eb6d9c8430d8d",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\session.ts",
+    "bytes": 7866,
+    "sha256": "a951a13b82257d37aee93b8f426dd70cd03d43b0f200e10e2cff675b05c8ece4",
+    "before_sha": "a951a13b82257d37aee93b8f426dd70cd03d43b0f200e10e2cff675b05c8ece4",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\sessions.ts",
+    "bytes": 7662,
+    "sha256": "082745c4204535e99dd7ce1111834df67e0f73b8cbd5ddeec41ca6dddfc2b6de",
+    "before_sha": "082745c4204535e99dd7ce1111834df67e0f73b8cbd5ddeec41ca6dddfc2b6de",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\contract\\snapshot.ts",
+    "bytes": 3803,
+    "sha256": "2bce8bea78abba375566c1231bb090a89b0407af4082912542869ba0a69e72ac",
+    "before_sha": "2bce8bea78abba375566c1231bb090a89b0407af4082912542869ba0a69e72ac",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\assistant-stream.ts",
+    "bytes": 8899,
+    "sha256": "6a5dd6365dc47f26e26cbb243af453c5ae441d08fe5133203e66a69ec15667fc",
+    "before_sha": "6a5dd6365dc47f26e26cbb243af453c5ae441d08fe5133203e66a69ec15667fc",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\history-records.ts",
+    "bytes": 1140,
+    "sha256": "e560d8aff073e46ea6936fcf4048b6785da0b986c0b085eba67a00a4cca86388",
+    "before_sha": "e560d8aff073e46ea6936fcf4048b6785da0b986c0b085eba67a00a4cca86388",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\lineage.ts",
+    "bytes": 3264,
+    "sha256": "8348b9fc3df11661ef43c16528a3f4a5c2afadb70d0bef83ddcb2a9af3216505",
+    "before_sha": "8348b9fc3df11661ef43c16528a3f4a5c2afadb70d0bef83ddcb2a9af3216505",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\manager.ts",
+    "bytes": 37023,
+    "sha256": "e7dfa21eff0234ffa458ade61dffd80e97aff11d6e5a735c9c1b22d838571802",
+    "before_sha": "e7dfa21eff0234ffa458ade61dffd80e97aff11d6e5a735c9c1b22d838571802",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\notifier.ts",
+    "bytes": 2848,
+    "sha256": "34a7984f65b30363dde994f60b0b3a775955d4596dc60ab53cc6a043355be74e",
+    "before_sha": "34a7984f65b30363dde994f60b0b3a775955d4596dc60ab53cc6a043355be74e",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\projection-store.ts",
+    "bytes": 10497,
+    "sha256": "4090c0656cde02645c3b495fc4a83cc56cb5456a0a70f3fbd99feb99cd65ff47",
+    "before_sha": "4090c0656cde02645c3b495fc4a83cc56cb5456a0a70f3fbd99feb99cd65ff47",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\remotes.ts",
+    "bytes": 1685,
+    "sha256": "0ea0f978301dbf926246668e46600bd576adb3ed093d55c271a4de1cac2149ba",
+    "before_sha": "0ea0f978301dbf926246668e46600bd576adb3ed093d55c271a4de1cac2149ba",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\service.ts",
+    "bytes": 27778,
+    "sha256": "9c6e0730aa36ee821cf2781894694d290990167c7246816b86cb309876518d71",
+    "before_sha": "9c6e0730aa36ee821cf2781894694d290990167c7246816b86cb309876518d71",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+    "bytes": 40534,
+    "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73",
+    "before_sha": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-native-claimed-request-idempotency.patch",
+    "bytes": 16540,
+    "sha256": "d3527b61841a596c66293f3ecbd42973ef4b74045eaa34779d3de11afbc7f862",
+    "before_sha": "d3527b61841a596c66293f3ecbd42973ef4b74045eaa34779d3de11afbc7f862",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-failure-cleanup.patch",
+    "bytes": 13035,
+    "sha256": "28f174027664a20da6fa07370460ab17b3c94032426d4dd5d88ff1f0311cb169",
+    "before_sha": "28f174027664a20da6fa07370460ab17b3c94032426d4dd5d88ff1f0311cb169",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-ordering.patch",
+    "bytes": 1545,
+    "sha256": "9187cbe653f8b86488c9a29c4813de391a71022f053337b25de2db7276bd0012",
+    "before_sha": "9187cbe653f8b86488c9a29c4813de391a71022f053337b25de2db7276bd0012",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope-test.patch",
+    "bytes": 5095,
+    "sha256": "6a9f60203b41fe454d881cc05704b4e57d9009da49e595d6e194cbc3f6c52da1",
+    "before_sha": "6a9f60203b41fe454d881cc05704b4e57d9009da49e595d6e194cbc3f6c52da1",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope.patch",
+    "bytes": 8054,
+    "sha256": "e76c9c520b567d7aef47a7ee16fcff403a35d5913e52219375126bbeef09991a",
+    "before_sha": "e76c9c520b567d7aef47a7ee16fcff403a35d5913e52219375126bbeef09991a",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-session-control-stream-type-arguments.patch",
+    "bytes": 801,
+    "sha256": "5a146f11b743f69c8b382b1d28420b55a13ba06e84f1fe6bec4d3f5f1324ce73",
+    "before_sha": "5a146f11b743f69c8b382b1d28420b55a13ba06e84f1fe6bec4d3f5f1324ce73",
+    "changed": false
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-submission-admission-revalidation.patch",
+    "bytes": 3561,
+    "sha256": "6ba11ae09a9e7adec05831479a84541adac0e72297f1729415718d95ecfcdf1d",
+    "before_sha": "6ba11ae09a9e7adec05831479a84541adac0e72297f1729415718d95ecfcdf1d",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-scoped-queued-steer.client.spec.ts",
+    "bytes": 18186,
+    "sha256": "fe96d6f18f65811d694bce8aa6e788f5fd3b84e2c247f5f9ea1dfd917ca2e426",
+    "before_sha": "fe96d6f18f65811d694bce8aa6e788f5fd3b84e2c247f5f9ea1dfd917ca2e426",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-material-admission.client.spec.ts",
+    "bytes": 22825,
+    "sha256": "1166b065c97ef634d7b0e2829927e148e56f3a3f851148fad92134205b45fc7b",
+    "before_sha": "1166b065c97ef634d7b0e2829927e148e56f3a3f851148fad92134205b45fc7b",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/vitest.t31-scoped-queued-steer.config.mjs",
+    "bytes": 1517,
+    "sha256": "e87fc04ac518eaa1ec2b8b79618c6fa9b883a6e438c81e0dffb5daae417e2584",
+    "before_sha": "e87fc04ac518eaa1ec2b8b79618c6fa9b883a6e438c81e0dffb5daae417e2584",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/vitest.t31-material-admission.config.mjs",
+    "bytes": 1510,
+    "sha256": "ed1c57bbb492e28caf43725896ba265905d126a16126dc8824eaea9be961cdb9",
+    "before_sha": "ed1c57bbb492e28caf43725896ba265905d126a16126dc8824eaea9be961cdb9",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/vitest.config.ts",
+    "bytes": 21057,
+    "sha256": "d8ccc373d1ab9d837664814794017794551257a630a100534aac8bae7f56314f",
+    "before_sha": "d8ccc373d1ab9d837664814794017794551257a630a100534aac8bae7f56314f",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-C/dsh-ext/tests/t31-submission-registry-admit.spec.tsx",
+    "bytes": 7354,
+    "sha256": "372bed5005791ecc948aa2c673ccd03eccec3b64cb9b36a74d532f7093a15fce",
+    "before_sha": "372bed5005791ecc948aa2c673ccd03eccec3b64cb9b36a74d532f7093a15fce",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-scoped-queue-policy.client.spec.ts",
+    "bytes": 17228,
+    "sha256": "0b702783ee6c46706a293a3aa2b64532263bc4aa9a41420230d1336d864d135c",
+    "before_sha": "0b702783ee6c46706a293a3aa2b64532263bc4aa9a41420230d1336d864d135c",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/tests/t31-submission-registry-admit.client.spec.ts",
+    "bytes": 7330,
+    "sha256": "1c60e586a7420d8663577f5b3c5315abcccdc456ff8a1a811b4cf304b42eb761",
+    "before_sha": "1c60e586a7420d8663577f5b3c5315abcccdc456ff8a1a811b4cf304b42eb761",
+    "changed": false
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-patches/P-29-scoped-queued-delivery-policy.patch",
+    "bytes": 20815,
+    "sha256": "50bddd4121541d7d51aec5a91379b02d4545726134f46a670e90100f38e0af1b",
+    "before_sha": "8d8564f7bc886ada6db7bdea87c7d3a42c48f7d351b97e7ee6364afc0bb71a19",
+    "changed": true
+  },
+  {
+    "bytes": 22800,
+    "sha256": "356b8bc5f6f5005584edc3efc7c784e4be362bb923505f997c0a69b5407f9aed",
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-native-disk-replay.client.spec.ts"
+  }
+]

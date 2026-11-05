@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\0-index.ts",
+    "bytes": 46809,
+    "sha256": "ce2493cb60e652195779394bff50819924ceeff64e5bcf63e859928eb2c87294"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\1-task-state.ts",
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\criminal-application-question-gate-20261029-150420.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\2-criminal-application-question-gate-20261029-150420.spec.ts",
+    "bytes": 17714,
+    "sha256": "e73983461b33dcb1e141cb5e34859f7baca6faced73b1001d5fde73c93e39540"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\tool-ask-user\\src\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\3-index.ts",
+    "bytes": 3702,
+    "sha256": "aa448c483d0e0de805079950c616e45d93b4c972b7a62345b4e4a8c4164bfecf"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\schema.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\4-schema.ts",
+    "bytes": 26148,
+    "sha256": "d54459d0ad535ff3375138d40f3b37b39c6994703f1ea6a331df9a97c7e3cd23"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\context.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\5-context.ts",
+    "bytes": 14224,
+    "sha256": "b86efb2feddb96b01d7c0a7d7adf8e7652fd31c8d2e3e2e5c48e3aba4ce0656f"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseQuestionGateInput-20261029-172117\\6-SKILL.md",
+    "bytes": 12859,
+    "sha256": "e49d280e4f09f2a2aeeb94bef8f188aca7ce84a773fab410703d59d59a4da04a"
+  }
+]

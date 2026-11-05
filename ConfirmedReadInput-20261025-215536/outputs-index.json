@@ -1,0 +1,20 @@
+{
+  "v": 1,
+  "outputs": [
+    {
+      "title": "T32SyntheticDraft",
+      "version": 1,
+      "files": [
+        {
+          "format": "md",
+          "path": "成果/T32SyntheticDraft-v1.md"
+        }
+      ],
+      "task_id": "T-20261025213908-4082",
+      "inputs": [],
+      "citation_passed": true,
+      "confirmed_at": "2026-10-25T21:39:08+08:00",
+      "draft": "工作区/任务/T-20261025213908-4082/草稿/T32SyntheticDraft-v1.md"
+    }
+  ]
+}

@@ -1,0 +1,498 @@
+--- original-TXT-server
++++ new-PDF-server
+@@ -1,21 +1,23 @@
+ #!/usr/bin/env python3
+-"""T32 native-document citation entry.
++"""T32 native-PDF citation entry.
+ 
+ The prepare phase creates one fresh private root. The serve phase reuses the
+ reviewed mixed-materials safety base, current-B product sources, and one exact
+ native ASGI bootstrap. That bootstrap opens the owned case, imports one
+-synthetic reference TXT, begins one legacy unscoped task, reads the TXT through
+-case_read_material, saves one deterministic citation through case_save_draft,
+-and ends the task as aborted with zero model calls.
++synthetic text-PDF reference, begins one legacy unscoped task, reads page 2
++through case_read_material, saves one deterministic page-2 citation through
++case_save_draft, and ends the task as aborted with zero model calls.
+ 
+ After bootstrap, TCP is read-only except for exact same-case case/open and the
+ exact GET /api/source request for the generated material, citation, and task.
++That response must contain actual page-2 text and an actual rendered PDF PNG.
+ The entry is not a GUI/Host/model/OCR/packaging acceptance.
+ """
+ from __future__ import annotations
+ 
+ import argparse
+ import asyncio
++import base64
+ import faulthandler
+ import hashlib
+ import hmac
+@@ -70,9 +72,19 @@
+ FIXTURE_SHA256 = (
+     "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad"
+ )
+-
+-RUN_NAME = re.compile(r"^T32-citation-[0-9]{8}-[0-9]{6}$")
+-PREPARED_FORMAT = "T32-native-document-citation-entry-prepared-v1"
++PDF_FIXTURE = pathlib.Path(
++    r"D:\Lawbeach\lawbench-A\tests\fixtures\criminal-01\起诉意见书.pdf"
++)
++PDF_FIXTURE_BYTES = 57132
++PDF_FIXTURE_SHA256 = (
++    "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191"
++)
++PDF_EXPECTED_PAGES = 5
++PDF_PAGE2_FRAGMENTS = ("经依法侦查查明", "126,500")
++PDF_FIRST_PAGE_MARKER = "虚构市公安局虚构区分局"
++
++RUN_NAME = re.compile(r"^T32-pdf-citation-[0-9]{8}-[0-9]{6}$")
++PREPARED_FORMAT = "T32-native-pdf-citation-entry-prepared-v1"
+ CASE_ID = re.compile(
+     r"^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+ )
+@@ -81,17 +93,17 @@
+ 
+ SESSION_ID = "11111111-1111-4111-8111-111111111111"
+ REF_ID = "R01"
+-SOURCE_FILE = "引用材料.txt"
+-MATERIAL_NAME = "引用材料"
+-SOURCE_LINE = "T32 合成引用原文，仅用于本地测试。"
+-SOURCE_TEXT = SOURCE_LINE + "\n"
+-CITATION = f"〔{MATERIAL_NAME} 第1行〕"
+-DRAFT_TITLE = "T32NativeCitation"
++SOURCE_FILE = "起诉意见书.pdf"
++MATERIAL_NAME = "起诉意见书"
++CITATION = f"〔{MATERIAL_NAME} 第2页〕"
++DRAFT_TITLE = "T32NativePdfCitation"
+ DRAFT_TEXT = (
+-    "# T32 native document citation\n\n"
++    "# T32 native PDF citation\n\n"
+     f"引用行：{CITATION}\n\n"
+     "控制行：普通文字，没有出处。\n"
+ )
++READ_START = 2
++READ_MAX_CHARS = 500
+ 
+ SERVERS = {
+     "llm_base_url": "http://127.0.0.1:65001/v1",
+@@ -337,7 +349,9 @@
+     identity = _file_identity(path)
+     info = os.lstat(path)
+     if (
+-        getattr(info, "st_nlink", 0) != 1
++        not stat.S_ISREG(info.st_mode)
++        or _link(path)
++        or getattr(info, "st_nlink", 0) != 1
+         or getattr(info, "st_file_attributes", 0) & SPARSE
+         or identity["bytes"] != FIXTURE_BYTES
+         or identity["sha256"] != FIXTURE_SHA256
+@@ -349,26 +363,120 @@
+     }
+ 
+ 
+-def _source_file_identity(path: pathlib.Path) -> dict[str, Any]:
+-    _no_reparse(path)
++def _pdf_fixture_identity(path: pathlib.Path, code: str) -> dict[str, Any]:
++    identity = _file_identity(path)
+     info = os.lstat(path)
+-    expected = SOURCE_TEXT.encode("utf-8")
+     if (
+         not stat.S_ISREG(info.st_mode)
+         or _link(path)
+         or getattr(info, "st_nlink", 0) != 1
+         or getattr(info, "st_file_attributes", 0) & SPARSE
+-        or info.st_size != len(expected)
+-    ):
+-        raise Deny("citation_source_not_plain_small")
+-    with open(path, "rb") as stream:
+-        if stream.read() != expected:
+-            raise Deny("citation_source_bytes")
++        or identity["bytes"] != PDF_FIXTURE_BYTES
++        or identity["sha256"] != PDF_FIXTURE_SHA256
++    ):
++        raise Deny(code)
+     return {
+-        **_file_identity(path),
++        **identity,
+         "mtime_ns": getattr(info, "st_mtime_ns", int(info.st_mtime * 1_000_000_000)),
+-        "text": SOURCE_TEXT,
+     }
++
++
++def _source_file_identity(path: pathlib.Path) -> dict[str, Any]:
++    return _pdf_fixture_identity(path, "citation_pdf_source_identity")
++
++
++def _plain_text(path: pathlib.Path, limit: int = 1024 * 1024) -> str:
++    _no_reparse(path)
++    info = os.lstat(path)
++    if (
++        not stat.S_ISREG(info.st_mode)
++        or _link(path)
++        or getattr(info, "st_nlink", 0) != 1
++        or getattr(info, "st_file_attributes", 0) & SPARSE
++        or info.st_size > limit
++    ):
++        raise Deny("derived_pdf_text_not_plain_small")
++    try:
++        return path.read_text(encoding="utf-8")
++    except UnicodeDecodeError:
++        raise Deny("derived_pdf_text_encoding") from None
++
++
++def _directory_names(path: pathlib.Path, code: str) -> set[str]:
++    _no_reparse(path)
++    if not path.is_dir() or _link(path):
++        raise Deny(code)
++    with os.scandir(path) as entries:
++        return {entry.name for entry in entries}
++
++
++def _assert_root_inventory(root: pathlib.Path) -> None:
++    if _directory_names(root, "root_inventory") != {
++        "private",
++        "case",
++        "input",
++        "prepared.json",
++    }:
++        raise Deny("root_inventory")
++    if _directory_names(root / "private", "private_inventory") != {
++        "home",
++        "appdata",
++        "system",
++        "temp",
++    }:
++        raise Deny("private_inventory")
++    if _directory_names(root / "input", "input_inventory") != {"ready"}:
++        raise Deny("input_inventory")
++    if _directory_names(root / "input" / "ready", "ready_inventory") != {
++        FIXTURE.name,
++        PDF_FIXTURE.name,
++    }:
++        raise Deny("ready_inventory")
++    if _directory_names(root / "case", "case_empty_inventory"):
++        raise Deny("case_not_empty")
++
++
++def _pdf_page_text(path: pathlib.Path) -> dict[int, str]:
++    text = _plain_text(path)
++    matches = list(re.finditer(r"^【第([0-9]+)页】$", text, re.M))
++    numbers = [int(match.group(1)) for match in matches]
++    if numbers != list(range(1, PDF_EXPECTED_PAGES + 1)):
++        raise Deny("derived_pdf_page_markers")
++    pages: dict[int, str] = {}
++    for index, match in enumerate(matches):
++        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
++        pages[numbers[index]] = text[match.end():end].strip()
++    if any(not page for page in pages.values()):
++        raise Deny("derived_pdf_empty_page")
++    if any(fragment not in pages[2] for fragment in PDF_PAGE2_FRAGMENTS):
++        raise Deny("derived_pdf_page2_fragments")
++    if PDF_FIRST_PAGE_MARKER in pages[2]:
++        raise Deny("derived_pdf_page2_has_first_page_heading")
++    return pages
++
++
++def _png_identity(value: Any) -> dict[str, int]:
++    if not isinstance(value, str) or not value:
++        raise Deny("source_page_png_missing")
++    if len(value) > ((MAX_CAPTURE + 2) // 3) * 4 + 4:
++        raise Deny("source_page_png_too_large")
++    try:
++        raw = base64.b64decode(value, validate=True)
++    except (ValueError, TypeError):
++        raise Deny("source_page_png_base64") from None
++    if base64.b64encode(raw).decode("ascii") != value:
++        raise Deny("source_page_png_base64")
++    if len(raw) < 33 or raw[:8] != b"\x89PNG\r\n\x1a\n":
++        raise Deny("source_page_png_magic")
++    if raw[8:16] != b"\x00\x00\x00\rIHDR":
++        raise Deny("source_page_png_ihdr")
++    width = int.from_bytes(raw[16:20], "big")
++    height = int.from_bytes(raw[20:24], "big")
++    if width <= 0 or height <= 0 or (width == 1 and height == 1):
++        raise Deny("source_page_png_dimensions")
++    if max(width, height) > 2480:
++        raise Deny("source_page_png_dimensions")
++    return {"bytes": len(raw), "width": width, "height": height}
+ 
+ 
+ def _prepare(raw_root: str) -> pathlib.Path:
+@@ -389,12 +497,15 @@
+     fixture_copy = layout["ready"] / FIXTURE.name
+     with open(FIXTURE, "rb") as source, open(fixture_copy, "xb") as destination:
+         shutil.copyfileobj(source, destination, length=1 << 20)
++    _pdf_fixture_identity(PDF_FIXTURE, "pdf_fixture_identity")
+     source_file = layout["ready"] / SOURCE_FILE
+-    with open(source_file, "xb") as stream:
+-        stream.write(SOURCE_TEXT.encode("utf-8"))
++    with open(PDF_FIXTURE, "rb") as source, open(source_file, "xb") as destination:
++        shutil.copyfileobj(source, destination, length=1 << 20)
+ 
+     fixture_source = _fixture_identity(FIXTURE)
+     fixture_copy_identity = _fixture_identity(fixture_copy)
++    pdf_source = _pdf_fixture_identity(PDF_FIXTURE, "pdf_fixture_identity")
++    pdf_copy = _pdf_fixture_identity(source_file, "pdf_copy_identity")
+     citation_source = _source_file_identity(source_file)
+     source = _source_identity()
+     safety_base = _file_identity(SAFETY_BASE)
+@@ -431,7 +542,14 @@
+         "initial_case_empty": True,
+         "fixture_source": fixture_source,
+         "fixture_copy": fixture_copy_identity,
++        "pdf_source": pdf_source,
++        "pdf_copy": pdf_copy,
+         "citation_source": citation_source,
++        "input_ready": {
++            "names": [FIXTURE.name, PDF_FIXTURE.name],
++            "jpeg_control_imported": False,
++            "pdf_reference_import_only": True,
++        },
+         "settings": {
+             **_file_identity(layout["settings"]),
+             "fixed_servers": dict(SERVERS),
+@@ -451,11 +569,13 @@
+         "citation": {
+             "text": CITATION,
+             "material_name": MATERIAL_NAME,
+-            "unit": "line",
+-            "from": 1,
++            "unit": "page",
++            "from": READ_START,
+         },
++        "read": {"start": READ_START, "max_chars": READ_MAX_CHARS},
+     }
+     _write_json(layout["prepared"], manifest)
++    _assert_root_inventory(root)
+     return layout["prepared"]
+ 
+ 
+@@ -498,6 +618,24 @@
+         or manifest.get("safety_base", {}).get("bytes") != SAFETY_BASE_BYTES
+     ):
+         raise Deny("prepared_safety_base")
++    if (
++        manifest.get("citation")
++        != {
++            "text": CITATION,
++            "material_name": MATERIAL_NAME,
++            "unit": "page",
++            "from": READ_START,
++        }
++        or manifest.get("read")
++        != {"start": READ_START, "max_chars": READ_MAX_CHARS}
++        or manifest.get("input_ready")
++        != {
++            "names": [FIXTURE.name, PDF_FIXTURE.name],
++            "jpeg_control_imported": False,
++            "pdf_reference_import_only": True,
++        }
++    ):
++        raise Deny("prepared_pdf_citation")
+ 
+     path_map = manifest.get("paths")
+     if not isinstance(path_map, dict) or set(path_map) != {
+@@ -534,6 +672,18 @@
+     if _fixture_identity(layout["ready"] / FIXTURE.name) != manifest["fixture_copy"]:
+         raise Deny("fixture_copy_changed")
+     if (
++        _pdf_fixture_identity(PDF_FIXTURE, "pdf_fixture_identity")
++        != manifest["pdf_source"]
++    ):
++        raise Deny("pdf_source_changed")
++    if (
++        _pdf_fixture_identity(
++            layout["ready"] / SOURCE_FILE, "pdf_copy_identity"
++        )
++        != manifest["pdf_copy"]
++    ):
++        raise Deny("pdf_copy_changed")
++    if (
+         _source_file_identity(layout["ready"] / SOURCE_FILE)
+         != manifest["citation_source"]
+     ):
+@@ -545,6 +695,7 @@
+         pathlib.Path(__file__).resolve()
+     ):
+         raise Deny("entry_source_identity")
++    _assert_root_inventory(root)
+     if any(os.path.lexists(root / name) for name in RUNTIME_ARTIFACTS):
+         raise Deny("runtime_artifact_exists")
+     return manifest, layout, source, prepared_sha256
+@@ -629,16 +780,34 @@
+         material.get("material_id") == material_id
+         and MATERIAL_ID.fullmatch(material_id) is not None
+         and material.get("name") == MATERIAL_NAME
+-        and material.get("type") == "txt"
++        and material.get("type") == "pdf"
+         and material.get("status") == "parsed"
+-        and material.get("unit") == "line"
+-        and material.get("unit_count") == 1
++        and material.get("unit") == "page"
++        and material.get("unit_count") == PDF_EXPECTED_PAGES
++        and material.get("pages_need_ocr") == []
++        and material.get("is_ocr") == "none"
+         and material.get("origin") == "ref"
+         and material.get("ref_id") == REF_ID
+-        and material.get("sha256")
+-        == hashlib.sha256(SOURCE_TEXT.encode("utf-8")).hexdigest()
++        and material.get("size") == PDF_FIXTURE_BYTES
++        and material.get("sha256") == PDF_FIXTURE_SHA256
++        and material.get("rel_path")
++        == f"工作区/引用/{REF_ID}/{SOURCE_FILE}"
++        and material.get("text_path")
++        == f"工作区/材料/文本/工作区/引用/{REF_ID}/{SOURCE_FILE}.md"
+     ):
+         raise Deny("native_material_identity")
++    text_parts = pathlib.PurePosixPath(str(material["text_path"])).parts
++    text_path = layout["case"].joinpath(*text_parts)
++    if not _within(layout["case"], text_path):
++        raise Deny("native_pdf_text_path")
++    derived_pages = _pdf_page_text(text_path)
++    if not (
++        not os.path.lexists(layout["case"] / SOURCE_FILE)
++        and not os.path.lexists(
++            layout["case"] / "工作区" / "引用" / REF_ID / SOURCE_FILE
++        )
++    ):
++        raise Deny("reference_pdf_copied_into_case")
+ 
+     refs = _checked_file(layout["case"] / "工作区" / "材料" / "引用.json")
+     if not (
+@@ -703,7 +872,7 @@
+         "material_id": material_id,
+         "material_version": material["sha256"],
+         "name": MATERIAL_NAME,
+-        "loc": {"unit": "line", "from": 1},
++        "loc": {"unit": "page", "from": READ_START},
+     }:
+         raise Deny("native_result_citation")
+     if not (
+@@ -716,19 +885,25 @@
+     if not (
+         read.get("material_id") == material_id
+         and read.get("material_version") == material["sha256"]
+-        and read.get("unit") == "line"
+-        and read.get("from") == 1
+-        and read.get("to") == 1
++        and read.get("unit") == "page"
++        and read.get("from") == READ_START
++        and read.get("to") == READ_START
+     ):
+         raise Deny("native_read_record")
+     coverage = result.get("coverage")
+-    if not (
+-        isinstance(coverage, dict)
+-        and coverage.get("fully_read") == [MATERIAL_NAME]
+-        and coverage.get("partially_read") == []
+-        and coverage.get("not_read") == []
+-        and coverage.get("unreadable") == []
+-    ):
++    if coverage != {
++        "total": PDF_EXPECTED_PAGES,
++        "fully_read": [],
++        "partially_read": [
++            {
++                "name": MATERIAL_NAME,
++                "read_units": 1,
++                "total_units": PDF_EXPECTED_PAGES,
++            }
++        ],
++        "not_read": [],
++        "unreadable": [],
++    }:
+         raise Deny("native_coverage")
+ 
+     draft_relative = result["drafts"][0]["path"]
+@@ -770,6 +945,11 @@
+         "citation": citation,
+         "citation_check": result["citation_check"],
+         "coverage": coverage,
++        "derived_text": {
++            "pages": len(derived_pages),
++            "page2_fragments": list(PDF_PAGE2_FRAGMENTS),
++            "page2_excludes_first_page_marker": True,
++        },
+         "draft": {
+             "relative_path": draft_relative,
+             "text": DRAFT_TEXT,
+@@ -883,16 +1063,28 @@
+                 {
+                     "task_id": task_id,
+                     "tool": "case_read_material",
+-                    "args": {"name": MATERIAL_NAME, "max_chars": 8000},
++                    "args": {
++                        "name": MATERIAL_NAME,
++                        "start": READ_START,
++                        "max_chars": READ_MAX_CHARS,
++                    },
+                 },
+             )
+             if not (
+                 read.get("material_id") == material_id
+                 and read.get("name") == MATERIAL_NAME
+-                and read.get("unit") == "line"
+-                and read.get("start") == 1
+-                and read.get("end") == 1
+-                and read.get("text") == f"【第1行】\n{SOURCE_LINE}"
++                and read.get("unit") == "page"
++                and read.get("start") == READ_START
++                and read.get("end") == READ_START
++                and isinstance(read.get("text"), str)
++                and read["text"].startswith(f"【第{READ_START}页】\n")
++                and all(
++                    fragment in read["text"] for fragment in PDF_PAGE2_FRAGMENTS
++                )
++                and PDF_FIRST_PAGE_MARKER not in read["text"]
++                and read.get("has_more") is True
++                and read.get("next_start") == READ_START + 1
++                and read.get("next_offset") is None
+             ):
+                 raise Deny("bootstrap_read_material")
+ 
+@@ -911,7 +1103,21 @@
+                 saved.get("path") == expected_relative
+                 and saved.get("version") == 1
+                 and saved.get("citation_check", {}).get("passed") is True
+-                and saved.get("not_fully_read") == []
++                and saved.get("not_fully_read") == [MATERIAL_NAME]
++                and saved.get("coverage")
++                == {
++                    "total": PDF_EXPECTED_PAGES,
++                    "fully_read": [],
++                    "partially_read": [
++                        {
++                            "name": MATERIAL_NAME,
++                            "read_units": 1,
++                            "total_units": PDF_EXPECTED_PAGES,
++                        }
++                    ],
++                    "not_read": [],
++                    "unreadable": [],
++                }
+             ):
+                 raise Deny("bootstrap_save_draft")
+ 
+@@ -953,7 +1159,7 @@
+     ):
+         raise Deny("bootstrap_saved_snapshot")
+     report = {
+-        "format": "T32-native-document-citation-bootstrap-v1",
++        "format": "T32-native-pdf-citation-bootstrap-v1",
+         "transport": "ASGI-inprocess-no-socket",
+         "started_at": started.isoformat(timespec="milliseconds"),
+         "finished_at": datetime.now()
+@@ -973,10 +1179,12 @@
+         "citation": snap["citation"],
+         "citation_check": snap["citation_check"],
+         "coverage": snap["coverage"],
++        "derived_text": snap["derived_text"],
+         "draft": snap["draft"],
+         "one_draft_only": True,
+         "model_calls_zero": True,
+         "ocr_started": False,
++        "pages_need_ocr": [],
+         "real_native_records_only": True,
+         "not_tcp_or_gui_proof": True,
+     }

@@ -1,0 +1,36 @@
+{
+  "private": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552245,
+      "sha256": "487335ef8c97c7171abf42b082835667af62c285bee9ba8320f5f08bbb6f1a17"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\manifest.json",
+      "bytes": 58195,
+      "sha256": "2ea2b754f9c9bc787e8e692fcce4daa73724c61d48748cbbbe568ea218c8f3c1"
+    }
+  ],
+  "source": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 46028,
+      "sha256": "5e53fbe9d1833c6533143a2e87d7c39a4f2cf1ce4ede4b421572664aab9fdcfb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 21264,
+      "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+    }
+  ]
+}

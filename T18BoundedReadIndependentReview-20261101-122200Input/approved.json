@@ -1,0 +1,31 @@
+{
+  "files": [
+    {
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\0-index.ts",
+      "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "sha256": "2d19b3b00caaaf417f6e513d002d082613b68a1be667affad93382a5a1ede48b"
+    },
+    {
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\1-materials.py",
+      "original": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\materials.py",
+      "sha256": "ec1d87ae113c54da64461e57b4c5908b3599cc8217e940cc8767e92af45bc415"
+    },
+    {
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\2-SKILL.md",
+      "original": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+      "sha256": "1288909be965ebf23df8d76cc975d244a61163427c1acf9062c62911af455af0"
+    },
+    {
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\3-defense-read-bound-20261101-114236.spec.ts",
+      "original": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-20261101-114236.spec.ts",
+      "sha256": "08e6e13fb7a8ecd264761882957e2549895a3e1fe08cd3b2705ab839933d3b59"
+    },
+    {
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\4-test_read_bound_20261101_114236.py",
+      "original": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+      "sha256": "ccd486bb5be5ae21c6a0821434be8e45b0fc5f95b238b314a25f4c920b6ce14b"
+    }
+  ],
+  "card": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadIndependentReview-20261101-122200Input\\card.json",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-C-T18BoundedReadIndependentReview-20261101-122200.md"
+}

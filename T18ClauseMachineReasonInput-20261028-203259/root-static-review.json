@@ -1,0 +1,7 @@
+{
+  "full37commands_source_test_formal_writefaces_reviewed": true,
+  "author_runtime": 0,
+  "actual_source_issue": "actualCrossBoundaryReason uses display-clause regex and classifies OTHER machine reason 域代码 as full OR, permitting hyperlink display and losing original exact fallback",
+  "not_runtime_tested": true,
+  "full_consumer_inverse_outside_function": true
+}

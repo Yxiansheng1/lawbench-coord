@@ -1,0 +1,41 @@
+{
+  "old_readonly_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940",
+  "new_source_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816",
+  "baseline": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\review-consumer.mjs",
+      "bytes": 28483,
+      "sha256": "e4284da357bcf7b9d37f61a7f31dc23e3be1e9d84d5470e484fae6b7e3035ee6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\offline-controls.mjs",
+      "bytes": 21443,
+      "sha256": "b7b7722ff8b745911b023fc1bc699e26ad5be257b31173cfe7e001c917bd6cac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\source-manifest.json",
+      "bytes": 523,
+      "sha256": "e4b04dff3ea2399cc195b03a0f4b5c1eb742b1e4d96d4f398f7783324dbf5d10"
+    }
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18VisibleUnitSemanticPilotV2-20261101-195816.md",
+  "actual_failure": {
+    "HTTP200": 1,
+    "response_model": "qwen38-27b",
+    "stage1_fact_count": 12,
+    "quotes_not_exact": 2,
+    "stage2_NOT_REACHED": true,
+    "independent_adverse_detail_omitted": true
+  },
+  "cause": "Model selected a subset and compressed verbatim quotes (deleted parenthetical; concatenated across display line markers). Do not guess case-specific facts; do not repair/fuzzily match model quotes. Need lossless visible-unit inventory and exhaustive unit-id accounting, not another wording-only extraction retry.",
+  "display_marker": {
+    "example": "【第14行】\n",
+    "format": "U+3010 U+7B2C positive decimal U+884C U+3011 newline"
+  },
+  "constraints": "Same original actual-read corpus only; no fullcase/history/SDK/product changes. This file/case failure labels are NEVER model input. New protocol source prep ONLY, NOT runtime admitted."
+}

@@ -1,0 +1,10 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-v6-typed-reference-structured-output-primary-reference-current.json
+SHA 047053bed4272d056b03a8e866dee6420ddf6ce51e68b3b011ad0dd9c11ae812
+EXPLICITFOCUSEDLINES None; unchangedfunctions outside exactinverse/oldclosedproof, doNOTclaimfullconsumerreview
+0001 {
+0002   "primary_url": "https://docs.vllm.ai/en/v0.29.0/features/structured_outputs/",
+0003   "matching_actual_server_fingerprint": "vllm-0.29.0-0b3ff9c0 observedV5HTTP200 envelope, notserverSSHinspection",
+0004   "supported_documented": "OpenAI-compatibleChatCompletions response_format.type=json_schema withjson_schema.name/schema; structuredfinaloutputs canworkwithseparatereasoning. No serverflag/restart/install request.",
+0005   "limits": "Currentserverbackend/schemafeaturecompatibilityNOTYETPROVEN. QwenCoderreasoning caveat exists; actualV5reasoningparsedseparately butnotproofconstraintwillapply. HTTP400/protocolfailuremuststop, no fallback/health/parameterlottery/serverchange.",
+0006   "not_semantic_guarantee": true
+0007 }

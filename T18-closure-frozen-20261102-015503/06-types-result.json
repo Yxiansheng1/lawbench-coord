@@ -1,0 +1,23 @@
+{
+  "mode": "types",
+  "exit_code": 0,
+  "elapsed_s": 5.014999999999418,
+  "identities": [
+    {
+      "pid": 42764,
+      "parent": 39244,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-11-01T17:47:28.8956660Z"
+    },
+    {
+      "pid": 29620,
+      "parent": 42764,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-11-01T17:47:28.9004890Z"
+    }
+  ],
+  "partial_NOT_PROVEN": [],
+  "OS_after": [],
+  "forced": false,
+  "error": null
+}

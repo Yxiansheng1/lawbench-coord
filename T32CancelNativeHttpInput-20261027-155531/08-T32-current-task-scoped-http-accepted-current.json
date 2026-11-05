@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-27T15:14:53.599477+08:00",
+  "verdict": "PASS_CURRENT_B346_TASK_CANCEL_REPAIR_NORMAL_SCOPE_HOST_CORECLIENT_NATIVE_HTTP1_14_NATIVE200_ONLY",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32CurrentTaskScopedHttp-root-20261027-150401",
+  "run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\ScopeHttpEntry-20261026-031523\\runs\\T33-host-20261027-150401",
+  "tests": 1,
+  "test_ms": 18155,
+  "root_elapsed_s": 28.0083438,
+  "native_elapsed_s": 22.387,
+  "native_HTTP200": 14,
+  "prepare_replay_attempts": 2,
+  "begin_replay_attempts": 2,
+  "request_id": "a3ab6cb9-d881-42b1-9bfd-b2149cb17654",
+  "task_id": "T-20261027150408-7e7a",
+  "task_status": "finished",
+  "result_status": "cancelled",
+  "model_calls": 0,
+  "tool_calls": 4,
+  "coverage_total": 1,
+  "drafts": 0,
+  "original_copy_count": 3,
+  "fixture_import_mode": "explicit_copy_legacy_fixture_not_UI_reference_batch",
+  "no_original_copy_claim": false,
+  "root_sealing_correction": "Initial admin assumption that frozen HTTP fixture was ref-mode was wrong; source line264 explicitly mode copy and all3nativecasecopies matched hashes. Admin assertion stopped before seal/dispatch; corrected metadata only, no runtime retry or product change. Reference no-copy proof belongs accepted GUI batch and native removed-ref9.",
+  "fixed_source_pins": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+  "fixed_source_pins_sha": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf",
+  "entry_sha": "f0bcbb7fc2745ea1957167b2d5a247b1866a53a2d147e77ebdaa24cbb65bab89",
+  "source347_before_after_current_exact": true,
+  "source56_and_legacy18_unchanged": true,
+  "scopeTXT3_and_JPEG_preserved": true,
+  "source56_changes": [],
+  "B346_changes": [],
+  "legacy18_changes": [],
+  "guard": {
+    "counts": {
+      "anyio_worker_start": 1
+    },
+    "unexpected_outbound_violations": 0,
+    "violations": []
+  },
+  "credentials": {
+    "external_getter_calls": 0,
+    "keyring_rejections": 0,
+    "local_getter_calls": 0
+  },
+  "lifecycle": {
+    "ocr_start_called": false,
+    "ocr_stop_called": false,
+    "ocr_threads": 0,
+    "product_lifespan_started": false,
+    "retainer_close_called": false,
+    "retainer_process_started": false
+  },
+  "protocol": {
+    "auth_denials": 0,
+    "begin_attempts": 2,
+    "begin_ok": 1,
+    "case_bound": true,
+    "case_id": "ae15a017-387c-4b5a-bdc3-912bf07a581e",
+    "case_open_attempts": 1,
+    "context_attempts": 1,
+    "context_ok": 1,
+    "failure_code": null,
+    "import_attempts": 1,
+    "material_count": 3,
+    "material_current_hash_verified": true,
+    "material_list_attempts": 1,
+    "material_list_ok": 1,
+    "phase": "done",
+    "policy_denials": {},
+    "protocol_complete": true,
+    "reads_identity_verified": true,
+    "request_id": "a3ab6cb9-d881-42b1-9bfd-b2149cb17654",
+    "scope_authority_verified": true,
+    "scope_in_material_id": "M0001",
+    "scope_in_sha256": "4d9e4eb195fb86d06512f7595739a7b08adb3e800994e1aafa8646c08d837140",
+    "scope_out_native_denial": true,
+    "scope_prepare_attempts": 2,
+    "scope_prepare_ok": 2,
+    "task_end_attempts": 1,
+    "task_end_ok": true,
+    "task_file_identity_verified": true,
+    "task_id": "T-20261027150408-7e7a",
+    "task_status": "cancelled",
+    "tool_attempts": 4,
+    "tool_ok": 4,
+    "tools": [
+      {
+        "business_ok": true,
+        "expected_native_denial": false,
+        "http_status": 200,
+        "native_error_code": null,
+        "ordinal": 1,
+        "positive_native": true,
+        "tool": "case_list_materials"
+      },
+      {
+        "business_ok": true,
+        "expected_native_denial": false,
+        "http_status": 200,
+        "native_error_code": null,
+        "ordinal": 2,
+        "positive_native": true,
+        "tool": "case_read_material"
+      },
+      {
+        "business_ok": true,
+        "expected_native_denial": false,
+        "http_status": 200,
+        "native_error_code": null,
+        "ordinal": 3,
+        "positive_native": true,
+        "tool": "case_search"
+      },
+      {
+        "business_ok": false,
+        "expected_native_denial": true,
+        "http_status": 200,
+        "native_error_code": "MATERIAL_NOT_FOUND",
+        "ordinal": 4,
+        "positive_native": false,
+        "tool": "case_read_material"
+      }
+    ]
+  },
+  "cleanup": {
+    "event_loop_closed": "recorded separately in loop-closed.json",
+    "listener_closed": true,
+    "net_client_closed": true,
+    "product_logs_closed": true,
+    "root_retained": true,
+    "server_should_exit": true,
+    "server_task_done": true
+  },
+  "loop_closed": true,
+  "OS_complete_exe_timezone_creation_gone": 7,
+  "OS": [
+    {
+      "creation": "2026-10-27T15:04:01.8713220+08:00",
+      "ticks": 639287102418713220,
+      "parent": 3600,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "pid": 13656
+    },
+    {
+      "creation": "2026-10-27T15:04:01.8838460+08:00",
+      "ticks": 639287102418838460,
+      "parent": 13656,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "pid": 46456
+    },
+    {
+      "creation": "2026-10-27T15:04:03.0590710+08:00",
+      "ticks": 639287102430590710,
+      "parent": 3600,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "pid": 12724
+    },
+    {
+      "creation": "2026-10-27T15:04:03.0726290+08:00",
+      "ticks": 639287102430726290,
+      "parent": 12724,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "pid": 4212
+    },
+    {
+      "creation": "2026-10-27T15:04:05.9808350+08:00",
+      "ticks": 639287102459808350,
+      "parent": 3600,
+      "exe": "E:\\node\\node.exe",
+      "pid": 53124
+    },
+    {
+      "creation": "2026-10-27T15:04:05.9992870+08:00",
+      "ticks": 639287102459992870,
+      "parent": 53124,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "pid": 22324
+    },
+    {
+      "creation": "2026-10-27T15:04:06.5641870+08:00",
+      "ticks": 639287102465641870,
+      "parent": 53124,
+      "exe": "E:\\node\\node.exe",
+      "pid": 9252
+    }
+  ],
+  "listen": 0,
+  "forced": false,
+  "author_commands": 9,
+  "author_exec_exit0": 9,
+  "author_runtime": 0,
+  "embedded_git_read_permission_failure_preserved": true,
+  "two_literal_reverse_exact": true,
+  "root_full_metadata_display_truncated_source_maps_then_independently_asserted_all347": true,
+  "invalid_scope_cancel_scenario_via_HTTP_verified": false,
+  "native_invalid_scope_cancel9_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-invalid-scope-cancel-root-accepted-current.json",
+  "GUI": false,
+  "compiled_profile_HostRPC_prompt_claim": false,
+  "whole_T31_pass": false,
+  "whole_T32_pass": false,
+  "whole_project_pass": false,
+  "packaging": "HOLD",
+  "packet_files": 28,
+  "packet_manifest_sha": "22212b1a1918c643ac77599345f9fdf1b4da3992cb01a030414c8a63e00cfc41"
+}

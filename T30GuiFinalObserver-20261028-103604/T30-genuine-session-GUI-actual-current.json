@@ -1,0 +1,10 @@
+{
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineSessionGUI-root-20261028-103405",
+  "guidir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637",
+  "state": "ADMIT_FINISHED_REQUIRES_REVIEW",
+  "prepare_exit": 0,
+  "prepare_process": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineSessionGUI-root-20261028-103405\\root-prepare-process.json",
+  "admit_exit": 0,
+  "admit_process": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineSessionGUI-root-20261028-103405\\root-admit-process.json"
+}

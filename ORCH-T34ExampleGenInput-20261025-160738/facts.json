@@ -1,0 +1,740 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-A\\contracts\\_build\\gen_examples.py",
+  "expected_source_before": "189de53c34a53eb8ae3bf690b5552b4666b35e4ad93754a51327e368954920a2",
+  "B_reference_sha": "e935565d19a1192491cc7ddea804183a0f17bc8a2e07e646cb3072def11c7672",
+  "EX": "D:\\Lawbeach\\lawbench-A\\contracts\\examples",
+  "current_corpus_sha256": {
+    "api_archive_build.fail.json": "594913233c31b81457bbb7a380f295fa98410486c03dfa5004da9e7a12e228ef",
+    "api_case_forget.req.json": "20217481ae28881a0435139569241a24c243f2cb82bd581a5a826d2e5ee92693",
+    "api_case_forget.res.json": "8dae211ad197907f00334c8b855e83af32ba93f9bb3573c086fdbe42f956eb49",
+    "api_case_open.fail.json": "03966e70e56bb9a4601233a574943b9724dd6b2c203c2a458af2293f21d08a76",
+    "api_case_open.req_bad_kind.json": "ae67b5dc43d9ea6a5272b769c8bc730bf79d3e119a0b90ceec1992b5263e5fc4",
+    "api_case_open.req_folders.json": "71cffbe3871b61329ff3043b1cecc5378fe01da65b85be2eba4febec4ca60c71",
+    "api_case_open.req_kind.json": "c69f8cbc323d14ca9a0a26520f05a72c9ab594108d1e61bd16c44f440c096407",
+    "api_documents_save.fail.json": "3e13e7eb5ab7501ab9eaab913f9edc84da3eb1341bdceb712a3eaecf2cd5965b",
+    "api_documents_save.req.json": "17b0c1060dbf635d4c0ef608e53340736978f94f882d37e4366a69e73339259a",
+    "api_documents_save.res.json": "b7fd3ff7975f453b704f4b260b80a90e0a067988d84534ef13e8a45a551da66c",
+    "api_invoice_run.req.json": "310c69da7082dbf9ae53928977bb538c49c86b307e361f75397a6f619cac9854",
+    "api_invoice_run.req_imap.json": "90df842d2b6ef852e5de39a811bb5cd6aaf5c792758db600168204704bb81a85",
+    "api_invoice_run.res.json": "d317abb77f90b8990297d43bae40cc8785dff3d1275ef9f41e4051f3d2dfab60",
+    "api_invoice_run.res_blocked.json": "ac0c7fe4bfb84a2b6b6ee7bea3395c938ffe92d18f53ebb57032ac7fb90b0525",
+    "api_invoice_run.res_exclude.json": "a435fecf02d927f59aae4017eccf03e87cf33de67c0ef49e4403a6c6293e4a0f",
+    "api_materials_import.req.json": "488e098c315438a1b5c3e3c005be6d9fc1277e84a02720f485b3c6c7439711e4",
+    "api_materials_import.req_bad_mode.json": "a90f42849b8eb1ee821021dcd96fdb3360b7f112fa418ab2fb3c123bbf043954",
+    "api_materials_import.req_ref.json": "aa56a22f656a482e08b38cbcb4fd82e303f1692d690339726bbe74546bcf3ae9",
+    "api_materials_import.res.json": "3c5ae92d3a020637691dcdff8ae353e3bcc18c0eb6b51e10c51184f9c9037da7",
+    "api_materials_import.res_bad_reason.json": "2c8afde78b07b2d73ee1486884782075322f12607d613be86c14f70b411d1ebf",
+    "api_materials_import.res_bad_registered.json": "37bed7843161c24387c88639251ba8d3526facbeb5696bc9d4f73559fc72ea64",
+    "api_materials_import.res_ref.json": "88f47ca966a75772057b2e4fcfdef7de0a21450134dd7121e05b32c52bb2e39a",
+    "api_materials_list.res_missing.json": "5361673afb89c61d3afeb3d489e583e7ca97dc60406f1460933a8dbcf4fb749a",
+    "api_materials_relocate.req.json": "49f9800bf2e08218ccf3286096bd328fe180dbc575795c737f85c9f9fa92dd11",
+    "api_materials_relocate.req_bad_ref.json": "a6e824b50ea89ea928bdc6c6e837fcf3af4d21f894fd5195c6b78c459d47310e",
+    "api_materials_relocate.req_bad_ref_zero.json": "08a77a678dfd8c8d501df6f17bb8d3f8a3add3d7d16d08a48379f89e78a9b386",
+    "api_materials_relocate.res.json": "42ac4ad54d27566105f84aeef21780c4d27b63996f5b7bdffcac626475d1fb5a",
+    "api_materials_remove.req.json": "bdff321bc0ed1689ad363e3653c89add412fdc1c0f09b0d21507ec78d9882071",
+    "api_materials_remove.res.json": "caca57be7b66cbb27a7fbec478b4b29d6b3fe0e0709005abfa811cf93fa52a2a",
+    "api_ocr_list.res.json": "147a1783a184d5767181a1482778944b8ae3d15c2c893901b1ad7de267901fdc",
+    "api_ocr_submit.req.json": "060533cec12e90bc92136bd421cc01eaed910f1ac68395c67d8f051c06224fea",
+    "api_prompt_refine.req.json": "06c9adc6f476faef776f4089de3e6a1726dab5b4b93ad2271ea337db8431f483",
+    "api_prompt_refine.req_bad_empty.json": "33780dfdb55b34cbbe4e576c6ccff3997d822d1c72cea4c945e970eb2fb6ba22",
+    "api_prompt_refine.res.json": "0b19c74610f6e7958bd2dd35314343d3029d0becb1346046dc28d7c86239ac9b",
+    "api_prompt_refine.res_original.json": "2c2b9bae29a02200628053ce2d222bd773f6fa23300e7ea3963d732c6ec9e048",
+    "api_remote_access.req_code_null.json": "0e83ad9525b4e6877e4fdb73c0e7ef652751f7e325fa6d072f8a91e25ce4c6a6",
+    "api_remote_access.req_code_spaces.json": "d94306c0c3d411070aa26145e29f88cc6c6b07d397e708f43850188714be200f",
+    "api_remote_access.req_enabled.json": "62cca9576952a5bdd2c123ef4643782afc12072f906887d712789249e72902f3",
+    "api_remote_access.res_failed.json": "5ae02b68931a0dc516dc35c209dbf07dca5e1739a520893c29c569c3a935a4a7",
+    "api_source.req_task.json": "8f24b923b376b924c2f9f75d370c64d356a28d5ce9e0bde3cb12f3492ba1e982",
+    "api_source.res.json": "f71189a2fab75ee5743e5a147c761cd161a548bc76cd20ca78ab7f96dfe15005",
+    "api_source.res_missing.json": "37c08661fa0428a92d59ca4ddeb04769b483133cf66ebd5affb6c0c2af58c546",
+    "api_task_create.req.json": "3d50ef40d21cfa116dc27fa0dc3a0fae82d00e985084ebfdd4425676f36d39f7",
+    "api_task_create.req_legacy.json": "e791951d88d1b9d1777e69e7af922a5aeaf1ebcfb0eb92cc5a00b77f1b5842d0",
+    "api_task_current.req.json": "c2fe164d7680dc3bbec8c557400123f1d732558f86d6967ec5f79800161f3486",
+    "api_task_current.res.json": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64",
+    "api_task_current.res_free.json": "c40295867e8a37edb52625d4f827f8273c2f2e54cb52c5665d669b709f2a3ae3",
+    "api_wiki_review.res.json": "66ae22f36f46015a9d443dbaf8cad1cf272626dfdfc990ad594b20a32cc9662f",
+    "api_wiki_suggestions.res.json": "c4f0fc4c3c6e27e39b02008203122873788f13f3e6ad315c8e0dcd64e5dfc598",
+    "citation_0.json": "9bb858497a0931018943e9aa7cef29ee10e0449c983be861e1b13754609b6a9f",
+    "citation_1.json": "40f4ae6520b4bd6218f53c9c1f5f0297121a8cdce2b63639fc04befd086828ab",
+    "citation_10.json": "c33978d78f5839d509d51cec74d6899ef3b7012a6413fcbd02d3f27c6ea98b06",
+    "citation_11.json": "0734caf672d9d98d90ad2725a64f912c42070ac48f7f8ed9d68cd62e44b444b0",
+    "citation_12.json": "9f46ce09f6968ab9f81eda92a05dd655b61d7c1261dba185a467545da8113f08",
+    "citation_2.json": "3896d2979de668498c03f7978c32875dd3f103923cde38bc859285cd0e90e969",
+    "citation_3.json": "e6545030e943ed10a838394734c05bd6023b0e62b4e36ea9a5c5dbf487016853",
+    "citation_4.json": "9fbcb5ab4b8728e61e399a7e302ec34497d146f6fa4039063a5aa97da2b63412",
+    "citation_5.json": "b8c9845732386414062221434ff8811a491c4cbec8ef9aa4dd031e404b91e192",
+    "citation_6.json": "f2dc8efae3d3a3e022cafc870fc80a779681083ec82cc51da68a7e7625ba13a2",
+    "citation_7.json": "5f720d19ff03fd0b507356167a0a144d4a33defacdb5111d4fff2af7cabf4394",
+    "citation_8.json": "ac593079c7537b22c8ba5a75a38f6bc8d20206a71628c3bfdc45a6aec17a925d",
+    "citation_9.json": "8c6bcc8751f827da1eeb6fc215a831a6574389623aeefdb34644dda93c4a6f10",
+    "core_context.res.json": "b0622883e064bd04baeed820e7e8ac8fabe73ce014c151111e2968e45301aac2",
+    "core_task_begin.fail.json": "88002620be9d4d9e2fec8647cc32e79871ed871fc1084b2a45ffa7bea8ff8789",
+    "core_task_begin.req.json": "c1c447ede5501371bef62a3c7ce791eba6a3de39965434aa7845e5e6e921a98c",
+    "core_task_begin.res.json": "0064d8dd06850059cf7d605309ae49df6ef23f03e002a224524be84eb1e24a38",
+    "core_task_end.req.json": "02849374100be272e2c9aafaaa8ef2638f848498c0d05c4e05070d9052f54269",
+    "file_cases.json": "224ff188670c819b29248e3e6922e59652a9ccaf2674e2b4b925d8be57494f33",
+    "file_case_card.json": "a733cc98a7362e7710748850ae084c0febe1d605ffaf4deb8f30605c930ed3ca",
+    "file_material_index.json": "0b7b9d569631147057066a05d2c776be09c6f55de1cdb262391411197ba502c6",
+    "file_material_index.ref.json": "60630b6902db9522f16a0826f5d64a0d085edeb772b010589b3e7e506624e86f",
+    "file_material_index.ref_renamed.json": "0981e77b6892bf85a8ab896b706273e992cabb14e08c8b7ef08ffa488a604f17",
+    "file_material_index.ref_source_rel.json": "ad067c6c22cbc6ba8a0e6c8aa50514474c0fa08e6d809f9c70298a545f547e28",
+    "file_material_refs.bad_required.json": "1418626505decb09d31c721354f882f724ff8891ae4d6a2a32196e376def1603",
+    "file_material_refs.json": "af99bc9a03a02ddabf6cd7a841ec59982d5a9371dbc105df93374cbf7724e43a",
+    "file_outputs_index.json": "8ca2f5b15cfd9cd465b4294ecdec03904772ba1836d16e73ac24449177b01eb7",
+    "file_reads.json": "095de162966a05d93eb5d4e52edb10b98e3e617847bba96d1b24b9c93f5e4ff7",
+    "file_result.json": "11eccb917f6d4000875d70b17406f405167264fca889455f838321789c9fff50",
+    "file_settings.external.json": "9a3b73923821af19b1cdc89bdf232d7ce3b4f0a163e36adcd353c676cc527f18",
+    "file_settings.json": "ba8a77cbe32a706d4b1e5cbf0f242d45932788646dfbbce3edddb33a4374c2d2",
+    "file_settings.ports.json": "e6c2feb6ab263000d2ceb0af97cb8910aeac3a8036a8183e9e79df50293f2d09",
+    "file_task.json": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034",
+    "file_task.legacy.json": "716230f5a779bfca7076a86a7fdcc956cc7e6a86fa2b184efc443bd2939952b1",
+    "manifest.json": "779dcca36753580d89d2e6e57f61f8f5740be94c58450c64b1d0b99fc3fbe234",
+    "prep_extract.req.json": "fa9accf64525eea1222d20b2d897bdf545f166eb074199f8e4e860349248ae74",
+    "prep_extract.res.json": "7e1de35d65542e71a00373b58f66682bb3fd9295bd0678d0a7c932cf74efb9de",
+    "prep_health.json": "90be90ba017d93624c0af3d25cb947e39f0f936fbf9354eea6206bc02abd9cab",
+    "prep_ocr.err.json": "3d1dbc477ee756cbc2f1f94e4ac920ecc2d99b195664d42ac85e6c10c4d75a6d",
+    "prep_ocr.res.json": "1d68255f367fddd19b71de9bb78ebd2b80ebb1ff3d5b896017411b1cbdd22e91",
+    "skill_capsules.bad_tool.json": "c6ef3e8adcd4e3ad6fabf3e3f054d9882d9405543af87b9f9b68f756fed69490",
+    "skill_capsules.json": "de49a24666e0eb7aff2a698ba9de0b74e3e8535eac715cb3dcadb6a9a4881ca4",
+    "skill_capsules.new_item.json": "b6d0faa781999233d6f7d0c23eb707ca7305a9dca5036079ff4d833e92d3fc1b",
+    "tool_archive_plan.args.json": "2938f621a02688865a6b8836a527042a38f81729624f3cd3f1d1b384ff6e8692",
+    "tool_archive_plan.args_bad.json": "00d77c8fc3108333c81147a86d23cffad71b35f0adbba44ffcb56a0dd96ec612",
+    "tool_calc_sentence.args.json": "34ed662acac4a7069e5990512087710630a8526baf3171cc45d14ca1d46de9fa",
+    "tool_calc_sentence.args_bad.json": "f460fa796d0e286fef1d0a68359d9057124662aceedd4359f981cc57b08e1370",
+    "tool_calc_sentence.result.json": "eb1007aa5143ca8a0677e310a01c5f34e73d441fb91592dd3732c028e8df35ef",
+    "tool_edit_list.args.json": "0005a9d3e2422370afec872092f53b4ca8139236247ddefb3f87df17bccafc2f",
+    "tool_list.result.json": "a87cfcf0ed22f38df9841fce4428730f254ed04ce788c715def71ef53158c131",
+    "tool_read.args.json": "580df030d60f564dc4de30451d669b8019e2b43bb5ba4b30678368413a64a3ed",
+    "tool_read.args_path.json": "48e198ef5ba9fdbdf6370768399b9d431160afc87c94911850e72d5b1ba937d8",
+    "tool_read.result.json": "92605b16a190940d5f7b8e786bdb9960fc5c2f48b991e5fcdcdf65783b3d21bd",
+    "tool_read_material.args_more.json": "b8aa408402bdad4ec3271f3aea61afd8e5c46b7a07671d604db8508c18af269f",
+    "tool_save_draft.result.json": "084def0bf7bd065f686a07e0400da79d5191c4e5f4530ea9f66e93c106419eb0",
+    "tool_search.result.json": "581fe245dbc8e6cecda61d4c45de0f9c2a52002d1bd6e644950b21bc18d9c2df"
+  },
+  "manifest_entries": [
+    {
+      "file": "citation_0.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_1.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_2.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_3.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_4.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_5.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_6.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "invalid"
+    },
+    {
+      "file": "citation_7.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "invalid"
+    },
+    {
+      "file": "citation_8.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "invalid"
+    },
+    {
+      "file": "citation_9.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_10.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "valid"
+    },
+    {
+      "file": "citation_11.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "invalid"
+    },
+    {
+      "file": "citation_12.json",
+      "schema": "common.schema.json",
+      "pointer": "#/$defs/citation_text",
+      "expect": "invalid"
+    },
+    {
+      "file": "core_task_begin.req.json",
+      "schema": "core/task_begin.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "core_task_begin.res.json",
+      "schema": "core/task_begin.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "core_task_begin.fail.json",
+      "schema": "core/task_begin.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "core_context.res.json",
+      "schema": "core/context.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "core_task_end.req.json",
+      "schema": "core/task_end.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_list.result.json",
+      "schema": "tools/case_list_materials.schema.json",
+      "pointer": "#/$defs/result",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_read.args.json",
+      "schema": "tools/case_read_material.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_read.args_path.json",
+      "schema": "tools/case_read_material.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "invalid"
+    },
+    {
+      "file": "tool_read.result.json",
+      "schema": "tools/case_read_material.schema.json",
+      "pointer": "#/$defs/result",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_search.result.json",
+      "schema": "tools/case_search.schema.json",
+      "pointer": "#/$defs/result",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_save_draft.result.json",
+      "schema": "tools/case_save_draft.schema.json",
+      "pointer": "#/$defs/result",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_edit_list.args.json",
+      "schema": "tools/case_save_edit_list.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "valid"
+    },
+    {
+      "file": "api_case_open.fail.json",
+      "schema": "api/case_open.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_ocr_submit.req.json",
+      "schema": "api/ocr_submit.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_ocr_list.res.json",
+      "schema": "api/ocr_list.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_source.res.json",
+      "schema": "api/source.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_wiki_suggestions.res.json",
+      "schema": "api/wiki_suggestions.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_remove.req.json",
+      "schema": "api/materials_remove.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_remove.res.json",
+      "schema": "api/materials_remove.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_wiki_review.res.json",
+      "schema": "api/wiki_review.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_source.req_task.json",
+      "schema": "api/source.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_case_open.req_folders.json",
+      "schema": "api/case_open.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_read_material.args_more.json",
+      "schema": "tools/case_read_material.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.res_bad_reason.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_case_forget.req.json",
+      "schema": "api/case_forget.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_case_forget.res.json",
+      "schema": "api/case_forget.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_case_open.req_kind.json",
+      "schema": "api/case_open.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_case_open.req_bad_kind.json",
+      "schema": "api/case_open.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "prep_ocr.res.json",
+      "schema": "prep395/ocr_page.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "prep_ocr.err.json",
+      "schema": "prep395/ocr_page.schema.json",
+      "pointer": "#/$defs/error",
+      "expect": "valid"
+    },
+    {
+      "file": "prep_extract.req.json",
+      "schema": "prep395/extract.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "prep_extract.res.json",
+      "schema": "prep395/extract.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "prep_health.json",
+      "schema": "prep395/health.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_material_index.json",
+      "schema": "files/material_index.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_task.json",
+      "schema": "files/task.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_reads.json",
+      "schema": "files/reads.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_result.json",
+      "schema": "files/result.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_case_card.json",
+      "schema": "files/case_card.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_outputs_index.json",
+      "schema": "files/outputs_index.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_cases.json",
+      "schema": "files/cases.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_settings.json",
+      "schema": "files/settings.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.req.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.res.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_calc_sentence.args.json",
+      "schema": "tools/case_calc_sentence.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_calc_sentence.args_bad.json",
+      "schema": "tools/case_calc_sentence.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "invalid"
+    },
+    {
+      "file": "tool_calc_sentence.result.json",
+      "schema": "tools/case_calc_sentence.schema.json",
+      "pointer": "#/$defs/result",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_archive_plan.args.json",
+      "schema": "tools/case_save_archive_plan.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "valid"
+    },
+    {
+      "file": "tool_archive_plan.args_bad.json",
+      "schema": "tools/case_save_archive_plan.schema.json",
+      "pointer": "#/$defs/args",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_archive_build.fail.json",
+      "schema": "api/archive_build.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_invoice_run.req.json",
+      "schema": "api/invoice_run.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_invoice_run.req_imap.json",
+      "schema": "api/invoice_run.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_invoice_run.res.json",
+      "schema": "api/invoice_run.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_invoice_run.res_blocked.json",
+      "schema": "api/invoice_run.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_invoice_run.res_exclude.json",
+      "schema": "api/invoice_run.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "skill_capsules.json",
+      "schema": "skill/capsules.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "skill_capsules.bad_tool.json",
+      "schema": "skill/capsules.schema.json",
+      "pointer": "",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_task_current.req.json",
+      "schema": "api/task_current.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_current.res.json",
+      "schema": "api/task_current.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_current.res_free.json",
+      "schema": "api/task_current.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "skill_capsules.new_item.json",
+      "schema": "skill/capsules.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.req_ref.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.req_bad_mode.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_materials_import.res_ref.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_import.res_bad_registered.json",
+      "schema": "api/materials_import.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_materials_relocate.req.json",
+      "schema": "api/materials_relocate.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_materials_relocate.req_bad_ref.json",
+      "schema": "api/materials_relocate.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_materials_relocate.req_bad_ref_zero.json",
+      "schema": "api/materials_relocate.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_materials_relocate.res.json",
+      "schema": "api/materials_relocate.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "file_material_refs.json",
+      "schema": "files/material_refs.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_material_refs.bad_required.json",
+      "schema": "files/material_refs.schema.json",
+      "pointer": "",
+      "expect": "invalid"
+    },
+    {
+      "file": "file_material_index.ref.json",
+      "schema": "files/material_index.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_material_index.ref_renamed.json",
+      "schema": "files/material_index.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "file_material_index.ref_source_rel.json",
+      "schema": "files/material_index.schema.json",
+      "pointer": "",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_materials_list.res_missing.json",
+      "schema": "api/materials_list.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_source.res_missing.json",
+      "schema": "api/source.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_prompt_refine.req.json",
+      "schema": "api/prompt_refine.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_prompt_refine.req_bad_empty.json",
+      "schema": "api/prompt_refine.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "invalid"
+    },
+    {
+      "file": "api_prompt_refine.res.json",
+      "schema": "api/prompt_refine.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_prompt_refine.res_original.json",
+      "schema": "api/prompt_refine.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "file_settings.ports.json",
+      "schema": "files/settings.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "api_documents_save.req.json",
+      "schema": "api/documents_save.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_documents_save.res.json",
+      "schema": "api/documents_save.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_documents_save.fail.json",
+      "schema": "api/documents_save.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "api_remote_access.req_enabled.json",
+      "schema": "api/remote_access.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_remote_access.req_code_null.json",
+      "schema": "api/remote_access.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_remote_access.req_code_spaces.json",
+      "schema": "api/remote_access.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_remote_access.res_failed.json",
+      "schema": "api/remote_access.schema.json",
+      "pointer": "#/$defs/response",
+      "expect": "valid"
+    },
+    {
+      "file": "file_task.legacy.json",
+      "schema": "files/task.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_create.req.json",
+      "schema": "api/task_create.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "api_task_create.req_legacy.json",
+      "schema": "api/task_create.schema.json",
+      "pointer": "#/$defs/request",
+      "expect": "valid"
+    },
+    {
+      "file": "file_settings.external.json",
+      "schema": "files/settings.schema.json",
+      "pointer": "",
+      "expect": "valid"
+    }
+  ],
+  "source_action": "minimal generated sample definitions only; no execution of raw generator"
+}

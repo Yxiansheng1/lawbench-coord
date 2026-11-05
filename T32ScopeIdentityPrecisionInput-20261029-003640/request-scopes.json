@@ -1,0 +1,22 @@
+{
+  "v": 1,
+  "records": {
+    "60fda87b-25a9-40c1-9abd-1e4893fa7b8b": {
+      "case_id": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+      "session_id": "session-1cb28369-3a90-46dc-b047-e64986038394",
+      "state": "claimed",
+      "materials": [
+        {
+          "material_id": "M0001",
+          "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a"
+        },
+        {
+          "material_id": "M0002",
+          "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040"
+        }
+      ],
+      "task_id": "T-20261028234100-6b49",
+      "updated_at": "2026-10-28T23:41:00+08:00"
+    }
+  }
+}

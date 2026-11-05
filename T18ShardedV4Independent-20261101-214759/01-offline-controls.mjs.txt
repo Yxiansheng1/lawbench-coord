@@ -1,0 +1,1009 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18ShardedBidirectionalV4-20261101-213929\offline-controls.mjs
+SHA 646e7ed6b2f2e1a0298a3696789996ffdd3ec60c151eb28405b67da4f0fb7173
+0001 import assert from "node:assert/strict";
+0002 import {
+0003   ASSESSMENT_MAX_UTF16,
+0004   COMPLETION_STATUS,
+0005   ENTIRE_CALL_CAP_MS,
+0006   FIXED_DATA_FORMAT,
+0007   FRAGMENT_DELIMITERS,
+0008   FRAGMENT_TREATMENTS,
+0009   MAX_REQUESTS,
+0010   MODEL,
+0011   PARAMETERS,
+0012   PER_CALL_TIMEOUT_MS,
+0013   REQUEST_STAGES,
+0014   RESPONSE_CAP_BYTES,
+0015   ROUTE,
+0016   SUPPORT_TREATMENTS,
+0017   TARGET_CAP,
+0018   assertTargetCountWithinPilotCap,
+0019   buildAuthorizationHeader,
+0020   buildFragmentInventory,
+0021   buildReviewShards,
+0022   buildRequestPayload,
+0023   buildStage1Envelope,
+0024   buildStage1Messages,
+0025   buildStage2Envelope,
+0026   buildStage2Messages,
+0027   buildVisibleUnits,
+0028   joinAssessmentsToUnits,
+0029   mergeShardReviews,
+0030   outputStatusForReviews,
+0031   parseModelJson,
+0032   parsePinnedStage1Assessments,
+0033   performRequest,
+0034   redactCredential,
+0035   requestTimeoutForDeadline,
+0036   selectPilotInput,
+0037   serializeForArtifact,
+0038   splitLosslessAtDelimiterRuns,
+0039   unwrapChatCompletion,
+0040   validateSourceManifestShape,
+0041   validateStage1Result,
+0042   validateStage2Result,
+0043 } from "./review-consumer.mjs";
+0044 
+0045 const REDACTION_MARKER = "\u2588";
+0046 const label7 = "\u3010\u7B2C7\u884C\u3011";
+0047 const label8 = "\u3010\u7B2C8\u884C\u3011";
+0048 const label9 = "\u3010\u7B2C9\u884C\u3011";
+0049 const label10 = "\u3010\u7B2C10\u884C\u3011";
+0050 const label11 = "\u3010\u7B2C11\u884C\u3011";
+0051 
+0052 function assertProtocolError(fn, expectedCode) {
+0053   assert.throws(fn, (error) => error && error.code === expectedCode);
+0054 }
+0055 
+0056 function cloneReviews(records) {
+0057   return records.map((record) => ({
+0058     ...record,
+0059     refs: [...record.refs],
+0060   }));
+0061 }
+0062 
+0063 function shaPin(fileName) {
+0064   return { path: fileName, bytes: 1, sha256: "0".repeat(64) };
+0065 }
+0066 
+0067 const receiptOneText = [
+0068   label7,
+0069   "HEADER_BODY_SENTINEL",
+0070   label8,
+0071   "",
+0072   label9,
+0073   "DETAIL_ONE_SENTINEL\uFF0CDETAIL_TWO_SENTINEL\u300280,000 and 1.5 remain.",
+0074   "",
+0075 ].join("\n");
+0076 const receiptTwoText = [
+0077   label10,
+0078   label11,
+0079   "\uFF0CLEAD\uD83D\uDE00\uFF0C\uFF0CTAIL\u3002\uFF1B;!!??||",
+0080   "",
+0081 ].join("\n");
+0082 const receipts = [
+0083   {
+0084     receipt_id: "RECEIPT_ONE_SENTINEL",
+0085     material_id: "MATERIAL_ONE_SENTINEL",
+0086     unit: "line",
+0087     text: receiptOneText,
+0088     start: 7,
+0089     end: 9,
+0090   },
+0091   {
+0092     receipt_id: "RECEIPT_TWO_SENTINEL",
+0093     material_id: "MATERIAL_TWO_SENTINEL",
+0094     unit: "line",
+0095     text: receiptTwoText,
+0096     start: 10,
+0097     end: 11,
+0098   },
+0099 ];
+0100 const draft = [
+0101   "DRAFT_HEADER_SENTINEL",
+0102   "DRAFT_ONE_SENTINEL\uFF0CDRAFT_TWO_SENTINEL\u3002",
+0103   "",
+0104   "DRAFT_THREE_SENTINEL |80,000;1.5",
+0105 ].join("\n");
+0106 const selfcheck = [
+0107   "\uFF0CSELFCHECK_ONE_SENTINEL\u3002",
+0108   "SELFCHECK_TWO_SENTINEL!?",
+0109 ].join("\n");
+0110 const coverage = { note: "COVERAGE_SENTINEL_ONLY" };
+0111 const fixedData = {
+0112   format: FIXED_DATA_FORMAT,
+0113   evidence: receipts,
+0114   draft: {
+0115     content: draft,
+0116     title: "DRAFT_TITLE_SENTINEL",
+0117     version: 3,
+0118   },
+0119   visible_selfcheck: selfcheck,
+0120   coverage,
+0121 };
+0122 
+0123 const selected = selectPilotInput(fixedData);
+0124 assert.equal(selected.receipts, receipts);
+0125 assert.equal(selected.draft, draft);
+0126 assert.equal(selected.visibleSelfcheck, selfcheck);
+0127 assert.equal(selected.actualCoverage, coverage);
+0128 assertProtocolError(
+0129   () => selectPilotInput({ ...fixedData, draft: { ...fixedData.draft, version: "3" } }),
+0130   "ORIGINAL_DRAFT_NOT_TEXT",
+0131 );
+0132 assertProtocolError(
+0133   () => selectPilotInput({ ...fixedData, evidence: undefined }),
+0134   "EVIDENCE_RECEIPTS_MISSING",
+0135 );
+0136 assertProtocolError(
+0137   () => selectPilotInput({ ...fixedData, visible_selfcheck: { content: selfcheck } }),
+0138   "VISIBLE_SELFCHECK_NOT_TEXT",
+0139 );
+0140 assertProtocolError(
+0141   () => selectPilotInput({ ...fixedData, coverage: [] }),
+0142   "ACTUAL_COVERAGE_INVALID",
+0143 );
+0144 
+0145 const units = buildVisibleUnits(receipts);
+0146 assert.equal(units.map((unit) => unit.text).join(""), receiptOneText + receiptTwoText);
+0147 assert.deepEqual(units.map((unit) => unit.unit_id), [
+0148   "RECEIPT_ONE_SENTINEL#L7",
+0149   "RECEIPT_ONE_SENTINEL#L8",
+0150   "RECEIPT_ONE_SENTINEL#L9",
+0151   "RECEIPT_TWO_SENTINEL#L10",
+0152   "RECEIPT_TWO_SENTINEL#L11",
+0153 ]);
+0154 assert.equal(units[1].text, `${label8}\n\n`);
+0155 assert.equal(units[3].text, `${label10}\n`);
+0156 assert.equal(units[3].text.slice(units[3].text.indexOf("\n") + 1), "");
+0157 assertProtocolError(
+0158   () => buildVisibleUnits([{ ...receipts[0], unit: "page" }]),
+0159   "UNIT_LABEL_INVALID",
+0160 );
+0161 assertProtocolError(
+0162   () => buildVisibleUnits([{ ...receipts[0], end: 10 }]),
+0163   "RANGE_END_MISMATCH",
+0164 );
+0165 
+0166 assert.deepEqual(
+0167   splitLosslessAtDelimiterRuns("A,80,000 and 1.5\u3002B\uFF0CC;D!?E|F\n"),
+0168   ["A,80,000 and 1.5\u3002", "B\uFF0C", "C;", "D!?", "E|", "F\n"],
+0169 );
+0170 assert.deepEqual(
+0171   splitLosslessAtDelimiterRuns("\uFF0C\uFF0CLEAD\uD83D\uDE00\u3002TAIL\uFF1B;!!??||"),
+0172   ["\uFF0C\uFF0C", "LEAD\uD83D\uDE00\u3002", "TAIL\uFF1B;!!??||"],
+0173 );
+0174 assert.deepEqual(splitLosslessAtDelimiterRuns(""), [""]);
+0175 assert.deepEqual(splitLosslessAtDelimiterRuns("\uFF0C\u3002"), ["\uFF0C\u3002"]);
+0176 for (const delimiter of FRAGMENT_DELIMITERS) {
+0177   assert.ok(FRAGMENT_DELIMITERS.includes(delimiter));
+0178 }
+0179 assert.ok(!FRAGMENT_DELIMITERS.includes(","));
+0180 assert.ok(!FRAGMENT_DELIMITERS.includes("."));
+0181 
+0182 const inventory = buildFragmentInventory(units, draft, selfcheck);
+0183 assert.ok(inventory.sourceTargets.length >= units.length);
+0184 assert.ok(inventory.draftTargets.length > 0);
+0185 assert.ok(inventory.selfcheckTargets.length > 0);
+0186 assert.equal(
+0187   inventory.targets.length,
+0188   inventory.sourceTargets.length + inventory.draftTargets.length + inventory.selfcheckTargets.length,
+0189 );
+0190 assert.equal(new Set(inventory.targets.map((target) => target.target_id)).size, inventory.targets.length);
+0191 for (const unit of units) {
+0192   const headerEnd = unit.text.indexOf("\n") + 1;
+0193   const header = unit.text.slice(0, headerEnd);
+0194   const body = unit.text.slice(headerEnd);
+0195   const sourceParent = inventory.sourceParents.find((parent) => parent.parent_id === unit.unit_id);
+0196   assert.equal(sourceParent.source_header, header);
+0197   assert.equal(sourceParent.body, body);
+0198   const sourceTargets = inventory.sourceTargets.filter((target) => target.parent_id === unit.unit_id);
+0199   assert.ok(sourceTargets.length >= 1);
+0200   assert.equal(header + sourceTargets.map((target) => target.text).join(""), unit.text);
+0201   assert.equal(body, sourceTargets.map((target) => target.text).join(""));
+0202   for (const target of sourceTargets) {
+0203     assert.ok(target.start >= headerEnd);
+0204     assert.equal(unit.text.slice(target.start, target.end), target.text);
+0205   }
+0206 }
+0207 const emptyBodyUnit = units.find((unit) => unit.unit_id.endsWith("#L10"));
+0208 const explicitEmptyTarget = inventory.sourceTargets.find(
+0209   (target) => target.parent_id === emptyBodyUnit.unit_id,
+0210 );
+0211 assert.ok(explicitEmptyTarget);
+0212 assert.equal(explicitEmptyTarget.text, "");
+0213 assert.equal(explicitEmptyTarget.start, explicitEmptyTarget.end);
+0214 assert.equal(
+0215   explicitEmptyTarget.start,
+0216   emptyBodyUnit.text.indexOf("\n") + 1,
+0217 );
+0218 
+0219 const numericTarget = inventory.sourceTargets.find(
+0220   (target) => target.text.includes("80,000 and 1.5 remain."),
+0221 );
+0222 assert.ok(numericTarget);
+0223 assert.ok(numericTarget.text.includes("80,000 and 1.5 remain."));
+0224 assert.ok(inventory.sourceTargets.some(
+0225   (target) => target.text === "DETAIL_ONE_SENTINEL\uFF0C",
+0226 ));
+0227 assert.ok(inventory.sourceTargets.some(
+0228   (target) => target.text === "DETAIL_TWO_SENTINEL\u3002",
+0229 ));
+0230 const leadingRunTargets = inventory.sourceTargets.filter(
+0231   (target) => target.parent_id === "RECEIPT_TWO_SENTINEL#L11",
+0232 );
+0233 assert.equal(leadingRunTargets[0].text, "\uFF0C");
+0234 assert.ok(leadingRunTargets.some((target) => target.text.includes("\uD83D\uDE00")));
+0235 assert.ok(leadingRunTargets.some((target) => target.text.endsWith(";!!??||\n")));
+0236 const emojiTarget = leadingRunTargets.find((target) => target.text.includes("\uD83D\uDE00"));
+0237 assert.equal(
+0238   units.find((unit) => unit.unit_id === emojiTarget.parent_id).text.slice(emojiTarget.start, emojiTarget.end),
+0239   emojiTarget.text,
+0240 );
+0241 
+0242 for (const parent of inventory.draftParents) {
+0243   const own = inventory.draftTargets.filter((target) => target.parent_id === parent.parent_id);
+0244   assert.ok(own.length >= 1);
+0245   assert.equal(own.map((target) => target.text).join(""), parent.text);
+0246   for (const target of own) assert.equal(parent.text.slice(target.start, target.end), target.text);
+0247 }
+0248 for (const parent of inventory.selfcheckParents) {
+0249   const own = inventory.selfcheckTargets.filter((target) => target.parent_id === parent.parent_id);
+0250   assert.ok(own.length >= 1);
+0251   assert.equal(own.map((target) => target.text).join(""), parent.text);
+0252   for (const target of own) assert.equal(parent.text.slice(target.start, target.end), target.text);
+0253 }
+0254 assert.equal(inventory.draftParents.map((parent) => parent.text).join(""), draft);
+0255 assert.equal(inventory.selfcheckParents.map((parent) => parent.text).join(""), selfcheck);
+0256 assert.equal(assertTargetCountWithinPilotCap(inventory), inventory.targets.length);
+0257 assertProtocolError(
+0258   () => assertTargetCountWithinPilotCap({ targets: Array.from({ length: TARGET_CAP + 1 }, () => null) }),
+0259   "TARGET_COUNT_EXCEEDS_PILOT_CAP",
+0260 );
+0261 
+0262 function syntheticInventory(count) {
+0263   return {
+0264     targets: Array.from({ length: count }, (_, index) => {
+0265       const kind = ["F", "C", "Q"][index % 3];
+0266       return {
+0267         target_id: `${kind}${String(index + 1).padStart(4, "0")}`,
+0268         kind,
+0269         text: "",
+0270       };
+0271     }),
+0272   };
+0273 }
+0274 
+0275 const oddShardInventory = syntheticInventory(9);
+0276 const oddShardPlan = buildReviewShards(oddShardInventory);
+0277 assert.deepEqual(oddShardPlan.map((shard) => shard.shard_id), REQUEST_STAGES);
+0278 assert.deepEqual(oddShardPlan.map((shard) => shard.review_target_ids.length), [5, 4]);
+0279 const oddShardUnion = oddShardPlan.flatMap((shard) => shard.review_target_ids);
+0280 assert.equal(new Set(oddShardUnion).size, oddShardInventory.targets.length);
+0281 assert.deepEqual(oddShardUnion, oddShardInventory.targets.map((target) => target.target_id));
+0282 
+0283 const evenShardInventory = syntheticInventory(10);
+0284 const evenShardPlan = buildReviewShards(evenShardInventory);
+0285 assert.deepEqual(evenShardPlan.map((shard) => shard.review_target_ids.length), [5, 5]);
+0286 assert.deepEqual(
+0287   evenShardPlan.flatMap((shard) => shard.review_target_ids),
+0288   evenShardInventory.targets.map((target) => target.target_id),
+0289 );
+0290 assertProtocolError(
+0291   () => buildReviewShards(syntheticInventory(1)),
+0292   "TARGET_COUNT_BELOW_MINIMUM",
+0293 );
+0294 assertProtocolError(
+0295   () => buildReviewShards({ targets: [{ ...syntheticInventory(2).targets[0], target_id: "F0001" },
+0296     { ...syntheticInventory(2).targets[1], target_id: "F0001" }] }),
+0297   "TARGET_TABLE_INVALID",
+0298 );
+0299 
+0300 assert.equal(MAX_REQUESTS, 2);
+0301 assert.deepEqual(REQUEST_STAGES, ["stage2a", "stage2b"]);
+0302 assert.equal(ROUTE, "http://10.126.126.1:8000/v1/chat/completions");
+0303 assert.equal(MODEL, "qwen38-27b");
+0304 assert.equal(PARAMETERS.temperature, 0.6);
+0305 assert.equal(PARAMETERS.max_tokens, 49152);
+0306 assert.equal(PARAMETERS.stream, false);
+0307 assert.equal(PER_CALL_TIMEOUT_MS, 400_000);
+0308 assert.equal(ENTIRE_CALL_CAP_MS, 900_000);
+0309 assert.equal(RESPONSE_CAP_BYTES, 4 * 1024 * 1024);
+0310 
+0311 const stage1Envelope = buildStage1Envelope(units);
+0312 assert.deepEqual(stage1Envelope, { source_units: units });
+0313 const stage1Messages = buildStage1Messages(units);
+0314 assert.equal(stage1Messages.length, 2);
+0315 assert.deepEqual(stage1Messages.map((message) => message.role), ["system", "user"]);
+0316 assert.ok(JSON.stringify(stage1Messages).includes("HEADER_BODY_SENTINEL"));
+0317 assert.ok(!JSON.stringify(stage1Messages).includes("DRAFT_ONE_SENTINEL"));
+0318 assert.ok(!JSON.stringify(stage1Messages).includes("SELFCHECK_ONE_SENTINEL"));
+0319 assert.ok(!JSON.stringify(stage1Messages).includes("COVERAGE_SENTINEL_ONLY"));
+0320 
+0321 const assessments = units.map((unit, index) => ({
+0322   unit_id: unit.unit_id,
+0323   description: `SOURCE_DESCRIPTION_SENTINEL_${index + 1}`,
+0324 }));
+0325 const validatedStage1 = validateStage1Result({ assessments }, units);
+0326 assert.deepEqual(validatedStage1, { assessments });
+0327 assert.deepEqual(
+0328   parsePinnedStage1Assessments(Buffer.from(JSON.stringify({ assessments }), "utf8"), units),
+0329   validatedStage1,
+0330 );
+0331 assertProtocolError(
+0332   () => parsePinnedStage1Assessments(undefined, units),
+0333   "STAGE1_CACHE_MISSING",
+0334 );
+0335 assertProtocolError(
+0336   () => parsePinnedStage1Assessments(Buffer.from("{", "utf8"), units),
+0337   "STAGE1_CACHE_INVALID",
+0338 );
+0339 assertProtocolError(
+0340   () => parsePinnedStage1Assessments(
+0341     Buffer.from(JSON.stringify({ assessments: assessments.slice(1) }), "utf8"),
+0342     units,
+0343   ),
+0344   "MISSING_UNIT_ASSESSMENT",
+0345 );
+0346 assertProtocolError(
+0347   () => validateStage1Result({
+0348     assessments: [assessments[0], assessments[0], ...assessments.slice(2)],
+0349   }, units),
+0350   "DUPLICATE_UNIT_ID",
+0351 );
+0352 assertProtocolError(
+0353   () => validateStage1Result({
+0354     assessments: [...assessments.slice(1), { ...assessments[0], unit_id: "UNKNOWN_UNIT_SENTINEL" }],
+0355   }, units),
+0356   "UNKNOWN_UNIT_ID",
+0357 );
+0358 assertProtocolError(
+0359   () => validateStage1Result({
+0360     assessments: [{ ...assessments[0], quote: "MODEL_QUOTE_SENTINEL" }, ...assessments.slice(1)],
+0361   }, units),
+0362   "ASSESSMENT_SCHEMA_INVALID",
+0363 );
+0364 
+0365 const validManifest = {
+0366   algorithm: "sha256",
+0367   consumer: shaPin("review-consumer.mjs"),
+0368   fixed_data: shaPin("fixed-data.json"),
+0369   offline_controls: shaPin("offline-controls.mjs"),
+0370   stage1_assessments: shaPin("stage1-assessments.json"),
+0371 };
+0372 assert.equal(validateSourceManifestShape(validManifest), validManifest);
+0373 assertProtocolError(
+0374   () => validateSourceManifestShape({
+0375     algorithm: "sha256",
+0376     consumer: shaPin("review-consumer.mjs"),
+0377     fixed_data: shaPin("fixed-data.json"),
+0378     offline_controls: shaPin("offline-controls.mjs"),
+0379   }),
+0380   "SOURCE_MANIFEST_INVALID",
+0381 );
+0382 assertProtocolError(
+0383   () => validateSourceManifestShape({
+0384     ...validManifest,
+0385     stage1_assessments: shaPin("wrong-file.json"),
+0386   }),
+0387   "SOURCE_MANIFEST_INVALID",
+0388 );
+0389 
+0390 const joinedUnits = joinAssessmentsToUnits(units, validatedStage1.assessments);
+0391 assert.deepEqual(joinedUnits.map((unit) => unit.text), units.map((unit) => unit.text));
+0392 assert.deepEqual(
+0393   joinedUnits.map((unit) => unit.description),
+0394   assessments.map((assessment) => assessment.description),
+0395 );
+0396 const shardPlan = buildReviewShards(inventory);
+0397 const stage2Envelope = buildStage2Envelope(units, validatedStage1.assessments, inventory, coverage);
+0398 assert.deepEqual(Object.keys(stage2Envelope).sort(), [
+0399   "actual_coverage",
+0400   "draft_parent_spans",
+0401   "review_target_ids",
+0402   "selfcheck_parent_spans",
+0403   "source_units",
+0404   "targets",
+0405 ]);
+0406 assert.deepEqual(stage2Envelope.source_units, joinedUnits);
+0407 assert.deepEqual(stage2Envelope.targets, inventory.targets);
+0408 assert.deepEqual(
+0409   stage2Envelope.review_target_ids,
+0410   inventory.targets.map((target) => target.target_id),
+0411 );
+0412 assert.equal(stage2Envelope.draft_parent_spans.map((parent) => parent.text).join(""), draft);
+0413 assert.equal(stage2Envelope.selfcheck_parent_spans.map((parent) => parent.text).join(""), selfcheck);
+0414 assert.equal(stage2Envelope.actual_coverage, coverage);
+0415 
+0416 const stage2Messages = buildStage2Messages(
+0417   units,
+0418   validatedStage1.assessments,
+0419   inventory,
+0420   coverage,
+0421 );
+0422 assert.equal(stage2Messages.length, 2);
+0423 assert.deepEqual(stage2Messages.map((message) => message.role), ["system", "user"]);
+0424 assert.ok(JSON.stringify(stage2Messages).includes("SOURCE_DESCRIPTION_SENTINEL_1"));
+0425 assert.ok(JSON.stringify(stage2Messages).includes("\uD83D\uDE00"));
+0426 assert.ok(!JSON.stringify(stage2Messages).includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+0427 assert.ok(!stage2Messages[1].content.includes("assistant"));
+0428 const firstShardMessages = buildStage2Messages(
+0429   units,
+0430   validatedStage1.assessments,
+0431   inventory,
+0432   coverage,
+0433   shardPlan[0].review_target_ids,
+0434 );
+0435 const firstShardEnvelope = buildStage2Envelope(
+0436   units,
+0437   validatedStage1.assessments,
+0438   inventory,
+0439   coverage,
+0440   shardPlan[0].review_target_ids,
+0441 );
+0442 assert.deepEqual(firstShardEnvelope.targets, inventory.targets);
+0443 assert.deepEqual(firstShardEnvelope.review_target_ids, shardPlan[0].review_target_ids);
+0444 assert.ok(firstShardMessages[0].content.includes("exact and only target ids"));
+0445 assert.ok(firstShardMessages[0].content.includes("All supplied targets remain available"));
+0446 
+0447 function makeValidReviews() {
+0448   return inventory.targets.map((target, index) => {
+0449     const other = inventory.targets.find((candidate) => candidate.kind !== target.kind);
+0450     const treatment = target.kind === "F"
+0451       ? FRAGMENT_TREATMENTS[index % FRAGMENT_TREATMENTS.length]
+0452       : SUPPORT_TREATMENTS[index % SUPPORT_TREATMENTS.length];
+0453     const needsRef = treatment === "ADDRESSED" || treatment === "SUPPORTED";
+0454     const refs = needsRef || index % 3 === 1 ? [other.target_id] : [];
+0455     return {
+0456       target_id: target.target_id,
+0457       treatment,
+0458       refs,
+0459       assessment: `BRIEF_ASSESSMENT_${target.target_id}`,
+0460     };
+0461   });
+0462 }
+0463 
+0464 const validReviews = makeValidReviews();
+0465 const validatedStage2 = validateStage2Result({ reviews: [...validReviews].reverse() }, inventory);
+0466 assert.deepEqual(
+0467   validatedStage2.reviews.map((review) => review.target_id),
+0468   inventory.targets.map((target) => target.target_id),
+0469 );
+0470 assert.equal(validatedStage2.reviews.length, inventory.targets.length);
+0471 for (const review of validatedStage2.reviews) {
+0472   assert.deepEqual(review.target, inventory.targets.find(
+0473     (target) => target.target_id === review.target_id,
+0474   ));
+0475   for (const ref of review.refs) {
+0476     const refKind = ref.target_id[0];
+0477     assert.notEqual(refKind, review.target_id[0]);
+0478     assert.equal(ref.text, inventory.targets.find(
+0479       (target) => target.target_id === ref.target_id,
+0480     ).text);
+0481   }
+0482 }
+0483 assert.equal(outputStatusForReviews(validatedStage2.reviews), COMPLETION_STATUS);
+0484 assert.notEqual(outputStatusForReviews(validatedStage2.reviews), "PASS");
+0485 
+0486 const firstActiveIds = new Set(shardPlan[0].review_target_ids);
+0487 const firstActiveReviews = cloneReviews(
+0488   validReviews.filter((review) => firstActiveIds.has(review.target_id)),
+0489 );
+0490 const firstActiveValidation = validateStage2Result(
+0491   { reviews: [...firstActiveReviews].reverse() },
+0492   inventory,
+0493   shardPlan[0].review_target_ids,
+0494 );
+0495 assert.deepEqual(
+0496   firstActiveValidation.reviews.map((review) => review.target_id),
+0497   shardPlan[0].review_target_ids,
+0498 );
+0499 const firstActiveTarget = inventory.targets.find(
+0500   (target) => target.target_id === firstActiveReviews[0].target_id,
+0501 );
+0502 const outsideActiveRef = inventory.targets.find(
+0503   (target) => !firstActiveIds.has(target.target_id) && target.kind !== firstActiveTarget.kind,
+0504 );
+0505 assert.ok(outsideActiveRef);
+0506 const crossShardRefReviews = cloneReviews(firstActiveReviews);
+0507 crossShardRefReviews[0].treatment = "PARTIAL";
+0508 crossShardRefReviews[0].refs = [outsideActiveRef.target_id];
+0509 assert.equal(
+0510   validateStage2Result(
+0511     { reviews: crossShardRefReviews },
+0512     inventory,
+0513     shardPlan[0].review_target_ids,
+0514   ).reviews.length,
+0515   shardPlan[0].review_target_ids.length,
+0516 );
+0517 
+0518 const missingActiveReview = cloneReviews(firstActiveReviews).slice(0, -1);
+0519 assertProtocolError(
+0520   () => validateStage2Result(
+0521     { reviews: missingActiveReview },
+0522     inventory,
+0523     shardPlan[0].review_target_ids,
+0524   ),
+0525   "MISSING_TARGET_REVIEW",
+0526 );
+0527 const duplicateActiveReview = cloneReviews(firstActiveReviews);
+0528 duplicateActiveReview[duplicateActiveReview.length - 1] = {
+0529   ...duplicateActiveReview[0],
+0530   refs: [...duplicateActiveReview[0].refs],
+0531 };
+0532 assertProtocolError(
+0533   () => validateStage2Result(
+0534     { reviews: duplicateActiveReview },
+0535     inventory,
+0536     shardPlan[0].review_target_ids,
+0537   ),
+0538   "DUPLICATE_TARGET_ID",
+0539 );
+0540 const unknownActiveReview = cloneReviews(firstActiveReviews);
+0541 unknownActiveReview[0].target_id = "F999999";
+0542 assertProtocolError(
+0543   () => validateStage2Result(
+0544     { reviews: unknownActiveReview },
+0545     inventory,
+0546     shardPlan[0].review_target_ids,
+0547   ),
+0548   "UNKNOWN_TARGET_ID",
+0549 );
+0550 const outsideActiveReview = validReviews.find((review) => !firstActiveIds.has(review.target_id));
+0551 const knownOutsideActive = cloneReviews(firstActiveReviews);
+0552 knownOutsideActive[0] = {
+0553   ...outsideActiveReview,
+0554   refs: [...outsideActiveReview.refs],
+0555 };
+0556 assertProtocolError(
+0557   () => validateStage2Result(
+0558     { reviews: knownOutsideActive },
+0559     inventory,
+0560     shardPlan[0].review_target_ids,
+0561   ),
+0562   "UNEXPECTED_TARGET_REVIEW",
+0563 );
+0564 assertProtocolError(
+0565   () => validateStage2Result({ reviews: [] }, inventory, []),
+0566   "EXPECTED_TARGET_IDS_EMPTY",
+0567 );
+0568 assertProtocolError(
+0569   () => validateStage2Result(
+0570     { reviews: firstActiveReviews },
+0571     inventory,
+0572     [shardPlan[0].review_target_ids[0], shardPlan[0].review_target_ids[0]],
+0573   ),
+0574   "EXPECTED_TARGET_ID_DUPLICATE",
+0575 );
+0576 assertProtocolError(
+0577   () => validateStage2Result(
+0578     { reviews: firstActiveReviews },
+0579     inventory,
+0580     ["F999999"],
+0581   ),
+0582   "EXPECTED_TARGET_ID_UNKNOWN",
+0583 );
+0584 
+0585 const missingReview = cloneReviews(validReviews).slice(0, -1);
+0586 assertProtocolError(
+0587   () => validateStage2Result({ reviews: missingReview }, inventory),
+0588   "MISSING_TARGET_REVIEW",
+0589 );
+0590 const duplicateReview = cloneReviews(validReviews);
+0591 duplicateReview[duplicateReview.length - 1] = { ...duplicateReview[0], refs: [...duplicateReview[0].refs] };
+0592 assertProtocolError(
+0593   () => validateStage2Result({ reviews: duplicateReview }, inventory),
+0594   "DUPLICATE_TARGET_ID",
+0595 );
+0596 const unknownTarget = cloneReviews(validReviews);
+0597 unknownTarget[0].target_id = "F999999";
+0598 assertProtocolError(
+0599   () => validateStage2Result({ reviews: unknownTarget }, inventory),
+0600   "UNKNOWN_TARGET_ID",
+0601 );
+0602 const unknownRef = cloneReviews(validReviews);
+0603 unknownRef[0].refs = ["C999999"];
+0604 assertProtocolError(
+0605   () => validateStage2Result({ reviews: unknownRef }, inventory),
+0606   "UNKNOWN_REF_TARGET_ID",
+0607 );
+0608 const duplicateRef = cloneReviews(validReviews);
+0609 const duplicateRefTarget = inventory.targets.find((target) => target.kind !== unknownRef[0].target_id[0]);
+0610 duplicateRef[0].refs = [duplicateRefTarget.target_id, duplicateRefTarget.target_id];
+0611 assertProtocolError(
+0612   () => validateStage2Result({ reviews: duplicateRef }, inventory),
+0613   "REF_DUPLICATE",
+0614 );
+0615 const sameFamilyRef = cloneReviews(validReviews);
+0616 sameFamilyRef[0].refs = [sameFamilyRef[0].target_id];
+0617 assertProtocolError(
+0618   () => validateStage2Result({ reviews: sameFamilyRef }, inventory),
+0619   "REF_FAMILY_INVALID",
+0620 );
+0621 const positiveWithoutRef = cloneReviews(validReviews);
+0622 positiveWithoutRef[0].refs = [];
+0623 if (positiveWithoutRef[0].treatment !== "ADDRESSED") {
+0624   positiveWithoutRef[0].treatment = "ADDRESSED";
+0625 }
+0626 assertProtocolError(
+0627   () => validateStage2Result({ reviews: positiveWithoutRef }, inventory),
+0628   "POSITIVE_TREATMENT_WITHOUT_REF",
+0629 );
+0630 const copiedQuote = cloneReviews(validReviews);
+0631 copiedQuote[0].source_quote = "MODEL_COPIED_QUOTE_SENTINEL";
+0632 assertProtocolError(
+0633   () => validateStage2Result({ reviews: copiedQuote }, inventory),
+0634   "REVIEW_SCHEMA_INVALID",
+0635 );
+0636 const extraRootPass = { reviews: validReviews, PASS: true };
+0637 assertProtocolError(
+0638   () => validateStage2Result(extraRootPass, inventory),
+0639   "RESPONSE_SCHEMA_INVALID",
+0640 );
+0641 const wrongFamilyTreatment = cloneReviews(validReviews);
+0642 const fTargetIndex = inventory.targets.findIndex((target) => target.kind === "F");
+0643 wrongFamilyTreatment[fTargetIndex].treatment = "SUPPORTED";
+0644 assertProtocolError(
+0645   () => validateStage2Result({ reviews: wrongFamilyTreatment }, inventory),
+0646   "TREATMENT_INVALID",
+0647 );
+0648 const tooLongAssessment = cloneReviews(validReviews);
+0649 tooLongAssessment[0].assessment = "X".repeat(ASSESSMENT_MAX_UTF16 + 1);
+0650 assertProtocolError(
+0651   () => validateStage2Result({ reviews: tooLongAssessment }, inventory),
+0652   "ASSESSMENT_INVALID",
+0653 );
+0654 const relatedButNotQualityPass = cloneReviews(validReviews);
+0655 relatedButNotQualityPass[0].refs = [inventory.targets.find(
+0656   (target) => target.kind !== relatedButNotQualityPass[0].target_id[0],
+0657 ).target_id];
+0658 assert.equal(
+0659   outputStatusForReviews(
+0660     validateStage2Result({ reviews: relatedButNotQualityPass }, inventory).reviews,
+0661   ),
+0662   COMPLETION_STATUS,
+0663 );
+0664 
+0665 const secondActiveIds = new Set(shardPlan[1].review_target_ids);
+0666 const firstShardReviews = cloneReviews(
+0667   validReviews.filter((review) => firstActiveIds.has(review.target_id)),
+0668 );
+0669 const secondShardReviews = cloneReviews(
+0670   validReviews.filter((review) => secondActiveIds.has(review.target_id)),
+0671 );
+0672 const mergedShardReviews = mergeShardReviews(
+0673   inventory,
+0674   shardPlan,
+0675   [firstShardReviews, secondShardReviews],
+0676 );
+0677 assert.deepEqual(
+0678   mergedShardReviews.reviews.map((review) => review.target_id),
+0679   inventory.targets.map((target) => target.target_id),
+0680 );
+0681 assert.equal(mergedShardReviews.reviews.length, inventory.targets.length);
+0682 
+0683 const overlappingSecondReviews = cloneReviews(secondShardReviews);
+0684 overlappingSecondReviews[0] = {
+0685   ...firstShardReviews[0],
+0686   refs: [...firstShardReviews[0].refs],
+0687 };
+0688 assertProtocolError(
+0689   () => mergeShardReviews(
+0690     inventory,
+0691     shardPlan,
+0692     [firstShardReviews, overlappingSecondReviews],
+0693   ),
+0694   "SHARD_REVIEW_UNEXPECTED",
+0695 );
+0696 const duplicateSecondReviews = cloneReviews(secondShardReviews);
+0697 duplicateSecondReviews[0] = {
+0698   ...duplicateSecondReviews[1],
+0699   refs: [...duplicateSecondReviews[1].refs],
+0700 };
+0701 assertProtocolError(
+0702   () => mergeShardReviews(
+0703     inventory,
+0704     shardPlan,
+0705     [firstShardReviews, duplicateSecondReviews],
+0706   ),
+0707   "SHARD_REVIEW_DUPLICATE",
+0708 );
+0709 assertProtocolError(
+0710   () => mergeShardReviews(
+0711     inventory,
+0712     shardPlan,
+0713     [firstShardReviews, secondShardReviews.slice(0, -1)],
+0714   ),
+0715   "SHARD_REVIEW_COUNT_MISMATCH",
+0716 );
+0717 const overlappingPlan = shardPlan.map((shard) => ({
+0718   shard_id: shard.shard_id,
+0719   review_target_ids: [...shard.review_target_ids],
+0720 }));
+0721 overlappingPlan[1].review_target_ids[0] = overlappingPlan[0].review_target_ids[0];
+0722 assertProtocolError(
+0723   () => mergeShardReviews(
+0724     inventory,
+0725     overlappingPlan,
+0726     [firstShardReviews, secondShardReviews],
+0727   ),
+0728   "SHARD_OVERLAP",
+0729 );
+0730 const incompletePlan = shardPlan.map((shard) => ({
+0731   shard_id: shard.shard_id,
+0732   review_target_ids: [...shard.review_target_ids],
+0733 }));
+0734 incompletePlan[1].review_target_ids.pop();
+0735 assertProtocolError(
+0736   () => mergeShardReviews(
+0737     inventory,
+0738     incompletePlan,
+0739     [firstShardReviews, secondShardReviews],
+0740   ),
+0741   "SHARD_UNION_INCOMPLETE",
+0742 );
+0743 
+0744 const stage2CompletionContent = JSON.stringify({ reviews: validReviews });
+0745 const stage2CompletionBody = JSON.stringify({
+0746   id: "CHAT_COMPLETION_SENTINEL",
+0747   object: "chat.completion",
+0748   model: MODEL,
+0749   choices: [{
+0750     index: 0,
+0751     message: { role: "assistant", content: stage2CompletionContent },
+0752     finish_reason: "stop",
+0753   }],
+0754 });
+0755 assert.equal(unwrapChatCompletion(stage2CompletionBody), stage2CompletionContent);
+0756 assert.deepEqual(
+0757   validateStage2Result(parseModelJson(unwrapChatCompletion(stage2CompletionBody)), inventory),
+0758   validateStage2Result({ reviews: validReviews }, inventory),
+0759 );
+0760 
+0761 const payload = buildRequestPayload(stage2Messages);
+0762 assert.equal(payload.model, MODEL);
+0763 assert.deepEqual(payload.messages, stage2Messages);
+0764 assert.equal(payload.temperature, 0.6);
+0765 assert.equal(payload.max_tokens, 49152);
+0766 assert.equal(payload.stream, false);
+0767 
+0768 const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
+0769 assert.equal(buildAuthorizationHeader(credentialSentinel), `Bearer ${credentialSentinel}`);
+0770 assert.ok(!JSON.stringify(payload).includes(credentialSentinel));
+0771 assertProtocolError(
+0772   () => buildAuthorizationHeader(` ${credentialSentinel}`),
+0773   "CREDENTIAL_INVALID",
+0774 );
+0775 const redacted = serializeForArtifact({
+0776   direct: credentialSentinel,
+0777   nested: { [credentialSentinel]: [`prefix:${credentialSentinel}:suffix`] },
+0778 }, credentialSentinel);
+0779 assert.ok(!redacted.includes(credentialSentinel));
+0780 assert.ok(redacted.includes(REDACTION_MARKER));
+0781 assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), `a${REDACTION_MARKER}b`);
+0782 assert.equal(REDACTION_MARKER, "\u2588");
+0783 
+0784 const oneCharCredential = "R";
+0785 const oneCharSerialized = serializeForArtifact({
+0786   direct: oneCharCredential,
+0787   error: `raw error ${oneCharCredential} tail`,
+0788   jsonbody: JSON.stringify({ message: oneCharCredential }),
+0789 }, oneCharCredential);
+0790 assert.ok(!oneCharSerialized.includes(oneCharCredential));
+0791 
+0792 assert.equal(requestTimeoutForDeadline(1_000, 901_000), 400_000);
+0793 assert.equal(requestTimeoutForDeadline(501_000, 901_000), 400_000);
+0794 assert.equal(requestTimeoutForDeadline(801_000, 901_000), 100_000);
+0795 assert.equal(requestTimeoutForDeadline(901_000, 901_000), 0);
+0796 assert.equal(requestTimeoutForDeadline(902_000, 901_000), 0);
+0797 
+0798 assertProtocolError(() => unwrapChatCompletion("{"), "COMPLETION_INVALID");
+0799 assertProtocolError(
+0800   () => unwrapChatCompletion(JSON.stringify({ model: MODEL, choices: [] })),
+0801   "COMPLETION_INVALID",
+0802 );
+0803 assertProtocolError(
+0804   () => unwrapChatCompletion(JSON.stringify({
+0805     model: MODEL,
+0806     choices: [{ message: { role: "assistant", content: "TRUNCATED" }, finish_reason: "length" }],
+0807   })),
+0808   "COMPLETION_NOT_FINISHED",
+0809 );
+0810 assertProtocolError(
+0811   () => unwrapChatCompletion(JSON.stringify({
+0812     model: MODEL,
+0813     error: { type: "SENTINEL_ERROR" },
+0814   })),
+0815   "COMPLETION_ERROR",
+0816 );
+0817 assertProtocolError(
+0818   () => unwrapChatCompletion(JSON.stringify({
+0819     model: "DIFFERENT_MODEL_SENTINEL",
+0820     choices: [{ message: { role: "assistant", content: stage2CompletionContent }, finish_reason: "stop" }],
+0821   })),
+0822   "COMPLETION_MODEL_MISMATCH",
+0823 );
+0824 assert.deepEqual(parseModelJson('{"reviews":[]}'), { reviews: [] });
+0825 assert.deepEqual(parseModelJson('```json\n{"reviews":[]}\n```'), { reviews: [] });
+0826 assertProtocolError(() => parseModelJson('prefix {"reviews":[]}'), "MALFORMED_JSON");
+0827 
+0828 function makeFakeResponse({ status, chunks, throwAfterChunks, throwFailure }) {
+0829   const state = { cancelCalls: 0, releaseLockCalls: 0, reads: 0 };
+0830   const reader = {
+0831     async read() {
+0832       state.reads += 1;
+0833       if (state.reads <= chunks.length) {
+0834         return {
+0835           done: false,
+0836           value: new Uint8Array(Buffer.from(chunks[state.reads - 1], "utf8")),
+0837         };
+0838       }
+0839       if (throwAfterChunks) {
+0840         throw throwFailure || new Error("FAKE_READER_FAILURE_SENTINEL");
+0841       }
+0842       return { done: true, value: undefined };
+0843     },
+0844     async cancel() {
+0845       state.cancelCalls += 1;
+0846       return undefined;
+0847     },
+0848     releaseLock() {
+0849       state.releaseLockCalls += 1;
+0850     },
+0851   };
+0852   return {
+0853     response: { status, body: { getReader: () => reader } },
+0854     state,
+0855   };
+0856 }
+0857 
+0858 const fakeCredential = "OFFLINE_FAKE_CREDENTIAL_SENTINEL";
+0859 const fakeRequestBody = JSON.stringify({ model: MODEL, probe: "FAKE_REQUEST_BODY_SENTINEL" });
+0860 const originalFetch = globalThis.fetch;
+0861 try {
+0862   const knownTransportFailure = new Error("KNOWN_TRANSPORT_FAILURE_SENTINEL");
+0863   knownTransportFailure.name = "TypeError";
+0864   knownTransportFailure.code = "ECONNRESET";
+0865   knownTransportFailure.cause = { code: "UND_ERR_HEADERS_TIMEOUT" };
+0866   const failing = makeFakeResponse({
+0867     status: 200,
+0868     chunks: ["{\"partial_prefix\":"],
+0869     throwAfterChunks: true,
+0870     throwFailure: knownTransportFailure,
+0871   });
+0872   let fetchCalls = 0;
+0873   let capturedOptions = null;
+0874   globalThis.fetch = async (url, options) => {
+0875     fetchCalls += 1;
+0876     assert.equal(url, ROUTE);
+0877     capturedOptions = options;
+0878     return failing.response;
+0879   };
+0880   const failingResult = await performRequest(
+0881     "stage2",
+0882     fakeRequestBody,
+0883     fakeCredential,
+0884     Date.now() + ENTIRE_CALL_CAP_MS,
+0885   );
+0886   assert.equal(fetchCalls, 1);
+0887   assert.equal(capturedOptions.method, "POST");
+0888   assert.equal(capturedOptions.redirect, "error");
+0889   assert.equal(capturedOptions.headers.Authorization, `Bearer ${fakeCredential}`);
+0890   assert.ok(capturedOptions.signal);
+0891   assert.equal(failingResult.status, 200);
+0892   assert.equal(failingResult.body, "{\"partial_prefix\":");
+0893   assert.equal(failingResult.transportError, "TRANSPORT_FAILURE");
+0894   assert.deepEqual(failingResult.transportDiagnostic, {
+0895     errorName: "TYPE_ERROR",
+0896     errorCode: "ECONNRESET",
+0897     causeCode: "UND_ERR_HEADERS_TIMEOUT",
+0898   });
+0899   assert.equal(failing.state.cancelCalls, 1);
+0900   assert.equal(failing.state.releaseLockCalls, 1);
+0901 
+0902   const secretFailure = new Error("RAW_SECRET_MESSAGE_SENTINEL");
+0903   secretFailure.name = "SECRET_NAME_SENTINEL";
+0904   secretFailure.code = "SECRET_CODE_SENTINEL";
+0905   secretFailure.cause = { code: "SECRET_CAUSE_CODE_SENTINEL" };
+0906   const unknownFailureResponse = makeFakeResponse({
+0907     status: 200,
+0908     chunks: ["{\"unknown_partial\":"],
+0909     throwAfterChunks: true,
+0910     throwFailure: secretFailure,
+0911   });
+0912   globalThis.fetch = async () => unknownFailureResponse.response;
+0913   const unknownFailureResult = await performRequest(
+0914     "stage2a",
+0915     fakeRequestBody,
+0916     fakeCredential,
+0917     Date.now() + ENTIRE_CALL_CAP_MS,
+0918   );
+0919   assert.equal(unknownFailureResult.body, "{\"unknown_partial\":");
+0920   assert.equal(unknownFailureResult.transportError, "TRANSPORT_FAILURE");
+0921   assert.deepEqual(unknownFailureResult.transportDiagnostic, {
+0922     errorName: "OTHER",
+0923     errorCode: "OTHER",
+0924     causeCode: "OTHER",
+0925   });
+0926   assert.ok(!JSON.stringify(unknownFailureResult).includes("RAW_SECRET_MESSAGE_SENTINEL"));
+0927   assert.ok(!JSON.stringify(unknownFailureResult).includes("SECRET_CODE_SENTINEL"));
+0928   assert.equal(unknownFailureResponse.state.cancelCalls, 1);
+0929   assert.equal(unknownFailureResponse.state.releaseLockCalls, 1);
+0930 
+0931   const absentCodeFailure = new Error("ABSENT_CODE_SENTINEL");
+0932   absentCodeFailure.name = "AbortError";
+0933   const absentCodeResponse = makeFakeResponse({
+0934     status: null,
+0935     chunks: [],
+0936     throwAfterChunks: true,
+0937     throwFailure: absentCodeFailure,
+0938   });
+0939   globalThis.fetch = async () => absentCodeResponse.response;
+0940   const absentCodeResult = await performRequest(
+0941     "stage2b",
+0942     fakeRequestBody,
+0943     fakeCredential,
+0944     Date.now() + ENTIRE_CALL_CAP_MS,
+0945   );
+0946   assert.deepEqual(absentCodeResult.transportDiagnostic, {
+0947     errorName: "ABORT_ERROR",
+0948     errorCode: null,
+0949     causeCode: null,
+0950   });
+0951 
+0952   const complete = makeFakeResponse({
+0953     status: 200,
+0954     chunks: ["{\"ok\":", "true}"],
+0955     throwAfterChunks: false,
+0956   });
+0957   globalThis.fetch = async () => complete.response;
+0958   const completeResult = await performRequest(
+0959     "stage2",
+0960     fakeRequestBody,
+0961     fakeCredential,
+0962     Date.now() + ENTIRE_CALL_CAP_MS,
+0963   );
+0964   assert.equal(completeResult.status, 200);
+0965   assert.equal(completeResult.body, "{\"ok\":true}");
+0966   assert.equal(completeResult.capturedBytes, Buffer.byteLength("{\"ok\":true}", "utf8"));
+0967   assert.equal(completeResult.responseOverflow, false);
+0968   assert.equal(completeResult.transportError, null);
+0969   assert.equal(completeResult.transportDiagnostic, null);
+0970   assert.equal(complete.state.cancelCalls, 0);
+0971   assert.equal(complete.state.releaseLockCalls, 1);
+0972 
+0973   const overflow = makeFakeResponse({
+0974     status: 200,
+0975     chunks: ["A".repeat(RESPONSE_CAP_BYTES + 1)],
+0976     throwAfterChunks: false,
+0977   });
+0978   globalThis.fetch = async () => overflow.response;
+0979   const overflowResult = await performRequest(
+0980     "stage2",
+0981     fakeRequestBody,
+0982     fakeCredential,
+0983     Date.now() + ENTIRE_CALL_CAP_MS,
+0984   );
+0985   assert.equal(overflowResult.status, 200);
+0986   assert.equal(overflowResult.body, "");
+0987   assert.equal(overflowResult.capturedBytes, 0);
+0988   assert.equal(overflowResult.responseOverflow, true);
+0989   assert.equal(overflowResult.transportError, null);
+0990   assert.equal(overflow.state.cancelCalls, 1);
+0991   assert.equal(overflow.state.releaseLockCalls, 1);
+0992 
+0993   let expiredFetchCalls = 0;
+0994   globalThis.fetch = async () => {
+0995     expiredFetchCalls += 1;
+0996     throw new Error("SHOULD_NOT_BE_CALLED");
+0997   };
+0998   await assert.rejects(
+0999     () => performRequest("stage2", fakeRequestBody, fakeCredential, Date.now() - 1),
+1000     (error) => error && error.code === "ENTIRE_CALL_CAP_EXCEEDED",
+1001   );
+1002   assert.equal(expiredFetchCalls, 0);
+1003 } finally {
+1004   globalThis.fetch = originalFetch;
+1005 }
+1006 
+1007 process.stdout.write("offline controls source authored; not executed\n");

@@ -1,0 +1,37 @@
+{
+  "verdict": "CONFIRMED_CROSS_EXAM_REQUIRED_QUESTION_ACTIVATION_GAP_AND_SYNTHETIC_CALLBACK_COUNTER_BUG",
+  "actual_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamNative-20261029-113906\\run-zMFEDU",
+  "actual_ask_seq": [
+    16,
+    21,
+    26
+  ],
+  "actual_answer_callbacks": 0,
+  "first_invalid_ID": "confirm_scope",
+  "second_valid_IDs": [
+    "stance",
+    "scope",
+    "need_questions"
+  ],
+  "second_valid_rejected_by_fixture_counter": true,
+  "actual_save_versions": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "existing_gate_Skills": [
+    "contract-review",
+    "doc-revise",
+    "general-drafting",
+    "contract-draft"
+  ],
+  "missing_activation": "cross-exam-opinion",
+  "primary_step0": "一次联合确认 stance/scope/need_questions",
+  "existing_seam": "REQUIRED_QUESTION_SKILLS in A/dsh-ext/agent/index.ts; existing requiredQuestionIds/preTool/executeTool/TaskState final answer binding reused",
+  "new_framework_or_store_needed": false,
+  "product_fix_not_yet_written": true,
+  "callback_fix_not_yet_written": true,
+  "original_FAILED_immutable": true
+}

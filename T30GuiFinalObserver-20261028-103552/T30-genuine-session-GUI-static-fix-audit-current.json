@@ -1,0 +1,59 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GuiStaticFixAudit-root-20261028-103241",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T30-GUI-static-fix-1017-20261028-102456.job.json",
+  "commands": 40,
+  "success": 36,
+  "author_runtime_claim": 0,
+  "verdict": "ADMITTED_PREPARE_REGISTER_ONLY_GUI_OBSERVER_PENDING",
+  "sources": {
+    "entry.py": {
+      "bytes": 45298,
+      "sha256": "32d4cf19d8929c13c4023755494209dd4ce1cdbc17e8edfb2f760d77768a8345"
+    },
+    "prepare.ps1": {
+      "bytes": 13520,
+      "sha256": "285e5dec942a50a42b277f9d1cf43f690b7b16b0e8e2d0f10abe03e3783d590a"
+    },
+    "README.md": {
+      "bytes": 10158,
+      "sha256": "0751116e9c84d51cfbd89ddb32bc5c2b9294a269e76e79efc45893efe4880c7e"
+    },
+    "root-static-fix-20261028-102456.md": {
+      "bytes": 15809,
+      "sha256": "67396ce216f481c830b6e07396ffdecee7fac4e51ef00270c1348e9f7f832e11"
+    },
+    "start.ps1": {
+      "bytes": 74131,
+      "sha256": "efd043e99964c29463c9ede500a61b6e6fe598502349598838a038051328a18b"
+    },
+    "stop.ps1": {
+      "bytes": 7145,
+      "sha256": "cc9e0d32ffd9572c2edb1dbb6b030740d5503ef211698198527e3ed0618f3055"
+    },
+    "交付说明.md": {
+      "bytes": 9579,
+      "sha256": "0f8cd031fb50b4548eb56946d86215bf23885d47975b4b3244360c6ba1d53fdb"
+    }
+  },
+  "diff_sizes": {
+    "entry.py": 7523,
+    "start.ps1": 598,
+    "README.md": 440
+  },
+  "frozen_equal": [
+    "prepare.ps1",
+    "stop.ps1",
+    "交付说明.md"
+  ],
+  "writefaces": [
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\README.md",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\entry.py",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\root-static-fix-20261028-102456.md",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\start.ps1",
+    "D:\\Lawbeach\\lawbench-coord\\A-handback-T30-GUI-static-fix-20261028-102456.md"
+  ],
+  "full_cumulative_review": true,
+  "commands_reviewed": 40,
+  "success_reviewed": 36,
+  "author_runtime": 0
+}

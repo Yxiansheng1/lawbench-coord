@@ -1,0 +1,57 @@
+{
+  "verdict": "TWO_UNRUN_OBSERVATION_CONTRACT_CORRECTIONS_REQUIRED",
+  "entry_sha256": "10ecad8e837ea12f46b077efdc735611ac24cfd842332631449050f521df1fe2",
+  "service_sha256": "e161fcb0df47bd87f4473022888c0db41c9360daa30599975193bdf48285283c",
+  "manifest_sha256": "17fe7b58b3af630a722a92e553078d5fa66cad5fd0cf99ebf7467ebea50fcdea",
+  "full_source_all_commands_reviewed": true,
+  "full_final_README_formal_reviewed": true,
+  "actual_model_NOT_RUN": true,
+  "author_runtime": 0,
+  "author_commands": 97,
+  "author_success": 77,
+  "author_nonzero": 20,
+  "cumulative_commands": 4848,
+  "cumulative_success": 4206,
+  "cumulative_nonzero": 642,
+  "historical_author_runtime_violating_jobs_unchanged": 5,
+  "changed_function_names": [
+    "assertDraftMachineChecks",
+    "canonicalPrompt",
+    "observeQuestionCallbacks",
+    "ownedMaterialIndex",
+    "parseTaskCoverage",
+    "runNativeTenderReview",
+    "setupProduction",
+    "startBService",
+    "verifyFixedInputs"
+  ],
+  "setup_only_primary64K_model_metadata_changed": true,
+  "credential_and_full_finally_bytes_held": true,
+  "whole_manifest_inverse": true,
+  "other25_dependencies_and_private_runtime_held": true,
+  "seven_original_SHA_size_mtime_ns_held": true,
+  "tracked_dirty_all_bytes_held": true,
+  "only_four_new_A_files_plus_formal": true,
+  "findings": [
+    {
+      "id": "UNSUPPORTED_PURPOSE_WORDING_PREDICATE",
+      "primary": "Skill states a purpose but output template does not require literal body words purpose/goal/for defense counsel/click back.",
+      "root_qualification": "Initial root order publicpurpose was ambiguous; this is a consumer observation correction before any model, not a product or model red.",
+      "repair": "Remove only hasPublicPurpose property; keep title/coverage/correspondence/4source predicates."
+    },
+    {
+      "id": "SCOPE_CONFIRMATION_MUST_PRECEDE_SEARCH_TOO",
+      "primary": "Skill step0 requires scope confirmation before reading any material; step6 searches after reading.",
+      "repair": "Existing materialReads scope-order filter must include case_search along with case_read_material; retain list-result-before-ask and all existing actual answer/save/ID/denial boundaries."
+    }
+  ],
+  "formal_qualifications": [
+    "Raw97/77/20 authoritative; formal total97 matches but some failure sequence/reason claims differ.",
+    "Actual Bashpreexec7 at zero-based28/36/37/45/57/67/72; do not classify index67 as an executed gitdiff.",
+    "Three author shell arguments used alternate absolute native-powershell path at30/42/68; these are not bare pwsh.exe strings; actual command outputs resolve to nativepwsh.",
+    "Index88 actualempty-pipe ParserError, not stated sharing-lock cause; index90 exit0 has innerIO error which is not a successful full read.",
+    "MD registration was not run by author; type/unit/line-count statements are static expectations, not actual parsing or OCR proof.",
+    "Root one broad receipt-key filter matched historical nested data and output truncated; no new fact adopted from truncated history."
+  ],
+  "Packaging": "HOLD"
+}

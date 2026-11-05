@@ -1,0 +1,215 @@
+D:\Lawbeach\lawbench-coord\T18SemanticPilotWireClosure-20261101-184726Before\offline-controls.mjs
+SHA fdedc96d9238fd2879772c9aa1e6ff7cded37753c06ac550a3190863be84f67a
+0001 import assert from "node:assert/strict";
+0002 import {
+0003   MAX_SEQUENTIAL_CALLS,
+0004   MODEL,
+0005   PARAMETERS,
+0006   ROUTE,
+0007   buildRequestPayload,
+0008   buildStage1Envelope,
+0009   buildStage1Messages,
+0010   buildStage2Envelope,
+0011   buildStage2Messages,
+0012   outputStatusForFindings,
+0013   parseModelJson,
+0014   redactCredential,
+0015   serializeForArtifact,
+0016   validateStage1Result,
+0017   validateStage2Result,
+0018 } from "./review-consumer.mjs";
+0019 
+0020 const receipts = [
+0021   {
+0022     receipt_id: "RECEIPT_SENTINEL_1",
+0023     material_id: "MATERIAL_SENTINEL_1",
+0024     unit: "UNIT_SENTINEL_1",
+0025     text: "EVIDENCE_SENTINEL exact first passage. EVIDENCE_SENTINEL adverse second passage.",
+0026   },
+0027   {
+0028     receipt_id: "RECEIPT_SENTINEL_2",
+0029     material_id: "MATERIAL_SENTINEL_2",
+0030     unit: "UNIT_SENTINEL_2",
+0031     text: "EVIDENCE_SENTINEL scope limit passage.",
+0032   },
+0033 ];
+0034 const input = {
+0035   receipts,
+0036   draft: "DRAFT_ONLY_SENTINEL exact draft sentence.",
+0037   visibleSelfcheck: "SELFCHECK_ONLY_SENTINEL exact self-check sentence.",
+0038   actualCoverage: { note: "COVERAGE_SENTINEL" },
+0039 };
+0040 const candidates = {
+0041   facts: [
+0042     {
+0043       id: "CANDIDATE_SENTINEL_1",
+0044       receipt_id: "RECEIPT_SENTINEL_1",
+0045       material_id: "MATERIAL_SENTINEL_1",
+0046       unit: "UNIT_SENTINEL_1",
+0047       quote: "EVIDENCE_SENTINEL exact first passage.",
+0048       description: "Neutral candidate description.",
+0049     },
+0050   ],
+0051 };
+0052 
+0053 function assertProtocolError(fn, expectedCode) {
+0054   assert.throws(fn, (error) => error && error.code === expectedCode);
+0055 }
+0056 
+0057 const stage1Envelope = buildStage1Envelope(input.receipts);
+0058 assert.deepEqual(stage1Envelope, { evidence_receipts: receipts });
+0059 assert.deepEqual(Object.keys(stage1Envelope), ["evidence_receipts"]);
+0060 const stage1Messages = buildStage1Messages(input);
+0061 assert.equal(stage1Messages.length, 2);
+0062 assert.equal(stage1Messages[0].role, "system");
+0063 assert.equal(stage1Messages[1].role, "user");
+0064 assert.ok(stage1Messages[1].content.includes('"evidence_receipts"'));
+0065 assert.ok(stage1Messages[1].content.includes("EVIDENCE_SENTINEL exact first passage."));
+0066 assert.ok(!stage1Messages[1].content.includes("DRAFT_ONLY_SENTINEL"));
+0067 assert.ok(!stage1Messages[1].content.includes("SELFCHECK_ONLY_SENTINEL"));
+0068 assert.ok(!stage1Messages[1].content.includes("COVERAGE_SENTINEL"));
+0069 
+0070 const stage2Envelope = buildStage2Envelope(input, candidates.facts);
+0071 assert.deepEqual(stage2Envelope, {
+0072   evidence_receipts: receipts,
+0073   stage1_candidates: candidates.facts,
+0074   original_draft: "DRAFT_ONLY_SENTINEL exact draft sentence.",
+0075   visible_selfcheck: "SELFCHECK_ONLY_SENTINEL exact self-check sentence.",
+0076   actual_coverage: { note: "COVERAGE_SENTINEL" },
+0077 });
+0078 assert.deepEqual(Object.keys(stage2Envelope).sort(), [
+0079   "actual_coverage",
+0080   "evidence_receipts",
+0081   "original_draft",
+0082   "stage1_candidates",
+0083   "visible_selfcheck",
+0084 ]);
+0085 const stage2Messages = buildStage2Messages(input, candidates.facts);
+0086 assert.equal(stage2Messages.length, 2);
+0087 assert.ok(!stage2Messages[1].content.includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+0088 assert.ok(stage2Messages[1].content.includes("CANDIDATE_SENTINEL_1"));
+0089 
+0090 const payload = buildRequestPayload(stage1Messages);
+0091 assert.equal(ROUTE, "http://10.126.126.1:8000/v1/chat/completions");
+0092 assert.equal(MAX_SEQUENTIAL_CALLS, 2);
+0093 assert.equal(payload.model, "qwen38-27b");
+0094 assert.equal(MODEL, "qwen38-27b");
+0095 assert.equal(payload.temperature, 0.6);
+0096 assert.equal(PARAMETERS.temperature, 0.6);
+0097 assert.equal(payload.max_tokens, 49152);
+0098 assert.equal(PARAMETERS.max_tokens, 49152);
+0099 assert.equal(payload.stream, false);
+0100 assert.equal(PARAMETERS.stream, false);
+0101 assert.deepEqual(payload.messages, stage1Messages);
+0102 
+0103 const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
+0104 const redacted = serializeForArtifact({
+0105   direct: credentialSentinel,
+0106   nested: { [credentialSentinel]: [`prefix:${credentialSentinel}:suffix`] },
+0107 }, credentialSentinel);
+0108 assert.ok(!redacted.includes(credentialSentinel));
+0109 assert.ok(redacted.includes("[REDACTED_CREDENTIAL]"));
+0110 assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), "a[REDACTED_CREDENTIAL]b");
+0111 
+0112 assert.deepEqual(parseModelJson('{"findings":[]}'), { findings: [] });
+0113 assert.deepEqual(parseModelJson('```json\n{"findings":[]}\n```'), { findings: [] });
+0114 assertProtocolError(() => parseModelJson('prefix {"findings":[]}'), "MALFORMED_JSON");
+0115 assertProtocolError(() => parseModelJson('```json\n```json\n{"findings":[]}\n```\n```'), "MALFORMED_JSON");
+0116 assertProtocolError(
+0117   () => validateStage1Result({ facts: [] }, receipts),
+0118   "EMPTY_FACTS",
+0119 );
+0120 assertProtocolError(
+0121   () => validateStage1Result({
+0122     facts: [{ ...candidates.facts[0], receipt_id: "UNKNOWN_RECEIPT_SENTINEL" }],
+0123   }, receipts),
+0124   "UNKNOWN_RECEIPT",
+0125 );
+0126 assertProtocolError(
+0127   () => validateStage1Result({
+0128     facts: [{ ...candidates.facts[0], quote: "WRONG_QUOTE_SENTINEL" }],
+0129   }, receipts),
+0130   "EVIDENCE_QUOTE_MISMATCH",
+0131 );
+0132 assert.deepEqual(validateStage1Result(candidates, receipts), candidates);
+0133 
+0134 const emptyReview = validateStage2Result({ findings: [] }, {
+0135   receipts,
+0136   draft: input.draft,
+0137   visibleSelfcheck: input.visibleSelfcheck,
+0138   stage1Candidates: candidates.facts,
+0139 });
+0140 assert.deepEqual(emptyReview, { findings: [] });
+0141 assert.equal(outputStatusForFindings(emptyReview.findings), "EMPTY_REVIEW_NOT_QUALITY_PASS");
+0142 assert.notEqual(outputStatusForFindings(emptyReview.findings), "PASS");
+0143 assertProtocolError(
+0144   () => validateStage2Result({ findings: [], overallPASS: true }, {
+0145     receipts,
+0146     draft: input.draft,
+0147     visibleSelfcheck: input.visibleSelfcheck,
+0148     stage1Candidates: candidates.facts,
+0149   }),
+0150   "RESPONSE_SCHEMA_INVALID",
+0151 );
+0152 assertProtocolError(
+0153   () => validateStage2Result({
+0154     findings: [{
+0155       kind: "SCOPE",
+0156       issue: "Synthetic issue.",
+0157       receipt_id: "UNKNOWN_RECEIPT_SENTINEL",
+0158       evidence_quote: "EVIDENCE_SENTINEL exact first passage.",
+0159       draft_quote: "DRAFT_ONLY_SENTINEL exact draft sentence.",
+0160     }],
+0161   }, {
+0162     receipts,
+0163     draft: input.draft,
+0164     visibleSelfcheck: input.visibleSelfcheck,
+0165     stage1Candidates: candidates.facts,
+0166   }),
+0167   "UNKNOWN_RECEIPT",
+0168 );
+0169 assertProtocolError(
+0170   () => validateStage2Result({
+0171     findings: [{
+0172       kind: "SCOPE",
+0173       issue: "Synthetic issue.",
+0174       receipt_id: "RECEIPT_SENTINEL_1",
+0175       evidence_quote: "EVIDENCE_SENTINEL exact first passage.",
+0176       draft_quote: "WRONG_DRAFT_QUOTE_SENTINEL",
+0177     }],
+0178   }, {
+0179     receipts,
+0180     draft: input.draft,
+0181     visibleSelfcheck: input.visibleSelfcheck,
+0182     stage1Candidates: candidates.facts,
+0183   }),
+0184   "DRAFT_QUOTE_MISMATCH",
+0185 );
+0186 
+0187 const findingReview = validateStage2Result({
+0188   findings: [
+0189     {
+0190       kind: "OMISSION",
+0191       issue: "Synthetic omitted candidate.",
+0192       receipt_id: "RECEIPT_SENTINEL_1",
+0193       evidence_quote: "EVIDENCE_SENTINEL exact first passage.",
+0194       draft_quote: null,
+0195       stage1_candidate_id: "CANDIDATE_SENTINEL_1",
+0196     },
+0197     {
+0198       kind: "SELF_CHECK",
+0199       issue: "Synthetic self-check issue.",
+0200       receipt_id: "RECEIPT_SENTINEL_2",
+0201       evidence_quote: "EVIDENCE_SENTINEL scope limit passage.",
+0202       selfcheck_quote: "SELFCHECK_ONLY_SENTINEL exact self-check sentence.",
+0203     },
+0204   ],
+0205 }, {
+0206   receipts,
+0207   draft: input.draft,
+0208   visibleSelfcheck: input.visibleSelfcheck,
+0209   stage1Candidates: candidates.facts,
+0210 });
+0211 assert.equal(outputStatusForFindings(findingReview.findings), "REVIEW_FINDINGS_REQUIRE_ROOT_MANUAL_JUDGMENT");
+0212 
+0213 process.stdout.write("offline controls passed\n");

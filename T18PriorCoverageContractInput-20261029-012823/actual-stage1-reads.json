@@ -1,0 +1,22 @@
+{
+  "v": 1,
+  "task_id": "T-20261029012044-5869",
+  "reads": [
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "unit": "para",
+      "from": 22,
+      "to": 47,
+      "at": "2026-10-29T01:21:13+08:00"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "unit": "line",
+      "from": 7,
+      "to": 10,
+      "at": "2026-10-29T01:21:18+08:00"
+    }
+  ]
+}

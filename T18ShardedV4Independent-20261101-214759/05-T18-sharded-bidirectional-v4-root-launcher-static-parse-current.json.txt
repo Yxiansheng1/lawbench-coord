@@ -1,0 +1,14 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-sharded-bidirectional-v4-root-launcher-static-parse-current.json
+SHA 478dbf79387e7e490f26c8069e826ec4953abe38b5e84a366b374f94f686ddce
+0001 {
+0002   "operation": "RootV2 PS literal staticparse only, no main execution",
+0003   "errors": [],
+0004   "Key_read": false,
+0005   "model_calls": 0,
+0006   "scope": "QUALIFIED_REUSE_EXACT_PS_LITERAL_BYTEHELD_V2_NOT_NEW_FULL_OUTER_DRIVER_PROOF",
+0007   "V4_PS_literal_sha256": "07d0421657e6cf90b7eccbbb74a6eaa88606c1f8431a0158bfb5614025ec705c",
+0008   "same_as_actual_V2_driver_PS": true,
+0009   "new_parser_run": false,
+0010   "Keyread": false,
+0011   "model_requests": 0
+0012 }

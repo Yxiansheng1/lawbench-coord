@@ -1,0 +1,110 @@
+--- 
++++ 
+@@ -10,7 +10,7 @@
+ from fractions import Fraction
+ 
+ from .. import checks, contracts, logs
+-from ..case import documents, gate
++from ..case import documents, gate, texts
+ from ..case.task import IN_PROGRESS
+ from ..errors import ApiError
+ from . import ToolContext
+@@ -321,6 +321,67 @@
+     return list(out.values())
+ 
+ 
++def _defense_unread_numeric_citation(tasks, root: str, task: dict,
++                                     cites: list[dict]) -> tuple[str, dict] | None:
++    """返回首个未被本任务当前版本完整读取的数值型出处。
++
++    只核对读取区间、材料单元结构和程序待识别占位，不检查材料中的事实内容。
++    """
++    tid = task["task_id"]
++    reads = tasks._read(root, tasks.rel(tid, "reads.json"), "files/reads.schema.json")["reads"]
++    by_material_unit: dict[tuple[str, str, str], list[tuple[int, int]]] = {}
++    for rec in reads:
++        key = (rec["material_id"], rec["material_version"], rec["unit"])
++        by_material_unit.setdefault(key, []).append((rec["from"], rec["to"]))
++    materials = None
++    pending_units: dict[tuple[str, str, str], set[int] | None] = {}
++    for cite in cites:
++        loc = cite["loc"]
++        unit = loc["unit"]
++        if unit not in ("page", "para", "line"):
++            continue
++        start = loc["from"]
++        end = loc.get("to", start)
++        if end < start:
++            return cite["material_id"], loc
++        next_unit = start
++        for read_start, read_end in sorted(
++                by_material_unit.get((cite["material_id"], cite["material_version"], unit), ())):
++            if read_end < next_unit:
++                continue
++            if read_start > next_unit:
++                break
++            next_unit = max(next_unit, read_end + 1)
++            if next_unit > end:
++                break
++        if next_unit <= end:
++            return cite["material_id"], loc
++        key = (cite["material_id"], cite["material_version"], unit)
++        if key not in pending_units:
++            if materials is None:
++                materials = tasks.index_for_task(task)["materials"]
++            material = next((m for m in materials
++                             if (m["material_id"], m["sha256"], m["unit"]) == key), None)
++            if material is None:
++                pending_units[key] = None
++            else:
++                try:
++                    text = texts.read_text(root, material)
++                except ApiError as exc:
++                    if exc.code != "MATERIAL_NOT_READY":
++                        raise
++                    pending_units[key] = None
++                else:
++                    pending_units[key] = {
++                        u.no for u in texts.split_units(text, unit)
++                        if u.text.strip() == texts.PENDING_OCR
++                    }
++        if pending_units[key] is None or any(
++                start <= no <= end for no in pending_units[key]):
++            return cite["material_id"], loc
++    return None
++
++
+ def save_draft(ctx: ToolContext, a: dict) -> dict:
+     title = a["title"].strip()
+     if not title:
+@@ -333,9 +394,29 @@
+         task = ctx.tasks.locate(tid)[2]
+         if task["state"] != "running":
+             raise ApiError("TASK_NOT_FOUND", "not_running")
++        cached_citation = None
++        if task.get("skill") == "defense-opinion":
++            cached_citation = citation_check(ctx, a["content"])
++            unread = _defense_unread_numeric_citation(
++                ctx.tasks, ctx.root, task, cached_citation[1])
++            if unread is not None:
++                material_id, loc = unread
++                unit_name = {"page": "页", "para": "段", "line": "行"}[loc["unit"]]
++                loc_text = (f"第{loc['from']}{unit_name}" if loc.get("to", loc["from"]) == loc["from"]
++                            else f"第{loc['from']}-{loc['to']}{unit_name}")
++                low, high = sorted((loc["from"], loc.get("to", loc["from"])))
++                raise ApiError(
++                    "INVALID_ARGUMENT",
++                    "defense_citation_not_read",
++                    f"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。"
++                    f"请先调用 case_list_materials，找到 material_id={material_id} 的材料，取其 name；"
++                    f"再用 case_read_material 的 name 参数传该名称，按升序区间第{low}至第{high}{unit_name}完整读取后重新保存。"
++                    "区间起止倒置请改为升序；若该范围仍是待识别占位文本，请待识别文本生成后再读取并保存。",
++                )
+         return _save_locked(
+             ctx.tasks, ctx.root, ctx.case_id, task, title, a["content"],
+-            check_fn=lambda: citation_check(ctx, a["content"]),
++            check_fn=lambda: cached_citation if cached_citation is not None
++            else citation_check(ctx, a["content"]),
+             coverage_fn=lambda: ctx.tasks.coverage(ctx.root, ctx.case_id, tid),
+         )
+ 

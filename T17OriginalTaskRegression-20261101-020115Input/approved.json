@@ -1,0 +1,31 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17OriginalTaskRegression-20261101-020115",
+  "bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17OriginalTaskRegression-20261101-020115\\bootstrap.py",
+  "original_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\FullRegression\\SafetyLoggingFix-20261031-133032\\bootstrap.py",
+  "original_bootstrap_sha256": "4b3c956626e822cb39af5341ed410ea4fdeeefcf1d8f3b432028bd23578ba8b2",
+  "nodeids": [
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p1_2_reopen_does_not_touch_running_task_of_this_process",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p1_2_hard_exit_leftover_still_marked",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p1_3_progress_and_save_draft_do_not_lose_drafts",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p1_3_locks_are_per_task",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_4_end_is_idempotent_and_progress_after_end_ignored",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_selection_not_consumed",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_switch_back_to_free",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_task_current_three_forms",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_same_second_later_wins",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_other_session_untouched",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_running_and_finished_not_deleted",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_pending_with_extra_files_not_deleted",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p2_7_voided_not_listed",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_tasks_list_excludes_pending",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p3_2_progress_end_on_pending",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_p3_3_elapsed_from_begin",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework.py::test_n35_tasks_list_has_coverage_and_check",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework2.py::test_f1_reopen_during_begin_does_not_mark_new_task",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework2.py::test_f2_save_draft_during_end_is_rejected",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework2.py::test_f2_save_draft_after_end_rejected",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework2.py::test_f5_same_second_tie_prefers_latest",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t8_rework2.py::test_begin_write_failure_not_left_as_begun"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T17OriginalTaskRegression-20261101-020115.md"
+}

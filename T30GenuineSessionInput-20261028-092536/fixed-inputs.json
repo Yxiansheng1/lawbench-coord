@@ -1,0 +1,62 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\index.ts",
+    "bytes": 18019,
+    "sha256": "f0b335c7e2eb0a83544ac9acefd95c079abaaae1a297383d7d2a6cde066619a8",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\0-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\router.ts",
+    "bytes": 33400,
+    "sha256": "1cda52fc09b579ac5f97adbe7d6c7f57bbac83ceba4cb07607d4e0207493447d",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\1-router.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\case-roots.ts",
+    "bytes": 5066,
+    "sha256": "3952a9778a89971427d61f94ca062db6eb25dd1462974dc503c4bbcc02dfad1c",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\2-case-roots.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\trash.ts",
+    "bytes": 6898,
+    "sha256": "3f00751520be9fadb72a62d8bb2ccd0ab21fe8b4001671c1cd9f862daa1d8391",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\3-trash.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+    "bytes": 70510,
+    "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\4-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\format.ts",
+    "bytes": 21586,
+    "sha256": "87d536ead041fb953f866e0191a79b4dbbbc510aee1461706f9cdc2e4c46a038",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\5-format.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+    "bytes": 60384,
+    "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\6-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\index.ts",
+    "bytes": 22912,
+    "sha256": "476bd968693ed4f290f8bb7b7c3b30fffcc470730aaec21db9f29a62f6368b02",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\7-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\lawbench-工单集-第二期-20261019.md",
+    "bytes": 26313,
+    "sha256": "87d8c1eb5ad6c73bac7224c00a83cf457d8a0cd92a1c9a75f6052505b54f7cf2",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\8-lawbench-工单集-第二期-20261019.md"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\README.md",
+    "bytes": 12105,
+    "sha256": "ab417cf87e364661ba0d624eae79ec128988b6ca0a48c2983fdee256cb379aa6",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\9-README.md"
+  }
+]

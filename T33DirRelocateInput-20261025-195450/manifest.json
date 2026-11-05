@@ -1,0 +1,47 @@
+[
+  {
+    "file": "materials.py",
+    "bytes": 84031,
+    "sha256": "3983f6e90337be065819eb24539a81dc9a181ef4d5d81303656e713954627078"
+  },
+  {
+    "file": "prepared.json",
+    "bytes": 58171,
+    "sha256": "5f4e694b327946c08612b15dd6a3781a709a134f0dff1ccf964024db4cd69ab9"
+  },
+  {
+    "file": "README.md",
+    "bytes": 5871,
+    "sha256": "bb407d9638724fcf10e3fd6706d69c13d9d292705a328d0a0b10aece178390e9"
+  },
+  {
+    "file": "refs.py",
+    "bytes": 19343,
+    "sha256": "76d2f550a65b1f07b504e46fb5dbfa53351391bcaa1217cb78aa4ed869ba2ac2"
+  },
+  {
+    "file": "relocation-move.json",
+    "bytes": 5112,
+    "sha256": "8f465d5ac15d98b8d0043b23a0342c8534f99f332251601f1a541dbaef3aec16"
+  },
+  {
+    "file": "relocation-source.json",
+    "bytes": 3190,
+    "sha256": "b1893bab963d75398d9d59a92b9a5adf424445b608454f01192e527bddeccfde"
+  },
+  {
+    "file": "server.py",
+    "bytes": 47829,
+    "sha256": "2247027d653b3f0180b276cebacff0f7e0a491d64e9a9aac54deb88dce6447b2"
+  },
+  {
+    "file": "source-stage.py",
+    "bytes": 24454,
+    "sha256": "391a6da87a3ce2dc3f0a4f013d42967e26a5f4defbeeacba0ed998cb958df50e"
+  },
+  {
+    "file": "ui-materials.tsx",
+    "bytes": 26578,
+    "sha256": "aeef65d40ad7f7930c1f6f59905af7ba3bdcab2283458613dca4c347d8860475"
+  }
+]

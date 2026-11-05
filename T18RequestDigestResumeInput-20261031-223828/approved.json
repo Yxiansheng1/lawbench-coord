@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-31T22:38:29.001481+08:00",
+  "owner_latest_verbatim": "继续",
+  "authorization": "ONE fresh resumption of the original unchanged synthetic diagnosis after restoring the existing EasyTier connection. Old exception/run/admission stays consumed and failed; no rewrite. No publication/service maintenance.",
+  "original": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestResume-20261031-223828",
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607\\native-defense-opinion.mts",
+      "bytes": 157023,
+      "sha256": "f58f871a6f492dcb671a9857611009b3ecf706c491ba229354c84a26103b04c1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607\\b-service-defense-opinion.py",
+      "bytes": 53695,
+      "sha256": "76c940b6994da9efd18b5f473ddb7229202d1a5c8513c6b1841c3402bd5c96ea"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607\\literalfixed-inputs.json",
+      "bytes": 11683,
+      "sha256": "9d6737eabc4029fa35e57d87beada2cd018ab1ffa30771efddb84ce9b4dc2705"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607\\wire-schema-finite.mjs",
+      "bytes": 21756,
+      "sha256": "73272d3fd8adbc9b089ad57c1e6ea6402a130d297ee224383b3d9cea572f48ea"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607\\request-digest-finite.mjs",
+      "bytes": 18852,
+      "sha256": "c66f6d356f42aff1cecd9f06f59d9031c205c2b52af7a88976404b559b28b4be"
+    }
+  ],
+  "health": {
+    "at": "2026-10-31T22:37:13.767061+08:00",
+    "trigger": "New observed ICMP replies from both original servers at38ms after EasyTier startup; prior early HTTP timeouts preserved",
+    "GETs": [
+      {
+        "url": "http://10.126.126.1:8000/v1/models",
+        "credential_sent": false,
+        "model_generation": false,
+        "status": 200,
+        "body": "{\"object\": \"list\", \"data\": [{\"id\": \"qwen38-27b\", \"object\": \"model\", \"created\": 1791706306, \"owned_by\": \"vllm-gateway\", \"max_model_len\": 262144, \"root\": \"qwen38-27b\", \"parent\": null}]}",
+        "elapsed_s": 0.11
+      },
+      {
+        "url": "http://10.126.126.3:9000/health",
+        "credential_sent": false,
+        "model_generation": false,
+        "status": 200,
+        "body": "{\"status\":\"ok\",\"ocr\":\"ok\",\"llm9b\":\"ok\",\"queue\":0,\"version\":\"1.0.0\",\"contract_version\":\"1.4\",\"ocr_model\":\"Xiaomi-OCR-0.BF16.gguf\"}",
+        "elapsed_s": 0.094
+      }
+    ],
+    "one_ICMP_each": {
+      "10.126.126.1": {
+        "ms": 38,
+        "TTL": 64
+      },
+      "10.126.126.3": {
+        "ms": 38,
+        "TTL": 128
+      }
+    },
+    "no_credentials_models_or_service_changes": true
+  },
+  "privacy_security_settings_changed": false,
+  "Root_app_launch_only_existing_EasyTier": true,
+  "concurrent_user_input_observed_not_all_recovery_attributed_to_Root": true
+}

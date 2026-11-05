@@ -1,0 +1,19 @@
+{
+  "original_card": "T18 step1, sentence-calc original sample01; old historical direct-model budget-stopped is not current Native run",
+  "root_primary_skill_and_public_task_all5TXT_full_read": true,
+  "root_manual_notes_only": true,
+  "previous_preissue_failed_immutable": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18PreIssueActualFailure-root-20261029-210856",
+  "no_prior": true,
+  "source_only": true,
+  "primary": {
+    "thinking": "低",
+    "window": "64K",
+    "max_tokens": 16384,
+    "model_calls": 32,
+    "tool_calls": 48,
+    "minutes": 45,
+    "request_timeout_ms": 1200000
+  },
+  "materials": 5,
+  "original_inputs": 8
+}

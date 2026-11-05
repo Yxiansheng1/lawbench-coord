@@ -1,0 +1,18 @@
+{
+  "docs/plan/evidence/T50/20261023-211421/project/node_modules/lawbench-dsh/package.json": {
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794",
+    "bytes": 1257
+  },
+  "dsh/packages/client/modules/lib/index.js": {
+    "sha256": "03ea21df556256a61289bae762bd1831fff43d035d49b8926d6c0f0b30b0e073",
+    "bytes": 41704
+  },
+  "dsh/packages/client/modules/src/index.ts": {
+    "sha256": "683dace2553c67226cb5b0603cd235e65cd1f521dec31f69d972391eb6688f69",
+    "bytes": 47997
+  },
+  "dsh/packages/boot/app-boot/src/profile-resolution/service.ts": {
+    "sha256": "a6086e1d6f91118f803055fbf5a4cfa224f8793ef8ab5539678f38ea793d6ce0",
+    "bytes": 4973
+  }
+}

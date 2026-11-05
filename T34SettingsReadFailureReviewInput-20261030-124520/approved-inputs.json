@@ -1,0 +1,209 @@
+{
+  "source_files": [
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+        "bytes": 39858,
+        "sha256": "e6f5e5fb98b6f249e397d85f98fe7eac3a7dae9869e1daa57abbc34f0fee7967"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\00-settings.tsx.before",
+        "bytes": 39858,
+        "sha256": "e6f5e5fb98b6f249e397d85f98fe7eac3a7dae9869e1daa57abbc34f0fee7967"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+        "bytes": 18994,
+        "sha256": "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\01-state.ts.before",
+        "bytes": 18994,
+        "sha256": "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\store.ts",
+        "bytes": 911,
+        "sha256": "01c96cfd6b4c0df8b7a64d01fefcc6e92cb12c8d37791a8a3d836e414bc565d6"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\02-store.ts.before",
+        "bytes": 911,
+        "sha256": "01c96cfd6b4c0df8b7a64d01fefcc6e92cb12c8d37791a8a3d836e414bc565d6"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\format.ts",
+        "bytes": 11807,
+        "sha256": "48b525966723d5591b05bae95ed685e42089bc73f5068bfe586567d40869fcfe"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\03-format.ts.before",
+        "bytes": 11807,
+        "sha256": "48b525966723d5591b05bae95ed685e42089bc73f5068bfe586567d40869fcfe"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+        "bytes": 61281,
+        "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\04-index.ts.before",
+        "bytes": 61281,
+        "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\http-json.ts",
+        "bytes": 3192,
+        "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\05-http-json.ts.before",
+        "bytes": 3192,
+        "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\contracts.ts",
+        "bytes": 4742,
+        "sha256": "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\06-contracts.ts.before",
+        "bytes": 4742,
+        "sha256": "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\remote-methods.ts",
+        "bytes": 5227,
+        "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\07-remote-methods.ts.before",
+        "bytes": 5227,
+        "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\src\\host-process.ts",
+        "bytes": 14849,
+        "sha256": "6b9d3e558f526b7832020fb43d6682a07a68bf2d5657f26951f50a4f3eabfa28"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\08-host-process.ts.before",
+        "bytes": 14849,
+        "sha256": "6b9d3e558f526b7832020fb43d6682a07a68bf2d5657f26951f50a4f3eabfa28"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\src\\node-environment.ts",
+        "bytes": 820,
+        "sha256": "cd760fede0ea4838269b09f9d68fd95dde2956d3542f16ed2a6b9629b02339bf"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\09-node-environment.ts.before",
+        "bytes": 820,
+        "sha256": "cd760fede0ea4838269b09f9d68fd95dde2956d3542f16ed2a6b9629b02339bf"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\contracts\\api\\settings.schema.json",
+        "bytes": 931,
+        "sha256": "f8fdf47838d36416aef88b92690c965aa85c94f6293d8e7aa5c3fa7a36124553"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\10-settings.schema.json.before",
+        "bytes": 931,
+        "sha256": "f8fdf47838d36416aef88b92690c965aa85c94f6293d8e7aa5c3fa7a36124553"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\contracts\\files\\settings.schema.json",
+        "bytes": 7756,
+        "sha256": "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\11-settings.schema.json.before",
+        "bytes": 7756,
+        "sha256": "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\api\\ui.py",
+        "bytes": 14417,
+        "sha256": "a9e9f4dd18cae7869847d56a3a15c992cc618ec3fe242a2e0302a169595ba09c"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\12-ui.py.before",
+        "bytes": 14417,
+        "sha256": "a9e9f4dd18cae7869847d56a3a15c992cc618ec3fe242a2e0302a169595ba09c"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\settings.py",
+        "bytes": 5201,
+        "sha256": "e790b0b1fe21f69e929bf4ee5e18063a8fc1d19673657e6fcb19c9c581f7c9ee"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\13-settings.py.before",
+        "bytes": 5201,
+        "sha256": "e790b0b1fe21f69e929bf4ee5e18063a8fc1d19673657e6fcb19c9c581f7c9ee"
+      }
+    },
+    {
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderPriorityGUI-20261030-121502\\private-provider-binding.mjs",
+        "bytes": 2501,
+        "sha256": "12b3b1c0f69f6bf98d5e6ff1bfb4c9eafff864ce87fd6e2213120d589224bf7d"
+      },
+      "snapshot": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\14-private-provider-binding.mjs.before",
+        "bytes": 2501,
+        "sha256": "12b3b1c0f69f6bf98d5e6ff1bfb4c9eafff864ce87fd6e2213120d589224bf7d"
+      }
+    }
+  ],
+  "proofs": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\T34-provider-priority-GUI-actual-closed-current.json",
+      "bytes": 11032,
+      "sha256": "4df08d0f43dba2d7992fdf64ead138155d79daa2c623a511376fbcd3fff9f9e6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\T34-provider-priority-GUI-actual-sealed-current.json",
+      "bytes": 426,
+      "sha256": "fa7fc081678d5d56a16d884aed80bca6d24ab100db5f3e5a0c48d8c5f7ddfe80"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\T34-provider-source-controls-accepted-current.json",
+      "bytes": 1105,
+      "sha256": "2edbd99e9389ca1cf6fe287eb75b77a1be38cffc60dd786ecc5715fade5b244d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T34SettingsReadFailureReviewInput-20261030-124520\\T34-provider-private-build-static-accepted-current.json",
+      "bytes": 1310,
+      "sha256": "73cfef3daf1352d91d3693e28beaa24cbaec6ff6b7984797a0202040f7fecd06"
+    }
+  ],
+  "findings": "D:\\Lawbeach\\lawbench-coord\\B-T34-settings-read-failure-findings-20261030-124520.md",
+  "observation_seam": "D:\\Lawbeach\\lawbench-coord\\B-T34-settings-read-observation-seam-20261030-124520.md",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T34-settings-read-failure-review-20261030-124520.md"
+}

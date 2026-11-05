@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="3.455" timestamp="2026-11-01T15:18:20.787273+08:00" hostname="MoreLiterai"><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_edge_docx_para_denial_then_single_para_allows" time="0.615"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151821-7299/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['借条'], 'unreadable': []}, 'not_fully_read': ['借条']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnread-edge-old-root-20261101-151812/private-root/pytest-basetemp/test_t18_edge_docx_para_denial0')
+
+    def test_t18_edge_docx_para_denial_then_single_para_allows(tmp_path):
+        source = CASE_FILES["证据/借条.docx"]
+        source_bytes = source.read_bytes()
+        env = Env(tmp_path / "case", {"证据/借条.docx": source})
+        try:
+            material_file = env.root / "证据" / "借条.docx"
+            assert material_file.read_bytes() == source_bytes
+            task_id = _selected_task(env, "t18-edge-docx-para", DEFENSE_SKILL)
+            assert _reads(env, task_id) == []
+    
+            content = "辩护意见正文〔借条 第1段〕"
+&gt;           _assert_citation_denied(env, task_id, content, "借条", "第1段", "借款")
+
+tests\test_t18_cited_unread_20261101.py:301: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151821-7299/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['借条'], 'unreadable': []}, 'not_fully_read': ['借条']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_edge_pdf_page_denial_then_single_page_allows" time="0.486"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151822-7e12/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['起诉意见书'], 'unreadable': []}, 'not_fully_read': ['起诉意见书']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnread-edge-old-root-20261101-151812/private-root/pytest-basetemp/test_t18_edge_pdf_page_denial_0')
+
+    def test_t18_edge_pdf_page_denial_then_single_page_allows(tmp_path):
+        source = CASE_FILES["起诉意见书.pdf"]
+        source_bytes = source.read_bytes()
+        env = Env(tmp_path / "case", {"起诉意见书.pdf": source})
+        try:
+            material_file = env.root / "起诉意见书.pdf"
+            assert material_file.read_bytes() == source_bytes
+            task_id = _selected_task(env, "t18-edge-pdf-page", DEFENSE_SKILL)
+            assert _reads(env, task_id) == []
+    
+            content = "辩护意见正文〔起诉意见书 第2页〕"
+&gt;           _assert_citation_denied(env, task_id, content, "起诉意见书", "第2页", "起诉意见")
+
+tests\test_t18_cited_unread_20261101.py:338: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151822-7e12/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['起诉意见书'], 'unreadable': []}, 'not_fully_read': ['起诉意见书']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_edge_budget_stopped_carries_reads_to_next_same_session_task" time="0.583" /><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_edge_completed_does_not_carry_reads" time="0.586"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151823-ad17/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnread-edge-old-root-20261101-151812/private-root/pytest-basetemp/test_t18_edge_completed_does_n0')
+
+    def test_t18_edge_completed_does_not_carry_reads(tmp_path):
+        env = _material_env(tmp_path, "第一行 借款经过\n第二行 还款经过\n")
+        try:
+            session = "t18-edge-completed-no-carry"
+            predecessor = _selected_task(env, session, DEFENSE_SKILL)
+            env.tool_ok(
+                predecessor, "case_read_material", {"name": "事实材料", "start": 1, "end": 1}
+            )
+            assert len(_reads(env, predecessor)) == 1
+            assert _edge_end(env, predecessor, "completed") == "completed"
+    
+            successor = _selected_task(env, session, DEFENSE_SKILL)
+            assert successor != predecessor
+            assert _reads(env, successor) == []
+            assert env.read_json(successor, "result.json", "files/result.schema.json")["status"] == "running"
+&gt;           _assert_citation_denied(
+                env,
+                successor,
+                "辩护意见正文〔事实材料 第1行〕",
+                "事实材料",
+                "第1行",
+                "第一行 借款经过",
+            )
+
+tests\test_t18_cited_unread_20261101.py:410: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151823-ad17/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_edge_error_does_not_carry_reads" time="0.585"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151824-e986/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnread-edge-old-root-20261101-151812/private-root/pytest-basetemp/test_t18_edge_error_does_not_c0')
+
+    def test_t18_edge_error_does_not_carry_reads(tmp_path):
+        env = _material_env(tmp_path, "第一行 借款经过\n第二行 还款经过\n")
+        try:
+            session = "t18-edge-error-no-carry"
+            predecessor = _selected_task(env, session, DEFENSE_SKILL)
+            env.tool_ok(
+                predecessor, "case_read_material", {"name": "事实材料", "start": 1, "end": 1}
+            )
+            assert len(_reads(env, predecessor)) == 1
+            assert _edge_end(env, predecessor, "error") == "failed"
+    
+            successor = _selected_task(env, session, DEFENSE_SKILL)
+            assert successor != predecessor
+            assert _reads(env, successor) == []
+            assert env.read_json(successor, "result.json", "files/result.schema.json")["status"] == "running"
+&gt;           _assert_citation_denied(
+                env,
+                successor,
+                "辩护意见正文〔事实材料 第1行〕",
+                "事实材料",
+                "第1行",
+                "第一行 借款经过",
+            )
+
+tests\test_t18_cited_unread_20261101.py:437: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101151824-e986/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase></testsuite></testsuites>

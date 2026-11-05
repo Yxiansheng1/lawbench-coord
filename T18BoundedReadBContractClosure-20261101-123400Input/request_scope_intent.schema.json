@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/files/request_scope_intent.schema.json",
+  "title": "<应用数据>/request-scope-intents/<sha256(request_id)>.json",
+  "description": "T31 私有持久意图凭据：在确认固定材料范围前，独立绑定请求、案件、会话和材料编号/版本；不保存材料名、路径、正文或模型输入输出",
+  "type": "object",
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "request_id": {
+      "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+    },
+    "case_id": {
+      "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+    },
+    "session_id": {
+      "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+    },
+    "state": {
+      "enum": [
+        "pending",
+        "prepared"
+      ]
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "material_id": {
+            "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+          },
+          "sha256": {
+            "$ref": "lawbench://contracts/common.schema.json#/$defs/sha256"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "material_id",
+          "sha256"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "updated_at": {
+      "$ref": "lawbench://contracts/common.schema.json#/$defs/time"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "v",
+    "request_id",
+    "case_id",
+    "session_id",
+    "state",
+    "materials",
+    "updated_at"
+  ]
+}

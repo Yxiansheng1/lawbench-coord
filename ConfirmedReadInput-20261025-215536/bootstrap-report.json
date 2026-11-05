@@ -1,0 +1,43 @@
+{
+  "case_id": "f0733503-0335-4066-afb0-beee3cc0e037",
+  "finished_at": "2026-10-25T21:39:08.504+08:00",
+  "format": "T32-native-gui-bootstrap-v1",
+  "native_call_count": 4,
+  "native_calls": [
+    {
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/core/task/begin",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/core/tool",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/core/task/end",
+      "status": 200
+    }
+  ],
+  "not_true_http_or_gui_proof": true,
+  "result_status": "cancelled",
+  "started_at": "2026-10-25T21:39:08.352+08:00",
+  "task_id": "T-20261025213908-4082",
+  "task_state": "finished",
+  "transport": "ASGI-inprocess-no-socket",
+  "usage": {
+    "elapsed_s": 0,
+    "model_calls": 0,
+    "tool_calls": 1
+  },
+  "v1_bytes": 54,
+  "v1_preserved_for_gui": true,
+  "v1_relative": "工作区/任务/T-20261025213908-4082/草稿/T32SyntheticDraft-v1.md",
+  "v1_sha256": "cabff0ec4478c1eab2800d1d5df1d5139d6c245bfc08f3762092443155d8f0ae"
+}

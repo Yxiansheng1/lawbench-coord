@@ -1,0 +1,2 @@
+SOURCE ONLY. 精确DS1017max，nativepwsh/loginfalse，当前无C作者。禁止所有runtime/parser/tests/build/GUI/HTTP/model/Git。
+Root已按owner明确例外仅将prepare_acceptance.py/README固定版本改1.0.0，保全。完整Root审发现确定性源码错误：main调用office_section的script_path传pathlib.Path(__file__).resolve()（Python自身），office_section随后让Node直接跑该.py，必然不能执行Office JS。仅修改此一个参数为同目录office_acceptance.mjs准确绝对路径，并在调用前require_file（如必要只一行直接with_name）。不得改任何业务代码、验证断言/预期值/资源/网络逻辑；不执行。交回coord/HANDBACK-C-Batch6-office-binding-current.md准确bytes/SHA和wholeinverse说明，4分钟。

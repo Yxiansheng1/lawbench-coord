@@ -1,0 +1,398 @@
+{
+  "format": "lawbench-t18-explicit-prior-quality-revision-inputs-v1",
+  "task": "B-T18-explicit-prior-quality-revision-20261029-004226",
+  "hashAlgorithm": "sha256",
+  "genuineInputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18GenuineRevisionInput-20261029-002747\\genuine-inputs.json",
+    "bytes": 10014,
+    "sha256": "e776968f25602af1640987ec08245af911e1f60713eef12fcc6b9a95ace24ab1"
+  },
+  "reviewedBSourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18GenuineRevisionInput-20261029-002747\\reviewed-b-source-pins-two-rate.json",
+    "bytes": 53548,
+    "sha256": "2c2b32e8b0d026b057eaf6c26a43b5b6580581ba9ed2b859192a6734c3c6a379",
+    "entryCount": 346
+  },
+  "originalReportEvidence": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-article-quality-root-review-current.json",
+    "bytes": 956,
+    "sha256": "c18bd3b18fe3916d9bf1ceb046620c4f3d7be74a97fcae7aaeefd4850ece90e3"
+  },
+  "originalCaseRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case",
+  "originalSessionsRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\sessions",
+  "originalCaseId": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+  "originalTaskId": "T-20261028234100-6b49",
+  "originalRequestId": "60fda87b-25a9-40c1-9abd-1e4893fa7b8b",
+  "nativeSessionId": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "originalDraft": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+  "appdataFiles": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scopes.json",
+      "relative": "request-scopes.json",
+      "bytes": 638,
+      "sha256": "15425c85634ff41379d2b9c3003c1b88c352c99a1dca5a17dcb7f25e38e226fd",
+      "mtime_ns": "1793202060773185300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "relative": "request-scope-intents/79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "bytes": 526,
+      "sha256": "3cda63fed3e1896ed90b1206a2bb42fbea7929317c791481a80924382a5ba6c2",
+      "mtime_ns": "1793202060700810100"
+    }
+  ],
+  "caseFiles": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\02案件材料\\采购合同.docx",
+      "relative": "02案件材料/采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\02案件材料\\采购部内部意见.txt",
+      "relative": "02案件材料/采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db",
+      "relative": "工作区/case.db",
+      "bytes": 98304,
+      "sha256": "c8fe7936d0f07475efa4e70739078a2479d00c427d5dea017acb141fd4fe4c6b",
+      "mtime_ns": "1793202060520686200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db-shm",
+      "relative": "工作区/case.db-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+      "mtime_ns": "1793202069175052600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db-wal",
+      "relative": "工作区/case.db-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": "1793202060542414800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\reads.json",
+      "relative": "工作区/任务/T-20261028234100-6b49/reads.json",
+      "bytes": 531,
+      "sha256": "dd70f6bfb2382b40776d4d1ccd01501d439e338963990a097695fd02f50473cf",
+      "mtime_ns": "1793202074831340200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\result.json",
+      "relative": "工作区/任务/T-20261028234100-6b49/result.json",
+      "bytes": 9013,
+      "sha256": "5ea5e26193091960e3fd66f40d75bab98dcca49794973ae3b0d064a86fa0b1fc",
+      "mtime_ns": "1793202200955804500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\task.json",
+      "relative": "工作区/任务/T-20261028234100-6b49/task.json",
+      "bytes": 1059,
+      "sha256": "1678d883352739caafc33860df2e94161d8516065ba65501bea394b192b25dd0",
+      "mtime_ns": "1793202200958809300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\修改清单\\采购合同.json",
+      "relative": "工作区/任务/T-20261028234100-6b49/修改清单/采购合同.json",
+      "bytes": 3149,
+      "sha256": "ca50d275c41d0043f233f7e81c2851d900b2ac399379d019f571f909b43871e5",
+      "mtime_ns": "1793202156744988600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v1.md",
+      "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v1.md",
+      "bytes": 8988,
+      "sha256": "3a190540a7384dae5ee92262beff549937e9b77f34e8e5d8eca48568c9c550bb",
+      "mtime_ns": "1793202139988081000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+      "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+      "bytes": 9170,
+      "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d",
+      "mtime_ns": "1793202187453275100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-770a\\task.json",
+      "relative": "工作区/任务/T-20261028234100-770a/task.json",
+      "bytes": 546,
+      "sha256": "96ff1890c393deed195cf359e2e8553ed0ed97434eaabcc5393950773b664fb1",
+      "mtime_ns": "1793202060687733500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\_处理状态.md",
+      "relative": "工作区/材料/_处理状态.md",
+      "bytes": 191,
+      "sha256": "4386eb8b24ab0cbe78a840a7d572614302e1902aed3fdb5bf76f655807554c8c",
+      "mtime_ns": "1793202060505116100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\index.json",
+      "relative": "工作区/材料/index.json",
+      "bytes": 1475,
+      "sha256": "12bc5cd46b9237442fd63a6d8ded78b668df0e018194b21ec1d9394b45763e7a",
+      "mtime_ns": "1793202060502114400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\文本\\02案件材料\\采购合同.docx.md",
+      "relative": "工作区/材料/文本/02案件材料/采购合同.docx.md",
+      "bytes": 4189,
+      "sha256": "6bd4b99f7a6fd6fcaa553ea60497e1f91285a6665a896467465a5be2f72a91ab",
+      "mtime_ns": "1793202060495607300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\文本\\02案件材料\\采购部内部意见.txt.md",
+      "relative": "工作区/材料/文本/02案件材料/采购部内部意见.txt.md",
+      "bytes": 951,
+      "sha256": "fb7e80a148f51cd032d6091e974b6432f62ce186422f37d1865b53c085a556eb",
+      "mtime_ns": "1793202060498114300"
+    }
+  ],
+  "sessionFiles": [
+    {
+      "kind": "native-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--\\session-1cb28369-3a90-46dc-b047-e64986038394\\session.v4.jsonl",
+      "relative": "--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--/session-1cb28369-3a90-46dc-b047-e64986038394/session.v4.jsonl",
+      "bytes": 240391,
+      "sha256": "cd40b5df18811adbbe988cf1bea2b739c0a8e25eb2009e36f15935b3d4ace2b5",
+      "mtime_ns": "1793202201104941200"
+    }
+  ],
+  "dependencies": [
+    {
+      "role": "persona",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md",
+      "bytes": 2706,
+      "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+    },
+    {
+      "role": "dsh-cordis",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "role": "dsh-llm",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "role": "dsh-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+      "bytes": 60384,
+      "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d"
+    },
+    {
+      "role": "dsh-system-prompt",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\system-prompt\\src\\index.ts",
+      "bytes": 26532,
+      "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e"
+    },
+    {
+      "role": "dsh-tools",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\index.ts",
+      "bytes": 90679,
+      "sha256": "9107a2b6447b10c2ecb90429d7c1b80b956759e96d35230af16f5a88f5d3eccd"
+    },
+    {
+      "role": "dsh-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+      "bytes": 31340,
+      "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9"
+    },
+    {
+      "role": "dsh-agent-loop",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+      "bytes": 37946,
+      "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605"
+    },
+    {
+      "role": "dsh-session-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-projection\\src\\index.ts",
+      "bytes": 31464,
+      "sha256": "2186b62bfd59c0b5ea1413287f34e3a5be79b2162c5e0e2eb2143d7e42fea39f"
+    },
+    {
+      "role": "dsh-persistence-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+      "bytes": 70510,
+      "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436"
+    },
+    {
+      "role": "dsh-session-query",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session-query\\session-query\\src\\index.ts",
+      "bytes": 15460,
+      "sha256": "549f7f90c90efec63a5c7d69dbc65938c0f9578f85dcfc8ee25a49a43a8e83e3"
+    },
+    {
+      "role": "dsh-typert",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\registry\\src\\index.ts",
+      "bytes": 1023,
+      "sha256": "a6c1aa498660cb50d768c867411943d3760e2bbb8dcd016c950c6294ed626e2a"
+    },
+    {
+      "role": "dsh-llm-pi-ai",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+      "bytes": 14182,
+      "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d"
+    },
+    {
+      "role": "controller-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+      "bytes": 22822,
+      "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769"
+    },
+    {
+      "role": "controller-commands",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+      "bytes": 31548,
+      "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c"
+    },
+    {
+      "role": "controller-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+      "bytes": 3041,
+      "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f"
+    },
+    {
+      "role": "browser-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+      "bytes": 40534,
+      "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73"
+    },
+    {
+      "role": "skill-registry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill\\src\\index.ts",
+      "bytes": 35965,
+      "sha256": "af4fad67fb086c3f5c93aed4604830718b4535e7e59a60d680404b07ea08477c"
+    },
+    {
+      "role": "skill-filesystem",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill-filesystem\\src\\index.ts",
+      "bytes": 39233,
+      "sha256": "a3fcfefcc6500f4bd7c19ba48dfa80efad312034f196f81a40d33d0d0098d315"
+    },
+    {
+      "role": "tool-skill",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\tool-skill\\src\\index.ts",
+      "bytes": 18371,
+      "sha256": "fb7b9f7558d516854ffe159803586decd1da003d7f10e04e026c4b7ca3622a1c"
+    },
+    {
+      "role": "user-questions",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\user-questions\\src\\index.ts",
+      "bytes": 5960,
+      "sha256": "2d8e7899f9763b308cf3fab3cc1018f5026af8c06a6b39925982ccdb8d934668"
+    },
+    {
+      "role": "tool-ask-user",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\tool-ask-user\\src\\index.ts",
+      "bytes": 3702,
+      "sha256": "aa448c483d0e0de805079950c616e45d93b4c972b7a62345b4e4a8c4164bfecf"
+    },
+    {
+      "role": "repeat-tool-reminder",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\src\\index.ts",
+      "bytes": 10619,
+      "sha256": "1e917986fe9c5187d8f0fa11154ab2bf3b7c1d30db991540f4d1e62a2c59236d"
+    },
+    {
+      "role": "installed-lock",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lock.yaml",
+      "bytes": 1011346,
+      "sha256": "60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"
+    },
+    {
+      "role": "pre-issue-check-skill",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\SKILL.md",
+      "bytes": 12293,
+      "sha256": "81be87f93b4114df6b644789f66379cbde9c4d143e41c542bbda4a7229818243"
+    },
+    {
+      "role": "doc-revise-skill",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\doc-revise\\SKILL.md",
+      "bytes": 11571,
+      "sha256": "9107ea54962a12521f4d4a0b824c494100359fb3a0a9968a3db1cf86c65fe1f7"
+    },
+    {
+      "role": "shared-skill-rules",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\_shared\\共用规则.md",
+      "bytes": 6982,
+      "sha256": "ebb19fe3584185971e989a87580d1e0f2f5ec1c83cc1c965c9958cbb8aec8b45"
+    },
+    {
+      "role": "original-failed-report",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\report.json",
+      "bytes": 38678,
+      "sha256": "020dc959e3fc3732ff4eaa8bc604d03da3a5d999802e3d90ec5ac9850e71ce6c"
+    },
+    {
+      "role": "original-failure-proof",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-manual-cause-status-actual-failure-current.json",
+      "bytes": 12556,
+      "sha256": "c278a59ea252884a632ff029d12ba7e68af80e523e320c5a6ea47696f1cb29b1"
+    },
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552245,
+      "sha256": "487335ef8c97c7171abf42b082835667af62c285bee9ba8320f5f08bbb6f1a17"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackPrivateBuild-20261028-214724\\private-output-20261028-220815\\manifest.json",
+      "bytes": 58195,
+      "sha256": "2ea2b754f9c9bc787e8e692fcce4daa73724c61d48748cbbbe568ea218c8f3c1"
+    }
+  ],
+  "runtimeExecutables": [
+    {
+      "role": "node",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "role": "tsx",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "role": "python",
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "bytes": 104952,
+      "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+    }
+  ],
+  "consumer": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\native-genuine-quality-revision.mts",
+    "bytes": 112107,
+    "sha256": "07b17ac7c111ff8601f1318c2965a8be88efd3b9b14e2ed828b9144c39ea79d3"
+  },
+  "bServiceEntry": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\b-service-genuine-revision.py",
+    "bytes": 38214,
+    "sha256": "77a826901fc8b9ea1243ad389e121148995be057eb791487d0f62bbcc5ed2f4a"
+  }
+}

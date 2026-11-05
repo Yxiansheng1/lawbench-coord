@@ -1,0 +1,36 @@
+{
+  "old": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T34-startup-private-config-1017-20261030-141828.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T34-startup-private-config-order-20261030-141828.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T34-startup-private-config-20261030-141828.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T34StartupPrivateInput-20261030-141828",
+    "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828",
+    "builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\build-private.mjs",
+    "config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828\\build-config.mjs",
+    "new_host_tree": {
+      "files": 20,
+      "bytes": 188418,
+      "sha256": "3dbe7d097306c8e1734fa458e4f3889cd2f89e9f776b5d6f6935392bcecf73b3"
+    },
+    "state": "SOURCE_ONLY_EXACT_HOST_TREE_PRIVATE_CONFIG"
+  },
+  "old_agent_tree": {
+    "id": "lawbench-agent-source",
+    "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent",
+    "selector": "all",
+    "files": 4,
+    "bytes": 80724,
+    "sha256": "f104a046c7cc80cbd71e9d7ad8a918322958fcd61be0caa056b9200f288bf0d1"
+  },
+  "new_agent_tree": {
+    "files": 4,
+    "bytes": 80781,
+    "sha256": "abc7e8570e1d3b8a1e1a0041bd41ac9c82414181bf8fdd37df7b40748fdd810b"
+  },
+  "product": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 50958,
+    "sha256": "f2f8444f9cc4f83a98153f40dc81fb32dcf5e0c21c846101c60433c274896ead"
+  },
+  "unit_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\general-read-order-green-unit-current.json"
+}

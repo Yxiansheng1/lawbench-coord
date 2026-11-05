@@ -1,0 +1,22 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RealSyntheticOCRRefine-20261027-225347",
+  "authorization": "D:\\Lawbeach\\lawbench-coord\\OWNER-合成案卷真实识别业务模型测试授权-20261027-224859.md",
+  "health_evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\real-synthetic-services-health-current.json",
+  "service_path": "D:\\Lawbeach\\lawbench-B\\service",
+  "fixture": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\criminal-01\\转账截图.jpg",
+  "fixture_bytes": 47379,
+  "fixture_sha256": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad",
+  "llm_url": "http://10.126.126.1:8000/v1",
+  "prep_url": "http://10.126.126.3:9000",
+  "llm_model": "qwen38-27b",
+  "ocr_model_health": "Xiaomi-OCR-0.BF16.gguf",
+  "public_nonsecret_marker": "lawbench-synthetic-no-secret-acceptance",
+  "output_fields": [
+    "张某甲",
+    "吴某",
+    "80000",
+    "0417",
+    "20250310"
+  ],
+  "synthetic_prompt": "请按转账截图整理吴某于2025年3月10日向张某甲转账80000元的时间线。"
+}

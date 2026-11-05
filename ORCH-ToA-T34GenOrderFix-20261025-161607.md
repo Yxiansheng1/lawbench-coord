@@ -1,0 +1,8 @@
+# 唯一精确生成顺序窄修：原样移动一个ex块+capture固定SHA
+A exactdeepseek-v4.1-flash-1017/max，独立240秒预算。旧生成源单completed7/7；root完整审并实际一次memorycapture，105JSON语义仅manifest顺序不等，现105磁盘件全未变。是root指定插入位置沿旧source、和真实manifest前后顺序冲突，不是接口/权限/产品数据错误；不改旧报告。
+首读本令后唯一下一exec完整读 D:\Lawbeach\lawbench-coord\ORCH-T34GenOrderInput-20261025-161607/facts.json；其中含完整原始块/精确marker/准确路径及SHA，足够施工，不再全文读105JSON/搜索/新设计。每exec绝对pwsh C:/Users/morel/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe，login=false，禁Bash/短名。
+只有这两个原有代码文件可写：D:\Lawbeach\lawbench-A\contracts\_build\gen_examples.py、D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ExampleGenerator-20261025-160738\capture.py，另正式 D:\Lawbeach\lawbench-coord\ToORCH-A-Delivery-T34GenOrderFix-20261025-161607.md。before C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T34-gen-order-before-20261025-161607 已保全当前两件/dirty/red/corpus105pins。
+1 按facts.move_exact_block原字节从现gen_examples.py移走，完整不改内容，插在facts.insert_before_exact_marker之前；block和marker各唯一。目标实际manifest尾顺序是file_settings.ports→documents_save三例→remote_access四例→legacy/create/create_legacy/external四例。其它源码内容/数据/expect不动，不排序M、不改manifest写出方式/缩进/断言/EX删除逻辑。
+2 取新source SHA，capture.py只把EXPECTED_SOURCE_SHA256的旧6e7...literal换成新literal一次。其余capture全文完全不变，不改变manifest_equal/allchecks/目标count105/readonlypatches/现有样例pins，不加sleep或宽松比较。
+严禁运行原generator(clears EX)、capture、parser/自测/pytest/Vitest/tsc/collect/build/服务/GUI；root审后跑新capture。不能修改任何现105样例/schema/lib/配置/准备/guard，不能Git写或权限/TEMP/锁/隔离变更。
+首读后最多3个必要exec做两件修改/hash/正式，别扫子模块。正式说明精确before/current/newSHA与未验，完成即停。若唯一该修仍不通过，root止此支不再ping-pong。Packaging HOLD。

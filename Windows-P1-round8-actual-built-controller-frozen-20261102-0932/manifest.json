@@ -1,0 +1,27 @@
+{
+  "at_utc": "2026-11-02T01:40:44.534598+00:00",
+  "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1RootTarget-20261102-032101",
+  "files": [
+    {
+      "name": "build-private.mjs",
+      "bytes": 33710,
+      "sha256": "cee5fd164fec14fa56c6a8cbfd4a26f94af90c35d7f01a7fbb2ea62513e5340a"
+    },
+    {
+      "name": "build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970"
+    },
+    {
+      "name": "build-windows-candidate.ps1",
+      "bytes": 64232,
+      "sha256": "8a2c56eb42d8ae59ac5900d3b8ce790afde15444f9b6cc063fa85eee943dd601"
+    },
+    {
+      "name": "builder.config.json",
+      "bytes": 30994,
+      "sha256": "42c0ee6088391d3cbb51b8d292004db6d9e2c535bdfe01e3fefe4ea91463cc45"
+    }
+  ],
+  "scope": "Actualsuccessfulround8controller, preserved beforeaddinginstalled acceptance orchestration"
+}

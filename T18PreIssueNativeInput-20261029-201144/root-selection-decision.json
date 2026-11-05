@@ -1,0 +1,27 @@
+{
+  "kind": "ROOT_AUTHORIZED_SYNTHETIC_SELECTION_BEFORE_NATIVE_SUBMISSION",
+  "public_task_requests_selected_prior": true,
+  "selected_file": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\_上游成果-民事起诉状草稿.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\5-_上游成果-民事起诉状草稿.md",
+    "bytes": 2149,
+    "sha256": "dc700a6a931b007c219d9d2a600c4f42c42f333128b48f51215f0816445ed23d",
+    "mtime_ns": "1792379578835066600"
+  },
+  "destination_relative": "成果/民事起诉状草稿.md",
+  "mode": "explicit ordinary prior-input selection; cancel material batch before beginSubmission",
+  "material_case_exactly": 4,
+  "material_names": [
+    "借条",
+    "银行流水",
+    "情况说明",
+    "还款记录"
+  ],
+  "material_batch_prepare_forbidden": true,
+  "automatic_scope_fallback_forbidden": true,
+  "production_task_input_refs_required": true,
+  "production_L1_build_required": true,
+  "prior_is_canonical_user_supplied_fixture_not_generated": true,
+  "no_fake_prior_task_or_result_metadata": true,
+  "prior_immutable_SHA_size_mtime_ns_required": true
+}

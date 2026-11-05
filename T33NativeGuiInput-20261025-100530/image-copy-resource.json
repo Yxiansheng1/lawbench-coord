@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-25T09:52:10.828275+08:00",
+  "state": "PAINT_SYNTHETIC_RESOURCE_OPEN_NATIVE_COPY_ISSUED_NOT_PRODUCT_PASTE_PASS",
+  "window": {
+    "app": "Microsoft.Paint_8wekyb3d8bbwe!App",
+    "id": 4655462,
+    "title": "转账截图.jpg - 画图"
+  },
+  "source": "D:\\Lawbeach\\lawbench-A\\tests\\fixtures\\criminal-01\\转账截图.jpg",
+  "bytes": 47379,
+  "sha256": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad",
+  "dimensions": [
+    750,
+    1334
+  ],
+  "actions": [
+    "sky launch existing mspaint.exe",
+    "native Open exact fixture",
+    "Control+A observed full image selection 750x1334",
+    "Control+C native, refreshed; clipboard bytes not read"
+  ],
+  "unchanged_source": true,
+  "not_acceptance": "Not product import/PDF/OCR/Host/Gateway/RPC acceptance",
+  "notes": [
+    "One UIA Open click reported non-target modal. Per skill activate + fresh observation, Return opened file once. No blind same-condition retry.",
+    "Paint image clipboard may be PNG/bitmap re-encoding. Future saved image byte hash need not equal original JPEG; compare native source import metadata or decoded dimensions/pixels, not a false raw-byte requirement.",
+    "Exact self-opened synthetic helper only; do not inspect business windows; no edits/save/upload/terminal/DOM/clipboard API."
+  ],
+  "window_closed_after_copy": true,
+  "closed_at": "2026-10-25T09:56:04.936082+08:00",
+  "no_save_or_edit": true
+}

@@ -1,0 +1,49 @@
+{
+  "at": "2026-11-03T20:48:55.739986+08:00",
+  "cause": "Cloud host TypeScript aggregate glob imported five Windows-private verification scripts; client/host cross-import errors stem from the T31 script.",
+  "files": [
+    {
+      "original": "packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts",
+      "preserved": "verification\\windows-bound\\packages\\api\\session-controller\\tests\\t31-compiled-session-gateway.finite.ts",
+      "bytes": 28784,
+      "sha256": "6ba19f6c3eb71a9ab08ee815ef1c2d9583a00b30a1dfef1661e268445ec9bb4e"
+    },
+    {
+      "original": "packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts",
+      "preserved": "verification\\windows-bound\\packages\\settings\\settings\\tests\\t34-provider-composition-20261030-110957.spec.ts",
+      "bytes": 6041,
+      "sha256": "7ce149acac721f5ccff24ad447c049d1d1f313a3f93911135684c9bc030d2e4c"
+    },
+    {
+      "original": "packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts",
+      "preserved": "verification\\windows-bound\\packages\\settings\\settings\\tests\\t34-provider-descriptor-state-20261030-115132.spec.ts",
+      "bytes": 7458,
+      "sha256": "0856ec8bc83919f6e929288298a480f9674e84429fb5779a344b198467abd69d"
+    },
+    {
+      "original": "packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts",
+      "preserved": "verification\\windows-bound\\packages\\settings\\settings\\tests\\t34-provider-priority-candidate-20261030-112739.spec.ts",
+      "bytes": 7218,
+      "sha256": "160617c6041635ae0acfe8b411f84df6216893cf4ace99c59cd1f07299b90fbd"
+    },
+    {
+      "original": "packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts",
+      "preserved": "verification\\windows-bound\\packages\\settings\\settings\\tests\\t34-provider-priority-value-20261030-113809.spec.ts",
+      "bytes": 7221,
+      "sha256": "437ea11efc459b5e27d345c1f5bb7359325abfcdffcbd80b7175215dc81faa45"
+    }
+  ],
+  "oldRollupSHA256": "d2c3b4085f8b7c86eff6d98beedf2cecadc2d5774e683f54a2aec291dc19a1e8",
+  "newRollupSHA256": "d2dafe34a7210c41227a8883eb3f0be311af33678034fa0442273af6c93aae52",
+  "newRollupBytes": 2798875,
+  "productSourceEdits": 0,
+  "testAssertionEdits": 0,
+  "tsconfigEdits": 0,
+  "historicalRun": 41637800827,
+  "checks": {
+    "changedPatchSectionsExactlyFive": true,
+    "otherPatchSectionsByteIdentical": true,
+    "retainedGitBlobsByteIdentical": true,
+    "cleanPinnedReplayCheckAndApply": true
+  }
+}

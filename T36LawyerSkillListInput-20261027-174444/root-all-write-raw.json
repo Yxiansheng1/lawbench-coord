@@ -1,0 +1,94 @@
+[
+  {
+    "id": "item_53",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_60",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_61",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillList-20261027-174444\\source-map.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_62",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillList-20261027-174444\\source-map.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_74",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillList-20261027-174444\\source-map.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_75",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_77",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T36-lawyer-skill-list-20261027-174444.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_88",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillList-20261027-174444\\source-map.md",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T36-lawyer-skill-list-20261027-174444.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

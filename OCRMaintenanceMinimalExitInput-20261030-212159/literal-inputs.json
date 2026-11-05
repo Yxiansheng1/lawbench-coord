@@ -1,0 +1,307 @@
+{
+  "order": "C-OCR-maintenance-controller-20261030-202123",
+  "state": "SOURCE_READY_NOT_RUN_BY_AUTHOR",
+  "human_approval": {
+    "text": "允许5分钟维护，现在没有真实案件任务",
+    "outage_seconds": 300,
+    "restore_required": true,
+    "no_real_case_traffic": true,
+    "authorized_services": [
+      "prep395",
+      "prep395-ocr"
+    ]
+  },
+  "controller": {
+    "path": "D:/Lawbeach/lawbench-C/prep395/deploy/maintenance-controller-20261030-202123/maintenance-controller.py",
+    "bytes": 80330,
+    "sha256": "cf126cedbc083ef5021380783ef975fb793c1a850979b98eb6d9361bf08793ce",
+    "note": "self hash of the safety-amend source; the controller file itself does not contain this file, so the value is stable once written"
+  },
+  "safety_amend_20261030_203451": {
+    "applies_to": "maintenance-controller.py, README.md, literal-inputs.json",
+    "api_health": {
+      "host": "10.126.126.3",
+      "port": 9000,
+      "path": "/health",
+      "same_endpoint_for_start_and_restore": true,
+      "note": "the 395 API never binds 127.0.0.1:9000; verified listeners are 192.168.8.124:9000 and 10.126.126.3:9000, both owned by the API python process"
+    },
+    "xml_write": {
+      "mode": "IN_PLACE_SAME_FILE",
+      "method": "open existing file r+b, write, ftruncate, fsync; file identity (volume serial + file index) confirmed before and after",
+      "no_os_replace": true,
+      "no_rename_unlink_chmod_acl": true,
+      "applies_to_both_apply_and_restore": true,
+      "original_bytes_and_sha_preserved": true,
+      "original_atime_mtime_restored": true
+    },
+    "restore_structure": "unavoidable finally from the first stop dispatch through the single POST; BaseException and control-flow errors also restore; diagnostic write failures never block restoration; each restore step continues on its own error",
+    "deadline": {
+      "single_monotonic_budget_seconds": 300,
+      "armed": "immediately before the first stop dispatch",
+      "never_reset_during_cleanup": true,
+      "main_phase_seconds": 180,
+      "restore_reserve_seconds": 120
+    },
+    "service_guards": "dispatch_start and dispatch_stop reject any name outside prep395 / prep395-ocr before opening mutation access; prep395-llm9b is query only",
+    "owned_identity_tracking": "wrapper plus captured native/Python children tracked per service per generation; every planned start first proves the previous generation is absent; missing capture stays PARTIAL_NOTPROVEN"
+  },
+  "stage_contract": {
+    "root": "C:/Users/PC/AppData/Local/Temp/lb-ocr-maint-<16-lowercase-hex>",
+    "files": [
+      "maintenance-controller.py",
+      "request.json",
+      "admission.json"
+    ],
+    "run_must_be_absent": true,
+    "log_directory_must_be_absent": true
+  },
+  "request": {
+    "path": "D:/Lawbeach/lawbench-coord/OCRMaintenanceInput-20261030-202123/request.json",
+    "bytes": 177698,
+    "sha256": "0b04102960d29ce77935b5a2d7efd5d1fc616aab9770e5260fc893183cfef0d5",
+    "image_sha256": "6c8399569502b6444544960b3e6f32ed43e5ada8a47ff6f7c039127ab813c40a",
+    "endpoint": "http://127.0.0.1:9101/v1/chat/completions",
+    "attempts": 1
+  },
+  "python": {
+    "path": "C:/prep395/python/python.exe",
+    "bytes": 91648,
+    "sha256": "4796bc182e858e4440f638fe5dab250d6172745ddec84e41c6afbc192a3198f9"
+  },
+  "server": {
+    "path": "C:/prep395/llama/llama-server.exe",
+    "bytes": 9216,
+    "sha256": "9d7ec1f038329210f6be353a89752ea4a762f9defa80560d37102ccce7b09a06"
+  },
+  "xml": {
+    "path": "C:/prep395/services/prep395-ocr.xml",
+    "bytes": 738,
+    "sha256": "6f38260bf02c49b6e8a64fe9c4deae7bdf3a08970719b456e372e516ed02bc98",
+    "original_log_mode": "none",
+    "original_logpath_absent": true
+  },
+  "direct_process_evidence": [
+    {
+      "role": "api-python",
+      "pid": 2932,
+      "exe": "C:/prep395/python/python.exe",
+      "birth_utc": "2026-10-14T09:33:08.5013960Z"
+    },
+    {
+      "role": "ocr-native",
+      "pid": 36704,
+      "exe": "C:/prep395/llama/llama-server.exe",
+      "birth_utc": "2026-10-27T15:44:20.5370110Z"
+    },
+    {
+      "role": "llm9b-native",
+      "pid": 9652,
+      "exe": "C:/prep395/llama/llama-server.exe",
+      "birth_utc": "2026-10-14T09:33:07.8751930Z"
+    }
+  ],
+  "native_dlls": [
+    {
+      "name": "ggml-base.dll",
+      "bytes": 800768,
+      "sha256": "28a14ca75b4383616c44fbfabb4000260845891905be3e243f6d48249f8f495b"
+    },
+    {
+      "name": "ggml-cpu-alderlake.dll",
+      "bytes": 1424384,
+      "sha256": "632e8dd4f10e6e11359574359c5c7e9a37b35f939dd99b2b5ae28cd502cc2a66"
+    },
+    {
+      "name": "ggml-cpu-cannonlake.dll",
+      "bytes": 1649664,
+      "sha256": "31acdb332de779dff7d8f5aad85fd653dc61dddde7df68ef832fa348cec0df71"
+    },
+    {
+      "name": "ggml-cpu-cascadelake.dll",
+      "bytes": 1634304,
+      "sha256": "6505c85092ae537a83943740e25314bbaf05343a0fc52931c2eddce4e8dd3663"
+    },
+    {
+      "name": "ggml-cpu-cooperlake.dll",
+      "bytes": 1634816,
+      "sha256": "36c6d387799cd30c83f0b668887e5ac6603443836359204f712a11acda9484b1"
+    },
+    {
+      "name": "ggml-cpu-haswell.dll",
+      "bytes": 1428992,
+      "sha256": "faa5d18d89bf5eb93e2bebd7cb727a1539922154fb5bec73418f7005cbad26b8"
+    },
+    {
+      "name": "ggml-cpu-icelake.dll",
+      "bytes": 1640448,
+      "sha256": "b71c0376be9515ade0eacdd83ab8163a592a165022b8934a9c0ececa596f6e2e"
+    },
+    {
+      "name": "ggml-cpu-ivybridge.dll",
+      "bytes": 1298944,
+      "sha256": "a770877528efb8d7d045a6e063ce5147e4e027c0ea8bf5294f5cb4c0c757726e"
+    },
+    {
+      "name": "ggml-cpu-piledriver.dll",
+      "bytes": 1303040,
+      "sha256": "631f72b106a93910da17987e1d61b072e2314a82ef9ba789e2e867c554c6d364"
+    },
+    {
+      "name": "ggml-cpu-sandybridge.dll",
+      "bytes": 1278976,
+      "sha256": "186756518a0337a1a1a0d53cb81e6e90d3bf1397c1adaf24d609350a25131023"
+    },
+    {
+      "name": "ggml-cpu-sapphirerapids.dll",
+      "bytes": 1911296,
+      "sha256": "2e34a276583e14580bd6c0a9852c0d0e544d1172729f891f558edf8655f4f663"
+    },
+    {
+      "name": "ggml-cpu-skylakex.dll",
+      "bytes": 1643008,
+      "sha256": "c421dec11a1cf84a617411149a99ac47d3388137c5da984fe14efeb97f3b8174"
+    },
+    {
+      "name": "ggml-cpu-sse42.dll",
+      "bytes": 909312,
+      "sha256": "fe2480ed438f7ea26e081d67b865b3ce20b801cfe69b31a8b34fff7ad7ccef59"
+    },
+    {
+      "name": "ggml-cpu-x64.dll",
+      "bytes": 901632,
+      "sha256": "3e7d3405834404b2cc491dcc488f877d7ff48b62c6f96ce7d0a68279f8c284d6"
+    },
+    {
+      "name": "ggml-cpu-zen4.dll",
+      "bytes": 1641472,
+      "sha256": "860ae0816ea9ae896e919282d827a7f596cbc307271d908dc01a4e7113075417"
+    },
+    {
+      "name": "ggml-rpc.dll",
+      "bytes": 168448,
+      "sha256": "fa9cc84b6ccc4d66b2f27f13065430841cc8fd18848e972179540162991c4a68"
+    },
+    {
+      "name": "ggml-vulkan.dll",
+      "bytes": 45306880,
+      "sha256": "f7cbaf4c10ca4f7781bc1caf58a5dc087890b76a9a7ad74a35ae477bea7aa05e"
+    },
+    {
+      "name": "ggml.dll",
+      "bytes": 79872,
+      "sha256": "ace1d47daf81a21439dad784ca6803b88b2a32629ec5bb192a5ed266c8c51e8c"
+    },
+    {
+      "name": "libomp.dll",
+      "bytes": 768000,
+      "sha256": "a12116ba72d1d6820407cf30be23da04ce79d6bb8a71a5ee71759c5a1faa6f1c"
+    },
+    {
+      "name": "llama-batched-bench-impl.dll",
+      "bytes": 63488,
+      "sha256": "f1a4fce249509ad9b7ef4a91871bb223657ffcbcde11d2e304d50a4501f7f6da"
+    },
+    {
+      "name": "llama-bench-impl.dll",
+      "bytes": 401408,
+      "sha256": "6f121eeb2b641af9a81740b3614107bb6c0a9c3f1b824b0472af8aca591e86b7"
+    },
+    {
+      "name": "llama-cli-impl.dll",
+      "bytes": 3297792,
+      "sha256": "c980bea25cbb1559929bc37396bee97b545bdd136c72e4b9478ebbb8e5678ff2"
+    },
+    {
+      "name": "llama-common.dll",
+      "bytes": 7849472,
+      "sha256": "6bb2ae768b8277fa83beeb1f4f565ddd65bb3db7cfd977254ee0735264c3d2ed"
+    },
+    {
+      "name": "llama-completion-impl.dll",
+      "bytes": 135168,
+      "sha256": "ae9d207d069189cc12b4e18f33118e258480f2e9e430fbaf78b01a015e8d4d70"
+    },
+    {
+      "name": "llama-fit-params-impl.dll",
+      "bytes": 43008,
+      "sha256": "fc2de662b46c064edf2036b8bfe4c17c833d0a49cdf4d266f901e8b6d9b59c33"
+    },
+    {
+      "name": "llama-perplexity-impl.dll",
+      "bytes": 196096,
+      "sha256": "34988a9631fa376e4dcf70bca0fb2070d447f7d054ce5ca2621f9a19ddef8690"
+    },
+    {
+      "name": "llama-quantize-impl.dll",
+      "bytes": 137216,
+      "sha256": "1b47c036e7fcb16eaeb10385a062352301238e2453f5a9346c6c1680e83f31bd"
+    },
+    {
+      "name": "llama-server-impl.dll",
+      "bytes": 8922624,
+      "sha256": "bd42db709e21d4ded9e4f3daee893c7f154d9372a50aba4b5c7d83926a751925"
+    },
+    {
+      "name": "llama.dll",
+      "bytes": 3203072,
+      "sha256": "d6a740f91d704897b57881cdfc2a867fbf59c0a172e025d830200c4252c4f878"
+    },
+    {
+      "name": "mtmd.dll",
+      "bytes": 1787904,
+      "sha256": "18badf1db28cd42cb4f3ffbda677bbbaa17df1769b45a17668e7a58477f581fe"
+    }
+  ],
+  "evidence_files": [
+    {
+      "name": "approved-inputs.json",
+      "bytes": 1645,
+      "sha256": "3d4c41cab166b080b78fb4237c26e3162296e2defa3927beadb6efb85e478bdf"
+    },
+    {
+      "name": "C-dirty-before.txt",
+      "bytes": 1018,
+      "sha256": "4707c550f96f3d49027b70d1b8d97d3ff30c9b6c23fdf755b2e65fecaae0c361"
+    },
+    {
+      "name": "OCR-395-native-DLL-pins-current.json",
+      "bytes": 4557,
+      "sha256": "392b7d5ab11da71d932ac4b312bf5e39a7182a687f6d7aeceae986ec2a7c35b"
+    },
+    {
+      "name": "OCR-http-source-flags-readonly-current.json",
+      "bytes": 1190,
+      "sha256": "5ee79ebf5d6e541e878e1ed49e57ffe57fbd8981e26fc8ca17feec0570830fdb"
+    },
+    {
+      "name": "OCR-http-template-actual-current.json",
+      "bytes": 2128,
+      "sha256": "db0f5bc3d489189eb4ca4e74f1c86ecf5d536e3762ba71db39aac4954cae395f"
+    },
+    {
+      "name": "OCR-http-template-request-captured-current.json",
+      "bytes": 1096,
+      "sha256": "57616768c3800872da580cde8dee675dcc7db1d53215bc6c34643dc6a2d25e99"
+    },
+    {
+      "name": "OCR-native-remote-production-before-current.json",
+      "bytes": 1169,
+      "sha256": "c3a28b3719b787db6b3bef92afdcf59c276be7b377a6ddd49ae42a0061cb9d3a"
+    },
+    {
+      "name": "request.json",
+      "bytes": 177698,
+      "sha256": "0b04102960d29ce77935b5a2d7efd5d1fc616aab9770e5260fc893183cfef0d5"
+    }
+  ],
+  "forbidden": [
+    "Do not run, inline, encode, or port the policy-refused old isolated-server PS helper.",
+    "Do not create a native server, GPU instance, shell script, taskkill, or dependency traversal.",
+    "Do not read credentials, environment keys, DPAPI, old production logs, dumps, or real case material.",
+    "Do not alter policy, ACLs, firewall, model files, prompts, templates, token limits, or inference parameters.",
+    "Do not make a Git write in the author run.",
+    "Do not contact or alter 6000D."
+  ],
+  "runtime_admission_note": "This file is frozen reference metadata, not the runtime admission. The root must create a separate stage admission.json with fresh stage, SCM wrapper and direct/API/9B Kernel32 identities captured independently before the one maintenance run."
+}

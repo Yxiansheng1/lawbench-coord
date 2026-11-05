@@ -1,0 +1,10 @@
+{
+  "relative": "service/lawbench/tools/drafts.py",
+  "old_bytes": 17262,
+  "old_sha256": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "bytes": 20481,
+  "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822",
+  "root_review": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-comparison-precedence-source-review-current.json",
+  "root_finite": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-comparison-precedence-finite-root-current.json",
+  "root19_and_affected12_actual_PASS": true
+}

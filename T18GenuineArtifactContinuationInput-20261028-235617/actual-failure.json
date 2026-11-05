@@ -1,0 +1,317 @@
+{
+  "verdict": "ACTUAL_QUESTIONS_AND_FACT_CITES_PASS_NEW_MANUAL_CAUSE_STATUS_FALSE_NEGATIVE_ARTICLE_NUMBER_QUALITY_OPEN",
+  "at": "2026-10-28T23:52:19.917544+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-234049",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ManualCauseStatusFailure-root-20261028-235219",
+  "error": {
+    "name": "Error",
+    "message": "out-of-scope edit 5 does not state its actual reason"
+  },
+  "elapsed_s": 153.59400000000096,
+  "model_POST": 10,
+  "model_HTTP200": 10,
+  "tool_calls": 9,
+  "physical_rows": 60,
+  "native_session": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "native_R": "60fda87b-25a9-40c1-9abd-1e4893fa7b8b",
+  "case": {
+    "caseId": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case",
+    "materialIds": [
+      "M0001",
+      "M0002"
+    ],
+    "importedPaths": [
+      "02案件材料/采购合同.docx",
+      "02案件材料/采购部内部意见.txt"
+    ],
+    "originalAreaFiles": [
+      "02案件材料/采购合同.docx",
+      "02案件材料/采购部内部意见.txt"
+    ]
+  },
+  "task_id": "T-20261028234100-6b49",
+  "actual_question": {
+    "questionIds": [
+      "our_party",
+      "purpose",
+      "focus"
+    ],
+    "questionText": "请确认我方代表合同哪一方？\n请确认审查目的是什么？\n采购部内部意见提到以下关注点：①第一批钢材须于5月10日前到货（合同只写5月20日前分两批）；②到货后7日内验收不现实（第三方检测需10-15个工作日）；③货款应留5%质量保证金；④合同第九条提到附件但无附件；⑤逾期交货超20日应能解除合同。请确认这些是否都是本次审查重点，以及修改程度。",
+    "optionLabels": [
+      "甲方（采购方）青禾建材",
+      "签约前把关",
+      "以上都是重点，可直接修改条款",
+      "以上都是重点，但只提意见不直接改",
+      "有其他关注点需要补充"
+    ],
+    "rolesByQuestion": [
+      [
+        "our_party"
+      ],
+      [
+        "purpose"
+      ],
+      [
+        "focus"
+      ]
+    ],
+    "answerIds": [
+      "our_party",
+      "purpose",
+      "focus"
+    ],
+    "answerText": "确认：我方为甲方青禾建材，即采购方。\n确认：本次是签约前把关，并需要生成修订版。\n特别关注交付与分批到货、验收安排、质量保证金留存、逾期解除；允许直接修改合同条款。"
+  },
+  "question_order": {
+    "answerCallId": "chatcmpl-tool-8ad86602cd02f5b2",
+    "answerCallSeq": 36,
+    "answerResultSeq": 37,
+    "draftCallId": "chatcmpl-tool-b7738b94284fee27",
+    "draftCallSeq": 41,
+    "draftResultSeq": 42
+  },
+  "draft": {
+    "title": "合同审查意见",
+    "path": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+    "version": 2,
+    "bytes": 9170,
+    "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d",
+    "textLength": 3525
+  },
+  "final_draft_path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+  "final_draft_fully_read": true,
+  "edit_list_arguments": {
+    "name": "采购合同",
+    "edits": [
+      {
+        "id": 1,
+        "para": 19,
+        "action": "replace",
+        "find": "3.1 交货时间：2026年5月20日前分两批交付。",
+        "text": "3.1 交货时间：第一批HW200×200热轧H型钢150吨，须于2026年5月10日前交付；第二批HN300×150热轧H型钢150吨，须于2026年5月20日前交付。",
+        "comment": "风险1：明确两批钢材各自的交货时间，第一批须于5月10日前到货，符合项目进度要求"
+      },
+      {
+        "id": 2,
+        "para": 30,
+        "action": "replace",
+        "find": "6.1 乙方逾期交货的，每逾期一日，按逾期交货部分价款的千分之一向甲方支付违约金。",
+        "text": "6.1 乙方逾期交货的，每逾期一日，按逾期交货部分价款的千分之一向甲方支付违约金。乙方逾期交货超过二十日的，甲方有权解除本合同，并要求乙方赔偿由此造成的损失。",
+        "comment": "风险2：增加逾期交货超过二十日甲方可解除合同的权利"
+      },
+      {
+        "id": 3,
+        "para": 23,
+        "action": "replace",
+        "find": "4.1 甲方应于到货后七日内完成验收，逾期未提出书面异议的，视为验收合格。",
+        "text": "4.1 甲方应于到货后十五个工作日内完成验收，逾期未提出书面异议的，视为验收合格。甲方委托第三方检测机构检测的，验收期限自检测报告出具之日起算。",
+        "comment": "风险3：延长验收期限至十五个工作日，并明确第三方检测期间的验收期限计算方式"
+      },
+      {
+        "id": 4,
+        "para": 27,
+        "action": "replace",
+        "find": "5.2 甲方应于收到货物后九十日内付款。",
+        "text": "5.2 甲方应于验收合格后九十日内支付合同总价款的95%。合同总价款的5%作为质量保证金，在质保期满且无质量问题后三十日内无息支付。",
+        "comment": "风险4、6：增加5%质量保证金条款，并将付款条件与验收合格挂钩"
+      },
+      {
+        "id": 5,
+        "para": 39,
+        "action": "replace",
+        "find": "9.1 双方指定的电子邮件通知地址以本合同附件为准，附件的电子版可在http://127.0.0.1/lbfx-attachment查阅，通知自发出之日起视为送达。",
+        "text": "9.1 双方指定的通知地址如下：甲方：虚构省虚构市虚构区不存在大道100号，联系人：冯某，电话：【待补充】，邮箱：【待补充】；乙方：虚构省虚构市虚构区无此路200号，联系人：褚某，电话：【待补充】，邮箱：【待补充】。通知自发出之日起视为送达。",
+        "comment": "风险5：合同附件缺失，改为在正文中直接写明双方通知地址"
+      },
+      {
+        "id": 6,
+        "para": 21,
+        "action": "replace",
+        "find": "3.3 乙方应提前两日通知甲方收货，甲方应安排人员清点签收。",
+        "text": "3.3 乙方应提前三日通知甲方收货，甲方应安排人员清点签收。",
+        "comment": "风险7：将交货通知期从两日延长至三日，便于甲方安排收货"
+      }
+    ]
+  },
+  "edit_list_result": {
+    "path": "工作区/任务/T-20261028234100-6b49/修改清单/采购合同.json",
+    "accepted": 5,
+    "out_of_scope": [
+      {
+        "id": 5,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "actual_manual_statement": "该条需人工修改（原文含超链接，系统修改清单无法处理）",
+  "matching_edit_id": 5,
+  "matching_risk": 5,
+  "matching_para": 39,
+  "manual_observer_false_negative": true,
+  "article_number_quality_error": "risk3 cites original4.1 but prose says contract article7; requires correction, not legal-merits adjudication",
+  "business_quality_PASS": false,
+  "no_twenty_wrong_claim_in_current_draft": true,
+  "actual_rate_guard_trigger": false,
+  "task_status": "completed",
+  "usage": {
+    "model_calls": 10,
+    "tool_calls": 4,
+    "elapsed_s": 140
+  },
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "JSONL_reopen_NOT_REACHED": true,
+  "OS": [
+    {
+      "pid": 18072,
+      "parent": 42544,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T15:40:49.4201820Z"
+    },
+    {
+      "pid": 43088,
+      "parent": 18072,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:40:49.9139250Z"
+    },
+    {
+      "pid": 12576,
+      "parent": 43088,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T15:40:49.9223900Z"
+    },
+    {
+      "pid": 40516,
+      "parent": 43088,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T15:40:49.9928950Z"
+    },
+    {
+      "pid": 27388,
+      "parent": 40516,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T15:40:50.0987290Z"
+    },
+    {
+      "pid": 41900,
+      "parent": 40516,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T15:40:50.5089060Z"
+    },
+    {
+      "pid": 41468,
+      "parent": 41900,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T15:40:50.5226210Z"
+    }
+  ],
+  "complete_OS_gone": 7,
+  "ports": {
+    "port": 57513,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T15:43:21.121+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 41900,
+    "port": 57513,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /api/tasks": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/progress": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/task/end": 1,
+        "POST /core/tool": 6
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T15:40:52.825+00:00",
+    "status": "STOPPED"
+  },
+  "sentinelRetainer_only": true,
+  "sources": [
+    {
+      "role": "fixture",
+      "id": "采购合同",
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200",
+      "same": true
+    },
+    {
+      "role": "fixture",
+      "id": "采购部内部意见",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800",
+      "same": true
+    }
+  ],
+  "key_scan": {
+    "files": 27,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "source_held": true,
+  "forced": false,
+  "next": "Use genuine completed task artifacts for independent production exporter and persistence continuation; no repeated model rephrasing or original failed report rewrite",
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 14,
+  "manifest_sha": "34282f766b524ad5fd0eb2b5ab2d5246563a71deb630dee47cc23ece82813087"
+}

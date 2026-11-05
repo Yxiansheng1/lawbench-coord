@@ -1,0 +1,5 @@
+# T33 跨卷引用搬移：原生有限验证通过
+2026-10-26T15:07:12.3477978+08:00。人类“好点，继续干活”接续，不是heartbeat，0新scan/receipt，不倒填旧trigger。
+PASS_REAL_NATIVE_CROSS_VOLUME_MOVE_MISSING_RELOCATE_REOPEN_ONLY_NOT_GUI。root实际Python7320自然exit0，总2.802秒/test2.177秒，恰1/1通过，无skip/强停。真实不同NTFS C/D卷，合成TXT目录copy2核hash/mtime后unlink源，原生scanmissing、relocate恢复、重建注册表/材料读回，同M0001/R01/name/imported_at/hash/size/mtime/text_path/rel_path，案件内无原件副本。两精确owned子根均清除，PIDbirthgone，输入41与18legacy保持。原始SHA590935b4aaf49291d50b57ab562ea2d54f2690a69c21d3b94a9c4cefed84eade。
+B精确1017max源单actual01a176f1-4488-73f3-a2df-b7fefd1b7c2d完成87/72；源码、README、formal、真实命令与副作用/fullbeforecurrent累计核，7次Bashpreexecdenied、只读子模块permission、rg/路径未命中错误保留，不拿作者自证当通过，不扩权/改锁/改guard。当前test36f90b48bf0b3634c2d8ed5d922f347a1c71c30c4b6e760b72ac2a7288613ffd。无产品修改/build/服务/GUI/模型。通过仅此新原生切片，不是整T33/Gateway/GUI/默认包；目标已收口不重复运行。
+准确完整原件与root证明：C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T33CrossVolume-root-20261026-150052/root-accepted.json。C当前T31独立发现已交回，root按源裁决并派A/B新定向回归，非直接采信其P0或GUI通过；见T31-review-regression-dispatch-current.json。仍①任务门/PackagingHOLD。

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\报价单.md",
+    "bytes": 775,
+    "sha256": "516f302d182c3d245c8402f36eae0b30d5574e8af2734a099c6acc8f12fc54f3",
+    "mtime_ns": "1792379578784315700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\询价往来邮件.txt",
+    "bytes": 712,
+    "sha256": "14392ec67e4be855f717d887efa1c8400185d716a9ca2ccdcae4293ab5d831e8",
+    "mtime_ns": "1792379578784315700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\_任务说明.md",
+    "bytes": 1200,
+    "sha256": "5f2a230bbdee7281cb8cf2caed89044cc7d212fb0b32b9b46646c4dceb730b5e",
+    "mtime_ns": "1792379578784315700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\SKILL.md",
+    "bytes": 13469,
+    "sha256": "92bd83d9fcd18a05584595292bd56828835d347a2862353259816ca66213b912",
+    "mtime_ns": "1793222466213523100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\要点.md",
+    "bytes": 8926,
+    "sha256": "f9ec3ea59b7107b4d731dacd054b76ffd338396590fb73591db30dfae6f04525",
+    "mtime_ns": "1792379578786316200"
+  }
+]

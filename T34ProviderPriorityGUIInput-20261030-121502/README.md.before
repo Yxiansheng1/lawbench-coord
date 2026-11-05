@@ -1,0 +1,82 @@
+# T34 必需 unset 原始缺失分支候选
+
+状态：`SOURCE_ONLY_HANDOFF / AUTHOR_RUNTIME_ZERO / ROOT_ONE_FRESH_GUI_REQUIRED`
+
+本目录只支持一个尚未实际运行的分支：私有 profile 启动时已有一个合法合成的
+`llm-pi-ai/providers/external`，同时 B 设置仍为
+`external_llm.enabled=false`。实际 GUI 必须保留原先的 unset/确认/错误行为，不能因为
+provider 已存在而跳过 `settings.mutate` 或 `ConfigEditor.edit`。这不是
+disabled-already-absent 分支的重跑，也不是新的错误分类器实验。
+
+底层 native 写失败原因仍为 `UNKNOWN`；本目录不提出根因结论，不修产品，不启用外部模型。
+`providers.external` 只存在于 `prepare.ps1` 创建的全新 owned profile 中，API 凭据只在
+request 时才解析。模型请求、真实 key、discovery 和网络调用均未发生且不允许发生。
+
+## 七个文件
+
+| 文件 | 来源与允许差异 |
+| --- | --- |
+| `prepare.ps1` | 批准 `.before`；仅证据根改到本目录 |
+| `start.ps1` | 批准 `.before`；证据根、`entry.py` 身份，以及 owned profile 中一次 external 种子插入和一次元数据证明 |
+| `stop.ps1` | 批准 `.before`；仅 owned-runs 根改到本目录 |
+| `entry.py` | 批准 `.before`；仅 `EVIDENCE_ROOT` 改到本目录 |
+| `projection-observer.mjs` | 原样复制；20,058 字节，`2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac` |
+| `literal-inputs.json` | 根批准蓝图加七文件交回身份；自身 `SELF_NOT_REFERENCED` |
+| `README.md` | 本说明 |
+
+其余产品源码、测试、当前 25 项私有构建、SDK、E50、legacy18、B346、source case、
+guard、resolver、pins 与 600 秒观察窗均沿用批准身份。未编译、未复制 served run。
+
+## 种子插入
+
+`start.ps1` 在冻结 T50 前缀读取和身份断言后，要求：
+
+- `    providers:` 恰好一次；
+- `      lawfirm:` 恰好一次；
+- `      external:` 写入前恰好零次；
+- 新块只插在 `providers:` 之后、`lawfirm:` 之前，且使用目标文件原换行；
+- 删除精确插入块后，前缀与原件逐字节相等；
+- 最终 `prefix + private suffix` 仍走原全量字节不变量，种子块仍恰好一次。
+
+插入值仅为：
+
+`external` / `T34 required-unset synthetic` /
+`openai-completions` / owned
+`http://127.0.0.1:<T50_LLM_PORT>/v1` / `apiKeyEnv: LAWFIRM_KEY` /
+`timeoutMs: 1200000` / `normal`, `maxRetries: 1` /
+静态模型 `t34-required-unset-synthetic`, `contextWindow: 2048`, `input: [text]`。
+没有 discovery、真实凭据、模型调用或新增路由。
+
+在 launch 前只写一次
+`gui/state/required-unset-seed.json`。它记录固定 schema/kind、命名空间、provider
+标签、模型 id、owned overlay 路径、磁盘实际 seed 前缀的字节/SHA、插入数 1、
+`currentBExternalLlmEnabled=false`，并明确不记录 key/value/raw config。
+
+## 执行命令与作者边界
+
+本说明写入前共实际执行 41 次只读/复制命令，非零 4 次：
+
+- 1 次读取正式执行令；
+- 4 次文件清单/存在性读取；
+- 22 次批准输入、原件、源码范围、哈希、路径、编码和清单读取；
+- 2 次失败的安全比对：1 次 `git status` 因共享 worktree 子模块权限拒绝，1 次原生
+  PowerShell 管道写法错误；均未写入；
+- 1 次误用 bash 的只读 `rg` 被运行器以 `BASH/E_ACCESS_DENIED` 在目标执行前拒绝；
+- 1 次另因原生 PowerShell 管道写法错误的行尾比对；均未写入；
+- 1 次复制七份批准原件，1 次用根蓝图重建 `literal-inputs.json`；
+- 其余 8 次为目标文件副本、编码、行尾、补丁形状和源身份读取。
+
+`git status` 的共享子模块权限拒绝未被“修复”；Git 写操作 0，index/锁/ACL/审批未改。
+没有 Node、Python、target runtime script、AST/parser/import/type/check/test/build、
+GUI、HTTP、模型、进程或端口探测。测试结果未沿用，因为本轮新增种子本身尚未运行。
+
+## NOT RUN
+
+`prepare`、admit、`start`、GUI、ordinary unset action、observer capture、`stop`、
+磁盘 patch/current provider 检查、owned OS closure、UI/no-source-change 检查、
+Node/Python、parser/import/type/check/test/build、模型/网络、native projection PASS、
+整条 T34 PASS 和打包全部 `NOT_RUN`。
+
+根侧下一步只做一次全新实际 GUI：让 ordinary action 真实触发
+`settings.mutate` 对 `providers.external` 的 unset，再由原写路径调用
+`ConfigEditor.edit`；结果在运行前保持 `UNKNOWN`。如果失败，保留失败并停止等价重试。

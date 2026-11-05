@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-27T21:41:41.342309+08:00",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entry_bytes": 79263,
+  "entry_sha": "94fb02f734a1e08148fbcdf52dd3a477ef3eaa87043b1112b5282f25311eb16a",
+  "probe_sha": "766c0e1a3c1a81f0569efc429eda0d983030341a72cacadffa185697641ddf6f",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T32-PDF-private-layout-1017-20261027-213705.job.json",
+  "commands": 18,
+  "success": 15,
+  "author_runtime": 0,
+  "full_cumulative_review": true,
+  "all_other_entry_bytes_inverse_exact": true,
+  "changed_function": "_assert_root_inventory",
+  "finite_and_prepare_strict4_retained": true,
+  "GUI_only_private6_after_existing_GUI_validation": true,
+  "all_six_private_directories_plain": true,
+  "runtime_tests_this_revision": false,
+  "finite_old_source_proof_not_relabelled": true,
+  "new_GUI_pending": true,
+  "packaging": "HOLD"
+}

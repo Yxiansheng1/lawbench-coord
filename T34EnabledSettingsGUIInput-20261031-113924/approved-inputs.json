@@ -1,0 +1,182 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIExactGUI-20261031-102438",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\EnabledSettingsGUI-20261031-113924",
+  "names": [
+    "README.md",
+    "entry.py",
+    "literal-inputs.json",
+    "observer-finite.mjs",
+    "prepare.ps1",
+    "private-provider-binding.mjs",
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "signature-finite.mjs",
+    "start.ps1",
+    "stop.ps1"
+  ],
+  "rules": {
+    "prepare.ps1": [
+      {
+        "old": "CurrentUIExactGUI-20261031-102438",
+        "new": "EnabledSettingsGUI-20261031-113924",
+        "expected_count": 1
+      },
+      {
+        "old": "  external_llm = [ordered]@{\n    enabled = $false\n    base_url = $null\n    model = $null\n    context_window = $null\n    supports_tools = $true\n  }",
+        "new": "  external_llm = [ordered]@{\n    enabled = $true\n    base_url = 'http://127.0.0.1:65005/v1'\n    model = 't34-enabled-ui-synthetic'\n    context_window = 32768\n    supports_tools = $true\n  }",
+        "expected_count": 1
+      }
+    ],
+    "entry.py": [
+      {
+        "old": "CurrentUIExactGUI-20261031-102438",
+        "new": "EnabledSettingsGUI-20261031-113924",
+        "expected_count": 1
+      },
+      {
+        "old": "        \"external_llm\": {\n            \"enabled\": False,\n            \"base_url\": None,\n            \"model\": None,\n            \"context_window\": None,\n            \"supports_tools\": True,\n        },",
+        "new": "        \"external_llm\": {\n            \"enabled\": True,\n            \"base_url\": \"http://127.0.0.1:65005/v1\",\n            \"model\": \"t34-enabled-ui-synthetic\",\n            \"context_window\": 32768,\n            \"supports_tools\": True,\n        },",
+        "expected_count": 1
+      }
+    ],
+    "start.ps1": [
+      {
+        "old": "CurrentUIExactGUI-20261031-102438",
+        "new": "EnabledSettingsGUI-20261031-113924",
+        "expected_count": 2
+      },
+      {
+        "old": "  if ($settings.external_llm.enabled -ne $false -or",
+        "new": "  if ($settings.external_llm.enabled -ne $true -or\n      $settings.external_llm.base_url -cne 'http://127.0.0.1:65005/v1' -or\n      $settings.external_llm.model -cne 't34-enabled-ui-synthetic' -or\n      $settings.external_llm.context_window -ne 32768 -or",
+        "expected_count": 1
+      },
+      {
+        "old": "  if ($settingsProof.external_llm.enabled -ne $false) {",
+        "new": "  if ($settingsProof.external_llm.enabled -ne $true -or\n      $settingsProof.external_llm.base_url -cne 'http://127.0.0.1:65005/v1' -or\n      $settingsProof.external_llm.model -cne 't34-enabled-ui-synthetic' -or\n      $settingsProof.external_llm.context_window -ne 32768) {",
+        "expected_count": 1
+      },
+      {
+        "old": "required-unset seed requires the checked B setting external_llm.enabled=false",
+        "new": "enabled-settings scenario requires the exact checked synthetic B external config",
+        "expected_count": 1
+      },
+      {
+        "old": "5cc5412f1901023ac62345b91e974cc953a2ca619e46efefdb3282312e46c830",
+        "new": "__ENTRY_SHA256__",
+        "expected_count": 1
+      }
+    ],
+    "stop.ps1": [
+      {
+        "old": "CurrentUIExactGUI-20261031-102438",
+        "new": "EnabledSettingsGUI-20261031-113924",
+        "expected_count": 1
+      }
+    ]
+  },
+  "frozen_helpers": [
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "private-provider-binding.mjs",
+    "observer-finite.mjs",
+    "signature-finite.mjs"
+  ],
+  "scenario": {
+    "enabled": true,
+    "base_url": "http://127.0.0.1:65005/v1",
+    "model": "t34-enabled-ui-synthetic",
+    "context_window": 32768,
+    "supports_tools": true
+  },
+  "current_private_build": {
+    "verdict": "STATIC25_CURRENT_UI3GUARDS_ACCEPTED_BUILD0",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIPrivateBuild-20261031-101722\\private-output-20261031-101856",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34CurrentUIPrivateBuild-root-20261031-101856",
+    "manifest_bytes": 58197,
+    "manifest_sha": "4947e42090ad66b31ac192ddc8280fc3fb63e17f80ec346ff4a69c2f7410385a",
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "other23_outputs_equal": true,
+    "compiled_client_whole_inverse3guards_and_stamp_exact": true,
+    "sourceModules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "unchanged_Agent_Host_contract_AST_reused": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "OS": [
+      {
+        "pid": 55844,
+        "parent": 57692,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-31T02:18:57.1108700Z"
+      },
+      {
+        "pid": 52232,
+        "parent": 55844,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birth_utc": "2026-10-31T02:18:57.1699550Z"
+      },
+      {
+        "pid": 59444,
+        "parent": 55844,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-31T02:18:58.1594250Z"
+      },
+      {
+        "pid": 58920,
+        "parent": 55844,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-31T02:18:58.5193360Z"
+      },
+      {
+        "pid": 39768,
+        "parent": 55844,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-31T02:18:58.9451250Z"
+      }
+    ],
+    "OS_complete_count": 5,
+    "OS_partial_NOT_PROVEN": [],
+    "build_elapsed_s": 19.937999999994645,
+    "forced": false,
+    "GUI": false,
+    "SystemCredentialStore": false,
+    "Packaging": "HOLD"
+  },
+  "source_root_review": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-current-UI-GUI-source-accepted-current.json",
+  "constraints": "Only enabled synthetic settings input + exact scenario guards + self relocation/pins. Original task route remains local, no consent/key fields, no send/model, five helper bodies exact."
+}

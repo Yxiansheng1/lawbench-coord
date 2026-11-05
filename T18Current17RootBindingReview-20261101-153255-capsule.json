@@ -1,0 +1,72 @@
+{
+  "actual_failure": [
+    {
+      "name": "T34 native CoreClient HTTP entry crosses the preparer-owned server once per case/begin/end boundary",
+      "messages": [
+        "Error: LB_NATIVE_TEST_ROOT must be inside this preparation runs directory\n    at requiredRoot (D:/Lawbeach/lawbench-A/dsh-ext/tests/t34-native-core-http.spec.ts:29:11)\n    at D:/Lawbeach/lawbench-A/dsh-ext/tests/t34-native-core-http.spec.ts:85:18\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///D:/Lawbeach/lawbench-A/dsh/node_modules/.pnpm/@vitest+runner@4.1.8/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)"
+      ]
+    }
+  ],
+  "requests": [],
+  "models": 0,
+  "old_sources_immutable": true,
+  "frozen_pin_paths": [
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\prepare.ps1",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\start.ps1",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\stop.ps1",
+    "D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/server.py",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\agent.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\client.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\credentials.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\host.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\index.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\session-store.js",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\resolve-from-dsh.mjs",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/agent.js",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/client.js",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/host.js",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/credentials.js",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/index.js",
+    "D:/Lawbeach/lawbench-A/dsh-ext/lib/session-store.js"
+  ],
+  "targets": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-native-core-http.spec.ts",
+      "bytes": 8328,
+      "sha256": "3e4f334e368c8e2a80da474eb7879c8f8e1238e4a0234d962504ac7d8fbde892"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t32-native-draft-http.spec.ts",
+      "bytes": 15231,
+      "sha256": "6b8906b493b07941a75d72743e4e20dc6a392cc146e8608bf308a2f1f309eba5"
+    }
+  ],
+  "new_preparer_binding": [
+    {
+      "kind": "T34",
+      "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\CoreHttpEntry-20261025-163357\\server.py",
+      "old_sha256": "2e9d542ff0449fe5041f0cc6869a5470f610ed4ee7b5cd477332efc5f5bfd4cd",
+      "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\CoreHttpEntryCurrent17-20261101-142727\\server.py",
+      "expected_bytes": 55023,
+      "expected_sha256": "bf7a8c285269b87f9d148c6500f1a416c4b945dd57d63f0feffc7437000d0af8",
+      "mappings": {
+        "contract_version != \"1.6\"": "contract_version != \"1.7\"",
+        "contract_version_not_1_6": "contract_version_not_1_7"
+      }
+    },
+    {
+      "kind": "T32",
+      "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDraftEntry-20261025-165327\\server.py",
+      "old_sha256": "30dc704d919bf8a242d3a4e5a75f19866da66dcbff8cee8c57ae754cca3cd62f",
+      "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDraftEntryCurrent17-20261101-142727\\server.py",
+      "expected_bytes": 67606,
+      "expected_sha256": "f1ea3f0784a9178457bf1f1e85cb9faddec7b2d11fd75013aa2522818c87baf5",
+      "mappings": {
+        "contract_version != \"1.6\"": "contract_version != \"1.7\"",
+        "contract_version_not_1_6": "contract_version_not_1_7"
+      }
+    }
+  ],
+  "scope": "Determine whether literal test fixture PREP_DIR/RUNS_DIR identity rebinding to current17 private preparer is within allowed fixture TEST scope WITHOUT changing any validator/function/frozenorigin/permissions; if prohibited, retain branch blocked and do not propose reroute/bypass"
+}

@@ -1,0 +1,4 @@
+        expected = next(
+            item for item in self.source_identity_before["files"]
+            if item["name"] == CASE_SOURCE_FILE
+        )

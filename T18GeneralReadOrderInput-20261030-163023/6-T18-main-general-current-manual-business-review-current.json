@@ -1,0 +1,44 @@
+{
+  "verdict": "MANUAL_PARTIAL_SKILL_QUALITY_GAPS_RETAINED",
+  "at_utc": "2026-10-30T08:20:45.185149+00:00",
+  "full_final_body_and_visible_answer_root_read": true,
+  "canonical_task_skill_and_five_inputs_root_read": true,
+  "body_sha256": "3d5319fe3461a1c3b0ee09d01911b27f08935739ef30ce250f0f38e190aedc18",
+  "principal_80000_minus_20000_equals_60000": true,
+  "interest_payments_800_800_600_separate_from_principal": true,
+  "borrow_and_due_dates_match_sources": true,
+  "recipient_address_matches_original": true,
+  "seven_day_demand_matches_actual_authorized_synthetic_answer": true,
+  "actual_question_prefills_supplied_values_and_address": true,
+  "actual_callback_is_test_authorized_synthetic_not_new_human_reply": true,
+  "irrelevant_tax_report_threat_absent_from_draft": true,
+  "legal_verification_marker_and_missing_fields_present": true,
+  "final_26_citation_occurrences_and_25_deduplicated_source_GETs_current": true,
+  "manual_findings": [
+    {
+      "id": "GENERAL_QUESTION_ORDER",
+      "status": "FAILED",
+      "evidence": "Five actual material reads seq18/20/22/24/26 precede valid question seq36/answer37. First save seq31 was denied. First successful save seq41 is after answers, so production save gate passes while Skill step1-before-factfinding is not met."
+    },
+    {
+      "id": "VISIBLE_SELF_CHECK",
+      "status": "FAILED",
+      "evidence": "Visible reply seq60 has omitted-threat explanation, missing fields and document highlights, but no per-item pass/problem-and-handling self-check required by the Skill."
+    },
+    {
+      "id": "ADDRESS_CITATION",
+      "status": "PARTIAL",
+      "evidence": "Addressee address matches the fully read loan document and appeared in the actual confirmation options, but the address line in final body has no original-source citation."
+    },
+    {
+      "id": "LAWYER_REVIEW",
+      "status": "REQUIRES_LAWYER",
+      "evidence": "Overdue-interest basis/start and allocation of all litigation/legal fees require lawyer review. XX law-firm label and other placeholders remain; no legal-merits certification."
+    }
+  ],
+  "business_all_PASS": false,
+  "legal_all_PASS": false,
+  "full_T18": false,
+  "full_suite": false,
+  "Packaging": "HOLD"
+}

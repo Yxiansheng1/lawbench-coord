@@ -1,0 +1,118 @@
+{
+  "purpose": "Original T18 case-wiki-build CURRENT production pipeline, canonical synthetic sample02. Distinct from T31 empty-wiki GUI. Old14-call historical sample01 is not current changed citation-checker proof.",
+  "b_root": "D:\\Lawbeach\\lawbench-B",
+  "b_source_pins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+    "mtime_ns": "1793302647316836800"
+  },
+  "original_sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\SKILL.md",
+      "bytes": 10884,
+      "sha256": "739f3cf6a62546dba9c43ff2f1bcd9c3a5913f59fcafcf3ed7a1c32ee9b6ad20",
+      "mtime_ns": "1792400314796479800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\流水线提示词.md",
+      "bytes": 10092,
+      "sha256": "8481c5b92559914774d71fc071361ce3b6091fd3f507bec94d81e20ab7cc9ebb",
+      "mtime_ns": "1792379578783315800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\_任务说明.md",
+      "bytes": 395,
+      "sha256": "5125f728583360618fdf994eaea44f64654be1ea8d243165d1735f8e647fefb5",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\借条.txt",
+      "bytes": 195,
+      "sha256": "172cabc0716a4e4cf14bae35b401ddd97ba54c0dccad1fdbde37f1f7bdb948e5",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\微信聊天记录.txt",
+      "bytes": 614,
+      "sha256": "7da7fd82516e236aa0f5d2665eb88db0a9039a55548c063014845360b4e14b5a",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\民事答辩状.txt",
+      "bytes": 529,
+      "sha256": "57e7d5e75db4f05d310c1829c966599b1df4d1aa444331d1a4fdd762db0006fe",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\民事起诉状.txt",
+      "bytes": 731,
+      "sha256": "997395431a70af57f87aec3602a706db8e926f3e265f550f2998c3962319b99f",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\银行转账记录.txt",
+      "bytes": 495,
+      "sha256": "9a14fcbee25a6426ff15cc6bb066282d1666a9befdf6f5c9fa897eef0df7f887",
+      "mtime_ns": "1792379578781316200"
+    }
+  ],
+  "material_sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\借条.txt",
+      "bytes": 195,
+      "sha256": "172cabc0716a4e4cf14bae35b401ddd97ba54c0dccad1fdbde37f1f7bdb948e5",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\微信聊天记录.txt",
+      "bytes": 614,
+      "sha256": "7da7fd82516e236aa0f5d2665eb88db0a9039a55548c063014845360b4e14b5a",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\民事答辩状.txt",
+      "bytes": 529,
+      "sha256": "57e7d5e75db4f05d310c1829c966599b1df4d1aa444331d1a4fdd762db0006fe",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\民事起诉状.txt",
+      "bytes": 731,
+      "sha256": "997395431a70af57f87aec3602a706db8e926f3e265f550f2998c3962319b99f",
+      "mtime_ns": "1792379578780311200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\样本02-民间借贷\\银行转账记录.txt",
+      "bytes": 495,
+      "sha256": "9a14fcbee25a6426ff15cc6bb066282d1666a9befdf6f5c9fa897eef0df7f887",
+      "mtime_ns": "1792379578781316200"
+    }
+  ],
+  "params": {
+    "thinking": "关闭",
+    "window": "64K",
+    "max_tokens": 16384
+  },
+  "model": "qwen38-27b",
+  "model_base": "http://10.126.126.1:8000/v1",
+  "step": "wiki_build",
+  "use_prep": false,
+  "schema": {
+    "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\pipeline_run.schema.json",
+    "bytes": 2083,
+    "sha256": "2f98e90edf9ee523901e24eaeb3f7b385477d42b48a004a1764bc9199dd313e4",
+    "mtime_ns": "1792682285557911700"
+  },
+  "python": {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "bytes": 104952,
+    "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "mtime_ns": "1744088256000000000"
+  },
+  "reader_only_manual_notes": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\tests\\要点.md",
+  "author_must_not_read_or_copy_manual_notes": true,
+  "original_task_public_text": "# 任务说明\n\n律师在工作区点\"生成案件 wiki\"（首次生成）。",
+  "source_only": true,
+  "author_runtime": 0
+}

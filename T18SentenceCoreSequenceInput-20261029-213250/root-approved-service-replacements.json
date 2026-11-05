@@ -1,0 +1,22 @@
+[
+  {
+    "old": "        \"ask_user_question\",\n",
+    "new": ""
+  },
+  {
+    "old": "            elif tool == \"ask_user_question\":\n                if (\n                    self.tool_sequence[:2] != [\"case_list_materials\", \"case_read_material\"]\n                    or \"case_calc_sentence\" in self.tool_sequence\n                ):\n                    return \"ASK_ORDER\"\n",
+    "new": ""
+  },
+  {
+    "old": "                    \"ask_user_question\" not in self.tool_sequence\n",
+    "new": "                    self.tool_sequence != [\"case_list_materials\", \"case_read_material\"]\n"
+  },
+  {
+    "old": "            or sequence.count(\"ask_user_question\") < 1\n",
+    "new": ""
+  },
+  {
+    "old": "            or sequence.index(\"case_calc_sentence\") < sequence.index(\"ask_user_question\")\n",
+    "new": "            or sequence.index(\"case_calc_sentence\") != 2\n"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "authored_not_run_by_lane_b": true,
+  "bootstrap_owned_log_handles": [],
+  "elapsed_seconds": 0.453,
+  "excluded_original_test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t37_refs.py",
+  "excluded_test_reason": "runtime/collection is forbidden by the dispatch order; its separately accepted standalone evidence remains the authority",
+  "full_service_pass_claimed": false,
+  "junit": "D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932\\private-junit.xml",
+  "private_root": "D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932",
+  "pytest_args": [
+    "--ignore=D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t37_refs.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932\\pytest-basetemp",
+    "--junitxml=D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932\\private-junit.xml",
+    "--log-file=D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932\\pytest.log",
+    "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_atomic_temp_longpath_20261101_171932.py"
+  ],
+  "pytest_exit": 4,
+  "pytest_log_path": "D:\\Lawbeach\\lawbench-coord\\T18LP-20261101-171932\\pytest.log",
+  "safety_denials": {
+    "categories": {
+      "write": 1
+    },
+    "total": 1
+  },
+  "source": "D:\\Lawbeach\\lawbench-B\\service"
+}

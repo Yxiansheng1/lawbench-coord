@@ -1,0 +1,69 @@
+{
+  "scope": "Independent currentcumulative source-protocol closure, not runtime/semantic/productPASS",
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2AClosure-20261101-205102\\00-review-consumer.mjs.txt",
+      "bytes": 40367,
+      "sha256": "bbfcc6e4f1204adb7293155f128a8b89a4881c2d10a614d09e28aa3fce997710",
+      "mtime_ns": "1793537462020219400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2AClosure-20261101-205102\\01-offline-controls.mjs.txt",
+      "bytes": 34661,
+      "sha256": "7dc5e179368ee52731ac6bfde37ae56965d1a6f47c6ce1986ce812e00e03e769",
+      "mtime_ns": "1793537462027210100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2AClosure-20261101-205102\\02-source-manifest.json.txt",
+      "bytes": 798,
+      "sha256": "a634110d2cd8b97d8a3a545481d3dac4012933681c65c9a9ba8fab748539917d",
+      "mtime_ns": "1793537462033249200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2AClosure-20261101-205102\\review-consumer.mjs.diff.txt",
+      "bytes": 890,
+      "sha256": "7fc826983c99fb2dc7fc422b2e1747934063b1efe52a2d3dd084e1d5795d1daf",
+      "mtime_ns": "1793537462037865600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2AClosure-20261101-205102\\offline-controls.mjs.diff.txt",
+      "bytes": 801,
+      "sha256": "addb9810a0ab86889155c60fd61d1af0d0ff6346b058ed48bc54804b7ee7561b",
+      "mtime_ns": "1793537462045322700"
+    }
+  ],
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+      "bytes": 34922,
+      "sha256": "9830ff15d8cd415fc138ea45112d9bdaef3dd88cdfd462be7274dd7584c7f98d",
+      "mtime_ns": "1793537046224765800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+      "bytes": 29641,
+      "sha256": "94ea1da30b6c9ada096dd179ae89304d6a935158c2f48d09555e0265822f7782",
+      "mtime_ns": "1793537046393332700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\source-manifest.json",
+      "bytes": 524,
+      "sha256": "09ca726380b653bc817b2c2a76a1ded47d06e67b9238ae97a2f4c17185e34e6c",
+      "mtime_ns": "1793537058962298400"
+    }
+  ],
+  "requirements": [
+    "Earlier exact-marker scanner absorbed malformed marker-shaped lines between valid markers. Reserved displayprefix now fails explicitMARKER_FRAME_INVALID on malformedphysicalframing; sameLFactualsyntheticcorpus8receipts62units stillaccepted by Rootfiniteoffline test. No normalized/truncated/dropped bytes.",
+    "Read fullcurrentconsumer+controls, notonlydiff. Allunit/span lossless and exactidset/unknownref checks/stage1nodraftselfcheck/stage2fresh/noNLPclassifier remainrequired. All unit reviews neversemantic/business/legalPASS.",
+    "Prototype reservedprefixbody literals are ambiguous and failclosed, not generalcontentparserguarantee. Only pinnedcurrentactualreadcorpus admitted, no fullcasefallback. Machine-generatedanchors vsmodelprose remainlimited to provenance not semantictruth.",
+    "Same route/model0.6/49152/max2/400sremaining900s/no retry/redirecterror/health/fallback, exactAPIenvelope/oneouterfence, raw+JSONescapedredaction/importofflinesafe. No Node/Python/Key/model/runtime forreviewers.",
+    "Root externalmanifest/runtime/sourcepins mandatory beforeKey. OwnRootdriver/admitter/securityscope unchanged; do not reauditalreadyclosed launcher orreadpeer/oldformal. No owneronlyACL/hostileactor/generalplatform/production claim. Currentdriverpinnedseparatelybeforeactualexecution.",
+    "Fullcurrentoutside scanDisplayMarkers BYTEHELD versus prior currentversion. Controls delta one mixedmalformednegative andCRLF expectedexpliciterror; no assertionswaived. Root green is not semanticproof."
+  ]
+}

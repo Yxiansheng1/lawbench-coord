@@ -1,0 +1,71 @@
+{
+  "prepare.ps1": {
+    "before_bytes": 17122,
+    "before_sha": "1c0395f1a8d05749645f3d39823e3cb32ba81e08bdda2d52fe1d51ba535219e5",
+    "after_bytes": 17117,
+    "after_sha": "2f8f1393758495a345a11a71ed1422ca604348a5a53c0d20ef8fd2ebc35d3d7f",
+    "literal_replacements": [
+      {
+        "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809",
+        "new": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646",
+        "count": 2
+      },
+      {
+        "old": "399f49b59097c87548c2dec307cbfac8cbe828f1fb4845b5d2c23c99f5c5947d",
+        "new": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5",
+        "count": 1
+      },
+      {
+        "old": "$NativeEntryBytes = 141021",
+        "new": "$NativeEntryBytes = 151304",
+        "count": 1
+      },
+      {
+        "old": "T32-reference-remove-gui-prepared-v1",
+        "new": "T37-mixed-materials-gui-prepared-v1",
+        "count": 1
+      }
+    ]
+  },
+  "start.ps1": {
+    "before_bytes": 75682,
+    "before_sha": "cc802b8023d0b81e90334451187bb38c9a4bef0b2e10cc5021225258311ffcbf",
+    "after_bytes": 75677,
+    "after_sha": "b2b6905fff7b7f27397e42be7400d5ee01d4fc588a1d6a610fb672a536526540",
+    "literal_replacements": [
+      {
+        "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809",
+        "new": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646",
+        "count": 2
+      },
+      {
+        "old": "399f49b59097c87548c2dec307cbfac8cbe828f1fb4845b5d2c23c99f5c5947d",
+        "new": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5",
+        "count": 1
+      },
+      {
+        "old": "$NativeEntryBytes = 141021",
+        "new": "$NativeEntryBytes = 151304",
+        "count": 1
+      },
+      {
+        "old": "T32-reference-remove-gui-prepared-v1",
+        "new": "T37-mixed-materials-gui-prepared-v1",
+        "count": 1
+      }
+    ]
+  },
+  "stop.ps1": {
+    "before_bytes": 7133,
+    "before_sha": "5a156f2b71a81d36e3494c689320dd2259e5e2f8e1998af49c28fee92ae9d675",
+    "after_bytes": 7131,
+    "after_sha": "c21f6abb5ce34b94a827fcb1d3dfef88238cf9260683e3d5ab66955f911b9f1e",
+    "literal_replacements": [
+      {
+        "old": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809",
+        "new": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646",
+        "count": 1
+      }
+    ]
+  }
+}

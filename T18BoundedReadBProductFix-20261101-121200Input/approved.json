@@ -1,0 +1,18 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\materials.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBProductFix-20261101-121200Input\\materials.py",
+      "sha256": "9122850f43ca96647fe8c3240c47000c55e395aba983c221e2fc79fcdc476a73"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBProductFix-20261101-121200Input\\SKILL.md",
+      "sha256": "ce22b6d68441c526bcec9755f1b482c1b2e9001bba108d52b3c85779832a59fc"
+    }
+  ],
+  "fixed_test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+  "fixed_test_sha256": "ccd486bb5be5ae21c6a0821434be8e45b0fc5f95b238b314a25f4c920b6ce14b",
+  "red": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-bounded-read-service-corrected-red-actual-current.json",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadBProductFix-20261101-121200.md"
+}

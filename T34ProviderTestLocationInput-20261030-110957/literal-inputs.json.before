@@ -1,0 +1,116 @@
+{
+  "execution_order": "D:\\Lawbeach\\lawbench-coord\\A-T34-provider-layers-order-20261030-105817.md",
+  "approved_inputs": "D:\\Lawbeach\\lawbench-coord\\T34ProviderLayersInput-20261030-105817\\approved-inputs.json",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderLayers-20261030-105817",
+  "root": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "test_file": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderLayers-20261030-105817\\provider-composition.spec.ts",
+  "selected_exact_test_names": [
+    "removes a synthetic external provider through real Settings with literal route URLs",
+    "removes a synthetic external provider through real Settings with expression route URLs"
+  ],
+  "test_count": 2,
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\configuration-fixture.ts",
+      "bytes": 3313,
+      "sha256": "0ae7fca115bed2c14b48caf181e10e63feb93927125b3af914e381f6ebf1d954"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\configuration.spec.ts",
+      "bytes": 22512,
+      "sha256": "e598f9f5477954534ee2a77fcd88602a093e527fe01ffe3cbe65843c2fe6b8b6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+      "bytes": 14182,
+      "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\config.ts",
+      "bytes": 23590,
+      "sha256": "fb126e455806216badfb8c2d1ee9b0e2db8abde0be266aa37afa4f42fdaf3279"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\auth.ts",
+      "bytes": 10041,
+      "sha256": "50fbdd55f60a95bdc256edfbc2686a3d96e108b3b9d4a441c9649a2870ef9fee"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\tests\\dynamic-config.spec.ts",
+      "bytes": 15641,
+      "sha256": "53446aa7878298a1617fff053d27d6a1ad2eec05b8bd740ffb69cba9a104d636"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\live-config.ts",
+      "bytes": 2610,
+      "sha256": "dbeea9a15ffab1f4bc7ccf688a0ca0a6e35fb1da9c6f92f3d2b68ff367b968cb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\src\\index.ts",
+      "bytes": 8043,
+      "sha256": "eb80b31ed41a4d9fbc06a3dc5562e56fe50d2b9648bb73f57082b914ff9d244e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\src\\index.ts",
+      "bytes": 20807,
+      "sha256": "462c902f2782a14e2bb002338cbdd56a5971daa7ffca7114ac053636f154b5e9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\index.ts",
+      "bytes": 50857,
+      "sha256": "5460685d13cb1e281d01be4332854d0f493cf395b88c61bba9dc69910045ef9c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.json",
+      "bytes": 48244,
+      "sha256": "2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vitest.shared.ts",
+      "bytes": 1482,
+      "sha256": "3e8900b7471bffab582974b3a0a6413140d8143d41f62f19a348c41ad3a316a0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-proxy-environment.ts",
+      "bytes": 3045,
+      "sha256": "56ff98ac7d1ac9db8df7a527e91a95792f8d3de39c018f487b05571cbce9c1fa"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-invariants.ts",
+      "bytes": 9762,
+      "sha256": "983478b86d303e3e8939adee533564cca90bba71b810e0d3fcf7540f52d3e8a6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-dom-environment.ts",
+      "bytes": 1585,
+      "sha256": "b9f090e266d1f35d9a12384a77330a03ae875100940813c9e2a2f37fd238bdb1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ExistingSettingsEnv-20261030-102309\\vitest.finite.config.mjs",
+      "bytes": 1050,
+      "sha256": "e0d1cf5767100fb30cf50805d4d792489094892c21248ba957479d611df9bb89"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderLayers-20261030-105817\\provider-composition.spec.ts",
+      "bytes": 6041,
+      "sha256": "7ce149acac721f5ccff24ad447c049d1d1f313a3f93911135684c9bc030d2e4c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderLayers-20261030-105817\\vitest.finite.config.mjs",
+      "bytes": 1096,
+      "sha256": "1e95bb7400a85020ad40ff1d1b35a3c90e3bb50077a05eb7c1b55c8c12a9b132"
+    }
+  ],
+  "old_config": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProviderComposition-20261030-104724\\vitest.finite.config.mjs",
+    "bytes": 1106,
+    "sha256": "9ea64ce38881f633e9179ecc7b8850365d993d447370fab43485ebf8c2ca307b"
+  },
+  "actual_native_failure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-required-unset-actual-closed-current.json",
+  "existing3_pass": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-existing-settings-finite-accepted-current.json"
+}

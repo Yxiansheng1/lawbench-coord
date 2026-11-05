@@ -1,0 +1,264 @@
+{
+  "verdict": "REAL_TASK_COMPLETED_CURRENT_CALLBACK_IGNORES_QUESTION_HEADER_AND_ORDER_OBSERVER_REJECTS_RECOVERED_ASK_ERRORS",
+  "at": "2026-10-28T22:58:51.923728+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-224847",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-YJkGMQ",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18HeaderAnswerObserverFailure-root-20261028-225851",
+  "error": {
+    "name": "Error",
+    "message": "the lawyer question had an unknown, late, or repeated callback attempt"
+  },
+  "model_POST": 17,
+  "model_HTTP200": 17,
+  "tool_calls": 16,
+  "physical_rows": 95,
+  "ask_calls": 8,
+  "successful_ask_results": 1,
+  "answer_result_seq": 67,
+  "first_successful_draft_call_seq": 71,
+  "actual_answers_before_first_persisted_draft": true,
+  "rejected_ask_attempts": [
+    {
+      "call_seq": 31,
+      "result_seq": 32,
+      "text": "Error: ask_user_question 必须逐项使用本任务 Skill 声明的必问 ID，覆盖所有尚缺项；不得为空、重复或包含未声明 ID。还缺：our_party、purpose、focus"
+    },
+    {
+      "call_seq": 36,
+      "result_seq": 37,
+      "text": "Error: question 3 is outside the synthetic contract-review scope"
+    },
+    {
+      "call_seq": 41,
+      "result_seq": 42,
+      "text": "Error: 提交成果前必须先取得律师对必问问题的真实回答。还缺：our_party、purpose、focus"
+    },
+    {
+      "call_seq": 46,
+      "result_seq": 47,
+      "text": "Error: question 3 is outside the synthetic contract-review scope"
+    },
+    {
+      "call_seq": 51,
+      "result_seq": 52,
+      "text": "Error: 提交成果前必须先取得律师对必问问题的真实回答。还缺：our_party、purpose、focus"
+    },
+    {
+      "call_seq": 56,
+      "result_seq": 57,
+      "text": "Error: question 3 is outside the synthetic contract-review scope"
+    },
+    {
+      "call_seq": 61,
+      "result_seq": 62,
+      "text": "Error: question 3 is outside the synthetic contract-review scope"
+    }
+  ],
+  "callback_scope_rejections": 4,
+  "actual_focus_header": "审查关注点",
+  "valid_focus_wording": "重点关注",
+  "current_callback_ignored_header": true,
+  "actual_feedback_notice_seq": 75,
+  "save_checks": [
+    {
+      "version": 1,
+      "passed": true,
+      "stats": {
+        "citations": 10,
+        "must_fix": 0,
+        "hints": 8
+      }
+    },
+    {
+      "version": 2,
+      "passed": true,
+      "stats": {
+        "citations": 15,
+        "must_fix": 0,
+        "hints": 7
+      }
+    },
+    {
+      "version": 3,
+      "passed": true,
+      "stats": {
+        "citations": 15,
+        "must_fix": 0,
+        "hints": 7
+      }
+    }
+  ],
+  "final_internal_fact_cites_present": true,
+  "final_draft_path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-YJkGMQ\\case\\工作区\\任务\\T-20261028224852-0c25\\草稿\\合同审查意见-v3.md",
+  "final_draft_bytes": 5689,
+  "final_draft_sha": "99d37fbb4ceb0ab5f37e436ad0c534de26d2be49dd90a3e454ffe111bb004aca",
+  "edit_list": {
+    "path": "工作区/任务/T-20261028224852-0c25/修改清单/采购合同.json",
+    "accepted": 4,
+    "out_of_scope": [
+      {
+        "id": 4,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "actual_persisted_task_status": "completed",
+  "actual_usage": {
+    "model_calls": 17,
+    "tool_calls": 4,
+    "elapsed_s": 153
+  },
+  "actual_B_progress_and_taskend200": true,
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "JSONL_reopen_NOT_REACHED": true,
+  "OS": [
+    {
+      "pid": 45732,
+      "parent": 36220,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T14:48:47.2252220Z"
+    },
+    {
+      "pid": 36472,
+      "parent": 45732,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T14:48:47.7198310Z"
+    },
+    {
+      "pid": 8864,
+      "parent": 36472,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T14:48:47.7266280Z"
+    },
+    {
+      "pid": 25700,
+      "parent": 36472,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T14:48:47.7967970Z"
+    },
+    {
+      "pid": 17452,
+      "parent": 25700,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T14:48:47.9084570Z"
+    },
+    {
+      "pid": 35916,
+      "parent": 25700,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T14:48:48.3495390Z"
+    },
+    {
+      "pid": 16908,
+      "parent": 35916,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T14:48:48.3591100Z"
+    }
+  ],
+  "complete_OS_gone": 7,
+  "port": {
+    "port": 62038,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T14:51:26.750+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 35916,
+    "port": 62038,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/progress": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/task/end": 1,
+        "POST /core/tool": 7
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T14:48:50.521+00:00",
+    "status": "STOPPED"
+  },
+  "sources": [
+    {
+      "role": "fixture",
+      "id": "采购合同",
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200",
+      "same": true
+    },
+    {
+      "role": "fixture",
+      "id": "采购部内部意见",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800",
+      "same": true
+    }
+  ],
+  "key_scan": {
+    "files": 28,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "source_held": true,
+  "elapsed_s": 161.09400000000096,
+  "forced": false,
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 15,
+  "manifest_sha": "8d6641d72915b288da9609431f584db400cbf044dc47c706ab9573d28b6bb739"
+}

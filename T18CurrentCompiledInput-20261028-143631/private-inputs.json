@@ -1,0 +1,26 @@
+{
+  "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112",
+  "manifest": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\manifest.json",
+  "manifestBytes": 58195,
+  "manifestSHA": "5260367f4b54d1d7a384dd427dd743e20094fd7138b2780a6074e858a5d96a0f",
+  "chosen": [
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "bytes": 537563,
+      "sha256": "0013b9564720a2c68fe2239a36ebfe6f2e80aee35d8e3ade019384b62091135b",
+      "absolute": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\lib\\agent.js"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/lib/host.js",
+      "bytes": 900805,
+      "sha256": "84adeef92360e0ef3faddb1b89e6d56a2c66135e2b07283a180049613bce8164",
+      "absolute": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\lib\\host.js"
+    },
+    {
+      "path": "profile-node_modules/lawbench-dsh/package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794",
+      "absolute": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\package.json"
+    }
+  ]
+}

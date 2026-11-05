@@ -1,0 +1,178 @@
+[
+  {
+    "group": "runtime-modules",
+    "id": "runtime-01",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+    "bytes": 60361,
+    "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-01--index.js"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-02",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+    "bytes": 53468,
+    "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-02--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-03",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+    "bytes": 60384,
+    "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-03--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-04",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\system-prompt\\src\\index.ts",
+    "bytes": 26532,
+    "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-04--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-05",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\index.ts",
+    "bytes": 90679,
+    "sha256": "9107a2b6447b10c2ecb90429d7c1b80b956759e96d35230af16f5a88f5d3eccd",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-05--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-06",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-projection\\src\\index.ts",
+    "bytes": 31464,
+    "sha256": "2186b62bfd59c0b5ea1413287f34e3a5be79b2162c5e0e2eb2143d7e42fea39f",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-06--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-07",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+    "bytes": 31340,
+    "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-07--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-08",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+    "bytes": 37946,
+    "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-08--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-09",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+    "bytes": 70510,
+    "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-09--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-10",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session-query\\session-query\\src\\index.ts",
+    "bytes": 15460,
+    "sha256": "549f7f90c90efec63a5c7d69dbc65938c0f9578f85dcfc8ee25a49a43a8e83e3",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-10--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-11",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\registry\\src\\index.ts",
+    "bytes": 1023,
+    "sha256": "a6c1aa498660cb50d768c867411943d3760e2bbb8dcd016c950c6294ed626e2a",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-11--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-12",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+    "bytes": 14182,
+    "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-12--index.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-13",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "bytes": 22822,
+    "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-13--agent.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-14",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "bytes": 31548,
+    "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-14--commands.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-15",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+    "bytes": 3041,
+    "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-15--model-selection-projection.ts"
+  },
+  {
+    "group": "runtime-modules",
+    "id": "runtime-16",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+    "bytes": 40534,
+    "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\runtime-modules--runtime-16--session.ts"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-package",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\package.json",
+    "bytes": 2208,
+    "sha256": "8a44611647f2b8e4ddd46f76756b3aea0503fba70824f08d589ffc4701d75fd1",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-package--package.json"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-adapter",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\adapter.ts",
+    "bytes": 19344,
+    "sha256": "27ce78cee81590cf86e7604a50f061728de21193c02446e78d3d3e9865488b64",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-adapter--adapter.ts"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-auth",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\auth.ts",
+    "bytes": 10041,
+    "sha256": "50fbdd55f60a95bdc256edfbc2686a3d96e108b3b9d4a441c9649a2870ef9fee",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-auth--auth.ts"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-config",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\config.ts",
+    "bytes": 23590,
+    "sha256": "fb126e455806216badfb8c2d1ee9b0e2db8abde0be266aa37afa4f42fdaf3279",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-config--config.ts"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-provider",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\provider.ts",
+    "bytes": 9446,
+    "sha256": "2d96334b97e207ebac84b0e0ec1db04ad21c0aae83d73a457cfa8922d38ec573",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-provider--provider.ts"
+  },
+  {
+    "group": "piai-source",
+    "id": "piai-models",
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\models.ts",
+    "bytes": 2269,
+    "sha256": "a958d2663d749eb686853c4248c1ed754f390013851026955688616a7eff66b0",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeFullflowReviewInput-20261028-012023\\source\\piai-source--piai-models--models.ts"
+  }
+]

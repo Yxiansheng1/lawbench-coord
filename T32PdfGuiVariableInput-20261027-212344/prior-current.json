@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-27T21:13:10.818690+08:00",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T32-native-PDF-citation-GUI-1017-20261027-211310.job.json",
+  "order": "D:\\Lawbeach\\lawbench-coord\\A-T32-native-PDF-citation-GUI-order-20261027-211310.md",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-native-PDF-citation-GUI-20261027-211310.md",
+  "note": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\README.md",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T32PdfCitationGuiInput-20261027-211310",
+  "blueprint": "D:\\Lawbeach\\lawbench-coord\\T32PdfCitationGuiInput-20261027-211310\\blueprint.json",
+  "guidir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+  "runtime": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112",
+  "state": "NEW_PDF_CITATION_GUI_FIXED_LAUNCHER_NOT_RUN",
+  "context_verified": true,
+  "packaging": "HOLD",
+  "actual_thread": "01a17d7e-6bd3-7e92-a684-aee1a1487e7b",
+  "context": [
+    {
+      "cwd": "D:\\Lawbeach\\lawbench-A",
+      "model": "deepseek-v4.1-flash-1017",
+      "effort": "max"
+    }
+  ],
+  "commands_snapshot": 51,
+  "success_snapshot": 44
+}

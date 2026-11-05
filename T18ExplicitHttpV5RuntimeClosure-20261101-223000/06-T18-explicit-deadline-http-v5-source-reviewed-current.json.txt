@@ -1,0 +1,83 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-explicit-deadline-http-v5-source-reviewed-current.json
+SHA e069b2a3ff37dc52870e14c81799f8c6e1e9f1241762ca5f4d69f60e71ec46bf
+EXPLICIT currentlines 1..80; earlier unchangedpureprotocol outside thisfocusedreview
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_FULL_CHANGED_TRANSPORT_CUMULATIVE_SOURCE_AND_AFFECTED_OFFLINE_NOT_SEMANTIC_PASS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\review-consumer.mjs",
+0008       "bytes": 53968,
+0009       "sha256": "166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31",
+0010       "mtime_ns": "1793542358406267800"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\offline-controls.mjs",
+0014       "bytes": 40367,
+0015       "sha256": "adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3",
+0016       "mtime_ns": "1793542458789326300"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\source-manifest.json",
+0026       "bytes": 677,
+0027       "sha256": "74639b12e714b1fb9c6ebdd5c17c9ec33ea4948bb6baeb7cfb05a0cdcff41dc7",
+0028       "mtime_ns": "1793542475390540200"
+0029     },
+0030     {
+0031       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\stage1-assessments.json",
+0032       "bytes": 10015,
+0033       "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0034       "mtime_ns": "1793538024944549000"
+0035     }
+0036   ],
+0037   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-passive-current.json",
+0038   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0039   "cache_origin": {
+0040     "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\stage1-assessments.json",
+0041     "bytes": 10015,
+0042     "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0043     "mtime_ns": "1793538024944549000"
+0044   },
+0045   "cache_byteheld": true,
+0046   "whole_consumer_inverse": "ONLY node:http import + performRequest; allremainingbytesexactV4",
+0047   "controls_unchanged_prefix": true,
+0048   "actual_target_counts": {
+0049     "F": 117,
+0050     "C": 134,
+0051     "Q": 114,
+0052     "total": 365
+0053   },
+0054   "request_bytes": [
+0055     132675,
+0056     132659
+0057   ],
+0058   "shard_sizes": [
+0059     183,
+0060     182
+0061   ],
+0062   "pending_independent_reviews": true,
+0063   "author": {
+0064     "thread": "01a19772-e1e1-7f40-92fa-93a350b683a3",
+0065     "commands": 10,
+0066     "zero": 9,
+0067     "nonzero": 1,
+0068     "write_events": 6,
+0069     "runtime0_observed": true
+0070   },
+0071   "qualifications": [
+0072     "PS firstfinalhash empty-pipe parse rejected beforepayload; correctedsamefourfilehashcommand succeeded; source10commands9zero1nonzero, no author Node/Python/parser/test/build/HTTP/model/Key observed. Fullallcommandtext/writefaces/formal reviewed; firstlargeoldsourceview segmentedreadonly asorderallowed.",
+0073     "Root fullV5 transport/controlsdiff read. Cumulative unchangedV4protocol/source/prompts/main/setup/output/key bytes exactwholeinverse exceptimport+performRequest. Controlspureprefix exact exceptimports, no weakenedprotocol assertion. Data/cache exactbytesheld.",
+0074     "Root guardedaffectedoffline1.515s0/noforce/5pinsheld/guarddenials0/onecompleteNodeindependentOSgone/Key0/model0. Authoredstdout notexecuted stale label is not evidence; actualRootexecuted sourcecontrols.",
+0075     "Client headers300s failure actualV4 cause proven. Public http.request already mediated by originalguard + lower net/sockethooks, unchangedsha; transportreplacement doesnotbypasssecuritydenial. Same400sremaining900/max2/49152/temp0.6/requestbody132675,132659; no retry/health/redirect/fallback/globalagent/library/SDKchange.",
+0076     "PSliteral exactV4/V2 staticreuse no newparser; newouterdriver/admitter fullcurrentC reviewrequired. No hostilelocalactor/privateACL/fullmachine/helperOS/servercancel/memoryerasure guarantee.",
+0077     "No product/Skill/NativeSession/R/history/semantic/legal/businessPASS. Exact365IDs/refs/counts stillnotentailment. FutureactualmanualALL365 using predeclaredRootcriteria unchanged."
+0078   ],
+0079   "Packaging": "HOLD"
+0080 }

@@ -1,0 +1,46 @@
+{
+  "approvedInputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18QualityDefenseInput-20261031-173317\\approved-inputs.json",
+    "bytes": 2217,
+    "sha256": "f835e8ef523438d9ec8b3440e3465435c2d4e0a4e9f7b9c8855561af3c1a976e",
+    "mtime_ns": "1793441390440447800"
+  },
+  "sourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18QualityCurrentInput-20261031-173317\\reviewed-b346-current.json",
+    "bytes": 53548,
+    "sha256": "0da04b925d421c711b7c6ef8d8bbc049b75c04fba537ba2275efc0a642b81847",
+    "mtime_ns": "1793440432433960100"
+  },
+  "skill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "bytes": 13852,
+    "sha256": "f3fed80c767e5c9d7f2fdaebc9e0fa5c0b5aa2878383ffd52b12edca260c9846",
+    "mtime_ns": "1793440531688076800"
+  },
+  "compiled": {
+    "current-compiled-agent": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QualityPrivateBuild-20261031-173317\\private-output-20261031-180837\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 560271,
+      "sha256": "245e6a7d53fac32a5108be69b18b6c7102114dcfaf62a12597eefcd1904731c7",
+      "mtime_ns": "1793441328528228100"
+    },
+    "current-compiled-host": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QualityPrivateBuild-20261031-173317\\private-output-20261031-180837\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 904755,
+      "sha256": "ad0f620ef16519f53cec228b9683d44163df9d37ad7759ef1b4370299fdc45ba",
+      "mtime_ns": "1793441328528228100"
+    },
+    "current-compiled-package": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QualityPrivateBuild-20261031-173317\\private-output-20261031-180837\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794",
+      "mtime_ns": "1792379417909424000"
+    },
+    "current-compiled-manifest": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QualityPrivateBuild-20261031-173317\\private-output-20261031-180837\\manifest.json",
+      "bytes": 58591,
+      "sha256": "a9ba84e7b92b80f864122616be859521eda9d3570b8252bac05f7f9c0215ac3c",
+      "mtime_ns": "1793441337725475200"
+    }
+  }
+}

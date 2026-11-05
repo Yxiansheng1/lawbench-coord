@@ -1,0 +1,92 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\bid-drafting\\SKILL.md",
+    "bytes": 12998,
+    "sha256": "d4a562da3125f6c5f0f86ba47d9348c575a79ad9d9169197487ae91ba301748e"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\SKILL.md",
+    "bytes": 16290,
+    "sha256": "7ede544356b715f4aae7e4ebd54eb8e07ef4c7c6038590c47ad2a440c4caa7dd"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\SKILL.md",
+    "bytes": 14422,
+    "sha256": "69619488f8cc827db702fed8fa153682bc6874374ac80817b26e4e06bf77b03c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-wiki-build\\SKILL.md",
+    "bytes": 10884,
+    "sha256": "739f3cf6a62546dba9c43ff2f1bcd9c3a5913f59fcafcf3ed7a1c32ee9b6ad20"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\SKILL.md",
+    "bytes": 12866,
+    "sha256": "bfd44f5e3e970d95fe961df3d7298b67b9dc6f37cd5de7f825ea902c889b4012"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\SKILL.md",
+    "bytes": 15303,
+    "sha256": "339e3f09001421424c319ef17d9082084b54e6b6d90938afff92a3c7b33575c9"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\SKILL.md",
+    "bytes": 13102,
+    "sha256": "535591d51956174f4820d0cb31b7249f98eb8f9819609b120a5923c608c11754"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\SKILL.md",
+    "bytes": 13276,
+    "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-reading-notes\\SKILL.md",
+    "bytes": 13853,
+    "sha256": "0bc8ee2b56b5900fe7d20ce3b6310ec864b8afa789393028f945bf332e291d10"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\SKILL.md",
+    "bytes": 12390,
+    "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "bytes": 12859,
+    "sha256": "e49d280e4f09f2a2aeeb94bef8f188aca7ce84a773fab410703d59d59a4da04a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\doc-revise\\SKILL.md",
+    "bytes": 11571,
+    "sha256": "9107ea54962a12521f4d4a0b824c494100359fb3a0a9968a3db1cf86c65fe1f7"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\SKILL.md",
+    "bytes": 13495,
+    "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\legal-workflow\\SKILL.md",
+    "bytes": 14878,
+    "sha256": "46639190956bdd517742ef89a5f598e9e7a0a2466ad92e4a5190169c90a3c25f"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\SKILL.md",
+    "bytes": 14163,
+    "sha256": "3a97dae221b074c79c35f5a99ee035de220ae04aba6489e273bee034f47a86d8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\SKILL.md",
+    "bytes": 12293,
+    "sha256": "81be87f93b4114df6b644789f66379cbde9c4d143e41c542bbda4a7229818243"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\SKILL.md",
+    "bytes": 15249,
+    "sha256": "3f280837b8b424443a03fe55729293f8112e36b98a6f44dd48c7f66b5a017d43"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\SKILL.md",
+    "bytes": 13036,
+    "sha256": "a7f19dc17bac500bb66e2dc7eb2bfe07653c6165d3c452e40b996649966ccdf6"
+  }
+]

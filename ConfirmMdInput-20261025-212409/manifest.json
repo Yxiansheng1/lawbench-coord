@@ -1,0 +1,52 @@
+{
+  "base-server.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\server.py",
+    "sha256": "e041e2b27ea4b91b1cbae2be3abdc635475b830cf310ad0083b5caeb992ca86b",
+    "bytes": 77868
+  },
+  "base-probe.mjs": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\probe.mjs",
+    "sha256": "b64a64e09d68ddb7f2d21ef5d275cc015e188470d47aafc6f2238c0a75bf52f2",
+    "bytes": 19216
+  },
+  "base-README.md": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\README.md",
+    "sha256": "400a18eaa5fac77af88532e7437079775fbb832a1a694807bb58118c606e71c3",
+    "bytes": 6904
+  },
+  "outputs.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\export\\outputs.py",
+    "sha256": "72684a5e3b214eaaeccd64204108e0345adbd691dae21f385ffaff8ac1a8b5d4",
+    "bytes": 12068
+  },
+  "pandoc.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\export\\pandoc.py",
+    "sha256": "8b1edcfda0f71034bdfba892c9ed63f8734f6a017719ca99e165888feb34680b",
+    "bytes": 8269
+  },
+  "app.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\app.py",
+    "sha256": "b2ccc942a3d52588c339ce6d74eb3d1333add17a83691c761fbd4059fc96e09f",
+    "bytes": 8723
+  },
+  "outputs-confirm.schema.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\outputs_confirm.schema.json",
+    "sha256": "01406647c962a83e106c9501ccbeafffe5166947b20a7bacac1aaeb1f8031865",
+    "bytes": 3822
+  },
+  "outputs-index.schema.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\outputs_index.schema.json",
+    "sha256": "f2a134e114cea6f4ada2e4cafd84b50e0e9f1fb8924d7ac7c30985bcc12c390e",
+    "bytes": 2286
+  },
+  "checks-kind.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\checks\\__init__.py",
+    "sha256": "7b73c8a4bf3631c2b8ae618af02d8de62c8821fd31dff574956bc43cbe5b062d",
+    "bytes": 1393
+  },
+  "checks-citations.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\checks\\citations.py",
+    "sha256": "67779ba41e35e2b6780a7b74ebe061e143a79dd5b8c97273329ae91059748758",
+    "bytes": 18609
+  }
+}

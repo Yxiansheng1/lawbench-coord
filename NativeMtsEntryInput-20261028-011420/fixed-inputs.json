@@ -1,0 +1,336 @@
+{
+  "format": "lawbench-native-real-fixed-inputs-v1",
+  "task": "A-native-real-conversation-20261028-000823",
+  "hashAlgorithm": "sha256",
+  "generatedAtUtc": "2026-10-27T16:52:00.000Z",
+  "inputs": [
+    {
+      "group": "original-six",
+      "id": "original-01",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+      "bytes": 37946,
+      "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\0-index.ts"
+    },
+    {
+      "group": "original-six",
+      "id": "original-02",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\agent.ts",
+      "bytes": 27451,
+      "sha256": "486662e133184cfbc8b816b445339ab0b75200fd771dba1af1562b28d8e7bdc5",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\1-agent.ts"
+    },
+    {
+      "group": "original-six",
+      "id": "original-03",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+      "bytes": 31340,
+      "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\2-index.ts"
+    },
+    {
+      "group": "original-six",
+      "id": "original-04",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\fork.ts",
+      "bytes": 1397,
+      "sha256": "de80ecbf0e6a7961c096a2d7f0304bc6f6c83f897268304e28352357da06bfb0",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\3-fork.ts"
+    },
+    {
+      "group": "original-six",
+      "id": "original-05",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\t31-compiled-session-gateway.finite.ts",
+      "bytes": 28784,
+      "sha256": "6ba19f6c3eb71a9ab08ee815ef1c2d9583a00b30a1dfef1661e268445ec9bb4e",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\4-t31-compiled-session-gateway.finite.ts"
+    },
+    {
+      "group": "original-six",
+      "id": "original-06",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.t31-compiled-session-gateway.config.mjs",
+      "bytes": 3450,
+      "sha256": "c4df61b6e2d308e227841609ce70832d774c7ae65b89b8cf77f807769b234f1a",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\5-vitest.t31-compiled-session-gateway.config.mjs"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-01",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-02",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-03",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+      "bytes": 60384,
+      "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-04",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\system-prompt\\src\\index.ts",
+      "bytes": 26532,
+      "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-05",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\index.ts",
+      "bytes": 90679,
+      "sha256": "9107a2b6447b10c2ecb90429d7c1b80b956759e96d35230af16f5a88f5d3eccd"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-06",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-projection\\src\\index.ts",
+      "bytes": 31464,
+      "sha256": "2186b62bfd59c0b5ea1413287f34e3a5be79b2162c5e0e2eb2143d7e42fea39f"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-07",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+      "bytes": 31340,
+      "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-08",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+      "bytes": 37946,
+      "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-09",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+      "bytes": 70510,
+      "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-10",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session-query\\session-query\\src\\index.ts",
+      "bytes": 15460,
+      "sha256": "549f7f90c90efec63a5c7d69dbc65938c0f9578f85dcfc8ee25a49a43a8e83e3"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-11",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\registry\\src\\index.ts",
+      "bytes": 1023,
+      "sha256": "a6c1aa498660cb50d768c867411943d3760e2bbb8dcd016c950c6294ed626e2a"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-12",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+      "bytes": 14182,
+      "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-13",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+      "bytes": 22822,
+      "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-14",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+      "bytes": 31548,
+      "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-15",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+      "bytes": 3041,
+      "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f"
+    },
+    {
+      "group": "runtime-modules",
+      "id": "runtime-16",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+      "bytes": 40534,
+      "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73"
+    },
+    {
+      "group": "runtime-host",
+      "id": "node-executable",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "group": "runtime-host",
+      "id": "tsx-entry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "group": "dsh-config",
+      "id": "dsh-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\package.json",
+      "bytes": 16691,
+      "sha256": "eb332130b7347793c65c6e72af2afb8543e767d86857400dbb23ff0c46d527b4"
+    },
+    {
+      "group": "dsh-config",
+      "id": "root-tsconfig",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.json",
+      "bytes": 670,
+      "sha256": "9eb420010dfd10daaa1a5374ce018fd691b1ba56a4bea60f2ebd8d548ffdffa4"
+    },
+    {
+      "group": "dsh-config",
+      "id": "base-tsconfig",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.json",
+      "bytes": 48244,
+      "sha256": "2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\package.json",
+      "bytes": 2208,
+      "sha256": "8a44611647f2b8e4ddd46f76756b3aea0503fba70824f08d589ffc4701d75fd1"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-adapter",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\adapter.ts",
+      "bytes": 19344,
+      "sha256": "27ce78cee81590cf86e7604a50f061728de21193c02446e78d3d3e9865488b64"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-auth",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\auth.ts",
+      "bytes": 10041,
+      "sha256": "50fbdd55f60a95bdc256edfbc2686a3d96e108b3b9d4a441c9649a2870ef9fee"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-config",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\config.ts",
+      "bytes": 23590,
+      "sha256": "fb126e455806216badfb8c2d1ee9b0e2db8abde0be266aa37afa4f42fdaf3279"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-provider",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\provider.ts",
+      "bytes": 9446,
+      "sha256": "2d96334b97e207ebac84b0e0ec1db04ad21c0aae83d73a457cfa8922d38ec573"
+    },
+    {
+      "group": "piai-source",
+      "id": "piai-models",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\models.ts",
+      "bytes": 2269,
+      "sha256": "a958d2663d749eb686853c4248c1ed754f390013851026955688616a7eff66b0"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "pi-ai-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\package.json",
+      "bytes": 2711,
+      "sha256": "b54df5a36d523febdeebfc5682dc4faed101fee10aba913d5f3679582f018da3"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "pi-ai-entry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\index.js",
+      "bytes": 863,
+      "sha256": "010778daab84fd68b88507d6cd2c4ff1fc1f2efe230e096100eebff98d5183a5"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "pi-ai-models",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\models.js",
+      "bytes": 25247,
+      "sha256": "42610d47fe293d99f4b05b147971e181c7312ea47c9be2906a4803955276a8a4"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "pi-ai-providers-all",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\all.js",
+      "bytes": 5324,
+      "sha256": "eb283b6d03ed3f697e6baba6d89826997bc73133799d8aafc10baf9e08413485"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "openai-completions-lazy",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-completions.lazy.js",
+      "bytes": 180,
+      "sha256": "a3d37d272ed600ddae2a9b05884e1c11c65487c1d8aa30d0b19ba571ffc7ea76"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "openai-completions",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-completions.js",
+      "bytes": 64152,
+      "sha256": "3c45b25268a7a1972262b39b6bc399e65cc1d0649efc5f9acee3838a7e05b11b"
+    },
+    {
+      "group": "pi-ai-installed",
+      "id": "provider-retry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@earendil-works+pi-ai@0.85._a68c33b4430d43f3230a6ca4636f469a\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\provider-retry.js",
+      "bytes": 3963,
+      "sha256": "f14a8cfb9a99901a7cde6d588fad11aa8030e409d760d76050e580b6dba5c3f5"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\package.json",
+      "bytes": 5402,
+      "sha256": "62ce25ffb47afe5cbbf80e8574297d79ea72b2ef3e5087d91e0e3e1bf38c2ebc"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-index",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\index.mjs",
+      "bytes": 752,
+      "sha256": "bcffc69753d3581e16c914292b3d5f9969a0ab23e8afeffdb0542711439db879"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-client",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\client.mjs",
+      "bytes": 36154,
+      "sha256": "45b54e0c0a779a8b284cc8bcfb41a0a0f1817eac32d9cc585ff71875b62aeb6b"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-shims",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\internal\\shims.mjs",
+      "bytes": 3125,
+      "sha256": "0eeb939ee18f8df00273d819ffe94d84fa2c3e990485902c4c94a108669ffaea"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-headers",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\internal\\headers.mjs",
+      "bytes": 2528,
+      "sha256": "cfe8e16c485c42f58182a701be897db98e7a52f0a98a40d16d142fd7f200da0f"
+    },
+    {
+      "group": "openai-installed",
+      "id": "openai-streaming",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\openai@6.40.0_ws@8.21.0_zod@4.4.3\\node_modules\\openai\\core\\streaming.mjs",
+      "bytes": 10603,
+      "sha256": "6ea8902e35b980775b9bf0effba19ec4f09ac57030d9ed339c7af861682f6d31"
+    }
+  ]
+}

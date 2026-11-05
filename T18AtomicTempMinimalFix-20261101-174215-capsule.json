@@ -1,0 +1,68 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\contracts.py",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18AtomicTempMinimalFix-20261101-174215Before\\contracts.py",
+  "original_atomic_function": "def atomic_write_bytes(path: pathlib.Path, data: bytes) -> None:\n    path.parent.mkdir(parents=True, exist_ok=True)\n    fd, tmp = tempfile.mkstemp(prefix=\".~lb-\", suffix=\".tmp\", dir=path.parent)\n    try:\n        with os.fdopen(fd, \"wb\") as f:\n            f.write(data)\n            f.flush()\n            os.fsync(f.fileno())\n        _replace_with_retry(tmp, path)\n    except BaseException:\n        try:\n            os.unlink(tmp)\n        except FileNotFoundError:\n            pass\n        raise\n",
+  "imports": "os,pathlib,tempfile,time already imported; no new import/circular dependency needed.",
+  "actualRootRED": {
+    "verdict": "ROOT_ORIGINAL_ATOMIC_TEMP260_REAL_FS_RED1_REPRODUCED",
+    "failed": 1,
+    "passed": 0,
+    "skipped": 0,
+    "pytest_s": 1.086,
+    "controller_s": 3.3589999999967404,
+    "source_pins_held": 549,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 26340,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:33:35.375135+00:00",
+        "birth_filetime_ticks": "134379992153751350",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 37088,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:33:35.590443+00:00",
+        "birth_filetime_ticks": "134379992155904427",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "actual_frame": "original gate.write_bytes -> contracts.atomic_write_bytes:114 -> tempfile.mkstemp -> original guard validated path -> real_os_open FileNotFoundError",
+    "short_positive_control_and_all_parent242_target_under260_scope_assertions_passed": true,
+    "actual_temp_filename_length": 17,
+    "parent_length": 242,
+    "temp_absolute_path_length": 260,
+    "source_author_attempt": "REJECTED previousoutside-private-write denial1/precollectionexit4; copiedchildauthored-not-runflagFALSE forauthorhistory, NOTaccepted as runtime0",
+    "Root_proper_original_private_env": true,
+    "no_guard_policy_registry_or_permission_change": true,
+    "no_model_HTTPservice_GUI_OCR": true,
+    "Packaging": "HOLD"
+  },
+  "original_tmp_name_contract": "prefix .~lb- + eightrandom +suffix .tmp =17; originalcleanup/tests glob .~lb-* and materials._too_long assumes17. Preserve naming, strictmaterialslimits and samephysicalparent. Do NOT edit those consumers.",
+  "existing_guard_prefix_normalization": "Original frozen38guard _norm strips \\\\?\\UNC\\ / \\\\?\\ prefixes then original abspath/resolved strict-child check. No guardchange needed orauthorized. Existing productgate._plain similarly normalizes ordinarydrive/UNC notation but continues to rejectotherdevices. These are facts, NOTpermissiontobypassanydenial.",
+  "critical_Windows_alias_invariant": "Gate allows ordinary Windows filename aliases/trailing dots/spaces and validates physical scope under original Win32 semantics. Do NOT add extended-prefix to original finaldestination or change its normalization/meaning. Keep targetpath original for _replace_with_retry; ifusingWindowslongpath notation, ONLYtemporary-directory representation of existingcanonical parent, samephysicaldirectory, oldbasename/cleanup unchanged.",
+  "no_root_policy_or_registry_change": true,
+  "product_helper_held": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+    "bytes": 24627,
+    "sha256": "1eb572b55aca29eac58b2909b723eedc86660a1003d4f0b0b4fd22923b9d31fb"
+  },
+  "tests_held": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+      "bytes": 26752,
+      "sha256": "0f1460f12dac8dc7c5f59a14b98ab2d5c2d0fd91efd0d25616a7375f8c1a8fde"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_atomic_temp_longpath_20261101_171932.py",
+      "bytes": 2604,
+      "sha256": "4aab306a35294265fbf8cf6fd115368bc1665dc1fe293f049ab7aee3323a4472"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-visible-unit-semantic-pilot-v2-root-shared-read-probe-current.json
+SHA 3c489e2d3356ff296bc4de781d1b9732eca6ba0a8bf11d1b5c23dd1ae7f7f8d1
+0001 {
+0002   "actual_Root_function_shared_read_exact": true,
+0003   "result_type": "System.Byte[]",
+0004   "Key_read": false,
+0005   "model_calls": 0
+0006 }

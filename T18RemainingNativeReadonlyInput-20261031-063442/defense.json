@@ -1,0 +1,64 @@
+{
+  "sdk": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "sdk_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\lib\\index.js",
+      "bytes": 142847,
+      "sha256": "0845707017acc2b4a8a75eab2244fa3fd88587b8094ab32014321dce7ca1e31b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\package.json",
+      "bytes": 1544,
+      "sha256": "dce7d8100ed487c96bd37fc7715957071be5e7b68c0fa86c005b6de0a8bc2cba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    }
+  ],
+  "session_id": "session-e6327d1c-cacf-4536-9ff9-feb45e3e1ded",
+  "request_id": "234a044f-25c5-404f-82d3-fd90842bd067",
+  "case_id": "0185cb75-8406-4852-afae-6cc68da33c79",
+  "physical_native": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseOpinionNative-20261029-155352\\run-uFp2dy\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-DefenseOpinionNative-20261029-155352-run-uFp2dy-case--\\session-e6327d1c-cacf-4536-9ff9-feb45e3e1ded\\session.v4.jsonl",
+    "bytes": 270386,
+    "sha256": "4577324bb41cde9a81bdd2a4438c2d9a709d545a5b8e56281d3eca2b25629fb9"
+  },
+  "session_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseOpinionNative-20261029-155352\\run-uFp2dy\\sessions",
+  "task": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseOpinionNative-20261029-155352\\run-uFp2dy\\case\\工作区\\任务\\T-20261029165731-c58b\\task.json",
+    "bytes": 850,
+    "sha256": "66840ec33ddbc0500f2bca30af96edc71ea4e6df46ad9af8de22304447041d72"
+  },
+  "expected_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-e6327d1c-cacf-4536-9ff9-feb45e3e1ded",
+    "createdAt": 1793264251556,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseOpinionNative-20261029-155352\\run-uFp2dy\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "expected_rows": 174,
+  "expected_events": 173,
+  "original_model_consumer_status": "FAILED",
+  "original_reopen_status": "NOT_REACHED",
+  "purpose": "Only close original missing persistence check on genuine existing failed-run JSONL; no business green/model/GUI rerun",
+  "original_proof": {
+    "path": "\\\\?\\C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-defense-native-actual-root-closed-current.json",
+    "bytes": 50761,
+    "sha256": "cbb6c12672faac086c274a31ee0cb3141635040d7b2b06683e579b0179259b82"
+  },
+  "original_case": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DefenseOpinionNative-20261029-155352\\run-uFp2dy\\case"
+}

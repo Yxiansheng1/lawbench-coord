@@ -1,0 +1,44 @@
+{
+  "root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18VisibleUnitV2ControlsClosure-20261101-201318Before",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18VisibleUnitV2ControlsClosure-20261101-201318.md",
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+      "bytes": 34891,
+      "sha256": "5c36cef41a323075bbce611539355066479ff64e7eeba0d4913b942271d4c9a1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+      "bytes": 21443,
+      "sha256": "b7b7722ff8b745911b023fc1bc699e26ad5be257b31173cfe7e001c917bd6cac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+    }
+  ],
+  "current_consumer_exports": [
+    "buildVisibleUnits",
+    "buildSpanTables",
+    "joinAssessmentsToUnits",
+    "selectPilotInput",
+    "buildStage1Envelope",
+    "buildStage2Envelope",
+    "buildStage1Messages",
+    "buildStage2Messages",
+    "buildRequestPayload",
+    "buildAuthorizationHeader",
+    "requestTimeoutForDeadline",
+    "unwrapChatCompletion",
+    "parseModelJson",
+    "validateStage1Result",
+    "validateStage2Result",
+    "outputStatusForReviews",
+    "serializeForArtifact",
+    "redactCredential",
+    "performRequest"
+  ],
+  "Root_review": "Full currentconsumer read. Consumer protocol largely complete; oldcontrols untouched and incompatible, manifest/formal absent. TWO targeted source fixes below. No Node/test/model/Key runtime admitted."
+}

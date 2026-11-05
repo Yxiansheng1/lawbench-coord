@@ -1,0 +1,48 @@
+{
+  "priorBatch3": "OWNER_MACHINE_ACCEPTED",
+  "reasonExtension": "Explicit owner approved minimal mapping/schema",
+  "cards": [
+    {
+      "gates": {
+        "human": null,
+        "assembly": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Batch4-20261103-092534\\source-independent-review.json",
+        "GUI": "OWNER_NOT_RUN",
+        "package": "D:\\Lawbeach\\lawbench-coord\\第四批-安装包-20261103-095200.md",
+        "task": "D:\\Lawbeach\\lawbench-coord\\第四批-P0-7与接入码-20261103-094510.md"
+      },
+      "sourceOrder": "ORCH-B-Batch4-RouteAndCode-20261103-092534.md",
+      "id": "P0-7"
+    },
+    {
+      "gates": {
+        "human": null,
+        "assembly": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Batch4-20261103-092534\\source-independent-review.json",
+        "GUI": "OWNER_NOT_RUN",
+        "package": "D:\\Lawbeach\\lawbench-coord\\第四批-安装包-20261103-095200.md",
+        "task": "D:\\Lawbeach\\lawbench-coord\\第四批-P0-7与接入码-20261103-094510.md"
+      },
+      "sourceOrder": "ORCH-A-Batch4-UI-20261103-092534.md",
+      "id": "ASCII"
+    }
+  ],
+  "sameCauseStop": 2,
+  "T18": "CLOSED",
+  "automationsCreated": 0,
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Batch4-20261103-092534",
+  "singleInstaller": true,
+  "ownerOrder": "OWNER-第四批-P0-7与接入码校验-20261103-092000.md",
+  "currentState": "BATCH4_ONE_INSTALLER_DELIVERED_STOP_OWNER_GUI_PENDING",
+  "packageOwnerAuthorizedBeforeGUI": true,
+  "finalResult": {
+    "closed": true,
+    "artifact": {
+      "path": "D:\\Lawbeach\\lawbench-A\\.p\\B4-20261103-092534\\runs\\20261103-094311\\out\\LawBench-BATCH4-0.1.0-20261103094311-win-x64.exe",
+      "bytes": 836833548,
+      "sha256": "ddb0dfad565f6d298d264cc3010097dfab9e68bf91150917b505f3d08499a833"
+    },
+    "packageReceipt": "D:\\Lawbeach\\lawbench-coord\\第四批-安装包-20261103-095200.md",
+    "buildStamp": "20261103-094311",
+    "sourceReceipt": "D:\\Lawbeach\\lawbench-coord\\第四批-P0-7与接入码-20261103-094510.md"
+  },
+  "closedAt": "2026-11-03T09:53:41.3422074+08:00"
+}

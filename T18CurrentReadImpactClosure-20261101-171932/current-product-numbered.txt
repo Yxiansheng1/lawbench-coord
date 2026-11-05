@@ -1,0 +1,496 @@
+0001: """case_save_draft、case_suggest_wiki。"""
+0002: from __future__ import annotations
+0003: 
+0004: import json
+0005: import re
+0006: import threading
+0007: import time
+0008: from datetime import datetime
+0009: from decimal import Decimal, InvalidOperation
+0010: from fractions import Fraction
+0011: 
+0012: from .. import checks, contracts, logs
+0013: from ..case import documents, gate, texts
+0014: from ..case.task import IN_PROGRESS
+0015: from ..errors import ApiError
+0016: from . import ToolContext
+0017: 
+0018: PENDING_REL = "工作区/wiki/待确认.json"
+0019: PENDING_SCHEMA = "files/wiki_pending.schema.json"
+0020: _WIKI_LOCK = threading.Lock()  # 待确认.json 的读-改-写（P2-3）；只是本地读写，跨案件共用一把也不会久等
+0021: _CN_DIGITS = {
+0022:     "〇": 0, "零": 0, "一": 1, "二": 2, "两": 2, "三": 3, "四": 4,
+0023:     "五": 5, "六": 6, "七": 7, "八": 8, "九": 9,
+0024: }
+0025: _RATE_TOKEN_RE = re.compile(
+0026:     r"(?<![〇零一二两三四五六七八九十百千万亿\d.])"
+0027:     r"(?P<denominator>百分之|千分之|万分之)"
+0028:     r"(?P<numerator>[〇零一二两三四五六七八九十]{1,8}|\d{1,6}(?:\.\d{1,6})?)"
+0029:     r"(?![〇零一二两三四五六七八九十百千万亿\d.点])"
+0030: )
+0031: _PERCENT_TOKEN_RE = re.compile(
+0032:     r"(?<![0-9A-Za-z_.+\-−＋－/／])"
+0033:     r"(?P<numerator>\d{1,6}(?:\.\d{1,6})?)\s*%(?!\d)"
+0034: )
+0035: _RATIO_CLAIM_RE = re.compile(
+0036:     r"(?P<former>前者|后者)(?:是|为)(?P<latter>后者|前者)的"
+0037:     r"(?P<multiple>[〇零一二两三四五六七八九十]{1,8}|\d{1,6}(?:\.\d{1,6})?)\s*倍"
+0038: )
+0039: _DIRECT_RATIO_BRIDGE_RE = re.compile(
+0040:     r"\s*(?:(?:/|每)\s*[日月年]\s*)?[）)]?\s*(?:是|为)\s*"
+0041:     r"(?:[^（）()，,。；;！!？?\n]{1,80}[（(])?\s*"
+0042: )
+0043: _DIRECT_RATIO_CLAIM_RE = re.compile(
+0044:     r"\s*(?:(?:/|每)\s*[日月年]\s*)?[）)]?\s*的\s*"
+0045:     r"(?P<multiple>[〇零一二两三四五六七八九十]{1,8}|\d{1,6}(?:\.\d{1,6})?)\s*倍"
+0046: )
+0047: _TWO_RATE_DIFFERENCE_RE = re.compile(
+0048:     r"(?P<subject>两者|二者)\s*(?:之间)?\s*"
+0049:     r"(?:相差(?:为|达到?)?|差距(?:为|达到?)?|差额(?:为|达到?)?|之差为)\s*"
+0050:     r"(?P<multiple>[〇零一二两三四五六七八九十]{1,8}|\d{1,6}(?:\.\d{1,6})?)\s*倍"
+0051: )
+0052: _RATE_MARKER_RE = re.compile(r"百分之|千分之|万分之|%")
+0053: _NAMED_RATE_INTRO_RE = re.compile(
+0054:     r"^\s*(?P<party>甲方|乙方)"
+0055:     r"(?:(?!甲方|乙方)[^，,；;。！？!?：:]){0,32}?(?:违约金(?:率)?|费率|利率|比率)"
+0056:     r"\s*(?:为|是)\s*(?:(?:按|以)\s*)?(?:每\s*)?"
+0057:     r"(?:(?:日|月|年)(?:利率|费率)?\s*)?$"
+0058: )
+0059: _NAMED_RATE_COMPARISON_RE = re.compile(
+0060:     r"(?P<left_party>甲方|乙方)"
+0061:     r"(?:(?!甲方|乙方)[^，,；;。！？!?：:]){0,24}?(?:违约金(?:率)?|费率|利率|比率)"
+0062:     r"\s*(?:是|为)\s*(?P<right_party>甲方|乙方)"
+0063:     r"(?:(?:(?!甲方|乙方)[^，,；;。！？!?：:]){0,16}?"
+0064:     r"(?:违约金(?:率)?|费率|利率|比率))?"
+0065:     r"\s*的\s*"
+0066:     r"(?P<multiple>[〇零一二两三四五六七八九十]{1,8}|\d{1,6}(?:\.\d{1,6})?)\s*倍"
+0067: )
+0068: _NONASSERTION_QUOTE_RE = re.compile(
+0069:     r"`[^`\n]*`|「[^」\n]*」|『[^』\n]*』|“[^”\n]*”|‘[^’\n]*’|"
+0070:     r"\"[^\"\n]*\"|'[^'\n]*'|〔[^〕\n]*〕|\[[^\]\n]*\]"
+0071: )
+0072: 
+0073: 
+0074: def _exact_number(text: str, *, allow_zero: bool) -> Fraction | None:
+0075:     """只接受本检查声明支持的有限中文小整数或阿拉伯十进制数。"""
+0076:     if text and all(char in _CN_DIGITS or char == "十" for char in text):
+0077:         if text == "十":
+0078:             value = Fraction(10)
+0079:         elif len(text) == 1:
+0080:             value = Fraction(_CN_DIGITS[text])
+0081:         elif text.count("十") == 1:
+0082:             tens, ones = text.split("十")
+0083:             if len(tens) > 1 or len(ones) > 1:
+0084:                 return None
+0085:             value = Fraction((_CN_DIGITS[tens] if tens else 1) * 10
+0086:                              + (_CN_DIGITS[ones] if ones else 0))
+0087:         else:
+0088:             return None
+0089:     else:
+0090:         try:
+0091:             value = Fraction(Decimal(text))
+0092:         except (InvalidOperation, ValueError):
+0093:             return None
+0094:     if value < 0 or (value == 0 and not allow_zero):
+0095:         return None
+0096:     return value
+0097: 
+0098: 
+0099: def _rate_unit(segment: str, start: int, end: int) -> str | None:
+0100:     """仅识别明确的日/月/年计率单位；缺失或含糊时不参与判断。"""
+0101:     suffix = re.match(r"\s*(?:/|每)\s*(日|月|年)", segment[end:end + 6])
+0102:     if suffix:
+0103:         return suffix.group(1)
+0104:     prefix = segment[max(0, start - 6):start]
+0105:     prefix_unit = re.search(r"(日|月|年)(?:利率|费率)?(?:为|是)?$", prefix)
+0106:     return prefix_unit.group(1) if prefix_unit else None
+0107: 
+0108: 
+0109: def _segment_rates(segment: str) -> list[dict]:
+0110:     rates = []
+0111:     for match in _RATE_TOKEN_RE.finditer(segment):
+0112:         denominator = {"百分之": 100, "千分之": 1000, "万分之": 10000}[match.group("denominator")]
+0113:         numerator = _exact_number(match.group("numerator"), allow_zero=True)
+0114:         if numerator is None:
+0115:             continue
+0116:         rates.append({
+0117:             "value": numerator / denominator,
+0118:             "unit": _rate_unit(segment, match.start(), match.end()),
+0119:             "start": match.start(),
+0120:             "end": match.end(),
+0121:         })
+0122:     for match in _PERCENT_TOKEN_RE.finditer(segment):
+0123:         numerator = _exact_number(match.group("numerator"), allow_zero=True)
+0124:         if numerator is None:
+0125:             continue
+0126:         rates.append({
+0127:             "value": numerator / 100,
+0128:             "unit": _rate_unit(segment, match.start(), match.end()),
+0129:             "start": match.start(),
+0130:             "end": match.end(),
+0131:         })
+0132:     return sorted(rates, key=lambda rate: rate["start"])
+0133: 
+0134: 
+0135: def _fraction_text(value: Fraction) -> str:
+0136:     return str(value.numerator) if value.denominator == 1 else f"{value.numerator}/{value.denominator}"
+0137: 
+0138: 
+0139: def _named_rate_introductions(segment: str, rates: list[dict]) -> dict | None:
+0140:     """只接受同一句由不同甲方/乙方标签分别引导的两个费率。"""
+0141:     if re.search(r"丙方|丁方|第三方", segment):
+0142:         return None
+0143:     introduced = {}
+0144:     for rate in rates:
+0145:         clause_start = max(
+0146:             segment.rfind(char, 0, rate["start"]) for char in "，,；;。！？!?：:"
+0147:         ) + 1
+0148:         intro = _NAMED_RATE_INTRO_RE.fullmatch(segment[clause_start:rate["start"]])
+0149:         if intro is None:
+0150:             return None
+0151:         party = intro.group("party")
+0152:         if party in introduced:
+0153:             return None
+0154:         introduced[party] = rate
+0155:     return introduced if len(introduced) == 2 else None
+0156: 
+0157: 
+0158: def _named_party_rate_comparison(segment: str, rates: list[dict]):
+0159:     """只在同一句两次具名引入后，由当事人标签解析一次明确的比率倍数比较。"""
+0160:     introduced = _named_rate_introductions(segment, rates)
+0161:     if introduced is None:
+0162:         return None
+0163:     comparisons = list(_NAMED_RATE_COMPARISON_RE.finditer(segment, rates[1]["end"]))
+0164:     if len(comparisons) != 1:
+0165:         return None
+0166:     comparison = comparisons[0]
+0167:     left_party = comparison.group("left_party")
+0168:     right_party = comparison.group("right_party")
+0169:     if left_party == right_party or set(introduced) != {left_party, right_party}:
+0170:         return None
+0171:     claimed = _exact_number(comparison.group("multiple"), allow_zero=False)
+0172:     if claimed is None:
+0173:         return None
+0174:     actual = introduced[left_party]["value"] / introduced[right_party]["value"]
+0175:     return comparison.start(), comparison.end(), claimed, actual, f"{left_party}/{right_party}"
+0176: 
+0177: 
+0178: def _two_named_rate_difference(segment: str, rates: list[dict]):
+0179:     """识别“两者相差N倍”，只在N与四种可支持口径均不一致时返回拦截依据。"""
+0180:     if (len(rates) != 2 or any(rate["value"] == 0 for rate in rates)
+0181:             or rates[0]["unit"] is None or rates[0]["unit"] != rates[1]["unit"]
+0182:             or len(_RATE_MARKER_RE.findall(segment)) != 2):
+0183:         return None
+0184:     if _named_rate_introductions(segment, rates) is None:
+0185:         return None
+0186:     comparisons = list(_TWO_RATE_DIFFERENCE_RE.finditer(segment))
+0187:     if len(comparisons) != 1 or comparisons[0].start() < rates[1]["end"]:
+0188:         return None
+0189:     comparison = comparisons[0]
+0190:     claimed = _exact_number(comparison.group("multiple"), allow_zero=False)
+0191:     if claimed is None:
+0192:         return None
+0193:     former, latter = rates[0]["value"], rates[1]["value"]
+0194:     gap = abs(former - latter)
+0195:     interpretations = (
+0196:         ("前者/后者", former / latter),
+0197:         ("后者/前者", latter / former),
+0198:         ("差额/前者", gap / former),
+0199:         ("差额/后者", gap / latter),
+0200:     )
+0201:     if any(value == claimed for _, value in interpretations):
+0202:         return None
+0203:     return comparison.start(), comparison.end(), claimed, interpretations
+0204: 
+0205: 
+0206: def _rate_ratio_mismatch(content: str) -> str | None:
+0207:     """合同审查草稿中，只拒绝同一句中两个比率被明确写成相反倍数的硬算术错误。"""
+0208:     in_fence = False
+0209:     for raw_line in content.splitlines():
+0210:         stripped = raw_line.lstrip()
+0211:         if stripped.startswith(("```", "~~~")):
+0212:             in_fence = not in_fence
+0213:             continue
+0214:         if in_fence or re.match(r"^\s*>", raw_line):
+0215:             continue
+0216:         line = _NONASSERTION_QUOTE_RE.sub(lambda match: " " * len(match.group()), raw_line)
+0217:         for sentence in re.finditer(r"[^。！？!?；;]+[。！？!?；;]*", line):
+0218:             segment = sentence.group()
+0219:             if re.search(r"[?？]|是否|能否|可否|吗|如果|假如|假设|倘若|若", segment):
+0220:                 continue
+0221:             claim = _RATIO_CLAIM_RE.search(segment)
+0222:             rates = _segment_rates(segment)
+0223:             if len(rates) != 2 or rates[0]["value"] == 0 or rates[1]["value"] == 0:
+0224:                 continue
+0225:             if rates[0]["unit"] != rates[1]["unit"]:
+0226:                 continue
+0227:             if claim:
+0228:                 if claim.group("former") == claim.group("latter"):
+0229:                     continue
+0230:                 if rates[1]["end"] > claim.start():
+0231:                     continue
+0232:                 context_before = segment[max(0, claim.start() - 20):claim.start()]
+0233:                 context_after = segment[claim.end():claim.end() + 12]
+0234:                 claimed = _exact_number(claim.group("multiple"), allow_zero=False)
+0235:                 if claimed is None:
+0236:                     continue
+0237:                 former_is_rate_one = claim.group("former") == "前者"
+0238:                 actual = (rates[0]["value"] / rates[1]["value"] if former_is_rate_one
+0239:                           else rates[1]["value"] / rates[0]["value"])
+0240:                 direction = "前者/后者" if former_is_rate_one else "后者/前者"
+0241:                 interpretations = None
+0242:             else:
+0243:                 direct_bridge = _DIRECT_RATIO_BRIDGE_RE.fullmatch(
+0244:                     segment, rates[0]["end"], rates[1]["start"])
+0245:                 direct_claim = (
+0246:                     _DIRECT_RATIO_CLAIM_RE.match(segment, rates[1]["end"])
+0247:                     if direct_bridge is not None else None
+0248:                 )
+0249:                 if direct_claim is not None:
+0250:                     context_before = segment[max(0, rates[0]["start"] - 20):rates[0]["start"]]
+0251:                     context_after = segment[direct_claim.end():direct_claim.end() + 12]
+0252:                     claimed = _exact_number(direct_claim.group("multiple"), allow_zero=False)
+0253:                     if claimed is None:
+0254:                         continue
+0255:                     actual = rates[0]["value"] / rates[1]["value"]
+0256:                     direction = "第一项/第二项"
+0257:                     interpretations = None
+0258:                 else:
+0259:                     named = _named_party_rate_comparison(segment, rates)
+0260:                     if named is not None:
+0261:                         claim_start, claim_end, claimed, actual, direction = named
+0262:                         context_before = segment[max(0, claim_start - 20):claim_start]
+0263:                         context_after = segment[claim_end:claim_end + 12]
+0264:                         interpretations = None
+0265:                     else:
+0266:                         difference = _two_named_rate_difference(segment, rates)
+0267:                         if difference is None:
+0268:                             continue
+0269:                         claim_start, claim_end, claimed, interpretations = difference
+0270:                         context_before = segment[max(0, claim_start - 20):claim_start]
+0271:                         context_after = segment[claim_end:claim_end + 12]
+0272:             if re.search(r"(?:并非|不是|不构成|不能|不应|不得|不存在|不具有)[^，。；]{0,12}$",
+0273:                          context_before):
+0274:                 continue
+0275:             if re.match(r"\s*(?:的说法)?(?:不成立|不正确|有误)", context_after):
+0276:                 continue
+0277:             if interpretations is not None:
+0278:                 unit = f"/{rates[0]['unit']}"
+0279:                 choices = "、".join(
+0280:                     f"{label}={_fraction_text(value)}倍" for label, value in interpretations
+0281:                 )
+0282:                 return (
+0283:                     f"违约金比例换算存在歧义：两项比例分别为"
+0284:                     f"{_fraction_text(rates[0]['value'])}{unit}、"
+0285:                     f"{_fraction_text(rates[1]['value'])}{unit}；"
+0286:                     f"两者相差倍数可能为{choices}，草稿表述为{_fraction_text(claimed)}倍。"
+0287:                     "请核对原文比例后重新保存。"
+0288:                 )
+0289:             if actual == claimed:
+0290:                 continue
+0291:             unit = f"/{rates[0]['unit']}" if rates[0]["unit"] else ""
+0292:             return (
+0293:                 f"违约金比例换算不一致：前者={_fraction_text(rates[0]['value'])}{unit}，"
+0294:                 f"后者={_fraction_text(rates[1]['value'])}{unit}；"
+0295:                 f"按{direction}计算的准确倍数为{_fraction_text(actual)}倍，"
+0296:                 f"草稿表述为{_fraction_text(claimed)}倍。请核对原文比例后重新保存。"
+0297:             )
+0298:     return None
+0299: 
+0300: 
+0301: def _citation_check(root: str, case_id: str, task: dict, index: dict, content: str,
+0302:                     skills_dirs) -> tuple[dict, list[dict]]:
+0303:     t0 = time.monotonic()
+0304:     kind = checks.skill_kind(skills_dirs, task.get("skill"))
+0305:     check, cites = checks.check_text(content, checks.MaterialSet.from_case(root, index), kind)
+0306:     logs.event("checks", "draft", case_id=case_id, duration_ms=(time.monotonic() - t0) * 1000)
+0307:     return check, cites
+0308: 
+0309: 
+0310: def citation_check(ctx: ToolContext, content: str) -> tuple[dict, list[dict]]:
+0311:     """出处核对（T10）：按任务 Skill 的 kind 区分 G 类；不查 D 类（裁决 1）。日志只记元数据。"""
+0312:     return _citation_check(ctx.root, ctx.case_id, ctx.task, ctx.index(), content, ctx.skills_dirs)
+0313: 
+0314: 
+0315: def merge_citations(old: list[dict], new: list[dict]) -> list[dict]:
+0316:     """本任务全部草稿的出处，按（材料编号、位置）去重（裁决 6）；同一处以最新这次保存的为准
+0317:     （两次保存之间材料重新导入过，material_version 取新的；复核 NOTE）。"""
+0318:     out = {(c["material_id"], json.dumps(c["loc"], sort_keys=True)): c for c in old}
+0319:     for c in new:
+0320:         out[(c["material_id"], json.dumps(c["loc"], sort_keys=True))] = c
+0321:     return list(out.values())
+0322: 
+0323: 
+0324: def _defense_unread_numeric_citation(tasks, root: str, task: dict,
+0325:                                      cites: list[dict]) -> tuple[str, dict] | None:
+0326:     """返回首个未被本任务当前版本完整读取的数值型出处。
+0327: 
+0328:     只核对读取区间、材料单元结构和程序待识别占位，不检查材料中的事实内容。
+0329:     """
+0330:     tid = task["task_id"]
+0331:     reads = tasks._read(root, tasks.rel(tid, "reads.json"), "files/reads.schema.json")["reads"]
+0332:     by_material_unit: dict[tuple[str, str, str], list[tuple[int, int]]] = {}
+0333:     for rec in reads:
+0334:         key = (rec["material_id"], rec["material_version"], rec["unit"])
+0335:         by_material_unit.setdefault(key, []).append((rec["from"], rec["to"]))
+0336:     materials = None
+0337:     pending_units: dict[tuple[str, str, str], set[int] | None] = {}
+0338:     for cite in cites:
+0339:         loc = cite["loc"]
+0340:         unit = loc["unit"]
+0341:         if unit not in ("page", "para", "line"):
+0342:             continue
+0343:         start = loc["from"]
+0344:         end = loc.get("to", start)
+0345:         if end < start:
+0346:             return cite["material_id"], loc
+0347:         next_unit = start
+0348:         for read_start, read_end in sorted(
+0349:                 by_material_unit.get((cite["material_id"], cite["material_version"], unit), ())):
+0350:             if read_end < next_unit:
+0351:                 continue
+0352:             if read_start > next_unit:
+0353:                 break
+0354:             next_unit = max(next_unit, read_end + 1)
+0355:             if next_unit > end:
+0356:                 break
+0357:         if next_unit <= end:
+0358:             return cite["material_id"], loc
+0359:         key = (cite["material_id"], cite["material_version"], unit)
+0360:         if key not in pending_units:
+0361:             if materials is None:
+0362:                 materials = tasks.index_for_task(task)["materials"]
+0363:             material = next((m for m in materials
+0364:                              if (m["material_id"], m["sha256"], m["unit"]) == key), None)
+0365:             if material is None:
+0366:                 pending_units[key] = None
+0367:             else:
+0368:                 try:
+0369:                     text = texts.read_text(root, material)
+0370:                 except ApiError as exc:
+0371:                     if exc.code != "MATERIAL_NOT_READY":
+0372:                         raise
+0373:                     pending_units[key] = None
+0374:                 else:
+0375:                     pending_units[key] = {
+0376:                         u.no for u in texts.split_units(text, unit)
+0377:                         if u.text.strip() == texts.PENDING_OCR
+0378:                     }
+0379:         if pending_units[key] is None or any(
+0380:                 start <= no <= end for no in pending_units[key]):
+0381:             return cite["material_id"], loc
+0382:     return None
+0383: 
+0384: 
+0385: def save_draft(ctx: ToolContext, a: dict) -> dict:
+0386:     title = a["title"].strip()
+0387:     if not title:
+0388:         raise ApiError("INVALID_ARGUMENT", "empty_title")
+0389:     tid = ctx.task["task_id"]
+0390:     # 取版本号、写文件、改 result.json 都在这个任务的锁里（P1-3、P2-2）；
+0391:     # 匹配已有版本不分大小写：NTFS 上 Report-v1.md 和 report-v1.md 是同一个文件
+0392:     with ctx.tasks.task_lock(tid):
+0393:         # 在任务锁里再核一次状态：/core/tool 在锁外查过，这之间 end 可能已经插进来（F2）
+0394:         task = ctx.tasks.locate(tid)[2]
+0395:         if task["state"] != "running":
+0396:             raise ApiError("TASK_NOT_FOUND", "not_running")
+0397:         cached_citation = None
+0398:         if task.get("skill") == "defense-opinion":
+0399:             cached_citation = citation_check(ctx, a["content"])
+0400:             unread = _defense_unread_numeric_citation(
+0401:                 ctx.tasks, ctx.root, task, cached_citation[1])
+0402:             if unread is not None:
+0403:                 material_id, loc = unread
+0404:                 unit_name = {"page": "页", "para": "段", "line": "行"}[loc["unit"]]
+0405:                 loc_text = (f"第{loc['from']}{unit_name}" if loc.get("to", loc["from"]) == loc["from"]
+0406:                             else f"第{loc['from']}-{loc['to']}{unit_name}")
+0407:                 low, high = sorted((loc["from"], loc.get("to", loc["from"])))
+0408:                 raise ApiError(
+0409:                     "INVALID_ARGUMENT",
+0410:                     "defense_citation_not_read",
+0411:                     f"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。"
+0412:                     f"请先调用 case_list_materials，找到 material_id={material_id} 的材料，取其 name；"
+0413:                     f"再用 case_read_material 的 name 参数传该名称，按升序区间第{low}至第{high}{unit_name}完整读取后重新保存。"
+0414:                     "区间起止倒置请改为升序；若该范围仍是待识别占位文本，请待识别文本生成后再读取并保存。",
+0415:                 )
+0416:         return _save_locked(
+0417:             ctx.tasks, ctx.root, ctx.case_id, task, title, a["content"],
+0418:             check_fn=lambda: cached_citation if cached_citation is not None
+0419:             else citation_check(ctx, a["content"]),
+0420:             coverage_fn=lambda: ctx.tasks.coverage(ctx.root, ctx.case_id, tid),
+0421:         )
+0422: 
+0423: 
+0424: def _save_locked(tasks, root: str, case_id: str, task: dict, title: str, content: str,
+0425:                  *, check_fn, coverage_fn) -> dict:
+0426:     """调用方持有来源任务锁；只写一个新版本，并在 metadata 失败时收回本次新文件。"""
+0427:     if task.get("skill") == "contract-review":
+0428:         mismatch = _rate_ratio_mismatch(content)
+0429:         if mismatch is not None:
+0430:             raise ApiError("INVALID_ARGUMENT", "rate_ratio_mismatch", mismatch)
+0431:     tid = task["task_id"]
+0432:     drafts_rel = tasks.rel(tid, "草稿")
+0433:     version = tasks.next_draft_version(root, title, ".md")   # 本案同标题接着往上加，不分任务
+0434:     rel = f"{drafts_rel}/{title}-v{version}.md"
+0435:     target = gate.resolve_write(root, rel, op="save_draft")
+0436:     if target.exists():
+0437:         raise ApiError("INVALID_ARGUMENT", "target_exists")
+0438:     gate.write_bytes(root, rel, content.encode("utf-8"), op="save_draft")  # 标题是设备名等：闸门拒绝
+0439:     try:
+0440:         check, cites = check_fn()
+0441:         cov = coverage_fn()
+0442:         res = tasks.result(root, tid)
+0443:         res["drafts"].append({"title": title, "path": rel, "version": version})
+0444:         res.update(citation_check=check, coverage=cov, citations=merge_citations(res["citations"], cites))
+0445:         tasks.save_result(root, res)
+0446:     except BaseException:
+0447:         try:
+0448:             gate.delete_work_file(root, rel, op="save_draft_rollback")
+0449:         except Exception as exc:  # noqa: BLE001 保留原异常；清理失败只记类型
+0450:             logs.event("draft", "rollback", status="fail", case_id=case_id, error=type(exc).__name__)
+0451:         raise
+0452:     # 正式草稿存好了：进度文件清掉（T14 派修；之后模型再回复，progress 会重写，task/end 时再清）
+0453:     gate.delete_work_file(root, f"{drafts_rel}/{IN_PROGRESS}", op="save_draft")
+0454:     not_fully = [p["name"] for p in cov["partially_read"]] + cov["not_read"]
+0455:     return {"path": rel, "version": version, "citation_check": check, "coverage": cov, "not_fully_read": not_fully}
+0456: 
+0457: 
+0458: def save_document_ui(tasks, materials, skills_dirs, a: dict) -> dict:
+0459:     """界面保存：来源任务结束后，从登记恢复标题并写同标题新草稿版本。"""
+0460:     source = documents.locate_source(tasks, a["case_id"], a["path"])
+0461:     if contracts.errors("tools/case_save_draft.schema.json", "#/$defs/args",
+0462:                         {"title": source["title"], "content": a["content"]}):
+0463:         raise ApiError("INVALID_ARGUMENT", "source_metadata")
+0464:     tid = source["task_id"]
+0465:     with tasks.task_lock(tid):
+0466:         root, task = documents.recheck_stable_source(tasks, source)
+0467:         saved = _save_locked(
+0468:             tasks, root, a["case_id"], task, source["title"], a["content"],
+0469:             check_fn=lambda: _citation_check(
+0470:                 root, a["case_id"], task, tasks.index_for_task(task), a["content"], skills_dirs),
+0471:             coverage_fn=lambda: tasks.coverage(root, a["case_id"], tid),
+0472:         )
+0473:     return {"task_id": tid, **saved}
+0474: 
+0475: 
+0476: def suggest_wiki(ctx: ToolContext, a: dict) -> dict:
+0477:     with _WIKI_LOCK:
+0478:         return _suggest_wiki(ctx, a)
+0479: 
+0480: 
+0481: def _suggest_wiki(ctx: ToolContext, a: dict) -> dict:
+0482:     p = gate.resolve_internal(ctx.root, PENDING_REL, op="suggest_wiki")
+0483:     data = contracts.read_json(p) if p.is_file() else {"v": 1, "suggestions": []}
+0484:     contracts.validate(PENDING_SCHEMA, "", data)
+0485:     n = max((int(s["id"][1:]) for s in data["suggestions"]), default=0) + 1
+0486:     if n > 9999:
+0487:         raise ApiError("INVALID_ARGUMENT", "too_many_suggestions")
+0488:     sid = f"S{n:04d}"
+0489:     data["suggestions"].append({"id": sid, "field": a["field"], "value": a["value"], "source": a["source"],
+0490:                                 "reason": a.get("reason"), "task_id": ctx.task["task_id"],
+0491:                                 "created_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+0492:                                 "status": "pending"})
+0493:     contracts.validate(PENDING_SCHEMA, "", data)
+0494:     gate.write_bytes(ctx.root, PENDING_REL, json.dumps(data, ensure_ascii=False, indent=2).encode("utf-8"),
+0495:                      op="suggest_wiki")
+0496:     return {"suggestion_id": sid}

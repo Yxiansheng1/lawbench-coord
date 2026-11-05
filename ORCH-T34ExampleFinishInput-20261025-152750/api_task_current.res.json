@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "value": {
+    "selection": {
+      "task_id": "T-20260928093000-7c1f",
+      "entry": "criminal-reading",
+      "skill": "criminal-reading-notes",
+      "inputs": [],
+      "params": {
+        "thinking": "中",
+        "window": "64K",
+        "max_tokens": 16384
+      },
+      "route": "external",
+      "updated_at": "2026-09-28T09:30:00+08:00"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "item_72",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\C-findings-T32-cancel-independent-20261027-155013.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\C-handback-T32-cancel-independent-20261027-155013.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

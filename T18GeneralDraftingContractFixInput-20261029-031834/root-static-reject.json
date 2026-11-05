@@ -1,0 +1,43 @@
+{
+  "verdict": "STATIC_REJECT_BEFORE_RUNTIME_THREE_CONSUMER_CONTRACT_ERRORS",
+  "observed_at_utc": "2026-10-28T19:15:12.958254+00:00",
+  "author_job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-general-drafting-native-1017-20261029-025642.job.json",
+  "author_status_observed": "process_started",
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralDraftingNative-20261029-025642\\native-general-drafting.mts",
+    "bytes": 99398,
+    "sha256": "d9bb256d64108a9e0bf1dfda246af61e0c368c2c82d8ef285eb579e39ad5c4aa"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralDraftingNative-20261029-025642\\b-service-general-drafting.py",
+    "bytes": 39539,
+    "sha256": "b21741ce2c3d62b90c704a303d794e6c1b310beb23c61389106f0b6d42669552"
+  },
+  "findings": [
+    {
+      "id": "API_MATERIAL_VERSION_NOT_EXPORTED",
+      "primary": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_list.schema.json",
+      "schema_sha": "f0f0f3e08c8374e36f9e6cf52a84fee4ccde43757561eb820b01c9f0343eff31",
+      "evidence": "GET /api/materials rows have additionalProperties=false and no sha256 property; actual MaterialManager.list also omits it. Both Node reader and Python firewall erroneously require this field.",
+      "fix": "Join real owned persisted 工作区/材料/index.json by material_id to actual UI rows, verify name/path/unit/status/version/source hash and later claimed scope exact; no expected-config fallback or adding fields to API."
+    },
+    {
+      "id": "SELECTION_SESSION_BOUND_AFTER_FIRST_SELECTION",
+      "evidence": "Node posts taskCreate before requestScope; Python task selection requires data.session_id==self.session_id but self.session_id remains None until scope prepare.",
+      "fix": "Preserve real UI ordering and bind FIRST valid actual Native Session ID at owned task selection, then require same identity for scope/currentR/claim; no all-case fallback or weaker cross-session guard."
+    },
+    {
+      "id": "USER_MESSAGE_IS_FLAT_NATIVE_DATA",
+      "primary": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\types.ts",
+      "primary_sha": "71df05767d4436f7df989a7fe0d634befef54587f1ae63849cc6b28de6921c53",
+      "evidence": "DSH SessionEventMap user/message data is UserMessage directly; assistant/tool messages wrap data.message. eventMessageText incorrectly always unwraps data.message.",
+      "fix": "Explicit event-type-aware authoritative data shape; retain exact canonical user text/R and all assistant/tool checks, no permissive fallback."
+    }
+  ],
+  "runtime_executed": false,
+  "model_started": false,
+  "product_or_API_failure_claimed": false,
+  "complete_source_setup_cleanup_audit_NOT_YET_CLAIMED": true,
+  "mandatory_questions_citations_scope_budgets_security_assertions_must_be_preserved": true,
+  "Packaging": "HOLD"
+}

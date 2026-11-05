@@ -1,0 +1,22 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 50557,
+    "sha256": "d76bd85184e271ffb7aa10a4e8e1a5a11242aa4ae80850f02f29e94f89e94801"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 22291,
+    "sha256": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ArchiveWorkflowGate-20261030-003021\\build-config.mjs",
+    "bytes": 20463,
+    "sha256": "9516e0f99bf42c9d8525191a2a422ad383f182a5b1dd4ec605db3f17babc9a62"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ArchiveWorkflowGate-20261030-003021\\build-private.mjs",
+    "bytes": 32121,
+    "sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55"
+  }
+]

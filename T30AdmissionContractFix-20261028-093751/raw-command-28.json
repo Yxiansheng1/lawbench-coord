@@ -1,0 +1,8 @@
+{
+  "id": "item_35",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\bash.exe\" -c \"rg -n \\\"new CaseRoots|new SessionRouter|workspace/session-delete-check|recordOf\\\\(|preflight|NO_RECYCLE_BIN|DELETE\\\" 'dsh-ext\\\\tests' -g '*.ts' -g '*.tsx' | Select-Object -First 300\"",
+  "aggregated_output": "�b�~���\u00020 \u0000\r\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000B\u0000a\u0000s\u0000h\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\r\u0000\n\u0000",
+  "exit_code": 1,
+  "status": "failed"
+}

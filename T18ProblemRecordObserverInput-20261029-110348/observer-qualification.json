@@ -1,0 +1,180 @@
+{
+  "verdict": "MANUAL_BUSINESS_REVIEW_FAILED_WITH_OBSERVER_LEVEL_FALSE_NEGATIVE",
+  "actual_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM",
+  "draft": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalEvidenceRoundRuntime-20261029-105056\\run-6EMIFM\\case\\工作区\\任务\\T-20261029105628-c7f9\\草稿\\证据审查意见-v2.md",
+    "bytes": 8496,
+    "sha256": "59f95a086aba1f39ba90068f759f8d20a5b83f3759b36cf98b1586cc5dcadebc",
+    "mtime_ns": "1793242682198840900",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [],
+      "stats": {
+        "citations": 28,
+        "must_fix": 0,
+        "hints": 0
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0004",
+        "material_version": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+        "name": "被告人李某乙讯问笔录（第一次）",
+        "loc": {
+          "unit": "line",
+          "from": 14
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+        "name": "被告人李某乙讯问笔录（第二次）",
+        "loc": {
+          "unit": "line",
+          "from": 10
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+        "name": "被告人李某乙讯问笔录（第一次）",
+        "loc": {
+          "unit": "line",
+          "from": 16
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+        "name": "被告人李某乙讯问笔录（第二次）",
+        "loc": {
+          "unit": "line",
+          "from": 12
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+        "name": "价格认定结论书",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+        "name": "扣押清单",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+        "name": "价格认定结论书",
+        "loc": {
+          "unit": "line",
+          "from": 15,
+          "to": 17
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+        "name": "价格认定结论书",
+        "loc": {
+          "unit": "line",
+          "from": 17
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+        "name": "扣押清单",
+        "loc": {
+          "unit": "line",
+          "from": 10
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "name": "监控视频截图说明",
+        "loc": {
+          "unit": "line",
+          "from": 10
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "name": "监控视频截图说明",
+        "loc": {
+          "unit": "line",
+          "from": 12
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "name": "监控视频截图说明",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "name": "监控视频截图说明",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+        "name": "价格认定结论书",
+        "loc": {
+          "unit": "line",
+          "from": 11
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+        "name": "监控视频截图说明",
+        "loc": {
+          "unit": "line",
+          "from": 7,
+          "to": 8
+        }
+      }
+    ]
+  },
+  "problem_records_observed": 10,
+  "each_required_five_fields_present": true,
+  "primary_template_example_heading_level": 3,
+  "actual_heading_level": 2,
+  "primary_original_machine_scope": "template-section presence, not literal heading rank",
+  "observer_missing_records_claim_false": true,
+  "heading_rank_difference_preserved_as_format_observation": true,
+  "findings": [
+    {
+      "id": "UNMARKED_IDENTITY_INFERENCE",
+      "excerpt": "印证第二次供述关于同伙的说法",
+      "basis": "faces obscured; people not identified; no inference marker",
+      "marker_present": false
+    }
+  ],
+  "previous_digit_position_error_absent": true,
+  "unclear_amount_retained": true,
+  "round_citation_wrong_wrappers_absent": true,
+  "all_business_PASS": false,
+  "legal_merits_certified": false,
+  "Packaging": "HOLD"
+}

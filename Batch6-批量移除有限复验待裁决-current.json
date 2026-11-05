@@ -1,0 +1,48 @@
+{
+  "state": "OWNER_APPROVED_ONE_REPLAY",
+  "goal": "Only complete real GUI bulk removal of first twelve fictional references in a new isolated case; no product changes",
+  "reason": "Previous confirmation window expired before final click; two post-lifetime Native service relaunches reported prepared_case_tree_identity, preserved, no automatic retry",
+  "oldRoot": "D:/Lawbeach/lawbench-B/docs/plan/evidence/Batch6/NativeMaterials-20261103/runs/B6-native-materials-20261103-171557",
+  "oldRemoveAttempts": 0,
+  "oldRemoveOK": 0,
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch6\\NativeMaterials-20261103\\prepare.py",
+      "bytes": 25662,
+      "sha256": "a983738760458fcfd472bdd12b6ec53bd49bd57006e365a33fdb6b1e608c63bf"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch6\\NativeMaterials-20261103\\entry.py",
+      "bytes": 46860,
+      "sha256": "1ceb4780d62ead20548c81c318ad0a117da01568f49c92b9b4e0c99fcda2a915"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch6\\NativeMaterials-20261103\\start.ps1",
+      "bytes": 94948,
+      "sha256": "99559ba20d89c57b501f7bca0e6ba61082d2689d21e5b09a29fac96ed55686ea"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch6\\NativeMaterials-20261103\\stop.ps1",
+      "bytes": 7143,
+      "sha256": "a75d07c67e7b67daacf3c76f173d223ca455950897cfc608b354e40d20e6218e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\Batch6\\NativeMaterials-20261103\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    }
+  ],
+  "sourceChangesAllowed": [],
+  "guardChangesAllowed": [],
+  "bindingOnly": "Fresh run-root literal through existing bind-gui.py",
+  "guiSeconds": 600,
+  "absoluteDeadline": "2026-11-03T18:21:38+08:00",
+  "model": false,
+  "credentials": false,
+  "installerRebuild": false,
+  "deletionScope": "Twelve fictional material references and derived text only, twenty-four external fixture files unchanged",
+  "actionTimeConfirmationRequired": true,
+  "onAnyFailure": "STOP; do not retry",
+  "ownerAnswer": "允许这一次有限复验",
+  "approvedAt": "2026-11-03T17:41:41.1666033+08:00"
+}

@@ -1,0 +1,12 @@
+{
+  "verdict": "PURE_RATE_CHANGE_AND_PRECEDENCE_REPAIR_FULL_REVIEW_PENDING_ROOT19_AND_AFFECTED12",
+  "source_sha": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822",
+  "test_sha": "62c4ba868e92f825ab085c517f8e373eb5b80960495a77f5af42f882e2bc0e2d",
+  "all_source_outside_pure_helper_block_exact255a": true,
+  "all_prior16_test_prefix_exact": true,
+  "all_original11_test_bodies_exact": true,
+  "root_original_masking_regression_preserved": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-comparison-precedence-probe-current.json",
+  "test_log_label_qualification": "named corrected control uses explicit2 plus difference20, deliberately preserving old explicit semantics; console incorrectly says difference2",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

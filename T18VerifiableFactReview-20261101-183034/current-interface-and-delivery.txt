@@ -1,0 +1,183 @@
+D:\Lawbeach\lawbench-B\contracts\tools\case_save_draft.schema.json SHA e3cddc974b53277645bb278fe9ccdb51470357f5939a88a2840337a46d66a3f5
+0001 {
+0002   "$schema": "https://json-schema.org/draft/2020-12/schema",
+0003   "$id": "lawbench://contracts/tools/case_save_draft.schema.json",
+0004   "title": "case_save_draft",
+0005   "description": "保存草稿到 工作区/任务/<任务ID>/草稿/，同标题再存生成新版本（旧版本保留）；返回核对结果",
+0006   "$defs": {
+0007     "args": {
+0008       "type": "object",
+0009       "properties": {
+0010         "title": {
+0011           "type": "string",
+0012           "minLength": 1,
+0013           "maxLength": 60,
+0014           "pattern": "^[^\\\\/:*?\"<>|]+$"
+0015         },
+0016         "content": {
+0017           "type": "string",
+0018           "minLength": 1
+0019         }
+0020       },
+0021       "additionalProperties": false,
+0022       "required": [
+0023         "title",
+0024         "content"
+0025       ]
+0026     },
+0027     "result": {
+0028       "type": "object",
+0029       "properties": {
+0030         "path": {
+0031           "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+0032         },
+0033         "version": {
+0034           "type": "integer",
+0035           "minimum": 1
+0036         },
+0037         "citation_check": {
+0038           "$ref": "lawbench://contracts/common.schema.json#/$defs/citation_check"
+0039         },
+0040         "coverage": {
+0041           "$ref": "lawbench://contracts/common.schema.json#/$defs/coverage"
+0042         },
+0043         "not_fully_read": {
+0044           "type": "array",
+0045           "items": {
+0046             "type": "string",
+0047             "description": "材料名"
+0048           },
+0049           "description": "coverage.partially_read 与 coverage.not_read 的材料名合并；不含 unreadable"
+0050         }
+0051       },
+0052       "additionalProperties": false,
+0053       "required": [
+0054         "path",
+0055         "version",
+0056         "citation_check",
+0057         "coverage",
+0058         "not_fully_read"
+0059       ]
+0060     }
+0061   }
+0062 }
+D:\Lawbeach\lawbench-A\dsh-ext\agent\index.ts SHA 7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90
+0157 const deliveryReviewNoticeText = (coverage: DeliveryCoverageSnapshot | undefined): string => {
+0158   if (!coverage) return DELIVERY_REVIEW_NOTICE
+0159   const incomplete = coverage.partially_read.length + coverage.omitted.partially_read +
+0160     coverage.not_read.length + coverage.omitted.not_read +
+0161     coverage.unreadable.length + coverage.omitted.unreadable
+0162   if (incomplete === 0) {
+0163     return DELIVERY_REVIEW_NOTICE +
+0164       '保存返回的覆盖清单只说明材料读取覆盖，不代表事实、争议点或法律问题均已核验。'
+0165   }
+0166 
+0167   const fullyReadCount = coverage.fully_read.length + coverage.omitted.fully_read
+0168   const details = [
+0169     `保存返回的覆盖清单显示本任务范围共 ${coverage.total} 份材料，完整读取 ${fullyReadCount} 份；覆盖不完整。`,
+0170   ]
+0171   if (coverage.partially_read.length > 0) {
+0172     details.push(`部分读取：${coverage.partially_read.map((item) =>
+0173       `${JSON.stringify(item.name)}（已读 ${item.read_units}/${item.total_units} 个单元）`).join('；')}。`)
+0174   }
+0175   if (coverage.omitted.partially_read > 0) {
+0176     details.push(`部分读取另有 ${coverage.omitted.partially_read} 项未逐项列出。`)
+0177   }
+0178   if (coverage.not_read.length > 0) details.push(`未读取：${quotedCoverageNames(coverage.not_read)}。`)
+0179   if (coverage.omitted.not_read > 0) details.push(`未读取另有 ${coverage.omitted.not_read} 项未逐项列出。`)
+0180   if (coverage.unreadable.length > 0) {
+0181     details.push(`无法读取：${quotedCoverageNames(coverage.unreadable.map((item) => item.name))}。`)
+0182   }
+0183   if (coverage.omitted.unreadable > 0) details.push(`无法读取另有 ${coverage.omitted.unreadable} 项未逐项列出。`)
+0184   details.push(
+0185     '这份清单只说明材料读取覆盖，不代表程序知道具体哪些事实、争议点或法律问题缺失。',
+0186     '请在最终答复前结合已加载 Skill 的自检清单，检查是否需要补充缺失上下文；只有必要时才在本次任务范围和现有工具预算内补读，不得为消除提示而强制读完整个案件。',
+0187     '无法补齐或材料不可读时，必须如实说明不确定之处及依据限制，不得声称已完整核验、已检查全部事实或已检查全部不利事实。',
+0188     '对材料中的单方陈述，标题和结论均保留原陈述归属，不得改写为双方确认或既定事实。',
+0189   )
+0190   return DELIVERY_REVIEW_NOTICE + details.join('')
+D:\Lawbeach\lawbench-A\dsh-ext\agent\index.ts SHA 7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90
+0224 export const DRAFT_FEEDBACK_NOTICE = 'case_save_draft 已完成保存，并返回了 citation_check.problems。' +
+0225   '请逐条核对全部问题：材料中的事实陈述应使用与材料名、位置真实匹配的〔…〕出处；' +
+0226   '拟议条款、修改建议等并非材料事实，不要仅为清除提示而硬加出处。' +
+0227   '需要改动时修改，并用同一标题重新保存；只需律师复核的合法提示，请在最终回答中明确说明仍待律师核对。' +
+0228   'passed=true 只表示没有必须修改项，不等于所有事实已经核验。' +
+0229   '不得为清除提示虚构材料、出处、问答或任务事实。'
+0230 export const DELIVERY_REVIEW_NOTICE = 'case_save_draft 已实际保存成功。' +
+0231   '请在给律师的最终可见答复中，按本次任务已经加载的 Skill 自检清单逐项列出每项结论：通过，或问题与处理；' +
+0232   '不得只用“已按清单自查”等概括代替。' +
+0233   '自检结果只写在聊天答复中，不写入草稿，不展示内部推理。' +
+0234   '不得虚构通过项、材料、出处或任务事实；需要改稿的照实说明并处理后重新保存。'
+D:\Lawbeach\lawbench-A\dsh-ext\agent\index.ts SHA 7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90
+0500       await this.saveUnfinished(state)
+0501       // 到达用量上限：模型这时往往刚存完草稿、没写文字回答（T14 实跑）。记下任务编号，输入区据此在对话区显示
+0502       // 提示和刚存的草稿（出处可点；T14 派修 2，用户选"对话区显示草稿"）
+0503       this.noteBlocked(agent.id, BUDGET_STOPPED, state.taskId)
+0504       return { kind: 'reject' }
+0505     }
+0506     if (state.takeDraftFeedbackNotice()) {
+0507       added.push(notice('lawbench-draft-check', '处理草稿核对反馈', DRAFT_FEEDBACK_NOTICE))
+0508     }
+0509     const deliveryCoverage = state.pendingDeliveryReviewCoverage
+0510     if (state.takeDeliveryReviewNotice()) {
+0511       added.push(notice('lawbench-delivery-review', '逐项完成交付自检', deliveryReviewNoticeText(deliveryCoverage)))
+0512     }
+0513     if (d.wrapUp) added.push(notice('lawbench-budget', '立即收尾', state.wrapUpNotice))
+0514     return lead.length || added.length ? { ...decision, messages: [...lead, ...decision.messages, ...added] } : decision
+0515   }
+D:\Lawbeach\lawbench-A\dsh-ext\agent\index.ts SHA 7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90
+0711     const errs = validate(toolId(tool), 'result', r.value)
+0712     if (errs.length) {
+0713       this.log('error', 'agent.tool_result_contract', { tool, errors: errs })
+0714       throw new Error('内部错误，请重试；多次出现请联系技术支持')
+0715     }
+0716     if (tool === 'case_search' && state.defenseSearchBeforePrimaryRead) state.noteSuccessfulDefenseSearch()
+0717     if (tool === 'case_list_materials' && (state.sentenceWorkflow || state.archiveWorkflow)) {
+0718       state.noteSuccessfulMaterialList()
+0719     }
+0720     if (tool === BUDGET_EXEMPT_TOOL) {
+0721       state.draftSaved = true
+0722       state.noteDraftFeedback(hasDraftCitationProblems(r.value))
+0723       const coverage = deliveryCoverageSnapshot(r.value)
+0724       if (coverage) state.noteSuccessfulDraftForDeliveryReview(coverage)
+0725     }
+0726     return r.value
+0727   }
+0728 
+0729   /**
+D:\Lawbeach\lawbench-A\dsh-ext\agent\task-state.ts SHA ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae
+0402     return true
+0403   }
+0404 
+0405   /**
+0406    * 只由 Agent 在 case_save_draft 实际成功且返回通过结果契约后调用。
+0407    * 同任务的重复保存仍只保留一次待取提示，未取走前以最近一次成功保存的覆盖快照为准；失败保存不调用这里。
+0408    */
+0409   noteSuccessfulDraftForDeliveryReview(coverage?: DeliveryCoverageSnapshot): void {
+0410     if (!this.deliveryReviewRecovery || this.deliveryReviewSent) return
+0411     this.deliveryReviewPending = true
+0412     this.deliveryReviewCoverageSnapshot = coverage
+0413   }
+0414 
+0415   /** 等待随下一次模型请求注入的交付自检提示所对应的覆盖快照。 */
+0416   get pendingDeliveryReviewCoverage(): DeliveryCoverageSnapshot | undefined {
+0417     return this.deliveryReviewPending ? this.deliveryReviewCoverageSnapshot : undefined
+0418   }
+0419 
+0420   /** 在下一次模型请求已经放行后取走交付自检提示；每个任务至多返回一次。 */
+0421   takeDeliveryReviewNotice(): boolean {
+0422     if (!this.deliveryReviewPending || this.deliveryReviewSent) return false
+0423     this.deliveryReviewPending = false
+0424     this.deliveryReviewSent = true
+0425     this.deliveryReviewCoverageSnapshot = undefined
+0426     return true
+0427   }
+0428 
+0429   /**
+0430    * 工具执行前（tools/pre-execute）：白名单 + 工具预算。
+0431    * Q10：只数 case_*（case_save_draft 除外）；被拒绝的不计数。
+0432    * 令 0321：最后一次模型调用发起的工具里，case_* 只放行 case_save_draft（提问等非 case 工具照常），别的回 wrap_up_only——只能存稿或作答。
+0433    * 注记 19:01：预算、收尾都放行之后，同一工具同样参数的第三次回 repeated_call（args 为这次调用的参数）。
+
+CONSTRAINTS:
+Root already proved original context/wire/serialization/finaltext/UI channels intact; do not repeat those audits. Machine citation/range/currentversion/read coverage is separately enforced; this is not semantic factual/legal proof. Current model qwen38-27b/temp0.6/max49152/model32/tool48 held. No model/temp/budget/SDK/globalpolicy changes, no NLP/regex fact-classifier or sample-fact hardcoding, no relaxing assertions or guarded denials. No all-case/fullread fallback or silent semantic-PASS.

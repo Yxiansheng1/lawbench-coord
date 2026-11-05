@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/tools/case_read_material.schema.json",
+  "title": "case_read_material",
+  "description": "读一份材料的解析文本（带位置标记）。每次读取记入 reads.json",
+  "$defs": {
+    "args": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "起始位置号（页 / 段 / 行；Excel 为整份材料里表格行的顺序号，跨工作表连续，1.2 起），默认 1"
+        },
+        "offset": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "从起始位置号那个单元内的第几个字开始读（0 起），默认 0；单元本身超过 max_chars 时用它接着读同一单元（1.2 起）"
+        },
+        "max_chars": {
+          "type": "integer",
+          "minimum": 500,
+          "maximum": 8000,
+          "description": "单次最多返回的字数，默认且最大 8000"
+        },
+        "more_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "description": "同一次再读这几份材料（各从头读；1.4 起）：按顺序接在 name 后面，合计不超过 max_chars，放不下的不读、在 parts 里标 read=false。给了它就不能再给 start、offset"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "material_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+        },
+        "unit": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/unit"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "text": {
+          "type": "string"
+        },
+        "has_more": {
+          "type": "boolean"
+        },
+        "next_start": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "next_offset": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "description": "同一单元没读完时给出：下次传 start=end、offset=next_offset 接着读；读到单元末尾为 null（1.2 起）"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "material_id": {
+                "anyOf": [
+                  {
+                    "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unit": {
+                "anyOf": [
+                  {
+                    "$ref": "lawbench://contracts/common.schema.json#/$defs/unit"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "read": {
+                "type": "boolean",
+                "description": "这次读到了没有"
+              },
+              "start": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "end": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "has_more": {
+                "type": "boolean"
+              },
+              "next_start": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "error": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "description": "没读的原因：放不下 / 还不能读取 / 没有这份材料"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "material_id",
+              "unit",
+              "read",
+              "start",
+              "end",
+              "has_more",
+              "next_start",
+              "error"
+            ]
+          },
+          "description": "传了 more_names 时给出（1.4 起）：name 和 more_names 每份一条，按请求顺序。text 里各份之间用一行【材料：<材料名>】隔开；顶层的 name、start、end 等是第一份（name）的"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "material_id",
+        "unit",
+        "start",
+        "end",
+        "text",
+        "has_more",
+        "next_start",
+        "next_offset"
+      ]
+    }
+  }
+}

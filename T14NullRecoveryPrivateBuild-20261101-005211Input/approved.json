@@ -1,0 +1,39 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211",
+  "original_config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\build-config.mjs",
+  "original_builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143\\build-private.mjs",
+  "builder_sha": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "replacements": [
+    [
+      "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DefenseReadOrderPrivateBuild-20261031-231143",
+      "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211"
+    ],
+    [
+      "188418",
+      "188498"
+    ],
+    [
+      "3dbe7d097306c8e1734fa458e4f3889cd2f89e9f776b5d6f6935392bcecf73b3",
+      "54c836bfda442012238675ea3ca80949b8a8197d23633548e236345a14de1f63"
+    ]
+  ],
+  "old_tree": {
+    "id": "lawbench-host-source",
+    "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host",
+    "selector": "all",
+    "files": 20,
+    "bytes": 188418,
+    "sha256": "3dbe7d097306c8e1734fa458e4f3889cd2f89e9f776b5d6f6935392bcecf73b3"
+  },
+  "new_tree": {
+    "id": "lawbench-host-source",
+    "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host",
+    "selector": "all",
+    "files": 20,
+    "bytes": 188498,
+    "sha256": "54c836bfda442012238675ea3ca80949b8a8197d23633548e236345a14de1f63"
+  },
+  "other17trees_41files_14refs_exact": true,
+  "unit7_types0": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T14-task-answer-null-green-unit-current.json",
+  "scope": "Fresh private development build only; no product or guard edit; no release packaging"
+}

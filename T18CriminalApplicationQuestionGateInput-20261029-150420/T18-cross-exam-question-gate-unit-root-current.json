@@ -1,0 +1,62 @@
+{
+  "Packaging": "HOLD",
+  "source_changes": [],
+  "at": "2026-10-29T12:19:06.4448012+08:00",
+  "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamQuestionGateUnit-root-20261029-121852",
+  "GUI": false,
+  "results": [
+    {
+      "exit": 0,
+      "OS": [
+        {
+          "birthUTC": "2026-10-29T04:18:53.0114054Z",
+          "ticks": "639288443330114054",
+          "pid": 27348,
+          "gone": true,
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "birthUTC": "2026-10-29T04:18:55.2261134Z",
+          "ticks": "639288443352261134",
+          "pid": 42228,
+          "gone": true,
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "birthUTC": "2026-10-29T04:18:53.0258545Z",
+          "ticks": "639288443330258545",
+          "pid": 40268,
+          "gone": true,
+          "exe": "C:\\Windows\\system32\\conhost.exe"
+        }
+      ],
+      "mode": "unit",
+      "forced": false,
+      "elapsed_s": 5.5779134
+    },
+    {
+      "exit": 0,
+      "OS": [
+        {
+          "birthUTC": "2026-10-29T04:18:58.5920515Z",
+          "ticks": "639288443385920515",
+          "pid": 42992,
+          "gone": true,
+          "exe": "C:\\Windows\\SYSTEM32\\ntdll.dll"
+        },
+        {
+          "birthUTC": "2026-10-29T04:18:58.5988120Z",
+          "ticks": "639288443385988120",
+          "pid": 40200,
+          "gone": true,
+          "exe": "C:\\Windows\\system32\\conhost.exe"
+        }
+      ],
+      "mode": "types",
+      "forced": false,
+      "elapsed_s": 7.8515341
+    }
+  ],
+  "model_calls": 0
+}

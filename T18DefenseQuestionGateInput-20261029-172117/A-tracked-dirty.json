@@ -1,0 +1,344 @@
+[
+  {
+    "path": "contracts/_build/gen_examples.py",
+    "exists": true,
+    "bytes": 30857,
+    "sha256": "9ee0432184af67107b5e5cecae435146b4c80065d6a5f885fc045e959e97e6ea"
+  },
+  {
+    "path": "contracts/_build/gen_schemas.py",
+    "exists": true,
+    "bytes": 67207,
+    "sha256": "c511bdcd9e490f1e3ad8b53cae25f03b309856382f66c4d98931ee3c5c07b4ab"
+  },
+  {
+    "path": "contracts/api/materials_list.schema.json",
+    "exists": true,
+    "bytes": 9956,
+    "sha256": "370943e6c57008f24fc1d6dd298604a3f02436daabf3ddfe88317cc084eb42e0"
+  },
+  {
+    "path": "contracts/api/task_create.schema.json",
+    "exists": true,
+    "bytes": 3230,
+    "sha256": "27146bdf5719b6c102c087f5d0123f28823bf4054270fe553e3f9907bd86c9ce"
+  },
+  {
+    "path": "contracts/api/task_current.schema.json",
+    "exists": true,
+    "bytes": 5988,
+    "sha256": "4425ac661ac23ecd5a177ae4cba84264ebe2b79fb6304b5745f2a99197bedc9b"
+  },
+  {
+    "path": "contracts/common.schema.json",
+    "exists": true,
+    "bytes": 17837,
+    "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+  },
+  {
+    "path": "contracts/core/task_begin.schema.json",
+    "exists": true,
+    "bytes": 6382,
+    "sha256": "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571"
+  },
+  {
+    "path": "contracts/examples/api_task_current.res.json",
+    "exists": true,
+    "bytes": 398,
+    "sha256": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64"
+  },
+  {
+    "path": "contracts/examples/core_task_begin.req.json",
+    "exists": true,
+    "bytes": 126,
+    "sha256": "beebb7bc4ef3055eb7ec2ecd4e4d4a36a259b32a5d0d47df95fd93d2f21cc73f"
+  },
+  {
+    "path": "contracts/examples/core_task_begin.res.json",
+    "exists": true,
+    "bytes": 960,
+    "sha256": "7f06fcbed0c6ad96f8aa5b9418aeafbee3038314bceb0214c08c5225dd95a9e7"
+  },
+  {
+    "path": "contracts/examples/file_task.json",
+    "exists": true,
+    "bytes": 759,
+    "sha256": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034"
+  },
+  {
+    "path": "contracts/examples/manifest.json",
+    "exists": true,
+    "bytes": 15653,
+    "sha256": "560b8e2012c09f4e675b10db7ca3a2b92652d902d8e2784e64c0244d4e24cb19"
+  },
+  {
+    "path": "contracts/files/settings.schema.json",
+    "exists": true,
+    "bytes": 7756,
+    "sha256": "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+  },
+  {
+    "path": "contracts/files/task.schema.json",
+    "exists": true,
+    "bytes": 4155,
+    "sha256": "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed"
+  },
+  {
+    "path": "docs/plan/evidence/T30/持久化事实改道-20261021-162727/build.txt",
+    "exists": true,
+    "bytes": 335,
+    "sha256": "ab92f7cab5b90e86663cdd693eb7a86da9f61e4735ce277ee03138e006b47a8e"
+  },
+  {
+    "path": "docs/plan/evidence/T30/持久化事实改道-20261021-162727/绿灯-两侧反例与自动批量.txt",
+    "exists": true,
+    "bytes": 2278,
+    "sha256": "432d1cb6691cc82427c8a4cbda45957fc4d13fb125e3100acfbf211c19236dc6"
+  },
+  {
+    "path": "docs/src/PRD.md",
+    "exists": true,
+    "bytes": 52403,
+    "sha256": "f5851cd815b7db69a539b4b9ec36883d3e9664d42ca483b09f9486fac45c5794"
+  },
+  {
+    "path": "dsh-ext/agent/index.ts",
+    "exists": true,
+    "bytes": 46809,
+    "sha256": "ce2493cb60e652195779394bff50819924ceeff64e5bcf63e859928eb2c87294"
+  },
+  {
+    "path": "dsh-ext/agent/task-state.ts",
+    "exists": true,
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "dsh-ext/credentials/index.ts",
+    "exists": true,
+    "bytes": 10859,
+    "sha256": "2a94e990c5cb46f9973b5bef0825f1103777569b1f4263b46653391ed89050de"
+  },
+  {
+    "path": "dsh-ext/dev/fake-service.mjs",
+    "exists": true,
+    "bytes": 27923,
+    "sha256": "54229b71b8df17bf0f02de9a222ee739c810cf2001a93739b7decbe6c56aa761"
+  },
+  {
+    "path": "dsh-ext/host/http-json.ts",
+    "exists": true,
+    "bytes": 3192,
+    "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+  },
+  {
+    "path": "dsh-ext/host/index.ts",
+    "exists": true,
+    "bytes": 61281,
+    "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+  },
+  {
+    "path": "dsh-ext/host/install-layout.ts",
+    "exists": true,
+    "bytes": 6054,
+    "sha256": "0d0cbfbc88c69dbc57ead5939de8ce9440682d320768842d385093929103ffb7"
+  },
+  {
+    "path": "dsh-ext/host/skills.ts",
+    "exists": true,
+    "bytes": 3801,
+    "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+  },
+  {
+    "path": "dsh-ext/host/supervisor.ts",
+    "exists": true,
+    "bytes": 17523,
+    "sha256": "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599"
+  },
+  {
+    "path": "dsh-ext/shared/api-routes.ts",
+    "exists": true,
+    "bytes": 7429,
+    "sha256": "b2efae9b895c0c455cebbd8f43996c518e8a4e622a45c104f122922e86692130"
+  },
+  {
+    "path": "dsh-ext/shared/remote-methods.ts",
+    "exists": true,
+    "bytes": 5227,
+    "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+  },
+  {
+    "path": "dsh-ext/shared/turn-notices.ts",
+    "exists": true,
+    "bytes": 4045,
+    "sha256": "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0"
+  },
+  {
+    "path": "dsh-ext/tests/credentials.spec.ts",
+    "exists": true,
+    "bytes": 12125,
+    "sha256": "73d31dcd0375e0276295a4222554db3aa41f3df443d92e801747521d7c1469e5"
+  },
+  {
+    "path": "dsh-ext/tests/dock-capsules.spec.ts",
+    "exists": true,
+    "bytes": 9236,
+    "sha256": "ca030bf0bae9b6f805eb76a37b152ea34a8e7479d1ef69ebe20714bf6e65aa1d"
+  },
+  {
+    "path": "dsh-ext/tests/documents.spec.tsx",
+    "exists": true,
+    "bytes": 27208,
+    "sha256": "42fc98715f1e7524cb5ef56e4da19297b4686671216ff72115649801f02881da"
+  },
+  {
+    "path": "dsh-ext/tests/estimate.spec.ts",
+    "exists": true,
+    "bytes": 8890,
+    "sha256": "868c3e525c2a7f56fb55f7b13edd6fca2f37aceecfed1ad8641b9746251e8a1d"
+  },
+  {
+    "path": "dsh-ext/tests/intake.spec.ts",
+    "exists": true,
+    "bytes": 10458,
+    "sha256": "476c228f64214583de71a9e695b6fb2883ef8dbbd516c9705bcba8e8afe4707c"
+  },
+  {
+    "path": "dsh-ext/tests/wiki-card.spec.ts",
+    "exists": true,
+    "bytes": 13908,
+    "sha256": "ae7089e08404237f57010f07c395f6870ac90e51e42a749d38d50801d34ec984"
+  },
+  {
+    "path": "dsh-ext/ui/cases.ts",
+    "exists": true,
+    "bytes": 19799,
+    "sha256": "b12000ab4b3faae5a18802d169fb41752c068f17ce29e8511a8ea77f806106de"
+  },
+  {
+    "path": "dsh-ext/ui/dialogs.tsx",
+    "exists": true,
+    "bytes": 12350,
+    "sha256": "da51a25f728409be767ac9e7bbb578400bb22846c3fb78d4bab5ed17b21d01df"
+  },
+  {
+    "path": "dsh-ext/ui/dock.tsx",
+    "exists": true,
+    "bytes": 48424,
+    "sha256": "d9db5ade5a4936a6367453835f0b4d4213e7778d061a050d9ae8d64b9efc3787"
+  },
+  {
+    "path": "dsh-ext/ui/documents.tsx",
+    "exists": true,
+    "bytes": 21776,
+    "sha256": "a276632db5ae38af61d0e81b743c960b539c5d76c11f170a3d7cdc10dbe85d55"
+  },
+  {
+    "path": "dsh-ext/ui/estimate.ts",
+    "exists": true,
+    "bytes": 7269,
+    "sha256": "21e8c1d0d64a2882f2d2381de917aaf9d2cb66284967ff16fab5f4b2ca0852a7"
+  },
+  {
+    "path": "dsh-ext/ui/fixtures/capsules.json",
+    "exists": true,
+    "bytes": 7608,
+    "sha256": "98823d8b64382f14f4e647f2d528962e6ba20715d9f6a7f94f887a0a58f444b6"
+  },
+  {
+    "path": "dsh-ext/ui/fixtures/materials_list.json",
+    "exists": true,
+    "bytes": 3783,
+    "sha256": "67acddcd133fedc5e1319fa7b040706f841e32172b6497d6121fd156be430d63"
+  },
+  {
+    "path": "dsh-ext/ui/folder-actions.ts",
+    "exists": true,
+    "bytes": 5859,
+    "sha256": "74fc8aa9b66c908783145514c88cdd18b1daf6aaeb0338c97407990d34f7430d"
+  },
+  {
+    "path": "dsh-ext/ui/format.ts",
+    "exists": true,
+    "bytes": 11807,
+    "sha256": "48b525966723d5591b05bae95ed685e42089bc73f5068bfe586567d40869fcfe"
+  },
+  {
+    "path": "dsh-ext/ui/index.tsx",
+    "exists": true,
+    "bytes": 30047,
+    "sha256": "165bdbb32254a7be826d929cbd4861761cd82a82f2868c3eb5acd5994606edf0"
+  },
+  {
+    "path": "dsh-ext/ui/intake.ts",
+    "exists": true,
+    "bytes": 6524,
+    "sha256": "926f787ca7fc7f92efb03a2ec0faa0029ecfe5243af4d1335371ef08bb3e689a"
+  },
+  {
+    "path": "dsh-ext/ui/materials.tsx",
+    "exists": true,
+    "bytes": 26603,
+    "sha256": "4b482392cf71b685cd87bcc160189142552fa50068d13a9072d30a16cbb6b782"
+  },
+  {
+    "path": "dsh-ext/ui/remote.ts",
+    "exists": true,
+    "bytes": 1646,
+    "sha256": "1e9c82cd362f32b36be5e52cbf847c3e5c3997c55b35587491c449cc425dd88e"
+  },
+  {
+    "path": "dsh-ext/ui/session-case.tsx",
+    "exists": true,
+    "bytes": 2061,
+    "sha256": "24b338439d87272417a89ad46a1aeff213131489f67ec6fccdc2abb680e99e5f"
+  },
+  {
+    "path": "dsh-ext/ui/settings-draft.ts",
+    "exists": true,
+    "bytes": 6551,
+    "sha256": "b43141a6ac8be1b80c5015714abbe3ad4990161a2107a9611afc280813b1e1f5"
+  },
+  {
+    "path": "dsh-ext/ui/settings.tsx",
+    "exists": true,
+    "bytes": 38017,
+    "sha256": "af20dbd621065bc36880215f99229ca7c071112cd76363f44795af720066e64d"
+  },
+  {
+    "path": "dsh-ext/ui/state.ts",
+    "exists": true,
+    "bytes": 18947,
+    "sha256": "dc1bfca134440714b4242a7e13d53dd4ca993841c7dc1197ce791c3fa3d5ce51"
+  },
+  {
+    "path": "dsh-ext/ui/tasksheet.ts",
+    "exists": true,
+    "bytes": 6083,
+    "sha256": "433e84bce0812f83fe42011e68a81041b26d5c79477f0d4bcb2554bc593c3c56"
+  },
+  {
+    "path": "dsh-ext/ui/wiki-card.tsx",
+    "exists": true,
+    "bytes": 12394,
+    "sha256": "aa3080aff89e12caf173e838ef6635203ed51858a64c5e93ab58521de5db5e5a"
+  },
+  {
+    "path": "dsh-ext/vitest.config.mjs",
+    "exists": true,
+    "bytes": 2641,
+    "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf"
+  },
+  {
+    "path": "dsh-patches/PATCHES.md",
+    "exists": true,
+    "bytes": 97439,
+    "sha256": "f488f59084d4402ede036f163e17ff1b1186b0e3541c5f76a8c0b4918e601a0a"
+  },
+  {
+    "path": "packaging/build.ps1",
+    "exists": true,
+    "bytes": 33142,
+    "sha256": "fe69b1d0dece478643e0056dbc7349d0099333bb9e8acf8dbc383e153a25a803"
+  }
+]

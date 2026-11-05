@@ -1,0 +1,58 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\0-SKILL.md",
+    "bytes": 13276,
+    "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2",
+    "mtime_ns": "1792400314786868300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\价格认定结论书.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\1-价格认定结论书.md",
+    "bytes": 759,
+    "sha256": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+    "mtime_ns": "1792379578798921000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\扣押清单.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\2-扣押清单.md",
+    "bytes": 346,
+    "sha256": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+    "mtime_ns": "1792379578798921000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\监控视频截图说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\3-监控视频截图说明.md",
+    "bytes": 951,
+    "sha256": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+    "mtime_ns": "1792379578799920500"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第一次）.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\4-被告人李某乙讯问笔录（第一次）.md",
+    "bytes": 977,
+    "sha256": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+    "mtime_ns": "1792379578799920500"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第二次）.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\5-被告人李某乙讯问笔录（第二次）.md",
+    "bytes": 646,
+    "sha256": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+    "mtime_ns": "1792379578799920500"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\6-_任务说明.md",
+    "bytes": 646,
+    "sha256": "44d4a257aacdc6b5036e83215c701658459a76da2512effdcac2b32e3af67e5f",
+    "mtime_ns": "1792379578798921000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\7-要点.md",
+    "bytes": 10648,
+    "sha256": "4413f18644795a225c7f1046714202c45f82773b595e3be5ed4e16261a5d6d9a",
+    "mtime_ns": "1792379578800919800"
+  }
+]

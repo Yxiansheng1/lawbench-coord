@@ -1,0 +1,36 @@
+{
+  "base": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativeDocumentCitationGui-20261027-194505",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310",
+  "scripts": {
+    "prepare.ps1": {
+      "sha256": "c631549f877f4856e8cbd36348a08386db45e538d6e2bb7557bcae77fb0b8d4e",
+      "bytes": 17850
+    },
+    "start.ps1": {
+      "sha256": "3dbff8acb475a86e61bb8f7381e9e178c9c15ed9d85f4aec6df7250b0915f395",
+      "bytes": 77186
+    },
+    "stop.ps1": {
+      "sha256": "33cc1ea557e75c24733f8dada20f72ade0fa76d5e7d93aad00eeb7dc348d983d",
+      "bytes": 7154
+    }
+  },
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+  "entry_sha": "165565761356c1100baf7b101b4a39ff1dbcf668d89321e3b1874bae9246da9f",
+  "entry_bytes": 78926,
+  "format": "T32-native-pdf-citation-entry-prepared-v1",
+  "run_prefix": "T32-pdf-citation-",
+  "runtime": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112",
+  "manifest_sha": "5260367f4b54d1d7a384dd427dd743e20094fd7138b2780a6074e858a5d96a0f",
+  "manifest_bytes": 58195,
+  "citation_file": "起诉意见书.pdf",
+  "PDF_bytes": 57132,
+  "PDF_sha": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191",
+  "PDF_pages": 5,
+  "page2_fragments": [
+    "经依法侦查查明",
+    "126,500"
+  ],
+  "new_build": false
+}

@@ -1,0 +1,9 @@
+{
+  "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RealSyntheticOCRRefine-20261027-225347\\consumer.py",
+  "before_sha256": "6fc82bef21755fb7c58cd5de81044af572d71f30cd70a1073c7e90b3b005346f",
+  "main_input": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\targets.json",
+  "authorization": "D:\\Lawbeach\\lawbench-coord\\OWNER-合成案卷真实识别业务模型测试授权-20261027-224859.md",
+  "actual_401": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\real-synthetic-6000D-auth-admission-current.json",
+  "launcher_admitted": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\real-synthetic-secure-input-root-admitted-current.json",
+  "known_production_net_source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py"
+}

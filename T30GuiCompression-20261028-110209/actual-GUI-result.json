@@ -1,0 +1,130 @@
+{
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-105256",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineSessionGUI-root-20261028-105256",
+  "verdict": "ACTUAL_GUI_SHOWS_CASE_BUT_ZERO_SESSION_ROWS_NOT_ACCEPTED",
+  "GUI_clicks": 5,
+  "actions": [
+    "dismiss ordinary external-model-unavailable notice",
+    "enter exact synthetic case",
+    "expand case tree",
+    "open view options",
+    "select all conversations including archived"
+  ],
+  "GUItyping": 0,
+  "GUIdelete": 0,
+  "GUISend": 0,
+  "original5_and_target2logs_fixed": true,
+  "requests": 78,
+  "statuses": {
+    "200": 78
+  },
+  "writes": [
+    {
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200,
+      "disposition": "native_app",
+      "elapsed_ms": 46
+    },
+    {
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200,
+      "disposition": "native_app",
+      "elapsed_ms": 16
+    }
+  ],
+  "OSclosure": {
+    "Packaging": "HOLD",
+    "controlledOS": [
+      {
+        "pid": 21672,
+        "gone": true,
+        "role": "native-service",
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birthTicks": "639287527977587357"
+      },
+      {
+        "pid": 43248,
+        "gone": true,
+        "role": "native-service",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527976913998"
+      },
+      {
+        "pid": 9212,
+        "gone": true,
+        "role": "supervisor",
+        "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "birthTicks": "639287527908845881"
+      },
+      {
+        "pid": 1032,
+        "gone": true,
+        "role": "electron-child",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527956170934"
+      },
+      {
+        "pid": 8708,
+        "gone": true,
+        "role": "electron-child",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527955926031"
+      },
+      {
+        "pid": 12588,
+        "gone": true,
+        "role": "electron-child",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287531056249298"
+      },
+      {
+        "pid": 39816,
+        "gone": true,
+        "role": "host",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527958599288"
+      },
+      {
+        "pid": 14556,
+        "gone": true,
+        "role": "relay",
+        "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "birthTicks": "639287527948141450"
+      },
+      {
+        "pid": 22316,
+        "gone": true,
+        "role": "electron",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527953531437"
+      },
+      {
+        "pid": 42896,
+        "gone": true,
+        "role": "electron-child",
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+        "birthTicks": "639287527955968633"
+      }
+    ],
+    "finalMetadata": false,
+    "pythonForcedStop": true,
+    "loopClosed": true,
+    "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-105256",
+    "portClosureMeasured": true,
+    "listenCount": 0,
+    "pythonCleanupClaimed": false,
+    "allControlledGone": true,
+    "GUI_PASS": false,
+    "nativePort": 52103
+  },
+  "native_main_finally_proven": false,
+  "qualifications": [
+    "Stop report Pythonforcedtrue/cleanupClaimedfalse. Loop-closed exists but run-error runtime_artifact_exists indicates a rejected restart during shutdown; do not attribute loop metadata to original serving Python.",
+    "Actual private log case_root_skipped ERROR observed twice. Installed primary backend default zstd rejects opposite none .jsonl artifacts; private profile omits compression while genuine input/admission explicitly none. Precise exception was not exposed; compression cause remains source-supported inference pending next actual matched run."
+  ],
+  "GUI_PASS": false,
+  "whole_T30_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,11 @@
+{
+  "source_sha256": "7482f47d2d219a3b7d28dacd58de8c190dde6b6b951946ddb9f05724fd727bbb",
+  "test_sha256": "e06e554ab46b792bc5aea1ed93ce20a0b8e3a1ee7763936ef1285d0976910a2a",
+  "only_one_regex_line_inverse": true,
+  "all_old24cases_and_capability_whitelist_literal_prefix": true,
+  "per_item_binding_actual_machine_identity_other_reason_fallback_unchanged": true,
+  "full30_commands_source_formal_writefaces_reviewed": true,
+  "author_runtime": 0,
+  "scope": "BOUND_POSITIVE_CAUSE_AND_SIX_EXPLICIT_FAILURE_STATUS_FOR_KNOWN_OR_ONLY_NOT_ARBITRARY_NATURAL_LANGUAGE",
+  "Packaging": "HOLD"
+}

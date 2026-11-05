@@ -1,0 +1,14 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\native-contract-workflow.mts",
+  "source_sha256": "31415f0ec05605bba10e69721c4579fa21d00d553c9af38d84c74ee1b103b3f9",
+  "test": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\manual-reason-observer.spec.mts",
+  "test_sha256": "01f3394735d033ffda806627283cdc6f12292a04b3748bdd0071397083821a34",
+  "whole_only_function_inverse": true,
+  "one_machine_reason_expression_inverse": true,
+  "original22test_bytes_prefix": true,
+  "original16cases_and_whitelist_exact": true,
+  "all57authorcommands_formal_writefaces_source_reviewed": true,
+  "author_runtime": 0,
+  "root_inline_quote_error_beforePython_preserved": true,
+  "Packaging": "HOLD"
+}

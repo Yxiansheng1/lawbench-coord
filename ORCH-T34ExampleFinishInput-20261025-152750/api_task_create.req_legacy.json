@@ -1,0 +1,12 @@
+{
+  "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+  "session_id": "s_01HZX",
+  "entry": "case-analysis",
+  "skill": "criminal-reading-notes",
+  "inputs": [],
+  "params": {
+    "thinking": "低",
+    "window": "64K",
+    "max_tokens": 16384
+  }
+}

@@ -1,0 +1,356 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18ExplicitDeadlineHttpV5-20261101-221038\offline-controls.mjs
+SHA adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3
+EXPLICIT currentlines 827..1179; earlier unchangedpureprotocol outside thisfocusedreview
+0827 assert.deepEqual(parseModelJson('```json\n{"reviews":[]}\n```'), { reviews: [] });
+0828 assertProtocolError(() => parseModelJson('prefix {"reviews":[]}'), "MALFORMED_JSON");
+0829 
+0830 const fakeCredential = "OFFLINE_FAKE_CREDENTIAL_SENTINEL";
+0831 const fakeRequestBody = JSON.stringify({ model: MODEL, probe: "FAKE_REQUEST_BODY_SENTINEL" });
+0832 const originalHttpRequest = http.request;
+0833 const originalTimeout = AbortSignal.timeout;
+0834 const fakeRequests = [];
+0835 let fakeScenario = null;
+0836 
+0837 class FakeResponse extends EventEmitter {
+0838   constructor(statusCode) {
+0839     super();
+0840     this.statusCode = statusCode;
+0841     this.destroyCalls = 0;
+0842     this.closeScheduled = false;
+0843   }
+0844 
+0845   destroy() {
+0846     this.destroyCalls += 1;
+0847     if (!this.closeScheduled) {
+0848       this.closeScheduled = true;
+0849       queueMicrotask(() => this.emit("close"));
+0850     }
+0851     return this;
+0852   }
+0853 }
+0854 
+0855 class FakeRequest extends EventEmitter {
+0856   constructor(url, options) {
+0857     super();
+0858     this.url = url;
+0859     this.options = options;
+0860     this.endCalls = 0;
+0861     this.destroyCalls = 0;
+0862     this.destroyed = false;
+0863     this.closeScheduled = false;
+0864     this.responses = [];
+0865   }
+0866 
+0867   respond(statusCode) {
+0868     const response = new FakeResponse(statusCode);
+0869     this.responses.push(response);
+0870     this.emit("response", response);
+0871     return response;
+0872   }
+0873 
+0874   end(body) {
+0875     this.endCalls += 1;
+0876     assert.equal(this.endCalls, 1);
+0877     queueMicrotask(() => {
+0878       if (this.destroyed) return;
+0879       assertFakeRequest(this, body);
+0880       fakeScenario(this);
+0881     });
+0882     return this;
+0883   }
+0884 
+0885   destroy() {
+0886     this.destroyCalls += 1;
+0887     if (!this.destroyed) {
+0888       this.destroyed = true;
+0889       if (!this.closeScheduled) {
+0890         this.closeScheduled = true;
+0891         queueMicrotask(() => this.emit("close"));
+0892       }
+0893     }
+0894     return this;
+0895   }
+0896 }
+0897 
+0898 function assertFakeRequest(request, body) {
+0899   assert.equal(request.url, ROUTE);
+0900   assert.equal(request.options.method, "POST");
+0901   assert.equal(request.options.agent, false);
+0902   assert.equal(request.options.redirect, undefined);
+0903   assert.ok(request.options.signal instanceof AbortSignal);
+0904   assert.deepEqual(
+0905     Object.keys(request.options.headers).sort(),
+0906     ["Authorization", "Content-Length", "Content-Type"],
+0907   );
+0908   assert.equal(request.options.headers.Authorization, `Bearer ${fakeCredential}`);
+0909   assert.equal(request.options.headers["Content-Type"], "application/json");
+0910   assert.equal(
+0911     request.options.headers["Content-Length"],
+0912     String(Buffer.byteLength(fakeRequestBody, "utf8")),
+0913   );
+0914   assert.ok(Buffer.isBuffer(body));
+0915   assert.equal(body.toString("utf8"), fakeRequestBody);
+0916 }
+0917 
+0918 http.request = (url, options) => {
+0919   const request = new FakeRequest(url, options);
+0920   fakeRequests.push(request);
+0921   return request;
+0922 };
+0923 
+0924 try {
+0925   fakeRequests.length = 0;
+0926   fakeScenario = (request) => {
+0927     const response = request.respond(200);
+0928     response.emit("data", Buffer.from("{\"ok\":", "utf8"));
+0929     response.emit("data", Buffer.from("true}", "utf8"));
+0930     response.emit("end");
+0931   };
+0932   const completeResult = await performRequest(
+0933     "stage2",
+0934     fakeRequestBody,
+0935     fakeCredential,
+0936     Date.now() + ENTIRE_CALL_CAP_MS,
+0937   );
+0938   assert.equal(fakeRequests.length, 1);
+0939   assert.equal(fakeRequests[0].endCalls, 1);
+0940   assert.ok(fakeRequests[0].destroyCalls >= 1);
+0941   assert.ok(fakeRequests[0].responses[0].destroyCalls >= 1);
+0942   assert.equal(completeResult.status, 200);
+0943   assert.equal(completeResult.body, "{\"ok\":true}");
+0944   assert.equal(completeResult.capturedBytes, Buffer.byteLength("{\"ok\":true}", "utf8"));
+0945   assert.equal(completeResult.responseOverflow, false);
+0946   assert.equal(completeResult.transportError, null);
+0947   assert.equal(completeResult.transportDiagnostic, null);
+0948 
+0949   fakeRequests.length = 0;
+0950   const knownTransportFailure = new Error("KNOWN_TRANSPORT_FAILURE_SENTINEL");
+0951   knownTransportFailure.name = "TypeError";
+0952   knownTransportFailure.code = "ECONNRESET";
+0953   knownTransportFailure.cause = { code: "UND_ERR_HEADERS_TIMEOUT" };
+0954   const lateRequestFailure = new Error("LATE_REQUEST_ERROR_SECRET_SENTINEL");
+0955   fakeScenario = (request) => {
+0956     const response = request.respond(200);
+0957     response.emit("data", Buffer.from("{\"partial_prefix\":", "utf8"));
+0958     response.emit("error", knownTransportFailure);
+0959     request.emit("error", lateRequestFailure);
+0960   };
+0961   const failingResult = await performRequest(
+0962     "stage2",
+0963     fakeRequestBody,
+0964     fakeCredential,
+0965     Date.now() + ENTIRE_CALL_CAP_MS,
+0966   );
+0967   assert.equal(fakeRequests.length, 1);
+0968   assert.ok(fakeRequests[0].destroyCalls >= 1);
+0969   assert.ok(fakeRequests[0].responses[0].destroyCalls >= 1);
+0970   assert.equal(failingResult.status, 200);
+0971   assert.equal(failingResult.body, "{\"partial_prefix\":");
+0972   assert.equal(failingResult.transportError, "TRANSPORT_FAILURE");
+0973   assert.deepEqual(failingResult.transportDiagnostic, {
+0974     errorName: "TYPE_ERROR",
+0975     errorCode: "ECONNRESET",
+0976     causeCode: "UND_ERR_HEADERS_TIMEOUT",
+0977   });
+0978 
+0979   fakeRequests.length = 0;
+0980   const secretFailure = new Error("RAW_SECRET_MESSAGE_SENTINEL");
+0981   secretFailure.name = "SECRET_NAME_SENTINEL";
+0982   secretFailure.code = "SECRET_CODE_SENTINEL";
+0983   secretFailure.cause = { code: "SECRET_CAUSE_CODE_SENTINEL" };
+0984   fakeScenario = (request) => {
+0985     const response = request.respond(200);
+0986     response.emit("data", Buffer.from("{\"unknown_partial\":", "utf8"));
+0987     response.emit("error", secretFailure);
+0988     response.emit("error", new Error("ANOTHER_LATE_SECRET_SENTINEL"));
+0989   };
+0990   const unknownFailureResult = await performRequest(
+0991     "stage2a",
+0992     fakeRequestBody,
+0993     fakeCredential,
+0994     Date.now() + ENTIRE_CALL_CAP_MS,
+0995   );
+0996   assert.equal(fakeRequests.length, 1);
+0997   assert.equal(unknownFailureResult.body, "{\"unknown_partial\":");
+0998   assert.equal(unknownFailureResult.transportError, "TRANSPORT_FAILURE");
+0999   assert.deepEqual(unknownFailureResult.transportDiagnostic, {
+1000     errorName: "OTHER",
+1001     errorCode: "OTHER",
+1002     causeCode: "OTHER",
+1003   });
+1004   assert.ok(!JSON.stringify(unknownFailureResult).includes("RAW_SECRET_MESSAGE_SENTINEL"));
+1005   assert.ok(!JSON.stringify(unknownFailureResult).includes("SECRET_CODE_SENTINEL"));
+1006 
+1007   fakeRequests.length = 0;
+1008   fakeScenario = (request) => {
+1009     const response = request.respond(200);
+1010     response.emit("data", Buffer.from("{\"aborted_prefix\":", "utf8"));
+1011     response.emit("aborted");
+1012     response.emit("close");
+1013   };
+1014   const abortedResponseResult = await performRequest(
+1015     "stage2a",
+1016     fakeRequestBody,
+1017     fakeCredential,
+1018     Date.now() + ENTIRE_CALL_CAP_MS,
+1019   );
+1020   assert.equal(fakeRequests.length, 1);
+1021   assert.equal(abortedResponseResult.status, 200);
+1022   assert.equal(abortedResponseResult.body, "{\"aborted_prefix\":");
+1023   assert.equal(abortedResponseResult.transportError, "TRANSPORT_FAILURE");
+1024   assert.deepEqual(abortedResponseResult.transportDiagnostic, {
+1025     errorName: "ERROR",
+1026     errorCode: null,
+1027     causeCode: null,
+1028   });
+1029 
+1030   fakeRequests.length = 0;
+1031   fakeScenario = (request) => {
+1032     const response = request.respond(200);
+1033     response.emit("data", Buffer.from("{\"premature_prefix\":", "utf8"));
+1034     response.emit("close");
+1035   };
+1036   const prematureCloseResult = await performRequest(
+1037     "stage2b",
+1038     fakeRequestBody,
+1039     fakeCredential,
+1040     Date.now() + ENTIRE_CALL_CAP_MS,
+1041   );
+1042   assert.equal(fakeRequests.length, 1);
+1043   assert.equal(prematureCloseResult.status, 200);
+1044   assert.equal(prematureCloseResult.body, "{\"premature_prefix\":");
+1045   assert.equal(prematureCloseResult.transportError, "TRANSPORT_FAILURE");
+1046   assert.deepEqual(prematureCloseResult.transportDiagnostic, {
+1047     errorName: "ERROR",
+1048     errorCode: null,
+1049     causeCode: null,
+1050   });
+1051 
+1052   fakeRequests.length = 0;
+1053   const requestFailure = new Error("REQUEST_ERROR_SECRET_SENTINEL");
+1054   requestFailure.name = "TypeError";
+1055   requestFailure.code = "ENETUNREACH";
+1056   fakeScenario = (request) => {
+1057     request.emit("error", requestFailure);
+1058   };
+1059   const requestFailureResult = await performRequest(
+1060     "stage2a",
+1061     fakeRequestBody,
+1062     fakeCredential,
+1063     Date.now() + ENTIRE_CALL_CAP_MS,
+1064   );
+1065   assert.equal(fakeRequests.length, 1);
+1066   assert.equal(requestFailureResult.status, null);
+1067   assert.equal(requestFailureResult.body, "");
+1068   assert.equal(requestFailureResult.transportError, "TRANSPORT_FAILURE");
+1069   assert.deepEqual(requestFailureResult.transportDiagnostic, {
+1070     errorName: "TYPE_ERROR",
+1071     errorCode: "ENETUNREACH",
+1072     causeCode: null,
+1073   });
+1074 
+1075   fakeRequests.length = 0;
+1076   const timeoutFailure = new Error("TIMEOUT_ERROR_SECRET_SENTINEL");
+1077   timeoutFailure.name = "TimeoutError";
+1078   timeoutFailure.code = "ETIMEDOUT";
+1079   fakeScenario = (request) => {
+1080     request.emit("error", timeoutFailure);
+1081   };
+1082   const timeoutResult = await performRequest(
+1083     "stage2a",
+1084     fakeRequestBody,
+1085     fakeCredential,
+1086     Date.now() + ENTIRE_CALL_CAP_MS,
+1087   );
+1088   assert.equal(fakeRequests.length, 1);
+1089   assert.equal(timeoutResult.transportError, "TIMEOUT");
+1090   assert.deepEqual(timeoutResult.transportDiagnostic, {
+1091     errorName: "TIMEOUT_ERROR",
+1092     errorCode: "ETIMEDOUT",
+1093     causeCode: null,
+1094   });
+1095 
+1096   fakeRequests.length = 0;
+1097   let abortController = null;
+1098   AbortSignal.timeout = () => {
+1099     abortController = new AbortController();
+1100     return abortController.signal;
+1101   };
+1102   fakeScenario = () => {};
+1103   const abortedRequest = performRequest(
+1104     "stage2a",
+1105     fakeRequestBody,
+1106     fakeCredential,
+1107     Date.now() + ENTIRE_CALL_CAP_MS,
+1108   );
+1109   assert.ok(abortController);
+1110   const abortFailure = new Error("ABORT_REASON_SENTINEL");
+1111   abortFailure.name = "AbortError";
+1112   abortFailure.code = "ABORT_ERR";
+1113   abortController.abort(abortFailure);
+1114   const abortResult = await abortedRequest;
+1115   AbortSignal.timeout = originalTimeout;
+1116   assert.equal(fakeRequests.length, 1);
+1117   assert.equal(abortResult.status, null);
+1118   assert.equal(abortResult.transportError, "TRANSPORT_FAILURE");
+1119   assert.deepEqual(abortResult.transportDiagnostic, {
+1120     errorName: "ABORT_ERROR",
+1121     errorCode: "ABORT_ERR",
+1122     causeCode: null,
+1123   });
+1124 
+1125   fakeRequests.length = 0;
+1126   const absentCodeFailure = new Error("ABSENT_CODE_SENTINEL");
+1127   absentCodeFailure.name = "AbortError";
+1128   fakeScenario = (request) => {
+1129     request.emit("error", absentCodeFailure);
+1130   };
+1131   const absentCodeResult = await performRequest(
+1132     "stage2b",
+1133     fakeRequestBody,
+1134     fakeCredential,
+1135     Date.now() + ENTIRE_CALL_CAP_MS,
+1136   );
+1137   assert.deepEqual(absentCodeResult.transportDiagnostic, {
+1138     errorName: "ABORT_ERROR",
+1139     errorCode: null,
+1140     causeCode: null,
+1141   });
+1142 
+1143   fakeRequests.length = 0;
+1144   fakeScenario = (request) => {
+1145     const response = request.respond(200);
+1146     response.emit("data", Buffer.from("PREFIX", "utf8"));
+1147     response.emit("data", Buffer.alloc(RESPONSE_CAP_BYTES + 1, 0x41));
+1148     response.emit("end");
+1149   };
+1150   const overflowResult = await performRequest(
+1151     "stage2",
+1152     fakeRequestBody,
+1153     fakeCredential,
+1154     Date.now() + ENTIRE_CALL_CAP_MS,
+1155   );
+1156   assert.equal(fakeRequests.length, 1);
+1157   assert.ok(fakeRequests[0].destroyCalls >= 1);
+1158   assert.ok(fakeRequests[0].responses[0].destroyCalls >= 1);
+1159   assert.equal(overflowResult.status, 200);
+1160   assert.equal(overflowResult.body, "PREFIX");
+1161   assert.equal(overflowResult.capturedBytes, Buffer.byteLength("PREFIX", "utf8"));
+1162   assert.equal(overflowResult.responseOverflow, true);
+1163   assert.equal(overflowResult.transportError, null);
+1164 
+1165   fakeRequests.length = 0;
+1166   fakeScenario = () => {
+1167     throw new Error("SHOULD_NOT_BE_CALLED");
+1168   };
+1169   await assert.rejects(
+1170     () => performRequest("stage2", fakeRequestBody, fakeCredential, Date.now() - 1),
+1171     (error) => error && error.code === "ENTIRE_CALL_CAP_EXCEEDED",
+1172   );
+1173   assert.equal(fakeRequests.length, 0);
+1174 } finally {
+1175   http.request = originalHttpRequest;
+1176   AbortSignal.timeout = originalTimeout;
+1177 }
+1178 
+1179 process.stdout.write("offline controls source authored; not executed\n");

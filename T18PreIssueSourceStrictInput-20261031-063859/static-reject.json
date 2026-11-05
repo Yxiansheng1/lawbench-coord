@@ -1,0 +1,27 @@
+{
+  "verdict": "STATIC_REJECT_BEFORE_ANY_PARSER_PRODUCT_IMPORT_RUNTIME",
+  "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueSourceReadback-20261031-063015\\check.py",
+  "bytes": 19837,
+  "sha256": "669cc0d9088b4743976d5cc0e409f393b524d1e41c86260339108dd5edcea950",
+  "author": {
+    "actual": "01a18eef-8315-78f1-a9dd-7caeef088b8c",
+    "commands": 8,
+    "success": 7,
+    "nonzero": 1,
+    "application_runtime": 0,
+    "qualification": "MAX3 exceeded8; prohibited broad recursive reads/probes, ConvertFromJson and PStextchecks, plus two readonly Git calls in finalcommand. Formal7 is stagedwrong; actualraw8 wins. Git submodule permission error overall0. No Node/Python/parser/app/test/model/GUI commands. Duplicate bulk stdout not adopted as independent runtime evidence; full command invocations/writefaces/newsource/formal reviewed."
+  },
+  "reasons": [
+    "Popen replaced by function instead of class despite explicit class guard requirement",
+    "ASGI transport close exception swallowed then transport_closed unconditionally true",
+    "location check permits extra keys/range rather than exact approved dict",
+    "registry reconstruction uses fallback v1/list and rewrites all cases rather than exact one-root rebinding",
+    "raw path SHA condition admits None via is-not-False",
+    "guard attempts snapshotted before finally; final attempted actions can be omitted",
+    "event-loop close exceptions swallowed with no actual closed state"
+  ],
+  "new_product_runtime": 0,
+  "old_business_FAILED_unchanged": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

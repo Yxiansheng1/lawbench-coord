@@ -1,0 +1,32 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\b-service-criminal-reading.py",
+    "bytes": 48308,
+    "sha256": "d216a0394488e6d6c90e0a20f373fe43b1d5d62d0e06126f0c85e0673591a9be"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\literalfixed-inputs.json",
+    "bytes": 11707,
+    "sha256": "0afd235aee78bd36e3160cfde7838594b1af6400a34814954bde117a9121f08a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\native-criminal-reading.mts",
+    "bytes": 121019,
+    "sha256": "2401deb96f10320e80887ae09be9479bca04f6aef6c6d3dc0b74a495399c4f96"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\README.md",
+    "bytes": 6096,
+    "sha256": "2d01a2f34dc8f7a1e1d806e4f99f3b913382125913aa4e4832dc03cefe426b77"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\registry.py",
+    "bytes": 11656,
+    "sha256": "05d3266afd7efb4108d416102c35d548aae29b011cdfb8b757872a8b0e656c21"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\verify-criminal-template-finite.py",
+    "bytes": 15467,
+    "sha256": "943cff6968cf9706e7236b1cabb5b120fb28d1807cc352f080fe3fc2258c8b5d"
+  }
+]

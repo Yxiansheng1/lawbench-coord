@@ -1,0 +1,58 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\0-SKILL.md",
+    "bytes": 12390,
+    "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a",
+    "mtime_ns": "1792400314790373300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\价格认定结论书.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\1-价格认定结论书.md",
+    "bytes": 759,
+    "sha256": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\扣押清单.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\2-扣押清单.md",
+    "bytes": 346,
+    "sha256": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\监控视频截图说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\3-监控视频截图说明.md",
+    "bytes": 951,
+    "sha256": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\被害人王某丙询问笔录.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\4-被害人王某丙询问笔录.md",
+    "bytes": 839,
+    "sha256": "03148d96bc87d52d018b4c5649a16d9165cbe22d62db5d7df78caa669bb22356",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\起诉书.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\5-起诉书.md",
+    "bytes": 1291,
+    "sha256": "c92cf1dd8dc4d14897eecf3449890db6d6902474235d1fa56d4a254102ea93dc",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\样本03-李某乙盗窃无目录\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\6-_任务说明.md",
+    "bytes": 682,
+    "sha256": "5eeb04d0b849dbf9c26edad199838357898f224940a2372cc52e81ff680d9b48",
+    "mtime_ns": "1792379578809949300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamNativeInput-20261029-113906\\7-要点.md",
+    "bytes": 9152,
+    "sha256": "3e3aea91425bb0364316eeb82e0a0582ed318a54ed70da3c36ea9ba47569a557",
+    "mtime_ns": "1792379578811954800"
+  }
+]

@@ -1,0 +1,194 @@
+## line-A...origin/line-A [ahead 93, behind 1]
+ M contracts/_build/gen_examples.py
+ M contracts/_build/gen_schemas.py
+ M contracts/api/materials_list.schema.json
+ M contracts/api/task_create.schema.json
+ M contracts/api/task_current.schema.json
+ M contracts/common.schema.json
+ M contracts/core/task_begin.schema.json
+ M contracts/examples/api_task_current.res.json
+ M contracts/examples/core_task_begin.req.json
+ M contracts/examples/core_task_begin.res.json
+ M contracts/examples/file_task.json
+ M contracts/examples/manifest.json
+ M contracts/files/settings.schema.json
+ M contracts/files/task.schema.json
+ M docs/plan/evidence/T30/持久化事实改道-20261021-162727/build.txt
+ M docs/plan/evidence/T30/持久化事实改道-20261021-162727/绿灯-两侧反例与自动批量.txt
+ M docs/src/PRD.md
+ M dsh-ext/agent/index.ts
+ M dsh-ext/agent/task-state.ts
+ M dsh-ext/credentials/index.ts
+ M dsh-ext/dev/fake-service.mjs
+ M dsh-ext/host/http-json.ts
+ M dsh-ext/host/index.ts
+ M dsh-ext/host/install-layout.ts
+ M dsh-ext/host/supervisor.ts
+ M dsh-ext/shared/api-routes.ts
+ M dsh-ext/shared/remote-methods.ts
+ M dsh-ext/shared/turn-notices.ts
+ M dsh-ext/tests/credentials.spec.ts
+ M dsh-ext/tests/dock-capsules.spec.ts
+ M dsh-ext/tests/documents.spec.tsx
+ M dsh-ext/tests/estimate.spec.ts
+ M dsh-ext/tests/intake.spec.ts
+ M dsh-ext/tests/wiki-card.spec.ts
+ M dsh-ext/ui/cases.ts
+ M dsh-ext/ui/dialogs.tsx
+ M dsh-ext/ui/dock.tsx
+ M dsh-ext/ui/documents.tsx
+ M dsh-ext/ui/estimate.ts
+ M dsh-ext/ui/fixtures/capsules.json
+ M dsh-ext/ui/fixtures/materials_list.json
+ M dsh-ext/ui/folder-actions.ts
+ M dsh-ext/ui/format.ts
+ M dsh-ext/ui/index.tsx
+ M dsh-ext/ui/intake.ts
+ M dsh-ext/ui/materials.tsx
+ M dsh-ext/ui/remote.ts
+ M dsh-ext/ui/session-case.tsx
+ M dsh-ext/ui/settings-draft.ts
+ M dsh-ext/ui/settings.tsx
+ M dsh-ext/ui/state.ts
+ M dsh-ext/ui/tasksheet.ts
+ M dsh-ext/ui/wiki-card.tsx
+ M dsh-ext/vitest.config.mjs
+ M dsh-patches/PATCHES.md
+ M packaging/build.ps1
+?? .agents/
+?? .t49el-root-20261027-100211/
+?? .t49el-root-20261027-100812/
+?? AGENTS.md
+?? contracts/api/request_scope.schema.json
+?? contracts/examples/api_request_scope.req_prepare.json
+?? contracts/examples/api_request_scope.req_release.json
+?? contracts/examples/api_request_scope.res_prepare.json
+?? contracts/examples/api_request_scope.res_release.json
+?? contracts/examples/api_task_create.req.json
+?? contracts/examples/api_task_create.req_legacy.json
+?? contracts/examples/core_task_begin.req_legacy.json
+?? contracts/examples/core_task_begin.res_legacy.json
+?? contracts/examples/file_settings.external.json
+?? contracts/examples/file_task.legacy.json
+?? contracts/examples/file_task.request_scope.json
+?? docs/plan/evidence/T15/ConfirmedReadGui-20261025-221113/
+?? docs/plan/evidence/T31/ActualImplementation-20261026-004410/
+?? docs/plan/evidence/T31/BatchGui-20261026-055030/
+?? docs/plan/evidence/T31/CanceledRestrictionFix-20261026-203132/
+?? docs/plan/evidence/T31/ClaimedNativeContext-20261027-092001/
+?? docs/plan/evidence/T31/CompiledGatewayCatalog-20261027-112652/
+?? docs/plan/evidence/T31/CompiledGatewayEnvelopeFix-20261027-105457/
+?? docs/plan/evidence/T31/CompiledGatewayFiniteName-20261027-105905/
+?? docs/plan/evidence/T31/CompiledGatewayGeneration-20261027-111534/
+?? docs/plan/evidence/T31/CompiledGatewayPeerBindings-20261027-110548/
+?? docs/plan/evidence/T31/CompiledSessionGateway-20261027-103448/
+?? docs/plan/evidence/T31/ControlProjectionEcho-20261027-005153/
+?? docs/plan/evidence/T31/ControlResolverMetadata-20261027-022637/
+?? docs/plan/evidence/T31/DisposalAndNativeFixture-20261026-162611/
+?? docs/plan/evidence/T31/EvidenceFix-20261026-152026/
+?? docs/plan/evidence/T31/HostErrorDetailsContinue-20261026-214412/
+?? docs/plan/evidence/T31/NativeAdmission-20261026-155618/
+?? docs/plan/evidence/T31/NativeAdmissionFix-20261026-165555/
+?? docs/plan/evidence/T31/NativeDiskReplay-20261026-220945/
+?? docs/plan/evidence/T31/PrivateRuntimeBuild-20261026-043910/
+?? docs/plan/evidence/T31/PrivateRuntimeWire-20261027-002010/
+?? docs/plan/evidence/T31/QueuedSteerPair-20261026-172106/
+?? docs/plan/evidence/T31/RelayLogRedaction-20261026-224335/
+?? docs/plan/evidence/T31/RestrictedClaimReplay-20261026-201806/
+?? docs/plan/evidence/T31/ReviewRegression-20261026-150412/
+?? docs/plan/evidence/T31/ScopedQueueCompatibilityFix-20261026-193241/
+?? docs/plan/evidence/T31/ScopedQueuedSteerFix-20261026-175219/
+?? docs/plan/evidence/T31/UiHostBatchHttp-20261026-132736/
+?? docs/plan/evidence/T31/WikiEmptyBuild-20261025-111931/
+?? docs/plan/evidence/T31/WikiEmptyGui-20261025-112820/
+?? docs/plan/evidence/T31/capsule-20261024-142607/
+?? docs/plan/evidence/T31/gui-pin-20261024-231821/
+?? docs/plan/evidence/T31/input-entry-20261025-012126/
+?? docs/plan/evidence/T31/input-test-20261025-014649/
+?? docs/plan/evidence/T31/resume-20261024-224425/
+?? docs/plan/evidence/T32-T35/
+?? docs/plan/evidence/T32/CitationLateCallback-20261027-200827/
+?? docs/plan/evidence/T32/DocumentCitationFix-20261027-192523/
+?? docs/plan/evidence/T32/InvalidScopeCancelHttp-20261027-155531/
+?? docs/plan/evidence/T32/MaterialsOptinUI-20261027-130738/
+?? docs/plan/evidence/T32/NativeDocumentCitationGui-20261027-194505/
+?? docs/plan/evidence/T32/NativeDocumentCitations-20261027-190830/
+?? docs/plan/evidence/T32/NativeDraftGui-20261025-175925/
+?? docs/plan/evidence/T32/NativePdfCitationGui-20261027-211310/
+?? docs/plan/evidence/T32/RefRemoveOptinGui-20261027-134049/
+?? docs/plan/evidence/T32/cache-pin-20261025-004727/
+?? docs/plan/evidence/T32/reopen-fixture-20261025-005526/
+?? docs/plan/evidence/T32/save-cache-20261025-002120/
+?? docs/plan/evidence/T32/首次页签私有配置准备-20261025-045223/
+?? docs/plan/evidence/T33/
+?? docs/plan/evidence/T34/
+?? docs/plan/evidence/T35/
+?? docs/plan/evidence/T37/
+?? docs/plan/evidence/T49/
+?? docs/plan/evidence/T50/
+?? docs/plan/evidence/T51/
+?? dsh-ext/finite-tests/
+?? dsh-ext/host/document-preview.ts
+?? dsh-ext/host/public-search.ts
+?? dsh-ext/office-runtime/
+?? dsh-ext/tests/document-citation-late-callback.spec.tsx
+?? dsh-ext/tests/document-citation-navigation.spec.tsx
+?? dsh-ext/tests/fake-document-fixture.spec.ts
+?? dsh-ext/tests/input-import.spec.tsx
+?? dsh-ext/tests/material-batch-boundaries.spec.tsx
+?? dsh-ext/tests/material-batch-races.spec.tsx
+?? dsh-ext/tests/material-batch.spec.tsx
+?? dsh-ext/tests/settings-t34.spec.ts
+?? dsh-ext/tests/t31-agent-scope-lifecycle.spec.ts
+?? dsh-ext/tests/t31-health-auth.spec.ts
+?? dsh-ext/tests/t31-native-scope-http.spec.ts
+?? dsh-ext/tests/t31-ui-host-batch-http.spec.ts
+?? dsh-ext/tests/t32-materials-removed-optin.spec.tsx
+?? dsh-ext/tests/t32-native-draft-http.spec.ts
+?? dsh-ext/tests/t33-reference-client.spec.ts
+?? dsh-ext/tests/t34-core-route-contract.spec.ts
+?? dsh-ext/tests/t34-native-core-http.spec.ts
+?? dsh-ext/tests/t34-projection-error.spec.ts
+?? dsh-ext/tests/t34-provider.spec.ts
+?? dsh-ext/tests/t34-provider.vitest.config.mjs
+?? dsh-ext/tests/t34-route.spec.ts
+?? dsh-ext/tests/t34-settings-contract.spec.ts
+?? dsh-ext/tests/t34-tools-capability.spec.ts
+?? dsh-ext/tests/t35-prompt-refine-cancel.spec.ts
+?? dsh-ext/tests/t35-prompt-refine-client.spec.tsx
+?? dsh-ext/tests/t35-prompt-refine-native.spec.ts
+?? dsh-ext/tests/t35-prompt-refine.spec.ts
+?? dsh-ext/tests/t49-credentials.spec.ts
+?? dsh-ext/tests/t49-documents-preview.spec.tsx
+?? dsh-ext/tests/t49-office-preview.spec.ts
+?? dsh-ext/tests/t49-public-search.spec.ts
+?? dsh-ext/tests/t49-repair-office.spec.ts
+?? dsh-ext/tests/t49-repair-ui.spec.tsx
+?? dsh-ext/tests/t49-web-search-ui.spec.tsx
+?? dsh-ext/tests/task-route-contract.spec.ts
+?? dsh-ext/ui/document-preview.tsx
+?? dsh-ext/ui/fixtures/prompt_refine.json
+?? dsh-ext/ui/input-import.tsx
+?? dsh-ext/ui/material-batch.ts
+?? dsh-ext/ui/material-batch.tsx
+?? dsh-ext/ui/prompt-refine.tsx
+?? dsh-ext/ui/web-search.tsx
+?? dsh-ext/vitest.t31-claimed-native-context-native.config.mjs
+?? dsh-ext/vitest.t31-claimed-native-context.config.mjs
+?? dsh-ext/vitest.t31-compiled-session-gateway.config.mjs
+?? dsh-ext/vitest.t31-control-echo-native.config.mjs
+?? dsh-ext/vitest.t31-control-projection-echo.config.mjs
+?? dsh-ext/vitest.t31-material-admission.config.mjs
+?? dsh-ext/vitest.t31-private-runtime-wire.config.mjs
+?? dsh-ext/vitest.t31-scope-http.config.mjs
+?? dsh-ext/vitest.t31-scoped-queued-steer.config.mjs
+?? dsh-ext/vitest.t31-ui-host-batch-http.config.mjs
+?? dsh-ext/vitest.t32-invalid-scope-cancel-http-native.config.mjs
+?? dsh-patches/P-29-native-claimed-request-idempotency.patch
+?? dsh-patches/P-29-request-submission-failure-cleanup.patch
+?? dsh-patches/P-29-request-submission-ordering.patch
+?? dsh-patches/P-29-request-submission-scope-test.patch
+?? dsh-patches/P-29-request-submission-scope.patch
+?? dsh-patches/P-29-scoped-queued-delivery-policy.patch
+?? dsh-patches/P-29-session-control-stream-type-arguments.patch
+?? dsh-patches/P-29-submission-admission-revalidation.patch

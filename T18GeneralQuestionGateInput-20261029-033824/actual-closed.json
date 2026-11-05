@@ -1,0 +1,673 @@
+{
+  "verdict": "ACTUAL_GENERAL_DRAFTING_FAILED_REQUIRES_ROOT_REVIEW",
+  "at_utc": "2026-10-28T19:35:43.398366+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralDraftingNative-20261029-025642\\run-iOLk2a",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralDraftingRuntime-root-20261029-033342",
+  "elapsed_s": 96.5460000000021,
+  "driver_exit_code": 1,
+  "consumer_status": "FAILED",
+  "error": {
+    "name": "Error",
+    "message": "actual tool loop lacks ask_user_question"
+  },
+  "secondary_errors": [
+    {
+      "message": "cleanup failed",
+      "failures": [
+        "B HTTP service did not stop cleanly"
+      ]
+    }
+  ],
+  "model_POST": 12,
+  "model_HTTP200": 12,
+  "native_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-d6b4c4b3-97e1-46f9-96d8-c4ea59c54bf2",
+    "createdAt": 1793216026816,
+    "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralDraftingNative-20261029-025642\\run-iOLk2a\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "native_session": "session-d6b4c4b3-97e1-46f9-96d8-c4ea59c54bf2",
+  "task": "T-20261029033346-771d",
+  "task_case": "448de259-491c-4f45-84a2-11f5223e83b5",
+  "native_request": "d6cf59e7-e344-4ba7-8159-d4e92d368cd4",
+  "actual_tool_counts": {
+    "skill": 1,
+    "case_list_materials": 1,
+    "case_read_material": 5,
+    "case_save_draft": 4
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "call_id": "chatcmpl-tool-a35f361666cf063a",
+      "seq": 11,
+      "arguments_sha256": "7fefd61e6f0d5f85c9485406e256f502e93ae172e0662bb380d017234b2d706a",
+      "result_seq": 12,
+      "is_error": false,
+      "result_sha256": "eece24d85c401f6f86ade84c7abdfadc8d2e1c122ff30aeb2b8ec148f28baf8a"
+    },
+    {
+      "name": "case_list_materials",
+      "call_id": "chatcmpl-tool-b8e10e41240320fa",
+      "seq": 16,
+      "arguments_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_seq": 17,
+      "is_error": false,
+      "result_sha256": "3bdc83f7bd206864a4decb7e733d9aa4ed690f140ebf548af11b865cc456a703"
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-9b5db0bd2e36be6f",
+      "seq": 21,
+      "arguments_sha256": "2c4cd98187eef99ea8d1b0195dab2e1645c20405acb53009234b29111b3a37bd",
+      "result_seq": 22,
+      "is_error": false,
+      "result_sha256": "fe838fbff60da8d691c8e1c767727c605c0d72afde27f09a84b159884fd4db74",
+      "name_argument": "借条",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-85bd1d5170daf5dd",
+      "seq": 26,
+      "arguments_sha256": "1f6bbb875223d9c3b2548e3682154fa870f45846c3738366d1ea0a495f9b2ab9",
+      "result_seq": 27,
+      "is_error": false,
+      "result_sha256": "3976cca460664f46caff95ba05a954db3c036a6aca2d3955c33caf4ee059a620",
+      "name_argument": "还款记录",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-969536bf59953d0a",
+      "seq": 31,
+      "arguments_sha256": "c256af85add885f320e4401f69f1b8525144b3931418608ba62ff4d326788a6a",
+      "result_seq": 32,
+      "is_error": false,
+      "result_sha256": "f11f1ae8e76c58ca2df21f324b358a68620c0297599e2b6252a15e42b8c11f1e",
+      "name_argument": "微信催款记录",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-9e1fd174a44ec87d",
+      "seq": 36,
+      "arguments_sha256": "30b23ff553ea194c58a7f05ba8124e0e3f5273c5089721858d31cd03e9674735",
+      "result_seq": 37,
+      "is_error": false,
+      "result_sha256": "2547a5ca3ec113596e29ae92f1b9a1ef91ca919f85fc3bfbbc0c30277ae37dd3",
+      "name_argument": "情况说明",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-be2873f3f21a2569",
+      "seq": 41,
+      "arguments_sha256": "19acadc5730a4d8efedfa61141bc32c1ac69b6d8a53bff12c16e59b8b5fdfd92",
+      "result_seq": 42,
+      "is_error": false,
+      "result_sha256": "c146a0f5c67e42b0a2dad142df5711acc438f0f851a7c339a910e0c129d36f0f",
+      "name_argument": "银行流水",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-90b5e5cace76dc5d",
+      "seq": 46,
+      "arguments_sha256": "31cf047ed393fdd5eb5a5c67295f5781a7e4042b4c80fc656fa8fe25faad19a1",
+      "result_seq": 47,
+      "is_error": false,
+      "result_sha256": "50d6d5ffc072063eeae1abf4a64ab94e76ebac974acd97f7dfd3ffc09a98a026",
+      "title": "律师函（致王某丙）",
+      "path": "工作区/任务/T-20261029033346-771d/草稿/律师函（致王某丙）-v1.md",
+      "version": 1,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "2025年3月10日，王某丙向委托人李某乙借款人民币捌万元整（￥80,000.00），用于经营资金周转。委托人当日通过手机银行将借款全额转入王某丙账户。王某丙出具借条，约定借款年利率为百分之十二，按月付息，到期还本，还款期限为2025年9月",
+            "citation": "〔借条 第5行、第8行、第11行、第14行、第17行〕",
+            "message": "出处格式不对：〔借条 第5行、第8行、第11行、第14行、第17行〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "借款后，王某丙分别于2025年4月10日、5月10日、7月10日支付利息共计2,200元，并于2025年6月10日归还本金20,000元，此后未再还款",
+            "citation": "〔还款记录 第3-6行、银行流水 第5-8行〕",
+            "message": "2200 在所引材料（还款记录 第3-6行、银行流水 第5-8行）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "。截至本函发出之日，王某丙尚欠借款本金60,000元及利息未付。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "王某丙未按借条约定按期归还借款本金的行为已构成违约。委托人有权要求王某丙立即归还剩余借款本金60,000元，并按约定支付逾期利息。同时，根据借条约定，王某丙还应承担委托人为实现债权而支出的律师费。法律依据待律师核实。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "1. 自收到本函之日起7日内，向委托人归还剩余借款本金人民币陆万元整（￥60,000.00）；",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 4,
+          "must_fix": 2,
+          "hints": 3
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a2f7dae4cf8068a4",
+      "seq": 51,
+      "arguments_sha256": "5dda307c9526c619616fdc31c0e0d67fc48d6baeee8d0caca30cdf90b784786e",
+      "result_seq": 52,
+      "is_error": false,
+      "result_sha256": "1391bce7cf4aebbe3d20828e980fa68d73177c3723fd86bd6d6175c4f5f75996",
+      "title": "律师函（致王某丙）",
+      "path": "工作区/任务/T-20261029033346-771d/草稿/律师函（致王某丙）-v2.md",
+      "version": 2,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "2025年3月10日，王某丙向委托人李某乙借款人民币捌万元整（￥80,000.00），用于经营资金周转",
+            "citation": "〔借条 第5行〕",
+            "message": "2025年3月10日 标的是 借条 第5行，实际在 借条 第8行、借条 第29行"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "王某丙未按借条约定按期归还借款本金的行为已构成违约。委托人有权要求王某丙立即归还剩余借款本金60,000元",
+            "citation": "〔借条 第5行、还款记录 第5行〕",
+            "message": "60000 在所引材料（借条 第5行、还款记录 第5行）中找不到"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "1. 自收到本函之日起7日内，向委托人归还剩余借款本金人民币陆万元整（￥60,000.00）",
+            "citation": "〔借条 第5行、还款记录 第5行〕",
+            "message": "60000 在所引材料（借条 第5行、还款记录 第5行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 21,
+          "must_fix": 3,
+          "hints": 0
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a993f0494827c55e",
+      "seq": 56,
+      "arguments_sha256": "d6b4d1ac6146f73afefdfb4a13438bc716d4c7afe77c8dab7a7558c087d5e14e",
+      "result_seq": 57,
+      "is_error": false,
+      "result_sha256": "9114aa6f4e910ca1a8e02ca0d04041f823bb0083baa1c3f37379af72380001d9",
+      "title": "律师函（致王某丙）",
+      "path": "工作区/任务/T-20261029033346-771d/草稿/律师函（致王某丙）-v3.md",
+      "version": 3,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "王某丙未按借条约定按期归还借款本金的行为已构成违约。原借款80,000元，已还本金20,000元，剩余本金60,000元",
+            "citation": "〔推断：80,000元减去已还20,000元〕",
+            "message": "出处格式不对：〔推断：80,000元减去已还20,000元〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "1. 自收到本函之日起7日内，向委托人归还剩余借款本金人民币陆万元整（￥60,000.00）",
+            "citation": "〔推断：原借款80,000元减去已还本金20,000元〕",
+            "message": "出处格式不对：〔推断：原借款80,000元减去已还本金20,000元〕。写法为〔材料名 第N页〕〔材料名 工作表!B12〕等，每处都写材料名，多处用顿号分隔"
+          }
+        ],
+        "stats": {
+          "citations": 18,
+          "must_fix": 2,
+          "hints": 0
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a2f4c670c4bb1be0",
+      "seq": 61,
+      "arguments_sha256": "8c8c50b9227301b588f23b9b91fc70857b95a8596062e1a3c8a31082ce01e01f",
+      "result_seq": 62,
+      "is_error": false,
+      "result_sha256": "c2e4122ba3d650bc1d4b6179b3c22bd8d65a585c9b9bedabea59128ef032c259",
+      "title": "律师函（致王某丙）",
+      "path": "工作区/任务/T-20261029033346-771d/草稿/律师函（致王某丙）-v4.md",
+      "version": 4,
+      "citation_check": {
+        "passed": true,
+        "problems": [],
+        "stats": {
+          "citations": 20,
+          "must_fix": 0,
+          "hints": 0
+        }
+      }
+    }
+  ],
+  "questions_answered_before_first_successful_save": false,
+  "final_draft": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralDraftingNative-20261029-025642\\run-iOLk2a\\case\\工作区\\任务\\T-20261029033346-771d\\草稿\\律师函（致王某丙）-v4.md",
+    "bytes": 2962,
+    "sha256": "88f4848fffc74f87dd2bab391981be3101bef31ad995f7510266f9488e64b31f",
+    "mtime_ns": "1793216110701382200",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [],
+      "stats": {
+        "citations": 20,
+        "must_fix": 0,
+        "hints": 0
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 3,
+          "to": 6
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 5,
+          "to": 8
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+        "name": "微信催款记录",
+        "loc": {
+          "unit": "line",
+          "from": 2,
+          "to": 9
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+        "name": "情况说明",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 4
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 11
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 14
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 17
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 3
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 4
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "name": "还款记录",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "name": "银行流水",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "name": "借条",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      }
+    ]
+  },
+  "coverage_actual": {
+    "total": 5,
+    "fully_read": [
+      "借条",
+      "微信催款记录",
+      "情况说明",
+      "还款记录",
+      "银行流水"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "read_ranges": {
+    "v": 1,
+    "task_id": "T-20261029033346-771d",
+    "reads": [
+      {
+        "material_id": "M0001",
+        "material_version": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+        "unit": "line",
+        "from": 1,
+        "to": 29,
+        "at": "2026-10-29T03:33:58+08:00"
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+        "unit": "line",
+        "from": 1,
+        "to": 7,
+        "at": "2026-10-29T03:34:00+08:00"
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+        "unit": "line",
+        "from": 1,
+        "to": 9,
+        "at": "2026-10-29T03:34:04+08:00"
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+        "unit": "line",
+        "from": 1,
+        "to": 10,
+        "at": "2026-10-29T03:34:06+08:00"
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+        "unit": "line",
+        "from": 1,
+        "to": 10,
+        "at": "2026-10-29T03:34:08+08:00"
+      }
+    ]
+  },
+  "physical_rows": 69,
+  "events": 68,
+  "event_types": {
+    "agent/inbox/spliced": 2,
+    "turn/start": 1,
+    "step/start": 12,
+    "system/message": 1,
+    "user/message": 3,
+    "request/header": 1,
+    "request/context": 1,
+    "assistant/message": 12,
+    "tool/call": 11,
+    "tool/result": 11,
+    "step/end": 12,
+    "turn/end": 1
+  },
+  "production_JSONL_reopen": "NOT_REACHED",
+  "identities": [
+    {
+      "pid": 45668,
+      "parent": 14656,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T19:33:42.2603160Z"
+    },
+    {
+      "pid": 39708,
+      "parent": 45668,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T19:33:42.7370050Z"
+    },
+    {
+      "pid": 19740,
+      "parent": 39708,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T19:33:42.7478350Z"
+    },
+    {
+      "pid": 14788,
+      "parent": 39708,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T19:33:42.8121040Z"
+    },
+    {
+      "pid": 16460,
+      "parent": 14788,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T19:33:42.9134050Z"
+    },
+    {
+      "pid": 9300,
+      "parent": 14788,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T19:33:43.2151010Z"
+    },
+    {
+      "pid": 38384,
+      "parent": 9300,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T19:33:43.2233960Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 52426,
+  "Listen_count": 0,
+  "B_passed": false,
+  "B_failure": "request_protocol_violation",
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credential_getters": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_protocol": {
+    "caseBound": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/scan": 1,
+      "POST /api/request/scope": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 2,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 10
+    },
+    "denials": {},
+    "draftPaths": [],
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003",
+      "M0004",
+      "M0005"
+    ],
+    "materialNames": {
+      "M0001": "借条",
+      "M0002": "微信催款记录",
+      "M0003": "情况说明",
+      "M0004": "还款记录",
+      "M0005": "银行流水"
+    },
+    "materialVersions": {
+      "M0001": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+      "M0002": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+      "M0003": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+      "M0004": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+      "M0005": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24"
+    },
+    "requestBound": true,
+    "requestId": "d6cf59e7-e344-4ba7-8159-d4e92d368cd4",
+    "scopePrepared": true,
+    "selectionId": "T-20261029033346-8273",
+    "sessionBound": true,
+    "taskBound": true,
+    "taskId": "T-20261029033346-771d",
+    "violations": [
+      "DRAFT_RESPONSE",
+      "DRAFT_RESPONSE",
+      "DRAFT_RESPONSE",
+      "DRAFT_RESPONSE"
+    ]
+  },
+  "B_cleanup": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "forced_stop": false,
+  "original_source8_SHA_size_mtime_ns_held": true,
+  "fixed_admission_rows_held": 504,
+  "private25_held": true,
+  "owned_text_key_scan": {
+    "files": 35,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_quality_all_PASS": false,
+  "manual_review_required": true,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

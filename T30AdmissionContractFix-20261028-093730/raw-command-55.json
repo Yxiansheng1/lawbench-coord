@@ -1,0 +1,8 @@
+{
+  "id": "item_72",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"rg -n \\\"PENDING|TODO|FIXME|require\\\\(|LAWFIRM_TEST_KEY|password|Bearer|workspace/session-delete[\"'^-]|writeFileSync|appendFile|child_process|spawnSync|fetch'\"\\\\(\\\" 'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\admission.mts' 'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\prepare-case.py'; if (\"'$LASTEXITCODE -eq 1) { '\"'NO_BANNED_MATCHES' }\"",
+  "aggregated_output": "docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:6: * implementation. It never emits workspace/session-delete.\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:11:import { spawnSync } from 'node:child_process'\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:471:  const child = spawnSync(PYTHON_PATH, [HELPER_PATH, runRoot], {\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:731:  context.on('workspace/session-delete', () => {\ndocs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\admission.mts:762:    if (deleteEventObserved) throw new Error('workspace/session-delete was emitted during preflight-only admission')\n",
+  "exit_code": 0,
+  "status": "completed"
+}

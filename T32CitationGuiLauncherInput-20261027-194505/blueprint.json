@@ -1,0 +1,51 @@
+{
+  "base": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812",
+  "scripts": {
+    "prepare.ps1": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812\\prepare.ps1",
+      "bytes": 17117,
+      "sha256": "2f8f1393758495a345a11a71ed1422ca604348a5a53c0d20ef8fd2ebc35d3d7f"
+    },
+    "start.ps1": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812\\start.ps1",
+      "bytes": 75677,
+      "sha256": "b2b6905fff7b7f27397e42be7400d5ee01d4fc588a1d6a610fb672a536526540"
+    },
+    "stop.ps1": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-171812\\stop.ps1",
+      "bytes": 7131,
+      "sha256": "c21f6abb5ce34b94a827fcb1d3dfef88238cf9260683e3d5ab66955f911b9f1e"
+    }
+  },
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativeDocumentCitationGui-20261027-194505",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830\\server.py",
+  "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830",
+  "entry_bytes": 67862,
+  "entry_sha": "ec4e15f047f3ae6264dc25ad582cb2191ce085e9bc7c5add4bb5df0212ba0dd8",
+  "runtime": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112",
+  "runtime_manifest_bytes": 58195,
+  "runtime_manifest_sha": "5260367f4b54d1d7a384dd427dd743e20094fd7138b2780a6074e858a5d96a0f",
+  "output_deltas": [
+    {
+      "before": {
+        "path": "profile-node_modules/lawbench-dsh/lib/client.js",
+        "bytes": 536112,
+        "sha256": "572f2d5afab8be99054f981f5136d8d6e8d389e7f008d269c1d6055f0a58f6b9"
+      },
+      "after": {
+        "path": "profile-node_modules/lawbench-dsh/lib/client.js",
+        "bytes": 537185,
+        "sha256": "fcf4210f78ffedce8b25e99301003ab3c0aadcbb2468b1212e68909a526991ed"
+      }
+    }
+  ],
+  "prepared_format": "T32-native-document-citation-entry-prepared-v1",
+  "run_prefix": "T32-citation-",
+  "source_pins_sha": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf",
+  "source_count": 347,
+  "citation_source_file": "引用材料.txt",
+  "citation_source_bytes": 50,
+  "citation_source_sha": "410a87a9c0853f886fe526ce940ba396d09929d1304b3f9c146f5612e7e1954f",
+  "base_source_sha": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5",
+  "scope": "Actual read-only GUI from real native generated cited draft; no Send/save/remove/picker/model"
+}

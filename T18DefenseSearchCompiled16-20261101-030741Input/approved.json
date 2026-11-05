@@ -1,0 +1,17 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-read-order-20261101-024639.spec.ts",
+  "source_sha256": "6a6c63fc8833693a04e61b25e38085506b498811745b9c1272fbe097144c4ea2",
+  "new_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-compiled-20261101-030741.spec.ts",
+  "compiled_agent": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18DefenseSearchPrivateBuild-20261101-030307\\private-output-20261101-030559\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+    "bytes": 569146,
+    "sha256": "0cec7b2fca38bd7feb88f80d86843f88fe45dcc034c37f3dc11a832d2db21364"
+  },
+  "compiled_agent_uri": "file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/T18DefenseSearchPrivateBuild-20261101-030307/private-output-20261101-030559/profile-node_modules/lawbench-dsh/lib/agent.js",
+  "compiled_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18DefenseSearchPrivateBuild-20261101-030307\\private-output-20261101-030559\\manifest.json",
+    "bytes": 58590,
+    "sha256": "50fc1bf5adc0243c5ff98853c4eb789220fd8796a60267ce994f7027cb0d5e08"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18DefenseSearchCompiled16-20261101-030741.md"
+}

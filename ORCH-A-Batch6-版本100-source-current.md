@@ -1,0 +1,2 @@
+SOURCE ONLY. Owner 最新指令：版本1.0.0，最终包名 连越律所AI工作台-1.0.0-win-x64.exe，所有用户可见位置不能出现BATCH6/第几批，内部编号只在协调目录。先准确ASCII原生pwsh/loginfalse读本令；保全所有dirty，不Git操作不跑测试/tsc/parser/build/app/probe。当前A作者已terminal，原全量A已经结束，B独立全量仍运行。
+仅允许改两版本literal：dsh-ext/shared/product.ts 的 PRODUCT_VERSION 0.9.0->1.0.0，以及dsh/packages/cli/desktop/scripts/lawbench-product.mjs的LAWBENCH_VERSION 0.9.0->1.0.0（先查之前交回准确路径），byte逆向证明仅这两literal变化。只读检查此两文件用户可见品牌不含批次编号，其余源码一律不改。三分钟内完成，交回coord/HANDBACK-A-Batch6-version100-current.md 写准确文件bytes/SHA/逆向，不运行验证。

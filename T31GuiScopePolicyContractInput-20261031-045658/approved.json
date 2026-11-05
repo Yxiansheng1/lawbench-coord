@@ -1,0 +1,59 @@
+{
+  "approved_core": {
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicy-20261031-045012",
+    "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+    "source_pins": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+        "bytes": 88654,
+        "sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\api\\ui.py",
+        "bytes": 14417,
+        "sha256": "a9e9f4dd18cae7869847d56a3a15c992cc618ec3fe242a2e0302a169595ba09c"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\api\\core.py",
+        "bytes": 2106,
+        "sha256": "42d8ef7176d2624ff50f9bffc5d156f4f6a126c293f2f354e6fef7770719e988"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\request_scope.py",
+        "bytes": 20322,
+        "sha256": "9a0bcfe70c7aeedb05f2b6440526ae7cc10d4d3cd5c5edd4a7dc8000680dc405"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\task.py",
+        "bytes": 40607,
+        "sha256": "7b6ee04ba53f45b1f7e6624d2c9bf60b122dfc68c12e26331431a84eed36bf04"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_import.schema.json",
+        "bytes": 7910,
+        "sha256": "63445e5fb73afd22d182c6fd24a5f5f73686c507a94b9087d670bc02f56c8db5"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\request_scope.schema.json",
+        "bytes": 4555,
+        "sha256": "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\material-batch.ts",
+        "bytes": 18759,
+        "sha256": "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796"
+      }
+    ],
+    "runtime_allowed": false,
+    "prior_timeout": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T31-gui-submission-service-1017-20261031-042438.job.json",
+    "canonical_case_id": "872b161f-27d4-40bf-879e-ee457ef6454b"
+  },
+  "before": "D:\\Lawbeach\\lawbench-coord\\T31GuiScopePolicyContractInput-20261031-045658",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658",
+  "before_module_sha256": "58638e9552a22ce60c79cd7c4291b1333eeb4cf17c36d01a4d9b66d420f489b2",
+  "context_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\context.py",
+    "bytes": 6409,
+    "sha256": "1128f934f13e1f0453be4c73cea1466dd4bf54ede158cd359eedc48a57e4d9ee"
+  }
+}

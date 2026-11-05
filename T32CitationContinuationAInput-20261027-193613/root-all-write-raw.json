@@ -1,0 +1,28 @@
+[
+  {
+    "id": "item_32",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\build-config.mjs",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_38",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\T32-citation-fixed-input-20261027-193613.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-citation-runtime-fixed-pin-20261027-193613.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

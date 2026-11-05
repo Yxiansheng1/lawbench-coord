@@ -1,0 +1,67 @@
+{
+  "execution_order": "D:\\Lawbeach\\lawbench-coord\\A-T34-existing-settings-finite-order-20261030-100927.md",
+  "approved_inputs": "D:\\Lawbeach\\lawbench-coord\\T34ExistingSettingsFiniteInput-20261030-100927\\approved-inputs.json",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ExistingSettingsFinite-20261030-100927",
+  "root": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "test_file": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\configuration.spec.ts",
+  "selected_exact_test_names": [
+    "persists a model edit, updates the real consumer without remounting, and restores it at restart",
+    "preserves configuration expressions while editing a different live field",
+    "resets a whole form without losing ordinary fields or pinning inherited defaults"
+  ],
+  "test_count": 3,
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\configuration.spec.ts",
+      "bytes": 22512,
+      "sha256": "e598f9f5477954534ee2a77fcd88602a093e527fe01ffe3cbe65843c2fe6b8b6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\configuration-fixture.ts",
+      "bytes": 3313,
+      "sha256": "0ae7fca115bed2c14b48caf181e10e63feb93927125b3af914e381f6ebf1d954"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\tests\\editor-failures.spec.ts",
+      "bytes": 1781,
+      "sha256": "988443b868149ebfb8c41726c36ed13f612c0914f5e692ebe04a35b98de962be"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vitest.shared.ts",
+      "bytes": 1482,
+      "sha256": "3e8900b7471bffab582974b3a0a6413140d8143d41f62f19a348c41ad3a316a0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.json",
+      "bytes": 48244,
+      "sha256": "2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-proxy-environment.ts",
+      "bytes": 3045,
+      "sha256": "56ff98ac7d1ac9db8df7a527e91a95792f8d3de39c018f487b05571cbce9c1fa"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-invariants.ts",
+      "bytes": 9762,
+      "sha256": "983478b86d303e3e8939adee533564cca90bba71b810e0d3fcf7540f52d3e8a6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\test-dom-environment.ts",
+      "bytes": 1585,
+      "sha256": "b9f090e266d1f35d9a12384a77330a03ae875100940813c9e2a2f37fd238bdb1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\lib\\index.js",
+      "bytes": 6853,
+      "sha256": "bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\lib\\index.js",
+      "bytes": 22636,
+      "sha256": "9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136"
+    }
+  ],
+  "actual_failure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-required-unset-actual-closed-current.json",
+  "actual_seal": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-required-unset-actual-sealed-current.json"
+}

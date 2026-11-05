@@ -1,0 +1,70 @@
+{
+  "result": {
+    "utc": "2026-10-30T12:05:57.8859718Z",
+    "status": 200,
+    "elapsed_ms": 89,
+    "exception_type": null,
+    "endpoint": "POST /apply-template",
+    "requests": 1,
+    "inference_requests": 0,
+    "production_changes": 0,
+    "response_bytes": 442
+  },
+  "response": "{\"prompt\":\"<|im_start|>user\\n<__media_zY7z2ku8YGPhSylvUHCzAuGdmFhsP6Ht__>Extract all information from the main body of the document image and represent it in markdown format, ignoring headers and footers. Tables should be expressed in OTSL format, formulas in the document should be represented using LATEX format, and the parsing should be organized according to the reading order.<|im_end|>\\n<|im_start|>assistant\\n<think>\\n\\n</think>\\n\\n\"}",
+  "files": [
+    {
+      "name": "request.json",
+      "bytes": 177698,
+      "sha256": "0b04102960d29ce77935b5a2d7efd5d1fc616aab9770e5260fc893183cfef0d5"
+    },
+    {
+      "name": "response.json",
+      "bytes": 442,
+      "sha256": "b693198c9de561c4edbc644500a9befaa9cc74afab4e41adfff617cae5a9788c"
+    },
+    {
+      "name": "result.json",
+      "bytes": 277,
+      "sha256": "b473928c1f15cca7ff6da8de768694cd08aeeba740487ceecc732555f62534c0"
+    }
+  ],
+  "production": [
+    {
+      "pid": 9652,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-14T09:33:07.8751930Z"
+    },
+    {
+      "pid": 2932,
+      "exe": "C:\\prep395\\python\\python.exe",
+      "birth_utc": "2026-10-14T09:33:08.5013960Z"
+    },
+    {
+      "pid": 36704,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-27T15:44:20.5370110Z"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9102,
+      "OwningProcess": 9652
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9101,
+      "OwningProcess": 36704
+    },
+    {
+      "LocalAddress": "192.168.8.124",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    },
+    {
+      "LocalAddress": "10.126.126.3",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    }
+  ]
+}

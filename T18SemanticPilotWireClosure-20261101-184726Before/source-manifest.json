@@ -1,0 +1,18 @@
+{
+  "algorithm": "sha256",
+  "consumer": {
+    "path": "review-consumer.mjs",
+    "bytes": 25844,
+    "sha256": "13195af9b5271da752a8f2a1d976df26ca71e48bd89f34f42942782a0228cd67"
+  },
+  "fixed_data": {
+    "path": "fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+  },
+  "offline_controls": {
+    "path": "offline-controls.mjs",
+    "bytes": 7280,
+    "sha256": "fdedc96d9238fd2879772c9aa1e6ff7cded37753c06ac550a3190863be84f67a"
+  }
+}

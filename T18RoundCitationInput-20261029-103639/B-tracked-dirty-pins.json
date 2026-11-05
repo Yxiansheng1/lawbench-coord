@@ -1,0 +1,224 @@
+[
+  {
+    "path": "contracts/_build/gen_examples.py",
+    "exists": true,
+    "bytes": 31638,
+    "sha256": "21d6fc9dfa453a08db371a2c95f65711b64f491fb9cf76abe84f048b9a23dc9f"
+  },
+  {
+    "path": "contracts/_build/gen_schemas.py",
+    "exists": true,
+    "bytes": 69329,
+    "sha256": "6902e298c64573473c3898768099093126241f69c1e3faeb8e143795fde86762"
+  },
+  {
+    "path": "contracts/api/materials_list.schema.json",
+    "exists": true,
+    "bytes": 10258,
+    "sha256": "f0f0f3e08c8374e36f9e6cf52a84fee4ccde43757561eb820b01c9f0343eff31"
+  },
+  {
+    "path": "contracts/api/task_create.schema.json",
+    "exists": true,
+    "bytes": 3230,
+    "sha256": "27146bdf5719b6c102c087f5d0123f28823bf4054270fe553e3f9907bd86c9ce"
+  },
+  {
+    "path": "contracts/api/task_current.schema.json",
+    "exists": true,
+    "bytes": 5988,
+    "sha256": "4425ac661ac23ecd5a177ae4cba84264ebe2b79fb6304b5745f2a99197bedc9b"
+  },
+  {
+    "path": "contracts/common.schema.json",
+    "exists": true,
+    "bytes": 17837,
+    "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+  },
+  {
+    "path": "contracts/core/task_begin.schema.json",
+    "exists": true,
+    "bytes": 6382,
+    "sha256": "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571"
+  },
+  {
+    "path": "contracts/examples/api_task_current.res.json",
+    "exists": true,
+    "bytes": 398,
+    "sha256": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64"
+  },
+  {
+    "path": "contracts/examples/core_task_begin.req.json",
+    "exists": true,
+    "bytes": 126,
+    "sha256": "beebb7bc4ef3055eb7ec2ecd4e4d4a36a259b32a5d0d47df95fd93d2f21cc73f"
+  },
+  {
+    "path": "contracts/examples/core_task_begin.res.json",
+    "exists": true,
+    "bytes": 960,
+    "sha256": "7f06fcbed0c6ad96f8aa5b9418aeafbee3038314bceb0214c08c5225dd95a9e7"
+  },
+  {
+    "path": "contracts/examples/file_task.json",
+    "exists": true,
+    "bytes": 759,
+    "sha256": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034"
+  },
+  {
+    "path": "contracts/examples/manifest.json",
+    "exists": true,
+    "bytes": 16467,
+    "sha256": "c771c74e2c4b0bb62e0714d472cf78703f392e42a0edbe0ab26cd8ff539a4b0f"
+  },
+  {
+    "path": "contracts/files/settings.schema.json",
+    "exists": true,
+    "bytes": 7756,
+    "sha256": "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+  },
+  {
+    "path": "contracts/files/task.schema.json",
+    "exists": true,
+    "bytes": 4155,
+    "sha256": "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed"
+  },
+  {
+    "path": "docs/src/Spec.md",
+    "exists": true,
+    "bytes": 202649,
+    "sha256": "022be19131f2aa1d4d5619383145793f91c2b9705b8c8b54889a193a0c058e9e"
+  },
+  {
+    "path": "service/lawbench/__main__.py",
+    "exists": true,
+    "bytes": 3684,
+    "sha256": "063fff5169d191be84e2f128e8766250cbd5836da4876d425e458188c532b0ec"
+  },
+  {
+    "path": "service/lawbench/api/core.py",
+    "exists": true,
+    "bytes": 2106,
+    "sha256": "42d8ef7176d2624ff50f9bffc5d156f4f6a126c293f2f354e6fef7770719e988"
+  },
+  {
+    "path": "service/lawbench/api/ui.py",
+    "exists": true,
+    "bytes": 14417,
+    "sha256": "a9e9f4dd18cae7869847d56a3a15c992cc618ec3fe242a2e0302a169595ba09c"
+  },
+  {
+    "path": "service/lawbench/app.py",
+    "exists": true,
+    "bytes": 8723,
+    "sha256": "b2ccc942a3d52588c339ce6d74eb3d1333add17a83691c761fbd4059fc96e09f"
+  },
+  {
+    "path": "service/lawbench/case/context.py",
+    "exists": true,
+    "bytes": 6409,
+    "sha256": "1128f934f13e1f0453be4c73cea1466dd4bf54ede158cd359eedc48a57e4d9ee"
+  },
+  {
+    "path": "service/lawbench/case/materials.py",
+    "exists": true,
+    "bytes": 84378,
+    "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+  },
+  {
+    "path": "service/lawbench/case/refs.py",
+    "exists": true,
+    "bytes": 19343,
+    "sha256": "76d2f550a65b1f07b504e46fb5dbfa53351391bcaa1217cb78aa4ed869ba2ac2"
+  },
+  {
+    "path": "service/lawbench/case/registry.py",
+    "exists": true,
+    "bytes": 11656,
+    "sha256": "05d3266afd7efb4108d416102c35d548aae29b011cdfb8b757872a8b0e656c21"
+  },
+  {
+    "path": "service/lawbench/case/task.py",
+    "exists": true,
+    "bytes": 40607,
+    "sha256": "7b6ee04ba53f45b1f7e6624d2c9bf60b122dfc68c12e26331431a84eed36bf04"
+  },
+  {
+    "path": "service/lawbench/checks/citations.py",
+    "exists": true,
+    "bytes": 19642,
+    "sha256": "6171f0dd8c564cb9fe092a1c3d222217acaedab6bf500baf04afeafeca19b412"
+  },
+  {
+    "path": "service/lawbench/net.py",
+    "exists": true,
+    "bytes": 25896,
+    "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+  },
+  {
+    "path": "service/lawbench/search/fts.py",
+    "exists": true,
+    "bytes": 16832,
+    "sha256": "8b2836de4f25b04d9b1e340b24a052ac71aa3f2ba1c7e3b636dd691525e8abc5"
+  },
+  {
+    "path": "service/lawbench/settings.py",
+    "exists": true,
+    "bytes": 5201,
+    "sha256": "e790b0b1fe21f69e929bf4ee5e18063a8fc1d19673657e6fcb19c9c581f7c9ee"
+  },
+  {
+    "path": "service/lawbench/tools/__init__.py",
+    "exists": true,
+    "bytes": 2594,
+    "sha256": "83fe68104ebf5f8440205b7bc5be12dc52b31a7945bfcc6ca53ba35b30872f5a"
+  },
+  {
+    "path": "service/lawbench/tools/drafts.py",
+    "exists": true,
+    "bytes": 20481,
+    "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822"
+  },
+  {
+    "path": "service/lawbench/tools/inputs.py",
+    "exists": true,
+    "bytes": 4428,
+    "sha256": "b13f8ac7bdb85d87403531e4a6e9a3eb336623455f7e7a68db9422cf4b1f23ee"
+  },
+  {
+    "path": "service/lawbench/tools/search.py",
+    "exists": true,
+    "bytes": 562,
+    "sha256": "cc26c032bdaff52283680ef43ce1f5421bf054d42217b4062d3ebef3efa89531"
+  },
+  {
+    "path": "service/tests/t37_remove_ref_standalone.py",
+    "exists": true,
+    "bytes": 48788,
+    "sha256": "7a0661e4ffdd13ecc002e924cd8396270fc14845a8432c13ef00502cdfa16682"
+  },
+  {
+    "path": "service/tests/test_api_case.py",
+    "exists": true,
+    "bytes": 30247,
+    "sha256": "d00f27e59bcd5d2f2a8f1fec6d97c2ded4cf8ab996a05c74877c952a5c276f35"
+  },
+  {
+    "path": "skills/case-reading-notes/SKILL.md",
+    "exists": true,
+    "bytes": 15420,
+    "sha256": "ef60fbbd8e6e60ff3bd87619d5530e735264864f574c63cc4538d8834c4dfffe"
+  },
+  {
+    "path": "skills/contract-draft/SKILL.md",
+    "exists": true,
+    "bytes": 13469,
+    "sha256": "92bd83d9fcd18a05584595292bd56828835d347a2862353259816ca66213b912"
+  },
+  {
+    "path": "skills/doc-revise/SKILL.md",
+    "exists": true,
+    "bytes": 12189,
+    "sha256": "23b048df3ceeb8948e9a14dbc3c1e8031e98158908fb9421f30de5f875d1fccf"
+  }
+]

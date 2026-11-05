@@ -1,0 +1,8 @@
+{
+  "skill": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\SKILL.md",
+  "beforeBytes": 14421,
+  "beforeSHA": "a46d70e2c4bb507edb53739f8db52017b7a33c1bcca80e0b902ec1b4ed3101c1",
+  "targetLine": 59,
+  "expectedBytes": 14422,
+  "expectedSHA": "69619488f8cc827db702fed8fa153682bc6874374ac80817b26e4e06bf77b03c"
+}

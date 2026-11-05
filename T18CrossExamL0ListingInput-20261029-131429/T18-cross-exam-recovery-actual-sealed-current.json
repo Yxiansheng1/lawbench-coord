@@ -1,0 +1,36 @@
+{
+  "verdict": "ACTUAL_FAILED_SEALED_WITH_INDEPENDENT_THREE_ANSWER_L0_SLICES",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamRecoveryActualClosed-root-20261029-131218",
+  "files": 19,
+  "manifest_sha256": "a748b826d00ced40a0f2602ec8509d1e017fc767c5ac48b18db3c970671327d5",
+  "model_POST8_HTTP2008": true,
+  "elapsed_s": 111.59400000001187,
+  "complete_owned_OS_gone": 7,
+  "Listen_count0": true,
+  "forced": false,
+  "actual_three_answers_before_read_and_save": true,
+  "actual_primary_L0_list_proven": true,
+  "mandatory_case_list_consumer_contract_false_positive": true,
+  "actual_final_draft_bytes": 5391,
+  "actual_final_draft_sha256": "19a509793cceacf25e53314f77095453f6a0829b5270cdff18f279051a744fe8",
+  "final_citation_stats": {
+    "citations": 31,
+    "must_fix": 0,
+    "hints": 4
+  },
+  "manual_business_quality": "FAILED",
+  "source_GET0": true,
+  "production_JSONL_reopen": "NOT_REACHED",
+  "B_exit_failed_route_count_not_process_leak": true,
+  "source8_SHA_size_mtime_ns_and514pins_private25_held": true,
+  "key_scan": {
+    "files": 34,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "original_report": "FAILED",
+  "one_oversized_raw_stream_output_truncated_NOT_adopted": true,
+  "subsequent_bounded_reply_TEXT_and_end_events_full_read": true,
+  "Packaging": "HOLD"
+}

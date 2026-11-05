@@ -1,0 +1,14 @@
+{
+  "DOCXSHA": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+  "externalRelationships": [
+    {
+      "part": "word/_rels/document.xml.rels",
+      "type": "hyperlink",
+      "target": "http://127.0.0.1/lbfx-attachment"
+    }
+  ],
+  "macros": false,
+  "zip_read_only": true,
+  "no_Office_or_network_executed": true,
+  "raw_XML_paragraph_nodes_are_NOT_service_logical_paragraph_numbers": true
+}

@@ -1,0 +1,7 @@
+{
+  "originalPrefixExact": true,
+  "currentBytes": 16303,
+  "appendedUTF8": "{\"type\":\"session/end-seed\",\"seq\":37,\"time\":1793156966828,\"data\":{}}\n",
+  "originalBytes": 16235,
+  "sourceConstructor": "packages/core/session/src/index.ts:620-621"
+}

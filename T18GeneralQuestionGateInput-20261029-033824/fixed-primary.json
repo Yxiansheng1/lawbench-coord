@@ -1,0 +1,22 @@
+[
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/agent/index.ts",
+    "bytes": 46243,
+    "sha256": "d21dd7be6bc1fcb561063f259c2ad2e8d8714679f57982608823f5a896b1a5b0"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/agent/task-state.ts",
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/tests/doc-revise-question-gate.spec.ts",
+    "bytes": 12428,
+    "sha256": "5ad9d9a049be0a323089b5d4c1c4a4967a6b9119ac1c47811b8437a15d19dd40"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-B/skills/general-drafting/SKILL.md",
+    "bytes": 13495,
+    "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31"
+  }
+]

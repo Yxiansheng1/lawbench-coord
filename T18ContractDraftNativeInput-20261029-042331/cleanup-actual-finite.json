@@ -1,0 +1,58 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralCleanupFinite-root-20261029-042104",
+  "helper": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\cleanup-context-finite.mts",
+  "helper_sha256": "738b1f05cc648e7703214c35acd09cd0b99905928132b0bd7c19a363cb2392d0",
+  "exit": 0,
+  "elapsed_s": 2.3289999999979045,
+  "identities": [
+    {
+      "pid": 22308,
+      "parent": 44512,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T20:21:04.3060770Z"
+    },
+    {
+      "pid": 4412,
+      "parent": 22308,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T20:21:05.5001520Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "OS_after": [],
+  "source_changes": [],
+  "forced": false,
+  "fixture_result": {
+    "format": "lawbench-t18-cleanup-context-finite-v1",
+    "status": "PASS",
+    "scope": "ACTUAL_EMPTY_CONTEXT_REGISTRY_LIFECYCLE_ONLY",
+    "originalEntrySha256": "8da50e45e6c54b78bb3a6e1d2c7c3e736e8534885cb0116c816fcc4aa4439871",
+    "candidateEntrySha256": "9dc27eb332b0aedfbc520929b80ed88654d260f6aa0f6e24e109f4cf626c3b40",
+    "approvedInputsSha256": "5fa4f92c6584fecba14788ee92d6b7fda378bb9ceb21e0acd0f0e1f56b10affe",
+    "guardLine": 2607,
+    "oldPostDisposeFailure": "TypeError",
+    "candidatePostDisposeLookup": "SKIPPED",
+    "liveEmptyRegistryBranch": {
+      "attempted": true,
+      "joined": true,
+      "cancelRequests": 0
+    },
+    "setupAbortLookup": "SKIPPED",
+    "modelCalls": 0,
+    "httpCalls": 0,
+    "agentsCreated": 0,
+    "sessionsCreated": 0,
+    "fullConsumerRun": "NOT_RUN"
+  },
+  "wrapper": {
+    "helper_completed": true,
+    "denied_attempts": [],
+    "error": null
+  },
+  "scope": "ACTUAL_EMPTY_CORDIS_CONTEXT_REGISTRY_LIFECYCLE_ONLY",
+  "whole_consumer_RUN": false,
+  "model": 0,
+  "Key": 0,
+  "HTTP": 0,
+  "Packaging": "HOLD"
+}

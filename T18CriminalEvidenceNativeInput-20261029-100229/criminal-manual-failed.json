@@ -1,0 +1,55 @@
+{
+  "verdict": "BUSINESS_REVIEW_FAILED_ORIGINAL_CRIMINAL_SAMPLE01",
+  "at_utc": "2026-10-29T01:48:30.660920+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalReadingScopeContract-20261029-092051\\run-F9lTfU",
+  "draft_sha256": "e1d5be0beaa00ee0bc11e591e722bd9153dbffadbe0c3bb9b8d14d2b9385264a",
+  "reply_sha256": "fb2be23948fc41c82d7b29815b26beca0b29a11a0436d12aa39f0779e78ae018",
+  "full_final_draft_and_reply_and_all_four_primary_materials_and_skill_and_original_sample_points_read": true,
+  "passed_observations": [
+    "Three allegation units 80000/16500/30000 and dates retained; total126500",
+    "Interrogation 16■00 retained, loan defense distinguished from accusation",
+    "Third unit explicitly lacks Zheng statement and transfer; only80000 screenshot supplied",
+    "Actual full four reads with42/33/5/10 LINE units; scope LIST then ASK then actual authorized synthetic answer before material reads",
+    "Interrogation time/investigators/recorder and inspection missing witness recorded without declaring illegality"
+  ],
+  "failed_observations": [
+    {
+      "id": "REFUND_PROOF_OMISSION",
+      "primary": "Original criminal sample01 point6 requires 卷内未见退赔凭证 or 未找到依据",
+      "actual": "Final draft reports accusation retirement/refund20000 at 起诉意见书第29行 but never states no refund receipt in four-material scope",
+      "root_not_legal_merits_judgment": true
+    },
+    {
+      "id": "REPLY_PROBATIVE_EVALUATION",
+      "primary": "Skill goal 只摘录和整理，不下法律结论; scope is notes, not evidence sufficiency determination",
+      "actual": "Final assistant reply labels fact unit1/background 证据充分 and units2/3 证据薄弱 rather than only inventorying supplied evidence",
+      "root_not_legal_merits_judgment": true
+    },
+    {
+      "id": "EVIDENCE_GAP_LIST_INCOMPLETE",
+      "primary": "Original sample01 point4 explicitly expects missing bank details/company registration/Wang testimony/chat records",
+      "actual": "Draft lists accusation evidence categories but gaps do not explicitly identify missing Wang testimony and chat records; reply generically notes witness statements but still no chat record gap",
+      "root_not_legal_merits_judgment": true
+    }
+  ],
+  "remaining_hints": [
+    {
+      "class": "F",
+      "severity": "hint",
+      "excerpt": "- 存疑点：第二笔金额笔录中部分数字识别不清（\"16■00元\"），与起诉意见书载明的16,500元是否一致需核对原件",
+      "citation": null,
+      "message": "含金额或日期但没有出处，确认是否需要补出处"
+    },
+    {
+      "class": "F",
+      "severity": "hint",
+      "excerpt": "本案卷内仅有1次讯问笔录（2026年1月15日），无多次陈述比对。",
+      "citation": null,
+      "message": "含金额或日期但没有出处，确认是否需要补出处"
+    }
+  ],
+  "no_automatic_all_legal_or_business_acceptance": true,
+  "no_prompt_variant_or_semantic_patch_or_model_rerun": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

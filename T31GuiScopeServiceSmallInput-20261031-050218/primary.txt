@@ -1,0 +1,619 @@
+#!/usr/bin/env python3
+"""T31 genuine-branch GUI admission and read-only service entry.
+
+``--admit`` registers the prepared byte-exact case copy through the installed
+B-line ``CaseRegistry``. ``--serve`` is launched only by the frozen GUI Host and
+exposes the production ASGI routes through an exact read-only firewall. This
+file performs no model, OCR, retainer, credential, public-search, delete, stop,
+release, or recycle operation.
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import hashlib
+import hmac
+import json
+import os
+import pathlib
+import re
+import sqlite3
+import stat
+import sys
+import threading
+import time
+import types
+from datetime import datetime
+from typing import Any
+from urllib.parse import parse_qsl
+
+import httpx
+import uvicorn
+
+
+EVIDENCE_ROOT = pathlib.Path(
+    r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T34"
+    r"\CanonicalOriginalGUI-20261031-022702"
+)
+RUNS_ROOT = EVIDENCE_ROOT / "runs"
+SOURCE_CASE_ROOT = pathlib.Path(
+    r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T30"
+    r"\GenuineSessionAdmission-20261028-092536\run-kLVTTq\case"
+)
+SOURCE_RUN_REPORT = pathlib.Path(
+    r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T30"
+    r"\GenuineSessionAdmission-20261028-092536\run-kLVTTq\admission-report.json"
+)
+B_PRODUCT_ROOT = pathlib.Path(r"D:\Lawbeach\lawbench-B")
+B_SERVICE = B_PRODUCT_ROOT / "service"
+B_CONTRACTS = B_PRODUCT_ROOT / "contracts"
+SKILLS_DIR = B_PRODUCT_ROOT / "skills"
+B_SOURCE_PINS = pathlib.Path(
+    r"D:\Lawbeach\lawbench-coord\T18WikiTableFidelityBSourcePins-20261030-033727"
+    r".json"
+)
+B_SOURCE_PINS_BYTES = 53548
+B_SOURCE_PINS_SHA256 = (
+    "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b"
+)
+
+SAFETY_BASE = pathlib.Path(
+    r"D:\Lawbeach\lawbench-coord\T32NativeDocumentCitationInput-20261027-190830"
+    r"\10-MixedMaterialsGui-20261027-164646-server.py"
+)
+SAFETY_BASE_BYTES = 151304
+SAFETY_BASE_SHA256 = (
+    "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5"
+)
+
+PREPARED_FORMAT = "lawbench-t34-private-projection-observer-prepared-v1"
+ADMISSION_FORMAT = "lawbench-t34-private-projection-observer-admission-v1"
+RUN_NAME = re.compile(r"^T34-private-projection-observer-[0-9]{8}-[0-9]{6}$")
+EXPECTED_CASE_ID = "872b161f-27d4-40bf-879e-ee457ef6454b"
+SOURCE_SESSION = "session-97c67db2-b8a6-428b-be48-04b4144d10bd"
+CHILD_SESSION = "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9"
+SOURCE_BYTES = 12059
+SOURCE_SHA256 = "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+CHILD_BYTES = 16235
+CHILD_SHA256 = "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+SOURCE_RUN_REPORT_SHA256 = (
+    "238bc2fa4d720d0b5c41e60f1c66a0fe51610e5b7a100b7593f4b61e978ea08e"
+)
+SOURCE_RUN_PACKET_MANIFEST_SHA256 = (
+    "b7c1933e9065a67049a2f4cb14d6eac804f084d388a130371664442876d708f4"
+)
+
+EXPECTED_FILES = {
+    "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-97c67db2-b8a6-428b-be48-04b4144d10bd/session.v4.jsonl":
+        (SOURCE_BYTES, SOURCE_SHA256),
+    "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9/session.v4.jsonl":
+        (CHILD_BYTES, CHILD_SHA256),
+    "工作区/case.db": (
+        65536,
+        "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6",
+    ),
+    "工作区/case.db-shm": (
+        32768,
+        "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+    ),
+    "工作区/case.db-wal": (
+        0,
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ),
+}
+
+ADMISSION_FILE = "admission.json"
+RUNTIME_ARTIFACTS = (
+    "started.json",
+    "ready.json",
+    "final-metadata.json",
+    "loop-closed.json",
+    "requests.ndjson",
+    "run-error.json",
+)
+
+SERVERS = {
+    "llm_base_url": "http://127.0.0.1:65001/v1",
+    "prep_base_url": "http://127.0.0.1:65002",
+    "llm_alt_base_url": "http://127.0.0.1:65003/v1",
+    "prep_alt_base_url": "http://127.0.0.1:65004",
+}
+
+READ_ONLY_ROUTES = frozenset(
+    {
+        "/health",
+        "/api/case/recent",
+        "/api/settings",
+        "/api/capsules",
+        "/api/materials",
+        "/api/tasks",
+        "/api/task/current",
+        "/api/outputs",
+        "/api/ocr/jobs",
+        "/api/wiki/suggestions",
+        "/api/wiki/review",
+    }
+)
+CASE_QUERY_ROUTES = frozenset(
+    {
+        "/api/materials",
+        "/api/tasks",
+        "/api/outputs",
+        "/api/ocr/jobs",
+        "/api/wiki/suggestions",
+        "/api/wiki/review",
+    }
+)
+NO_QUERY_ROUTES = frozenset(
+    {"/health", "/api/case/recent", "/api/settings", "/api/capsules"}
+)
+
+MAX_SECONDS = 600
+MAX_BODY = 64 * 1024
+MAX_CAPTURE = 256 * 1024
+
+
+
+
+def _host_values(root: pathlib.Path, appdata: pathlib.Path) -> tuple[int, str]:
+    port = os.environ.get("LB_PORT")
+    token = os.environ.get("LB_TOKEN")
+    host_appdata = os.environ.get("LB_APPDATA")
+    if port is None or re.fullmatch(r"[0-9]+", port) is None:
+        raise Deny("invalid_LB_PORT")
+    if token is None or re.fullmatch(r"[0-9a-f]{64}", token) is None:
+        raise Deny("invalid_LB_TOKEN")
+    if host_appdata is None or _norm(host_appdata) != _norm(appdata):
+        raise Deny("LB_APPDATA_not_prepared")
+    if os.environ.get("LB_FORWARD_PORT", "") != "65005":
+        raise Deny("LB_FORWARD_PORT_not_fixed")
+    host_port = int(port, 10)
+    if not 1 <= host_port <= 65535:
+        raise Deny("LB_PORT_out_of_range")
+    if not root.is_dir():
+        raise Deny("root_missing")
+    return host_port, token
+
+
+
+
+async def _serve(root: pathlib.Path, seconds: int) -> tuple[str, str]:
+    manifest, admission, layout = _verify_admission(root)
+    host_port, host_token = _host_values(root, layout["appdata"])
+    started_path = root / "started.json"
+    _write_json(
+        started_path,
+        {
+            "status": "started",
+            "pid": os.getpid(),
+            "started_at": _now(),
+            "root": str(root),
+            "case_id": EXPECTED_CASE_ID,
+            "host_port": host_port,
+            "requested_seconds": seconds,
+        },
+    )
+
+    guard = BASE.Guard()
+    local_count = {"local": 0, "external": 0, "keyring": 0}
+    cred_lock = threading.Lock()
+    restore = None
+    logs = None
+    lb = None
+    server = None
+    task = None
+    firewall = None
+    failure: str | None = None
+    port: int | None = None
+    net_closed = False
+    logs_closed = False
+    started_at = _now()
+
+    def local_key():
+        with cred_lock:
+            local_count["local"] += 1
+        return "T31-branch-gui-readonly-placeholder"
+
+    def external_key():
+        with cred_lock:
+            local_count["external"] += 1
+        return "T31-branch-gui-readonly-placeholder"
+
+    try:
+        _scrub_env(layout)
+        _install_keyring(local_count, guard, cred_lock)
+        _assert_b_sources()
+        guard.phase = "product_import"
+        restore = _install_guards(guard)
+        sys.path.insert(0, str(B_SERVICE))
+        from lawbench import contracts as imported_contracts
+        from lawbench import logs as imported_logs
+        from lawbench.app import create_app
+        from lawbench.case import gate as gate_module
+        from lawbench.case import materials as materials_module
+        from lawbench.config import Config
+        from lawbench.ingest import libreoffice as lo_module
+
+        logs = imported_logs
+        module_file = pathlib.Path(sys.modules["lawbench"].__file__).resolve()
+        if module_file.parents[2] != B_PRODUCT_ROOT.resolve():
+            raise Deny("product_root_not_current_b")
+        gate_module._registry_onedrive_folders = lambda: []
+        lo_module.find_soffice = lambda: None
+
+        def no_convert(*_args, **_kwargs):
+            guard.deny("office_conversion")
+            raise Deny("office_conversion")
+
+        materials_module.Converter.convert = no_convert
+        guard.phase = "app_create"
+        config = Config(
+            token=host_token,
+            appdata=layout["appdata"],
+            port=host_port,
+            forward_port=65005,
+            skills_dirs=[SKILLS_DIR],
+            contracts_dir=B_CONTRACTS,
+            validate_responses=True,
+        )
+
+        def refuse(_request):
+            guard.deny("httpx_mock_transport")
+            raise Deny("httpx_mock_transport")
+
+        native = create_app(
+            config,
+            key_getter=local_key,
+            external_key_getter=external_key,
+            transport=httpx.MockTransport(refuse),
+        )
+        lb = native.state.lb
+        _assert_wiring(lb, layout["appdata"], host_port, host_token)
+        lb.retainer = DisabledRetainer()
+
+        def no_recycle(*_args, **_kwargs):
+            guard.deny("recycle")
+            raise Deny("recycle")
+
+        lb.materials.can_recycle = no_recycle
+        lb.materials.recycle = no_recycle
+        with cred_lock:
+            if local_count["local"] or local_count["external"]:
+                raise Deny("credential_getter_at_startup")
+
+        firewall = Firewall(
+            native,
+            root=root,
+            case=layout["case"],
+            case_id=EXPECTED_CASE_ID,
+            host_token=host_token,
+        )
+        server = uvicorn.Server(
+            uvicorn.Config(
+                app=firewall,
+                host="127.0.0.1",
+                port=host_port,
+                workers=1,
+                lifespan="off",
+                ws="none",
+                loop="asyncio",
+                http="h11",
+                access_log=False,
+                log_level="warning",
+                log_config=None,
+                server_header=False,
+                date_header=False,
+                proxy_headers=False,
+            )
+        )
+        guard.phase = "server_start"
+        task = asyncio.create_task(server.serve())
+        await _started(server, task)
+        listener = _listener(server)
+        port = int(listener.getsockname()[1])
+        if port != host_port:
+            raise Deny("listener_port_mismatch")
+        if imported_contracts.version() != "1.6":
+            raise Deny("contract_version_not_1_6")
+        _write_json(
+            root / "ready.json",
+            {
+                "status": "ready",
+                "host": "127.0.0.1",
+                "port": port,
+                "pid": os.getpid(),
+                "started_at": _now(),
+                "contract_version": "1.6",
+                "case_path": str(layout["case"]),
+                "case_id": EXPECTED_CASE_ID,
+                "source_session_id": SOURCE_SESSION,
+                "child_session_id": CHILD_SESSION,
+                "prepared_sha256": _sha256(layout["prepared"]),
+                "admission_sha256": _sha256(layout["admission"]),
+                "allowed_routes": sorted(READ_ONLY_ROUTES)
+                + ["POST /api/case/open"],
+            },
+        )
+        guard.phase = "serving"
+        deadline = asyncio.get_running_loop().time() + seconds
+        while asyncio.get_running_loop().time() < deadline:
+            if task.done():
+                await task
+                raise Deny("server_exited_early")
+            await asyncio.sleep(
+                min(0.25, max(0.0, deadline - asyncio.get_running_loop().time()))
+            )
+    except asyncio.CancelledError:
+        failure = "cancelled"
+    except Exception as exc:
+        failure = getattr(exc, "code", type(exc).__name__)
+    finally:
+        guard.phase = "shutdown"
+        if server is not None:
+            server.should_exit = True
+        if task is not None:
+            try:
+                await asyncio.wait_for(asyncio.shield(task), timeout=15)
+            except asyncio.TimeoutError:
+                if server is not None:
+                    server.force_exit = True
+                try:
+                    await asyncio.wait_for(asyncio.shield(task), timeout=5)
+                except asyncio.TimeoutError:
+                    task.cancel()
+                    try:
+                        await task
+                    except BaseException:
+                        pass
+            except Exception as exc:
+                failure = failure or type(exc).__name__
+        if lb is not None:
+            try:
+                lb.net.client.close()
+                net_closed = bool(lb.net.client.is_closed)
+            except Exception:
+                net_closed = False
+        if logs is not None:
+            try:
+                logs.close()
+                logs_closed = True
+            except Exception:
+                logs_closed = False
+        if restore is not None:
+            restore()
+
+    source_unchanged = False
+    target_logs_unchanged = False
+    final_target: dict[str, Any] = {}
+    try:
+        source_unchanged = _row_map(_tree_files(SOURCE_CASE_ROOT)) == _row_map(
+            _expected_rows()
+        )
+        final_target = _t31_final_target_observation(
+            layout["case"], manifest, admission
+        )
+        target_logs_unchanged = final_target["targetLogsUnchanged"]
+    except Exception as exc:
+        failure = failure or getattr(exc, "code", type(exc).__name__)
+    guard_state = guard.snapshot()
+    request_state = firewall.evidence() if firewall is not None else {}
+    query_count = int(request_state.get("read_ok", 0))
+    if guard_state.get("violations") or any(local_count.values()):
+        failure = failure or "guard_or_credential_violation"
+    if not source_unchanged:
+        failure = failure or "source_changed"
+    task_done = bool(task is not None and task.done())
+    listener_closed = _closed(server)
+    if task is not None and not (
+        task_done and listener_closed and net_closed and logs_closed
+    ):
+        failure = failure or "cleanup_incomplete"
+
+    final = {
+        "outcome": "COMPLETED_FOR_ROOT_REVIEW" if failure is None else "FAILED_FOR_ROOT_REVIEW",
+        "root": str(root),
+        "startedAt": started_at,
+        "finishedAt": _now(),
+        "requestedSeconds": seconds,
+        "failureCode": failure,
+        "caseId": EXPECTED_CASE_ID,
+        "sourceSessionId": SOURCE_SESSION,
+        "childSessionId": CHILD_SESSION,
+        "sourceUnchanged": source_unchanged,
+        "targetLogsUnchanged": target_logs_unchanged,
+        "finalTargetObservation": final_target,
+        "credentials": {
+            "localGetterCalls": local_count["local"],
+            "externalGetterCalls": local_count["external"],
+            "keyringRejections": local_count["keyring"],
+        },
+        "guard": guard_state,
+        "requests": request_state,
+        "routeReads": query_count,
+        "lifespan": "off",
+        "ocrStarted": False,
+        "retainerStarted": False,
+        "credentialsDisabled": True,
+        "listener": {
+            "host": "127.0.0.1",
+            "port": port,
+            "websocket": False,
+            "forwardListener": False,
+        },
+        "cleanup": {
+            "serverTaskDone": task_done,
+            "listenerClosed": listener_closed,
+            "netClientClosed": net_closed,
+            "logsClosed": logs_closed,
+            "rootRetained": True,
+        },
+        "notAcceptance": (
+            "This service writes structural file observations only. Root must "
+            "independently observe the actual GUI action, actual native IDs, "
+            "parent stability, source immutability, zero new turns, and zero "
+            "model requests. This is not GUI, model, packaging, whole-T31, or "
+            "project acceptance; the just-compacted state remains unverified."
+        ),
+    }
+    _write_json(root / "final-metadata.json", final)
+    return str(root / "final-metadata.json"), failure or ""
+
+
+
+
+def _serve_checked(raw_root: str, seconds: int) -> tuple[pathlib.Path, str, str]:
+    root = _validate_root(raw_root)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    final_path = ""
+    failure = ""
+    try:
+        final_path, failure = loop.run_until_complete(_serve(root, seconds))
+    except BaseException as exc:
+        failure = getattr(exc, "code", type(exc).__name__)
+        try:
+            _write_json(
+                root / "run-error.json",
+                {
+                    "outcome": "FAILED_FOR_ROOT_REVIEW",
+                    "exceptionType": type(exc).__name__,
+                    "guardCode": getattr(exc, "code", None),
+                    "rootRetained": True,
+                },
+            )
+        except BaseException:
+            pass
+    finally:
+        try:
+            loop.run_until_complete(loop.shutdown_asyncgens())
+        except BaseException:
+            pass
+        loop.close()
+        asyncio.set_event_loop(None)
+    try:
+        _write_json(
+            root / "loop-closed.json",
+            {
+                "closedAt": _now(),
+                "eventLoopClosed": True,
+                "finalMetadataWritten": bool(final_path and pathlib.Path(final_path).is_file()),
+            },
+        )
+    except BaseException:
+        failure = failure or "loop_close_evidence_failed"
+    return root, failure, final_path
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="T31 genuine-branch GUI entry")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--admit", action="store_true")
+    mode.add_argument("--serve", action="store_true")
+    parser.add_argument("--root", required=True)
+    parser.add_argument("--seconds", type=int, default=600)
+    args = parser.parse_args()
+    if args.admit:
+        try:
+            report = _admit(args.root)
+        except BaseException as exc:
+            print(
+                f"admit refused: {getattr(exc, 'code', type(exc).__name__)}",
+                file=sys.stderr,
+            )
+            return 2
+        print(report)
+        return 0
+    if not 1 <= args.seconds <= MAX_SECONDS:
+        parser.error(f"--seconds must be 1..{MAX_SECONDS}")
+    try:
+        _, failure, final_path = _serve_checked(args.root, args.seconds)
+    except BaseException as exc:
+        print(
+            f"serve refused: {getattr(exc, 'code', type(exc).__name__)}",
+            file=sys.stderr,
+        )
+        return 2
+    if final_path:
+        print(final_path)
+    if failure:
+        print(f"serve failed: {failure}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+def forward_app(net: Net, transport: httpx.AsyncBaseTransport | None = None, *,
+                external_policy=None, external_key_getter=None):
+    """本机转发（纯 ASGI）。
+
+    - 本地只接受 POST /v1/chat/completions、GET /v1/models；外部只接受
+      POST /v1-ext/chat/completions、GET /v1-ext/models；Host 必须是 127.0.0.1:<本端口> 或 localhost:<本端口>；
+      带 Origin 请求头（来自网页）一律 404，不发往上游（Spec 第 15 节）。
+    - 全程监听客户端断开：断开时取消上游请求（包括还没回响应头的排队阶段）并关闭上游流，记 fail / CANCELLED。
+    - 失败都记 module=forward、status=fail：回响应头之前的失败返回 502 失败体；流式中途上游断开时直接断开客户端连接。
+    """
+    state: dict = {}
+
+    async def lifespan(receive, send) -> None:
+        while True:
+            msg = await receive()
+            if msg["type"] == "lifespan.startup":
+                state["client"] = net.async_client(transport)
+                state["external_client"] = net.async_external_client(transport)
+                await send({"type": "lifespan.startup.complete"})
+            elif msg["type"] == "lifespan.shutdown":
+                client = state.pop("client", None)
+                if client is not None:
+                    await client.aclose()
+                external_client = state.pop("external_client", None)
+                if external_client is not None:
+                    await external_client.aclose()
+                await send({"type": "lifespan.shutdown.complete"})
+                return
+
+    async def app(scope, receive, send) -> None:
+
+    def index(self, case_id: str) -> dict:
+        """材料索引（只读，给工具和覆盖清单用）。不拿案件锁（T8 返修 P2-5）：扫描、导入要持锁很久，
+        index.json 是原子替换写入的，不加锁读到的一定是完整的旧版或新版。"""
+        root = self.cases.root_of(case_id)
+        index = self._load_index(root, case_id)
+        # 已移除的材料（契约 1.4）只在 index.json 里留编号：工具、检索、覆盖清单、wiki、归档、识别都当它不存在
+        return {**index, "materials": [m for m in index["materials"] if m["status"] != "removed"]}
+
+    def original_path(
+
+    def list(self, case_id: str, *, include_removed: bool = False) -> dict:
+        if not isinstance(include_removed, bool):
+            raise ApiError("INVALID_ARGUMENT", "include_removed_invalid")
+        root = self.cases.root_of(case_id)
+        with self._lock(case_id):
+            index = self._load_index(root, case_id)
+            _, refs_doc = self._load_refs(root)
+            refs_by_id = {r["ref_id"]: r for r in (refs_doc or {}).get("refs", [])}
+        stale = self._stale_ocr(root, index)
+        rows = []
+        for m in index["materials"]:
+            removed = m["status"] == "removed"
+            if removed and not include_removed:
+                continue
+            rows.append({
+                "material_id": m["material_id"], "name": m["name"], "rel_path": m["rel_path"], "type": m["type"],
+                "status": m["status"], "unit": m["unit"], "unit_count": m["unit_count"], "is_ocr": m["is_ocr"],
+                "stale_ocr": False if removed else m["material_id"] in stale,
+                "error": m["error"], "pages_need_ocr": m["pages_need_ocr"],
+                "pages_mixed": m["pages_mixed"], "chars": None if removed else self._chars(root, m),
+                **({"origin": "ref", "ref_id": m["ref_id"],
+                    "location": self._ref_location(m, refs_by_id)}
+                   if m.get("origin") == "ref" else {})})
+        return {"materials": rows}
+
+    def _ref_location(self, material: dict, refs_by_id: dict[str, dict]) -> str:
+        ref = refs_by_id.get(material.get("ref_id"))
+        if ref is None:
+            raise ApiError("INTERNAL", "ref_not_found")
+        if ref["kind"] == "file":
+            return ref["path"]

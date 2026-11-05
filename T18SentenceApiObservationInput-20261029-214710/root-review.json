@@ -1,0 +1,11 @@
+{
+  "verdict": "FINITE_HARNESS_RUNTIME_PROCEDURE_INTERVENTION_CONFIRMED",
+  "actual_first_grouped_read_seq": 16,
+  "paired_error_seq": 17,
+  "actual_first_list_seq": 41,
+  "first_grouped_args_are_valid_production_tool_contract": true,
+  "first_grouped_before_list_still_PRIMARY_FAILURE": true,
+  "source_fix": "Defer three procedural prechecks to existing strict final B sequence assertions and Node Native-event checks. Preserve every outcome assertion, not make wrong order green. Do not alter any prompt/answer/model/Skill/budget.",
+  "model_transport_error_separate_cause_unproven": true,
+  "root_review_miss_acknowledged": true
+}

@@ -1,0 +1,19 @@
+{
+  "verdict": "PRIVATE_SOURCE_CANDIDATE_TWO_POSITIVE_PLUS_ONE_NEGATIVE_ACCEPTED",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34ProviderSourceControlsAccepted-root-20261030-120304",
+  "manifest_files": 16,
+  "manifest_sha256": "f6aeb0e1818d9a2315e1bd77c6d823abd21206fd38b5bed541a032ee47df19b6",
+  "positive_actual": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34ProviderPriorityCandidateFinite-root-20261030-114826",
+  "negative_actual": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34ProviderDescriptorStateFinite-root-20261030-115641",
+  "positive_two_code_exact_reused": true,
+  "negative_one_actual_passed": true,
+  "not_single_three_green_run": true,
+  "negative_rejected_exact_error_and_preserved_all_non_schema_state": true,
+  "original_failed_run_immutable": true,
+  "three_complete_negative_OS_gone": true,
+  "forced": false,
+  "model": 0,
+  "GUI": 0,
+  "native_GUI_cause": "UNKNOWN",
+  "Packaging": "HOLD"
+}

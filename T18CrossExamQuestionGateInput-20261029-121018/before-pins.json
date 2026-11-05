@@ -1,0 +1,38 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\0-index.ts",
+    "bytes": 46547,
+    "sha256": "40ab48b82a3bb8b1ae488daa1ba930924d1b8b292aa70114bf317e9a633d5794"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\1-task-state.ts",
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-draft-question-recovery.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\2-contract-draft-question-recovery.spec.ts",
+    "bytes": 18087,
+    "sha256": "cb70095abd6d1b216e9d9a2011c587c26054f6ff6e5576fdad9b0f03cd517928"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\3-contract-question-gate.spec.ts",
+    "bytes": 22358,
+    "sha256": "248d87161122529cf295985d6d56b53cdcc6722ad9e55d7f432f3a2eaa1d5ed8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate-runtime.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\4-contract-question-gate-runtime.spec.ts",
+    "bytes": 15507,
+    "sha256": "c5c89d7fbc42eaa70144565d62c27fcaa2559335113c82ec106b25f5810b09ec"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamQuestionGateInput-20261029-121018\\5-SKILL.md",
+    "bytes": 12390,
+    "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a"
+  }
+]

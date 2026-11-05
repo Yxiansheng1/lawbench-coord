@@ -1,0 +1,37 @@
+{
+  "base-server.py": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\server.py",
+    "bytes": 85379,
+    "sha256": "6065d8101705c55862f8516418e39d71d36d85602d307048aff74b86297a6595"
+  },
+  "base-probe.mjs": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\probe.mjs",
+    "bytes": 23810,
+    "sha256": "ff05e287968704990497eb265e3420f09f0cf16279ed790ffd3e3166d14f194d"
+  },
+  "base-README.md": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\README.md",
+    "bytes": 4856,
+    "sha256": "546eec6995112ec367d1658c848d49eb75daf06a7cdf71657f478cb5d4d40a2e"
+  },
+  "bootstrap-report.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\runs\\T33-host-20261025-213904\\bootstrap-report.json",
+    "bytes": 1084,
+    "sha256": "279520981d63e3270db04c8927943055960de16f6c93af7ffffc450c6c790e5c"
+  },
+  "prepared.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\runs\\T33-host-20261025-213904\\prepared.json",
+    "bytes": 58194,
+    "sha256": "2eda7d299f2fec316d26407ff8925b53aada8d3bd5a179449d8f3dfaba83570c"
+  },
+  "final-metadata.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\runs\\T33-host-20261025-213904\\final-metadata.json",
+    "bytes": 114778,
+    "sha256": "65c6bb2f52bc6b534ab03c30af53fdacb4c5f28f5668d9626fec879a9355e584"
+  },
+  "outputs-index.json": {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T15\\ConfirmMdEntry-20261025-212409\\runs\\T33-host-20261025-213904\\case\\成果\\索引.json",
+    "bytes": 454,
+    "sha256": "ec4f79e9309c821f1c30c1e340a84164ec26ab3d9de2bcff3e1a5c08f85075df"
+  }
+}

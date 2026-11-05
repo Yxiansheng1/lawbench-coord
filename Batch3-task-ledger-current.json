@@ -1,0 +1,47 @@
+{
+  "ownerOrder": "OWNER-第三批-EasyTier真连-20261103-002500.md",
+  "ownerOrderSensitiveNotCopied": true,
+  "sourceDeadline": "2026-11-03T01:22:10.5991757+08:00",
+  "items": [
+    {
+      "n": 1,
+      "task": "Restore trueRemoteAccess and defaultcorepath",
+      "gate": 1,
+      "source": "HANDBACK-B-Batch3-TwoLiterals-current.md",
+      "status": "SOURCE_REVIEWED_FINITE_TESTS_PASSED"
+    },
+    {
+      "n": 2,
+      "task": "Actual connect UI and unchanged real API routes",
+      "gate": 1,
+      "status": "SOURCE_REVIEWED_FINITE_TESTS_PASSED"
+    },
+    {
+      "n": 3,
+      "task": "Explicitpackaged corepathSHA and ONEfinalinstaller",
+      "gate": 1,
+      "status": "FINAL_INSTALLER_BUILT_ACTUAL_UNPACK_ASSERTIONS_PASSED"
+    },
+    {
+      "n": 4,
+      "task": "Owner GUI tonight4/tomorrow4",
+      "gate": 1,
+      "status": "OWNER_PENDING_NOT_RUN"
+    }
+  ],
+  "Batch2accepted13": "OWNER_REPORT_FROZEN",
+  "T18": "CLOSED",
+  "finalInstallers": 1,
+  "finalResult": {
+    "receipt": "D:\\Lawbeach\\lawbench-coord\\第三批-最终安装包-20261103-012206.md",
+    "artifact": {
+      "path": "D:\\Lawbeach\\lawbench-A\\.p\\B3-20261103-002210\\runs\\20261103-011328\\out\\LawBench-FINAL-0.1.0-20261103004001-win-x64.exe",
+      "bytes": 836833057,
+      "sha256": "652b3aead466a699391e2a5d684a1e0a99a99873e7344087e4855c2f3381a08b"
+    },
+    "actualBuildStamp": "20261103-011328",
+    "closed": true
+  },
+  "closedAt": "2026-11-03T01:24:19.7824982+08:00",
+  "currentState": "FINAL_INSTALLER_DELIVERED_STOP_OWNER_GUI_PENDING"
+}

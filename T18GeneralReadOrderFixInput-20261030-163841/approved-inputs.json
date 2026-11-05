@@ -1,0 +1,44 @@
+{
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 50901,
+      "sha256": "e78789e20dc9e015664d41cebc1b55097c6a70ba6e85ce221006d5d06a23bbec",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderFixInput-20261030-163841\\0-index.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\litigation-question-order-20261029-192258.spec.ts",
+      "bytes": 25768,
+      "sha256": "58576d67eefd99d1b40139a0d82aa7b5462d485d4a2017da134a305108584ebf",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderFixInput-20261030-163841\\1-litigation-question-order-20261029-192258.spec.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\archive-workflow-gate-20261030-003021.spec.ts",
+      "bytes": 29638,
+      "sha256": "4719391feb49b71281eaa99ec2b6d0cde4d87d15a2df056b1a9e130811bfcd41",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderFixInput-20261030-163841\\2-archive-workflow-gate-20261030-003021.spec.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-read-question-order-20261030-163023.spec.ts",
+      "bytes": 14107,
+      "sha256": "ad772e1629d2a1f4c048403a03f135e6707f355659cba6b02d8cdbd0572979e3",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderFixInput-20261030-163841\\3-general-read-question-order-20261030-163023.spec.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 22291,
+      "sha256": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderFixInput-20261030-163841\\4-task-state.ts"
+    }
+  ],
+  "red_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\general-read-order-red-unit-current.json",
+  "test_author": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-general-read-order-test-1017-20261030-163023.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T18-general-read-order-test-20261030-163023.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T18-general-read-order-test-20261030-163023.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023",
+    "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-read-question-order-20261030-163023.spec.ts",
+    "product": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "state": "SOURCE_ONLY_GENERAL_READ_ORDER_TEST_BEFORE_PRODUCT_FIX"
+  }
+}

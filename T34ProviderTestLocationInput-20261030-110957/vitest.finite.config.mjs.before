@@ -1,0 +1,29 @@
+import tsconfigPaths from 'file:///D:/Lawbeach/lawbench-A/dsh/node_modules/vite-tsconfig-paths/dist/index.js'
+import { defineConfig } from 'file:///D:/Lawbeach/lawbench-A/dsh/node_modules/vitest/dist/config.js'
+import { standardDecoratorPlugin, vitestExecArgv } from 'file:///D:/Lawbeach/lawbench-A/dsh/vitest.shared.ts'
+
+const dshRoot = 'D:/Lawbeach/lawbench-A/dsh'
+
+export default defineConfig({
+  root: dshRoot,
+  envDir: false,
+  cacheDir: 'D:/Lawbeach/lawbench-A/docs/plan/evidence/T34/ProviderLayers-20261030-105817/runtime/cache',
+  plugins: [
+    tsconfigPaths({ projects: [`${dshRoot}/tsconfig.base.json`] }),
+    standardDecoratorPlugin(),
+  ],
+  test: {
+    include: ['D:/Lawbeach/lawbench-A/docs/plan/evidence/T34/ProviderLayers-20261030-105817/provider-composition.spec.ts'],
+    setupFiles: [
+      './scripts/test-proxy-environment.ts',
+      './scripts/test-invariants.ts',
+      './scripts/test-dom-environment.ts',
+    ],
+    execArgv: vitestExecArgv,
+    pool: 'forks',
+    maxWorkers: 1,
+    fileParallelism: false,
+    cache: false,
+    coverage: { enabled: false },
+  },
+})

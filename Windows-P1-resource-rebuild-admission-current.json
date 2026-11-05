@@ -1,0 +1,137 @@
+{
+  "target": "WindowsP1Resources-20261102-101155",
+  "owner_order": "D:\\Lawbeach\\lawbench-coord\\OWNER-WindowsP1-资源补齐与重建-20261102-101057.md",
+  "owner_sha256": "f01daa7a9c80d83eabf3a56af2561eeb3fcae728eca8a2160018cdf886228aed",
+  "status": "RESOURCE_REBUILD_HANDED_BACK_P1_P7_PASS_P6_CA_BLOCKED",
+  "build_start_utc": "2026-11-02T02:11:55Z",
+  "build_deadline_utc": "2026-11-02T02:56:55Z",
+  "acceptance_minutes": 30,
+  "acceptance_start_utc": "2026-11-02T02:25:00.850637+00:00",
+  "acceptance_deadline_utc": "2026-11-02T02:55:00.850637+00:00",
+  "maximum_same_cause": 2,
+  "maximum_rebuilds_authorized": 1,
+  "current_run": "20261102-102100",
+  "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155",
+  "resource_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "bytes": 585532,
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\PP-OCRv6_det_small.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/PP-OCRv6_det_small.onnx",
+      "bytes": 9929594,
+      "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\PP-OCRv6_rec_small.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/PP-OCRv6_rec_small.onnx",
+      "bytes": 21234383,
+      "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\python\\Lib\\site-packages\\docx\\templates\\default.docx",
+      "destination": "python/Lib/site-packages/docx/templates/default.docx",
+      "bytes": 38116,
+      "sha256": "2094b5bddffe9cf973d61fe03388413804f034160718494a65db7e98da40d35d",
+      "source": "Existing python-docx library built-in default template only; byte-identical copy"
+    }
+  ],
+  "old_installer_preserved": true,
+  "T18_closed": true,
+  "no_product_source_test_assertion_changes": true,
+  "source_only_diff": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\source-only-packaging-diff.patch",
+  "native_exec_session": null,
+  "controller_sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-private.mjs",
+      "sha256": "cee5fd164fec14fa56c6a8cbfd4a26f94af90c35d7f01a7fbb2ea62513e5340a",
+      "bytes": 33710
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-config.mjs",
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970",
+      "bytes": 5395
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-windows-candidate.ps1",
+      "sha256": "9a05a69ca1ea319c86e87fb65b1a3775118b4f0f29c469f42cfcf9c2fe4aa7a1",
+      "bytes": 80563
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\builder.config.json",
+      "sha256": "1fbad07395e24ed2ab8dbfbab270fef9001770a7a96a0f07ce6fdcd12de058ed",
+      "bytes": 32847
+    }
+  ],
+  "source_review": "Full PS changed hunks, setup/environment/UTC per-child cleanup reviewed. Fresh stage digest equals frozen old stage before exactly4 pins added. No prior7z reuse. Exact oldstage path + whole digest. No product/test/assertion changes.",
+  "preparation_attempt": 2,
+  "NSIS_attempts": 1,
+  "same_preparation_failure_count": 1,
+  "previous_preparation_failure": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\preparation1-failure-and-correction.json",
+  "build_completed_utc": "2026-11-02T02:25:00.850637+00:00",
+  "NSIS_actual_s": 18.4901637,
+  "artifact": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\runs\\20261102-102100\\out\\LawBench-PRIVATE-RESOURCE-REBUILD-0.1.0-win-x64.exe",
+    "bytes": 811533139,
+    "sha256": "0371caa599df24ec800145c89a982ae8a3eda539062a4c81763a1cd8e7a993bb"
+  },
+  "installed_root": "D:\\Lawbeach\\_acceptance\\WindowsP1Resources-20261102-101155",
+  "build_segment_closed": true,
+  "previous_preparation_failure_gone": true,
+  "stage_verified_files": 24683,
+  "old_archive_reused": false,
+  "acceptance_concluded_utc": "2026-11-02T02:42:01.916227+00:00",
+  "current_runtime_active": false,
+  "acceptance_segment_closed": true,
+  "latest_summary": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-ORCH-打包重建-20261102-104201.md",
+  "latest_gaps": "D:\\Lawbeach\\lawbench-coord\\Windows-P1-资源重建缺口-20261102-104201.md",
+  "next_target_automatically_admitted": false,
+  "new_extra_CA_resource_not_copied": true,
+  "controller_sources_first_static_preparation": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-private.mjs",
+      "sha256": "cee5fd164fec14fa56c6a8cbfd4a26f94af90c35d7f01a7fbb2ea62513e5340a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-config.mjs",
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\build-windows-candidate.ps1",
+      "sha256": "067a55a12e13b59374be37402e4b267f4ec71d5542e96855ebec59babacfc11a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\builder.config.json",
+      "sha256": "1fbad07395e24ed2ab8dbfbab270fef9001770a7a96a0f07ce6fdcd12de058ed"
+    }
+  ],
+  "controller_sources_actual_build_frozen": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\actual-build-controller-frozen\\build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\actual-build-controller-frozen\\build-private.mjs",
+      "bytes": 33710,
+      "sha256": "cee5fd164fec14fa56c6a8cbfd4a26f94af90c35d7f01a7fbb2ea62513e5340a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\actual-build-controller-frozen\\build-windows-candidate.ps1",
+      "bytes": 77453,
+      "sha256": "9ce3c751fa30c6cc25a24efe3469f1f29dc63c7ba50b039c66ba932d55b39d64"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1Resources-20261102-101155\\actual-build-controller-frozen\\builder.config.json",
+      "bytes": 32847,
+      "sha256": "1fbad07395e24ed2ab8dbfbab270fef9001770a7a96a0f07ce6fdcd12de058ed"
+    }
+  ],
+  "controller_source_qualification": "First static preparation input pins retained separately. Actual build snapshot includes second staging correction; current packaging controller additionally emits reviewed acceptance helper. No installed product code change."
+}

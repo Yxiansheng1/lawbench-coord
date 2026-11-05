@@ -1,0 +1,5 @@
+# A Batch4 finite proven correctionsONLY, 180seconds exactDS1017/max sourceonly. FIRSTtool onlyreadthisASCIIorder nativeabsolute pwsh/loginfalse. Rootreadrules/dirtypreserved. NO Git,tests/parser/build/runtime/HTTP/GUI/credential/otherhistory.
+23PASS1FAIL finite currentA. AllowedwritesONLY:
+1 dsh-ext/tests/owner-remote-p05-20261102.spec.ts: connected disclaimertestexpected old substring '不表示两台都可用' but actualcorrecttext '不表示两台律所服务器都可用'. Change ONLY expectedstring to currentexactqualifier, and '不表示身份认证已经通过' expected to '也不表示身份认证已经通过' ifneeded (unchangedmeaning). Do notremovechecks orchangeproductUI/source.
+2 contracts/_build/gen_schemas.py: explicitownerapproved minimalcause mapping/schemaextensionincludesgenerator. ONLYappend EXTERNAL_NOT_TUNNEL to remote_access_value reasonenum byNO_REMOTE_ADDRESS. DoNOTregenerate schemas/version orfixotheroldenumdifferences. ExistingRuntimeMissinggenerator mismatchpredatesbatch.
+No newproduct/tests exceptthese2files. Write D:/Lawbeach/lawbench-coord/HANDBACK-A-Batch4-corrections-current.md thenSTOP. Do notexecuteanything.

@@ -1,0 +1,82 @@
+{
+  "old_mts": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18LocalizedContextNativeCase-20261101-140433\\native-defense-opinion.mts",
+  "old_py": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18LocalizedContextNativeCase-20261101-140433\\b-service-defense-opinion.py",
+  "old_manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18LocalizedContextNativeCase-20261101-140433\\literalfixed-inputs.json",
+  "MTS_mapping": {
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18LocalizedContextNativeCase-20261101-140433Input": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CitedUnreadNativeCase-20261101-151539Input",
+    "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9": "26833501f8e4e890ffab72cc39b29b09fb8f7074fec570426071c16cb96f6a63",
+    "missingQuestionAskDenial: production.questionRequirementDenial,": "missingQuestionAskDenial: production.invalidQuestionAskDenial,"
+  },
+  "PY_mapping": {
+    "D:\\Lawbeach\\lawbench-coord\\T18LocalizedContextNativeCase-20261101-140433Input": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadNativeCase-20261101-151539Input",
+    "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9": "26833501f8e4e890ffab72cc39b29b09fb8f7074fec570426071c16cb96f6a63"
+  },
+  "MTS_counts": {
+    "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18LocalizedContextNativeCase-20261101-140433Input": 2,
+    "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9": 1,
+    "missingQuestionAskDenial: production.questionRequirementDenial,": 1
+  },
+  "PY_counts": {
+    "D:\\Lawbeach\\lawbench-coord\\T18LocalizedContextNativeCase-20261101-140433Input": 2,
+    "e7a04ac3c6eb3d6761a246893b620c615cbffdb9c2e008ec6aa92b7a341c60c9": 1
+  },
+  "ready_manifest": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadNativeCase-20261101-151539Input\\literalfixed-inputs-ready.json",
+  "target_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539",
+  "expected_consumer": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\native-defense-opinion.mts",
+    "bytes": 156912,
+    "sha256": "61044412a52df8bbba2587a257f807a5399bcee37fb52da36cbfd03d3b5877c6"
+  },
+  "expected_bService": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\b-service-defense-opinion.py",
+    "bytes": 53710,
+    "sha256": "1ee11e50860e4cff5e711bf44a8d322d3c0b90ef9e73a2a1ab81e2b5b7c3ebe0"
+  },
+  "expected_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadNativeCase-20261101-151539Input\\literalfixed-inputs-ready.json",
+    "bytes": 12039,
+    "sha256": "3cb8283490e8004d0d6670bbd7bcfed14b0c9871e685d1566074e11208241671"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18CitedUnreadNativeCase-20261101-151539.md",
+  "source346_explicit_changed_rows": [
+    {
+      "path": "service/lawbench/tools/drafts.py",
+      "old": {
+        "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822",
+        "bytes": 20481
+      },
+      "new": {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+        "bytes": 22908,
+        "sha256": "03d8a77d41a75338ae3baa239e9572b97d71d74ad4bff4bbe01fe9709e20957d"
+      }
+    }
+  ],
+  "model_temperature": 0.6,
+  "unchanged_runtime4": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\private-output-20261101-135524\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 570213,
+      "sha256": "53669685d4eef39e784f9a022eae9ce540777a1074f04fba98988f72ae83f3ba"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\private-output-20261101-135524\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 905178,
+      "sha256": "19c21b8db04adf387a4f9925e11685106aa979b4683c32684eb67c418393297a"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\private-output-20261101-135524\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\private-output-20261101-135524\\manifest.json",
+      "bytes": 58591,
+      "sha256": "a6abf559857ee0de8d16c33dcbbbfd0b5ce41599a1b73a8a0d3a4055a7ff5aaf"
+    }
+  ]
+}

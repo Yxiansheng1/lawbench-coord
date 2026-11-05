@@ -1,0 +1,111 @@
+{
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\entry.py",
+      "bytes": 88670,
+      "sha256": "369f3fd3b8f70e01a56e9685e14bd41d7b126cad490a974544b62911a2e58980"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\frame-classifier-finite.mjs",
+      "bytes": 7046,
+      "sha256": "6102ee17d992306bbe06405347f25132ba1140feac329ded7f9345ac35ebcd0e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\literal-inputs.json",
+      "bytes": 13410,
+      "sha256": "d7a48764689919a66d20d648511801e4eff7a3bbf5d114dee9ea31fa3eb987d2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\prepare.ps1",
+      "bytes": 13561,
+      "sha256": "d280ca31609865f91b60c02b1cb531c506673b26e9743b3fdda5ffe8c6dfa9bc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\projection-observer.mjs",
+      "bytes": 18502,
+      "sha256": "a50d2eeb520b87576bf977fe2bb895175a8a89e4527bbc907296897714dd0da5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\README.md",
+      "bytes": 13965,
+      "sha256": "6be25612597b13c5ea77cb32aa527dbfe82511419cf98241cb7100a228fbd58a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\start.ps1",
+      "bytes": 76348,
+      "sha256": "4fe39e1dc2cfc989bbbffe976a71948af1436ec5fc4c49f6820352fb5bb2caf5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\stop.ps1",
+      "bytes": 7178,
+      "sha256": "d52ed07f1ec6bf0ef116c1dab069647c042e5f80751e579bc0872e7ccfed932d"
+    }
+  ],
+  "current_B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+    "mtime_ns": "1793302647316836800"
+  },
+  "explicit_B346_delta": {
+    "old": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+    "current_accepted": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "changed": {
+      "service/lawbench/checks/citations.py": {
+        "old": {
+          "sha256": "67779ba41e35e2b6780a7b74ebe061e143a79dd5b8c97273329ae91059748758",
+          "bytes": 18609
+        },
+        "current_accepted": {
+          "sha256": "6171f0dd8c564cb9fe092a1c3d222217acaedab6bf500baf04afeafeca19b412",
+          "bytes": 19642
+        }
+      },
+      "service/lawbench/checks/parse.py": {
+        "old": {
+          "sha256": "3fd25b61a965abe5432b8d301448517dea003d77739f45a0331bbbf07fa123bc",
+          "bytes": 11974
+        },
+        "current_accepted": {
+          "sha256": "56f6ac85636eb5260db117067397fe5bad8cd1376360a1be8c52b92203b9db83",
+          "bytes": 14357
+        }
+      },
+      "service/lawbench/pipeline/steps/wiki.py": {
+        "old": {
+          "sha256": "aa1614baf9c2d28939b133f47cb5d3c86ac3f6003ed3c392298421ceb80ca76a",
+          "bytes": 33754
+        },
+        "current_accepted": {
+          "sha256": "96698902e8e0925376b742074fb7076edb41cf94f7ba83e0682d6c601607ef13",
+          "bytes": 33796
+        }
+      },
+      "service/lawbench/tools/archive.py": {
+        "old": {
+          "sha256": "f159e7e5e629df3f11554c35b10b432f0464ee67d73eae60d017988079311459",
+          "bytes": 1957
+        },
+        "current_accepted": {
+          "sha256": "1bc47967b17e238e71a95f7bbbe2f474e968b07a506ce849058220e8ff3173dd",
+          "bytes": 2393
+        }
+      },
+      "service/lawbench/tools/drafts.py": {
+        "old": {
+          "sha256": "119d3ceacee730523b6192c540c063dd36aaec4b3c91814efe57194896ef2f2a",
+          "bytes": 6779
+        },
+        "current_accepted": {
+          "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822",
+          "bytes": 20481
+        }
+      }
+    },
+    "current_mismatch": []
+  },
+  "other341held": true,
+  "original_input": "D:\\Lawbeach\\lawbench-coord\\T34ProjectionObserverInput-20261030-061810\\approved-inputs.json",
+  "current_private194112_unchanged": true,
+  "legacy18_unchanged": true
+}

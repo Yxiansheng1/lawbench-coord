@@ -1,0 +1,23 @@
+{
+  "verdict": "SOURCE_REVIEWED_CONTRACT_ONLY_ONCE_TASK_FEEDBACK_PENDING_FINITE",
+  "author": "01a182b8-5ea3-7041-a5c7-bfdece96de20",
+  "commands": 58,
+  "success": 49,
+  "author_runtime": 0,
+  "source_pins": {
+    "dsh-ext/agent/index.ts": "5e53fbe9d1833c6533143a2e87d7c39a4f2cf1ce4ede4b421572664aab9fdcfb",
+    "dsh-ext/agent/task-state.ts": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b",
+    "dsh-ext/tests/draft-feedback-recovery.spec.ts": "6e23e5d532ef4e79f02606dddac472252a9737f6d9d125356e3a85923e8e5f94"
+  },
+  "allowed_write_faces": [
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DraftFeedbackRecovery-20261028-213436\\README.md",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\draft-feedback-recovery.spec.ts",
+    "D:\\Lawbeach\\lawbench-coord\\A-handback-T18-draft-feedback-recovery-20261028-213436.md"
+  ],
+  "unchanged_old_tests": true,
+  "note_scope": "Successful body save snapshot not final post-policy; no new endReason/UI/severity/budget/schema; once per task; actual source types and tests independently read",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

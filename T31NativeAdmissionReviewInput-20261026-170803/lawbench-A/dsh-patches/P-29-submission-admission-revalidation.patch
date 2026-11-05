@@ -1,0 +1,77 @@
+diff --git a/packages/client/ui-conversation/src/client/service.ts b/packages/client/ui-conversation/src/client/service.ts
+--- a/packages/client/ui-conversation/src/client/service.ts
++++ b/packages/client/ui-conversation/src/client/service.ts
+@@ -39,6 +39,16 @@ export interface ConversationSubmissionLifecycle {
+     readonly requestId: string
+     readonly mode: InputSubmitMode
+   }): Promise<void>
++  /**
++   * Final synchronous guard immediately before prompt(). It must not await:
++   * callers have finished paint/attachment preparation and this check must be
++   * atomic with handing the native request identity to prompt().
++   */
++  admit?(event: {
++    readonly sessionId: SessionId
++    readonly requestId: string
++    readonly mode: InputSubmitMode
++  }): void
+   accepted(event: {
+     readonly sessionId: SessionId
+     readonly requestId: string
+@@ -238,6 +248,13 @@ export class ConversationController extends Service implements IConversation {
+       submission.abandon()
+       throw error
+     }
++    try {
++      this.submissionLifecycle?.admit?.(event)
++    } catch (error) {
++      await this.submissionLifecycle?.failed(event)
++      submission.abandon()
++      throw error
++    }
+     let result: Awaited<ReturnType<SessionFace['prompt']>>
+     try {
+       result = await session.prompt([{ type: 'text', text }], 'queue', undefined, submission.requestId)
+@@ -331,6 +348,7 @@ export class ConversationController extends Service implements IConversation {
+       await nextPaint()
+       const uploaded = await serializeAttachments()
+       content = [...uploaded, ...(text === '' ? [] : [{ type: 'text' as const, text }])]
++      this.submissionLifecycle?.admit?.(event)
+     } catch (error) {
+       await this.submissionLifecycle?.failed(event)
+       submission.abandon()
+diff --git a/packages/client/ui-conversation/src/client/apply.ts b/packages/client/ui-conversation/src/client/apply.ts
+--- a/packages/client/ui-conversation/src/client/apply.ts
++++ b/packages/client/ui-conversation/src/client/apply.ts
+@@ -86,11 +86,17 @@ export interface ConversationSubmissionEvent {
+ /**
+  * lawbench T31: observe one native submission without replacing its request id.
+  * `prepare` runs after beginSubmission() minted R, before prompt(); a thrown
+- * error abandons the local echo and prevents prompt(). Accepted/failed run
+- * after the prompt admission settles.
++ * error abandons the local echo and prevents prompt(). Optional `admit` runs
++ * synchronously at the last pre-prompt boundary. Accepted/failed settle the
++ * request once.
+  */
+ export interface ConversationSubmissionHook {
+   prepare(event: ConversationSubmissionEvent): Promise<void>
++  /**
++   * Optional synchronous final guard after all paint/attachment awaits and
++   * immediately before the native prompt call. A throw rejects this request.
++   */
++  admit?(event: ConversationSubmissionEvent): void
+   accepted(event: ConversationSubmissionEvent): Promise<void>
+   failed(event: ConversationSubmissionEvent): Promise<void>
+ }
+@@ -236,6 +242,11 @@ export function apply(ctx: Context, config: Config = Config({})): void {
+         throw error
+       }
+     },
++    admit(event: ConversationSubmissionEvent): void {
++      const prepared = preparedSubmissionHooks.get(submissionKey(event))
++      if (prepared === undefined) return
++      for (const hook of prepared) hook.admit?.(event)
++    },
+     async accepted(event: ConversationSubmissionEvent): Promise<void> {
+       const key = submissionKey(event)
+       const prepared = preparedSubmissionHooks.get(key)

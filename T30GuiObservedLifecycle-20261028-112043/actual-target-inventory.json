@@ -1,0 +1,32 @@
+[
+  {
+    "path": "工作区/case.db",
+    "bytes": 65536,
+    "sha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6"
+  },
+  {
+    "path": "工作区/会话缓存/session-006180fb-b5d5-4fa2-9680-472f1214c391.json",
+    "bytes": 1749,
+    "sha256": "d6c53cab9e3ac06190f5f7ea1986a685c35022bec7d20644f2393aed79ccb38e"
+  },
+  {
+    "path": "工作区/会话缓存/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.json",
+    "bytes": 3342,
+    "sha256": "38b6fc46eef5b2724b3c1c964abfa81561ed15716b243e62d5fd72df21d36a36"
+  },
+  {
+    "path": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T30-GenuineSessionGui-20261028-094637-runs-T30-genuine-session-gui-20261028-110751-case--/session-006180fb-b5d5-4fa2-9680-472f1214c391/session.v4.jsonl",
+    "bytes": 319,
+    "sha256": "a6533f449f931d65f12fda1bb517e80a47b2e6aaab158c797e8ac5f020d60465"
+  },
+  {
+    "path": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9/session.v4.jsonl",
+    "bytes": 16303,
+    "sha256": "bb5b14573c9a88f2eedf2d85ac29352d7e90cee77255a6518a05f6ad8232b6ec"
+  },
+  {
+    "path": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-97c67db2-b8a6-428b-be48-04b4144d10bd/session.v4.jsonl",
+    "bytes": 12059,
+    "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+  }
+]

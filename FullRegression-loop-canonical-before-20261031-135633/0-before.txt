@@ -1,0 +1,369 @@
+// 律师反馈 F1（令 2026-10-14 15:38、注记 19:01，用户定"四道熔断都是三次"）：
+// 律师要"把图片按房间号分组合并成 PDF 再重命名"，工作台没有这样的工具，模型在一次调用里把同一段思考原样写了一遍又一遍，一直卡着。
+// 四道熔断：① 思考 / 回复同一段（≥80 字，去空白）第 3 次出现 → 中止本次调用；② 同一案件工具同样参数第 3 次 → 拒绝（repeated_call）；
+// ③ 同一技能第 3 次之后再加载 → 拒绝（第八版已有）；④ 连续 3 次没有进展的压缩 → 存稿收尾（第八版已有，见 compaction-loop.spec.ts）。
+// 命中 ①②③：记日志（事件名 + 次数，无内容）、一轮结束时按到顶的口径存稿、界面一句提示。另有"能力边界"一节进每个任务的运行时上下文。
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { CAPABILITY_TEXT, DENY_BUDGET, DENY_REPEATED_CALL, DENY_SKILL_RELOAD, LegalAgent, REPETITION_FAILURE_CODE, REPETITION_MESSAGE, REPETITION_STOPPED, TASK_END_FAILED, isAgentLoopCall } from '../agent/index.ts'
+import { REPEAT_LIMIT, RepetitionGuard, SEGMENT } from '../agent/repetition.ts'
+import { MAX_SAME_CALLS, MAX_SKILL_LOADS, TaskState, UNFINISHED_TITLE, canonicalArgs } from '../agent/task-state.ts'
+import { TurnNotices } from '../shared/turn-notices.ts'
+import { REPETITION_TEXT, answerNotice } from '../ui/answer.tsx'
+import { REPETITION_STOPPED as UI_REPETITION_STOPPED, clearsSelection } from '../ui/dock.tsx'
+import type { CoreClient } from '../shared/core-client.ts'
+
+const T = 'T-20261014153800-ab12'
+const PARAMS = { thinking: '低' as const, window: '64K' as const, max_tokens: 16384 }
+
+/** 律师真机那一段（原样重复的思考；令 1538 摘录的原文，截图本身不在协调目录里）。 */
+const LOOPED = '用户要求按房间号分组合并图片为 PDF…也许我应该向用户解释…或者尝试用 case_save_archive_plan 把每个房间号作为一个 items…让我先尝试全部作为一个 items…实际上我已经保存了归档方案…但是用户要求按房间号…'
+/** 律师原话（用户 2026-10-15 15:01 给；"房间号"是模型自己脑补的，原话没有）。 */
+const LAWYER_REQUEST = '把各个文件夹中的图片都合并成一个PDF文档（文档命名以文件夹的名称命名，同时识别是否有合同、押金单、身份信息，如有注明有什么，没什么），每个文件夹的内容单独合并，而不要混合合并。每个文件夹分批处理，而不是统一处理。'
+
+/** 一段正常的长回答：阅卷要点，各条内容不同，表格行的格式一样。 */
+function longAnswer(): string {
+  const rows = Array.from({ length: 60 }, (_, i) => `| ${i + 1} | 2025年${(i % 12) + 1}月${(i % 28) + 1}日 | 张某甲以第${i + 1}种名义收取被害人款项人民币${(i + 1) * 1371}元 | 〔起诉意见书 第${(i % 5) + 1}页〕 |`)
+  return ['## 阅卷要点', '', '| 序号 | 时间 | 事实 | 出处 |', '| --- | --- | --- | --- |', ...rows, '', '以上事实均需律师核对原件，' + '特别是转账记录与讯问笔录之间的差异。'.repeat(2)].join('\n')
+}
+
+/** 按流式输出的样子切成小段（每段 1–7 个字）。 */
+function* deltas(text: string): Generator<string> {
+  let i = 0, k = 0
+  while (i < text.length) { const n = 1 + (k++ * 5) % 7; yield text.slice(i, i + n); i += n }
+}
+
+describe('① 思考 / 回复原样重复（RepetitionGuard）', () => {
+  it(`同一段（≥${SEGMENT} 字）第 ${REPEAT_LIMIT} 次出现才判重复；两次不判`, () => {
+    expect([SEGMENT, REPEAT_LIMIT]).toEqual([80, 3])
+    expect(LOOPED.replace(/\s/g, '').length).toBeGreaterThan(SEGMENT)
+    const g = new RepetitionGuard()
+    let at = -1, n = 0
+    for (const d of deltas(LOOPED + LOOPED + LOOPED)) { n += d.length; if (g.push('reasoning', d)) { at = n; break } }
+    // 第三遍开头 80 字处判出来，不等整段写完
+    // 位置按去空白后的字数算
+    const L = LOOPED.replace(/\s/g, '').length
+    const seen = (LOOPED + LOOPED + LOOPED).slice(0, at).replace(/\s/g, '').length
+    expect(seen).toBeGreaterThanOrEqual(L * 2 + SEGMENT)
+    expect(seen).toBeLessThan(L * 2 + SEGMENT + 7)
+    const two = new RepetitionGuard()
+    for (const d of deltas(LOOPED + LOOPED)) expect(two.push('reasoning', d)).toBe(false)
+  })
+
+  it('去空白比较：换行、空格不同的重复照样判出来', () => {
+    const g = new RepetitionGuard()
+    const variants = [LOOPED, LOOPED.replace(/，/g, '， ').replace(/。/g, '。\n'), `\n\n${LOOPED.replace(/ /g, '')}`]
+    expect(variants.map((v) => [...deltas(v)].some((d) => g.push('reasoning', d)))).toEqual([false, false, true])
+  })
+
+  it('正常长回答不误杀：表格行格式相同、内容不同；短句（不足 80 字）夹在不同内容之间重复多次也不算', () => {
+    const g = new RepetitionGuard()
+    for (const d of deltas(longAnswer())) expect(g.push('text', d)).toBe(false)
+    const short = new RepetitionGuard()
+    // 每条事实后面都跟一句同样的提醒（不足 80 字），夹在不同的内容之间
+    for (let i = 0; i < 50; i++) expect(short.push('text', `第${i + 1}笔转账${(i + 3) * 997}元，时间2025年${(i % 12) + 1}月。请律师核对原件。出处：〔起诉意见书 第2页〕。`)).toBe(false)
+    // 同一短句连着写成一长串：重复的单元不足 80 字、只有几种字，不算（复核 rv-A64 P2-1：与分隔线同一口径；见 repetition-samples.spec.ts）
+    const run = new RepetitionGuard()
+    expect(Array.from({ length: 30 }, () => run.push('text', '请律师核对原件。')).includes(true)).toBe(false)
+  })
+
+  it('思考和回复分开数：回答里复述一次思考里的话不算；判出后一直为真', () => {
+    const g = new RepetitionGuard()
+    expect(g.push('reasoning', LOOPED + LOOPED)).toBe(false)
+    expect(g.push('text', LOOPED)).toBe(false)
+    expect(g.push('reasoning', LOOPED)).toBe(true)
+    expect(g.push('text', '好的')).toBe(true)
+    expect(g.tripped).toBe(true)
+  })
+
+  it('同一个字连写不算（复核 rv-A64 P2-1：分隔线、"哈哈哈"一类不足 10 种字）', () => {
+    const g = new RepetitionGuard()
+    expect(g.push('reasoning', '哈'.repeat(SEGMENT * 3 - 1))).toBe(false)
+    expect(g.push('reasoning', '哈'.repeat(SEGMENT * 10))).toBe(false)
+  })
+})
+
+function fakeCore() {
+  const calls: Array<{ cmd: string; body: Record<string, unknown> }> = []
+  const saved = JSON.parse(readFileSync(join(__dirname, '..', '..', 'contracts', 'examples', 'tool_save_draft.result.json'), 'utf8')) as unknown
+  const core = {
+    call: async (cmd: string, body: Record<string, unknown>) => {
+      calls.push({ cmd, body })
+      if (cmd === 'task/begin') return { ok: true, value: { task_id: T, params: PARAMS, budget: { model_calls: 32, tool_calls: 48, minutes: 45 } } }
+      if (cmd === 'context') return { ok: true, value: { l0: { text: '案件卡片' }, l1: { text: '任务输入', truncated: false, toc: [] } } }
+      if (cmd === 'tool') return { ok: true, value: saved }
+      return { ok: true, value: {} }
+    },
+  } as unknown as CoreClient
+  return { core, calls }
+}
+const agentObj = (id: string) => ({ id, session: { header: { cwd: 'D:\\案件\\张某甲诈骗案' } } })
+const enter = () => ({ kind: 'enter' as const, messages: [] })
+/** Agent 循环发的请求：整个冻结、不带 purpose（见 isAgentLoopCall）。 */
+const loop = (sessionId: string) => Object.freeze({ sessionId })
+type Chunk = { type: string; index?: number; text?: string; reason?: unknown; blockType?: string }
+
+function setup() {
+  const logs: Array<[string, string, Record<string, unknown> | undefined]> = []
+  const noted: Array<[string, string, string | undefined]> = []
+  const f = fakeCore()
+  const a = new LegalAgent(f.core, ((level: string, event: string, meta?: Record<string, unknown>) => { logs.push([level, event, meta]) }) as never,
+    (id, code, taskId) => { noted.push([id, code, taskId]) })
+  return { a, f, logs, noted }
+}
+
+/** 模拟 6000D 的流：先开一个思考块，按 deltas 吐思考；记下被拉了多少块、有没有被提前关掉（上游请求取消）。 */
+function upstream(text: string, finishKind = 'stop') {
+  const seen = { pulled: 0, closed: false }
+  async function* gen(): AsyncGenerator<Chunk> {
+    try {
+      yield { type: 'block-start', index: 0, blockType: 'reasoning' }
+      for (const d of deltas(text)) { seen.pulled++; yield { type: 'reasoning-delta', index: 0, text: d } }
+      yield { type: 'block-end', index: 0 }
+      yield { type: 'finish', reason: { kind: finishKind } }
+    } finally { seen.closed = true }
+  }
+  return { gen: gen(), seen }
+}
+
+async function drain(it: AsyncIterable<unknown>): Promise<Chunk[]> {
+  const out: Chunk[] = []
+  for await (const c of it) out.push(c as Chunk)
+  return out
+}
+
+describe('① 接在 DSH 的 llm/stream 上（Agent 插件 guardStream）', () => {
+  it('律师那一幕：思考第三遍时中止——补一个出错结束块（失败码不可重试、消息是给律师的那句），不再往下拉，上游请求关掉', async () => {
+    const { a, logs } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    const up = upstream(`用户说：${LAWYER_REQUEST}
+${LOOPED.repeat(10)}`)
+    const out = await drain(a.guardStream(loop('s'), up.gen as never) as never)
+    const last = out.at(-1)!
+    expect(last).toEqual({ type: 'finish', reason: { kind: 'error', failure: { code: REPETITION_FAILURE_CODE, message: REPETITION_MESSAGE } } })
+    // 出错结束可以带着没关的块（DSH 的流校验允许 error / aborted 时有未关的块）
+    expect(out.filter((c) => c.type === 'block-end')).toEqual([])
+    expect(up.seen.closed).toBe(true)
+    expect(up.seen.pulled).toBeLessThan([...deltas(`用户说：${LAWYER_REQUEST}
+${LOOPED.repeat(3)}`)].length)
+    expect(a.tasks.get('s')!.loopHit).toBe('repetition')
+    // 日志只有次数，没有思考内容
+    expect(logs.filter((l) => l[1] === 'agent.repetition_loop').map((l) => l[2])).toEqual([{ model_calls: 1, in: 'reasoning', stopped: true }])
+    expect(JSON.stringify(logs)).not.toMatch(/房间号|归档方案/)
+  })
+
+  it('正常的长回答原样通过，一块不少；没有任务的调用（会话标题等）不管', async () => {
+    const { a } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    const up = upstream(longAnswer())
+    const out = await drain(a.guardStream(loop('s'), up.gen as never) as never)
+    expect(out.at(-1)).toEqual({ type: 'finish', reason: { kind: 'stop' } })
+    expect(out.filter((c) => c.type === 'reasoning-delta').map((c) => c.text).join('')).toBe(longAnswer())
+    expect(a.tasks.get('s')!.loopHit).toBeUndefined()
+
+    const other = upstream(LOOPED.repeat(5))
+    const passed = await drain(a.guardStream(loop('没有任务的会话'), other.gen as never) as never)
+    expect(passed.at(-1)).toEqual({ type: 'finish', reason: { kind: 'stop' } })
+    expect(await drain(a.guardStream(Object.freeze({}), upstream('x').gen as never) as never)).toHaveLength(4)
+  })
+
+  it('这一轮按出错结束：把已有的回复代存为"未完成"草稿，记 REPETITION_STOPPED 和任务编号；任务结束登记照常', async () => {
+    const { a, f, noted } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    await a.onSessionEvent('s', { type: 'assistant/message', data: { message: { content: [{ type: 'text', text: '先列出了材料：照片 12 张。' }] } } })
+    await a.preStep(agentObj('s'), 2, enter())
+    await drain(a.guardStream(loop('s'), upstream(LOOPED.repeat(4)).gen as never) as never)
+    await a.onSessionEvent('s', { type: 'turn/end', data: { reason: { kind: 'error' } } })
+    const save = f.calls.find((c) => c.cmd === 'tool')!
+    expect(save.body.args).toEqual({ title: UNFINISHED_TITLE, content: '先列出了材料：照片 12 张。' })
+    expect(noted).toEqual([['s', REPETITION_STOPPED, T]])
+    expect(f.calls.filter((c) => c.cmd === 'task/end').map((c) => c.body.reason)).toEqual(['error'])
+  })
+})
+
+describe('② 同一案件工具同样参数第三次（repeated_call）', () => {
+  it(`第 ${MAX_SAME_CALLS} 次拒绝（不计入工具预算），告诉模型换做法或作答；参数键的顺序不影响；参数不同、别的工具各算各的`, async () => {
+    expect(MAX_SAME_CALLS).toBe(3)
+    const { a, logs } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    const plan = { items: [{ name: '101 房', files: ['1.jpg', '2.jpg'] }], note: '按房间号' }
+    const same = { note: '按房间号', items: [{ files: ['1.jpg', '2.jpg'], name: '101 房' }] }
+    const kinds = [plan, same, plan, same].map((args) => a.preTool('s', 'case_save_archive_plan', args))
+    expect(kinds.map((k) => k.kind)).toEqual(['allow', 'allow', 'deny', 'deny'])
+    expect(kinds[2]).toEqual({ kind: 'deny', reason: DENY_REPEATED_CALL })
+    expect(DENY_REPEATED_CALL).toMatch(/^repeated_call：/)
+    expect(a.tasks.get('s')!.toolCalls).toBe(2)
+    expect(a.preTool('s', 'case_save_archive_plan', { ...plan, note: '按楼层' }).kind).toBe('allow')
+    expect(a.preTool('s', 'case_list_materials', {}).kind).toBe('allow')
+    expect(logs.filter((l) => l[1] === 'agent.repeated_call').map((l) => l[2])).toEqual([
+      { tool: 'case_save_archive_plan', count: 3, model_calls: 1 }, { tool: 'case_save_archive_plan', count: 3, model_calls: 1 },
+    ])
+    expect(JSON.stringify(logs)).not.toMatch(/房|jpg/)
+  })
+
+  it('存草稿不管（改稿时同样的标题再存是正常的）；没有参数的按 {} 算', () => {
+    const s = new TaskState(T, { model_calls: 32, tool_calls: 48, minutes: 45 }, PARAMS)
+    expect([1, 2, 3, 4].map(() => s.beforeSameCall('case_save_draft', { title: '阅卷笔录', content: '同样' }).allow)).toEqual([true, true, true, true])
+    expect([undefined, {}, null].map((v) => s.beforeSameCall('case_list_materials', v).allow)).toEqual([true, true, false])
+    expect(canonicalArgs({ b: 1, a: [{ d: 2, c: undefined }] })).toBe('{"a":[{"d":2}],"b":1}')
+  })
+
+  it('一轮照常结束后：存稿（还没有草稿时），只记日志、不提示（注记 2026-10-15 14:29 第 2 条）；模型自己存过草稿就不再代存', async () => {
+    const { a, f, noted } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    for (let i = 0; i < 3; i++) a.preTool('s', 'case_search', { query: '房间号' })
+    await a.onSessionEvent('s', { type: 'assistant/message', data: { message: { content: [{ type: 'text', text: '对话里做不了图片合并，请用首页"工具"里的格式互转。' }] } } })
+    await a.onSessionEvent('s', { type: 'turn/end', data: { reason: { kind: 'completed' } } })
+    expect(f.calls.filter((c) => c.cmd === 'tool').map((c) => (c.body.args as { title: string }).title)).toEqual([UNFINISHED_TITLE])
+    expect(noted).toEqual([])
+    expect(f.calls.filter((c) => c.cmd === 'task/end').map((c) => c.body.reason)).toEqual(['completed'])
+
+    const b = setup()
+    await b.a.preStep(agentObj('s'), 1, enter())
+    for (let i = 0; i < 3; i++) b.a.preTool('s', 'case_search', { query: '房间号' })
+    await b.a.executeTool('s', 'case_save_draft', { title: '说明', content: '做不了' })
+    await b.a.onSessionEvent('s', { type: 'assistant/message', data: { message: { content: [{ type: 'text', text: '已说明。' }] } } })
+    await b.a.onSessionEvent('s', { type: 'turn/end', data: { reason: { kind: 'completed' } } })
+    expect(b.f.calls.filter((c) => c.cmd === 'tool')).toHaveLength(1)
+    expect(b.noted).toEqual([])
+  })
+})
+
+describe('③ 同一技能反复加载、④ 无进展压缩（第八版已有，阈值保持 3）', () => {
+  it(`技能第 ${MAX_SKILL_LOADS} 次之后再加载被拒，也算熔断：一轮结束时存稿，不提示`, async () => {
+    const { a, f, noted } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    const r = [1, 2, 3, 4].map(() => a.preTool('s', 'skill', { name: 'case-archiving' }))
+    expect(r.map((x) => x.kind)).toEqual(['allow', 'allow', 'allow', 'deny'])
+    expect(r[3]).toEqual({ kind: 'deny', reason: DENY_SKILL_RELOAD })
+    expect(a.tasks.get('s')!.loopHit).toBe('skill_reload')
+    await a.onSessionEvent('s', { type: 'assistant/message', data: { message: { content: [{ type: 'text', text: '归档方案草拟中。' }] } } })
+    await a.onSessionEvent('s', { type: 'turn/end', data: { reason: { kind: 'completed' } } })
+    expect(noted).toEqual([])
+    expect(f.calls.filter((c) => c.cmd === 'tool').map((c) => (c.body.args as { title: string }).title)).toEqual([UNFINISHED_TITLE])
+  })
+
+  it('最先碰到的那一种为准；已经按到顶收尾的（预算、压缩循环）不再另记提示', async () => {
+    const s = new TaskState(T, { model_calls: 32, tool_calls: 48, minutes: 45 }, PARAMS)
+    for (let i = 0; i < 3; i++) s.beforeSameCall('case_search', { q: 1 })
+    s.noteRepetition()
+    expect(s.loopHit).toBe('repeated_call')
+
+    const { a, noted } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    for (let i = 0; i < 3; i++) a.preTool('s', 'case_search', { q: 1 })
+    a.tasks.get('s')!.budgetHit = true
+    await a.onSessionEvent('s', { type: 'turn/end', data: { reason: { kind: 'completed' } } })
+    expect(noted).toEqual([])
+  })
+
+  it('Agent 空闲时任务还挂着（没收到 turn/end）：兜底结束时同样存稿、记提示', async () => {
+    const { a, noted } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    await drain(a.guardStream(loop('s'), upstream(LOOPED.repeat(4)).gen as never) as never)
+    await a.onIdle('s')
+    expect(noted).toEqual([['s', REPETITION_STOPPED, T]])
+  })
+})
+
+describe('提示：界面一句话 + 草稿，不被"结束状态没登记上"盖掉', () => {
+  it('熔断提示码带任务编号；随后又来 TASK_END_FAILED 时排在后面，下一次取到', () => {
+    for (const code of [REPETITION_STOPPED]) {
+      const n = new TurnNotices()
+      n.note('S1', code, T)
+      n.note('S1', TASK_END_FAILED)
+      expect(n.takeWithTask('S1')).toEqual({ code, task_id: T })
+      expect(n.takeWithTask('S1')).toEqual({ code: TASK_END_FAILED, task_id: null })
+    }
+  })
+
+  it('界面的提示码与 Agent 插件一致（只有第①道提示）；任务跑过，结束后 Skill 选择照样回到自由对话', () => {
+    expect(UI_REPETITION_STOPPED).toBe(REPETITION_STOPPED)
+    expect(clearsSelection(REPETITION_STOPPED)).toBe(true)
+  })
+
+  it('提示那一句：思考重复说"做不了或没理解"，有草稿说存了；到顶的老说法不变', () => {
+    const d = { title: UNFINISHED_TITLE, version: 1, path: '工作区/任务/T/草稿/x.md', text: '……', truncated: false }
+    expect(REPETITION_TEXT).toBe(REPETITION_MESSAGE)
+    expect(answerNotice({ used: 2, limit: 32, draft: d }, 'repetition')).toBe('这个请求我做不了或没理解，请换个说法或拆成小步；已把做到的部分存为草稿')
+    expect(answerNotice({ used: 2, limit: 32, draft: null }, 'repetition')).toBe(REPETITION_TEXT)
+    expect(answerNotice({ used: 32, limit: 32, draft: d })).toBe('已用完本次运行的模型调用次数（32/32），已把做到的部分存为草稿')
+  })
+})
+
+describe('能力边界进运行时上下文（令 15:38 第 3 条）', () => {
+  it('每个任务第一步注入的上下文里有"能力边界"一节：只做工具做得到的、做不了一句话说明并指路、不用别的工具变通', async () => {
+    const { a } = setup()
+    const d = await a.preStep(agentObj('s'), 1, enter())
+    const sections = (d as { messages: Array<{ source: { sections?: Array<{ name: string; text: string }> } }> }).messages[0]!.source.sections!
+    expect(sections).toHaveLength(4)
+    expect(sections.slice(0, 3).map((s) => s.name)).toEqual(['案件卡片（L0）', '任务输入（L1）', '能力边界'])
+    expect(sections[2]!.text).toBe(CAPABILITY_TEXT)
+    expect(sections[3]).toEqual({
+      name: '本次任务 Skill',
+      text: '本次任务选择的是 undefined。执行任务动作前，必须先调用 skill 工具加载该 Skill，并按该 Skill 的要求执行任务。',
+    })
+    for (const must of ['只有你手上这些工具做得到的事', '用一句话说明对话里做不了', '格式互转', '长截图切分', '资源管理器', '不要用 case_save_archive_plan、case_save_draft 等工具变通']) {
+      expect(CAPABILITY_TEXT).toContain(must)
+    }
+    // 第二步不再注
+    expect(await a.preStep(agentObj('s'), 2, enter())).toEqual(enter())
+  })
+})
+
+describe('复核 rv-A64 的几处', () => {
+  it('P3-1 先过预算、收尾两道，再数同样参数的次数：被预算拒掉的调用不计，不会变成 repeated_call，也不算熔断', async () => {
+    const s = new TaskState(T, { model_calls: 32, tool_calls: 1, minutes: 45 }, PARAMS)
+    expect(s.beforeTool('case_search', 0, { q: 'x' })).toEqual({ allow: true })
+    expect([1, 2, 3].map(() => s.beforeTool('case_search', 0, { q: 'y' }))).toEqual([1, 2, 3].map(() => ({ allow: false, reason: 'tool_budget' })))
+    expect(s.loopHit).toBeUndefined()
+    // 经 Agent 插件：预算用完后同参数第三次报的是预算，不是重复
+    const { a } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    const st = a.tasks.get('s')!
+    st.toolCalls = st.budget.tool_calls
+    expect([1, 2, 3].map(() => a.preTool('s', 'case_search', { q: 'z' }))).toEqual([1, 2, 3].map(() => ({ kind: 'deny', reason: DENY_BUDGET })))
+    expect(st.loopHit).toBeUndefined()
+  })
+
+  it('N3 只套 Agent 循环自己发的请求：压缩摘要、会话标题（带 purpose）、没冻结的手工请求原样放过', async () => {
+    const { a } = setup()
+    await a.preStep(agentObj('s'), 1, enter())
+    expect(isAgentLoopCall(loop('s'))).toBe(true)
+    for (const options of [Object.freeze({ sessionId: 's', purpose: 'compaction' }), Object.freeze({ sessionId: 's', purpose: 'session-title' }), { sessionId: 's' }]) {
+      expect(isAgentLoopCall(options)).toBe(false)
+      const out = await drain(a.guardStream(options, upstream(LOOPED.repeat(5)).gen as never) as never)
+      expect(out.at(-1)).toEqual({ type: 'finish', reason: { kind: 'stop' } })
+    }
+    expect(a.tasks.get('s')!.loopHit).toBeUndefined()
+  })
+
+  it('N3 依据（读 DSH 源码）：Agent 循环的请求整个冻结、不带 purpose；压缩摘要、会话标题的请求带 purpose', () => {
+    const src = (rel: string) => readFileSync(join(__dirname, '..', '..', 'dsh', 'packages', ...rel.split('/')), 'utf8').replace(/\r\n/g, '\n')
+    const loopSrc = src('core/agent-loop/src/agent.ts')
+    const at = loopSrc.indexOf('const request = markAgentLoopRequest(Object.freeze({')
+    expect(at).toBeGreaterThan(0)
+    expect(loopSrc.slice(at, loopSrc.indexOf('}))', at))).not.toContain('purpose')
+    expect(src('compaction/compaction-basic/src/summarizer.ts')).toContain("purpose: 'compaction',")
+    expect(src('session/session-title-llm/src/index.ts')).toContain("purpose: 'session-title',")
+  })
+
+  it('P3-2 能力边界：含共用规则那条的各项指路（每张图片各出一个 PDF、xls 转 xlsx、计算刑期、Mac 版没有这两个小工具），按律师原话拆开指路', () => {
+    for (const must of ['计算刑期', '每张图片各出一个 PDF', 'xls 转 xlsx', 'Mac 版没有这两个小工具', '长截图切分', '资源管理器',
+      '"多张图片 → 一个 PDF"', '按子文件夹各出一个、以子文件夹名命名', '合同、押金单、身份信息', '拖进工作台建成案件后直接问', '先合并后识别',
+      '不要用 case_save_archive_plan、case_save_draft 等工具变通']) expect(CAPABILITY_TEXT, must).toContain(must)
+  })
+
+  // 共用规则那条（线 B 维护）要照 CAPABILITY_TEXT 逐字改（注记 1501：同一措辞另发线 B）。改好之前它还是旧的指路（多张图片合成 PDF 去资源管理器），
+  // 这一例跳过；下一例守着"要么还是旧的、要么已逐字一致"，线 B 改成别的样子就红
+  const RULE = readFileSync(join(__dirname, '..', '..', 'skills', '_shared', '共用规则.md'), 'utf8').replace(/\r\n/g, '\n')
+  const ruleText = /\*\*超出工具范围的请求，一句话说明做不了并指路\*\*：(.+)/.exec(RULE)?.[1] ?? ''
+  const OLD = '多张图片合成一个 PDF、按文件夹分组、改名，请在资源管理器或其他软件里做'
+  it.skipIf(ruleText.includes(OLD))('P3-2 能力边界与 skills\\_shared\\共用规则.md 那条逐字一致', () => {
+    expect(ruleText).toBe(CAPABILITY_TEXT)
+  })
+  it('P3-2 共用规则那条要么还是改前的旧指路（等线 B 照抄），要么已与能力边界逐字一致', () => {
+    expect(ruleText.length).toBeGreaterThan(0)
+    expect(ruleText.includes(OLD) || ruleText === CAPABILITY_TEXT).toBe(true)
+  })
+})

@@ -1,0 +1,38 @@
+[
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\prepare.ps1",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\prepare.ps1",
+    "sha256": "1c0395f1a8d05749645f3d39823e3cb32ba81e08bdda2d52fe1d51ba535219e5",
+    "bytes": 17122
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\start.ps1",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\start.ps1",
+    "sha256": "cc802b8023d0b81e90334451187bb38c9a4bef0b2e10cc5021225258311ffcbf",
+    "bytes": 75682
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\stop.ps1",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\stop.ps1",
+    "sha256": "5a156f2b71a81d36e3494c689320dd2259e5e2f8e1998af49c28fee92ae9d675",
+    "bytes": 7133
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\server.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\entry.py",
+    "sha256": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5",
+    "bytes": 151304
+  },
+  {
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T37-mixed-materials-finite-accepted-current.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\finite-proof.json",
+    "sha256": "c4871485f093a36a4282aec2ccf1aa3d5a0d9a454acf3eec5fdb01b4a1d59d9b",
+    "bytes": 2315
+  },
+  {
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-132936\\manifest.json",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiLauncherInput-20261027-171812\\manifest.json",
+    "sha256": "b20e67a73b329c1249d2ad647c847594d834e3aab855db6b462fdef2a57583a0",
+    "bytes": 58186
+  }
+]

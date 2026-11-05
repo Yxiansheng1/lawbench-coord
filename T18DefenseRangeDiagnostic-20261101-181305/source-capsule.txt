@@ -1,0 +1,159 @@
+TARGET D:\Lawbeach\lawbench-A\dsh-ext\agent\index.ts
+BEFORE D:\Lawbeach\lawbench-coord\T18DefenseRangeDiagnostic-20261101-181305\index-before.ts
+SHA 6ebcfd0c0360b7749b53ee947cc8ae8df91d1f15ef40a55c2da4c3eacdd276ff
+ONLY REPLACE THE START DENIAL STRING VALUE WITH THIS EXISTING END DENIAL STRING VALUE:
+辩护意见任务读取案件材料时必须明确提供有界含端范围：start/end 均为大于等于 1 的整数，且 end 必须大于或等于 start。
+
+CURRENT RELEVANT SOURCE
+0239 export const CASE_LIST_BEFORE_SENTENCE_READ_DENIAL = '刑期计算必须先调用 case_list_materials 取得本案的真实材料清单，再读取案件材料。'
+0240 export const CASE_LIST_BEFORE_ARCHIVE_MATCH_DENIAL = '案卷归档必须先调用 case_list_materials 取得本案的真实材料清单，再调用 case_archive_match。'
+0241 export const DEFENSE_SEARCH_BEFORE_READ_DENIAL = '辩护意见任务必须先调用 case_search 完成有效检索，再读取案件材料。'
+0242 export const DEFENSE_READ_START_DENIAL = '辩护意见任务读取案件材料时必须明确提供开始位置，start 必须是大于等于 1 的整数。'
+0243 export const DEFENSE_READ_END_DENIAL = '辩护意见任务读取案件材料时必须明确提供有界含端范围：start/end 均为大于等于 1 的整数，且 end 必须大于或等于 start。'
+0244 export const questionRequirementDenial = (missing: readonly string[]): string => REQUIRED_QUESTIONS_PREFIX + missing.join('、')
+0245 export const invalidQuestionAskDenial = (missing: readonly string[]): string => INVALID_QUESTION_ASK + missing.join('、')
+0246 export const questionsBeforeReadDenial = (missing: readonly string[]): string => QUESTIONS_BEFORE_READ_PREFIX + missing.join('、')
+0247 const deliverableWriteGated = (state: TaskState, toolName: string): boolean =>
+0248   QUESTION_GATED_TOOLS.has(toolName) || (state.archiveWorkflow && toolName === 'case_save_archive_plan')
+0249 const defensePrimaryReadDenial = (state: TaskState, toolName: string, args: unknown): string | undefined => {
+0250   if (!state.defenseSearchBeforePrimaryRead || toolName !== 'case_read_material') return undefined
+0251   if (!state.defenseSearchCompletedForRead) return DEFENSE_SEARCH_BEFORE_READ_DENIAL
+0252   const start = isRecord(args) ? args.start : undefined
+0253   if (typeof start !== 'number' || !Number.isInteger(start) || start < 1) return DEFENSE_READ_START_DENIAL
+0254   const end = isRecord(args) ? args.end : undefined
+0255   return typeof end === 'number' && Number.isInteger(end) && end >= start
+0256     ? undefined
+0257     : DEFENSE_READ_END_DENIAL
+0258 }
+0259 /** 同一个案件工具带同样的参数第三次调用（注记 2026-10-14 19:01 第 2 条）：拒绝，让模型改做法或作答。 */
+0260 export const DENY_REPEATED_CALL = `repeated_call：同样的调用（同一工具、同样参数）在本次任务里已经做过 ${MAX_SAME_CALLS - 1} 次，结果不会变。不要再调，换个做法，或根据已有结果直接作答；做不到就用一句话说明做不了`
+0261 /** 思考或回复原样重复、本次模型调用被中止（注记 19:01 第 1 条）：界面提示"这个请求我做不了或没理解……"并显示存下的草稿。 */
+
+ORIGINAL ACTUAL SIX EVENTS, READONLY SYNTHETIC SAMPLE:
+[
+  {
+    "type": "tool/call",
+    "seq": 56,
+    "time": 1793517852673,
+    "data": {
+      "turn": 1,
+      "step": 10,
+      "callId": "chatcmpl-tool-99ededf2fc19b813",
+      "name": "case_read_material",
+      "arguments": "{\"name\":\"起诉意见书\"}"
+    }
+  },
+  {
+    "type": "tool/result",
+    "seq": 57,
+    "time": 1793517852674,
+    "data": {
+      "turn": 1,
+      "step": 10,
+      "message": {
+        "role": "tool",
+        "source": {
+          "kind": "tool",
+          "callId": "chatcmpl-tool-99ededf2fc19b813"
+        },
+        "toolCallId": "chatcmpl-tool-99ededf2fc19b813",
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: 辩护意见任务读取案件材料时必须明确提供开始位置，start 必须是大于等于 1 的整数。"
+          }
+        ],
+        "isError": true,
+        "id": "2358d5f5-4fce-4a5f-9281-3f373cdda8ad"
+      }
+    },
+    "sourceEventSeqs": [
+      56
+    ],
+    "surfaceOp": "append"
+  },
+  {
+    "type": "tool/call",
+    "seq": 61,
+    "time": 1793517854154,
+    "data": {
+      "turn": 1,
+      "step": 11,
+      "callId": "chatcmpl-tool-96139b719e5c4c91",
+      "name": "case_read_material",
+      "arguments": "{\"name\":\"起诉意见书\",\"start\":1}"
+    }
+  },
+  {
+    "type": "tool/result",
+    "seq": 62,
+    "time": 1793517854154,
+    "data": {
+      "turn": 1,
+      "step": 11,
+      "message": {
+        "role": "tool",
+        "source": {
+          "kind": "tool",
+          "callId": "chatcmpl-tool-96139b719e5c4c91"
+        },
+        "toolCallId": "chatcmpl-tool-96139b719e5c4c91",
+        "content": [
+          {
+            "type": "text",
+            "text": "Error: 辩护意见任务读取案件材料时必须明确提供有界含端范围：start/end 均为大于等于 1 的整数，且 end 必须大于或等于 start。"
+          }
+        ],
+        "isError": true,
+        "id": "b89e19a4-e848-4774-8095-7d62bda5b1da"
+      }
+    },
+    "sourceEventSeqs": [
+      61
+    ],
+    "surfaceOp": "append"
+  },
+  {
+    "type": "tool/call",
+    "seq": 66,
+    "time": 1793517856085,
+    "data": {
+      "turn": 1,
+      "step": 12,
+      "callId": "chatcmpl-tool-89d97a3e38ea1e4f",
+      "name": "case_read_material",
+      "arguments": "{\"name\":\"起诉意见书\",\"start\":1,\"end\":1}"
+    }
+  },
+  {
+    "type": "tool/result",
+    "seq": 67,
+    "time": 1793517856107,
+    "data": {
+      "turn": 1,
+      "step": 12,
+      "message": {
+        "role": "tool",
+        "source": {
+          "kind": "tool",
+          "callId": "chatcmpl-tool-89d97a3e38ea1e4f"
+        },
+        "toolCallId": "chatcmpl-tool-89d97a3e38ea1e4f",
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"name\":\"起诉意见书\",\"material_id\":\"M0002\",\"unit\":\"line\",\"start\":1,\"end\":1,\"text\":\"【第1行】\\n　【第1页】\",\"has_more\":false,\"next_start\":null,\"next_offset\":null}"
+          }
+        ],
+        "isError": false,
+        "id": "ea0c681a-87ce-41b4-b9a3-a021e77f8a31"
+      }
+    },
+    "sourceEventSeqs": [
+      66
+    ],
+    "surfaceOp": "append"
+  }
+]
+
+Scope: copied generic tool schema end optional is correct for other Skills; DO NOT change it or global required fields. Keep all denial branches/decisions/counters/state/limits/SDK/Skill/model/temp/budget and every other byte exactly unchanged. This is diagnostic completeness only. No tests need author edits or runtime.

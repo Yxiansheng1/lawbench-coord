@@ -1,0 +1,27 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+    "bytes": 6779,
+    "sha256": "119d3ceacee730523b6192c540c063dd36aaec4b3c91814efe57194896ef2f2a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\errors.py",
+    "bytes": 3204,
+    "sha256": "f580d733d88a15a70df089f8b1bcd6bfffcac6b8a78013532aab61d2d20d33f4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\checks\\citations.py",
+    "bytes": 18609,
+    "sha256": "67779ba41e35e2b6780a7b74ebe061e143a79dd5b8c97273329ae91059748758"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\t32_document_save_standalone.py",
+    "bytes": 30991,
+    "sha256": "0adb566d110c16693fbb96b25bb67dd2f9ec449331c4e755d386afe9b345f348"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\contracts\\common.schema.json",
+    "bytes": 17837,
+    "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+  }
+]

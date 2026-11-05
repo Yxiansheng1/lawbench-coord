@@ -1,0 +1,16 @@
+--- a/packaging/mac/sign-adhoc.sh
++++ b/packaging/mac/sign-adhoc.sh
+@@ -18,10 +18,13 @@
+ LO="$APP/$LO_REL"
+ UNPACKED="$APP/Contents/Resources/app.asar.unpacked"
+ sign() { codesign --force --sign - --timestamp=none "$1"; }
++MAIN_EXECUTABLE="$APP/Contents/MacOS/$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Contents/Info.plist")"
+ 
+ n=0
+ # 1. Mach-O files (libraries, extension modules, executables) outside LibreOffice.app and app.asar.unpacked
+ while IFS= read -r -d '' f; do
++  # Signing the outer main executable here also signs its bundle before nested apps are sealed.
++  [ "$f" = "$MAIN_EXECUTABLE" ] && continue
+   if file -b "$f" | grep -q 'Mach-O'; then sign "$f"; n=$((n + 1)); fi
+ done < <(find "$APP/Contents" -type f \( -name '*.dylib' -o -name '*.so' -o -name '*.node' -o -perm -u+x \) \
+            -not -path "$LO/*" -not -path "$UNPACKED/*" -print0)

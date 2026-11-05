@@ -1,0 +1,294 @@
+--- CLOSED_V4/review-consumer.mjs
++++ V5/review-consumer.mjs
+@@ -2,6 +2,7 @@
+ import path from "node:path";
+ import crypto from "node:crypto";
+ import process from "node:process";
++import http from "node:http";
+ 
+ export const ROUTE = "http://10.126.126.1:8000/v1/chat/completions";
+ export const MODEL = "qwen38-27b";
+@@ -1010,76 +1011,220 @@
+   const timeoutMs = requestTimeoutForDeadline(startedAt, deadline);
+   if (timeoutMs <= 0) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+   const signal = AbortSignal.timeout(timeoutMs);
+-  let responseStatus = null;
+-  const chunks = [];
+-  let capturedBytes = 0;
+-  let overflow = false;
+-  try {
+-    const response = await fetch(ROUTE, {
+-      method: "POST",
+-      redirect: "error",
+-      headers: { Authorization: buildAuthorizationHeader(credential), "Content-Type": "application/json" },
+-      body: requestBody,
+-      signal,
+-    });
+-    responseStatus = response.status;
+-    if (response.body) {
+-      const reader = response.body.getReader();
+-      let streamFailed = false;
++  const requestBodyBuffer = Buffer.from(requestBody, "utf8");
++  const contentLength = Buffer.byteLength(requestBody, "utf8");
++
++  return new Promise((resolve) => {
++    let request = null;
++    let response = null;
++    let socket = null;
++    let responseStatus = null;
++    const chunks = [];
++    let capturedBytes = 0;
++    let overflow = false;
++    let settled = false;
++    let requestClosed = false;
++    let responseClosed = false;
++    const prematureCloseError = { name: "Error" };
++
++    const resultBody = () => Buffer.concat(chunks, capturedBytes).toString("utf8");
++
++    const cleanupResponseListeners = () => {
++      if (!response) return;
++      response.off("data", onResponseData);
++      response.off("end", onResponseEnd);
++      response.off("error", onResponseError);
++      response.off("aborted", onResponseAborted);
++      response.off("close", onResponseClose);
++    };
++
++    const cleanupRequestListeners = () => {
++      if (!request) return;
++      request.off("response", onResponse);
++      request.off("error", onRequestError);
++      request.off("socket", onSocket);
++      request.off("close", onRequestClose);
++    };
++
++    const cleanupWhenClosed = () => {
++      if (!settled) return;
++      if (requestClosed) cleanupRequestListeners();
++      if (!response || responseClosed) cleanupResponseListeners();
++    };
++
++    const detachSignal = () => {
++      signal.removeEventListener("abort", onAbort);
++    };
++
++    const destroyOwned = () => {
+       try {
+-        while (true) {
+-          const { done, value } = await reader.read();
+-          if (done) break;
+-          const chunk = Buffer.from(value);
+-          if (capturedBytes + chunk.byteLength > RESPONSE_CAP_BYTES) {
+-            overflow = true;
+-            await reader.cancel();
+-            break;
+-          }
+-          chunks.push(chunk);
+-          capturedBytes += chunk.byteLength;
+-        }
+-      } catch (error) {
+-        streamFailed = true;
+-        throw error;
+-      } finally {
+-        if (streamFailed) {
+-          try {
+-            await reader.cancel();
+-          } catch {
+-            // Cancel errors are swallowed only for a stream that already failed.
+-          }
+-        }
+-        reader.releaseLock();
++        if (response) response.destroy();
++      } catch {
++        // Destruction is best-effort after the owned transport has settled.
+       }
+-    }
+-    return {
+-      status: response.status,
+-      body: Buffer.concat(chunks).toString("utf8"),
++      try {
++        if (request) request.destroy();
++      } catch {
++        // Destruction is best-effort after the owned transport has settled.
++      }
++      try {
++        if (socket) socket.destroy();
++      } catch {
++        // Destruction is best-effort after the owned transport has settled.
++      }
++    };
++
++    const finish = (result) => {
++      if (settled) return false;
++      settled = true;
++      detachSignal();
++      resolve(result);
++      destroyOwned();
++      cleanupWhenClosed();
++      return true;
++    };
++
++    const finishSuccess = () => finish({
++      status: responseStatus,
++      body: resultBody(),
+       capturedBytes,
+       responseOverflow: overflow,
+       durationMs: Date.now() - startedAt,
+       transportError: null,
+       transportDiagnostic: null,
+-    };
+-  } catch (error) {
+-    const signalTimedOut = signal.aborted === true &&
+-      signal.reason && signal.reason.name === "TimeoutError";
+-    const timedOut = (error && error.name === "TimeoutError") || signalTimedOut;
+-    const wholeDeadlineExpired = Date.now() >= deadline ||
+-      (timedOut && timeoutMs < PER_CALL_TIMEOUT_MS);
+-    return {
+-      status: responseStatus,
+-      body: Buffer.concat(chunks).toString("utf8"),
+-      capturedBytes,
+-      responseOverflow: overflow,
+-      durationMs: Date.now() - startedAt,
+-      transportError: wholeDeadlineExpired
+-        ? "ENTIRE_CALL_CAP_EXCEEDED"
+-        : timedOut ? "TIMEOUT" : "TRANSPORT_FAILURE",
+-      transportDiagnostic: transportDiagnosticForError(error),
+-    };
+-  }
++    });
++
++    const finishFailure = (error) => {
++      if (settled) return false;
++      const signalReason = safeErrorProperty(signal, "reason");
++      const signalTimedOut = signal.aborted === true &&
++        safeErrorProperty(signalReason, "name") === "TimeoutError";
++      const timedOut = safeErrorProperty(error, "name") === "TimeoutError" || signalTimedOut;
++      const wholeDeadlineExpired = Date.now() >= deadline ||
++        (timedOut && timeoutMs < PER_CALL_TIMEOUT_MS);
++      const diagnosticError = signalTimedOut &&
++        safeErrorProperty(error, "name") !== "TimeoutError"
++        ? signalReason
++        : error;
++      return finish({
++        status: responseStatus,
++        body: resultBody(),
++        capturedBytes,
++        responseOverflow: overflow,
++        durationMs: Date.now() - startedAt,
++        transportError: wholeDeadlineExpired
++          ? "ENTIRE_CALL_CAP_EXCEEDED"
++          : timedOut ? "TIMEOUT" : "TRANSPORT_FAILURE",
++        transportDiagnostic: transportDiagnosticForError(diagnosticError),
++      });
++    };
++
++    const onAbort = () => {
++      finishFailure(safeErrorProperty(signal, "reason"));
++    };
++
++    const onResponse = (incomingResponse) => {
++      if (settled) {
++        const ignoreLateError = () => {};
++        incomingResponse.on("error", ignoreLateError);
++        incomingResponse.once("close", () => {
++          incomingResponse.off("error", ignoreLateError);
++        });
++        try {
++          incomingResponse.destroy();
++        } catch {
++          // A late response is outside the settled owning call.
++        }
++        return;
++      }
++      response = incomingResponse;
++      responseStatus = Number.isInteger(response.statusCode) ? response.statusCode : null;
++      response.on("data", onResponseData);
++      response.on("end", onResponseEnd);
++      response.on("error", onResponseError);
++      response.on("aborted", onResponseAborted);
++      response.on("close", onResponseClose);
++    };
++
++    const onResponseData = (value) => {
++      if (settled) return;
++      const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
++      if (capturedBytes + chunk.byteLength > RESPONSE_CAP_BYTES) {
++        overflow = true;
++        finishSuccess();
++        return;
++      }
++      chunks.push(chunk);
++      capturedBytes += chunk.byteLength;
++    };
++
++    const onResponseEnd = () => {
++      if (settled) return;
++      finishSuccess();
++    };
++
++    const onResponseError = (error) => {
++      finishFailure(error);
++    };
++
++    const onResponseAborted = () => {
++      finishFailure(prematureCloseError);
++    };
++
++    const onResponseClose = () => {
++      responseClosed = true;
++      if (!settled) finishFailure(prematureCloseError);
++      cleanupWhenClosed();
++    };
++
++    const onRequestError = (error) => {
++      finishFailure(error);
++    };
++
++    const onSocket = (assignedSocket) => {
++      socket = assignedSocket;
++      if (settled) {
++        const ignoreLateError = () => {};
++        assignedSocket.on("error", ignoreLateError);
++        assignedSocket.once("close", () => {
++          assignedSocket.off("error", ignoreLateError);
++        });
++        try {
++          assignedSocket.destroy();
++        } catch {
++          // A late socket is outside the settled owning call.
++        }
++      }
++    };
++
++    const onRequestClose = () => {
++      requestClosed = true;
++      if (!settled && !response) finishFailure(prematureCloseError);
++      cleanupWhenClosed();
++    };
++
++    signal.addEventListener("abort", onAbort, { once: true });
++    try {
++      const authorization = buildAuthorizationHeader(credential);
++      request = http.request(ROUTE, {
++        method: "POST",
++        headers: {
++          "Content-Type": "application/json",
++          Authorization: authorization,
++          "Content-Length": String(contentLength),
++        },
++        agent: false,
++        signal,
++      });
++      request.on("response", onResponse);
++      request.on("error", onRequestError);
++      request.on("socket", onSocket);
++      request.on("close", onRequestClose);
++      request.end(requestBodyBuffer);
++    } catch (error) {
++      finishFailure(error);
++    }
++  });
+ }
+ 
+ async function writeFailure(artifactsDir, credential, error, runStartedAt, timings) {

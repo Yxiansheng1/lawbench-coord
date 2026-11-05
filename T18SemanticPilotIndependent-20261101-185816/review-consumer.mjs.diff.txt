@@ -1,0 +1,250 @@
+--- BEFORE/review-consumer.mjs
++++ CURRENT/review-consumer.mjs
+@@ -42,6 +42,7 @@
+   "For every finding, kind and issue must be nonempty; receipt_id must resolve; evidence_quote must be a nonempty exact substring of that receipt's text.",
+   "Unless the candidate was omitted, include a nonempty draft_quote that is an exact substring of the original draft or a nonempty selfcheck_quote that is an exact substring of visible_selfcheck.",
+   "For an omitted stage-one candidate, set draft_quote to null and include an existing stage1_candidate_id.",
++  "If stage1_candidate_id is present, receipt_id and evidence_quote must exactly equal that candidate's receipt_id and quote.",
+   "Never invent absent material, repair the draft, decide a legal outcome, or return an overall pass.",
+ ].join(" ");
+ 
+@@ -58,80 +59,51 @@
+   throw new PilotProtocolError(stage, code);
+ }
+ 
+-function normKey(value) {
+-  return String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+-}
+-
+-function ownField(object, normalizedNames) {
+-  if (!object || typeof object !== "object" || Array.isArray(object)) return undefined;
+-  const wanted = new Set(normalizedNames);
+-  for (const key of Object.keys(object)) {
+-    if (wanted.has(normKey(key))) return object[key];
+-  }
+-  return undefined;
+-}
+-
+-function findFirstNamed(value, normalizedNames, seen = new Set()) {
+-  if (!value || typeof value !== "object" || seen.has(value)) return undefined;
+-  seen.add(value);
+-  const direct = ownField(value, normalizedNames);
+-  if (direct !== undefined) return direct;
+-  for (const child of Object.values(value)) {
+-    const found = findFirstNamed(child, normalizedNames, seen);
+-    if (found !== undefined) return found;
+-  }
+-  return undefined;
++function isPlainObject(value) {
++  return value !== null && typeof value === "object" && !Array.isArray(value);
+ }
+ 
+ function receiptId(receipt) {
+-  return ownField(receipt, ["receiptid", "id"]);
++  return receipt.receipt_id;
+ }
+ 
+ function receiptText(receipt) {
+-  return ownField(receipt, ["text"]);
+-}
+-
+-function looksLikeReceipts(value) {
+-  return Array.isArray(value) && value.length > 0 && value.every((entry) =>
+-    entry && typeof entry === "object" && !Array.isArray(entry) &&
+-    typeof receiptId(entry) === "string" && typeof receiptText(entry) === "string");
+-}
+-
+-function findReceiptArray(value, seen = new Set(), matches = []) {
+-  if (!value || typeof value !== "object" || seen.has(value)) return matches;
+-  seen.add(value);
+-  if (looksLikeReceipts(value)) {
+-    matches.push(value);
+-    return matches;
+-  }
+-  for (const child of Object.values(value)) findReceiptArray(child, seen, matches);
+-  return matches;
+-}
+-
+-function textFromValue(value, fieldNames, stage, code) {
+-  if (typeof value === "string") return value;
+-  if (value && typeof value === "object" && !Array.isArray(value)) {
+-    const nested = ownField(value, fieldNames);
+-    if (typeof nested === "string") return nested;
+-  }
+-  fail(stage, code);
++  return receipt.text;
+ }
+ 
+ export function selectPilotInput(data) {
+-  const receiptArrays = findReceiptArray(data);
+-  if (receiptArrays.length === 0) fail("input", "EVIDENCE_RECEIPTS_MISSING");
+-  const receipts = receiptArrays.flat();
+-  const draftValue = findFirstNamed(data, ["originaldraft", "physicaldraft", "drafttext", "draft"]);
+-  const selfcheckValue = findFirstNamed(data, ["visibleselfcheck", "visiblecheck", "selfcheck"]);
+-  const coverage = findFirstNamed(data, ["actualcoverage", "coverage"]);
+-  if (draftValue === undefined) fail("input", "ORIGINAL_DRAFT_MISSING");
+-  if (selfcheckValue === undefined) fail("input", "VISIBLE_SELFCHECK_MISSING");
+-  if (coverage === undefined) fail("input", "ACTUAL_COVERAGE_MISSING");
++  if (!isPlainObject(data) || data.format !== "T18_ISOLATED_REVIEW_ACTUAL_READS_AND_OLD_DRAFT_V1") {
++    fail("input", "FIXED_DATA_SCHEMA_INVALID");
++  }
++  const receipts = data.evidence;
++  if (!Array.isArray(receipts) || receipts.length === 0) {
++    fail("input", "EVIDENCE_RECEIPTS_MISSING");
++  }
++  for (const receipt of receipts) {
++    if (!isPlainObject(receipt) ||
++        typeof receipt.receipt_id !== "string" ||
++        typeof receipt.material_id !== "string" ||
++        typeof receipt.unit !== "string" ||
++        typeof receipt.text !== "string") {
++      fail("input", "EVIDENCE_RECEIPT_INVALID");
++    }
++  }
++  if (!isPlainObject(data.draft)) fail("input", "ORIGINAL_DRAFT_MISSING");
++  if (typeof data.draft.content !== "string" ||
++      typeof data.draft.title !== "string" ||
++      !Number.isSafeInteger(data.draft.version) ||
++      data.draft.version < 1) {
++    fail("input", "ORIGINAL_DRAFT_NOT_TEXT");
++  }
++  if (typeof data.visible_selfcheck !== "string") {
++    fail("input", "VISIBLE_SELFCHECK_NOT_TEXT");
++  }
++  if (!isPlainObject(data.coverage)) fail("input", "ACTUAL_COVERAGE_INVALID");
+   return {
+     receipts,
+-    draft: textFromValue(draftValue, ["text", "content", "markdown", "body"], "input", "ORIGINAL_DRAFT_NOT_TEXT"),
+-    visibleSelfcheck: textFromValue(selfcheckValue, ["text", "content", "markdown", "body"], "input", "VISIBLE_SELFCHECK_NOT_TEXT"),
+-    actualCoverage: coverage,
++    draft: data.draft.content,
++    visibleSelfcheck: data.visible_selfcheck,
++    actualCoverage: data.coverage,
+   };
+ }
+ 
+@@ -175,6 +147,51 @@
+     ...PARAMETERS,
+     messages,
+   };
++}
++
++export function buildAuthorizationHeader(rawKey) {
++  if (typeof rawKey !== "string" || rawKey.length === 0 || rawKey.length > 4096 ||
++      [...rawKey].some((character) => {
++        const code = character.charCodeAt(0);
++        return code < 33 || code > 126;
++      })) {
++    fail("credential", "CREDENTIAL_INVALID");
++  }
++  return `Bearer ${rawKey}`;
++}
++
++export function unwrapChatCompletion(rawBody) {
++  if (typeof rawBody !== "string") fail("completion", "COMPLETION_INVALID");
++  let envelope;
++  try {
++    envelope = JSON.parse(rawBody);
++  } catch {
++    fail("completion", "COMPLETION_INVALID");
++  }
++  if (!isPlainObject(envelope)) fail("completion", "COMPLETION_INVALID");
++  if (Object.prototype.hasOwnProperty.call(envelope, "error")) {
++    fail("completion", "COMPLETION_ERROR");
++  }
++  if (!Array.isArray(envelope.choices) || envelope.choices.length !== 1) {
++    fail("completion", "COMPLETION_INVALID");
++  }
++  const choice = envelope.choices[0];
++  if (!isPlainObject(choice) || !isPlainObject(choice.message)) {
++    fail("completion", "COMPLETION_INVALID");
++  }
++  if (choice.finish_reason !== "stop") {
++    fail("completion", "COMPLETION_NOT_FINISHED");
++  }
++  if (choice.message.role !== "assistant") fail("completion", "COMPLETION_INVALID");
++  if (choice.message.tool_calls !== undefined &&
++      choice.message.tool_calls !== null &&
++      (!Array.isArray(choice.message.tool_calls) || choice.message.tool_calls.length > 0)) {
++    fail("completion", "COMPLETION_TOOL_CALLS_UNSUPPORTED");
++  }
++  if (typeof choice.message.content !== "string" || choice.message.content.length === 0) {
++    fail("completion", "COMPLETION_CONTENT_INVALID");
++  }
++  return choice.message.content;
+ }
+ 
+ export function parseModelJson(raw) {
+@@ -239,8 +256,8 @@
+     ids.add(fact.id);
+     const receipt = byReceipt.get(fact.receipt_id);
+     if (!receipt) fail("stage1", "UNKNOWN_RECEIPT");
+-    const materialId = ownField(receipt, ["materialid"]);
+-    const unit = ownField(receipt, ["unit"]);
++    const materialId = receipt.material_id;
++    const unit = receipt.unit;
+     if (typeof materialId !== "string" || fact.material_id !== materialId) fail("stage1", "MATERIAL_ID_MISMATCH");
+     if (typeof unit !== "string" || fact.unit !== unit) fail("stage1", "UNIT_MISMATCH");
+     if (!receiptText(receipt).includes(fact.quote)) fail("stage1", "EVIDENCE_QUOTE_MISMATCH");
+@@ -252,7 +269,7 @@
+   exactKeys(parsed, ["findings"], "stage2", "RESPONSE_SCHEMA_INVALID");
+   if (!Array.isArray(parsed.findings)) fail("stage2", "RESPONSE_SCHEMA_INVALID");
+   const byReceipt = receiptIndex(context.receipts, "stage2");
+-  const candidateIds = new Set(context.stage1Candidates.map((fact) => fact.id));
++  const candidatesById = new Map(context.stage1Candidates.map((fact) => [fact.id, fact]));
+   for (const finding of parsed.findings) {
+     if (!finding || typeof finding !== "object" || Array.isArray(finding)) fail("stage2", "FINDING_SCHEMA_INVALID");
+     const allowed = new Set(["kind", "issue", "receipt_id", "evidence_quote", "draft_quote", "selfcheck_quote", "stage1_candidate_id"]);
+@@ -263,11 +280,18 @@
+     }
+     const receipt = byReceipt.get(finding.receipt_id);
+     if (!receipt) fail("stage2", "UNKNOWN_RECEIPT");
++    if (finding.stage1_candidate_id !== undefined) {
++      if (!nonemptyString(finding.stage1_candidate_id)) fail("stage2", "UNKNOWN_STAGE1_CANDIDATE");
++      const candidate = candidatesById.get(finding.stage1_candidate_id);
++      if (!candidate) fail("stage2", "UNKNOWN_STAGE1_CANDIDATE");
++      if (finding.receipt_id !== candidate.receipt_id) {
++        fail("stage2", "STAGE1_CANDIDATE_RECEIPT_MISMATCH");
++      }
++      if (finding.evidence_quote !== candidate.quote) {
++        fail("stage2", "STAGE1_CANDIDATE_QUOTE_MISMATCH");
++      }
++    }
+     if (!receiptText(receipt).includes(finding.evidence_quote)) fail("stage2", "EVIDENCE_QUOTE_MISMATCH");
+-    if (finding.stage1_candidate_id !== undefined &&
+-        (!nonemptyString(finding.stage1_candidate_id) || !candidateIds.has(finding.stage1_candidate_id))) {
+-      fail("stage2", "UNKNOWN_STAGE1_CANDIDATE");
+-    }
+     let anchored = false;
+     if (finding.draft_quote !== undefined && finding.draft_quote !== null) {
+       if (!nonemptyString(finding.draft_quote) || !context.draft.includes(finding.draft_quote)) {
+@@ -450,7 +474,7 @@
+     const response = await fetch(ROUTE, {
+       method: "POST",
+       redirect: "error",
+-      headers: { Authorization: credential, "Content-Type": "application/json" },
++      headers: { Authorization: buildAuthorizationHeader(credential), "Content-Type": "application/json" },
+       body: requestBody,
+       signal: AbortSignal.timeout(PER_CALL_TIMEOUT_MS),
+     });
+@@ -569,7 +593,10 @@
+     if (stage1Response.transportError) fail("stage1", "TRANSPORT_FAILURE");
+     if (stage1Response.status !== 200) fail("stage1", "HTTP_NON_200");
+     if (stage1Response.responseOverflow) fail("stage1", "RESPONSE_TOO_LARGE");
+-    const stage1Parsed = validateStage1Result(parseModelJson(stage1Response.body), input.receipts);
++    const stage1Parsed = validateStage1Result(
++      parseModelJson(unwrapChatCompletion(stage1Response.body)),
++      input.receipts,
++    );
+     await writeArtifact(artifactsDir, "stage1-parsed.json", stage1Parsed, credential);
+ 
+     if (Date.now() - runStartedAt >= ENTIRE_CALL_CAP_MS) fail("stage2", "ENTIRE_CALL_CAP_EXCEEDED");
+@@ -593,7 +620,7 @@
+     if (stage2Response.transportError) fail("stage2", "TRANSPORT_FAILURE");
+     if (stage2Response.status !== 200) fail("stage2", "HTTP_NON_200");
+     if (stage2Response.responseOverflow) fail("stage2", "RESPONSE_TOO_LARGE");
+-    const stage2Parsed = validateStage2Result(parseModelJson(stage2Response.body), {
++    const stage2Parsed = validateStage2Result(parseModelJson(unwrapChatCompletion(stage2Response.body)), {
+       receipts: input.receipts,
+       draft: input.draft,
+       visibleSelfcheck: input.visibleSelfcheck,

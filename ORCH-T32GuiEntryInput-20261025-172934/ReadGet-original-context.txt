@@ -1,0 +1,61 @@
+ROUTES = frozenset(
+    {
+        ("GET", "/health"),
+        ("GET", "/api/case/recent"),
+        ("GET", "/api/settings"),
+        ("GET", "/api/capsules"),
+        ("GET", "/api/materials"),
+        ("GET", "/api/task/current"),
+        ("GET", "/api/tasks"),
+        ("GET", "/api/outputs"),
+        ("GET", "/api/ocr/jobs"),
+        ("GET", "/api/wiki/suggestions"),
+        ("GET", "/api/wiki/review"),
+        ("POST", "/api/case/open"),
+    }
+)
+
+CASE_QUERY_ROUTES = frozenset(
+    {
+        "/api/materials",
+        "/api/tasks",
+        "/api/outputs",
+        "/api/ocr/jobs",
+        "/api/wiki/suggestions",
+        "/api/wiki/review",
+    }
+)
+
+TASK_EMPTY_ROUTES = frozenset({"/api/task/current", "/api/tasks"})
+
+def _single_query(query: bytes, key: str) -> str | None:
+        values = parse_qs(query.decode("latin-1"), keep_blank_values=True)
+        if set(values) != {key}:
+            return None
+        items = values[key]
+        return items[0] if len(items) == 1 and items[0] else None
+
+def _policy(self, path: str, data: Any, query: bytes) -> str | None:
+        if path == "/api/case/open" and isinstance(data, dict) and isinstance(
+            data.get("path"), str
+        ):
+            try:
+                if _norm(data["path"]) != _norm(self.case):
+                    return "OPEN_PATH_OUTSIDE_RUN"
+            except (OSError, ValueError, TypeError):
+                return "OPEN_PATH_OUTSIDE_RUN"
+        if path in CASE_QUERY_ROUTES:
+            value = self._single_query(query, "case_id")
+            bound_case = self._bound_case()
+            if value is None:
+                return "CASE_ID_QUERY_REQUIRED"
+            if bound_case is None or value != bound_case:
+                return "CASE_ID_OUTSIDE_RUN"
+        if path == "/api/task/current":
+            if self._single_query(query, "session_id") is None:
+                return "SESSION_ID_QUERY_REQUIRED"
+            if not self._own_registry():
+                return "CASE_REGISTRY_OUTSIDE_RUN"
+        if path in TASK_EMPTY_ROUTES and not self._task_dir_empty():
+            return "TASK_DIR_NOT_EMPTY"
+        return None

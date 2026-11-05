@@ -1,0 +1,31 @@
+{
+  "source": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\steps\\wiki.py",
+    "bytes": 33754,
+    "sha256": "aa1614baf9c2d28939b133f47cb5d3c86ac3f6003ed3c392298421ceb80ca76a"
+  },
+  "old_test": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_pipeline.py",
+    "bytes": 60393,
+    "sha256": "de11f80bd12ae2b4c7845647db864c0abe64569526d777029a0bcf6948e86a88"
+  },
+  "test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_wiki_table_fidelity_20261030_032635.py",
+  "evidence": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\WikiTableFidelity-20261030-032635",
+  "observation": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityInput-20261030-032635\\root-readonly-production-observation.json",
+  "previous_consumer_source_only": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-current-wiki-pipeline-1017-20261030-031059.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-current-wiki-pipeline-order-20261030-031059.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-current-wiki-pipeline-20261030-031059.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18CurrentWikiPipelineInput-20261030-031059",
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CurrentWikiPipeline-20261030-031059",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CurrentWikiPipeline-20261030-031059\\genuine-wiki-pipeline.py",
+    "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CurrentWikiPipeline-20261030-031059\\literal-inputs.json",
+    "author_runtime": 0,
+    "state": "CURRENT_ORIGINAL_WIKI_PIPELINE_SOURCE_ONLY"
+  },
+  "source_pins_original": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18ArchiveWarningBSourcePins-20261030-003710.json",
+    "bytes": 53548,
+    "sha256": "5b2f44a111f9a21dafa7c185a4f62615d151ee96b887b532d60bc7e51d98b098"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "format": "lawbench-t30-genuine-session-admission-inputs-v1",
+  "task": "A-T30-genuine-session-admission-20261028-092536",
+  "hashAlgorithm": "sha256",
+  "entries": [
+    {
+      "group": "order",
+      "id": "execution-order",
+      "path": "D:\\Lawbeach\\lawbench-coord\\A-T30-genuine-session-admission-order-20261028-092536.md",
+      "bytes": 4842,
+      "sha256": "a8c30d11f868db28948b7866e163ae245aae26c2d7e3afb5be848e6341a464e9"
+    },
+    {
+      "group": "primary",
+      "id": "original-input-manifest",
+      "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\fixed-inputs.json",
+      "bytes": 3110,
+      "sha256": "82bd88527d89a53ce2f3479d08c083d98440aa53dfadcb5d68b0f654168982d5"
+    },
+    {
+      "group": "primary",
+      "id": "accepted-native-four-turn",
+      "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\accepted-native-four-turn.json",
+      "bytes": 4659,
+      "sha256": "0f6a08e7ac86d3e484afe6964084624088703202505663bbd759123ba025601e"
+    },
+    {
+      "group": "primary",
+      "id": "physical-log-review",
+      "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\physical-log-review.json",
+      "bytes": 2612,
+      "sha256": "d831573b5dbb5a1b4273b207851e0683e39c36d22b40b5922058fec1684dec8d"
+    },
+    {
+      "group": "accepted-log",
+      "id": "source-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-97c67db2-b8a6-428b-be48-04b4144d10bd.v4.jsonl",
+      "bytes": 12059,
+      "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+    },
+    {
+      "group": "accepted-log",
+      "id": "child-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl",
+      "bytes": 16235,
+      "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "session-store",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\index.ts",
+      "bytes": 18019,
+      "sha256": "f0b335c7e2eb0a83544ac9acefd95c079abaaae1a297383d7d2a6cde066619a8",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\0-index.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "session-router",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\router.ts",
+      "bytes": 33400,
+      "sha256": "1cda52fc09b579ac5f97adbe7d6c7f57bbac83ceba4cb07607d4e0207493447d",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\1-router.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "case-roots",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\case-roots.ts",
+      "bytes": 5066,
+      "sha256": "3952a9778a89971427d61f94ca062db6eb25dd1462974dc503c4bbcc02dfad1c",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\2-case-roots.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "trash",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\trash.ts",
+      "bytes": 6898,
+      "sha256": "3f00751520be9fadb72a62d8bb2ccd0ab21fe8b4001671c1cd9f862daa1d8391",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\3-trash.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "persistence-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+      "bytes": 70510,
+      "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\4-index.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "persistence-format",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\format.ts",
+      "bytes": 21586,
+      "sha256": "87d536ead041fb953f866e0191a79b4dbbbc510aee1461706f9cdc2e4c46a038",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\5-format.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "core-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+      "bytes": 60384,
+      "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\6-index.ts"
+    },
+    {
+      "group": "source-snapshot",
+      "id": "session-controller",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\index.ts",
+      "bytes": 22912,
+      "sha256": "476bd968693ed4f290f8bb7b7c3b30fffcc470730aaec21db9f29a62f6368b02",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\7-index.ts"
+    },
+    {
+      "group": "reference",
+      "id": "t30-card",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\lawbench-工单集-第二期-20261019.md",
+      "bytes": 26313,
+      "sha256": "87d8c1eb5ad6c73bac7224c00a83cf457d8a0cd92a1c9a75f6052505b54f7cf2",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\8-lawbench-工单集-第二期-20261019.md"
+    },
+    {
+      "group": "reference",
+      "id": "b-native-readme",
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\README.md",
+      "bytes": 12105,
+      "sha256": "ab417cf87e364661ba0d624eae79ec128988b6ca0a48c2983fdee256cb379aa6",
+      "snapshotPath": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\9-README.md"
+    },
+    {
+      "group": "runtime-import",
+      "id": "cordis",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "group": "runtime-import",
+      "id": "projection-cache",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store\\projection-cache.ts",
+      "bytes": 6688,
+      "sha256": "b1f5400c548938d737ab886fb0efd168c7acf8661737bc60335eb201184df266"
+    },
+    {
+      "group": "runtime-import",
+      "id": "file-log",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\file-log.ts",
+      "bytes": 1745,
+      "sha256": "7b0751b754c052e6a403229e568659cd7d8945cfdd02d2df185d158a51e29bc8"
+    },
+    {
+      "group": "runtime-host",
+      "id": "node-executable",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "group": "runtime-host",
+      "id": "python-executable",
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "bytes": 104952,
+      "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+    },
+    {
+      "group": "runtime-host",
+      "id": "tsx-cli",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-package-init",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\__init__.py",
+      "bytes": 74,
+      "sha256": "fa1e967e87f9167961c9d7ff8c219d87faf3047a6bd45f7ae28df26cca54c1d3"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-contracts",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\contracts.py",
+      "bytes": 5962,
+      "sha256": "e667373c84d3622a2b33bdfaad21cfafc6a2a919fe8937b95d8f872dc939a9e3"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-logs",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\logs.py",
+      "bytes": 2455,
+      "sha256": "7576265fd8bf4967d9d99b7b67c22607af36fc640ccd8333602ba4ff15bdcdc6"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-errors",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\errors.py",
+      "bytes": 3204,
+      "sha256": "f580d733d88a15a70df089f8b1bcd6bfffcac6b8a78013532aab61d2d20d33f4"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-case-init",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-case-registry",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\registry.py",
+      "bytes": 11656,
+      "sha256": "05d3266afd7efb4108d416102c35d548aae29b011cdfb8b757872a8b0e656c21"
+    },
+    {
+      "group": "b-case-source",
+      "id": "b-case-gate",
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\gate.py",
+      "bytes": 24076,
+      "sha256": "cfed621cd2729d595c61f600c6eea88903de867d5647911881314104171a482e"
+    },
+    {
+      "group": "b-contract-source",
+      "id": "b-case-db-sql",
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\case_db.sql",
+      "bytes": 4199,
+      "sha256": "18513849ca3dde0cdf333682983c77561ad597744c29da23c75a2544ae2c4703"
+    },
+    {
+      "group": "b-contract-source",
+      "id": "b-cases-schema",
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\cases.schema.json",
+      "bytes": 1396,
+      "sha256": "22ef6aa3f4d14c0b0d8414a6bcb449f264d413459c53ee40c78cb0a88c10a8d3"
+    },
+    {
+      "group": "admission-consumer",
+      "id": "prepare-case-helper",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\prepare-case.py",
+      "bytes": 5548,
+      "sha256": "f47b4750660d72a4cfd493dc0ed080fb72d44821811fd0b4889d185193141392"
+    }
+  ]
+}

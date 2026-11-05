@@ -1,0 +1,92 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\prepare.ps1",
+    "expected": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37",
+    "actual": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\start.ps1",
+    "expected": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445",
+    "actual": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\stop.ps1",
+    "expected": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647",
+    "actual": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/server.py",
+    "expected": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca",
+    "actual": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\agent.js",
+    "expected": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43",
+    "actual": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\client.js",
+    "expected": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661",
+    "actual": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\credentials.js",
+    "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+    "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\host.js",
+    "expected": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8",
+    "actual": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\index.js",
+    "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+    "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\session-store.js",
+    "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+    "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\resolve-from-dsh.mjs",
+    "expected": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208",
+    "actual": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+    "expected": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130",
+    "actual": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/agent.js",
+    "expected": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b",
+    "actual": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/client.js",
+    "expected": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46",
+    "actual": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/host.js",
+    "expected": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994",
+    "actual": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/credentials.js",
+    "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+    "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/index.js",
+    "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+    "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/session-store.js",
+    "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+    "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+  }
+]

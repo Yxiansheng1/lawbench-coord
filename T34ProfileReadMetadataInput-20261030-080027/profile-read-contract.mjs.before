@@ -1,0 +1,358 @@
+import { existsSync, readFileSync, statSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { pathToFileURL } from 'node:url'
+import assert from 'node:assert/strict'
+
+const INPUTS_PATH =
+  'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProfileReadContract-20261030-075459\\literal-inputs.json'
+
+const EXPECTED_INPUTS = {
+  root: 'D:\\Lawbeach\\lawbench-A',
+  purpose: 'READ_ONLY_REAL_PREWRITE_PROFILE_LOAD_COMPOSE_NO_BOOT_OR_GUI',
+  targetNamespace: 'llm-pi-ai',
+  cases: [
+    {
+      label: 1,
+      profile:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop',
+      home:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home',
+      patchPath:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+      installAnchor:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json',
+      pins: [
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\package.json',
+          bytes: 387,
+          sha256: 'b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2',
+          mtime_ns: '1793314148839891000',
+        },
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+          bytes: 7882,
+          sha256: '912afbdd0b72b8a4ac6ab5395516c99d5ae502a55657371f4e6ff0f29e35a576',
+          mtime_ns: '1793314150535893900',
+        },
+      ],
+      homePatchAbsent:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\cordis.patch.yml',
+    },
+    {
+      label: 2,
+      profile:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop',
+      home:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home',
+      patchPath:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+      installAnchor:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json',
+      pins: [
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\package.json',
+          bytes: 387,
+          sha256: 'b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2',
+          mtime_ns: '1793315081182353500',
+        },
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+          bytes: 7896,
+          sha256: 'edf5859004a099a963fde5683d6311fbf151b25d4c89e7fa4fd36b0b641c42f3',
+          mtime_ns: '1793315082913039300',
+        },
+      ],
+      homePatchAbsent:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\cordis.patch.yml',
+    },
+    {
+      label: 3,
+      profile:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop',
+      home:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home',
+      patchPath:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+      installAnchor:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json',
+      pins: [
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\package.json',
+          bytes: 387,
+          sha256: 'b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2',
+          mtime_ns: '1793316353439198900',
+        },
+        {
+          path: 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml',
+          bytes: 7903,
+          sha256: '0c1c1c52112c3ed6b1f9fd247019a6cd13eb4a6f9eedc0a656d2d97e3d696d2e',
+          mtime_ns: '1793316355064906200',
+        },
+      ],
+      homePatchAbsent:
+        'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\cordis.patch.yml',
+    },
+  ],
+  primary: [
+    {
+      path: 'D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\lib\\index.js',
+      bytes: 181825,
+      sha256: 'b49e65913fff98a54313a4f94b9f9092f0e6aa9dc44a8b2a6e43d56b117967df',
+      mtime_ns: '1792401166990665400',
+    },
+    {
+      path: 'D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\profile-context.ts',
+      bytes: 3616,
+      sha256: '171261e7f96e51703ae5742c70de4182b42365bbb4ceb09c749c45090d1c7bc4',
+      mtime_ns: '1792379463553609600',
+    },
+    {
+      path: 'D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\profile.ts',
+      bytes: 33889,
+      sha256: '37219f354c9d39cbf3acc28c4537b8d2a5dc1eebf0838fdf1c3785e2126a506d',
+      mtime_ns: '1792399899666051100',
+    },
+    {
+      path: 'D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\lib\\index.js',
+      bytes: 6853,
+      sha256: 'bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5',
+      mtime_ns: '1792401152449124700',
+    },
+  ],
+}
+
+const SAFE_ERROR_NAMES = new Set([
+  'Error',
+  'TypeError',
+  'RangeError',
+  'SyntaxError',
+  'AssertionError',
+])
+
+const SAFE_ERROR_CODES = new Set([
+  'PROFILE_READ_VALIDATION',
+  'ERR_ASSERTION',
+  'ERR_MODULE_NOT_FOUND',
+  'ENOENT',
+  'EACCES',
+  'EPERM',
+  'EINVAL',
+])
+
+function validationError() {
+  const error = new Error()
+  error.code = 'PROFILE_READ_VALIDATION'
+  return error
+}
+
+function inspectPin(pin) {
+  const info = statSync(pin.path, { bigint: true })
+  if (!info.isFile() || info.size !== BigInt(pin.bytes)) throw validationError()
+
+  const bytes = readFileSync(pin.path)
+  if (bytes.length !== pin.bytes) throw validationError()
+
+  const sha256 = createHash('sha256').update(bytes).digest('hex')
+  if (sha256 !== pin.sha256) throw validationError()
+  if (info.mtimeNs !== BigInt(pin.mtime_ns)) throw validationError()
+
+  return {
+    bytes: String(info.size),
+    sha256,
+    mtime_ns: String(info.mtimeNs),
+  }
+}
+
+function verifyHomePatchAbsence(inputs) {
+  for (const testCase of inputs.cases) {
+    if (existsSync(testCase.homePatchAbsent)) throw validationError()
+  }
+}
+
+function flattenRows(rows) {
+  const flattened = []
+  for (const row of rows) {
+    flattened.push(row)
+    if (row !== null && typeof row === 'object' && row.group && Array.isArray(row.config)) {
+      flattened.push(...flattenRows(row.config))
+    }
+  }
+  return flattened
+}
+
+function safeFailure(error) {
+  const name =
+    error !== null &&
+    typeof error === 'object' &&
+    typeof error.name === 'string' &&
+    SAFE_ERROR_NAMES.has(error.name)
+      ? error.name
+      : 'Unknown'
+
+  const code =
+    error !== null &&
+    typeof error === 'object' &&
+    typeof error.code === 'string' &&
+    SAFE_ERROR_CODES.has(error.code)
+      ? error.code
+      : 'UNKNOWN'
+
+  return {
+    stage: 'FAILED',
+    errorName: name,
+    errorCode: code,
+  }
+}
+
+async function runContract() {
+  const inputs = JSON.parse(readFileSync(INPUTS_PATH, 'utf8'))
+  assert.deepStrictEqual(inputs, EXPECTED_INPUTS)
+
+  const inputPins = inputs.cases.flatMap(testCase => testCase.pins)
+  assert.equal(inputPins.length, 6)
+  assert.equal(inputs.primary.length, 4)
+
+  let inputPinsBefore
+  let primaryPinsBefore
+  let operationError
+  let cases
+
+  try {
+    inputPinsBefore = inputPins.map(inspectPin)
+    primaryPinsBefore = inputs.primary.map(inspectPin)
+    verifyHomePatchAbsence(inputs)
+
+    const appBootPin = inputs.primary[0]
+    const appBoot = await import(pathToFileURL(appBootPin.path).href)
+
+    if (
+      typeof appBoot.loadProfileDirectory !== 'function' ||
+      typeof appBoot.readProfilePatches !== 'function' ||
+      typeof appBoot.composeEntries !== 'function'
+    ) {
+      throw validationError()
+    }
+
+    cases = []
+    for (const testCase of inputs.cases) {
+      const stages = {
+        load: 'PENDING',
+        read: 'PENDING',
+        compose: 'PENDING',
+      }
+
+      const loaded = appBoot.loadProfileDirectory(
+        'dsh',
+        testCase.profile,
+        testCase.installAnchor,
+        { userLayer: false },
+      )
+      stages.load = 'PASS'
+
+      if (
+        loaded === null ||
+        typeof loaded !== 'object' ||
+        !Array.isArray(loaded.layers) ||
+        !Array.isArray(loaded.skippedBundles)
+      ) {
+        throw validationError()
+      }
+      if (loaded.layers.length !== 3 || loaded.skippedBundles.length !== 0) {
+        throw validationError()
+      }
+
+      const patches = appBoot.readProfilePatches('dsh', {
+        name: 'desktop',
+        dir: testCase.profile,
+        patchPath: testCase.patchPath,
+        home: testCase.home,
+        installAnchor: testCase.installAnchor,
+        cwd: testCase.profile,
+        startedBundles: [],
+        overlays: [],
+        telemetryDisabledEnv: '1',
+      })
+      stages.read = 'PASS'
+      if (!Array.isArray(patches)) throw validationError()
+
+      const composedEntries = appBoot.composeEntries([patches])
+      stages.compose = 'PASS'
+      if (!Array.isArray(composedEntries)) throw validationError()
+
+      const targetRows = flattenRows(composedEntries).filter(
+        row => row !== null && typeof row === 'object' && row.id === inputs.targetNamespace,
+      )
+      if (targetRows.length !== 1) throw validationError()
+
+      const targetRow = targetRows[0]
+      if (typeof targetRow.disabled !== 'boolean') throw validationError()
+
+      const targetConfigProvidersExternal =
+        targetRow.config !== null &&
+        typeof targetRow.config === 'object' &&
+        targetRow.config.providers !== null &&
+        typeof targetRow.config.providers === 'object' &&
+        typeof targetRow.config.providers.external === 'boolean'
+          ? targetRow.config.providers.external
+          : undefined
+      if (typeof targetConfigProvidersExternal !== 'boolean') throw validationError()
+
+      cases.push({
+        label: `label${testCase.label}`,
+        stage: 'COMPOSE_OK',
+        stages,
+        layers: loaded.layers.length,
+        skipped: loaded.skippedBundles.length,
+        patches: patches.length,
+        composed: composedEntries.length,
+        targetNamespaceCount: targetRows.length,
+        targetRowDisabled: targetRow.disabled,
+        targetConfigProvidersExternal,
+      })
+    }
+  } catch (error) {
+    operationError = error
+  }
+
+  let pinError
+  if (inputPinsBefore !== undefined && primaryPinsBefore !== undefined) {
+    try {
+      const inputPinsAfter = inputPins.map(inspectPin)
+      const primaryPinsAfter = inputs.primary.map(inspectPin)
+      verifyHomePatchAbsence(inputs)
+      assert.deepStrictEqual(inputPinsAfter, inputPinsBefore)
+      assert.deepStrictEqual(primaryPinsAfter, primaryPinsBefore)
+    } catch (error) {
+      pinError = error
+    }
+  }
+
+  if (operationError !== undefined) throw operationError
+  if (pinError !== undefined) throw pinError
+
+  assert.equal(cases.length, 3)
+  for (const result of cases) {
+    assert.equal(result.stage, 'COMPOSE_OK')
+    assert.deepStrictEqual(result.stages, {
+      load: 'PASS',
+      read: 'PASS',
+      compose: 'PASS',
+    })
+    assert.equal(result.layers, 3)
+    assert.equal(result.skipped, 0)
+    assert.equal(result.targetNamespaceCount, 1)
+  }
+
+  return {
+    stage: 'PASS',
+    cases,
+  }
+}
+
+try {
+  const output = await runContract()
+  console.log(JSON.stringify(output))
+} catch (error) {
+  console.log(JSON.stringify(safeFailure(error)))
+  process.exitCode = 1
+}

@@ -1,0 +1,51 @@
+{
+  "server": {
+    "bytes": 76898,
+    "sha256": "bada298eb3e018f36ca0c4bf3ddb4d15da61a0e9aed399f2919e2f65a6a85e0e",
+    "diff_lines": 656,
+    "changed": [
+      "_fixture_identity",
+      "_source_file_identity",
+      "_prepare",
+      "_verify_prepared",
+      "_bootstrap_snapshot",
+      "_bootstrap_native",
+      "Firewall",
+      "_serve",
+      "main"
+    ],
+    "added": [
+      "_assert_root_inventory",
+      "_directory_names",
+      "_pdf_fixture_identity",
+      "_pdf_page_text",
+      "_plain_text",
+      "_png_identity"
+    ],
+    "removed": [],
+    "unchanged": [
+      "_plain_sha256",
+      "_load_safety_base",
+      "_guard_reply",
+      "_layout",
+      "_validate_run_path",
+      "_settings",
+      "_pinned_sources",
+      "_source_identity",
+      "_check_path",
+      "_append_ndjson",
+      "_checked_file",
+      "_plain_file",
+      "_single_child",
+      "_query_pairs",
+      "_host_values",
+      "_serve_checked",
+      "_prepare_checked"
+    ]
+  },
+  "probe": {
+    "bytes": 32525,
+    "sha256": "766c0e1a3c1a81f0569efc429eda0d983030341a72cacadffa185697641ddf6f",
+    "diff_lines": 422
+  }
+}

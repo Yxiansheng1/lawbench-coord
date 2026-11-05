@@ -1,0 +1,7 @@
+--- a/dsh-ext/ui/brand.tsx
++++ b/dsh-ext/ui/brand.tsx
+@@ LOGO_STYLE single rule replacement @@
+-
+div[data-window-drag]>:has(.lb-logo-light){margin-left:auto;margin-right:auto}
++
+div[data-window-drag]:has(.lb-logo-light){justify-content:center}div[data-window-drag]>:has(.lb-logo-light){flex:0 0 auto!important;margin:0!important;padding:0!important}div[data-window-drag]:has(.lb-logo-light) span:empty{display:none}

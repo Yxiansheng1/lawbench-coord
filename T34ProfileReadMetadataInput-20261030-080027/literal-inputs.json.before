@@ -1,0 +1,99 @@
+{
+  "root": "D:\\Lawbeach\\lawbench-A",
+  "purpose": "READ_ONLY_REAL_PREWRITE_PROFILE_LOAD_COMPOSE_NO_BOOT_OR_GUI",
+  "targetNamespace": "llm-pi-ai",
+  "cases": [
+    {
+      "label": 1,
+      "profile": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop",
+      "home": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home",
+      "patchPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+      "installAnchor": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json",
+      "pins": [
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\package.json",
+          "bytes": 387,
+          "sha256": "b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2",
+          "mtime_ns": "1793314148839891000"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+          "bytes": 7882,
+          "sha256": "912afbdd0b72b8a4ac6ab5395516c99d5ae502a55657371f4e6ff0f29e35a576",
+          "mtime_ns": "1793314150535893900"
+        }
+      ],
+      "homePatchAbsent": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionObserver-20261030-061810\\runs\\T34-private-projection-observer-20261030-064836\\gui\\dsh-home\\cordis.patch.yml"
+    },
+    {
+      "label": 2,
+      "profile": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop",
+      "home": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home",
+      "patchPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+      "installAnchor": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json",
+      "pins": [
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\package.json",
+          "bytes": 387,
+          "sha256": "b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2",
+          "mtime_ns": "1793315081182353500"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+          "bytes": 7896,
+          "sha256": "edf5859004a099a963fde5683d6311fbf151b25d4c89e7fa4fd36b0b641c42f3",
+          "mtime_ns": "1793315082913039300"
+        }
+      ],
+      "homePatchAbsent": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\runs\\T34-private-projection-observer-20261030-070426\\gui\\dsh-home\\cordis.patch.yml"
+    },
+    {
+      "label": 3,
+      "profile": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop",
+      "home": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home",
+      "patchPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+      "installAnchor": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\@deepseek-ai\\dsh\\package.json",
+      "pins": [
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\package.json",
+          "bytes": 387,
+          "sha256": "b108e88135d150b8a18960902cf0396b1ee42ec99f8370c416b44c42c14e91e2",
+          "mtime_ns": "1793316353439198900"
+        },
+        {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\profiles\\desktop\\cordis.patch.yml",
+          "bytes": 7903,
+          "sha256": "0c1c1c52112c3ed6b1f9fd247019a6cd13eb4a6f9eedc0a656d2d97e3d696d2e",
+          "mtime_ns": "1793316355064906200"
+        }
+      ],
+      "homePatchAbsent": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionKnownOrigin-20261030-071450\\runs\\T34-private-projection-observer-20261030-072546\\gui\\dsh-home\\cordis.patch.yml"
+    }
+  ],
+  "primary": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\lib\\index.js",
+      "bytes": 181825,
+      "sha256": "b49e65913fff98a54313a4f94b9f9092f0e6aa9dc44a8b2a6e43d56b117967df",
+      "mtime_ns": "1792401166990665400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\profile-context.ts",
+      "bytes": 3616,
+      "sha256": "171261e7f96e51703ae5742c70de4182b42365bbb4ceb09c749c45090d1c7bc4",
+      "mtime_ns": "1792379463553609600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\app-boot\\src\\profile.ts",
+      "bytes": 33889,
+      "sha256": "37219f354c9d39cbf3acc28c4537b8d2a5dc1eebf0838fdf1c3785e2126a506d",
+      "mtime_ns": "1792399899666051100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\lib\\index.js",
+      "bytes": 6853,
+      "sha256": "bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5",
+      "mtime_ns": "1792401152449124700"
+    }
+  ]
+}

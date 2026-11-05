@@ -1,0 +1,64 @@
+{
+  "sdk": "D:\\Lawbeach\\lawbench-A\\dsh",
+  "sdk_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\lib\\index.js",
+      "bytes": 142847,
+      "sha256": "0845707017acc2b4a8a75eab2244fa3fd88587b8094ab32014321dce7ca1e31b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\package.json",
+      "bytes": 1544,
+      "sha256": "dce7d8100ed487c96bd37fc7715957071be5e7b68c0fa86c005b6de0a8bc2cba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\package.json",
+      "bytes": 1237,
+      "sha256": "bd5b142ae927e4f954ceaee7cdc0e43fe921dde311edc8ec4f797f85f1981f83"
+    },
+    {
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    }
+  ],
+  "session_id": "session-3d81eff5-9d11-4e00-b13d-a8d96f9cc660",
+  "request_id": "42dedbcf-5d8b-4711-a2a6-57b583dbb701",
+  "case_id": "ef655177-1eb9-4cd9-8887-c4b6b2da9a80",
+  "physical_native": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\run-keDSBH\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-LitigationDocsNative-20261029-185959-run-keDSBH-case--\\session-3d81eff5-9d11-4e00-b13d-a8d96f9cc660\\session.v4.jsonl",
+    "bytes": 197963,
+    "sha256": "c449784caf29430657eb65ab5265a155027f68857f4304312a8ac8b05a773f1b"
+  },
+  "session_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\run-keDSBH\\sessions",
+  "task": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\run-keDSBH\\case\\工作区\\任务\\T-20261029191544-9e0b\\task.json",
+    "bytes": 1193,
+    "sha256": "60c505cfbba1e2d0d7b79ea0aee8fc369fffc9314883795179d6b20af8271656"
+  },
+  "expected_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-3d81eff5-9d11-4e00-b13d-a8d96f9cc660",
+    "createdAt": 1793272544899,
+    "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\run-keDSBH\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "expected_rows": 69,
+  "expected_events": 68,
+  "original_model_consumer_status": "FAILED",
+  "original_reopen_status": "NOT_REACHED",
+  "purpose": "Only close original missing persistence check on genuine existing failed-run JSONL; no business green/model/GUI rerun",
+  "original_proof": {
+    "path": "\\\\?\\C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-litigation-native-actual-root-closed-current.json",
+    "bytes": 28293,
+    "sha256": "d2a5c851d46fde0e59bd7bbb8112e5aaa2ca2d32442e9064c4aab959c2a4182b"
+  },
+  "original_case": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\LitigationDocsNative-20261029-185959\\run-keDSBH\\case"
+}

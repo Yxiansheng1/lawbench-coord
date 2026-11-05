@@ -1,0 +1,75 @@
+{
+    "project": "lawbench",
+    "updated_at": "2026-10-19 16:43 (+08:00)",
+    "updated_by": "ORCH",
+    "main_sha": "39124c389912c80be9b81a1f75a743006b55ddac",
+    "coord_dir": "D:\\Lawbeach\\lawbench-coord",
+    "orchestrator": {
+        "token": "ORCH",
+        "generation": 2,
+        "model": "Fable · high",
+        "workdir": "D:\\Lawbeach\\lawbench",
+        "branch": "main",
+        "handoff": null,
+        "since": "2026-10-19 (公司电脑新会话，接替旧机主编排)"
+    },
+    "lanes": [
+        {
+            "token": "A",
+            "name": "线 A（客户端）",
+            "model": "Opus 5.5 · high",
+            "workdir": "D:\\Lawbeach\\lawbench-A",
+            "branch": "line-A",
+            "ports": "18801-18809",
+            "current_ticket": "T30 删除会话重做 → T31 小活批 → T32 右栏重排",
+            "next_ticket": "T33/T34/T35 等 B 交回",
+            "status": "10-19 上线，对齐 main 39124c3",
+            "last_order": "致A-ORCH-执行令-T30-20261019.md"
+        },
+        {
+            "token": "B",
+            "name": "线 B（工作台服务）",
+            "model": "Opus 5.5 · high",
+            "workdir": "D:\\Lawbeach\\lawbench-B",
+            "branch": "line-B",
+            "ports": "18811-18819",
+            "current_ticket": "T36 Skill 规则批 → T37 路径索引（方案页先交）",
+            "next_ticket": "T38 外部模型（方案页）、T39 提示词接口",
+            "status": "10-19 上线，对齐 main 39124c3",
+            "last_order": "致B-ORCH-执行令-T36-20261019.md"
+        },
+        {
+            "token": "C",
+            "name": "线 C（395 与周边）",
+            "model": "Opus 5.5 · high",
+            "workdir": "D:\\Lawbeach\\lawbench-C",
+            "branch": "line-C",
+            "ports": "18821-18829",
+            "current_ticket": "T40 EasyTier 嵌入（方案页先交）",
+            "next_ticket": "T41 所外收尾",
+            "status": "10-19 上线，对齐 main 39124c3",
+            "last_order": "致C-ORCH-执行令-T40-20261019.md"
+        },
+        {
+            "token": "D",
+            "name": "线 D（macOS 版）",
+            "model": "Opus 5.5 · high",
+            "workdir": "D:\\Lawbeach\\lawbench-D",
+            "branch": "line-D",
+            "ports": "18831-18839",
+            "current_ticket": "T42 Mac 加 Intel 包",
+            "next_ticket": "T47 1.0 打包",
+            "status": "10-19 上线，对齐 main 39124c3",
+            "last_order": "致D-ORCH-执行令-T42-20261019.md"
+        }
+    ],
+    "inbox_patterns": {
+        "ORCH": "^致ORCH-|^OWNER-|^SELFTEST-ORCH",
+        "A": "^致A-|^ORCH-广播-|^OWNER-|^SELFTEST-A",
+        "B": "^致B-|^ORCH-广播-|^OWNER-|^SELFTEST-B",
+        "C": "^致C-|^ORCH-广播-|^OWNER-|^SELFTEST-C",
+        "D": "^致D-|^ORCH-广播-|^OWNER-|^SELFTEST-D"
+    },
+    "notes": "现任主编排以本文件为唯一判据。本文件不写 Key、密码、网络密钥。已合并：T0、T1、T2、T4、T6、T7（至 150cd83）、T21。复核中：T3+T5（两名）、T8（一名）@695191f；T19@aaad8c1（一名）；T13 1.2@d746011（一名）。T17 第一步返修、P-5、P-9 等第二步做完一起双人复核。契约 1.2（2026-09-30）。候用户：N16（SSH）、N4、N8、N12、N13、N30、N33 已结（线 B 已恢复）。值守窗已关，用户在场传话。",
+    "monitoring": "值守窗已于 2026-09-30 10:34 (+08:00) 关闭，恢复由用户传话"
+}

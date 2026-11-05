@@ -1,0 +1,14 @@
+{
+  "verdict": "UNRUN_TENDER_CONSUMER_TWO_OBSERVATION_CONTRACT_FIXES_REQUIRED",
+  "original_entry_sha256": "80cb5560d72182bd85cdceb51e1e94490906f26d2141c51a4feda301e909db4b",
+  "original_manifest_sha256": "b381c7618886a3b9b505e02d6d7127074079486cc94ff02f920c3961806068cf",
+  "full_all100_commands_source_diff694_B_delta_formal_README_reviewed": true,
+  "original_author_runtime": 0,
+  "actual_model_NOT_RUN": true,
+  "findings": [
+    "Toolquestion contract does not require exact substrings 投标人资格/合同条款 in question wording; preserve actual text for rootmanual semantic confirmation, do not reject semantically equivalent phrasing.",
+    "Restore explicit A-E absence predicate in addition to currentmustfix0/fullhint reporting; currentproducer makesA-E mustfix, but originalT18 acceptance also states noA-E."
+  ],
+  "no_product_or_model_failure": true,
+  "Packaging": "HOLD"
+}

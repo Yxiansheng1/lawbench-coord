@@ -1,0 +1,19 @@
+{
+  "status": "NOT_RENDERED_MISSING_EXISTING_MARKDOWN_IT_DEPENDENCY",
+  "phase": "Original builder import; no convert function or HTML write reached",
+  "ModuleNotFoundError": "markdown_it",
+  "source_A_spec": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\src\\Spec.md",
+    "bytes": 200876,
+    "sha256": "1b56a9b7ea8d39bf75fedf45b5d21ebfccc303929f16e37a5c6cafc3a68a8567"
+  },
+  "source_B_spec": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+    "bytes": 203807,
+    "sha256": "43b34592492cbf6cb75b59dbae3762ac0b60b9b67175d8a3b183532e1d5ad8f4"
+  },
+  "installed_or_substituted": false,
+  "PRD_not_regenerated": true,
+  "not_product_failure": true,
+  "Packaging": "HOLD"
+}

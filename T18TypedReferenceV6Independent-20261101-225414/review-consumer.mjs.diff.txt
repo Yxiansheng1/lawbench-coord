@@ -1,0 +1,154 @@
+--- CLOSED_V5
++++ V6
+@@ -87,7 +87,7 @@
+   "For a C or Q target, treatment must be exactly one of SUPPORTED, PARTIAL, UNSUPPORTED, UNKNOWN, NON_FACTUAL.",
+   "NON_FACTUAL is only a model opinion that the target does not carry a factual or checkable proposition.",
+   "UNKNOWN means that the supplied material does not determine the treatment; never treat UNKNOWN as a finding of falsehood.",
+-  "refs must be a duplicate-free array of existing supplied target ids from other families only: F may refer to C or Q; C may refer to F or Q; Q may refer to F or C.",
++  "refs must be a duplicate-free array of existing supplied target ids using this directed evidence graph only: F may refer to C; C may refer to F; Q may refer to F or C.",
+   "An F target marked ADDRESSED and a C or Q target marked SUPPORTED require at least one ref.",
+   "assessment must be nonempty brief plain text no longer than 160 UTF-16 code units.",
+   "Do not return copied quotes, target text, kind fields, issues, an overall pass, or any other field. This output is provisional protocol data for Root manual judgment.",
+@@ -512,12 +512,14 @@
+   ];
+ }
+ 
+-export function buildRequestPayload(messages) {
+-  return {
++export function buildRequestPayload(messages, responseFormat) {
++  const payload = {
+     model: MODEL,
+     ...PARAMETERS,
+     messages,
+   };
++  if (responseFormat !== undefined) payload.response_format = responseFormat;
++  return payload;
+ }
+ 
+ export function buildAuthorizationHeader(rawKey) {
+@@ -663,9 +665,99 @@
+ }
+ 
+ function allowedRefKinds(kind) {
+-  if (kind === "F") return new Set(["C", "Q"]);
+-  if (kind === "C" || kind === "Q") return new Set(["F", "Q", "C"].filter((item) => item !== kind));
++  if (kind === "F") return new Set(["C"]);
++  if (kind === "C") return new Set(["F"]);
++  if (kind === "Q") return new Set(["F", "C"]);
+   return new Set();
++}
++
++function buildStage2ReviewRecordSchema(targetIds, treatments, referenceIds, minimumRefs) {
++  const refsSchema = {
++    type: "array",
++    minItems: minimumRefs,
++    maxItems: referenceIds.length,
++    uniqueItems: true,
++  };
++  if (referenceIds.length > 0) {
++    refsSchema.items = {
++      type: "string",
++      enum: referenceIds,
++    };
++  }
++  return {
++    type: "object",
++    additionalProperties: false,
++    required: ["target_id", "treatment", "refs", "assessment"],
++    properties: {
++      target_id: {
++        type: "string",
++        enum: targetIds,
++      },
++      treatment: {
++        type: "string",
++        enum: treatments,
++      },
++      refs: refsSchema,
++      assessment: {
++        type: "string",
++        minLength: 1,
++        maxLength: ASSESSMENT_MAX_UTF16,
++      },
++    },
++  };
++}
++
++export function buildStage2ResponseFormat(inventory, reviewTargetIds) {
++  const targetIndex = buildCanonicalTargetIndex(inventory, "schema");
++  const expectedIds = validateExpectedTargetIds(reviewTargetIds, targetIndex, "schema");
++  const branches = [];
++  for (const kind of ["F", "C", "Q"]) {
++    const activeTargetIds = targetIndex.canonicalIds.filter((targetId) => (
++      expectedIds.has(targetId) && targetIndex.targetsById.get(targetId).kind === kind
++    ));
++    if (activeTargetIds.length === 0) continue;
++    const referenceKinds = allowedRefKinds(kind);
++    const referenceIds = targetIndex.canonicalIds.filter((targetId) => (
++      referenceKinds.has(targetIndex.targetsById.get(targetId).kind)
++    ));
++    const treatments = kind === "F" ? FRAGMENT_TREATMENTS : SUPPORT_TREATMENTS;
++    const positiveTreatment = kind === "F" ? "ADDRESSED" : "SUPPORTED";
++    if (referenceIds.length > 0) {
++      branches.push(buildStage2ReviewRecordSchema(
++        activeTargetIds,
++        [positiveTreatment],
++        referenceIds,
++        1,
++      ));
++    }
++    branches.push(buildStage2ReviewRecordSchema(
++      activeTargetIds,
++      treatments.filter((treatment) => treatment !== positiveTreatment),
++      referenceIds,
++      0,
++    ));
++  }
++  return {
++    type: "json_schema",
++    json_schema: {
++      name: "lawbench_target_review_v6",
++      schema: {
++        type: "object",
++        additionalProperties: false,
++        required: ["reviews"],
++        properties: {
++          reviews: {
++            type: "array",
++            minItems: expectedIds.size,
++            maxItems: expectedIds.size,
++            items: {
++              anyOf: branches,
++            },
++          },
++        },
++      },
++    },
++  };
+ }
+ 
+ export function validateStage2Result(parsed, inventory, expectedTargetIds = undefined) {
+@@ -1319,14 +1411,16 @@
+     for (const shard of shardPlan) {
+       const stage = shard.shard_id;
+       if (Date.now() >= deadline) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
++      const stage2Messages = buildStage2Messages(
++        units,
++        stage1Parsed.assessments,
++        inventory,
++        input.actualCoverage,
++        shard.review_target_ids,
++      );
+       const stage2Payload = buildRequestPayload(
+-        buildStage2Messages(
+-          units,
+-          stage1Parsed.assessments,
+-          inventory,
+-          input.actualCoverage,
+-          shard.review_target_ids,
+-        ),
++        stage2Messages,
++        buildStage2ResponseFormat(inventory, shard.review_target_ids),
+       );
+       const stage2Body = JSON.stringify(stage2Payload);
+       await writeArtifact(artifactsDir, `${stage}-request.json`, { body: stage2Body }, credential);

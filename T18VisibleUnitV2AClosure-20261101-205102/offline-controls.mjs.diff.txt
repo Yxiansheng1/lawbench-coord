@@ -1,0 +1,26 @@
+--- BEFORE_FRAME_FIX/offline-controls.mjs
++++ CURRENT/offline-controls.mjs
+@@ -162,9 +162,22 @@
+   () => buildVisibleUnits([{ ...receipt, end: 10 }]),
+   "RANGE_END_MISMATCH",
+ );
++const malformed08 = "\u3010\u7B2C08\u884C\u3011";
++const malformedMixedText = receiptText.replace(
++  label8,
++  `${malformed08}\n${label8}`,
++);
++assertProtocolError(
++  () => buildVisibleUnits([{ ...receipt, text: malformedMixedText }]),
++  "MARKER_FRAME_INVALID",
++);
++assert.equal(
++  malformedMixedText,
++  receiptText.replace(label8, `${malformed08}\n${label8}`),
++);
+ assertProtocolError(
+   () => buildVisibleUnits([{ ...receipt, text: `${label7}\r\nHEADER_SENTINEL only\n` }]),
+-  "MARKERS_MISSING",
++  "MARKER_FRAME_INVALID",
+ );
+ 
+ const stage1Envelope = buildStage1Envelope(units);

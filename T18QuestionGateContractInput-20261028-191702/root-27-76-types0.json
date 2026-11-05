@@ -1,0 +1,202 @@
+{
+  "at": "2026-10-28T19:07:15.654421+08:00",
+  "verdict": "CONTRACT_REQUIRED_ANSWER_GATE_LOCAL_TECHNICAL_ACCEPTED_NOT_BUSINESS_ACCEPTANCE",
+  "unit": {
+    "model_calls": 0,
+    "at": "2026-10-28T18:59:10.8518306+08:00",
+    "results": [
+      {
+        "mode": "unit",
+        "exit": 0,
+        "elapsed_s": 1.6146913,
+        "forced": false,
+        "OS": [
+          {
+            "ticks": "639287819454894807",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 38764,
+            "birthUTC": "2026-10-28T10:59:05.4894807Z"
+          },
+          {
+            "ticks": "639287819457794436",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 42616,
+            "birthUTC": "2026-10-28T10:59:05.7794436Z"
+          },
+          {
+            "ticks": "639287819457858655",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 43752,
+            "birthUTC": "2026-10-28T10:59:05.7858655Z"
+          },
+          {
+            "ticks": "639287819454953060",
+            "exe": "C:\\Windows\\system32\\conhost.exe",
+            "gone": true,
+            "pid": 45472,
+            "birthUTC": "2026-10-28T10:59:05.4953060Z"
+          }
+        ]
+      },
+      {
+        "mode": "types",
+        "exit": 0,
+        "elapsed_s": 3.7442597,
+        "forced": false,
+        "OS": [
+          {
+            "ticks": "639287819471127496",
+            "exe": "C:\\Windows\\system32\\conhost.exe",
+            "gone": true,
+            "pid": 44588,
+            "birthUTC": "2026-10-28T10:59:07.1127496Z"
+          },
+          {
+            "ticks": "639287819471070301",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 16780,
+            "birthUTC": "2026-10-28T10:59:07.1070301Z"
+          }
+        ]
+      }
+    ],
+    "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+    "GUI": false,
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateListFixedUnit-root-20261028-185905",
+    "Packaging": "HOLD",
+    "source_changes": []
+  },
+  "affected": {
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateAffected-root-20261028-190248",
+    "at": "2026-10-28T19:03:01.0360551+08:00",
+    "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+    "model_calls": 0,
+    "results": [
+      {
+        "elapsed_s": 12.8486405,
+        "mode": "unit",
+        "forced": false,
+        "exit": 0,
+        "OS": [
+          {
+            "birthUTC": "2026-10-28T11:02:48.4949377Z",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 44632,
+            "ticks": "639287821684949377"
+          },
+          {
+            "birthUTC": "2026-10-28T11:02:48.4921106Z",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 43620,
+            "ticks": "639287821684921106"
+          },
+          {
+            "birthUTC": "2026-10-28T11:02:48.4859189Z",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 42368,
+            "ticks": "639287821684859189"
+          },
+          {
+            "birthUTC": "2026-10-28T11:02:48.1905912Z",
+            "exe": "C:\\Windows\\system32\\conhost.exe",
+            "gone": true,
+            "pid": 43564,
+            "ticks": "639287821681905912"
+          },
+          {
+            "birthUTC": "2026-10-28T11:02:48.1844481Z",
+            "exe": "E:\\node\\node.exe",
+            "gone": true,
+            "pid": 42196,
+            "ticks": "639287821681844481"
+          }
+        ]
+      }
+    ],
+    "source_changes": [],
+    "GUI": false,
+    "Packaging": "HOLD"
+  },
+  "tests": {
+    "targeted": 27,
+    "affected_old": 76,
+    "total_disjoint": 103,
+    "failed": 0
+  },
+  "types_exit": 0,
+  "cumulative_authors_before_private_build": {
+    "commands": 1070,
+    "success": 916,
+    "nonzero": 154,
+    "runtime": 0
+  },
+  "full_cumulative_all_authors_commands_sources_deltas_writes_formal_setup_reviewed": true,
+  "all18_baseline_inverse_trees_exact": true,
+  "all53_refs_same": true,
+  "legacy18_same": true,
+  "approved_six_sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 44666,
+      "sha256": "4f652150927692c5230bd7ec5d517fdec2f45e35839fefd017d3e6d0aa3c922c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 20103,
+      "sha256": "d69d93748eace497539a5ca96b18fd19e9852de2b3bed93cbddb45c87a7277b4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 61281,
+      "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+      "bytes": 3801,
+      "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+      "bytes": 4045,
+      "sha256": "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dock.tsx",
+      "bytes": 48424,
+      "sha256": "d9db5ade5a4936a6367453835f0b4d4213e7778d061a050d9ae8d64b9efc3787"
+    }
+  ],
+  "remaining": [
+    "New fresh private compilation and actual compiled consumer capability binding",
+    "Original real synthetic contract workflow questions-before-write/editlist/redline/OOXML and source-preservation/JSONL/OS closure",
+    "Manual model output semantic/math quality: previous ratio20vs2 and reading pending markers/selfcheck unresolved",
+    "Old agent.spec fixture statically mismatches global sample external route versus local expectations; NOTRUN/not counted green, not inferred new product defect"
+  ],
+  "next": {
+    "at": "2026-10-28T19:05:12.900578+08:00",
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-question-gate-private-build-1017-20261028-190512.job.json",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18QuestionGateBuildInput-20261028-190358",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T18-question-gate-private-build-order-20261028-190512.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T18-question-gate-private-build-20261028-190512.md",
+    "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358",
+    "blueprint": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-question-gate-private-build-blueprint-current.json",
+    "state": "AUTHORING_NEW_PRIVATE_BUILD_FROZEN_DATA_CONFIG_ONLY",
+    "author_runtime": 0,
+    "Packaging": "HOLD"
+  },
+  "model_calls": 0,
+  "GUI": false,
+  "private_build_run": false,
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateTechnicalAccepted-root-20261028-190715",
+  "files": 27,
+  "manifest_sha256": "e983deed662ec7793df3c39faff60234782a6f04a93ac260223c6059e7c7e848"
+}

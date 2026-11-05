@@ -1,0 +1,28 @@
+{
+  "verdict": "FAIL_CURRENT_BUSINESS_OUTPUT_WITH_TECHNICAL_WORKFLOW_PASS",
+  "draft": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-eDFTOP\\case\\工作区\\任务\\T-20261028144218-bd76\\草稿\\阅卷笔录-v6.md",
+  "draft_sha256": "ca43c948413746b37250ceadcdcfb88cfb62bb19db72c3cf224b7854f1200f96",
+  "findings": [
+    {
+      "id": "DISPUTED_PAYMENT_CLASSIFIED_AS_SETTLED",
+      "line": 100,
+      "excerpt": "| 已还本金 | 20,000元（2025年6月10日） |",
+      "reason": "The same case overview and draft explicitly identify principal-versus-interest classification as disputed. The summary table silently settles it instead of retaining source attribution and controversy.",
+      "source": "案情摘要 第11行"
+    },
+    {
+      "id": "UNMARKED_INTEREST_MONTH_INFERENCE",
+      "line": 71,
+      "excerpt": "该笔600元应为6月利息的可能性更大，备注可能有误。",
+      "reason": "The source remark is 5月利息. Draft infers another month without explicit inference tag or preserved uncertainty boundary.",
+      "source": "还款记录 第6行"
+    }
+  ],
+  "secondary": [
+    "Individual situation-statement bullets assert statements directly while self-check claims all are attributed.",
+    "Draft labels 借条 核心证据 despite Skill no evidentiary-weight appraisal rule and no confirmed stance."
+  ],
+  "notCitationCheckerBugClaim": true,
+  "noLegalMeritsOpinion": true,
+  "wholeT18": false
+}

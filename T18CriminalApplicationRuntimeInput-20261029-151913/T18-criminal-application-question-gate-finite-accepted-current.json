@@ -1,0 +1,19 @@
+{
+  "verdict": "CURRENT_CRIMINAL_APPLICATION_GATE_FIVE_UNIT_PASS_TYPES0_NOT_NATIVE_MODEL",
+  "product_sha256": "ce2493cb60e652195779394bff50819924ceeff64e5bcf63e859928eb2c87294",
+  "test_sha256": "e73983461b33dcb1e141cb5e34859f7baca6faced73b1001d5fde73c93e39540",
+  "fresh_five_tests_PASS": true,
+  "unit_elapsed_s": 6.0946837,
+  "types_exit0": true,
+  "types_elapsed_s": 7.1633313,
+  "source_changes": [],
+  "complete_validated_OS_gone": 5,
+  "forced": false,
+  "global_network_metered": false,
+  "Core_in_memory": true,
+  "actual_ToolRuntime_pipeline_test_PASS": true,
+  "old_five_Skill_predicates_and_functions_held_by_inverse": true,
+  "old_all51_full_new_source_runtime_NOT_claimed": true,
+  "full_T18": false,
+  "Packaging": "HOLD"
+}

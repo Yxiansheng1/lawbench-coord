@@ -1,0 +1,35 @@
+{
+  "v": 1,
+  "task_id": "T-20261029012044-5869",
+  "case_id": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+  "kind": "agent",
+  "session_id": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "entry": null,
+  "skill": "pre-issue-check",
+  "route": "local",
+  "step": null,
+  "inputs": [
+    {
+      "index": 1,
+      "title": "合同审查意见",
+      "path": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+      "version": 2,
+      "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d"
+    }
+  ],
+  "params": {
+    "thinking": "中",
+    "window": "128K",
+    "max_tokens": 32768,
+    "temperature": 0.6
+  },
+  "budget": {
+    "model_calls": 32,
+    "tool_calls": 48,
+    "minutes": 45
+  },
+  "state": "finished",
+  "created_at": "2026-10-29T01:20:44+08:00",
+  "request_id": "b91ca8e9-4d23-47bb-b249-c8e46fb7dd06",
+  "request_scope": null
+}

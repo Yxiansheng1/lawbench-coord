@@ -1,0 +1,146 @@
+--- BEFORE/offline-controls.mjs
++++ CURRENT/offline-controls.mjs
+@@ -13,6 +13,7 @@
+   outputStatusForFindings,
+   parseModelJson,
+   redactCredential,
++  requestTimeoutForDeadline,
+   serializeForArtifact,
+   selectPilotInput,
+   unwrapChatCompletion,
+@@ -165,6 +166,39 @@
+ assert.ok(redacted.includes("[REDACTED_CREDENTIAL]"));
+ assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), "a[REDACTED_CREDENTIAL]b");
+ 
++const quoteBackslashCredential = 'CREDENTIAL_"QUOTE"\\BACKSLASH_SENTINEL';
++const jsonEscapedCredential = JSON.stringify(quoteBackslashCredential).slice(1, -1);
++const quoteBackslashSerialized = serializeForArtifact({
++  error: `raw error ${quoteBackslashCredential}`,
++  responseBody: JSON.stringify({ error: { message: quoteBackslashCredential } }),
++  nested: {
++    [`raw-key:${quoteBackslashCredential}`]: [
++      quoteBackslashCredential,
++      jsonEscapedCredential,
++    ],
++    [`escaped-key:${jsonEscapedCredential}`]: [
++      quoteBackslashCredential,
++      jsonEscapedCredential,
++    ],
++  },
++}, quoteBackslashCredential);
++assert.ok(!quoteBackslashSerialized.includes(quoteBackslashCredential));
++assert.ok(!quoteBackslashSerialized.includes(jsonEscapedCredential));
++assert.ok(quoteBackslashSerialized.includes("[REDACTED_CREDENTIAL]"));
++const persistedQuoteBackslash = JSON.parse(quoteBackslashSerialized);
++assert.equal(persistedQuoteBackslash.error, "raw error [REDACTED_CREDENTIAL]");
++assert.equal(persistedQuoteBackslash.responseBody, '{"error":{"message":"[REDACTED_CREDENTIAL]"}}');
++assert.deepEqual(persistedQuoteBackslash.nested, {
++  "raw-key:[REDACTED_CREDENTIAL]": ["[REDACTED_CREDENTIAL]", "[REDACTED_CREDENTIAL]"],
++  "escaped-key:[REDACTED_CREDENTIAL]": ["[REDACTED_CREDENTIAL]", "[REDACTED_CREDENTIAL]"],
++});
++
++assert.equal(requestTimeoutForDeadline(1_000, 901_000), 400_000);
++assert.equal(requestTimeoutForDeadline(501_000, 901_000), 400_000);
++assert.equal(requestTimeoutForDeadline(801_000, 901_000), 100_000);
++assert.equal(requestTimeoutForDeadline(901_000, 901_000), 0);
++assert.equal(requestTimeoutForDeadline(902_000, 901_000), 0);
++
+ const stage1Content = JSON.stringify(candidates);
+ const stage1CompletionBody = JSON.stringify({
+   id: "CHAT_COMPLETION_SENTINEL_1",
+@@ -181,6 +215,7 @@
+ assert.equal(unwrapChatCompletion(stage1CompletionBody), stage1Content);
+ assert.equal(
+   unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     choices: [{
+       message: { role: "assistant", content: stage1Content, tool_calls: [] },
+       finish_reason: "stop",
+@@ -193,30 +228,34 @@
+   candidates,
+ );
+ assertProtocolError(
+-  () => unwrapChatCompletion(JSON.stringify({ findings: [] })),
++  () => unwrapChatCompletion(JSON.stringify({ model: MODEL, findings: [] })),
+   "COMPLETION_INVALID",
+ );
+ assertProtocolError(() => unwrapChatCompletion("{"), "COMPLETION_INVALID");
+ assertProtocolError(
+   () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     choices: [{ message: { role: "assistant", reasoning_content: "REASONING_SENTINEL" }, finish_reason: "stop" }],
+   })),
+   "COMPLETION_CONTENT_INVALID",
+ );
+ assertProtocolError(
+   () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     choices: [{ message: { role: "assistant", content: "TRUNCATED_CONTENT_SENTINEL" }, finish_reason: "length" }],
+   })),
+   "COMPLETION_NOT_FINISHED",
+ );
+ assertProtocolError(
+   () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     error: { type: "SENTINEL_ERROR" },
+   })),
+   "COMPLETION_ERROR",
+ );
+ assertProtocolError(
+   () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     choices: [{
+       message: {
+         role: "assistant",
+@@ -230,6 +269,7 @@
+ );
+ assertProtocolError(
+   () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL,
+     choices: [{
+       message: {
+         role: "assistant",
+@@ -240,6 +280,35 @@
+     }],
+   })),
+   "COMPLETION_TOOL_CALLS_UNSUPPORTED",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    model: "DIFFERENT_MODEL_SENTINEL",
++    choices: [{
++      message: { role: "assistant", content: stage1Content },
++      finish_reason: "stop",
++    }],
++  })),
++  "COMPLETION_MODEL_MISMATCH",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    choices: [{
++      message: { role: "assistant", content: stage1Content },
++      finish_reason: "stop",
++    }],
++  })),
++  "COMPLETION_MODEL_MISMATCH",
++);
++assertProtocolError(
++  () => unwrapChatCompletion(JSON.stringify({
++    model: MODEL.toUpperCase(),
++    choices: [{
++      message: { role: "assistant", content: stage1Content },
++      finish_reason: "stop",
++    }],
++  })),
++  "COMPLETION_MODEL_MISMATCH",
+ );
+ 
+ assert.deepEqual(parseModelJson('{"findings":[]}'), { findings: [] });
+@@ -333,6 +402,7 @@
+ const stage2CompletionBody = JSON.stringify({
+   id: "CHAT_COMPLETION_SENTINEL_2",
+   object: "chat.completion",
++  model: MODEL,
+   choices: [{
+     index: 0,
+     message: { role: "assistant", content: JSON.stringify(sameCandidateReview) },

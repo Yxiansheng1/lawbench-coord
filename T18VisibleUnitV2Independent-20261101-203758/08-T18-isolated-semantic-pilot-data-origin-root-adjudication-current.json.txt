@@ -1,0 +1,44 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-isolated-semantic-pilot-data-origin-root-adjudication-current.json
+SHA b158726df7888615f16a3764e40a9d6354e52ed504304a9a3fef3a4ece1ca1bb
+0001 {
+0002   "finding": "Final reviewer C Q1 conflated ACTUAL Native execution/draft with REAL CASE data",
+0003   "Root_disposition": "REJECT_INFERENCE_KEEP_ORIGINAL_APPROVED_SYNTHETIC_FIXTURE_IDENTITY",
+0004   "source": {
+0005     "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\native-defense-opinion.mts",
+0006     "sha256": "61044412a52df8bbba2587a257f807a5399bcee37fb52da36cbfd03d3b5877c6",
+0007     "header_excerpt": [
+0008       "/**",
+0009       " * Finite T18 native defense-opinion consumer.",
+0010       " *",
+0011       " * One fresh private criminal case receives two approved synthetic TXT",
+0012       " * materials and one canonical user-provided prior-note Markdown file under",
+0013       " * 成果/. The real B CaseRegistry, text scanner, TaskService input hashing, L1",
+0014       " * context builder, Native Session, LegalAgent, AgentLoop, and one real 6000D",
+0015       " * turn form one unscoped defense-opinion task. No historical session,",
+0016       " * messages, task state, case DB, or JSONL is copied. The autonomous consumer",
+0017       " * observes the model's actual three-ID question after the real L1 context,",
+0018       " * answers only those IDs when the model asks, requires the answers before the",
+0019       " * first successful save, then verifies the model-authored defense opinion"
+0020     ]
+0021   },
+0022   "actual_report_fixture": {
+0023     "syntheticOnly": true,
+0024     "freshCase": true,
+0025     "freshNativeSession": true,
+0026     "materialNames": [
+0027       "起诉意见书",
+0028       "讯问笔录"
+0029     ],
+0030     "priorInputPath": "成果/刑事阅卷笔录.md",
+0031     "priorInputSource": "canonical-user-provided-fixture",
+0032     "priorInputIsModelGenerated": false,
+0033     "materialCopiesBeforeCaseOpen": true,
+0034     "materialImportCalls": 0,
+0035     "requestScopePrepared": false
+0036   },
+0037   "provenance_reference": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+0038   "no_new_realcase_file_read": true,
+0039   "no_Git_write_or_commit_authorized": true,
+0040   "reviewer_c_formal_unchanged": true,
+0041   "Root_publication_boundary": "HOLD"
+0042 }

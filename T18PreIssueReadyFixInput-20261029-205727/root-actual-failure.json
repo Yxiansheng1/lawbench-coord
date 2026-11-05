@@ -1,0 +1,67 @@
+{
+  "verdict": "ACTUAL_PRE_MODEL_READINESS_FIXTURE_COUNT_FAILED",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18PreIssueNativeRuntime-root-20261029-205607",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueSectionContract-20261029-204039\\run-v1G6xP",
+  "elapsed_s": 4.73399999999674,
+  "natural_driver_exit": 1,
+  "forced_stop": false,
+  "model_POST": 0,
+  "model_HTTP200": 0,
+  "observed_full_OS_identities": [
+    {
+      "pid": 60152,
+      "parent": 59604,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-29T12:56:07.0163190Z"
+    },
+    {
+      "pid": 44892,
+      "parent": 60152,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T12:56:07.5063350Z"
+    },
+    {
+      "pid": 40844,
+      "parent": 44892,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T12:56:07.5131350Z"
+    },
+    {
+      "pid": 58028,
+      "parent": 44892,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T12:56:07.5866960Z"
+    },
+    {
+      "pid": 56816,
+      "parent": 58028,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-29T12:56:07.6932480Z"
+    },
+    {
+      "pid": 49020,
+      "parent": 58028,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-29T12:56:07.9956970Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "report_cleanup_flags": {
+    "agentCancelledOrIdle": false,
+    "browserDisposed": false,
+    "contextDisposed": false,
+    "bServiceStopped": false,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "finally_claimed": false,
+  "B_port_not_captured": true,
+  "original_source8_and516pins_held": true,
+  "cause": "Consumer readiness still requires old defense2materials/3total. This original preissue canonical fixture has four registered TXT plus one prior, B computes and emits4/1/5. Root previous source review missed these two constants; product has not been reached.",
+  "root_review_miss_acknowledged": true,
+  "not_product_or_model_failure": true,
+  "Packaging": "HOLD"
+}

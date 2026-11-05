@@ -1,0 +1,626 @@
+[
+ {
+  "file": "citation_0.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_1.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_2.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_3.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_4.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_5.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_6.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "invalid"
+ },
+ {
+  "file": "citation_7.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "invalid"
+ },
+ {
+  "file": "citation_8.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "invalid"
+ },
+ {
+  "file": "citation_9.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_10.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "valid"
+ },
+ {
+  "file": "citation_11.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "invalid"
+ },
+ {
+  "file": "citation_12.json",
+  "schema": "common.schema.json",
+  "pointer": "#/$defs/citation_text",
+  "expect": "invalid"
+ },
+ {
+  "file": "core_task_begin.req.json",
+  "schema": "core/task_begin.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "core_task_begin.res.json",
+  "schema": "core/task_begin.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "core_task_begin.fail.json",
+  "schema": "core/task_begin.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "core_context.res.json",
+  "schema": "core/context.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "core_task_end.req.json",
+  "schema": "core/task_end.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_list.result.json",
+  "schema": "tools/case_list_materials.schema.json",
+  "pointer": "#/$defs/result",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_read.args.json",
+  "schema": "tools/case_read_material.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_read.args_path.json",
+  "schema": "tools/case_read_material.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "invalid"
+ },
+ {
+  "file": "tool_read.result.json",
+  "schema": "tools/case_read_material.schema.json",
+  "pointer": "#/$defs/result",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_search.result.json",
+  "schema": "tools/case_search.schema.json",
+  "pointer": "#/$defs/result",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_save_draft.result.json",
+  "schema": "tools/case_save_draft.schema.json",
+  "pointer": "#/$defs/result",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_edit_list.args.json",
+  "schema": "tools/case_save_edit_list.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "valid"
+ },
+ {
+  "file": "api_case_open.fail.json",
+  "schema": "api/case_open.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_ocr_submit.req.json",
+  "schema": "api/ocr_submit.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_ocr_list.res.json",
+  "schema": "api/ocr_list.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_source.res.json",
+  "schema": "api/source.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_wiki_suggestions.res.json",
+  "schema": "api/wiki_suggestions.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_remove.req.json",
+  "schema": "api/materials_remove.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_remove.res.json",
+  "schema": "api/materials_remove.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_wiki_review.res.json",
+  "schema": "api/wiki_review.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_source.req_task.json",
+  "schema": "api/source.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_case_open.req_folders.json",
+  "schema": "api/case_open.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_read_material.args_more.json",
+  "schema": "tools/case_read_material.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.res_bad_reason.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_case_forget.req.json",
+  "schema": "api/case_forget.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_case_forget.res.json",
+  "schema": "api/case_forget.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_case_open.req_kind.json",
+  "schema": "api/case_open.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_case_open.req_bad_kind.json",
+  "schema": "api/case_open.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "prep_ocr.res.json",
+  "schema": "prep395/ocr_page.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "prep_ocr.err.json",
+  "schema": "prep395/ocr_page.schema.json",
+  "pointer": "#/$defs/error",
+  "expect": "valid"
+ },
+ {
+  "file": "prep_extract.req.json",
+  "schema": "prep395/extract.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "prep_extract.res.json",
+  "schema": "prep395/extract.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "prep_health.json",
+  "schema": "prep395/health.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_material_index.json",
+  "schema": "files/material_index.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_task.json",
+  "schema": "files/task.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_task.legacy.json",
+  "schema": "files/task.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_reads.json",
+  "schema": "files/reads.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_result.json",
+  "schema": "files/result.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_case_card.json",
+  "schema": "files/case_card.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_outputs_index.json",
+  "schema": "files/outputs_index.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_cases.json",
+  "schema": "files/cases.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_settings.json",
+  "schema": "files/settings.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.req.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.res.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_calc_sentence.args.json",
+  "schema": "tools/case_calc_sentence.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_calc_sentence.args_bad.json",
+  "schema": "tools/case_calc_sentence.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "invalid"
+ },
+ {
+  "file": "tool_calc_sentence.result.json",
+  "schema": "tools/case_calc_sentence.schema.json",
+  "pointer": "#/$defs/result",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_archive_plan.args.json",
+  "schema": "tools/case_save_archive_plan.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "valid"
+ },
+ {
+  "file": "tool_archive_plan.args_bad.json",
+  "schema": "tools/case_save_archive_plan.schema.json",
+  "pointer": "#/$defs/args",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_archive_build.fail.json",
+  "schema": "api/archive_build.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_invoice_run.req.json",
+  "schema": "api/invoice_run.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_invoice_run.req_imap.json",
+  "schema": "api/invoice_run.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_invoice_run.res.json",
+  "schema": "api/invoice_run.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_invoice_run.res_blocked.json",
+  "schema": "api/invoice_run.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_invoice_run.res_exclude.json",
+  "schema": "api/invoice_run.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "skill_capsules.json",
+  "schema": "skill/capsules.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "skill_capsules.bad_tool.json",
+  "schema": "skill/capsules.schema.json",
+  "pointer": "",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_task_current.req.json",
+  "schema": "api/task_current.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_task_current.res.json",
+  "schema": "api/task_current.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_task_create.req.json",
+  "schema": "api/task_create.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_task_create.req_legacy.json",
+  "schema": "api/task_create.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_task_current.res_free.json",
+  "schema": "api/task_current.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "skill_capsules.new_item.json",
+  "schema": "skill/capsules.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.req_ref.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.req_bad_mode.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_materials_import.res_ref.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_import.res_bad_registered.json",
+  "schema": "api/materials_import.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_materials_relocate.req.json",
+  "schema": "api/materials_relocate.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_materials_relocate.req_bad_ref.json",
+  "schema": "api/materials_relocate.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_materials_relocate.req_bad_ref_zero.json",
+  "schema": "api/materials_relocate.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_materials_relocate.res.json",
+  "schema": "api/materials_relocate.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "file_material_refs.json",
+  "schema": "files/material_refs.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_material_refs.bad_required.json",
+  "schema": "files/material_refs.schema.json",
+  "pointer": "",
+  "expect": "invalid"
+ },
+ {
+  "file": "file_material_index.ref.json",
+  "schema": "files/material_index.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_material_index.ref_renamed.json",
+  "schema": "files/material_index.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_material_index.ref_source_rel.json",
+  "schema": "files/material_index.schema.json",
+  "pointer": "",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_materials_list.res_missing.json",
+  "schema": "api/materials_list.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_source.res_missing.json",
+  "schema": "api/source.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_prompt_refine.req.json",
+  "schema": "api/prompt_refine.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_prompt_refine.req_bad_empty.json",
+  "schema": "api/prompt_refine.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "invalid"
+ },
+ {
+  "file": "api_prompt_refine.res.json",
+  "schema": "api/prompt_refine.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_prompt_refine.res_original.json",
+  "schema": "api/prompt_refine.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_remote_access.req_enabled.json",
+  "schema": "api/remote_access.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_remote_access.req_code_null.json",
+  "schema": "api/remote_access.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_remote_access.req_code_spaces.json",
+  "schema": "api/remote_access.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_remote_access.res_failed.json",
+  "schema": "api/remote_access.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_documents_save.req.json",
+  "schema": "api/documents_save.schema.json",
+  "pointer": "#/$defs/request",
+  "expect": "valid"
+ },
+ {
+  "file": "api_documents_save.res.json",
+  "schema": "api/documents_save.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "api_documents_save.fail.json",
+  "schema": "api/documents_save.schema.json",
+  "pointer": "#/$defs/response",
+  "expect": "valid"
+ },
+ {
+  "file": "file_settings.ports.json",
+  "schema": "files/settings.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ },
+ {
+  "file": "file_settings.external.json",
+  "schema": "files/settings.schema.json",
+  "pointer": "",
+  "expect": "valid"
+ }
+]

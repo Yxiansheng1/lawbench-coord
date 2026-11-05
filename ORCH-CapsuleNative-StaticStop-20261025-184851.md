@@ -1,0 +1,8 @@
+# PRD12.22 胶囊配置测试准备：静态拒收并停止本支
+2026-10-25T18:48:51.991888+08:00；真实tick2026-10-25T10:28:51.306Z；唯一scan18:31:32.549439，unread0，Packaging HOLD。
+Verdict REJECTED_STATIC_NOT_RUN_BRANCH_STOPPED。不是产品故障/API或权限故障，亦不是原生HTTP/GUI通过。
+原B actual01a172a1-0660-7392-8420-4e7df855f625精确1017/max completed6/6，root完整3当前/2formal/8真实命令/全部初始与修正前后差异读完。初始仅ROUTES+Firewall AST变，其余全部顶层同原ReadGet，A/B trackedpatch与E50八pins保持。原auth取首值/新wrapper取末值，重复Authorization会越过写guard，root启动前发现并下唯一窄修；另probe ready.root不存在/成功failure_code实际null两准确形状修正。
+唯一窄修 actual01a172a8-3cb1-78a2-a24f-52d01db33d39精确1017/max completed2/2，真实工具只读两件，未作者自测。root完整delta/formal消费：probe两字段与headerarray确按意图，但server新增 self._guard_reply不存在（真实函数是模块级）；将原if未认证的整个native delegation留在外层if非GET内，所有正常已认证写请求也直接原生调用后return，跳过fixed payload/once/reset/canonical/file/sparse。具体current行995–1017，不能仅AST范围认通过。作者formal称固定边界保持与实际语义不符，依真实源拒收。
+root审查脚本曾先把AST范围合格写为STATIC_ADMITTED，随后读完语义立即改REJECTED，期间无任何prepare/serve/probe/GUI动作；此中间admin状态失当照录，不冒测试通过。严格停止同一认证guard支，不再第三次派单、不GPT改代码、不给已拒入口调用。所有作者job真实completed保留，不改failed来冒测试结果。
+本tick未创建runtime root、未生成token或启动服务；无作者/GUI/native服务在飞。全部产品/旧ReadGet/原E50/guard/resolver/PDF/6lib不变。完整包C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\CapsuleRoot-1848，manifest snapshot48428bb5f8c7f18b3d5d6db9ff43f38f77b1dde2c64f6f777f96ef13dc950b25，保留全部原输入/当前/两轮before/order/job/status/rawcommands/formal/rootreview，不只delta。
+下一独立项：PRD12.22/第一版T13实际CapsuleManager只读可见控件/无删除入口/未保存取消，依赖既有正确CoreRuntimeGui+ReadGet新fresh根，不依赖此已拒写入口。root已全文读真实home.tsx21–177和capsules.py，确无删除控件、修改在React状态待保存；原生PUT/reset持久及重启仍未验。下一真实GUI只允许未保存取消，禁把它当保存通过；已审原读环境准入不改guard，不重跑旧读GET业务通过项目。旧T31scope工程缺口、T34settingscause、T52拒绝/真实infra/Mac/律师条件分别保持，不能称只剩owner或暂停全线。

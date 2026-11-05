@@ -1,0 +1,9 @@
+{
+  "context": [
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadFollowupTests-20261101-124600Input\\t8_helpers.py",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadFollowupTests-20261101-124600Input\\test_read_bound_20261101_114236.py",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadFollowupTests-20261101-124600Input\\materials.py"
+  ],
+  "target": "D:\\Lawbeach\\lawbench-C\\docs\\plan\\evidence\\T18\\T18BoundedReadFollowupTests-20261101-124600\\test_bound_followup.py",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-C-T18BoundedReadFollowupTests-20261101-124600.md"
+}

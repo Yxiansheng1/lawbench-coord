@@ -1,0 +1,115 @@
+// T35 路由与真实插槽登记：帮助按钮只经 Host 现有 lawbench Remote 调用 T39 契约接口。
+import { API_ROUTES, buildRequest } from '../shared/api-routes.ts'
+import { validate } from '../shared/contracts.ts'
+import { REMOTE_METHODS } from '../shared/remote-methods.ts'
+import { LawbenchRemote } from '../host/index.ts'
+import { LAWBENCH_REMOTE } from '../ui/remote.ts'
+import { PromptRefineButton, registerPromptRefineButton } from '../ui/prompt-refine.tsx'
+
+type DynamicPromptRefine = (this: object, request: unknown) => Promise<unknown>
+const promptRefineMethod = (): DynamicPromptRefine =>
+  (LawbenchRemote.prototype as unknown as { promptRefine: DynamicPromptRefine }).promptRefine
+
+it('promptRefine 在路由表、网关方法表和 Host 原型上都到同一条契约路径', () => {
+  const route = API_ROUTES.find((item) => item.method === 'promptRefine')
+  const request = {
+    text: '整理这份合同的争议焦点',
+    case_id: '00000000-0000-4000-8000-000000000001',
+    skill: 'contract-review',
+  }
+  expect(route).toEqual({
+    method: 'promptRefine',
+    http: 'POST',
+    path: '/api/prompt/refine',
+    contract: 'prompt_refine',
+  })
+  expect(validate('lawbench://contracts/api/prompt_refine.schema.json', 'request', request)).toEqual([])
+  expect(buildRequest(route!, request)).toEqual({
+    path: '/api/prompt/refine',
+    body: {
+      text: '整理这份合同的争议焦点',
+      case_id: '00000000-0000-4000-8000-000000000001',
+      skill: 'contract-review',
+    },
+  })
+  expect(REMOTE_METHODS.find((item) => item.method === 'promptRefine')).toEqual({
+    method: 'promptRefine',
+    params: ['request'],
+  })
+  expect(typeof Object.getOwnPropertyDescriptor(LawbenchRemote.prototype, 'promptRefine')?.value).toBe('function')
+})
+
+it('只有 promptRefine 使用原生 Gateway cancellation，Host 业务形参与方法表不变', () => {
+  const prompt = LAWBENCH_REMOTE.descriptors.find((item) => item.method === 'promptRefine')!
+  expect(prompt.parameters.map((item) => item.name)).toEqual(['request'])
+  expect(prompt.cancellation).toEqual({ parameter: 'signal' })
+  for (const descriptor of LAWBENCH_REMOTE.descriptors) {
+    if (descriptor.method !== 'promptRefine') expect(descriptor.cancellation).toBeUndefined()
+  }
+
+  const hostMethod = promptRefineMethod()
+  const source = Function.prototype.toString.call(hostMethod)
+  const params = source.slice(source.indexOf('(') + 1, source.indexOf(')')).split(',').map((value) => value.trim())
+  expect(params).toEqual(['request'])
+  expect(REMOTE_METHODS.find((item) => item.method === 'promptRefine')).toEqual({
+    method: 'promptRefine',
+    params: ['request'],
+  })
+})
+
+it('promptRefine 动态方法把当次 invocation.signal 交给 Host API，且不放进业务 request', async () => {
+  const controller = new AbortController()
+  const seen: unknown[] = []
+  const method = promptRefineMethod()
+  const result = await method.call({
+    invocationSignal: () => controller.signal,
+    callApi: async (...args: unknown[]) => {
+      seen.push(...args)
+      return { ok: true, value: { text: '已优化', refined: true } }
+    },
+  }, {
+    text: '需要优化',
+    case_id: null,
+    skill: null,
+  })
+
+  expect(result).toEqual({ ok: true, value: { text: '已优化', refined: true } })
+  expect(seen).toEqual([
+    expect.objectContaining({ method: 'promptRefine' }),
+    { text: '需要优化', case_id: null, skill: null },
+    controller.signal,
+  ])
+})
+
+it('Host 装配态为 Lawbench Service 安装 Cordis call-context tracker，直接测试构造不加字段', () => {
+  const controller = new AbortController()
+  const ctx = { invocation: { signal: controller.signal } } as never
+  const remote = new LawbenchRemote(
+    {} as never, '', () => undefined, [], () => {}, undefined, undefined, async () => [], ctx,
+  )
+  expect(Reflect.get(remote, Symbol.for('cordis.tracker'))).toEqual({
+    associate: 'lawbenchRemote',
+    property: 'ctx',
+  })
+  expect((remote as unknown as { invocationSignal(): AbortSignal | undefined }).invocationSignal()).toBe(controller.signal)
+})
+
+it('正式 registerCore 共用入口把按钮登记到现有 conversation.input.right 槽', () => {
+  const injected: string[] = []
+  const registered: Array<{ options: Record<string, unknown>; component: unknown }> = []
+  const slots = {
+    inject(name: string, fn: () => unknown) { injected.push(name); return fn() },
+    register(options: Record<string, unknown>, component: unknown) {
+      registered.push({ options, component })
+      return () => {}
+    },
+  }
+
+  registerPromptRefineButton(slots)
+
+  expect(injected).toEqual(['conversation.input.right'])
+  expect(registered).toEqual([{
+    options: { name: 'conversation.input.right', id: 'lawbench.prompt-refine', order: 10 },
+    component: PromptRefineButton,
+  }])
+})

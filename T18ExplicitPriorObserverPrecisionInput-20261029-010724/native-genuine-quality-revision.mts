@@ -1,0 +1,2828 @@
+/**
+ * Finite T18 explicit prior-input quality-revision consumer.
+ *
+ * It copies the genuine completed T18 case and its one Native Session into a
+ * fresh private root, then resumes that same session UUID through production.
+ * Two ordinary synthetic-user turns select prior inputs before submission and
+ * deliberately never prepare a material request scope:
+ *
+ * 1. pre-issue-check reads the original v2 review and the contract, identifies
+ *    the risk-3 article-number error, and saves a checklist only.
+ * 2. doc-revise reads the original v2 plus that checklist and saves a corrected
+ *    review, with one honest contiguous body edit and all other bytes equal.
+ *
+ * Authoring status: AUTHORED_NOT_RUN. This source contains no credential
+ * source other than non-interactive stdin. The finite B token is generated in
+ * memory and passed to the owned child process over its stdin pipe. The source
+ * is intentionally SOURCEONLY until the root performs its own review and run.
+ */
+
+import { createHash, randomBytes } from 'node:crypto'
+import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process'
+import { createReadStream } from 'node:fs'
+import {
+  copyFile,
+  lstat,
+  mkdir,
+  mkdtemp,
+  readFile,
+  readdir,
+  realpath,
+  writeFile,
+} from 'node:fs/promises'
+import { createInterface } from 'node:readline'
+import { dirname, extname, isAbsolute, join, relative, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+
+const REPO_ROOT = 'D:/Lawbeach/lawbench-A'
+const B_ROOT = 'D:/Lawbeach/lawbench-B'
+const DSH_ROOT = join(REPO_ROOT, 'dsh')
+const EVIDENCE_DIR = dirname(fileURLToPath(import.meta.url))
+const FIXED_INPUTS_PATH = join(EVIDENCE_DIR, 'fixed-inputs.json')
+const FIXED_INPUTS_FORMAT = 'lawbench-t18-explicit-prior-quality-revision-inputs-v1'
+const TASK_NAME = 'B-T18-explicit-prior-quality-revision-20261029-004226'
+const B_SERVICE_SCRIPT = join(EVIDENCE_DIR, 'b-service-genuine-revision.py')
+const MODEL_ORIGIN = 'http://10.126.126.1:8000'
+const MODEL_URL = `${MODEL_ORIGIN}/v1`
+const MODEL = 'qwen38-27b'
+const PROVIDER = 'lawfirm'
+const CREDENTIAL_REF = 'LAWFIRM_KEY'
+const MAX_CREDENTIAL_BYTES = 4096
+const TECHNICAL_WATCHDOG_MS = 86_400_000
+const UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const TASK_ID = /^T-[0-9]{14}-[0-9a-f]{4}$/
+
+const ORIGINAL_SESSION_ID = 'session-1cb28369-3a90-46dc-b047-e64986038394'
+const ORIGINAL_REQUEST_ID = '60fda87b-25a9-40c1-9abd-1e4893fa7b8b'
+const ORIGINAL_TASK_ID = 'T-20261028234100-6b49'
+const ORIGINAL_CASE_ID = '9d535ab5-f14c-42cc-bd99-a2f669ff6200'
+const ORIGINAL_SESSION_CWD =
+  'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case'
+const ORIGINAL_DRAFT = `工作区/任务/${ORIGINAL_TASK_ID}/草稿/合同审查意见-v2.md`
+const ORIGINAL_DRAFT_SHA256 = '1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d'
+const ORIGINAL_SESSION_BYTES = 240_391
+const ORIGINAL_SESSION_SHA256 = 'cd40b5df18811adbbe988cf1bea2b739c0a8e25eb2009e36f15935b3d4ace2b5'
+const ORIGINAL_ROWS = 60
+const ORIGINAL_EVENTS = 59
+const PRE_ISSUE_SKILL = 'pre-issue-check'
+const REVISE_SKILL = 'doc-revise'
+const CHECKLIST_TITLE = '出稿前审查-合同审查意见'
+const REVISION_TITLE = '合同审查意见-修改稿'
+const MATERIAL_NAMES = ['采购合同', '采购部内部意见'] as const
+const STAGE1_PROMPT =
+  '这是纯合成测试，不对应任何真实案件、真实当事人或真实交易。材料批已在提交前由我明确取消，本次不使用材料范围，只使用普通对话和已选择的前序成果。请严格加载 pre-issue-check，审查已选的原稿《合同审查意见》v2。先用 ask_user_question 一次确认所选草稿、文书类型，以及本次范围仅限风险3的条款编号与所引验收条款；再读取《采购合同》原文，核对风险3中所称“第七条”与它引用的验收条款是否一致。请实际使用 case_read_input 读取已选原稿，并使用 case_read_material 回读采购合同的相关段落。结果只输出问题清单并保存，不改原稿，不生成修订稿或 Word，不向外部发送材料。'
+const STAGE2_PROMPT =
+  '继续同一会话。材料批已在提交前由我明确取消，本次仍不使用材料范围，只使用普通对话和已选择的前序成果：原稿《合同审查意见》v2 与阶段一的出稿前审查清单。请严格加载 doc-revise。我的修改意见只有一项：按《采购合同》原文核对并改正风险3中的错误条款编号；除此必要更正外，保持原结构、出处和文字不变，不增加新的法律判断或事实。请实际使用 case_read_input 读取上述两份前序成果，并用 case_read_material 回读合同相关段落。把修改后全文按 Skill 要求保存，不向外部发送材料。'
+const DRAFT_ANSWER = '确认：本次审查已选的原稿《合同审查意见》v2。'
+const REVISE_DRAFT_ANSWER = '确认：本次修改已选的原稿《合同审查意见》v2。'
+const DOC_TYPE_ANSWER = '确认：文书类型为合同审查意见，供签约前内部审阅。'
+const OPINIONS_ANSWER =
+  '确认：按阶段一出稿前审查清单和《采购合同》原文，只改正风险3中的错误条款编号；其他结构、出处和文字保持不变。'
+const SCOPE_ANSWER =
+  '确认：使用原稿、采购合同和采购部内部意见两份材料；本次核对重点是风险3的条款编号与所引验收条款，不扩展到其他案件。'
+const TASK_MAX_TOKENS = 32_768
+
+interface NativeEvent {
+  readonly type: string
+  readonly seq: number
+  readonly time: number
+  readonly data: unknown
+  readonly surfaceOp?: string
+}
+
+interface NetworkObservation {
+  readonly kind: 'model' | 'core' | 'health'
+  readonly startedAt: string
+  readonly finishedAt?: string
+  readonly method: string
+  readonly origin: string
+  readonly path: string
+  readonly status?: number
+  readonly outcome: 'completed' | 'failed'
+  readonly redirect: 'error'
+}
+
+interface ApiObservation {
+  readonly method: string
+  readonly http: string
+  readonly path: string
+  readonly ok: boolean
+  readonly code?: string
+}
+
+interface FixedEntry {
+  readonly role?: string
+  readonly group?: string
+  readonly id?: string
+  readonly path: string
+  readonly bytes: number
+  readonly sha256: string
+  readonly mtime_ns?: string
+  readonly entryCount?: number
+}
+
+interface CaseEntry extends FixedEntry {
+  readonly relative: string
+}
+
+interface FixedInputManifest {
+  readonly format: typeof FIXED_INPUTS_FORMAT
+  readonly task: typeof TASK_NAME
+  readonly hashAlgorithm: 'sha256'
+  readonly genuineInputs: FixedEntry
+  readonly reviewedBSourcePins: FixedEntry
+  readonly originalReportEvidence: FixedEntry
+  readonly originalCaseRoot: string
+  readonly originalSessionsRoot: string
+  readonly originalCaseId: typeof ORIGINAL_CASE_ID
+  readonly originalTaskId: typeof ORIGINAL_TASK_ID
+  readonly originalRequestId: typeof ORIGINAL_REQUEST_ID
+  readonly nativeSessionId: typeof ORIGINAL_SESSION_ID
+  readonly originalDraft: typeof ORIGINAL_DRAFT
+  readonly appdataFiles: readonly (FixedEntry & { readonly relative: string; readonly mtime_ns: string })[]
+  readonly caseFiles: readonly CaseEntry[]
+  readonly sessionFiles: readonly (CaseEntry & { readonly kind: 'native-session' })[]
+  readonly dependencies: readonly FixedEntry[]
+  readonly runtimeExecutables: readonly FixedEntry[]
+  readonly consumer: FixedEntry
+  readonly bServiceEntry: FixedEntry
+}
+
+interface AdmissionRecord {
+  readonly checkedAtUtc: string
+  readonly manifestSha256: string
+  readonly caseFileCount: number
+  readonly sessionFileCount: number
+  readonly appdataFileCount: number
+  readonly dependencyCount: number
+  readonly runtimeExecutableCount: number
+  readonly reviewedBSourcePinsSha256: string
+  readonly consumerSha256: string
+  readonly bServiceSha256: string
+}
+
+interface SecretReaderState {
+  restore(): void
+}
+
+interface OutputRedactionLease {
+  restore(): void
+  isRestored(): boolean
+  clearSecret(): boolean
+}
+
+interface FetchGate {
+  modelEnabled: boolean
+  localPort?: number
+  deniedAttempts: number
+}
+
+interface FetchLease {
+  restore(): void
+  isRestored(): boolean
+  deniedAttempts(): number
+}
+
+interface EnvironmentLease {
+  restore(): void
+}
+
+interface BServiceReady {
+  readonly status: 'ready'
+  readonly pid: number
+  readonly executable: string
+  readonly startedAtUtc: string
+  readonly host: '127.0.0.1'
+  readonly port: number
+  readonly contractVersion: string
+  readonly lifespan: 'off'
+  readonly sourcePinCount: number
+  readonly fixtureCount: number
+  readonly forwardListener: false
+  readonly ocrStarted: false
+  readonly retainerStarted: false
+}
+
+interface BServiceLease {
+  readonly token: string
+  readonly ready: BServiceReady
+  stop(): Promise<{ readonly code: number | null; readonly final: Record<string, unknown>; readonly forced: boolean }>
+  forceStop(): void
+  isStopped(): boolean
+}
+
+interface NativeTurnRecord {
+  readonly sessionId: string
+  readonly requestId: string
+  readonly beforeSeq: number
+  readonly afterSeq: number
+  readonly responseTextSha256: string
+  readonly responseTextLength: number
+  readonly requestHeader?: unknown
+  readonly requestHeaderAnchor?: {
+    readonly sessionId: string
+    readonly beforeSeq: number
+    readonly afterSeq: number
+    readonly sourceSeq: number
+    readonly sourceType: 'request/header'
+    readonly sourceScope: 'session-prefix' | 'current-turn'
+  }
+  readonly eventTypes: readonly string[]
+}
+
+interface ToolCallRecord {
+  readonly ordinal: number
+  readonly name: string
+  readonly callId: string
+  readonly argumentsSha256: string
+}
+
+type QuestionRole = 'draft' | 'doc_type' | 'opinions' | 'scope'
+
+interface QuestionRecord {
+  readonly questionIds: readonly string[]
+  readonly questionText: string
+  readonly optionLabels: readonly string[]
+  readonly rolesByQuestion: readonly (readonly QuestionRole[])[]
+  readonly answerIds: readonly string[]
+  readonly answerText: string
+}
+
+interface QuestionCapture {
+  value: QuestionRecord | null
+  stage: 1 | 2
+}
+
+interface QuestionOrderRecord {
+  readonly answerCallId: string
+  readonly answerCallSeq: number
+  readonly answerResultSeq: number
+  readonly draftCallId: string
+  readonly draftCallSeq: number
+  readonly draftResultSeq: number
+}
+
+interface SourceResponseRecord {
+  readonly name: string
+  readonly loc: unknown
+  readonly citation: string
+  readonly textSha256: string
+  readonly textLength: number
+  readonly sourceChanged: boolean
+  readonly originalStatus: string | undefined
+}
+
+interface MaterialReadRecord {
+  readonly materialId: string
+  readonly name: string
+  readonly type: string
+  readonly unit: string
+  readonly unitCount: number
+  readonly originalPath: string
+  readonly originalBytes: number
+  readonly originalSha256: string
+  readonly sourceBytes: number
+  readonly sourceSha256: string
+  readonly sourceMtimeNs: string
+}
+
+interface CopiedIdentity {
+  readonly source: string
+  readonly destination: string
+  readonly relative: string
+  readonly bytes: number
+  readonly sha256: string
+}
+
+interface ReportQuestion {
+  readonly questionIds: readonly string[]
+  readonly rolesByQuestion: readonly (readonly QuestionRole[])[]
+  readonly answerIds: readonly string[]
+  readonly questionTextSha256: string
+  readonly questionTextLength: number
+  readonly answerTextSha256: string
+  readonly answerTextLength: number
+}
+
+interface StageRecord {
+  readonly stage: 1 | 2
+  readonly skill: typeof PRE_ISSUE_SKILL | typeof REVISE_SKILL
+  selectionId: string
+  taskId?: string
+  requestId?: string
+  taskParams?: Record<string, unknown>
+  beforeSeq?: number
+  afterSeq?: number
+  turn?: NativeTurnRecord
+  toolCalls?: readonly ToolCallRecord[]
+  question?: ReportQuestion
+  questionOrder?: QuestionOrderRecord
+  taskState?: Record<string, unknown>
+  taskResult?: Record<string, unknown>
+  coverage?: unknown
+  readRanges?: unknown
+  caseReadInputIndexes?: readonly number[]
+  caseReadInputResultSha256s?: readonly string[]
+  sourceReadTextSha256s?: readonly string[]
+  citationResponses?: readonly SourceResponseRecord[]
+  draft?: {
+    readonly title: string
+    readonly path: string
+    readonly version: number
+    readonly bytes: number
+    readonly sha256: string
+  }
+}
+
+interface OneEditRecord {
+  readonly prefixBytes: number
+  readonly suffixBytes: number
+  readonly oldTextSha256: string
+  readonly newTextSha256: string
+  readonly oldTextLength: number
+  readonly newTextLength: number
+  readonly removesArticle7: true
+  readonly introducesArticle4_1: true
+}
+
+interface ExecutedStage extends StageRecord {
+  readonly draftText: string
+}
+
+interface RunReport {
+  format: 'lawbench-t18-explicit-prior-quality-revision-v1'
+  task: typeof TASK_NAME
+  status: 'RUNNING' | 'PASS' | 'FAILED'
+  authoredStatus: 'AUTHORED_NOT_RUN'
+  startedAtUtc: string
+  finishedAtUtc?: string
+  process: {
+    readonly executable: string
+    readonly pid: number
+    readonly node: string
+    readonly cwd: string
+  }
+  fixture: {
+    readonly syntheticOnly: true
+    readonly originalTwoMaterialCaseOnly: true
+    readonly materialNames: readonly string[]
+    readonly explicitCancelBatchBeforeEachBegin: true
+    readonly requestScopePrepareCalls: 0
+    readonly materialImportCalls: 0
+  }
+  modelRoute: {
+    readonly provider: typeof PROVIDER
+    readonly model: typeof MODEL
+    readonly baseURL: typeof MODEL_URL
+    readonly thinking: '中'
+    readonly contextWindow: 131_072
+    readonly maxTokens: 32_768
+    readonly modelCallsPerSkill: 32
+    readonly requestTimeoutMs: 1_200_000
+    readonly streamIdleTimeoutMs: 1_200_000
+  }
+  runRoot?: string
+  admission: { initial?: AdmissionRecord; final?: AdmissionRecord }
+  originalFilesHeld: boolean
+  bService?: {
+    readonly ready: BServiceReady
+    readonly final: Record<string, unknown>
+    readonly exitCode: number | null
+    readonly forcedStop: boolean
+  }
+  copy?: {
+    readonly caseFiles: readonly CopiedIdentity[]
+    readonly sessionFiles: readonly CopiedIdentity[]
+  }
+  case?: {
+    readonly caseId: string
+    readonly path: string
+    readonly materialIds: readonly string[]
+    readonly originalAreaFiles: readonly string[]
+    readonly created: false
+  }
+  nativeSessionId?: string
+  resumedSession?: {
+    readonly sameUuid: true
+    readonly originalCwdPreserved: true
+    readonly originalEventPrefixPreserved: true
+  }
+  stages: StageRecord[]
+  oneEdit?: OneEditRecord
+  modelPosts: {
+    attempts: number
+    http200: number
+    observations: NetworkObservation[]
+  }
+  networkSummary: {
+    observations: number
+    modelPostAttempts: number
+    modelPostHttp200: number
+    coreCalls: number
+    healthCalls: number
+    deniedAttempts: number
+  }
+  apiCalls: ApiObservation[]
+  materialReads?: readonly MaterialReadRecord[]
+  persistence?: {
+    readonly root: string
+    readonly sessionReopened: boolean
+    readonly liveEqualsReopened: boolean
+    readonly physicalJsonlPath: string
+    readonly physicalJsonlBytes: number
+    readonly physicalJsonlSha256: string
+    readonly physicalEventCount: number
+    readonly originalPrefixBytes: number
+    readonly originalPrefixPreserved: boolean
+  }
+  cleanup: {
+    agentCancelledOrIdle: boolean
+    browserDisposed: boolean
+    contextDisposed: boolean
+    bServiceStopped: boolean
+    fetchRestored: boolean
+    environmentRestored: boolean
+    outputRedactionRestored: boolean
+    keyCleared: boolean
+    failures: string[]
+  }
+  error?: unknown
+  claims: {
+    readonly oneSyntheticWorkflowOnly: true
+    actualTwoSkillWorkflow: boolean
+    actualModelAuthoredChecklist: boolean
+    actualModelAuthoredRevision: boolean
+    originalFirstPassBusinessFailRetained: true
+    readonly fullT18: false
+    readonly businessAcceptance: false
+    readonly legalAcceptance: false
+    readonly gui: false
+    readonly packaging: false
+  }
+}
+
+function utcNow(): string {
+  return new Date().toISOString()
+}
+
+function processBirthUtc(): string {
+  return new Date(Date.now() - process.uptime() * 1000).toISOString()
+}
+
+function pathKey(path: string): string {
+  return resolve(path).toLocaleLowerCase('en-US')
+}
+
+function modulePath(relativePath: string): string {
+  return pathToFileURL(join(DSH_ROOT, relativePath)).href
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error('expected an object')
+  }
+  return value as Record<string, unknown>
+}
+
+function asArray(value: unknown): unknown[] {
+  if (!Array.isArray(value)) throw new Error('expected an array')
+  return value
+}
+
+function asString(value: unknown, label: string): string {
+  if (typeof value !== 'string') throw new Error(`${label} must be a string`)
+  return value
+}
+
+function asInteger(value: unknown, label: string): number {
+  if (!Number.isSafeInteger(value)) throw new Error(`${label} must be an integer`)
+  return Number(value)
+}
+
+async function sha256File(path: string): Promise<string> {
+  const digest = createHash('sha256')
+  for await (const chunk of createReadStream(path)) digest.update(chunk as Buffer)
+  return digest.digest('hex')
+}
+
+function sha256Bytes(bytes: Uint8Array | string): string {
+  return createHash('sha256').update(bytes).digest('hex')
+}
+
+async function ordinaryFile(path: string, expectedBytes?: number, expectedSha?: string): Promise<number> {
+  const info = await lstat(path)
+  if (!info.isFile() || info.isSymbolicLink()) throw new Error(`input is not an ordinary file: ${path}`)
+  if (expectedBytes !== undefined && info.size !== expectedBytes) {
+    throw new Error(`input byte count changed: ${path}`)
+  }
+  if (expectedSha !== undefined) {
+    const actual = await sha256File(path)
+    if (actual !== expectedSha) throw new Error(`input SHA-256 changed: ${path}`)
+  }
+  return info.size
+}
+
+async function ordinaryFileIdentity(
+  path: string,
+  expectedBytes: number,
+  expectedSha: string,
+  expectedMtimeNs: string,
+): Promise<{ readonly bytes: number; readonly sha256: string; readonly mtimeNs: string }> {
+  const info = await lstat(path, { bigint: true })
+  if (!info.isFile() || info.isSymbolicLink()) throw new Error(`input is not an ordinary file: ${path}`)
+  const bytes = Number(info.size)
+  const mtimeNs = info.mtimeNs.toString()
+  if (bytes !== expectedBytes) throw new Error(`input byte count changed: ${path}`)
+  if (mtimeNs !== expectedMtimeNs) throw new Error(`input mtime_ns changed: ${path}`)
+  const actualSha = await sha256File(path)
+  if (actualSha !== expectedSha) throw new Error(`input SHA-256 changed: ${path}`)
+  return { bytes, sha256: actualSha, mtimeNs }
+}
+
+async function assertDirectoryNotReparse(path: string): Promise<void> {
+  const info = await lstat(path)
+  if (!info.isDirectory() || info.isSymbolicLink()) {
+    throw new Error(`private root is not an ordinary directory: ${path}`)
+  }
+  if (pathKey(await realpath(path)) !== pathKey(path)) {
+    throw new Error(`private root resolves through a reparse point: ${path}`)
+  }
+}
+
+async function verifyFixedInputs(): Promise<{
+  readonly admission: AdmissionRecord
+  readonly manifest: FixedInputManifest
+}> {
+  const manifestBytes = await readFile(FIXED_INPUTS_PATH)
+  const manifestSha256 = sha256Bytes(manifestBytes)
+  const manifest = JSON.parse(manifestBytes.toString('utf8')) as FixedInputManifest
+  if (
+    manifest.format !== FIXED_INPUTS_FORMAT
+    || manifest.task !== TASK_NAME
+    || manifest.hashAlgorithm !== 'sha256'
+    || manifest.caseFiles.length !== 16
+    || manifest.sessionFiles.length !== 1
+    || manifest.appdataFiles.length !== 2
+    || manifest.originalCaseId !== ORIGINAL_CASE_ID
+    || manifest.originalTaskId !== ORIGINAL_TASK_ID
+    || manifest.originalRequestId !== ORIGINAL_REQUEST_ID
+    || manifest.nativeSessionId !== ORIGINAL_SESSION_ID
+    || manifest.originalDraft !== ORIGINAL_DRAFT
+    || manifest.reviewedBSourcePins.entryCount !== 346
+    || manifest.caseFiles.some(entry => (
+      entry.path.includes('_任务说明')
+      || entry.path.includes('要点.md')
+      || entry.relative.length === 0
+      || entry.relative.startsWith('/')
+      || entry.relative.split('/').some(part => part === '' || part === '.' || part === '..')
+      || !Number.isSafeInteger(entry.bytes)
+      || !/^[0-9a-f]{64}$/.test(entry.sha256)
+      || !/^[0-9]+$/.test(entry.mtime_ns ?? '')
+    ))
+    || manifest.sessionFiles[0]?.kind !== 'native-session'
+    || !manifest.dependencies.some(entry => entry.role === 'persona')
+    || !manifest.dependencies.some(entry => entry.role === 'current-compiled-agent')
+    || !manifest.dependencies.some(entry => entry.role === 'current-compiled-host')
+  ) {
+    throw new Error('fixed-inputs manifest header is invalid')
+  }
+  for (const entry of [...manifest.caseFiles, ...manifest.sessionFiles]) {
+    await ordinaryFileIdentity(
+      entry.path,
+      entry.bytes,
+      entry.sha256,
+      asString(entry.mtime_ns, 'copied source mtime_ns'),
+    )
+  }
+  for (const entry of manifest.appdataFiles) {
+    await ordinaryFileIdentity(
+      entry.path,
+      entry.bytes,
+      entry.sha256,
+      entry.mtime_ns,
+    )
+  }
+  for (const entry of [
+    manifest.genuineInputs,
+    manifest.reviewedBSourcePins,
+    manifest.originalReportEvidence,
+    ...manifest.dependencies,
+    ...manifest.runtimeExecutables,
+    manifest.consumer,
+    manifest.bServiceEntry,
+  ]) {
+    await ordinaryFile(entry.path, entry.bytes, entry.sha256)
+  }
+  if (sha256Bytes(await readFile(manifest.genuineInputs.path))
+    !== 'e776968f25602af1640987ec08245af911e1f60713eef12fcc6b9a95ace24ab1') {
+    throw new Error('genuine-inputs.json source pin changed')
+  }
+  if (manifest.consumer.path !== fileURLToPath(import.meta.url)) {
+    throw new Error('consumer self-pin path is not this file')
+  }
+  if (manifest.bServiceEntry.path !== B_SERVICE_SCRIPT) {
+    throw new Error('B service pin path is not the companion file')
+  }
+  const sourcePins = asRecord(JSON.parse(await readFile(manifest.reviewedBSourcePins.path, 'utf8')))
+  const sourceRows = Object.entries(sourcePins)
+  if (sourceRows.length !== manifest.reviewedBSourcePins.entryCount) {
+    throw new Error('reviewed B source pin count changed')
+  }
+  for (const [relativePath, raw] of sourceRows) {
+    const pure = relativePath.replaceAll('\\', '/')
+    if (pure.startsWith('/') || pure.split('/').includes('..')) {
+      throw new Error(`reviewed B source pin escapes B: ${relativePath}`)
+    }
+    const row = asRecord(raw)
+    await ordinaryFile(
+      join(B_ROOT, ...pure.split('/')),
+      asInteger(row.bytes, 'reviewed B source bytes'),
+      asString(row.sha256, 'reviewed B source sha256'),
+    )
+  }
+  return {
+    admission: {
+      checkedAtUtc: utcNow(),
+      manifestSha256,
+      caseFileCount: manifest.caseFiles.length,
+      sessionFileCount: manifest.sessionFiles.length,
+      appdataFileCount: manifest.appdataFiles.length,
+      dependencyCount: manifest.dependencies.length,
+      runtimeExecutableCount: manifest.runtimeExecutables.length,
+      reviewedBSourcePinsSha256: manifest.reviewedBSourcePins.sha256,
+      consumerSha256: manifest.consumer.sha256,
+      bServiceSha256: manifest.bServiceEntry.sha256,
+    },
+    manifest,
+  }
+}
+
+async function copyPinnedFile(
+  source: FixedEntry,
+  relativePath: string,
+  destinationRoot: string,
+): Promise<CopiedIdentity> {
+  const pure = relativePath.replaceAll('\\', '/')
+  if (
+    pure.length === 0
+    || pure.startsWith('/')
+    || pure.split('/').some(part => part.length === 0 || part === '.' || part === '..')
+  ) {
+    throw new Error(`copy-relative path is invalid: ${relativePath}`)
+  }
+  const destination = resolve(destinationRoot, ...pure.split('/'))
+  const rel = relative(resolve(destinationRoot), destination)
+  if (rel.startsWith('..') || isAbsolute(rel)) throw new Error('copy destination escapes private root')
+  await mkdir(dirname(destination), { recursive: true, mode: 0o700 })
+  await copyFile(source.path, destination)
+  await ordinaryFile(destination, source.bytes, source.sha256)
+  return {
+    source: source.path,
+    destination,
+    relative: pure,
+    bytes: source.bytes,
+    sha256: source.sha256,
+  }
+}
+
+async function verifyOriginalSessionCopy(
+  copiedPath: string,
+  originalBytes: Buffer,
+): Promise<{
+  readonly rowCount: number
+  readonly eventCount: number
+  readonly headerId: string
+  readonly headerCwd: string
+  readonly firstEventSeq: number
+  readonly lastEventSeq: number
+  readonly eventPrefixSha256: string
+}> {
+  const copied = await readFile(copiedPath)
+  if (copied.byteLength !== ORIGINAL_SESSION_BYTES || !copied.equals(originalBytes)) {
+    throw new Error('copied session is not byte-identical to the original')
+  }
+  const rows = copied.toString('utf8').trimEnd().split(/\r?\n/)
+  if (rows.length !== ORIGINAL_ROWS) throw new Error('copied session physical row count changed')
+  const header = asRecord(JSON.parse(rows[0]!))
+  if (
+    header.type !== 'session'
+    || header.version !== 4
+    || header.id !== ORIGINAL_SESSION_ID
+    || header.cwd !== ORIGINAL_SESSION_CWD
+  ) {
+    throw new Error('copied session header identity or original cwd changed')
+  }
+  const events = rows.slice(1).map((line, index) => {
+    const event = asRecord(JSON.parse(line))
+    if (event.seq !== index) throw new Error(`copied session event ${String(index)} is out of sequence`)
+    return event
+  })
+  if (
+    events.length !== ORIGINAL_EVENTS
+    || events[0]?.type !== 'agent/inbox/spliced'
+    || events.at(-1)?.type !== 'turn/end'
+  ) {
+    throw new Error('copied 59-event prefix is not intact')
+  }
+  return {
+    rowCount: rows.length,
+    eventCount: events.length,
+    headerId: String(header.id),
+    headerCwd: String(header.cwd),
+    firstEventSeq: Number(events[0]!.seq),
+    lastEventSeq: Number(events.at(-1)!.seq),
+    eventPrefixSha256: sha256Bytes(JSON.stringify(events)),
+  }
+}
+
+function minimalChildEnvironment(root: string, pythonExe: string): NodeJS.ProcessEnv {
+  const env: NodeJS.ProcessEnv = {
+    HOME: join(root, 'home'),
+    USERPROFILE: join(root, 'home'),
+    APPDATA: join(root, 'appdata'),
+    LOCALAPPDATA: join(root, 'localappdata'),
+    TEMP: join(root, 'temp'),
+    TMP: join(root, 'temp'),
+    TMPDIR: join(root, 'temp'),
+    PYTHONDONTWRITEBYTECODE: '1',
+    PYTHONUTF8: '1',
+    NODE_USE_ENV_PROXY: '0',
+    PATH: dirname(pythonExe),
+  }
+  for (const name of ['SYSTEMROOT', 'SystemRoot', 'WINDIR', 'COMSPEC', 'PATHEXT']) {
+    const value = process.env[name]
+    if (value !== undefined) env[name] = value
+  }
+  return env
+}
+
+async function isolateProcessFiles(root: string): Promise<EnvironmentLease> {
+  const names = [
+    'HOME',
+    'USERPROFILE',
+    'APPDATA',
+    'LOCALAPPDATA',
+    'TEMP',
+    'TMP',
+    'TMPDIR',
+    'XDG_CONFIG_HOME',
+    'XDG_CACHE_HOME',
+    'DSH_HOME',
+    'HTTP_PROXY',
+    'HTTPS_PROXY',
+    'ALL_PROXY',
+    'http_proxy',
+    'https_proxy',
+    'all_proxy',
+    'NODE_USE_ENV_PROXY',
+  ] as const
+  const previous = new Map<string, string | undefined>()
+  for (const name of names) previous.set(name, process.env[name])
+  const home = join(root, 'home')
+  const appdata = join(root, 'appdata')
+  const localAppData = join(root, 'localappdata')
+  const temp = join(root, 'temp')
+  await mkdir(home, { recursive: true, mode: 0o700 })
+  await mkdir(appdata, { recursive: true, mode: 0o700 })
+  await mkdir(localAppData, { recursive: true, mode: 0o700 })
+  await mkdir(temp, { recursive: true, mode: 0o700 })
+  process.env.HOME = home
+  process.env.USERPROFILE = home
+  process.env.APPDATA = appdata
+  process.env.LOCALAPPDATA = localAppData
+  process.env.TEMP = temp
+  process.env.TMP = temp
+  process.env.TMPDIR = temp
+  process.env.XDG_CONFIG_HOME = join(root, 'xdg-config')
+  process.env.XDG_CACHE_HOME = join(root, 'xdg-cache')
+  process.env.DSH_HOME = join(root, 'dsh-home')
+  await mkdir(process.env.XDG_CONFIG_HOME, { recursive: true, mode: 0o700 })
+  await mkdir(process.env.XDG_CACHE_HOME, { recursive: true, mode: 0o700 })
+  await mkdir(process.env.DSH_HOME, { recursive: true, mode: 0o700 })
+  for (const name of ['HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'http_proxy', 'https_proxy', 'all_proxy']) {
+    delete process.env[name]
+  }
+  process.env.NODE_USE_ENV_PROXY = '0'
+  return {
+    restore() {
+      for (const name of names) {
+        const value = previous.get(name)
+        if (value === undefined) delete process.env[name]
+        else process.env[name] = value
+      }
+    },
+  }
+}
+
+async function readCredentialFromStdin(): Promise<{
+  readonly secret: string
+  readonly state: SecretReaderState
+}> {
+  const stdin = process.stdin
+  if (stdin.isTTY) throw new Error('credential input requires a non-interactive stdin pipe')
+  const chunks: Buffer[] = []
+  let count = 0
+  return await new Promise((resolvePromise, reject) => {
+    let settled = false
+    const cleanup = (): void => {
+      stdin.off('data', onData)
+      stdin.off('error', onError)
+      stdin.off('end', onEnd)
+      stdin.off('close', onClose)
+    }
+    const fail = (message: string): void => {
+      if (settled) return
+      settled = true
+      cleanup()
+      stdin.pause()
+      reject(new Error(message))
+    }
+    const onData = (chunk: Buffer | string): void => {
+      const bytes = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)
+      count += bytes.length
+      if (count > MAX_CREDENTIAL_BYTES + 2) {
+        fail('credential stdin exceeds the fixed size limit')
+        return
+      }
+      chunks.push(bytes)
+    }
+    const onError = (): void => fail('credential stdin read failed')
+    const onClose = (): void => fail('credential stdin closed before EOF')
+    const onEnd = (): void => {
+      if (settled) return
+      const bytes = Buffer.concat(chunks, count)
+      let size = bytes.length
+      if (size >= 2 && bytes[size - 2] === 0x0d && bytes[size - 1] === 0x0a) size -= 2
+      else if (size >= 1 && bytes[size - 1] === 0x0a) size -= 1
+      if (size === 0) return fail('credential stdin was empty')
+      if (size > MAX_CREDENTIAL_BYTES) return fail('credential stdin exceeds the fixed size limit')
+      for (let index = 0; index < size; index += 1) {
+        const byte = bytes[index]!
+        if (byte < 0x20 || byte > 0x7e) return fail('credential contains non-printable ASCII')
+      }
+      settled = true
+      cleanup()
+      stdin.pause()
+      resolvePromise({
+        secret: bytes.subarray(0, size).toString('ascii'),
+        state: { restore: () => {} },
+      })
+    }
+    stdin.on('data', onData)
+    stdin.once('error', onError)
+    stdin.once('end', onEnd)
+    stdin.once('close', onClose)
+    stdin.resume()
+  })
+}
+
+function redactText(value: string, secret: string): string {
+  if (secret.length === 0) return value
+  return value
+    .split(secret).join('[REDACTED]')
+    .replace(/(authorization\s*[:=]\s*bearer\s+)[^\s,;"']+/gi, '$1[REDACTED]')
+    .replace(/(api[_-]?key\s*[:=]\s*)[^\s,;"']+/gi, '$1[REDACTED]')
+}
+
+function redactUnknown(value: unknown, secret: string): unknown {
+  if (typeof value === 'string') return redactText(value, secret)
+  if (Array.isArray(value)) return value.map(entry => redactUnknown(entry, secret))
+  if (value !== null && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => [
+      redactText(key, secret),
+      redactUnknown(entry, secret),
+    ]))
+  }
+  return value
+}
+
+function installOutputRedaction(secret: string): OutputRedactionLease {
+  const stdoutWrite = process.stdout.write
+  const stderrWrite = process.stderr.write
+  let restored = false
+  let current = secret
+  const wrap = (
+    target: NodeJS.WriteStream,
+    original: NodeJS.WriteStream['write'],
+  ): NodeJS.WriteStream['write'] => ((chunk: unknown, encodingOrCallback?: unknown, callback?: unknown): boolean => {
+    const text = Buffer.isBuffer(chunk) ? chunk.toString('utf8') : String(chunk)
+    const encoding = typeof encodingOrCallback === 'string' ? encodingOrCallback : undefined
+    const completion = typeof encodingOrCallback === 'function'
+      ? encodingOrCallback as (error?: Error | null) => void
+      : typeof callback === 'function'
+        ? callback as (error?: Error | null) => void
+        : undefined
+    return original.call(target, redactText(text, current), encoding as BufferEncoding | undefined, completion)
+  }) as NodeJS.WriteStream['write']
+  process.stdout.write = wrap(process.stdout, stdoutWrite)
+  process.stderr.write = wrap(process.stderr, stderrWrite)
+  return {
+    restore() {
+      if (restored) return
+      restored = true
+      process.stdout.write = stdoutWrite
+      process.stderr.write = stderrWrite
+    },
+    isRestored() {
+      return restored && process.stdout.write === stdoutWrite && process.stderr.write === stderrWrite
+    },
+    clearSecret() {
+      current = ''
+      return current.length === 0
+    },
+  }
+}
+
+function safeError(error: unknown, secret: string, depth = 0): unknown {
+  if (!(error instanceof Error)) return redactUnknown(error, secret)
+  return {
+    name: error.name,
+    message: redactText(error.message, secret),
+    ...(error.cause === undefined || depth >= 8
+      ? {}
+      : { cause: safeError(error.cause, secret, depth + 1) }),
+  }
+}
+
+async function withWatchdog<T>(work: Promise<T>): Promise<T> {
+  let timer: NodeJS.Timeout | undefined
+  try {
+    const timeout = new Promise<never>((_resolve, reject) => {
+      timer = setTimeout(
+        () => reject(new Error(`technical watchdog expired after ${TECHNICAL_WATCHDOG_MS} ms`)),
+        TECHNICAL_WATCHDOG_MS,
+      )
+    })
+    return await Promise.race([work, timeout])
+  } finally {
+    if (timer !== undefined) clearTimeout(timer)
+  }
+}
+
+function installFetchAllowlist(
+  observations: NetworkObservation[],
+  gate: FetchGate,
+): FetchLease {
+  const original = globalThis.fetch
+  const expected = new URL(MODEL_ORIGIN)
+  const allowedLocal = new Map<string, ReadonlySet<string>>([
+    ['GET', new Set(['/health', '/api/settings'])],
+    ['POST', new Set([
+      '/core/task/begin',
+      '/core/context',
+      '/core/tool',
+      '/core/progress',
+      '/core/task/end',
+    ])],
+  ])
+  let restored = false
+  globalThis.fetch = (async (input: string | URL | Request, init?: RequestInit): Promise<Response> => {
+    const request = input instanceof Request ? input : undefined
+    const url = new URL(request?.url ?? String(input))
+    const method = String(init?.method ?? request?.method ?? 'GET').toUpperCase()
+    const isModel = (
+      !gate.modelEnabled
+        ? false
+        : url.protocol === expected.protocol
+          && url.hostname === expected.hostname
+          && url.port === expected.port
+          && url.username === ''
+          && url.password === ''
+          && url.pathname === '/v1/chat/completions'
+          && method === 'POST'
+    )
+    const isLocal = (
+      gate.localPort !== undefined
+        && url.protocol === 'http:'
+        && url.hostname === '127.0.0.1'
+        && url.port === String(gate.localPort)
+        && (allowedLocal.get(method)?.has(url.pathname) ?? false)
+    )
+    if (!isModel && !isLocal) {
+      gate.deniedAttempts += 1
+      throw new Error(`network allowlist denied ${method} ${url.protocol}//${url.host}${url.pathname}`)
+    }
+    const observation: NetworkObservation = {
+      kind: isModel ? 'model' : url.pathname === '/health' ? 'health' : 'core',
+      startedAt: utcNow(),
+      method,
+      origin: `${url.protocol}//${url.host}`,
+      path: url.pathname,
+      outcome: 'failed',
+      redirect: 'error',
+    }
+    observations.push(observation)
+    try {
+      const response = await original(input, { ...init, redirect: 'error', cache: 'no-store' })
+      observation.status = response.status
+      observation.outcome = 'completed'
+      observation.finishedAt = utcNow()
+      return response
+    } catch (error) {
+      observation.finishedAt = utcNow()
+      throw error
+    }
+  }) as typeof fetch
+  return {
+    restore() {
+      if (restored) return
+      restored = true
+      globalThis.fetch = original
+    },
+    isRestored() {
+      return restored && globalThis.fetch === original
+    },
+    deniedAttempts() {
+      return gate.deniedAttempts
+    },
+  }
+}
+
+async function startBService(
+  runRoot: string,
+  pythonExe: string,
+  script: string,
+): Promise<BServiceLease> {
+  const token = randomBytes(32).toString('hex')
+  const child: ChildProcessWithoutNullStreams = spawn(pythonExe, [script, '--root', runRoot], {
+    cwd: EVIDENCE_DIR,
+    env: minimalChildEnvironment(runRoot, pythonExe),
+    windowsHide: true,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  })
+  let stopped = false
+  let stderrTail = ''
+  child.stdin.on('error', () => {})
+  child.stderr.on('data', (chunk: Buffer) => {
+    stderrTail = (stderrTail + chunk.toString('utf8')).slice(-65_536)
+  })
+  const exitPromise = new Promise<number | null>((resolvePromise, reject) => {
+    child.once('error', reject)
+    child.once('exit', code => {
+      stopped = true
+      resolvePromise(code)
+    })
+  })
+  const readyPromise = new Promise<BServiceReady>((resolvePromise, reject) => {
+    const lines = createInterface({ input: child.stdout, crlfDelay: Infinity })
+    let settled = false
+    lines.once('line', line => {
+      if (settled) return
+      settled = true
+      try {
+        const ready = asRecord(JSON.parse(line))
+        if (
+          ready.status !== 'ready'
+          || ready.host !== '127.0.0.1'
+          || ready.lifespan !== 'off'
+          || ready.contractVersion !== '1.6'
+          || ready.sourcePinCount !== 346
+          || ready.fixtureCount !== 2
+          || ready.forwardListener !== false
+          || ready.ocrStarted !== false
+          || ready.retainerStarted !== false
+          || !Number.isSafeInteger(ready.port)
+        ) {
+          throw new Error('finite B service readiness record is invalid')
+        }
+        resolvePromise(ready as unknown as BServiceReady)
+      } catch (error) {
+        reject(error)
+      }
+    })
+    child.once('error', reject)
+    void exitPromise.then(code => {
+      if (!settled) {
+        settled = true
+        reject(new Error(`finite B service exited before readiness: ${String(code)}; stderrType=${stderrTail.length}`))
+      }
+    })
+  })
+  child.stdin.write(`${token}\n`)
+  let ready: BServiceReady
+  try {
+    ready = await withWatchdog(readyPromise)
+    if (ready.pid !== child.pid) throw new Error('finite B service PID does not match the owned child')
+    if (pathKey(ready.executable) !== pathKey(pythonExe)) {
+      throw new Error('finite B service executable does not match the pinned Python executable')
+    }
+    const started = Date.parse(ready.startedAtUtc)
+    if (!Number.isFinite(started) || started < Date.parse(processBirthUtc()) - 1000 || started > Date.now() + 1000) {
+      throw new Error('finite B service UTC birth observation is outside the parent lifetime')
+    }
+  } catch (error) {
+    child.kill()
+    await withWatchdog(exitPromise).catch(() => undefined)
+    throw error
+  }
+  let stopResult: { code: number | null; final: Record<string, unknown>; forced: boolean } | undefined
+  return {
+    token,
+    ready,
+    async stop() {
+      if (stopResult !== undefined) return stopResult
+      if (!child.stdin.destroyed) {
+        child.stdin.write('stop\n')
+        child.stdin.end()
+      }
+      const code = await withWatchdog(exitPromise)
+      const final = asRecord(JSON.parse(await readFile(join(runRoot, 'b-service-final.json'), 'utf8')))
+      stopResult = { code, final, forced: false }
+      return stopResult
+    },
+    forceStop() {
+      if (!stopped) child.kill()
+    },
+    isStopped() {
+      return stopped
+    },
+  }
+}
+
+async function setupProduction(
+  runRoot: string,
+  localPort: number,
+  localToken: string,
+  personaPrefix: string,
+  resolveCredential: () => string,
+  recordNetwork: NetworkObservation[],
+  recordApi: ApiObservation[],
+  question: QuestionCapture,
+  blocked: Map<string, string>,
+): Promise<any> {
+  const [Cordis, Llm, SessionModule, SystemPromptModule, ToolsModule, ProjectionsModule,
+    AgentModule, AgentLoopModule, PersistenceModule, QueryModule, TypertModule,
+    PiAiModule, ControllerAgentModule, ControllerCommandsModule,
+    ControllerProjectionModule, ClientSessionModule, SkillModule, SkillFsModule,
+    ToolSkillModule, UserQuestionsModule, AskUserModule, RepeatToolReminderModule,
+    ExtAgentModule, ExtHostModule] =
+    await Promise.all([
+      import(modulePath('vendor/cordis/lib/index.js')),
+      import(modulePath('packages/llm/llm/src/index.ts')),
+      import(modulePath('packages/core/session/src/index.ts')),
+      import(modulePath('packages/core/system-prompt/src/index.ts')),
+      import(modulePath('packages/core/tools/src/index.ts')),
+      import(modulePath('packages/session/session-projection/src/index.ts')),
+      import(modulePath('packages/core/agent/src/index.ts')),
+      import(modulePath('packages/core/agent-loop/src/index.ts')),
+      import(modulePath('packages/session/session-persistence-jsonl/src/index.ts')),
+      import(modulePath('packages/session-query/session-query/src/index.ts')),
+      import(modulePath('packages/typert/registry/src/index.ts')),
+      import(modulePath('packages/llm/llm-pi-ai/src/index.ts')),
+      import(modulePath('packages/api/session-controller/src/agent.ts')),
+      import(modulePath('packages/api/session-controller/src/commands.ts')),
+      import(modulePath('packages/api/session-controller/src/model-selection-projection.ts')),
+      import(modulePath('packages/api/session-controller/src/client/sessions/session.ts')),
+      import(modulePath('packages/skill/skill/src/index.ts')),
+      import(modulePath('packages/skill/skill-filesystem/src/index.ts')),
+      import(modulePath('packages/skill/tool-skill/src/index.ts')),
+      import(modulePath('packages/interaction/user-questions/src/index.ts')),
+      import(modulePath('packages/interaction/tool-ask-user/src/index.ts')),
+      import(modulePath('packages/guard/repeat-tool-reminder/src/index.ts')),
+      import('file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/DraftFeedbackPrivateBuild-20261028-214724/private-output-20261028-220815/profile-node_modules/lawbench-dsh/lib/agent.js'),
+      import('file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/DraftFeedbackPrivateBuild-20261028-214724/private-output-20261028-220815/profile-node_modules/lawbench-dsh/lib/host.js'),
+    ])
+
+  const Context = Cordis.Context
+  const LlmRuntime = Llm.default
+  const SessionStore = SessionModule.default
+  const SessionLogOffset = SessionModule.SessionLogOffset
+  const SystemPrompt = SystemPromptModule.default
+  const ToolRuntime = ToolsModule.default
+  const ProjectionRegistry = ProjectionsModule.default
+  const AgentRegistry = AgentModule.default
+  const AgentLoop = AgentLoopModule.default
+  const JsonlPersistence = PersistenceModule.default
+  const SessionQueryEngine = QueryModule.SessionQueryEngine
+  const TypertRegistry = TypertModule.default
+  const ApiSessionAgentController = ControllerAgentModule.ApiSessionAgentController
+  const SessionCommandController = ControllerCommandsModule.SessionCommandController
+  const installModelSelectionProjection = ControllerProjectionModule.installModelSelectionProjection
+  const BrowserSession = ClientSessionModule.Session
+  const SkillRegistry = SkillModule.default
+  const fileSystemSkills = SkillFsModule
+  const toolSkill = ToolSkillModule
+  const UserQuestions = UserQuestionsModule.default
+  const askUserTool = AskUserModule
+  const applyLegalAgent = ExtAgentModule.apply
+  const LawbenchRemote = ExtHostModule.LawbenchRemote
+
+  const live = new Context()
+  const appData = join(runRoot, 'dsh-appdata')
+  await mkdir(appData, { recursive: true, mode: 0o700 })
+
+  await live.plugin(TypertRegistry)
+  await live.plugin(LlmRuntime)
+  await live.plugin(SessionStore)
+  await live.plugin(ProjectionRegistry)
+  await live.plugin(SystemPrompt, { personaPrefix })
+  await live.plugin(ToolRuntime, { mode: 'native', maxParallelSubCalls: 10 })
+  await live.plugin(AgentRegistry)
+  await live.plugin(SkillRegistry)
+  await live.plugin(fileSystemSkills, {
+    providerName: 'lawbench-skills',
+    includeDefaultRoots: false,
+    watch: false,
+    customSkillDirs: [join(B_ROOT, 'skills')],
+  })
+  await live.plugin(toolSkill)
+  await live.plugin(UserQuestions)
+  await live.plugin(askUserTool)
+
+  live.provide('agentDefaultModel', {
+    currentSelection: () => ({ provider: PROVIDER, model: MODEL }),
+    saveSelection: async () => {},
+  })
+  live.provide('workspaceRegistry', {
+    archivedSessionIds: [],
+    get: () => undefined,
+    list: () => [],
+  })
+  live.provide('attachments', {
+    imageLimits: {
+      maxImageBytes: 5 * 1024 * 1024,
+      maxImagesPerMessage: 20,
+      maxMessageImageBytes: 100 * 1024 * 1024,
+      maxImagePixels: 40_000_000,
+      maxImageDimension: 2000,
+      mediaTypes: ['image/png', 'image/jpeg', 'image/webp'],
+    },
+    admitPromptContent: async (content: readonly unknown[]) => [...content],
+  })
+  live.provide('fileUploads', {
+    registerAgentResolver: () => () => {},
+    resolve: () => undefined,
+    retirePrompt: () => {},
+    bindPrompt: () => ({
+      commit: () => {},
+      [Symbol.dispose]: () => {},
+    }),
+  })
+  live.provide('credentials', {
+    resolve: async (ref: unknown) => ref === CREDENTIAL_REF ? { value: resolveCredential() } : undefined,
+    readRecord: async () => undefined,
+    listRecords: async () => [],
+    modifyRecord: async () => {
+      throw new Error('in-memory credential seam is read-only')
+    },
+    deleteRecord: async () => {},
+  })
+
+  const persistenceRoot = join(runRoot, 'sessions')
+  await live.plugin(JsonlPersistence, { root: persistenceRoot, compression: 'none' })
+  installModelSelectionProjection(live)
+  new SessionQueryEngine(live)
+  await live.plugin(PiAiModule, {
+    providers: {
+      [PROVIDER]: {
+        displayName: 'Lawbench 6000D',
+        apiKeyEnv: CREDENTIAL_REF,
+        api: 'openai-completions',
+        baseURL: MODEL_URL,
+        models: [{
+          id: MODEL,
+          name: '律所模型（128K）',
+          contextWindow: 131_072,
+          maxTokens: TASK_MAX_TOKENS,
+          input: ['text'],
+          reasoningEfforts: {
+            off: null,
+            low: 'low',
+            medium: 'medium',
+            high: 'xhigh',
+          },
+        }],
+        defaultInput: ['text'],
+        defaultContextWindow: 131_072,
+        defaultMaxTokens: TASK_MAX_TOKENS,
+        cacheRetention: 'none',
+        transport: 'sse',
+        timeoutMs: 1_200_000,
+        streamIdleTimeoutMs: 1_200_000,
+        retryPolicy: { mode: 'normal', maxRetries: 1 },
+        compat: {
+          supportsStore: false,
+          supportsDeveloperRole: false,
+          maxTokensField: 'max_tokens',
+          thinkingFormat: 'chat-template',
+          chatTemplateKwargs: {
+            enable_thinking: { $var: 'thinking.enabled' },
+            reasoning_effort: { $var: 'thinking.effort', omitWhenOff: true },
+          },
+        },
+      },
+    },
+  })
+
+  live.provide('lawbenchCore', Object.freeze({
+    endpoint: () => ({ port: localPort, token: localToken }),
+    noteTurnBlocked: (sessionId: string, code: string) => { blocked.set(sessionId, code) },
+    clearTurnBlocked: (sessionId: string) => { blocked.delete(sessionId) },
+    sheetHeld: () => false,
+    externalLlmState: async () => ({
+      enabled: false,
+      model: null,
+      contextWindow: null,
+      keyConfigured: false,
+      supportsTools: true,
+    }),
+    skillQuestions: (skillName: string) => remote.skillQuestions(skillName),
+    state: () => 'running',
+    onState: (callback: (state: string) => void) => { callback('running'); return () => {} },
+  }))
+  applyLegalAgent(live, { appData, validateContracts: true })
+  await live.plugin(RepeatToolReminderModule, {
+    thresholds: [3, 5, 8],
+    include: [],
+    exclude: [],
+    argumentsPreviewChars: 500,
+  })
+
+  live.on('user-questions/request', (async (request: unknown, next: () => Promise<unknown>) => {
+    if (question.value !== null) throw new Error('the synthetic lawyer was asked a second time')
+    const body = asRecord(request)
+    const questions = asArray(body.questions).map(asRecord)
+    if (questions.length === 0) throw new Error('the model emitted an empty question request')
+    const ids = questions.map((item, index) => asString(item.id, `question ${index + 1} id`))
+    if (ids.some(id => id.length === 0) || new Set(ids).size !== ids.length) {
+      throw new Error('the model emitted malformed or duplicate question ids')
+    }
+    const options = questions.flatMap(item => asArray(item.options ?? []).map(asRecord))
+    const optionLabels = options.map((option, index) => asString(option.label, `option ${index + 1} label`))
+    const rolesByQuestion = questions.map((item, index) => {
+      const ownOptions = asArray(item.options ?? []).map(asRecord)
+      const text = [
+        ...(item.header === undefined ? [] : [asString(item.header, 'question header')]),
+        asString(item.question, 'question text'),
+        ...ownOptions.map((option, optionIndex) => asString(
+          option.label,
+          `question ${index + 1} option ${optionIndex + 1} label`,
+        )),
+        ...ownOptions.flatMap(option => (
+          option.description === undefined ? [] : [asString(option.description, 'option description')]
+        )),
+      ].join('\n')
+      const roles = questionRoles(text, question.stage)
+      if (roles.length === 0) throw new Error(`question ${index + 1} is outside the selected Skill scope`)
+      return roles
+    })
+    const askedRoles = new Set(rolesByQuestion.flat())
+    const requiredRoles: readonly QuestionRole[] = question.stage === 1
+      ? ['draft', 'doc_type', 'scope']
+      : ['draft', 'opinions']
+    for (const required of requiredRoles) {
+      if (!askedRoles.has(required)) throw new Error(`the selected Skill question is missing ${required}`)
+    }
+    const answers = ids.map((id, index) => ({
+      id,
+      selected: [],
+      custom: answerTextForRoles(rolesByQuestion[index]!, question.stage),
+    }))
+    question.value = {
+      questionIds: ids,
+      questionText: questions.map(item => asString(item.question, 'question text')).join('\n'),
+      optionLabels,
+      rolesByQuestion,
+      answerIds: ids,
+      answerText: answers.map(answer => answer.custom).join('\n'),
+    }
+    void next
+    return { answers }
+  }) as never)
+
+  await live.plugin(AgentLoop, { agents: [] })
+  const agents = new ApiSessionAgentController(live)
+  const workspaceRoot = join(runRoot, 'w')
+  const commands = new SessionCommandController(live, agents, workspaceRoot)
+  const supervisor = {
+    endpoint: () => ({ port: localPort, token: localToken }),
+    state: 'running' as const,
+  }
+  const remote = new LawbenchRemote(
+    supervisor,
+    appData,
+    () => {
+      throw new Error('host credential getter is outside the finite workflow')
+    },
+    [join(B_ROOT, 'skills')],
+    () => {},
+  )
+  const forwardedCall = remote.callApi.bind(remote) as (route: any, request: unknown) => Promise<any>
+  remote.callApi = async (route: any, request: unknown) => {
+    const result = await forwardedCall(route, request)
+    recordApi.push({
+      method: route.method,
+      http: route.http,
+      path: route.path,
+      ok: result.ok === true,
+      ...(result.ok === true ? {} : { code: String(result.error?.code ?? 'UNKNOWN') }),
+    })
+    return result
+  }
+  const forwardedSettings = remote.getSettings.bind(remote) as () => Promise<unknown>
+  remote.getSettings = async () => {
+    const result = await forwardedSettings()
+    recordApi.push({ method: 'getSettings', http: 'GET', path: '/api/settings', ok: true })
+    return result
+  }
+
+  const reopenPersistedEvents = async (sessionId: string): Promise<readonly NativeEvent[]> => {
+    const verifier = new Context()
+    try {
+      await verifier.plugin(LlmRuntime)
+      await verifier.plugin(SessionStore)
+      await verifier.plugin(ProjectionRegistry)
+      await verifier.plugin(SystemPrompt, { personaPrefix: '' })
+      await verifier.plugin(ToolRuntime)
+      await verifier.plugin(AgentRegistry)
+      installModelSelectionProjection(verifier)
+      await verifier.plugin(JsonlPersistence, { root: persistenceRoot, compression: 'none' })
+      await verifier.plugin(AgentLoop, { agents: [] })
+      const handle = await verifier.sessionPersistence.open(sessionId, 'read')
+      try {
+        return (await handle.read()).events as readonly NativeEvent[]
+      } finally {
+        await handle.close()
+      }
+    } finally {
+      await verifier.fiber.dispose()
+    }
+  }
+
+  return {
+    live,
+    commands,
+    BrowserSession,
+    SessionLogOffset,
+    persistenceRoot,
+    workspaceRoot,
+    remote,
+    reopenPersistedEvents,
+  }
+}
+
+function apiRoute(method: string): any {
+  const routes: Record<string, {
+    method: string
+    http: 'GET' | 'POST'
+    path: string
+    contract: string
+    timeoutMs?: number
+  }> = {
+    caseOpen: { method: 'caseOpen', http: 'POST', path: '/api/case/open', contract: 'case_open' },
+    materialsList: { method: 'materialsList', http: 'GET', path: '/api/materials', contract: 'materials_list' },
+    taskCreate: { method: 'taskCreate', http: 'POST', path: '/api/task', contract: 'task_create' },
+    tasksList: { method: 'tasksList', http: 'GET', path: '/api/tasks', contract: 'tasks_list' },
+    source: { method: 'source', http: 'GET', path: '/api/source', contract: 'source' },
+  }
+  const route = routes[method]
+  if (route === undefined) throw new Error(`missing API route ${method}`)
+  return route
+}
+
+function apiOk(result: any, label: string): Record<string, unknown> {
+  if (result.ok !== true) throw new Error(`${label} failed: ${String(result.error?.code ?? 'UNKNOWN')}`)
+  return asRecord(result.value)
+}
+
+function requestIdFromEvent(event: NativeEvent): string | undefined {
+  if (event.type !== 'user/message') return undefined
+  const source = asRecord(event.data).source
+  if (source === null || typeof source !== 'object') return undefined
+  const row = source as Record<string, unknown>
+  return row.kind === 'user' && typeof row.rpcId === 'string' ? row.rpcId : undefined
+}
+
+function assistantText(event: NativeEvent): string {
+  const message = asRecord(asRecord(event.data).message)
+  return asArray(message.content ?? [])
+    .flatMap(part => {
+      const row = asRecord(part)
+      return row.type === 'text' && typeof row.text === 'string' ? [row.text] : []
+    })
+    .join('')
+}
+
+function toolCallsFromEvents(events: readonly NativeEvent[]): ToolCallRecord[] {
+  const calls: ToolCallRecord[] = []
+  for (const event of events) {
+    if (event.type !== 'tool/call') continue
+    const data = asRecord(event.data)
+    calls.push({
+      ordinal: calls.length + 1,
+      name: asString(data.name, 'tool call name'),
+      callId: asString(data.callId, 'tool call id'),
+      argumentsSha256: sha256Bytes(JSON.stringify(data.arguments ?? null)),
+    })
+  }
+  return calls
+}
+
+function skillNameFromCall(event: NativeEvent): string | undefined {
+  if (event.type !== 'tool/call') return undefined
+  const data = asRecord(event.data)
+  if (data.name !== 'skill') return undefined
+  if (data.arguments !== null && typeof data.arguments === 'object' && !Array.isArray(data.arguments)) {
+    const args = data.arguments as Record<string, unknown>
+    return typeof args.name === 'string' ? args.name : undefined
+  }
+  if (typeof data.arguments === 'string') {
+    try {
+      const args = JSON.parse(data.arguments) as Record<string, unknown>
+      return typeof args.name === 'string' ? args.name : undefined
+    } catch {
+      return undefined
+    }
+  }
+  return undefined
+}
+
+function questionRoles(text: string, stage: 1 | 2): QuestionRole[] {
+  const roles = new Set<QuestionRole>()
+  if (/(草稿|原稿|文档|哪一份|审查对象|修改对象)/.test(text)) roles.add('draft')
+  if (/(文书类型|文件类型|类型|收件对象|用途|合同审查意见)/.test(text)) roles.add('doc_type')
+  if (/(修改意见|审查结果|问题清单|怎么改|如何修改|修改要求)/.test(text)) roles.add('opinions')
+  if (/(范围|仅|条款编号|风险3|验收条款)/.test(text)) roles.add('scope')
+  if (stage === 2 && roles.has('scope') && !roles.has('opinions')) roles.add('opinions')
+  return [...roles]
+}
+
+function answerTextForRoles(roles: readonly QuestionRole[], stage: 1 | 2): string {
+  return roles.map(role => {
+    if (role === 'draft') return stage === 1 ? DRAFT_ANSWER : REVISE_DRAFT_ANSWER
+    if (role === 'doc_type') return DOC_TYPE_ANSWER
+    if (role === 'opinions') return OPINIONS_ANSWER
+    return SCOPE_ANSWER
+  }).join('\n')
+}
+
+function toolArguments(event: NativeEvent): Record<string, unknown> {
+  if (event.type !== 'tool/call') throw new Error('expected a tool call event')
+  const data = asRecord(event.data)
+  if (typeof data.arguments === 'string') {
+    return asRecord(JSON.parse(data.arguments))
+  }
+  return asRecord(data.arguments)
+}
+
+function toolResultValue(events: readonly NativeEvent[], callId: string): Record<string, unknown> {
+  const result = events.find(event => {
+    if (event.type !== 'tool/result') return false
+    const source = asRecord(asRecord(event.data).message).source
+    return source !== null
+      && typeof source === 'object'
+      && asRecord(source).callId === callId
+  })
+  if (result === undefined) throw new Error(`tool result is missing for ${callId}`)
+  const message = asRecord(asRecord(result.data).message)
+  if (message.isError === true) throw new Error(`tool failed for ${callId}`)
+  const text = asArray(message.content)
+    .flatMap(part => {
+      const row = asRecord(part)
+      return row.type === 'text' && typeof row.text === 'string' ? [row.text] : []
+    })
+    .join('')
+  return asRecord(JSON.parse(text))
+}
+
+function toolResultSearchText(events: readonly NativeEvent[], callId: string): string {
+  return JSON.stringify(toolResultValue(events, callId))
+}
+
+async function listFiles(root: string): Promise<string[]> {
+  const output: string[] = []
+  const walk = async (directory: string): Promise<void> => {
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const path = join(directory, entry.name)
+      if (entry.isSymbolicLink()) throw new Error(`case tree contains a reparse entry: ${path}`)
+      if (entry.isDirectory()) await walk(path)
+      else if (entry.isFile()) output.push(relative(root, path).replaceAll('\\', '/'))
+      else throw new Error(`case tree contains a non-ordinary entry: ${path}`)
+    }
+  }
+  await walk(root)
+  return output.sort()
+}
+
+function citationTextFor(name: string, loc: Record<string, unknown>): string {
+  const unit = asString(loc.unit, 'citation unit')
+  if (unit === 'cell') {
+    return `〔${name} ${asString(loc.sheet, 'citation sheet')}!${asString(loc.ref, 'citation ref')}〕`
+  }
+  const from = asInteger(loc.from, 'citation from')
+  const toValue = loc.to
+  const suffix = unit === 'page' ? '页' : unit === 'para' ? '段' : unit === 'line' ? '行' : ''
+  if (suffix.length === 0) throw new Error(`unsupported citation unit ${unit}`)
+  const to = toValue === undefined ? from : asInteger(toValue, 'citation to')
+  return `〔${name} 第${from === to ? String(from) : `${String(from)}-${String(to)}`}${suffix}〕`
+}
+
+function assertTaskCoverage(value: unknown): void {
+  const coverage = asRecord(value)
+  if (coverage.total !== 2) throw new Error('task coverage total is not two')
+  const groups = ['fully_read', 'partially_read', 'not_read', 'unreadable'] as const
+  const names = groups.flatMap(group => asArray(coverage[group]).map((name, index) => (
+    asString(name, `${group} ${index + 1}`)
+  )))
+  if (
+    names.length !== 2
+    || JSON.stringify([...new Set(names)].sort()) !== JSON.stringify([...MATERIAL_NAMES].sort())
+  ) {
+    throw new Error(`coverage does not describe exactly the original two materials: ${JSON.stringify(coverage)}`)
+  }
+}
+
+function assertChecklistFindsArticleError(content: string): void {
+  const compact = content.replace(/\s+/g, '')
+  const wrongAt = compact.indexOf('第七条')
+  if (wrongAt < 0 || !compact.includes('4.1')) {
+    throw new Error('stage-one checklist does not name both the wrong article and the source article')
+  }
+  const sourceAt = compact.indexOf('4.1', wrongAt)
+  if (sourceAt < 0 || sourceAt - wrongAt > 240) {
+    throw new Error('stage-one checklist does not connect the wrong article to source article 4.1')
+  }
+  const local = compact.slice(Math.max(0, wrongAt - 120), Math.min(compact.length, sourceAt + 160))
+  if (!/(不一致|错误|不符|应为|改为|修正|写成|条款号|条号|笔误)/.test(local)) {
+    throw new Error('stage-one checklist does not identify the article reference as a problem')
+  }
+  if (!/(风险3|风险三)/.test(compact)) throw new Error('stage-one checklist does not identify risk 3')
+  if (!content.includes('采购合同')) throw new Error('stage-one checklist does not identify the source contract')
+}
+
+function risk3Block(content: string): string {
+  const match = /^###[ \t]+风险\s*3(?:【[^\r\n]*】)?[^\r\n]*$/m.exec(content)
+  if (match === null) throw new Error('draft has no risk-3 heading')
+  const start = (match.index ?? 0) + match[0].length
+  const next = /^###[ \t]+风险\s*[0-9]+[^\r\n]*$/gm
+  next.lastIndex = start
+  const trailing = next.exec(content)
+  return content.slice(start, trailing?.index ?? content.length)
+}
+
+function assertRevisionContent(content: string): void {
+  const risk3 = risk3Block(content)
+  if (risk3.includes('第七条')) throw new Error('revised risk 3 still contains the wrong article 7')
+  if (!risk3.includes('4.1')) throw new Error('revised risk 3 does not identify source article 4.1')
+}
+
+function oneContiguousEdit(original: string, revised: string): OneEditRecord {
+  const originalBytes = Buffer.from(original, 'utf8')
+  const revisedBytes = Buffer.from(revised, 'utf8')
+  let prefix = 0
+  while (
+    prefix < originalBytes.length
+    && prefix < revisedBytes.length
+    && originalBytes[prefix] === revisedBytes[prefix]
+  ) prefix += 1
+  let suffix = 0
+  while (
+    suffix < originalBytes.length - prefix
+    && suffix < revisedBytes.length - prefix
+    && originalBytes[originalBytes.length - 1 - suffix] === revisedBytes[revisedBytes.length - 1 - suffix]
+  ) suffix += 1
+  const oldText = originalBytes.subarray(prefix, originalBytes.length - suffix).toString('utf8')
+  const newText = revisedBytes.subarray(prefix, revisedBytes.length - suffix).toString('utf8')
+  if (oldText.length === 0 || newText.length === 0) throw new Error('revision has no single non-empty body edit')
+  if (!oldText.includes('第七条')) throw new Error('the single body edit does not remove article 7')
+  if (!newText.includes('4.1')) throw new Error('the single body edit does not introduce source article 4.1')
+  if (oldText.length > 160 || newText.length > 160) {
+    throw new Error('the single body edit exceeds the necessary local article-reference change')
+  }
+  return {
+    prefixBytes: prefix,
+    suffixBytes: suffix,
+    oldTextSha256: sha256Bytes(oldText),
+    newTextSha256: sha256Bytes(newText),
+    oldTextLength: oldText.length,
+    newTextLength: newText.length,
+    removesArticle7: true,
+    introducesArticle4_1: true,
+  }
+}
+
+function observeQuestionBeforeFirstDraft(
+  events: readonly NativeEvent[],
+  question: QuestionRecord,
+  stage: 1 | 2,
+): QuestionOrderRecord {
+  const expectedRoles: readonly QuestionRole[] = stage === 1
+    ? ['draft', 'doc_type', 'scope']
+    : ['draft', 'opinions']
+  const knownMandatoryQuestionPrefix =
+    'Error: 提交成果前必须先取得律师对必问问题的真实回答。还缺：'
+  if (
+    question.questionIds.length === 0
+    || question.questionIds.length !== question.answerIds.length
+    || question.questionIds.length !== question.rolesByQuestion.length
+    || question.answerText.trim().length === 0
+  ) {
+    throw new Error('the recorded lawyer question is incomplete')
+  }
+  const questionIds = new Set<string>()
+  for (let index = 0; index < question.questionIds.length; index += 1) {
+    const questionId = question.questionIds[index]!
+    const answerId = question.answerIds[index]!
+    if (
+      typeof questionId !== 'string'
+      || questionId.length === 0
+      || questionIds.has(questionId)
+      || answerId !== questionId
+    ) {
+      throw new Error('the recorded lawyer question IDs are missing, duplicated, or inconsistent')
+    }
+    questionIds.add(questionId)
+  }
+  const coveredRoles = new Set<string>()
+  for (const roles of question.rolesByQuestion) {
+    if (!Array.isArray(roles) || roles.length === 0) {
+      throw new Error('the recorded lawyer question has no required role')
+    }
+    for (const role of roles) {
+      if (!expectedRoles.includes(role)) throw new Error(`unknown lawyer question role ${role}`)
+      coveredRoles.add(role)
+    }
+  }
+  for (const requiredRole of expectedRoles) {
+    if (!coveredRoles.has(requiredRole)) throw new Error(`the lawyer did not answer ${requiredRole}`)
+  }
+
+  const calls = new Map<string, { readonly seq: number; readonly name: string }>()
+  const results = new Map<string, { readonly seq: number; readonly isError: boolean; readonly text: string }>()
+  let previousToolSeq = -1
+  for (const event of events) {
+    if (event.type !== 'tool/call' && event.type !== 'tool/result') continue
+    if (
+      !Number.isSafeInteger(event.seq)
+      || event.seq < 0
+      || event.seq <= previousToolSeq
+    ) {
+      throw new Error('native tool events do not have unique increasing sequence numbers')
+    }
+    previousToolSeq = event.seq
+    if (event.data === null || typeof event.data !== 'object' || Array.isArray(event.data)) {
+      throw new Error('native tool event data is malformed')
+    }
+    const data = event.data as Record<string, unknown>
+    if (event.type === 'tool/call') {
+      if (typeof data.callId !== 'string' || data.callId.length === 0 || typeof data.name !== 'string') {
+        throw new Error('native tool call is malformed')
+      }
+      if (calls.has(data.callId)) throw new Error(`duplicate native tool call ID ${data.callId}`)
+      calls.set(data.callId, { seq: event.seq, name: data.name })
+      continue
+    }
+    const message = data.message
+    if (message === null || typeof message !== 'object' || Array.isArray(message)) {
+      throw new Error('native tool result message is malformed')
+    }
+    const row = message as Record<string, unknown>
+    const source = row.source
+    if (
+      source === null
+      || typeof source !== 'object'
+      || Array.isArray(source)
+      || (source as Record<string, unknown>).kind !== 'tool'
+    ) {
+      throw new Error('native tool result source is malformed')
+    }
+    const callId = (source as Record<string, unknown>).callId
+    const isError = row.isError
+    if (
+      typeof callId !== 'string'
+      || callId.length === 0
+      || row.toolCallId !== callId
+      || typeof isError !== 'boolean'
+      || !Array.isArray(row.content)
+    ) {
+      throw new Error('native tool result is malformed or has a foreign call ID')
+    }
+    if (results.has(callId)) throw new Error(`duplicate native tool result ${callId}`)
+    let text = ''
+    for (const part of row.content) {
+      if (
+        part === null
+        || typeof part !== 'object'
+        || Array.isArray(part)
+        || (part as Record<string, unknown>).type !== 'text'
+        || typeof (part as Record<string, unknown>).text !== 'string'
+      ) {
+        throw new Error(`native tool result ${callId} has a malformed text part`)
+      }
+      const partText = (part as Record<string, unknown>).text as string
+      text += partText
+    }
+    if (text.trim().length === 0) throw new Error(`native tool result ${callId} has no text`)
+    results.set(callId, { seq: event.seq, isError, text })
+  }
+  for (const [callId, call] of calls) {
+    const result = results.get(callId)
+    if (result === undefined) throw new Error(`native tool result is missing for ${call.name} ${callId}`)
+    if (result.seq <= call.seq) throw new Error(`native tool result precedes its call for ${callId}`)
+  }
+  for (const [callId, result] of results) {
+    const call = calls.get(callId)
+    if (call === undefined) throw new Error(`native tool result has unknown call ID ${callId}`)
+    if (result.seq <= call.seq) throw new Error(`native tool result precedes its call for ${callId}`)
+  }
+
+  let answerCallId = ''
+  let answerCallSeq = -1
+  let answerResultSeq = -1
+  for (const [callId, call] of calls) {
+    if (call.name !== 'ask_user_question') continue
+    const candidateResult = results.get(callId)!
+    if (candidateResult.isError) continue
+    if (answerCallId.length !== 0) {
+      throw new Error('native turn contains more than one successful lawyer question callback')
+    }
+    answerCallId = callId
+    answerCallSeq = call.seq
+    answerResultSeq = candidateResult.seq
+  }
+  if (answerCallId.length === 0) {
+    throw new Error('native turn contains no successful lawyer question callback')
+  }
+  const answerResult = results.get(answerCallId)!
+  let answerPayload: unknown
+  try {
+    answerPayload = JSON.parse(answerResult.text)
+  } catch {
+    throw new Error('the lawyer question result is not valid JSON')
+  }
+  if (
+    answerPayload === null
+    || typeof answerPayload !== 'object'
+    || Array.isArray(answerPayload)
+    || !Array.isArray((answerPayload as Record<string, unknown>).answers)
+  ) {
+    throw new Error('the lawyer question result has no answers array')
+  }
+  const answers = (answerPayload as Record<string, unknown>).answers as unknown[]
+  if (answers.length === 0 || answers.length !== question.answerIds.length) {
+    throw new Error('the lawyer answer IDs disappeared or changed count')
+  }
+  let recordedAnswerText = ''
+  for (let index = 0; index < answers.length; index += 1) {
+    const rawAnswer = answers[index]
+    if (rawAnswer === null || typeof rawAnswer !== 'object' || Array.isArray(rawAnswer)) {
+      throw new Error(`lawyer answer ${index + 1} is malformed`)
+    }
+    const answer = rawAnswer as Record<string, unknown>
+    const answerId = answer.id
+    const custom = answer.custom
+    const selected = answer.selected
+    if (
+      typeof answerId !== 'string'
+      || typeof custom !== 'string'
+      || custom.trim().length === 0
+      || !Array.isArray(selected)
+      || answerId !== question.answerIds[index]
+    ) {
+      throw new Error(`lawyer answer ${index + 1} does not match the recorded callback IDs/content`)
+    }
+    for (const selection of selected) {
+      if (typeof selection !== 'string') throw new Error(`lawyer answer ${index + 1} has a malformed selection`)
+    }
+    if (index > 0) recordedAnswerText += '\n'
+    recordedAnswerText += custom
+  }
+  if (recordedAnswerText !== question.answerText) {
+    throw new Error('lawyer answer content does not match the recorded callback content')
+  }
+
+  for (const [callId, call] of calls) {
+    if (call.name !== 'case_save_draft') continue
+    const result = results.get(callId)!
+    if (result.isError) {
+      if (call.seq > answerResult.seq) continue
+      const knownRejection = result.text.trim().startsWith(knownMandatoryQuestionPrefix)
+      if (call.seq < answerResult.seq && result.seq < answerResult.seq && knownRejection) {
+        continue
+      }
+      throw new Error(`uncertain or late draft error for ${callId}`)
+    }
+    let draftPayload: unknown
+    try {
+      draftPayload = JSON.parse(result.text)
+    } catch {
+      throw new Error(`successful draft result is not valid JSON for ${callId}`)
+    }
+    if (
+      draftPayload === null
+      || typeof draftPayload !== 'object'
+      || Array.isArray(draftPayload)
+    ) {
+      throw new Error(`successful draft result is malformed for ${callId}`)
+    }
+    const persistedPath = (draftPayload as Record<string, unknown>).path
+    const persistedVersion = (draftPayload as Record<string, unknown>).version
+    if (typeof persistedPath !== 'string') {
+      throw new Error(`successful draft result has no valid persisted path/version for ${callId}`)
+    }
+    const pathParts = persistedPath.split('/')
+    const invalidPathPart = pathParts.some(part => part.length === 0 || part === '.' || part === '..')
+    if (
+      persistedPath.length === 0
+      || persistedPath.startsWith('/')
+      || persistedPath.startsWith('\\')
+      || invalidPathPart
+      || !persistedPath.endsWith('.md')
+      || typeof persistedVersion !== 'number'
+      || !Number.isSafeInteger(persistedVersion)
+      || persistedVersion < 1
+    ) {
+      throw new Error(`successful draft result has no valid persisted path/version for ${callId}`)
+    }
+    if (answerResult.seq >= call.seq) {
+      throw new Error('the first persisted review draft call started before the lawyer answer result')
+    }
+    return {
+      answerCallId,
+      answerCallSeq,
+      answerResultSeq: answerResult.seq,
+      draftCallId: callId,
+      draftCallSeq: call.seq,
+      draftResultSeq: result.seq,
+    }
+  }
+  throw new Error('native turn contains no successfully persisted review draft')
+}
+
+function summarizeNetwork(observations: readonly NetworkObservation[], denied: number): RunReport['networkSummary'] {
+  const model = observations.filter(item => item.kind === 'model')
+  return {
+    observations: observations.length,
+    modelPostAttempts: model.filter(item => item.method === 'POST').length,
+    modelPostHttp200: model.filter(item => item.method === 'POST' && item.status === 200).length,
+    coreCalls: observations.filter(item => item.kind === 'core').length,
+    healthCalls: observations.filter(item => item.kind === 'health').length,
+    deniedAttempts: denied,
+  }
+}
+
+async function runExplicitPriorRevisionWorkflow(): Promise<void> {
+  if (process.argv.length !== 3 || process.argv[2] !== '--credential-stdin') {
+    throw new Error('usage: native-genuine-quality-revision.mts --credential-stdin')
+  }
+  await assertDirectoryNotReparse(EVIDENCE_DIR)
+  const runRoot = await mkdtemp(join(EVIDENCE_DIR, 'run-'))
+  await assertDirectoryNotReparse(runRoot)
+  if ((await readdir(runRoot)).length !== 0) throw new Error('fresh private run root is not empty')
+
+  const initial = await verifyFixedInputs()
+  const manifest = initial.manifest
+  const originalDraftPin = manifest.caseFiles.find(entry => entry.relative === ORIGINAL_DRAFT)
+  const originalSessionPin = manifest.sessionFiles[0]
+  if (originalDraftPin === undefined || originalSessionPin === undefined) {
+    throw new Error('manifest lacks the original v2 draft or native Session')
+  }
+  if (
+    originalDraftPin.sha256 !== ORIGINAL_DRAFT_SHA256
+    || originalSessionPin.sha256 !== ORIGINAL_SESSION_SHA256
+    || originalSessionPin.bytes !== ORIGINAL_SESSION_BYTES
+  ) {
+    throw new Error('manifest original draft or Session identity changed')
+  }
+  const originalDraftText = (await readFile(originalDraftPin.path)).toString('utf8')
+  const originalSessionBytes = await readFile(originalSessionPin.path)
+  if (
+    !originalDraftText.includes('风险3')
+    || !originalDraftText.includes('第七条')
+    || !originalDraftText.includes('4.1')
+  ) {
+    throw new Error('original v2 draft does not contain the known risk-3 article error')
+  }
+
+  const network: NetworkObservation[] = []
+  const apiCalls: ApiObservation[] = []
+  const fetchGate: FetchGate = { modelEnabled: false, deniedAttempts: 0 }
+  const fetchLease = installFetchAllowlist(network, fetchGate)
+  const cleanupFailures: string[] = []
+  const blocked = new Map<string, string>()
+  const question: QuestionCapture = { value: null, stage: 1 }
+  let secret = ''
+  let secretReader: SecretReaderState | undefined
+  let outputRedaction: OutputRedactionLease | undefined
+  let service: BServiceLease | undefined
+  let production: any
+  let sessionId = ORIGINAL_SESSION_ID
+  let agent: any
+  let browser: any
+  let liveEvents: readonly NativeEvent[] = []
+  let browserDisposed = false
+  let contextDisposed = false
+  let bStopped = false
+  let agentJoined = false
+  let environmentRestored = false
+  let environment: EnvironmentLease | undefined
+
+  const report: RunReport = {
+    format: 'lawbench-t18-explicit-prior-quality-revision-v1',
+    task: TASK_NAME,
+    status: 'RUNNING',
+    authoredStatus: 'AUTHORED_NOT_RUN',
+    startedAtUtc: processBirthUtc(),
+    process: {
+      executable: process.execPath,
+      pid: process.pid,
+      node: process.version,
+      cwd: process.cwd(),
+    },
+    fixture: {
+      syntheticOnly: true,
+      originalTwoMaterialCaseOnly: true,
+      materialNames: [...MATERIAL_NAMES],
+      explicitCancelBatchBeforeEachBegin: true,
+      requestScopePrepareCalls: 0,
+      materialImportCalls: 0,
+    },
+    modelRoute: {
+      provider: PROVIDER,
+      model: MODEL,
+      baseURL: MODEL_URL,
+      thinking: '中',
+      contextWindow: 131_072,
+      maxTokens: TASK_MAX_TOKENS,
+      modelCallsPerSkill: 32,
+      requestTimeoutMs: 1_200_000,
+      streamIdleTimeoutMs: 1_200_000,
+    },
+    runRoot,
+    admission: { initial: initial.admission },
+    originalFilesHeld: false,
+    nativeSessionId: ORIGINAL_SESSION_ID,
+    stages: [],
+    modelPosts: { attempts: 0, http200: 0, observations: network.filter(item => item.kind === 'model') },
+    networkSummary: {
+      observations: 0,
+      modelPostAttempts: 0,
+      modelPostHttp200: 0,
+      coreCalls: 0,
+      healthCalls: 0,
+      deniedAttempts: 0,
+    },
+    apiCalls,
+    cleanup: {
+      agentCancelledOrIdle: false,
+      browserDisposed: false,
+      contextDisposed: false,
+      bServiceStopped: false,
+      fetchRestored: false,
+      environmentRestored: false,
+      outputRedactionRestored: false,
+      keyCleared: false,
+      failures: cleanupFailures,
+    },
+    claims: {
+      oneSyntheticWorkflowOnly: true,
+      actualTwoSkillWorkflow: false,
+      actualModelAuthoredChecklist: false,
+      actualModelAuthoredRevision: false,
+      originalFirstPassBusinessFailRetained: true,
+      fullT18: false,
+      businessAcceptance: false,
+      legalAcceptance: false,
+      gui: false,
+      packaging: false,
+    },
+  }
+
+  try {
+    const caseRoot = join(runRoot, 'case')
+    const sessionsRoot = join(runRoot, 'sessions')
+    await mkdir(caseRoot, { recursive: true, mode: 0o700 })
+    await mkdir(sessionsRoot, { recursive: true, mode: 0o700 })
+    const copiedCaseFiles: CopiedIdentity[] = []
+    const copiedSessionFiles: CopiedIdentity[] = []
+    for (const entry of manifest.caseFiles) {
+      copiedCaseFiles.push(await copyPinnedFile(entry, entry.relative, caseRoot))
+    }
+    for (const entry of manifest.sessionFiles) {
+      copiedSessionFiles.push(await copyPinnedFile(entry, entry.relative, sessionsRoot))
+    }
+    if (copiedCaseFiles.length !== 16 || copiedSessionFiles.length !== 1) {
+      throw new Error('private copy count is not exactly 16 case files plus one session')
+    }
+    const copiedSession = await verifyOriginalSessionCopy(
+      copiedSessionFiles[0]!.destination,
+      originalSessionBytes,
+    )
+    if (
+      copiedSession.headerId !== ORIGINAL_SESSION_ID
+      || copiedSession.headerCwd !== ORIGINAL_SESSION_CWD
+      || copiedSession.eventCount !== ORIGINAL_EVENTS
+    ) {
+      throw new Error('copied Session identity changed before resume')
+    }
+    report.copy = { caseFiles: copiedCaseFiles, sessionFiles: copiedSessionFiles }
+
+    environment = await isolateProcessFiles(runRoot)
+    const credential = await readCredentialFromStdin()
+    secret = credential.secret
+    secretReader = credential.state
+    outputRedaction = installOutputRedaction(secret)
+    fetchGate.modelEnabled = true
+
+    const pythonExe = manifest.runtimeExecutables.find(entry => entry.role === 'python')?.path
+    const nodeExe = manifest.runtimeExecutables.find(entry => entry.role === 'node')?.path
+    const personaPath = manifest.dependencies.find(entry => entry.role === 'persona')?.path
+    if (pythonExe === undefined || nodeExe === undefined || personaPath === undefined) {
+      throw new Error('fixed manifest lacks the Python, Node, or persona dependency')
+    }
+    if (pathKey(nodeExe) !== pathKey(process.execPath)) {
+      throw new Error('consumer was not started with the pinned Node executable')
+    }
+    const personaPrefix = (await readFile(personaPath, 'utf8'))
+      .replace(/^【草稿[^\n]*\n+/, '')
+      .trim()
+    if (!personaPrefix.includes('律所内部的案件助手')) throw new Error('production persona prefix is absent')
+
+    service = await startBService(runRoot, pythonExe, B_SERVICE_SCRIPT)
+    fetchGate.localPort = service.ready.port
+    const health = await withWatchdog(fetch(`http://127.0.0.1:${String(service.ready.port)}/health`, {
+      headers: { authorization: `Bearer ${service.token}` },
+      redirect: 'error',
+      cache: 'no-store',
+    }))
+    if (health.status !== 200) throw new Error(`finite B health returned ${String(health.status)}`)
+    const healthBody = asRecord(await health.json())
+    if (healthBody.status !== 'ok' || healthBody.contract_version !== '1.6') {
+      throw new Error('finite B health contract is invalid')
+    }
+
+    production = await setupProduction(
+      runRoot,
+      service.ready.port,
+      service.token,
+      personaPrefix,
+      () => {
+        if (secret.length === 0) throw new Error('model requested a credential before stdin readiness')
+        return secret
+      },
+      network,
+      apiCalls,
+      question,
+      blocked,
+    )
+    const remote = production.remote
+    const opened = apiOk(await remote.callApi(apiRoute('caseOpen'), {
+      path: caseRoot,
+      template: 'civil',
+      kind: 'civil',
+    }), 'caseOpen')
+    const caseId = asString(opened.case_id, 'case_id')
+    if (caseId !== ORIGINAL_CASE_ID || opened.created !== false) {
+      throw new Error('copied case did not open as the existing original case')
+    }
+
+    const listed = apiOk(await remote.callApi(apiRoute('materialsList'), { case_id: caseId }), 'materialsList')
+    const materials = asArray(listed.materials).map(asRecord)
+    if (materials.length !== 2) throw new Error('copied genuine case material count is not two')
+    const materialIds = materials.map((row, index) => (
+      asString(row.material_id, `material ${index + 1} id`)
+    )).sort()
+    if (new Set(materialIds).size !== 2) throw new Error('copied genuine case material ids are not unique')
+    const materialShaById = new Map<string, string>()
+    const materialReads: MaterialReadRecord[] = materials.map((row, index) => {
+      const name = asString(row.name, `material ${index + 1} name`)
+      const relativePath = `02案件材料/${name}.${extname(asString(row.rel_path, 'material rel_path')).slice(1)}`
+      const original = manifest.caseFiles.find(entry => entry.relative === relativePath)
+      if (original === undefined) throw new Error(`material ${name} is outside the original two fixtures`)
+      const materialId = asString(row.material_id, 'material_id')
+      materialShaById.set(materialId, original.sha256)
+      return {
+        materialId,
+        name,
+        type: asString(row.type, 'material type'),
+        unit: asString(row.unit, 'material unit'),
+        unitCount: asInteger(row.unit_count, 'material unit_count'),
+        originalPath: join(caseRoot, ...relativePath.split('/')),
+        originalBytes: original.bytes,
+        originalSha256: original.sha256,
+        sourceBytes: original.bytes,
+        sourceSha256: original.sha256,
+        sourceMtimeNs: asString(original.mtime_ns, 'material source mtime_ns'),
+      }
+    })
+    if (
+      JSON.stringify(materialReads.map(item => item.name).sort())
+      !== JSON.stringify([...MATERIAL_NAMES].sort())
+    ) {
+      throw new Error('material names differ from the original two synthetic fixtures')
+    }
+    const originalArea = (await listFiles(caseRoot)).filter(path => (
+      !path.startsWith('工作区/') && !path.startsWith('成果/') && !path.split('/').some(part => part.startsWith('.'))
+    ))
+    if (
+      JSON.stringify(originalArea)
+      !== JSON.stringify([
+        '02案件材料/采购合同.docx',
+        '02案件材料/采购部内部意见.txt',
+      ])
+    ) {
+      throw new Error(`private case original area contains extra data: ${JSON.stringify(originalArea)}`)
+    }
+    for (const material of materialReads) {
+      await ordinaryFile(material.originalPath, material.originalBytes, material.originalSha256)
+    }
+    report.case = {
+      caseId,
+      path: caseRoot,
+      materialIds,
+      originalAreaFiles: originalArea,
+      created: false,
+    }
+    report.materialReads = materialReads
+    report.resumedSession = {
+      sameUuid: true,
+      originalCwdPreserved: true,
+      originalEventPrefixPreserved: true,
+    }
+
+    const skillListing = asRecord(await production.remote.listSkills())
+    if (skillListing.ok !== true) throw new Error('production Skill listing failed')
+    const skills = asArray(asRecord(skillListing.value).skills).map(asRecord)
+    for (const requiredSkill of [PRE_ISSUE_SKILL, REVISE_SKILL]) {
+      if (!skills.some(row => row.name === requiredSkill)) {
+        throw new Error(`${requiredSkill} is absent from the production Skill listing`)
+      }
+    }
+    const taskParams = {
+      thinking: '中',
+      window: '128K',
+      max_tokens: TASK_MAX_TOKENS,
+      temperature: 0.6,
+    }
+
+    browser = new production.BrowserSession(sessionId, {})
+    browser.handleRunning(true)
+    const initialTasks = apiOk(await remote.callApi(apiRoute('tasksList'), { case_id: caseId }), 'initial tasksList')
+    const knownTaskIds = new Set(asArray(initialTasks.tasks).map((raw, index) => (
+      asString(asRecord(raw).task_id, `initial task ${index + 1} id`)
+    )))
+
+    const executeStage = async (
+      stageNumber: 1 | 2,
+      skill: typeof PRE_ISSUE_SKILL | typeof REVISE_SKILL,
+      inputs: readonly string[],
+      promptText: string,
+      expectedTitle: string,
+    ): Promise<ExecutedStage> => {
+      question.stage = stageNumber
+      question.value = null
+      const selected = apiOk(await remote.callApi(apiRoute('taskCreate'), {
+        case_id: caseId,
+        session_id: sessionId,
+        entry: null,
+        skill,
+        inputs: [...inputs],
+        params: taskParams,
+      }), `stage ${String(stageNumber)} taskCreate`)
+      const selectionId = asString(selected.task_id, 'task selection id')
+      const submission = browser.beginSubmission({
+        mode: 'queue',
+        text: promptText,
+        attachments: [],
+      })
+      const requestId = String(submission.requestId)
+      if (!UUID_V4.test(requestId) || requestId === ORIGINAL_REQUEST_ID) {
+        throw new Error('BrowserSession did not mint a new UUID request')
+      }
+      const beforeSeq = production.live.sessions.get(sessionId)?.seq === undefined
+        ? ORIGINAL_EVENTS
+        : Number(production.live.sessions.get(sessionId).seq)
+      await withWatchdog(production.commands.prompt({
+        sessionId,
+        requestId: submission.requestId,
+        mode: 'queue',
+        content: [{ type: 'text', text: promptText }],
+      }))
+      const nativeSession = production.live.sessions.get(sessionId)
+      agent = production.live.agents.get(sessionId)
+      if (nativeSession === undefined || agent === undefined) {
+        throw new Error('production prompt did not resume the copied Native Session')
+      }
+      await withWatchdog(agent.whenIdle())
+      agentJoined = true
+      const afterSeq = Number(nativeSession.seq)
+      if (afterSeq <= beforeSeq) throw new Error('native turn appended no events')
+      const turnEvents = nativeSession.snapshotEvents(
+        production.SessionLogOffset(beforeSeq),
+        production.SessionLogOffset(afterSeq),
+      ) as readonly NativeEvent[]
+      const types = turnEvents.map(event => event.type)
+      for (const required of ['turn/start', 'user/message', 'assistant/message', 'turn/end']) {
+        if (!types.includes(required)) throw new Error(`native turn lacks ${required}`)
+      }
+      if (turnEvents.findLast(event => requestIdFromEvent(event) === requestId) === undefined) {
+        throw new Error('native turn does not carry the actual BrowserSession request id')
+      }
+      const end = asRecord(turnEvents.findLast(event => event.type === 'turn/end')!.data)
+      if (asRecord(end.reason).kind !== 'completed') {
+        throw new Error(`native turn ended with ${String(asRecord(end.reason).kind)}`)
+      }
+      const responseText = assistantText(turnEvents.findLast(event => event.type === 'assistant/message')!)
+      if (responseText.trim().length === 0) throw new Error('native turn produced no assistant text')
+      const toolCalls = toolCallsFromEvents(turnEvents)
+      for (const requiredTool of [
+        'skill',
+        'ask_user_question',
+        'case_read_input',
+        'case_read_material',
+        'case_save_draft',
+      ]) {
+        if (!toolCalls.some(call => call.name === requiredTool)) {
+          throw new Error(`actual tool loop lacks ${requiredTool}`)
+        }
+      }
+      if (!turnEvents.some(event => skillNameFromCall(event) === skill)) {
+        throw new Error(`the skill tool did not load ${skill}`)
+      }
+      if (question.value === null) throw new Error(`${skill} did not ask its mandatory questions`)
+      const questionOrder = observeQuestionBeforeFirstDraft(turnEvents, question.value, stageNumber)
+
+      let completedTask: Record<string, unknown> | undefined
+      for (let attempt = 0; attempt < 1_200; attempt += 1) {
+        const taskList = apiOk(await remote.callApi(apiRoute('tasksList'), { case_id: caseId }), 'tasksList')
+        const candidates = asArray(taskList.tasks)
+          .map(asRecord)
+          .filter(task => task.skill === skill && !knownTaskIds.has(asString(task.task_id, 'task_id')))
+        if (candidates.length > 1) throw new Error(`${skill} produced more than one new executed task`)
+        completedTask = candidates[0]
+        if (completedTask !== undefined) break
+        await new Promise(done => setTimeout(done, 100))
+      }
+      if (completedTask === undefined) throw new Error(`${skill} produced no executed task`)
+      const taskId = asString(completedTask.task_id, 'task_id')
+      if (!TASK_ID.test(taskId) || taskId === ORIGINAL_TASK_ID || knownTaskIds.has(taskId)) {
+        throw new Error(`${skill} task id is not a new production task`)
+      }
+      if (completedTask.status !== 'completed') throw new Error(`${skill} task ended ${String(completedTask.status)}`)
+
+      const taskDir = join(caseRoot, '工作区', '任务', taskId)
+      const taskData = asRecord(JSON.parse(await readFile(join(taskDir, 'task.json'), 'utf8')))
+      const result = asRecord(JSON.parse(await readFile(join(taskDir, 'result.json'), 'utf8')))
+      const reads = asRecord(JSON.parse(await readFile(join(taskDir, 'reads.json'), 'utf8')))
+      if (
+        taskData.state !== 'finished'
+        || taskData.skill !== skill
+        || taskData.session_id !== sessionId
+        || (taskData.request_scope !== undefined && taskData.request_scope !== null)
+      ) {
+        throw new Error(`${skill} persisted task is not an ordinary completed unscoped task`)
+      }
+      const selectedInputs = asArray(taskData.inputs).map((raw, index) => (
+        asString(asRecord(raw).path, `task input ${index + 1} path`)
+      ))
+      if (JSON.stringify(selectedInputs) !== JSON.stringify(inputs)) {
+        throw new Error(`${skill} persisted task inputs differ from the explicit prior inputs`)
+      }
+      if (result.status !== 'completed') throw new Error(`${skill} persisted result is ${String(result.status)}`)
+      assertTaskCoverage(result.coverage)
+      const citationCheck = asRecord(result.citation_check)
+      if (citationCheck.passed !== true) throw new Error(`${skill} citation check did not pass`)
+      const citations = asArray(result.citations).map(asRecord)
+      if (citations.length === 0) throw new Error(`${skill} saved output has no parsed citations`)
+      const readRows = asArray(reads.reads).map(asRecord)
+      if (readRows.length === 0) throw new Error(`${skill} task has no actual material reads`)
+      for (const row of readRows) {
+        const materialId = asString(row.material_id, 'read material_id')
+        const material = materialReads.find(item => item.materialId === materialId)
+        const from = asInteger(row.from, 'read from')
+        const to = asInteger(row.to, 'read to')
+        if (
+          material === undefined
+          || row.material_version !== materialShaById.get(materialId)
+          || row.unit !== material.unit
+          || from < 1
+          || to < from
+          || to > material.unitCount
+        ) {
+          throw new Error(`${skill} read record is outside the original material identity`)
+        }
+      }
+
+      const drafts = asArray(result.drafts).map(asRecord)
+      const latestDraft = drafts.at(-1)
+      if (latestDraft === undefined) throw new Error(`${skill} completed task has no saved draft`)
+      if (latestDraft.title !== expectedTitle) {
+        throw new Error(`${skill} saved draft title is ${String(latestDraft.title)}`)
+      }
+      const draftRel = asString(latestDraft.path, 'draft path')
+      const draftPath = resolve(caseRoot, ...draftRel.split('/'))
+      const draftRelative = relative(resolve(caseRoot), draftPath)
+      if (
+        draftRelative.startsWith('..')
+        || isAbsolute(draftRelative)
+        || !draftRel.startsWith(`工作区/任务/${taskId}/草稿/`)
+        || !draftRel.endsWith('.md')
+      ) {
+        throw new Error(`${skill} draft path escapes its owned task`)
+      }
+      const draftBytes = await readFile(draftPath)
+      const draftText = draftBytes.toString('utf8')
+      if (draftText.trim().length === 0) throw new Error(`${skill} saved draft is empty`)
+      const saveCalls = turnEvents.filter(event => (
+        event.type === 'tool/call' && asRecord(event.data).name === 'case_save_draft'
+      ))
+      const matchingSave = saveCalls.findLast(event => {
+        const args = toolArguments(event)
+        return args.title === expectedTitle && args.content === draftText
+      })
+      if (matchingSave === undefined) {
+        throw new Error(`${skill} saved draft is not the actual model-authored tool argument`)
+      }
+      const saveResult = toolResultValue(
+        turnEvents,
+        asString(asRecord(matchingSave.data).callId, 'draft call id'),
+      )
+      if (saveResult.path !== draftRel || saveResult.version !== latestDraft.version) {
+        throw new Error(`${skill} saved draft path/version is not the actual tool result`)
+      }
+
+      const inputCalls = toolCalls
+        .filter(call => call.name === 'case_read_input')
+      const caseReadInputIndexes: number[] = []
+      const caseReadInputResultSha256s: string[] = []
+      for (const call of inputCalls) {
+        const args = toolArguments(turnEvents.find(event => (
+          event.type === 'tool/call' && asRecord(event.data).callId === call.callId
+        ))!)
+        const inputIndex = asInteger(args.index, 'case_read_input index')
+        const resultText = toolResultSearchText(turnEvents, call.callId)
+        if (resultText.trim().length === 0) throw new Error('case_read_input returned no actual text')
+        if (stageNumber === 1 && inputIndex === 1 && !resultText.includes('第七条')) {
+          throw new Error('stage one did not actually read the selected original v2 input')
+        }
+        if (stageNumber === 2 && inputIndex === 1 && !resultText.includes('第七条')) {
+          throw new Error('stage two did not actually read the original v2 input')
+        }
+        if (stageNumber === 2 && inputIndex === 2 && !resultText.includes('4.1')) {
+          throw new Error('stage two did not actually read the stage-one checklist')
+        }
+        caseReadInputIndexes.push(inputIndex)
+        caseReadInputResultSha256s.push(sha256Bytes(resultText))
+      }
+      const requiredInputIndexes = stageNumber === 1 ? [1] : [1, 2]
+      if (JSON.stringify([...new Set(caseReadInputIndexes)].sort()) !== JSON.stringify(requiredInputIndexes)) {
+        throw new Error(`${skill} did not read every explicitly selected prior input`)
+      }
+
+      const materialCalls = toolCalls.filter(call => call.name === 'case_read_material')
+      const sourceReadTexts = materialCalls.map(call => toolResultSearchText(turnEvents, call.callId))
+      if (!sourceReadTexts.some(text => text.includes('4.1'))) {
+        throw new Error(`${skill} did not actually read source clause 4.1 from the contract`)
+      }
+      const sourceReadTextSha256s = sourceReadTexts.map(text => sha256Bytes(text))
+
+      const citationResponses: SourceResponseRecord[] = []
+      const seenCitations = new Set<string>()
+      for (const citation of citations) {
+        const loc = asRecord(citation.loc)
+        const name = asString(citation.name, 'citation name')
+        const materialId = asString(citation.material_id, 'citation material_id')
+        const citationText = citationTextFor(name, loc)
+        const key = `${materialId}\u0000${JSON.stringify(loc)}`
+        if (seenCitations.has(key)) continue
+        seenCitations.add(key)
+        const source = apiOk(await remote.callApi(apiRoute('source'), {
+          case_id: caseId,
+          material_id: materialId,
+          citation: citationText,
+          task_id: taskId,
+        }), `source ${citationText}`)
+        const text = asString(source.text, 'source text')
+        if (
+          source.name !== name
+          || source.source_changed !== false
+          || (source.original_status !== undefined && source.original_status !== 'ok')
+          || text.trim().length === 0
+        ) {
+          throw new Error(`citation did not resolve to unchanged source text: ${citationText}`)
+        }
+        citationResponses.push({
+          name,
+          loc,
+          citation: citationText,
+          textSha256: sha256Bytes(text),
+          textLength: text.length,
+          sourceChanged: false,
+          originalStatus: source.original_status === undefined ? undefined : String(source.original_status),
+        })
+      }
+
+      knownTaskIds.add(taskId)
+      return {
+        stage: stageNumber,
+        skill,
+        selectionId,
+        taskId,
+        requestId,
+        taskParams,
+        beforeSeq,
+        afterSeq,
+        turn: {
+          sessionId,
+          requestId,
+          beforeSeq,
+          afterSeq,
+          responseTextSha256: sha256Bytes(responseText),
+          responseTextLength: responseText.length,
+          eventTypes: types,
+        },
+        toolCalls,
+        question: {
+          questionIds: question.value.questionIds,
+          rolesByQuestion: question.value.rolesByQuestion,
+          answerIds: question.value.answerIds,
+          questionTextSha256: sha256Bytes(question.value.questionText),
+          questionTextLength: question.value.questionText.length,
+          answerTextSha256: sha256Bytes(question.value.answerText),
+          answerTextLength: question.value.answerText.length,
+        },
+        questionOrder,
+        taskState: {
+          taskId,
+          caseId,
+          sessionId,
+          skill,
+          state: taskData.state,
+          inputPaths: selectedInputs,
+          inputSha256s: asArray(taskData.inputs).map((raw, index) => (
+            asString(asRecord(raw).sha256, `task input ${index + 1} sha256`)
+          )),
+          params: asRecord(taskData.params),
+          requestScope: taskData.request_scope ?? null,
+        },
+        taskResult: {
+          status: result.status,
+          citationPassed: citationCheck.passed,
+          citationCount: citations.length,
+          draftCount: drafts.length,
+          coverage: result.coverage,
+        },
+        coverage: result.coverage,
+        readRanges: reads.reads,
+        caseReadInputIndexes,
+        caseReadInputResultSha256s,
+        sourceReadTextSha256s,
+        citationResponses,
+        draft: {
+          title: expectedTitle,
+          path: draftRel,
+          version: asInteger(latestDraft.version, 'draft version'),
+          bytes: draftBytes.byteLength,
+          sha256: sha256Bytes(draftBytes),
+        },
+        draftText,
+      }
+    }
+
+    const stage1 = await executeStage(
+      1,
+      PRE_ISSUE_SKILL,
+      [ORIGINAL_DRAFT],
+      STAGE1_PROMPT,
+      CHECKLIST_TITLE,
+    )
+    assertChecklistFindsArticleError(stage1.draftText)
+    const { draftText: _stage1Text, ...stage1Report } = stage1
+    report.stages.push(stage1Report)
+
+    const stage2 = await executeStage(
+      2,
+      REVISE_SKILL,
+      [ORIGINAL_DRAFT, stage1.draft!.path],
+      STAGE2_PROMPT,
+      REVISION_TITLE,
+    )
+    assertRevisionContent(stage2.draftText)
+    const oneEdit = oneContiguousEdit(originalDraftText, stage2.draftText)
+    report.oneEdit = oneEdit
+    const { draftText: _stage2Text, ...stage2Report } = stage2
+    report.stages.push(stage2Report)
+
+    if (
+      !stage1.taskId
+      || !stage2.taskId
+      || stage1.taskId === stage2.taskId
+      || stage1.taskId === ORIGINAL_TASK_ID
+      || stage2.taskId === ORIGINAL_TASK_ID
+      || stage1.requestId === stage2.requestId
+      || stage1.requestId === ORIGINAL_REQUEST_ID
+      || stage2.requestId === ORIGINAL_REQUEST_ID
+    ) {
+      throw new Error('two-stage task or Native request identities were reused')
+    }
+    liveEvents = production.live.sessions.get(sessionId).snapshotEvents() as readonly NativeEvent[]
+
+    const stopped = await service.stop()
+    bStopped = true
+    report.bService = {
+      ready: service.ready,
+      final: stopped.final,
+      exitCode: stopped.code,
+      forcedStop: stopped.forced,
+    }
+    if (stopped.code !== 0 || stopped.final.passed !== true) {
+      throw new Error('finite B two-stage service did not stop cleanly')
+    }
+
+    await browser.dispose()
+    browserDisposed = true
+    await production.live.fiber.dispose()
+    contextDisposed = true
+    const reopened = await production.reopenPersistedEvents(sessionId)
+    const equal = JSON.stringify(reopened) === JSON.stringify(liveEvents)
+    if (!equal) throw new Error('reopened JSONL events differ from live Native Session events')
+
+    const allSessionFiles: string[] = []
+    const walk = async (directory: string): Promise<void> => {
+      for (const entry of await readdir(directory, { withFileTypes: true })) {
+        const path = join(directory, entry.name)
+        if (entry.isSymbolicLink()) throw new Error('session persistence contains a reparse entry')
+        if (entry.isDirectory()) await walk(path)
+        else if (entry.isFile() && entry.name === 'session.v4.jsonl') allSessionFiles.push(path)
+      }
+    }
+    await walk(production.persistenceRoot)
+    const physical = allSessionFiles.filter(path => path.includes(sessionId))
+    if (physical.length !== 1) throw new Error(`expected one physical JSONL for ${sessionId}`)
+    const jsonlPath = physical[0]!
+    const jsonlBytes = await readFile(jsonlPath)
+    const eventLines = jsonlBytes.toString('utf8').trim().split(/\r?\n/).filter(Boolean)
+    const prefixPreserved = (
+      jsonlBytes.byteLength >= originalSessionBytes.byteLength
+      && jsonlBytes.subarray(0, originalSessionBytes.byteLength).equals(originalSessionBytes)
+    )
+    if (!prefixPreserved) throw new Error('copied original Session bytes are no longer an exact prefix')
+    report.persistence = {
+      root: production.persistenceRoot,
+      sessionReopened: reopened.length > 0,
+      liveEqualsReopened: equal,
+      physicalJsonlPath: jsonlPath,
+      physicalJsonlBytes: jsonlBytes.byteLength,
+      physicalJsonlSha256: sha256Bytes(jsonlBytes),
+      physicalEventCount: Math.max(0, eventLines.length - 1),
+      originalPrefixBytes: originalSessionBytes.byteLength,
+      originalPrefixPreserved: prefixPreserved,
+    }
+
+    for (const material of materialReads) {
+      await ordinaryFile(material.originalPath, material.originalBytes, material.originalSha256)
+    }
+    const originalDraftAfter = await readFile(join(caseRoot, ...ORIGINAL_DRAFT.split('/')))
+    if (sha256Bytes(originalDraftAfter) !== ORIGINAL_DRAFT_SHA256) {
+      throw new Error('original v2 draft bytes changed inside the private case')
+    }
+    report.modelPosts.observations = network.filter(item => item.kind === 'model')
+    report.modelPosts.attempts = report.modelPosts.observations.filter(item => item.method === 'POST').length
+    report.modelPosts.http200 = report.modelPosts.observations.filter(item => (
+      item.method === 'POST' && item.status === 200
+    )).length
+    report.networkSummary = summarizeNetwork(network, fetchGate.deniedAttempts)
+    if (
+      report.networkSummary.deniedAttempts !== 0
+      || report.networkSummary.modelPostHttp200 === 0
+      || blocked.size !== 0
+      || secret.length === 0
+      || JSON.stringify(report).includes(secret)
+    ) {
+      throw new Error('network, blocked-turn, or credential invariants failed')
+    }
+    report.claims.actualTwoSkillWorkflow = true
+    report.claims.actualModelAuthoredChecklist = true
+    report.claims.actualModelAuthoredRevision = true
+    report.status = 'PASS'
+  } catch (error: unknown) {
+    report.status = 'FAILED'
+    report.error = safeError(error, secret)
+  } finally {
+    if (production !== undefined && sessionId !== '') {
+      try {
+        if (agent?.status === 'running') {
+          production.commands.cancel({ sessionId })
+        }
+        if (agent !== undefined) await withWatchdog(agent.whenIdle())
+        agentJoined = true
+      } catch (error: unknown) {
+        cleanupFailures.push(`agent cancel/join failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+    if (!bStopped && service !== undefined) {
+      try {
+        const stopped = await service.stop()
+        bStopped = true
+        report.bService = {
+          ready: service.ready,
+          final: stopped.final,
+          exitCode: stopped.code,
+          forcedStop: stopped.forced,
+        }
+        if (stopped.code !== 0 || stopped.final.passed !== true) {
+          cleanupFailures.push('B HTTP service did not stop cleanly')
+        }
+      } catch (error: unknown) {
+        service.forceStop()
+        cleanupFailures.push(`B HTTP service stop failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+    if (!browserDisposed && browser !== undefined) {
+      try {
+        await browser.dispose()
+        browserDisposed = true
+      } catch (error: unknown) {
+        cleanupFailures.push(`browser Session dispose failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+    if (!contextDisposed && production !== undefined) {
+      try {
+        await production.live.fiber.dispose()
+        contextDisposed = true
+      } catch (error: unknown) {
+        cleanupFailures.push(`Context dispose failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+    try {
+      fetchLease.restore()
+    } catch (error: unknown) {
+      cleanupFailures.push(`fetch restore failed: ${error instanceof Error ? error.name : 'unknown'}`)
+    }
+    if (environment !== undefined) {
+      try {
+        environment.restore()
+        environmentRestored = true
+      } catch (error: unknown) {
+        cleanupFailures.push(`environment restore failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+    if (secretReader !== undefined) {
+      try {
+        secretReader.restore()
+      } catch (error: unknown) {
+        cleanupFailures.push(`stdin restore failed: ${error instanceof Error ? error.name : 'unknown'}`)
+      }
+    }
+  }
+
+  report.modelPosts.observations = network.filter(item => item.kind === 'model')
+  report.modelPosts.attempts = report.modelPosts.observations.filter(item => item.method === 'POST').length
+  report.modelPosts.http200 = report.modelPosts.observations.filter(item => (
+    item.method === 'POST' && item.status === 200
+  )).length
+  report.networkSummary = summarizeNetwork(network, fetchLease.deniedAttempts())
+  report.cleanup.agentCancelledOrIdle = agentJoined
+  report.cleanup.browserDisposed = browserDisposed
+  report.cleanup.contextDisposed = contextDisposed
+  report.cleanup.bServiceStopped = bStopped
+  report.cleanup.fetchRestored = fetchLease.isRestored()
+  report.cleanup.environmentRestored = environmentRestored
+  if (cleanupFailures.length > 0) {
+    report.status = 'FAILED'
+    report.error = { message: 'cleanup failed', failures: [...cleanupFailures] }
+  }
+  try {
+    report.admission.final = (await verifyFixedInputs()).admission
+    report.originalFilesHeld = true
+  } catch (error: unknown) {
+    report.status = 'FAILED'
+    report.error = safeError(error, secret)
+  }
+  const sanitized = redactUnknown(report, secret) as RunReport
+  if (secret.length > 0 && JSON.stringify(sanitized).includes(secret)) {
+    throw new Error('credential redaction failed before report write')
+  }
+  const keyCleared = outputRedaction?.clearSecret() ?? secret.length === 0
+  secret = ''
+  sanitized.cleanup.keyCleared = keyCleared
+  try {
+    outputRedaction?.restore()
+  } catch {
+    sanitized.status = 'FAILED'
+    sanitized.error = { message: 'output redaction restore failed' }
+  }
+  sanitized.cleanup.outputRedactionRestored = outputRedaction?.isRestored() ?? true
+  if (!keyCleared || !sanitized.cleanup.outputRedactionRestored) {
+    sanitized.status = 'FAILED'
+    sanitized.error = { message: 'credential cleanup did not complete' }
+  }
+  sanitized.finishedAtUtc = utcNow()
+  const reportPath = join(runRoot, 'report.json')
+  await writeFile(reportPath, `${JSON.stringify(sanitized, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' })
+  process.stdout.write(`${JSON.stringify({
+    status: sanitized.status,
+    report: reportPath,
+    nativeSessionId: sanitized.nativeSessionId,
+    stage1TaskId: sanitized.stages[0]?.taskId,
+    stage1RequestId: sanitized.stages[0]?.requestId,
+    stage2TaskId: sanitized.stages[1]?.taskId,
+    stage2RequestId: sanitized.stages[1]?.requestId,
+    oneEdit: sanitized.oneEdit,
+    modelPostAttempts: sanitized.networkSummary.modelPostAttempts,
+    modelPostHttp200: sanitized.networkSummary.modelPostHttp200,
+  }, null, 2)}\n`)
+  if (sanitized.status !== 'PASS') process.exitCode = 1
+}
+
+await runExplicitPriorRevisionWorkflow()

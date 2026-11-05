@@ -1,0 +1,113 @@
+{
+  "at": "2026-11-02T01:55:03.216201+08:00",
+  "owner_order": "D:\\Lawbeach\\lawbench-coord\\OWNER-T18-停止条件与收口-20261102-014226.md",
+  "state": "CLOSED_RELEASED_BY_OWNER_RULE_CURRENT_FROZEN_TARGET",
+  "current_T18_loop": "STOPPED",
+  "freeze": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\freeze.json",
+  "base_commit": "a23271abee333a9a256fd46a3141da16975c2380",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1",
+      "mtime_ns": "1793550228132006600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\grounding-review.ts",
+      "bytes": 37867,
+      "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8",
+      "mtime_ns": "1793555139498153300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 50993,
+      "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1",
+      "mtime_ns": "1793555139694751700"
+    }
+  ],
+  "actual_test_output": {
+    "tests": 37,
+    "passed": 37,
+    "failed": 0,
+    "pending": 0,
+    "unit_exit": 0,
+    "types_exit": 0
+  },
+  "findings": [
+    {
+      "id": "B1",
+      "finding": "请求 end 与返回范围不一致",
+      "disposition": "转独立后续／不阻断",
+      "current": "冻结前已加请求上界和主分片上界检查，现有对应负例通过",
+      "severity": "P2 advisory scope bookkeeping; no current reproduced P0/P1"
+    },
+    {
+      "id": "B2",
+      "finding": "more_names 缺分片、主材料身份混入",
+      "disposition": "转独立后续／不阻断",
+      "current": "冻结前已加缺分片、顶层名和主分片身份检查，负例通过",
+      "severity": "P2; current marker UNKNOWN, no automatic acceptance"
+    },
+    {
+      "id": "B3",
+      "finding": "已读 part.end 为 null",
+      "disposition": "转独立后续／不阻断",
+      "current": "冻结前已要求 start=1、整数 end>=start，负例通过",
+      "severity": "P2; no current reproduced P0/P1"
+    },
+    {
+      "id": "C1",
+      "finding": "chunk 洪流 deadline",
+      "disposition": "转独立后续／不阻断",
+      "current": "现有固定分片上限、时钟检查和退出清理保持；空分片用例通过",
+      "severity": "Per explicit owner section3 nonblocking followup"
+    },
+    {
+      "id": "C2",
+      "finding": "省略已读名称被说成覆盖不完整",
+      "disposition": "转独立后续／不阻断",
+      "current": "现有分类计数和身份限制提示保持；10条全读、2名省略用例通过",
+      "severity": "P2 disclosure, not main-path failure"
+    },
+    {
+      "id": "C3",
+      "finding": "metadata fallback 超总上限",
+      "disposition": "转独立后续／不阻断",
+      "current": "现有6000上限及省略计数保持；5960+74边界用例通过",
+      "severity": "Per explicit owner section3 nonblocking followup"
+    },
+    {
+      "id": "S1",
+      "finding": "title anchor／options 未冻结等其它建议",
+      "disposition": "设计意见，转候 owner；不计 verdict",
+      "current": "无附带命令和期望输出的当前 P0/P1 失败复现；不扩大本轮",
+      "severity": "Owner explicitly excludes from blocking"
+    }
+  ],
+  "current_blocking_P0_P1": [],
+  "new_repairs_after_stop_order": 0,
+  "new_cumulative_reviews_after_stop_order": 0,
+  "one_closure_confirmation": "Root verified current pins equal latest executed 37PASS/types0 target and screened each finding under OWNER rules",
+  "followup": "D:\\Lawbeach\\lawbench-coord\\T18-followup-known-limitations-20261102-015503.md",
+  "dispatch_template": "D:\\Lawbeach\\lawbench-coord\\T18-review-dispatch-template-current.md",
+  "do_not_dispatch_prepared_old_T18_jobs": true,
+  "do_not_run_model_Key_build_or_native_case_for_this_round": true,
+  "old_RED_and_failed_deadline_jobs_preserved": true,
+  "whole_project_or_legal_semantic_PASS": false,
+  "packaging_or_publication_executed": false,
+  "normal_human_scan_receipt_ABC": 0,
+  "automation_sync_pending": false,
+  "automation_sync": {
+    "id": "lawbench-abc",
+    "native_tool_update_verified_by_saved_TOML": true,
+    "status": "ACTIVE",
+    "rrule_preserved": true,
+    "target_thread_preserved": true,
+    "old_T18_continuation_prompt_replaced": true
+  },
+  "old_runtime_authority_revoked_in_current_metadata": true,
+  "receipt": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-ORCH-T18-停止与收口-20261102-015503.md"
+}

@@ -1,0 +1,22 @@
+{
+  "format": "lawbench-t18-cross-exam-callback-finite-inputs-v1",
+  "task": "A-T18-cross-exam-config-callback-order-20261029-122319",
+  "hashAlgorithm": "sha256",
+  "frozenConsumer": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CrossExamConfigCallbackInput-20261029-122319\\native-cross-exam.mts",
+    "bytes": 127688,
+    "sha256": "1a6e5f0c28eb20bc8a7b719805ce48d9ff1fb8ace60f0ac96d2fa3900283e35b"
+  },
+  "sourceCopies": {
+    "consumer": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamCallbackRecovery-20261029-122319\\native-cross-exam.mts",
+      "bytes": 129407,
+      "sha256": "290d8bb50e271753bdbd01f77e507753caf72de97c1e3e9a95f7662e105668c2"
+    },
+    "bService": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CrossExamCallbackRecovery-20261029-122319\\b-service-cross-exam.py",
+      "bytes": 48345,
+      "sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d"
+    }
+  }
+}

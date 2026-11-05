@@ -1,0 +1,76 @@
+{
+  "at": "2026-10-28T18:48:38.0897017+08:00",
+  "model_calls": 0,
+  "source_changes": [],
+  "Packaging": "HOLD",
+  "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+  "GUI": false,
+  "results": [
+    {
+      "forced": false,
+      "mode": "unit",
+      "exit": 1,
+      "elapsed_s": 1.6537141,
+      "OS": [
+        {
+          "birthUTC": "2026-10-28T09:49:10.3481124Z",
+          "pid": 39840,
+          "exe": "C:\\Users\\morel\\AndroidDev\\sdk\\emulator\\emulator.exe",
+          "gone": false,
+          "ticks": "639287777503481124"
+        },
+        {
+          "birthUTC": "2026-10-28T10:48:33.2002278Z",
+          "pid": 45300,
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "ticks": "639287813132002278"
+        },
+        {
+          "birthUTC": "2026-10-28T10:48:33.1939430Z",
+          "pid": 9628,
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "ticks": "639287813131939430"
+        },
+        {
+          "birthUTC": "2026-10-28T10:48:32.8945078Z",
+          "pid": 39608,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "gone": true,
+          "ticks": "639287813128945078"
+        },
+        {
+          "birthUTC": "2026-10-28T10:48:32.8802541Z",
+          "pid": 46116,
+          "exe": "E:\\node\\node.exe",
+          "gone": true,
+          "ticks": "639287813128802541"
+        }
+      ]
+    },
+    {
+      "forced": false,
+      "mode": "types",
+      "exit": 2,
+      "elapsed_s": 3.5493727,
+      "OS": [
+        {
+          "birthUTC": "2026-10-28T10:48:34.5439932Z",
+          "pid": 44764,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "gone": true,
+          "ticks": "639287813145439932"
+        },
+        {
+          "birthUTC": "2026-10-28T10:48:34.5387902Z",
+          "pid": 7156,
+          "exe": null,
+          "gone": true,
+          "ticks": "639287813145387902"
+        }
+      ]
+    }
+  ],
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateRepairedUnit-root-20261028-184832"
+}

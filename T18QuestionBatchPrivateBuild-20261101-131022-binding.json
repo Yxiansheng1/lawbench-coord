@@ -1,0 +1,17 @@
+{
+  "old_builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18BoundedReadPrivateBuild-20261101-124200\\build-private.mjs",
+  "old_config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18BoundedReadPrivateBuild-20261101-124200\\build-config.mjs",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18QuestionBatchPrivateBuild-20261101-131022",
+  "mapping": {
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18BoundedReadPrivateBuild-20261101-124200": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18QuestionBatchPrivateBuild-20261101-131022",
+    "bytes: 92364,": "bytes: 92670,",
+    "0a6eb63a5e25634280227e126f4ce32f4b99c5c104aa21294e5728423a653ede": "d8c152c3c8e8210119eb10cf7fdf50527c43accc31afa9399af29d7dc9467a4b",
+    "2d19b3b00caaaf417f6e513d002d082613b68a1be667affad93382a5a1ede48b": "0a4679589f407164e04675d97749f7671541b440315102a9bffbb22367d54178"
+  },
+  "expected_builder_sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "expected_config_sha256": "b5e51c4dc5492a42e12bd02be7f898d1bd230210be38d0fab902e3792ac4338c",
+  "expected_config_bytes": 20801,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionBatchPrivateBuild-root-20261101-131022",
+  "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18QuestionBatchPrivateBuild-20261101-131022\\private-output-20261101-131022",
+  "original_admission": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-bounded-read-private-build-admission-current.json"
+}

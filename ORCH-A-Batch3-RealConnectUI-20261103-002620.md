@@ -1,0 +1,12 @@
+# A Batch3 narrow UI source-only. 240seconds DS1017/max. Sensitive OWNER original MUST NOT be read.
+FIRST read only this sanitized order absolute native pwsh/login=false, then ONLY dsh-ext/ui/remote-access.tsx once and IMMEDIATELY EDIT. No Git/search/metadata/history/AGENTS/othercoord/docs. No tests/parser/build/tsc/model/HTTP/GUI/selfcheck. Do not inspect or store actual access codes; tests use synthetic-only in-memory constants, no credentials.
+Allowed product ONLY dsh-ext/ui/remote-access.tsx:
+- connect action existing GET getRemoteAccess -> POST postRemoteAccess {enabled:true}. ExistingdisconnectPOSTenabledfalse held.
+- primarybutton text 检测运行时/正在检测 -> 立即连接/正在连接; disabled when busy or !status?.has_code. Savecode remainscode-onlyPOST, passwordinputclears and never persists/echoes, EnterremainsONLYsavecode.
+- external state text -> 已连接（对端可达）. All otheroff/noCode/missing/failed/connecting states preserve.
+- Replace old detection-only/manualGUI text with accurate concise text: 工作台优先使用现有可达连接；不可达时以轻量模式启动随包 EasyTier（不安装服务、不创建虚拟网卡、不修改路由）。
+- Persistent row/header now honest自动接入: enabled means restart auto connect; false means disabled. Explain 立即连接 enables persistentautoaccess; 断开 disables. Disconnect label断开/正在断开. No newcheckbox/newfunctionality.
+- Keep existing honest external/connected note limiting reachability vs authentication, all staleepoch/race/error defenses, polling andprivacy byteunchanged.
+No sharedremote-methods/api-routes change: Root verified existing GET/POST is actualroute and not shortcircuited. Do not edit contracts/SDK/otherUI/brand or accepted13behaviors.
+Only additionalfile NEW dsh-ext/tests/owner-real-connect-batch3.spec.ts. Small jsdom test global describe/it/expect (NO vitest import). React act/createElement/createRoot, actualRemoteAccessSection, fakeinmemorysetApi typedunknownasLawbenchApi; statuseswithhas_code=true initiallyoff. fakeget returnsstate; fakepost recordsrequest and returnsenabledstate. Mountthen awaitactmicrotasks, clickexact立即连接, assertONLYonePOST {enabled:true}; click断开 afterenabledreply assertsecondPOST{enabled:false}; passwordcodeunused. UnmountcleanupandsetApiundefined, no real timersremain. Additionalpure state tests external->已连接（对端可达）, missing->未检测到EasyTier, offhasCode/noCode preserved, connecting/failedlabels. Do not run test. No real network/GUI launch/model/key.
+Write sanitized handback HANDBACK-A-Batch3-RealConnectUI-current.md andSTOP. Product edit first, not a research task.

@@ -1,0 +1,208 @@
+{
+  "scope": "INDEPENDENT_V3_SOURCEONLY_NOT_SEMANTIC_OR_RUNTIME_PASS",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\review-consumer.mjs",
+      "bytes": 41790,
+      "sha256": "a9e8398643f8139aa6b9a36ba1daca7940a8c4b3d1e4dc6057441e25bd120d1a",
+      "mtime_ns": "1793539225924986500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\offline-controls.mjs",
+      "bytes": 25223,
+      "sha256": "13ac577aacb787d3fb290a0a389f110bab55339cbac52cb11f1c9fb43ca1f1cf",
+      "mtime_ns": "1793539193299636000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\source-manifest.json",
+      "bytes": 699,
+      "sha256": "6d541e8545f2e7f6d8182903d3d00e51da7d6673f85c0455b8d21246b4ec1aed",
+      "mtime_ns": "1793539265478044500"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-fragment-bidirectional-v3-saved-key-root-admin.py",
+      "bytes": 15719,
+      "sha256": "b1a4947af3532860ad7fd51b98314b6c99d5c0574fc912e275fd3c3e1e09d9bd",
+      "mtime_ns": "1793539002201386000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-fragment-bidirectional-v3-reviewed-runtime-root-admin.py",
+      "bytes": 3677,
+      "sha256": "c024512fd5f75f34b7d293dd9f1a484f56ea547b1aad371b3ee506b8a145b8bb",
+      "mtime_ns": "1793539002202386000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-fragment-bidirectional-v3-root-launcher-static-parse-current.json",
+      "bytes": 390,
+      "sha256": "0622a9a4f3078a2c9ab45df2d286b408f0b693cc31e7057fa37ee2a458640bb9",
+      "mtime_ns": "1793539061918524400"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-fragment-bidirectional-v3-source-reviewed-current.json",
+      "bytes": 5078,
+      "sha256": "1203343fddbab24c246f9e8995cee406d9e38c1e20a696eec38aeefdbbcc3366",
+      "mtime_ns": "1793539510330143100"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb",
+      "mtime_ns": "1793529580417735200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-B-T18FragmentBidirectionalV3-20261101-211508.md",
+      "bytes": 8090,
+      "sha256": "8c1d79b1b92872c14cb03e88b796e884439d42782c4f9b1892aaf01f8e0f7c7f",
+      "mtime_ns": "1793538908081259700"
+    }
+  ],
+  "data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+    "mtime_ns": "1793529580412201500"
+  },
+  "cache_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\stage1-assessments.json",
+    "bytes": 10015,
+    "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+    "mtime_ns": "1793538024944549000"
+  },
+  "requirements": [
+    "New syntaxfragment inventory plus THREE independent F/C/Q targetobligations. ALL365targets/allparentbytes/headers/blanks/context retained; no semanticfilter/NLP/PASSclassifier. Sourceheader keptfullunits; fragments have exactUTF16offsets; 100percenttargetidset strict, no missingwaiver. Unknownrefs/samefamily/quoteoverride/overallPASS invalid; positive requiresvalidrefs but refsnotentailment.",
+    "Stage1 prompt/builders/validator BYTEHELD; actualvalidStage1cache SAME62IDs/schema/e386data, provenancepinned; no newStage1 modelcall or fakeNativehistory. Onefreshstage2system/user, no rawconversation/expecteddefects/casekeywords/modelreturnedquotes. Alltarget text/refanchors machine-derived only.",
+    "Sameqwen38-27b0.6/49152/400s remaining900/4MiB/no retry/health/redirect/fallback, maxNEWrequest1. Cap400targets beforecredential/request. Rootexternallypins5source+Node/PW/driver8pins; sourceMFcannotselfauthenticate. Fixedsyntheticfixture only; noPrivateDoc/realcase.",
+    "RootDPAPI6000Danonymousstdin onlygatedafterpins/cleanenv/noproxy/privateenv/exactPIDexeUTCbirthcleanup/ownsharedreadUTF8raw+JSONescapedscan. RootdriverV2safetyfunctionsbyteheld exceptliteralcap1, outeraliases+additionalcachepin; noowneronlyACL/hostileactor/fullplatform guarantee.",
+    "Fullcurrent source+controls+newhunks; oldcontrolsforunaffectedbyteheldfunctionsevidencequalifiedreuse, no broadalltests/currentlegal/businessPASS. RuntimeandsemanticqualityNOTreviewedbyauthors; actuallyrequiresRootmanualalltargets and originalcounterexample afterfutureadmission. StopSPECULATIVEnewframework/ACL/classifier/factschema/productchanges."
+  ],
+  "A_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\00-review-consumer.mjs.txt",
+      "bytes": 48396,
+      "sha256": "13f6dd903150db00fa46115ca32c62a4d17fd0c48dac719cdd24dd7d4d6072b1",
+      "mtime_ns": "1793539510331143000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\01-offline-controls.mjs.txt",
+      "bytes": 29640,
+      "sha256": "1b58730c9f4f5b50eafb40ed95b1ac17079ca174ea0a5b2a7c2bcf6031fadcda",
+      "mtime_ns": "1793539510338294900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\02-source-manifest.json.txt",
+      "bytes": 996,
+      "sha256": "14e737144c30e6ea135bd0dc61748b7e0a37706db75cd6fe8fd7d9661d3243e6",
+      "mtime_ns": "1793539510344714000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\06-T18-fragment-bidirectional-v3-source-reviewed-current.json.txt",
+      "bytes": 5724,
+      "sha256": "8effb46062bb39c4aca96c42b76477d41a2c254dd219ed074b525755965e3744",
+      "mtime_ns": "1793539510485329700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793539510496572700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\08-ORCH-B-T18FragmentBidirectionalV3-20261101-211508.md.txt",
+      "bytes": 8291,
+      "sha256": "b44f35ace7ef365be921e6c6a6d0d9fa0d2dd4afc0e8346a256124e96014a2f7",
+      "mtime_ns": "1793539510507497300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\review-consumer.mjs.diff.txt",
+      "bytes": 29580,
+      "sha256": "afb6b0a01c50893a00c692e27ca044ffa34dae6fdbff98227cff6dbd8b806912",
+      "mtime_ns": "1793539510515020900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\offline-controls.mjs.diff.txt",
+      "bytes": 47892,
+      "sha256": "89a5f94ea7ef98bc32511c60e3f6de45171f75eda5554f0b0493e2e9201e55fd",
+      "mtime_ns": "1793539510532498600"
+    }
+  ],
+  "C_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\00-review-consumer.mjs.txt",
+      "bytes": 48396,
+      "sha256": "13f6dd903150db00fa46115ca32c62a4d17fd0c48dac719cdd24dd7d4d6072b1",
+      "mtime_ns": "1793539510331143000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\01-offline-controls.mjs.txt",
+      "bytes": 29640,
+      "sha256": "1b58730c9f4f5b50eafb40ed95b1ac17079ca174ea0a5b2a7c2bcf6031fadcda",
+      "mtime_ns": "1793539510338294900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\02-source-manifest.json.txt",
+      "bytes": 996,
+      "sha256": "14e737144c30e6ea135bd0dc61748b7e0a37706db75cd6fe8fd7d9661d3243e6",
+      "mtime_ns": "1793539510344714000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\03-run-fragment-bidirectional-v3-saved-key-root-admin.py.txt",
+      "bytes": 16835,
+      "sha256": "50903f6eadc2862e8ac666a8479551529ff46c51c0f82c5c00fd6cb0fdd30429",
+      "mtime_ns": "1793539510401937900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\04-admit-fragment-bidirectional-v3-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4072,
+      "sha256": "25e6cef9b7d6343fa5c07b3f313ce55d4b6ed035e8a7538257b52fef7b5043d9",
+      "mtime_ns": "1793539510467269200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\05-T18-fragment-bidirectional-v3-root-launcher-static-parse-current.json.txt",
+      "bytes": 662,
+      "sha256": "c00c4fb62c294e23ff545749aad275da1cf44e5519b91d68e3a20b4b4b575045",
+      "mtime_ns": "1793539510475136000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\06-T18-fragment-bidirectional-v3-source-reviewed-current.json.txt",
+      "bytes": 5724,
+      "sha256": "8effb46062bb39c4aca96c42b76477d41a2c254dd219ed074b525755965e3744",
+      "mtime_ns": "1793539510485329700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793539510496572700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\08-ORCH-B-T18FragmentBidirectionalV3-20261101-211508.md.txt",
+      "bytes": 8291,
+      "sha256": "b44f35ace7ef365be921e6c6a6d0d9fa0d2dd4afc0e8346a256124e96014a2f7",
+      "mtime_ns": "1793539510507497300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\review-consumer.mjs.diff.txt",
+      "bytes": 29580,
+      "sha256": "afb6b0a01c50893a00c692e27ca044ffa34dae6fdbff98227cff6dbd8b806912",
+      "mtime_ns": "1793539510515020900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18FragmentV3Independent-20261101-212510\\offline-controls.mjs.diff.txt",
+      "bytes": 47892,
+      "sha256": "89a5f94ea7ef98bc32511c60e3f6de45171f75eda5554f0b0493e2e9201e55fd",
+      "mtime_ns": "1793539510532498600"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-fragment-bidirectional-v3-root-driver-inverse.diff.txt",
+      "bytes": 6889,
+      "sha256": "25b70b2fab007506bb5307494c5e2fc1bbbe845036dfe3426f4a665731dd6fc3",
+      "mtime_ns": "1793539002202386000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-fragment-bidirectional-v3-root-admitter-inverse.diff.txt",
+      "bytes": 4943,
+      "sha256": "8d055ab52fcb39c5c69013ba63eee0f855922f42443bd7cd715c2fa6c926a970",
+      "mtime_ns": "1793539002203385400"
+    }
+  ]
+}

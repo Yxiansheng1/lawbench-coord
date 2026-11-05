@@ -1,0 +1,431 @@
+{
+  "format": "lawbench-t18-native-reading-fixed-inputs-v1",
+  "task": "A-T18-native-reading-workflow-20261028-133231",
+  "hashAlgorithm": "sha256",
+  "sourcePins": {
+    "root": "D:\\Lawbeach\\lawbench-B",
+    "path": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+    "bytes": 53547,
+    "sha256": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf",
+    "entryCount": 346
+  },
+  "baselineFixedInputs": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\fixed-inputs.json",
+    "bytes": 14284,
+    "sha256": "ce6556a142705d454122d4a689dc1c7efa488b268f5d39058315d814e197a522",
+    "entryCount": 46
+  },
+  "fixtures": [
+    {
+      "role": "fixture",
+      "id": "借条",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\借条.md",
+      "bytes": 997,
+      "sha256": "6d5e4d3d49a9b7a170887aa08cb0307a2aa6dc6a37078a201c758f9bce9f752d"
+    },
+    {
+      "role": "fixture",
+      "id": "情况说明",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\情况说明.txt",
+      "bytes": 528,
+      "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7"
+    },
+    {
+      "role": "fixture",
+      "id": "案情摘要",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\案情摘要.md",
+      "bytes": 367,
+      "sha256": "abf7f30579a38451507fb2d7e829101aa9bde489e54c997ffd7686123bf48e87"
+    },
+    {
+      "role": "fixture",
+      "id": "还款记录",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\还款记录.txt",
+      "bytes": 292,
+      "sha256": "b4771733911533c53be9d4f149e8c479329d0cef0d1f19fc800ba5ad0cbbcfc7"
+    },
+    {
+      "role": "fixture",
+      "id": "银行流水",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\银行流水.md",
+      "bytes": 955,
+      "sha256": "e207bc2e50a01f5f26b605e9d913d5d58e780a72766b376748c0fa9e8e0a9495"
+    }
+  ],
+  "dependencies": [
+    {
+      "group": "lawbench-source",
+      "role": "persona",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md",
+      "bytes": 2706,
+      "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\cordis.patch.yml",
+      "bytes": 19570,
+      "sha256": "e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"
+    },
+    {
+      "group": "dsh-standard-advisory",
+      "role": "repeat-tool-reminder-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\src\\index.ts",
+      "bytes": 10619,
+      "sha256": "1e917986fe9c5187d8f0fa11154ab2bf3b7c1d30db991540f4d1e62a2c59236d"
+    },
+    {
+      "group": "dsh-standard-advisory",
+      "role": "repeat-tool-reminder-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\package.json",
+      "bytes": 1400,
+      "sha256": "4a67ad059ddc15b69e26f56d4e6882ada1b1f53261b6e747585390466bb47581"
+    },
+    {
+      "group": "dsh-standard-advisory",
+      "role": "base-config",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\bundle\\base\\cordis.patch.yml",
+      "bytes": 20894,
+      "sha256": "861414459d7f60af5421ac7a9735a7c0d80b52a2369623b8cda3ce6079c733b4"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "group": "compiled-ext",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\agent.js",
+      "bytes": 528681,
+      "sha256": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b"
+    },
+    {
+      "group": "compiled-ext",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\lib\\host.js",
+      "bytes": 893180,
+      "sha256": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 36736,
+      "sha256": "b89fd30fce0df233603368861dea440dfbba0de1ca3c152b7a42a0fb19c065cd"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\repetition.ts",
+      "bytes": 7466,
+      "sha256": "e21e2cb7f0d05e82ea2fae37224296188e70c9930521e8474f0992ba0593b323"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 13561,
+      "sha256": "9ae3922cb542369d370151589fba67343b0e34f5fa40bcf21ca36be2ea19ccb3"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\archive-plan.ts",
+      "bytes": 3121,
+      "sha256": "16cb52d5485e2cac25cc964d131afab454823a53efd69c4f69b84d259c774585"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\attach-sessions.ts",
+      "bytes": 7937,
+      "sha256": "52a902ed4695a6f233efcd0792ee4f7b7c8b4f0a922149a912323b38dd3367cc"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\case-wiki.ts",
+      "bytes": 5053,
+      "sha256": "95caed4a9d58a343af78713a6cddd664272693d962ee6847130ca241cbec27f0"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\daily-case.ts",
+      "bytes": 4740,
+      "sha256": "b7f9bab6606433c040fae1884e32532f5f6a9e466781723d5270b238745a19f2"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\desk-actions.ts",
+      "bytes": 14915,
+      "sha256": "a201d546f5703d402750d2bb16053287c0f34470e3ac54b512a8011691c5590c"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\desk-node.ts",
+      "bytes": 2772,
+      "sha256": "820da49bb8fc692373819bbe43a126b4c2dd91a5bb3d93a7a7828039e6a7acf2"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\document-preview.ts",
+      "bytes": 17057,
+      "sha256": "dacda113a153707df61a911f898f1735a0513c1dc8811c53f23a82677ede4b07"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\document-read.ts",
+      "bytes": 9505,
+      "sha256": "ff65b5c749c20ed25c008f55f2127c18eaa0615e96cb789c7d39a8bc8153e5f1"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\hidden-cases.ts",
+      "bytes": 2680,
+      "sha256": "6a4091e383f9d7b40ac4b21ce99919be05220ce85863b73c5b2e44173ab6c493"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\http-json.ts",
+      "bytes": 3192,
+      "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 59779,
+      "sha256": "4a12f0e0176c05596a6620b6877f2a8e6d12f4c61081683fc70ffd4302a3d6b8"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\install-layout.ts",
+      "bytes": 6054,
+      "sha256": "0d0cbfbc88c69dbc57ead5939de8ce9440682d320768842d385093929103ffb7"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\path-state.ts",
+      "bytes": 1861,
+      "sha256": "a1a388046870e6dba6cc7803b8d712d5dbcf0df5dc212295514eccca6150a7e1"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\public-search.ts",
+      "bytes": 11493,
+      "sha256": "a978859a2c606c5d8df820bb6356fdc2340947a283ff9d31ebf812c569a49bd7"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\selfcheck-node.ts",
+      "bytes": 2203,
+      "sha256": "c1b8819223ff0e212e4565edb9c0688262b495af3a13430442290eb3828a9590"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\selfcheck.ts",
+      "bytes": 5868,
+      "sha256": "add111a2d2e6d72e44214ed3c77a7b42e7e0f780a98bde70d9623dd7cab616b1"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+      "bytes": 3396,
+      "sha256": "aacd22cb747d7ec79d295b0373c265cb8c56812d25c7046c96cdc4f53421db70"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\supervisor.ts",
+      "bytes": 17523,
+      "sha256": "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\task-answer.ts",
+      "bytes": 4914,
+      "sha256": "154625adb8a24e0e9c0f4e46287fc4525195fb6c261f30cc3b689000c9f8def6"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\api-routes.ts",
+      "bytes": 7429,
+      "sha256": "b2efae9b895c0c455cebbd8f43996c518e8a4e622a45c104f122922e86692130"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\case-folders.ts",
+      "bytes": 5665,
+      "sha256": "7b964d2fad12f56e46101a3b02f5225f4b5a3fe93e08849ccc14fd7f343eb47d"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\contracts.ts",
+      "bytes": 4742,
+      "sha256": "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\core-client.ts",
+      "bytes": 3666,
+      "sha256": "5deeb42f96b2b23225f90adb8642fa9529f419a01a8e14f731378b4f2ac74c50"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\file-log.ts",
+      "bytes": 1745,
+      "sha256": "7b0751b754c052e6a403229e568659cd7d8945cfdd02d2df185d158a51e29bc8"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\product.ts",
+      "bytes": 1477,
+      "sha256": "896bf3f2afed0c2f7d0266164dfe872f2a0f100bdd58ea08802ad6b419ad49ef"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\remote-methods.ts",
+      "bytes": 5227,
+      "sha256": "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+      "bytes": 3830,
+      "sha256": "41123c96496f8926f2385a7889998b315e06a505e2e9b137cad1ee43d223dfc4"
+    },
+    {
+      "group": "lawbench-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\virtual.d.ts",
+      "bytes": 134,
+      "sha256": "731db1da441b03b2b1ad74818dda1774dc4bc2d6c704ac44c389c625a597575c"
+    },
+    {
+      "group": "skill",
+      "role": "skill",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\SKILL.md",
+      "bytes": 15420,
+      "sha256": "ef60fbbd8e6e60ff3bd87619d5530e735264864f574c63cc4538d8834c4dfffe"
+    },
+    {
+      "group": "skill",
+      "role": "shared-rules",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\_shared\\共用规则.md",
+      "bytes": 6982,
+      "sha256": "ebb19fe3584185971e989a87580d1e0f2f5ec1c83cc1c965c9958cbb8aec8b45"
+    },
+    {
+      "group": "dsh-skill-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill\\src\\index.ts",
+      "bytes": 35965,
+      "sha256": "af4fad67fb086c3f5c93aed4604830718b4535e7e59a60d680404b07ea08477c"
+    },
+    {
+      "group": "dsh-skill-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill-filesystem\\src\\index.ts",
+      "bytes": 39233,
+      "sha256": "a3fcfefcc6500f4bd7c19ba48dfa80efad312034f196f81a40d33d0d0098d315"
+    },
+    {
+      "group": "dsh-skill-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\tool-skill\\src\\index.ts",
+      "bytes": 18371,
+      "sha256": "fb7b9f7558d516854ffe159803586decd1da003d7f10e04e026c4b7ca3622a1c"
+    },
+    {
+      "group": "dsh-interaction-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\user-questions\\src\\index.ts",
+      "bytes": 5960,
+      "sha256": "2d8e7899f9763b308cf3fab3cc1018f5026af8c06a6b39925982ccdb8d934668"
+    },
+    {
+      "group": "dsh-interaction-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\user-questions\\src\\types.ts",
+      "bytes": 3587,
+      "sha256": "5747ab877d6b7d1a40011541eb1015af9c6c1e335ec4c699a0cabbc51db0de4e"
+    },
+    {
+      "group": "dsh-interaction-source",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\tool-ask-user\\src\\index.ts",
+      "bytes": 3702,
+      "sha256": "aa448c483d0e0de805079950c616e45d93b4c972b7a62345b4e4a8c4164bfecf"
+    },
+    {
+      "group": "installed-lock",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lock.yaml",
+      "bytes": 1011346,
+      "sha256": "60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"
+    },
+    {
+      "group": "accepted-private-runtime",
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 537563,
+      "sha256": "0013b9564720a2c68fe2239a36ebfe6f2e80aee35d8e3ade019384b62091135b"
+    },
+    {
+      "group": "accepted-private-runtime",
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 900805,
+      "sha256": "84adeef92360e0ef3faddb1b89e6d56a2c66135e2b07283a180049613bce8164"
+    },
+    {
+      "group": "accepted-private-runtime",
+      "role": "current-compiled-package-metadata",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "group": "accepted-private-runtime",
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112\\manifest.json",
+      "bytes": 58195,
+      "sha256": "5260367f4b54d1d7a384dd427dd743e20094fd7138b2780a6074e858a5d96a0f"
+    }
+  ],
+  "runtimeExecutables": [
+    {
+      "role": "node",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "role": "tsx",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "role": "python",
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "bytes": 104952,
+      "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+    }
+  ],
+  "acceptedEvidence": [
+    {
+      "role": "native-baseline",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\native-real-conversation.mts",
+      "bytes": 58057,
+      "sha256": "80c603f94c42f19ce635d245fc0520559aa9bb72fed55d2ef91685ae4d3c2343"
+    },
+    {
+      "role": "accepted-native-report",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\native-real-four-turn-root-accepted-current.json",
+      "bytes": 4659,
+      "sha256": "0f6a08e7ac86d3e484afe6964084624088703202505663bbd759123ba025601e"
+    },
+    {
+      "role": "accepted-current-b-http-report",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-invalid-scope-native-http-accepted-current.json",
+      "bytes": 2826,
+      "sha256": "af0518a993f1360d5cb8e6e315d9641de2c6701c1bfde03fef818d95703b4656"
+    },
+    {
+      "role": "strict-guard-entry-blueprint",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GenuineBranchGui-20261028-124426\\entry.py",
+      "bytes": 88641,
+      "sha256": "9cad004ad8a7f0cd4ba9b76bfcf4e38762ea1b0e0c90c891cf3f3307dbda953c"
+    }
+  ],
+  "bServiceEntry": {
+    "role": "finite-b-http-entry",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\b-service.py",
+    "bytes": 28222,
+    "sha256": "87be5a7c09d0e8cafba0b3a729885189c517ddc0ea9bddb6b4c845cd7fdc3220"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "old_path": "D:\\Lawbeach\\lawbench-coord\\T18GenuineRevisionInput-20261029-002747\\reviewed-b-source-pins-two-rate.json",
+  "old_bytes": 53548,
+  "old_sha256": "2c2b32e8b0d026b057eaf6c26a43b5b6580581ba9ed2b859192a6734c3c6a379",
+  "new_path": "D:\\Lawbeach\\lawbench-coord\\T18ClausePrefixRuntimeInput-20261029-055659\\reviewed-b-source-pins-clause-prefix.json",
+  "new_bytes": 53548,
+  "new_sha256": "3fdd539f6a43e3864a2d00dcdb56a83e58ed3bf626bbf1d23e415698c01eaa97",
+  "one_changed_row": "service/lawbench/checks/citations.py",
+  "whole_byte_inverse": true,
+  "other345_rows_held": true,
+  "source_review": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-citation-clause-prefix-source-review-current.json",
+  "finite": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-citation-clause-prefix-finite-current.json"
+}

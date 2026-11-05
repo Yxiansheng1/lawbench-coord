@@ -1,0 +1,38 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\0-SKILL.md",
+    "bytes": 13469,
+    "sha256": "92bd83d9fcd18a05584595292bd56828835d347a2862353259816ca66213b912"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\checks\\citations.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\1-citations.py",
+    "bytes": 19642,
+    "sha256": "6171f0dd8c564cb9fe092a1c3d222217acaedab6bf500baf04afeafeca19b412"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\报价单.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\2-报价单.md",
+    "bytes": 775,
+    "sha256": "516f302d182c3d245c8402f36eae0b30d5574e8af2734a099c6acc8f12fc54f3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\询价往来邮件.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\3-询价往来邮件.txt",
+    "bytes": 712,
+    "sha256": "14392ec67e4be855f717d887efa1c8400185d716a9ca2ccdcae4293ab5d831e8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-draft\\tests\\样本01-钢材采购起草\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\4-_任务说明.md",
+    "bytes": 1200,
+    "sha256": "5f2a230bbdee7281cb8cf2caed89044cc7d212fb0b32b9b46646c4dceb730b5e"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ContractDraftQuestionBindings-20261029-063959\\run-NqrGTD\\case\\工作区\\任务\\T-20261029064840-2502\\草稿\\钢材采购合同-v3.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18FactualRoleAuditInput-20261029-065622\\5-钢材采购合同-v3.md",
+    "bytes": 5116,
+    "sha256": "b5277a507dc8ec39df8ee08201048995ccba50b186b569d514eb864efd97adc0"
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-31T21:56:09.107561+08:00",
+  "owner_verbatim": "继续",
+  "authorization": "ONE bounded original synthetic defense diagnostic with passive outgoing request message digest. Same model/instructions/budget/assertions. No publication/production maintenance.",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RequestDigestActual-20261031-215607",
+  "original": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CoverageDefenseActual-20261031-1850",
+  "sourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18RequestDigestInput-20261031-215607\\reviewed-b346-current.json",
+    "bytes": 53548,
+    "sha256": "98d18e82053f1d1d4d0e8543e97011907bc6387a148537f308f1288ea84155fd",
+    "mtime_ns": "1793454969097811600"
+  },
+  "only_B_source_change": [
+    {
+      "relative": "service/lawbench/pipeline/steps/wiki.py",
+      "old": {
+        "bytes": 35555,
+        "sha256": "054441464e1fb78fab955ffb51613bfbdcfde2e481df6da13b6db533448f7abb"
+      },
+      "new": {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\steps\\wiki.py",
+        "bytes": 35973,
+        "sha256": "53efe4409f0dc7ac9df4636c563638c30ec2c879fb6e52cfb8532fb483a64529",
+        "mtime_ns": "1793447954871783800"
+      }
+    }
+  ],
+  "baseline_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CoverageDefenseActual-20261031-1850\\native-defense-opinion.mts",
+      "bytes": 148635,
+      "sha256": "56a09b71ef129a79e257bdc58fd47b9d09ed3075f5bba1c205066ccb0198c922",
+      "mtime_ns": "1793443794820514700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CoverageDefenseActual-20261031-1850\\b-service-defense-opinion.py",
+      "bytes": 53696,
+      "sha256": "6dee119fcb6949b2df376445bd2f8f77b28f8f04e8463d40e3546068f5a2b6fd",
+      "mtime_ns": "1793441533154063800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CoverageDefenseActual-20261031-1850\\literalfixed-inputs.json",
+      "bytes": 11684,
+      "sha256": "b90cc81a0bf480b9bf6ad0ebfae0a4a4b2b8e9009dec13e85630866968a74b88",
+      "mtime_ns": "1793443807312037700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CoverageDefenseActual-20261031-1850\\wire-schema-finite.mjs",
+      "bytes": 21756,
+      "sha256": "73272d3fd8adbc9b089ad57c1e6ea6402a130d297ee224383b3d9cea572f48ea",
+      "mtime_ns": "1793270972700651400"
+    }
+  ]
+}

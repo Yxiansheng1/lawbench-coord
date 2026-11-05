@@ -1,0 +1,12 @@
+{
+  "copy_test": "D:\\Lawbeach\\lawbench-C\\docs\\plan\\evidence\\T18\\T18BoundedReadFollowupTests-20261101-124600\\test_bound_followup.py",
+  "copy_test_sha256": "8a67deadd9b448709e976f6fdeedf4f0308422ca38b538b92ac662d6c6cf394b",
+  "target_test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_bound_followup_20261101_125300.py",
+  "bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadFixturePrep-20261101-114647\\bootstrap.py",
+  "bootstrap_sha256": "5b944f27bb95497d7c932abfba30373c898563978d82f223a97493e73391755d",
+  "target_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadBFinalBinding-20261101-125300\\bootstrap.py",
+  "bootstrap_mapping": {
+    "        'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\tests\\\\test_read_bound_20261101_114236.py',": "        'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\tests\\\\test_read_bound_20261101_114236.py',\n        'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\tests\\\\test_bound_followup_20261101_125300.py',"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadBCopyOnly-20261101-131000.md"
+}

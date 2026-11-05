@@ -1,0 +1,43 @@
+{
+  "verdict": "REAL_FS_NUMERIC_CITATION_PRIMARY_READ_RED_TO_GREEN_SAME6_ACCEPTED_LIMITED",
+  "tests": 6,
+  "passed": 6,
+  "failed": 0,
+  "errors": 0,
+  "pytest_s": 3.345,
+  "controller_s": 5.625,
+  "Root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadGREEN-root-20261101-144948",
+  "sourceSHA_sizeHeld": 498,
+  "safetyDenials": 0,
+  "forced": false,
+  "completeCapturedIdentities": [
+    {
+      "pid": 37868,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-11-01T06:49:57.946352+00:00",
+      "birth_filetime_ticks": "134379893979463520",
+      "running": true,
+      "exit_code": 259
+    },
+    {
+      "pid": 22736,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-11-01T06:49:58.150873+00:00",
+      "birth_filetime_ticks": "134379893981508730",
+      "running": true,
+      "exit_code": 259
+    }
+  ],
+  "independentCIMRows": [],
+  "completeOSgone": 2,
+  "rawREDRetained": "T18-cited-unread-red-accepted-current.json",
+  "testsByteIdentical": true,
+  "newModel": 0,
+  "NativeRscopeActual": 0,
+  "page_para_realFS_NOTYETPROVEN": true,
+  "cellProvenance": "OPEN",
+  "manualUI_path_BYTEHELD_NOTRERUN": true,
+  "factualLegalQualityPASS": false,
+  "cleanupLimits": "OriginalEnv.close ignoresownrmtree; no blanket file/client/net/threadcleanup/fullmachine/helperOS/trafficclaim",
+  "Packaging": "HOLD"
+}

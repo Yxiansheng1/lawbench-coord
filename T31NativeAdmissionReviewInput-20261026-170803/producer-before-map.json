@@ -1,0 +1,92 @@
+[
+  {
+    "bytes": 16804,
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/ui/material-batch.ts",
+    "sha256": "b4bc8ca39919b9f441556b41623af957b22617c1a5358ac867c40dd09434f2e8",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-ext\\ui\\material-batch.ts"
+  },
+  {
+    "bytes": 29811,
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/ui/index.tsx",
+    "sha256": "dbaf0b4121f11dda040ef9475ec8b1d52c64e757c9959392e26c573764a957fb",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-ext\\ui\\index.tsx"
+  },
+  {
+    "bytes": 27386,
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/service.ts",
+    "sha256": "ced6f86afde441a996b8ca8c1e2594c9e934bb2549239af67336853960171825",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src\\client\\service.ts"
+  },
+  {
+    "bytes": 29087,
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/client/ui-conversation/src/client/apply.ts",
+    "sha256": "4339baaf4a2d07b955c4b783d115b20a2af2d6a621da5c651f3a8952a42f2447",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src\\client\\apply.ts"
+  },
+  {
+    "bytes": 22825,
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/api/session-controller/tests/t31-material-admission.client.spec.ts",
+    "sha256": "1166b065c97ef634d7b0e2829927e148e56f3a3f851148fad92134205b45fc7b",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\t31-material-admission.client.spec.ts"
+  },
+  {
+    "bytes": 1510,
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/vitest.t31-material-admission.config.mjs",
+    "sha256": "ed1c57bbb492e28caf43725896ba265905d126a16126dc8824eaea9be961cdb9",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-ext\\vitest.t31-material-admission.config.mjs"
+  },
+  {
+    "bytes": 2641,
+    "path": "D:/Lawbeach/lawbench-A/dsh-ext/vitest.config.mjs",
+    "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-ext\\vitest.config.mjs"
+  },
+  {
+    "bytes": 21057,
+    "path": "D:/Lawbeach/lawbench-A/dsh/vitest.config.ts",
+    "sha256": "d8ccc373d1ab9d837664814794017794551257a630a100534aac8bae7f56314f",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh\\vitest.config.ts"
+  },
+  {
+    "bytes": 4639,
+    "path": "D:/Lawbeach/lawbench-C/dsh-ext/tests/t31-material-capture-disposal.spec.tsx",
+    "sha256": "469118449395bcd0d6ca77d8d98bb43bddac949a6dcc2a7b47e041096b0d00de",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-C\\dsh-ext\\tests\\t31-material-capture-disposal.spec.tsx"
+  },
+  {
+    "bytes": 16540,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-native-claimed-request-idempotency.patch",
+    "sha256": "d3527b61841a596c66293f3ecbd42973ef4b74045eaa34779d3de11afbc7f862",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-native-claimed-request-idempotency.patch"
+  },
+  {
+    "bytes": 13035,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-failure-cleanup.patch",
+    "sha256": "28f174027664a20da6fa07370460ab17b3c94032426d4dd5d88ff1f0311cb169",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-request-submission-failure-cleanup.patch"
+  },
+  {
+    "bytes": 1545,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-ordering.patch",
+    "sha256": "9187cbe653f8b86488c9a29c4813de391a71022f053337b25de2db7276bd0012",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-request-submission-ordering.patch"
+  },
+  {
+    "bytes": 5095,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope-test.patch",
+    "sha256": "6a9f60203b41fe454d881cc05704b4e57d9009da49e595d6e194cbc3f6c52da1",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-request-submission-scope-test.patch"
+  },
+  {
+    "bytes": 8054,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope.patch",
+    "sha256": "e76c9c520b567d7aef47a7ee16fcff403a35d5913e52219375126bbeef09991a",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-request-submission-scope.patch"
+  },
+  {
+    "bytes": 801,
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-session-control-stream-type-arguments.patch",
+    "sha256": "5a146f11b743f69c8b382b1d28420b55a13ba06e84f1fe6bec4d3f5f1324ce73",
+    "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31NativeAdmissionFix-20261026-165555\\before\\lawbench-A\\dsh-patches\\P-29-session-control-stream-type-arguments.patch"
+  }
+]

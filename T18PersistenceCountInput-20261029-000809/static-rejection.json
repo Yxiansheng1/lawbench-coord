@@ -1,0 +1,18 @@
+{
+  "verdict": "STATIC_REJECT_BEFORE_RUNTIME",
+  "reader_sha": "c7df50338b7742a2d2d5e56fd62afe377b238738a2d29685357ce8df66c7c74d",
+  "actual_total_rows": 60,
+  "actual_header_rows": 1,
+  "actual_events": 59,
+  "actual_sequences": [
+    0,
+    58
+  ],
+  "defects": [
+    "EXPECTED_PHYSICAL_EVENTS=60 disagrees with immutable source header+59events",
+    "priorNativeRun.tasksCompleted=6 false: one completed task, six edits"
+  ],
+  "runtime_executed": 0,
+  "product_failure": false,
+  "old_formal_preserved": true
+}

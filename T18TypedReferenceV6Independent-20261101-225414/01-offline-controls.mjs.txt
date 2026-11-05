@@ -1,0 +1,581 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18TypedReferenceSchemaV6-20261101-224758\offline-controls.mjs
+SHA 83fcd21f27ba25b50b5f91ea603cfb86ac787b89c619f7cf17d9e7470d94a1d9
+EXPLICITFOCUSEDLINES [(1, 90), (420, 550), (615, 720), (790, 1040)]; unchangedfunctions outside exactinverse/oldclosedproof, doNOTclaimfullconsumerreview
+0001 import assert from "node:assert/strict";
+0002 import http from "node:http";
+0003 import { EventEmitter } from "node:events";
+0004 import {
+0005   ASSESSMENT_MAX_UTF16,
+0006   COMPLETION_STATUS,
+0007   ENTIRE_CALL_CAP_MS,
+0008   FIXED_DATA_FORMAT,
+0009   FRAGMENT_DELIMITERS,
+0010   FRAGMENT_TREATMENTS,
+0011   MAX_REQUESTS,
+0012   MODEL,
+0013   PARAMETERS,
+0014   PER_CALL_TIMEOUT_MS,
+0015   REQUEST_STAGES,
+0016   RESPONSE_CAP_BYTES,
+0017   ROUTE,
+0018   SUPPORT_TREATMENTS,
+0019   TARGET_CAP,
+0020   assertTargetCountWithinPilotCap,
+0021   buildAuthorizationHeader,
+0022   buildFragmentInventory,
+0023   buildReviewShards,
+0024   buildRequestPayload,
+0025   buildStage1Envelope,
+0026   buildStage1Messages,
+0027   buildStage2Envelope,
+0028   buildStage2Messages,
+0029   buildStage2ResponseFormat,
+0030   buildVisibleUnits,
+0031   joinAssessmentsToUnits,
+0032   mergeShardReviews,
+0033   outputStatusForReviews,
+0034   parseModelJson,
+0035   parsePinnedStage1Assessments,
+0036   performRequest,
+0037   redactCredential,
+0038   requestTimeoutForDeadline,
+0039   selectPilotInput,
+0040   serializeForArtifact,
+0041   splitLosslessAtDelimiterRuns,
+0042   unwrapChatCompletion,
+0043   validateSourceManifestShape,
+0044   validateStage1Result,
+0045   validateStage2Result,
+0046 } from "./review-consumer.mjs";
+0047 
+0048 const REDACTION_MARKER = "\u2588";
+0049 const label7 = "\u3010\u7B2C7\u884C\u3011";
+0050 const label8 = "\u3010\u7B2C8\u884C\u3011";
+0051 const label9 = "\u3010\u7B2C9\u884C\u3011";
+0052 const label10 = "\u3010\u7B2C10\u884C\u3011";
+0053 const label11 = "\u3010\u7B2C11\u884C\u3011";
+0054 
+0055 function assertProtocolError(fn, expectedCode) {
+0056   assert.throws(fn, (error) => error && error.code === expectedCode);
+0057 }
+0058 
+0059 function cloneReviews(records) {
+0060   return records.map((record) => ({
+0061     ...record,
+0062     refs: [...record.refs],
+0063   }));
+0064 }
+0065 
+0066 function allowedReferenceKindsFor(kind) {
+0067   if (kind === "F") return ["C"];
+0068   if (kind === "C") return ["F"];
+0069   if (kind === "Q") return ["F", "C"];
+0070   return [];
+0071 }
+0072 
+0073 function shaPin(fileName) {
+0074   return { path: fileName, bytes: 1, sha256: "0".repeat(64) };
+0075 }
+0076 
+0077 const receiptOneText = [
+0078   label7,
+0079   "HEADER_BODY_SENTINEL",
+0080   label8,
+0081   "",
+0082   label9,
+0083   "DETAIL_ONE_SENTINEL\uFF0CDETAIL_TWO_SENTINEL\u300280,000 and 1.5 remain.",
+0084   "",
+0085 ].join("\n");
+0086 const receiptTwoText = [
+0087   label10,
+0088   label11,
+0089   "\uFF0CLEAD\uD83D\uDE00\uFF0C\uFF0CTAIL\u3002\uFF1B;!!??||",
+0090   "",
+0420   inventory.targets.map((target) => target.target_id),
+0421 );
+0422 assert.equal(stage2Envelope.draft_parent_spans.map((parent) => parent.text).join(""), draft);
+0423 assert.equal(stage2Envelope.selfcheck_parent_spans.map((parent) => parent.text).join(""), selfcheck);
+0424 assert.equal(stage2Envelope.actual_coverage, coverage);
+0425 
+0426 const stage2Messages = buildStage2Messages(
+0427   units,
+0428   validatedStage1.assessments,
+0429   inventory,
+0430   coverage,
+0431 );
+0432 assert.equal(stage2Messages.length, 2);
+0433 assert.deepEqual(stage2Messages.map((message) => message.role), ["system", "user"]);
+0434 assert.ok(JSON.stringify(stage2Messages).includes("SOURCE_DESCRIPTION_SENTINEL_1"));
+0435 assert.ok(JSON.stringify(stage2Messages).includes("\uD83D\uDE00"));
+0436 assert.ok(!JSON.stringify(stage2Messages).includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+0437 assert.ok(!stage2Messages[1].content.includes("assistant"));
+0438 assert.ok(stage2Messages[0].content.includes(
+0439   "F may refer to C; C may refer to F; Q may refer to F or C.",
+0440 ));
+0441 const firstShardMessages = buildStage2Messages(
+0442   units,
+0443   validatedStage1.assessments,
+0444   inventory,
+0445   coverage,
+0446   shardPlan[0].review_target_ids,
+0447 );
+0448 const firstShardEnvelope = buildStage2Envelope(
+0449   units,
+0450   validatedStage1.assessments,
+0451   inventory,
+0452   coverage,
+0453   shardPlan[0].review_target_ids,
+0454 );
+0455 assert.deepEqual(firstShardEnvelope.targets, inventory.targets);
+0456 assert.deepEqual(firstShardEnvelope.review_target_ids, shardPlan[0].review_target_ids);
+0457 assert.ok(firstShardMessages[0].content.includes("exact and only target ids"));
+0458 assert.ok(firstShardMessages[0].content.includes("All supplied targets remain available"));
+0459 
+0460 function makeValidReviews() {
+0461   return inventory.targets.map((target, index) => {
+0462     const referenceTarget = inventory.targets.find((candidate) => (
+0463       allowedReferenceKindsFor(target.kind).includes(candidate.kind)
+0464     ));
+0465     assert.ok(referenceTarget);
+0466     const treatment = target.kind === "F"
+0467       ? FRAGMENT_TREATMENTS[index % FRAGMENT_TREATMENTS.length]
+0468       : SUPPORT_TREATMENTS[index % SUPPORT_TREATMENTS.length];
+0469     const needsRef = treatment === "ADDRESSED" || treatment === "SUPPORTED";
+0470     const refs = needsRef || index % 3 === 1 ? [referenceTarget.target_id] : [];
+0471     return {
+0472       target_id: target.target_id,
+0473       treatment,
+0474       refs,
+0475       assessment: `BRIEF_ASSESSMENT_${target.target_id}`,
+0476     };
+0477   });
+0478 }
+0479 
+0480 const validReviews = makeValidReviews();
+0481 const validatedStage2 = validateStage2Result({ reviews: [...validReviews].reverse() }, inventory);
+0482 assert.deepEqual(
+0483   validatedStage2.reviews.map((review) => review.target_id),
+0484   inventory.targets.map((target) => target.target_id),
+0485 );
+0486 assert.equal(validatedStage2.reviews.length, inventory.targets.length);
+0487 for (const review of validatedStage2.reviews) {
+0488   assert.deepEqual(review.target, inventory.targets.find(
+0489     (target) => target.target_id === review.target_id,
+0490   ));
+0491   for (const ref of review.refs) {
+0492     const refKind = ref.target_id[0];
+0493     assert.notEqual(refKind, review.target_id[0]);
+0494     assert.equal(ref.text, inventory.targets.find(
+0495       (target) => target.target_id === ref.target_id,
+0496     ).text);
+0497   }
+0498 }
+0499 assert.equal(outputStatusForReviews(validatedStage2.reviews), COMPLETION_STATUS);
+0500 assert.notEqual(outputStatusForReviews(validatedStage2.reviews), "PASS");
+0501 
+0502 const firstActiveIds = new Set(shardPlan[0].review_target_ids);
+0503 const firstActiveReviews = cloneReviews(
+0504   validReviews.filter((review) => firstActiveIds.has(review.target_id)),
+0505 );
+0506 const firstActiveValidation = validateStage2Result(
+0507   { reviews: [...firstActiveReviews].reverse() },
+0508   inventory,
+0509   shardPlan[0].review_target_ids,
+0510 );
+0511 assert.deepEqual(
+0512   firstActiveValidation.reviews.map((review) => review.target_id),
+0513   shardPlan[0].review_target_ids,
+0514 );
+0515 const firstActiveTarget = inventory.targets.find(
+0516   (target) => target.target_id === firstActiveReviews[0].target_id,
+0517 );
+0518 const outsideActiveRef = inventory.targets.find(
+0519   (target) => !firstActiveIds.has(target.target_id) &&
+0520     allowedReferenceKindsFor(firstActiveTarget.kind).includes(target.kind),
+0521 );
+0522 assert.ok(outsideActiveRef);
+0523 const crossShardRefReviews = cloneReviews(firstActiveReviews);
+0524 crossShardRefReviews[0].treatment = "PARTIAL";
+0525 crossShardRefReviews[0].refs = [outsideActiveRef.target_id];
+0526 assert.equal(
+0527   validateStage2Result(
+0528     { reviews: crossShardRefReviews },
+0529     inventory,
+0530     shardPlan[0].review_target_ids,
+0531   ).reviews.length,
+0532   shardPlan[0].review_target_ids.length,
+0533 );
+0534 
+0535 const missingActiveReview = cloneReviews(firstActiveReviews).slice(0, -1);
+0536 assertProtocolError(
+0537   () => validateStage2Result(
+0538     { reviews: missingActiveReview },
+0539     inventory,
+0540     shardPlan[0].review_target_ids,
+0541   ),
+0542   "MISSING_TARGET_REVIEW",
+0543 );
+0544 const duplicateActiveReview = cloneReviews(firstActiveReviews);
+0545 duplicateActiveReview[duplicateActiveReview.length - 1] = {
+0546   ...duplicateActiveReview[0],
+0547   refs: [...duplicateActiveReview[0].refs],
+0548 };
+0549 assertProtocolError(
+0550   () => validateStage2Result(
+0615 assertProtocolError(
+0616   () => validateStage2Result({ reviews: unknownTarget }, inventory),
+0617   "UNKNOWN_TARGET_ID",
+0618 );
+0619 const unknownRef = cloneReviews(validReviews);
+0620 unknownRef[0].refs = ["C999999"];
+0621 assertProtocolError(
+0622   () => validateStage2Result({ reviews: unknownRef }, inventory),
+0623   "UNKNOWN_REF_TARGET_ID",
+0624 );
+0625 const duplicateRef = cloneReviews(validReviews);
+0626 const duplicateRefTarget = inventory.targets.find((target) => (
+0627   allowedReferenceKindsFor(duplicateRef[0].target_id[0]).includes(target.kind)
+0628 ));
+0629 assert.ok(duplicateRefTarget);
+0630 duplicateRef[0].refs = [duplicateRefTarget.target_id, duplicateRefTarget.target_id];
+0631 assertProtocolError(
+0632   () => validateStage2Result({ reviews: duplicateRef }, inventory),
+0633   "REF_DUPLICATE",
+0634 );
+0635 const sameFamilyRef = cloneReviews(validReviews);
+0636 sameFamilyRef[0].refs = [sameFamilyRef[0].target_id];
+0637 assertProtocolError(
+0638   () => validateStage2Result({ reviews: sameFamilyRef }, inventory),
+0639   "REF_FAMILY_INVALID",
+0640 );
+0641 const fToQ = cloneReviews(validReviews);
+0642 const fTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "F");
+0643 const qReferenceTarget = inventory.targets.find((target) => target.kind === "Q");
+0644 assert.ok(fTargetIndexForRefGraph >= 0 && qReferenceTarget);
+0645 fToQ[fTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
+0646 assertProtocolError(
+0647   () => validateStage2Result({ reviews: fToQ }, inventory),
+0648   "REF_FAMILY_INVALID",
+0649 );
+0650 const cToQ = cloneReviews(validReviews);
+0651 const cTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "C");
+0652 assert.ok(cTargetIndexForRefGraph >= 0);
+0653 cToQ[cTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
+0654 assertProtocolError(
+0655   () => validateStage2Result({ reviews: cToQ }, inventory),
+0656   "REF_FAMILY_INVALID",
+0657 );
+0658 const positiveWithoutRef = cloneReviews(validReviews);
+0659 positiveWithoutRef[0].refs = [];
+0660 if (positiveWithoutRef[0].treatment !== "ADDRESSED") {
+0661   positiveWithoutRef[0].treatment = "ADDRESSED";
+0662 }
+0663 assertProtocolError(
+0664   () => validateStage2Result({ reviews: positiveWithoutRef }, inventory),
+0665   "POSITIVE_TREATMENT_WITHOUT_REF",
+0666 );
+0667 const copiedQuote = cloneReviews(validReviews);
+0668 copiedQuote[0].source_quote = "MODEL_COPIED_QUOTE_SENTINEL";
+0669 assertProtocolError(
+0670   () => validateStage2Result({ reviews: copiedQuote }, inventory),
+0671   "REVIEW_SCHEMA_INVALID",
+0672 );
+0673 const extraRootPass = { reviews: validReviews, PASS: true };
+0674 assertProtocolError(
+0675   () => validateStage2Result(extraRootPass, inventory),
+0676   "RESPONSE_SCHEMA_INVALID",
+0677 );
+0678 const wrongFamilyTreatment = cloneReviews(validReviews);
+0679 const fTargetIndex = inventory.targets.findIndex((target) => target.kind === "F");
+0680 wrongFamilyTreatment[fTargetIndex].treatment = "SUPPORTED";
+0681 assertProtocolError(
+0682   () => validateStage2Result({ reviews: wrongFamilyTreatment }, inventory),
+0683   "TREATMENT_INVALID",
+0684 );
+0685 const tooLongAssessment = cloneReviews(validReviews);
+0686 tooLongAssessment[0].assessment = "X".repeat(ASSESSMENT_MAX_UTF16 + 1);
+0687 assertProtocolError(
+0688   () => validateStage2Result({ reviews: tooLongAssessment }, inventory),
+0689   "ASSESSMENT_INVALID",
+0690 );
+0691 const relatedButNotQualityPass = cloneReviews(validReviews);
+0692 relatedButNotQualityPass[0].refs = [inventory.targets.find(
+0693   (target) => allowedReferenceKindsFor(relatedButNotQualityPass[0].target_id[0]).includes(target.kind),
+0694 ).target_id];
+0695 assert.equal(
+0696   outputStatusForReviews(
+0697     validateStage2Result({ reviews: relatedButNotQualityPass }, inventory).reviews,
+0698   ),
+0699   COMPLETION_STATUS,
+0700 );
+0701 
+0702 const secondActiveIds = new Set(shardPlan[1].review_target_ids);
+0703 const firstShardReviews = cloneReviews(
+0704   validReviews.filter((review) => firstActiveIds.has(review.target_id)),
+0705 );
+0706 const secondShardReviews = cloneReviews(
+0707   validReviews.filter((review) => secondActiveIds.has(review.target_id)),
+0708 );
+0709 const mergedShardReviews = mergeShardReviews(
+0710   inventory,
+0711   shardPlan,
+0712   [firstShardReviews, secondShardReviews],
+0713 );
+0714 assert.deepEqual(
+0715   mergedShardReviews.reviews.map((review) => review.target_id),
+0716   inventory.targets.map((target) => target.target_id),
+0717 );
+0718 assert.equal(mergedShardReviews.reviews.length, inventory.targets.length);
+0719 
+0720 const overlappingSecondReviews = cloneReviews(secondShardReviews);
+0790   }],
+0791 });
+0792 assert.equal(unwrapChatCompletion(stage2CompletionBody), stage2CompletionContent);
+0793 assert.deepEqual(
+0794   validateStage2Result(parseModelJson(unwrapChatCompletion(stage2CompletionBody)), inventory),
+0795   validateStage2Result({ reviews: validReviews }, inventory),
+0796 );
+0797 
+0798 const payload = buildRequestPayload(stage2Messages);
+0799 assert.equal(payload.model, MODEL);
+0800 assert.deepEqual(payload.messages, stage2Messages);
+0801 assert.equal(payload.temperature, 0.6);
+0802 assert.equal(payload.max_tokens, 49152);
+0803 assert.equal(payload.stream, false);
+0804 assert.equal(Object.prototype.hasOwnProperty.call(payload, "response_format"), false);
+0805 
+0806 function schemaBranchesOf(responseFormat) {
+0807   return responseFormat.json_schema.schema.properties.reviews.items.anyOf;
+0808 }
+0809 
+0810 function assertNoEmptyEnums(value) {
+0811   if (Array.isArray(value)) {
+0812     for (const item of value) assertNoEmptyEnums(item);
+0813     return;
+0814   }
+0815   if (!value || typeof value !== "object") return;
+0816   for (const [key, child] of Object.entries(value)) {
+0817     if (key === "enum") {
+0818       assert.ok(Array.isArray(child) && child.length > 0);
+0819     }
+0820     assertNoEmptyEnums(child);
+0821   }
+0822 }
+0823 
+0824 function familyInventory(kind, count) {
+0825   return {
+0826     targets: Array.from({ length: count }, (_, index) => ({
+0827       target_id: `${kind}${String(index + 1).padStart(4, "0")}`,
+0828       kind,
+0829       text: "",
+0830     })),
+0831   };
+0832 }
+0833 
+0834 const schemaInventory = syntheticInventory(12);
+0835 const schemaActiveIds = schemaInventory.targets.map((target) => target.target_id);
+0836 const stage2ResponseFormat = buildStage2ResponseFormat(schemaInventory, schemaActiveIds);
+0837 assert.deepEqual(Object.keys(stage2ResponseFormat).sort(), ["json_schema", "type"]);
+0838 assert.equal(stage2ResponseFormat.type, "json_schema");
+0839 assert.deepEqual(Object.keys(stage2ResponseFormat.json_schema).sort(), ["name", "schema"]);
+0840 assert.equal(stage2ResponseFormat.json_schema.name, "lawbench_target_review_v6");
+0841 const responseSchema = stage2ResponseFormat.json_schema.schema;
+0842 assert.deepEqual(
+0843   Object.keys(responseSchema).sort(),
+0844   ["additionalProperties", "properties", "required", "type"],
+0845 );
+0846 assert.equal(responseSchema.type, "object");
+0847 assert.equal(responseSchema.additionalProperties, false);
+0848 assert.deepEqual(responseSchema.required, ["reviews"]);
+0849 const reviewsSchema = responseSchema.properties.reviews;
+0850 assert.deepEqual(
+0851   Object.keys(reviewsSchema).sort(),
+0852   ["items", "maxItems", "minItems", "type"],
+0853 );
+0854 assert.equal(reviewsSchema.type, "array");
+0855 assert.equal(reviewsSchema.minItems, schemaActiveIds.length);
+0856 assert.equal(reviewsSchema.maxItems, schemaActiveIds.length);
+0857 assert.deepEqual(Object.keys(reviewsSchema.items).sort(), ["anyOf"]);
+0858 const responseBranches = schemaBranchesOf(stage2ResponseFormat);
+0859 assert.equal(responseBranches.length, 6);
+0860 for (const branch of responseBranches) {
+0861   assert.deepEqual(
+0862     Object.keys(branch).sort(),
+0863     ["additionalProperties", "properties", "required", "type"],
+0864   );
+0865   assert.equal(branch.type, "object");
+0866   assert.equal(branch.additionalProperties, false);
+0867   assert.deepEqual(branch.required, ["target_id", "treatment", "refs", "assessment"]);
+0868   assert.deepEqual(
+0869     Object.keys(branch.properties).sort(),
+0870     ["assessment", "refs", "target_id", "treatment"],
+0871   );
+0872   assert.deepEqual(
+0873     Object.keys(branch.properties.target_id).sort(),
+0874     ["enum", "type"],
+0875   );
+0876   assert.deepEqual(
+0877     Object.keys(branch.properties.treatment).sort(),
+0878     ["enum", "type"],
+0879   );
+0880   assert.equal(branch.properties.refs.type, "array");
+0881   assert.equal(branch.properties.refs.uniqueItems, true);
+0882   assert.deepEqual(
+0883     Object.keys(branch.properties.assessment).sort(),
+0884     ["maxLength", "minLength", "type"],
+0885   );
+0886   assert.equal(branch.properties.assessment.type, "string");
+0887   assert.equal(branch.properties.assessment.minLength, 1);
+0888   assert.equal(branch.properties.assessment.maxLength, ASSESSMENT_MAX_UTF16);
+0889 }
+0890 
+0891 const familyRules = {
+0892   F: {
+0893     treatments: FRAGMENT_TREATMENTS,
+0894     positive: "ADDRESSED",
+0895     referenceKinds: ["C"],
+0896   },
+0897   C: {
+0898     treatments: SUPPORT_TREATMENTS,
+0899     positive: "SUPPORTED",
+0900     referenceKinds: ["F"],
+0901   },
+0902   Q: {
+0903     treatments: SUPPORT_TREATMENTS,
+0904     positive: "SUPPORTED",
+0905     referenceKinds: ["F", "C"],
+0906   },
+0907 };
+0908 assert.deepEqual(
+0909   new Set(responseBranches.flatMap((branch) => (
+0910     branch.properties.target_id.enum.map((targetId) => targetId[0])
+0911   ))),
+0912   new Set(["F", "C", "Q"]),
+0913 );
+0914 for (const [kind, rule] of Object.entries(familyRules)) {
+0915   const activeIds = schemaActiveIds.filter((targetId) => targetId[0] === kind);
+0916   const familyBranches = responseBranches.filter((branch) => (
+0917     branch.properties.target_id.enum.every((targetId) => targetId[0] === kind)
+0918   ));
+0919   assert.equal(familyBranches.length, 2);
+0920   const positiveBranch = familyBranches.find((branch) => (
+0921     branch.properties.treatment.enum.length === 1 &&
+0922       branch.properties.treatment.enum[0] === rule.positive
+0923   ));
+0924   const otherBranch = familyBranches.find((branch) => branch !== positiveBranch);
+0925   assert.ok(positiveBranch && otherBranch);
+0926   for (const branch of familyBranches) {
+0927     assert.deepEqual(branch.properties.target_id.enum, activeIds);
+0928   }
+0929   assert.deepEqual(positiveBranch.properties.treatment.enum, [rule.positive]);
+0930   assert.deepEqual(
+0931     otherBranch.properties.treatment.enum,
+0932     rule.treatments.filter((treatment) => treatment !== rule.positive),
+0933   );
+0934   const referenceIds = schemaActiveIds.filter((targetId) => (
+0935     rule.referenceKinds.includes(targetId[0])
+0936   ));
+0937   assert.deepEqual(positiveBranch.properties.refs.items.enum, referenceIds);
+0938   assert.deepEqual(otherBranch.properties.refs.items.enum, referenceIds);
+0939   assert.equal(positiveBranch.properties.refs.minItems, 1);
+0940   assert.equal(otherBranch.properties.refs.minItems, 0);
+0941   assert.equal(positiveBranch.properties.refs.maxItems, referenceIds.length);
+0942   assert.equal(otherBranch.properties.refs.maxItems, referenceIds.length);
+0943   assert.deepEqual(
+0944     Object.keys(positiveBranch.properties.refs).sort(),
+0945     ["items", "maxItems", "minItems", "type", "uniqueItems"],
+0946   );
+0947   assert.deepEqual(
+0948     Object.keys(otherBranch.properties.refs).sort(),
+0949     ["items", "maxItems", "minItems", "type", "uniqueItems"],
+0950   );
+0951   assert.equal(positiveBranch.properties.refs.items.type, "string");
+0952   assert.equal(otherBranch.properties.refs.items.type, "string");
+0953 }
+0954 assertNoEmptyEnums(stage2ResponseFormat);
+0955 
+0956 const partialSchemaFormat = buildStage2ResponseFormat(
+0957   schemaInventory,
+0958   ["F0001", "C0002", "Q0003"],
+0959 );
+0960 const partialBranches = schemaBranchesOf(partialSchemaFormat);
+0961 const partialFAddressed = partialBranches.find((branch) => (
+0962   branch.properties.target_id.enum.includes("F0001") &&
+0963     branch.properties.treatment.enum.includes("ADDRESSED")
+0964 ));
+0965 const partialCAddressed = partialBranches.find((branch) => (
+0966   branch.properties.target_id.enum.includes("C0002") &&
+0967     branch.properties.treatment.enum.includes("SUPPORTED")
+0968 ));
+0969 assert.ok(partialFAddressed && partialCAddressed);
+0970 assert.deepEqual(partialFAddressed.properties.target_id.enum, ["F0001"]);
+0971 assert.ok(partialFAddressed.properties.refs.items.enum.includes("C0005"));
+0972 assert.deepEqual(partialCAddressed.properties.target_id.enum, ["C0002"]);
+0973 assert.ok(partialCAddressed.properties.refs.items.enum.includes("F0004"));
+0974 assertNoEmptyEnums(partialSchemaFormat);
+0975 
+0976 const noEligibleRefsInventory = familyInventory("F", 2);
+0977 const noEligibleRefsIds = noEligibleRefsInventory.targets.map((target) => target.target_id);
+0978 const noEligibleRefsFormat = buildStage2ResponseFormat(
+0979   noEligibleRefsInventory,
+0980   noEligibleRefsIds,
+0981 );
+0982 const noEligibleRefsBranches = schemaBranchesOf(noEligibleRefsFormat);
+0983 assert.equal(noEligibleRefsBranches.length, 1);
+0984 const noEligibleRefsBranch = noEligibleRefsBranches[0];
+0985 assert.deepEqual(noEligibleRefsBranch.properties.target_id.enum, noEligibleRefsIds);
+0986 assert.deepEqual(
+0987   noEligibleRefsBranch.properties.treatment.enum,
+0988   FRAGMENT_TREATMENTS.filter((treatment) => treatment !== "ADDRESSED"),
+0989 );
+0990 assert.equal(noEligibleRefsBranch.properties.refs.minItems, 0);
+0991 assert.equal(noEligibleRefsBranch.properties.refs.maxItems, 0);
+0992 assert.deepEqual(
+0993   Object.keys(noEligibleRefsBranch.properties.refs).sort(),
+0994   ["maxItems", "minItems", "type", "uniqueItems"],
+0995 );
+0996 assert.equal(
+0997   Object.prototype.hasOwnProperty.call(noEligibleRefsBranch.properties.refs, "items"),
+0998   false,
+0999 );
+1000 assert.deepEqual(
+1001   Object.keys(noEligibleRefsFormat.json_schema.schema.properties.reviews),
+1002   ["type", "minItems", "maxItems", "items"],
+1003 );
+1004 assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.minItems, 2);
+1005 assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.maxItems, 2);
+1006 assertNoEmptyEnums(noEligibleRefsFormat);
+1007 
+1008 const formattedPayload = buildRequestPayload(stage2Messages, stage2ResponseFormat);
+1009 assert.deepEqual(
+1010   Object.keys(formattedPayload).sort(),
+1011   ["max_tokens", "messages", "model", "response_format", "stream", "temperature"],
+1012 );
+1013 assert.equal(formattedPayload.model, MODEL);
+1014 assert.deepEqual(formattedPayload.messages, stage2Messages);
+1015 assert.equal(formattedPayload.temperature, 0.6);
+1016 assert.equal(formattedPayload.max_tokens, 49152);
+1017 assert.equal(formattedPayload.stream, false);
+1018 assert.equal(formattedPayload.response_format, stage2ResponseFormat);
+1019 
+1020 const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
+1021 assert.equal(buildAuthorizationHeader(credentialSentinel), `Bearer ${credentialSentinel}`);
+1022 assert.ok(!JSON.stringify(payload).includes(credentialSentinel));
+1023 assertProtocolError(
+1024   () => buildAuthorizationHeader(` ${credentialSentinel}`),
+1025   "CREDENTIAL_INVALID",
+1026 );
+1027 const redacted = serializeForArtifact({
+1028   direct: credentialSentinel,
+1029   nested: { [credentialSentinel]: [`prefix:${credentialSentinel}:suffix`] },
+1030 }, credentialSentinel);
+1031 assert.ok(!redacted.includes(credentialSentinel));
+1032 assert.ok(redacted.includes(REDACTION_MARKER));
+1033 assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), `a${REDACTION_MARKER}b`);
+1034 assert.equal(REDACTION_MARKER, "\u2588");
+1035 
+1036 const oneCharCredential = "R";
+1037 const oneCharSerialized = serializeForArtifact({
+1038   direct: oneCharCredential,
+1039   error: `raw error ${oneCharCredential} tail`,
+1040   jsonbody: JSON.stringify({ message: oneCharCredential }),

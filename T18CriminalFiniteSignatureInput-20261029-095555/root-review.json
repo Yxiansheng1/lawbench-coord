@@ -1,0 +1,76 @@
+{
+  "verdict": "B_GUARD_SOURCE_ACCEPTED_FINITE_HELPER_STATIC_SIGNATURE_REPAIR_REQUIRED",
+  "at_utc": "2026-10-29T01:55:11.556322+00:00",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T18-criminal-template-guard-1017-20261029-094640.job.json",
+  "actual_thread": "01a18556-9e9c-7c10-b53c-421a22baeec4",
+  "author_status": "completed",
+  "all_60_actual_commands_source_delta_finite_setup_finally_manifest_readme_formal_reviewed": true,
+  "commands": 60,
+  "success": 52,
+  "nonzero": [
+    {
+      "ordinal": 2,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command 'git status --short --branch'",
+      "output": "fatal: cannot chdir to 'D:/Lawbeach/lawbench/.git/worktrees/lawbench-A/modules/dsh': Permission denied\nfatal: 'git status --porcelain=2' failed in submodule dsh\n"
+    },
+    {
+      "ordinal": 14,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command '$files=@('\"'D:\\\\Lawbeach\\\\lawbench-A\\\\dsh-ext\\\\agent\\\\index.ts','D:\\\\Lawbeach\\\\lawbench-A\\\\dsh-ext\\\\agent\\\\task-state.ts','D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\b-service-criminal-reading.py','D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\registry.py','D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\native-criminal-reading.mts'); foreach(\"'$p in $files){ if(Test-Path -LiteralPath $p){ $i=Get-Item -LiteralPath $p; $h=(Get-FileHash -Algorithm SHA256 -LiteralPath $p).Hash.ToLowerInvariant(); [pscustomobject]@{Path=$p;Bytes=$i.Length;Sha256=$h} } } | Format-Table -AutoSize | Out-String -Width 360'",
+      "output": "ParserError: \r\nLine |\r\n   2 |  . ); [pscustomobject]@{Path=$p;Bytes=$i.Length;Sha256=$h} } } | Format- .\r\n     |                                                                ~\r\n     | An empty pipe element is not allowed.\r\n"
+    },
+    {
+      "ordinal": 18,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"rg --files 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18' | rg 'verify.*finite.*\\\\.py\"'$|finite.*'\"\\\\.py\"'$|verify.*'\"\\\\.py\"'$'\"'\"",
+      "output": ""
+    },
+    {
+      "ordinal": 23,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\bash.exe\" -c \"Get-ChildItem -Recurse -File -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalReadingNative-20261029-085813' | Select-Object FullName,Length,LastWriteTime | Format-Table -AutoSize | Out-String -Width 320\"",
+      "output": "�b�~���\u00020 \u0000\r\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000B\u0000a\u0000s\u0000h\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\r\u0000\n\u0000"
+    },
+    {
+      "ordinal": 38,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\bash.exe\" -c \"rg -n \\\"def check_root|def mkdir_original|def mkdir_work|def resolve_write\\\" 'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\lawbench\\\\case\\\\gate.py'; \"'$p='\"'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\lawbench\\\\case\\\\gate.py'; \"'$lines=Get-Content -LiteralPath $p; foreach($range in @(@(20,120),@(120,220),@(300,390))){ for($i=$range[0];$i -le $range[1] -and $i -le $lines.Count;$i++){ '\"'{0,4}: {1}' -f \"'$i,$lines[$i-1] } }'",
+      "output": "�b�~���\u00020 \u0000\r\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000B\u0000a\u0000s\u0000h\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\r\u0000\n\u0000"
+    },
+    {
+      "ordinal": 44,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\bash.exe\" -c \"Test-Path -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-B\\\\contracts\\\\case_db.sql'; Get-Item -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-B\\\\contracts\\\\case_db.sql' | Select-Object FullName,Length,LastWriteTime | Format-List | Out-String -Width 240\"",
+      "output": "�b�~���\u00020 \u0000\r\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000B\u0000a\u0000s\u0000h\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\r\u0000\n\u0000"
+    },
+    {
+      "ordinal": 46,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"git diff --no-index --unified=4 -- 'D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\b-service-criminal-reading.py' 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\b-service-criminal-reading.py'\"",
+      "output": "warning: in the working copy of 'D:\\Lawbeach\\lawbench-coord\\T18CriminalTemplateGuardInput-20261029-094640\\b-service-criminal-reading.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\b-service-criminal-reading.py', LF will be replaced by CRLF the next time Git touches it\ndiff --git \"a/D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\b-service-criminal-reading.py\" \"b/D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\b-service-criminal-reading.py\"\nindex 501c3b5..b394e24 100644\n--- \"a/D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\b-service-criminal-reading.py\"\n+++ \"b/D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\b-service-criminal-reading.py\"\n@@ -300,28 +300,75 @@ def copy_approved_case(root: pathlib.Path) -> list[dict[str, Any]]:\n         )\n     return copied\n \n \n-def verify_private_case(root: pathlib.Path) -> int:\n+def verify_private_case(\n+    root: pathlib.Path,\n+    *,\n+    allow_criminal_template: bool = False,\n+) -> int:\n     case_root = root / \"case\"\n     if not ordinary_dir(case_root):\n         raise RuntimeError(\"private case directory changed\")\n     expected = approved_materials()\n+    reparse_flag = getattr(stat, \"FILE_ATTRIBUTE_REPARSE_POINT\", 0x400)\n+    expected_file_names = {pathlib.Path(row[\"path\"]).name for row in expected}\n+    criminal_template_dirs = {\"会见笔录\", \"家属沟通\", \"涉案证据\"}\n     for row in expected:\n         path = case_root / \"02案件材料\" / pathlib.Path(row[\"path\"]).name\n-        if (\n-            not ordinary_file(path)\n-            or path.stat().st_size != row[\"bytes\"]\n-            or path.stat().st_mtime_ns != int(row[\"mtime_ns\"])\n-            or sha256(path) != row[\"sha256\"]\n+        try:\n+            info = os.lstat(path)\n+        except OSError:\n+            raise RuntimeError(\"private approved material identity changed\") from None\n+        if not (\n+            stat.S_ISREG(info.st_mode)\n+            and not stat.S_ISLNK(info.st_mode)\n+            and not (getattr(info, \"st_file_attributes\", 0) & reparse_flag)\n+            and path.stat().st_size == row[\"bytes\"]\n+            and path.stat().st_mtime_ns == int(row[\"mtime_ns\"])\n+            and sha256(path) == row[\"sha256\"]\n         ):\n             raise RuntimeError(\"private approved material identity changed\")\n-    source_area = sorted(\n-        str(path.relative_to(case_root)).replace(\"\\\\\", \"/\")\n-        for path in (case_root / \"02案件材料\").iterdir()\n-    )\n-    if source_area != sorted(f\"02案件材料/{pathlib.Path(row['path']).name}\" for row in expected):\n+    source_dir = case_root / \"02案件材料\"\n+    try:\n+        source_info = os.lstat(source_dir)\n+        entries = list(source_dir.iterdir())\n+    except OSError:\n+        raise RuntimeError(\"private source area changed\") from None\n+    if not (\n+        stat.S_ISDIR(source_info.st_mode)\n+        and not stat.S_ISLNK(source_info.st_mode)\n+        and not (getattr(source_info, \"st_file_attributes\", 0) & reparse_flag)\n+        and source_dir.resolve() == source_dir\n+    ):\n+        raise RuntimeError(\"private source area changed\")\n+    seen_files: set[str] = set()\n+    seen_template_dirs: set[str] = set()\n+    for entry in entries:\n+        if entry.name in expected_file_names:\n+            seen_files.add(entry.name)\n+            continue\n+        if allow_criminal_template and entry.name in criminal_template_dirs:\n+            try:\n+                info = os.lstat(entry)\n+            except OSError:\n+                raise RuntimeError(\"private criminal template directory changed\") from None\n+            if (\n+                not stat.S_ISDIR(info.st_mode)\n+                or stat.S_ISLNK(info.st_mode)\n+                or (getattr(info, \"st_file_attributes\", 0) & reparse_flag)\n+                or entry.resolve() != entry\n+                or any(entry.iterdir())\n+            ):\n+                raise RuntimeError(\"private criminal template directory changed\")\n+            seen_template_dirs.add(entry.name)\n+            continue\n         raise RuntimeError(\"private source area contains an extra file\")\n+    if seen_files != expected_file_names:\n+        raise RuntimeError(\"private approved material identity changed\")\n+    expected_template_dirs = criminal_template_dirs if allow_criminal_template else set()\n+    if seen_template_dirs != expected_template_dirs:\n+        raise RuntimeError(\"private criminal template directories changed\")\n     return len(expected)\n \n \n def read_local_token() -> str:\n@@ -1051,9 +1098,9 @@ async def run_service(root: pathlib.Path, token: str) -> tuple[int, dict[str, An\n         if not listener_closed or not net_closed or not logs_closed or not retainer.closed:\n             failure = failure or \"resource_not_closed\"\n         if outbound[\"attempts\"] or any(credentials.values()):\n             failure = failure or \"outbound_or_credential_access\"\n-        if verify_private_case(root) != fixture_count:\n+        if verify_private_case(root, allow_criminal_template=True) != fixture_count:\n             failure = failure or \"private_materials_changed\"\n         final = {\n             \"status\": \"STOPPED\" if failure is None else \"FAILED\",\n             \"pid\": os.getpid(),\n@@ -1069,9 +1116,9 @@ async def run_service(root: pathlib.Path, token: str) -> tuple[int, dict[str, An\n             \"retainerClosed\": retainer.closed,\n             \"sourcePinCount\": source_pin_count,\n             \"sourcePinsUnchanged\": verify_source_pins() == source_pin_count,\n             \"fixtureCount\": fixture_count,\n-            \"fixtureInputsUnchanged\": verify_private_case(root) == fixture_count,\n+            \"fixtureInputsUnchanged\": verify_private_case(root, allow_criminal_template=True) == fixture_count,\n             \"copiedMaterials\": copied_materials,\n             \"outbound\": outbound,\n             \"credentials\": credentials,\n             \"protocol\": protocol,\n"
+    },
+    {
+      "ordinal": 47,
+      "exit": 1,
+      "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"git diff --no-index --unified=2 -- 'D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\literalfixed-inputs.json' 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\literalfixed-inputs.json'\"",
+      "output": "warning: in the working copy of 'D:\\Lawbeach\\lawbench-coord\\T18CriminalTemplateGuardInput-20261029-094640\\literalfixed-inputs.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalTemplateGuard-20261029-094640\\literalfixed-inputs.json', LF will be replaced by CRLF the next time Git touches it\ndiff --git \"a/D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\literalfixed-inputs.json\" \"b/D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\literalfixed-inputs.json\"\nindex 53a537c..3b9c2ff 100644\n--- \"a/D:\\\\Lawbeach\\\\lawbench-coord\\\\T18CriminalTemplateGuardInput-20261029-094640\\\\literalfixed-inputs.json\"\n+++ \"b/D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\literalfixed-inputs.json\"\n@@ -266,12 +266,12 @@\n   ],\n   \"consumer\": {\n-    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalReadingScopeContract-20261029-092051\\\\native-criminal-reading.mts\",\n+    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\native-criminal-reading.mts\",\n     \"bytes\": 121019,\n     \"sha256\": \"2401deb96f10320e80887ae09be9479bca04f6aef6c6d3dc0b74a495399c4f96\"\n   },\n   \"bService\": {\n-    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalReadingScopeContract-20261029-092051\\\\b-service-criminal-reading.py\",\n-    \"bytes\": 46172,\n-    \"sha256\": \"e161fcb0df47bd87f4473022888c0db41c9360daa30599975193bdf48285283c\"\n+    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\CriminalTemplateGuard-20261029-094640\\\\b-service-criminal-reading.py\",\n+    \"bytes\": 48308,\n+    \"sha256\": \"d216a0394488e6d6c90e0a20f373fe43b1d5d62d0e06126f0c85e0673591a9be\"\n   }\n }\n"
+    }
+  ],
+  "formal_bash_count": 2,
+  "actual_bash_preexecution_denials": 3,
+  "author_runtime": 0,
+  "source_guard_wholebyte_inverse": true,
+  "source_guard_sha256": "d216a0394488e6d6c90e0a20f373fe43b1d5d62d0e06126f0c85e0673591a9be",
+  "MTS_wholebytes_held": true,
+  "manifest_all_other_objects_held": true,
+  "A_tracked_dirty_allbytes_held": true,
+  "extra_frozen_registry_reference_copy_root_qualified_permitted_after_fullbyte_check": true,
+  "extra_reference_not_imported": true,
+  "finite_not_run": true,
+  "finite_defect": "expect_runtime_error(old_module, ...) always passes new keyword allow_criminal_template to frozen old one-positional-argument verifier; would TypeError instead of required RuntimeError",
+  "minimal_fix": "Only old error observation uses direct old_module.verify_private_case(run_root) in try/except RuntimeError, validate original exact message; keep new helper and all assertions/counts/negatives unchanged",
+  "full_model_not_run": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

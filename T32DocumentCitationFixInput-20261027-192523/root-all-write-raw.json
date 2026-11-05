@@ -1,0 +1,65 @@
+[
+  {
+    "id": "item_23",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_30",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_35",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_47",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\DocumentCitationFix-20261027-192523\\README.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-document-citation-fix-20261027-192523.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_54",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\DocumentCitationFix-20261027-192523\\README.md",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-document-citation-fix-20261027-192523.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 36736,
+    "sha256": "b89fd30fce0df233603368861dea440dfbba0de1ca3c152b7a42a0fb19c065cd"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 13561,
+    "sha256": "9ae3922cb542369d370151589fba67343b0e34f5fa40bcf21ca36be2ea19ccb3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+    "bytes": 59779,
+    "sha256": "4a12f0e0176c05596a6620b6877f2a8e6d12f4c61081683fc70ffd4302a3d6b8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+    "bytes": 3396,
+    "sha256": "aacd22cb747d7ec79d295b0373c265cb8c56812d25c7046c96cdc4f53421db70"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+    "bytes": 3830,
+    "sha256": "41123c96496f8926f2385a7889998b315e06a505e2e9b137cad1ee43d223dfc4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\agent.spec.ts",
+    "bytes": 10300,
+    "sha256": "7a520b1c07908286fd04a00f154ac63b0e3b0c4931c432ccada2965cba68bbcf"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-state.spec.ts",
+    "bytes": 4991,
+    "sha256": "0c0974647f237558ef8331a8237cb9cb5d76e225661f59ff3c7bc91410f5293b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\host-api.spec.ts",
+    "bytes": 21084,
+    "sha256": "d92e84a6ddf52a7b407da6726b8677b0ad77771d6ae53cf98810b96bc10d3c74"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\budget-wrapup.spec.ts",
+    "bytes": 12050,
+    "sha256": "7f380d8a9282e6043eca801c389b9310fb5dd2c83063104a9c2cf2ad54bc7247"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json",
+    "bytes": 1257,
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+  }
+]

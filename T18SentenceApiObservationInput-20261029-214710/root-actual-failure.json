@@ -1,0 +1,52 @@
+{
+  "verdict": "ORIGINAL_SENTENCE_ACTUAL_FAILED_READ_ORDER_GUARD_AND_TRANSPORT",
+  "elapsed_s": 58.671000000002095,
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceCalcNative-20261029-211228\\run-1ZPpL6",
+  "model_POST": 13,
+  "model_HTTP200": 12,
+  "tool_counts": {
+    "skill": 1,
+    "case_read_material": 8,
+    "case_search": 2,
+    "case_list_materials": 1
+  },
+  "actual_questions": 0,
+  "actual_calc": 0,
+  "actual_draft": 0,
+  "physical_rows": 74,
+  "events": 73,
+  "primary_read_order_not_met": true,
+  "transport_last_turn_reason": {
+    "kind": "error",
+    "message": "Connection error.",
+    "code": "TRANSPORT"
+  },
+  "transport_root_cause": "UNPROVEN; no port/SSH/model probes repeated",
+  "B_denials": {
+    "GROUPED_READ_ARGS_OR_ORDER": 8,
+    "TOOL_BODY": 2
+  },
+  "B_failure": "request_protocol_violation",
+  "B_cleanup": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "all7_complete_OS_gone": true,
+  "Listen_count": 0,
+  "source8_514pins_private25_held": true,
+  "keyscan": {
+    "files": 30,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_review": "NOT_REACHED: no material data/question/calculator/draft",
+  "JSONL_reopen": "NOT_REACHED",
+  "original_FAILED_immutable": true,
+  "Packaging": "HOLD",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18SentenceActualFailure-root-20261029-214709",
+  "files": 11,
+  "manifest_sha256": "79e00978148b4f4a885ce15dc9702ab3c73f893f91764ad615e734648ba94a9f"
+}

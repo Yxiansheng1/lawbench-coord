@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle1-20261101-105907Input\\0-SKILL.md",
+    "bytes": 20018,
+    "sha256": "44cd01606577963da6dca861521d3af9af1e1337c0043cfc08e4863d720f08df",
+    "mtime_ns": "1793501660789086200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\起诉意见书.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\1-起诉意见书.txt",
+    "bytes": 3033,
+    "sha256": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+    "mtime_ns": "1792379578812954900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\讯问笔录.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\2-讯问笔录.txt",
+    "bytes": 1357,
+    "sha256": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+    "mtime_ns": "1792379578812954900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\_上游成果-刑事阅卷笔录.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\3-_上游成果-刑事阅卷笔录.md",
+    "bytes": 1404,
+    "sha256": "5801888a5df0525d0b12071e7ad3691102aed915c3f020b2052dd0f7967c056a",
+    "mtime_ns": "1792379578811954800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\样本01-诈骗罪轻\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\4-_任务说明.md",
+    "bytes": 800,
+    "sha256": "cb2a81ac34025347c5e3f7feedf6e16fd38b623160336014de1b77ca0579bc8c",
+    "mtime_ns": "1792379578812954900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18DefenseNativeInput-20261029-155352\\5-要点.md",
+    "bytes": 8684,
+    "sha256": "890588f7440f3917494f8cfecb4f2f696a724eb1f922a5adf4e24c7199b5b23e",
+    "mtime_ns": "1792379578815968600"
+  }
+]

@@ -1,0 +1,298 @@
+"""Guarded C-line regression consumer for the fixed prep395 or tools test tree.
+
+This is an authored source artifact.  It is not test evidence and does not claim
+that either target has passed.  The root controller supplies a fresh private
+directory, an absolute JUnit child path, external stdout/stderr capture, and the
+900-second process bound.
+
+Ordering is intentional: verify the reviewed guard hash, import only its module
+definition, install the original guards, and only then import pytest or product
+code.  The guard's fixed source constants remain unchanged.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import importlib.util
+import os
+import stat
+import sys
+import tempfile
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from types import ModuleType
+
+
+GUARD_PATH = Path(
+    r"D:\Lawbeach\lawbench-B\docs\plan\evidence\FullRegression"
+    r"\SafetyLoggingFix-20261031-133032\bootstrap.py"
+)
+GUARD_SHA256 = "4b3c956626e822cb39af5341ed410ea4fdeeefcf1d8f3b432028bd23578ba8b2"
+
+FIXED_TARGETS = {
+    "prep395": Path(r"D:/Lawbeach/lawbench-C/prep395"),
+    "tools": Path(r"D:/Lawbeach/lawbench-C/tools"),
+}
+PROTECTED_SOURCE_ROOTS = (
+    Path(r"D:/Lawbeach/lawbench-C"),
+    Path(r"D:/Lawbeach/lawbench-B"),
+)
+
+REUSED_GUARD_FUNCTIONS = (
+    "_private_environment",
+    "_install_fs_guard",
+    "_install_network_guard",
+    "_install_keyring_guard",
+    "_install_process_guard",
+    "_write_summary",
+)
+
+
+def _die(message: str) -> None:
+    raise SystemExit(f"CSafetyRunner: {message}")
+
+
+def _same_path(left: Path, right: Path) -> bool:
+    return os.path.normcase(str(left)) == os.path.normcase(str(right))
+
+
+def _is_strict_child(root: Path, candidate: Path) -> bool:
+    try:
+        common = os.path.commonpath(
+            [os.path.normcase(str(root)), os.path.normcase(str(candidate))]
+        )
+    except ValueError:
+        return False
+    return common == os.path.normcase(str(root)) and not _same_path(root, candidate)
+
+
+def _paths_overlap(left: Path, right: Path) -> bool:
+    return _same_path(left, right) or _is_strict_child(left, right) or _is_strict_child(right, left)
+
+
+def _assert_no_reparse(path: Path) -> None:
+    """Reject symlinks, junctions, and other Windows reparse points on a path chain."""
+    reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    for candidate in (path, *path.parents):
+        try:
+            info = os.lstat(candidate)
+        except OSError as exc:
+            _die(f"path_component_unreadable:{candidate}:{type(exc).__name__}")
+        attributes = getattr(info, "st_file_attributes", 0)
+        is_junction = getattr(os.path, "isjunction", None)
+        if (
+            stat.S_ISLNK(info.st_mode)
+            or bool(attributes & reparse_flag)
+            or bool(is_junction and is_junction(candidate))
+        ):
+            _die(f"reparse_or_link_rejected:{candidate}")
+
+
+def _resolved_source(path: Path, label: str) -> Path:
+    if not path.is_absolute() or not path.exists() or not path.is_dir():
+        _die(f"fixed_{label}_source_missing:{path}")
+    _assert_no_reparse(path)
+    try:
+        resolved = path.resolve(strict=True)
+    except OSError as exc:
+        _die(f"fixed_{label}_source_unresolvable:{type(exc).__name__}")
+    if not _same_path(path, resolved):
+        _die(f"fixed_{label}_source_changed:{path}")
+    return resolved
+
+
+def _load_verified_guard() -> ModuleType:
+    if not GUARD_PATH.is_absolute() or not GUARD_PATH.is_file():
+        _die(f"guard_missing:{GUARD_PATH}")
+    _assert_no_reparse(GUARD_PATH)
+    try:
+        actual = hashlib.sha256(GUARD_PATH.read_bytes()).hexdigest()
+    except OSError as exc:
+        _die(f"guard_unreadable:{type(exc).__name__}")
+    if not hashlib.compare_digest(actual, GUARD_SHA256):
+        _die(f"guard_hash_mismatch:{actual}")
+
+    spec = importlib.util.spec_from_file_location("_lawbench_c_reviewed_guard", GUARD_PATH)
+    if spec is None or spec.loader is None:
+        _die("guard_module_spec_missing")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(spec.name, None)
+        raise
+
+    if not callable(getattr(module, "DenialCounters", None)):
+        _die("guard_counter_missing")
+    for name in REUSED_GUARD_FUNCTIONS:
+        if not callable(getattr(module, name, None)):
+            _die(f"guard_function_missing:{name}")
+    return module
+
+
+def _parse_args(argv: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run one fixed guarded C regression target")
+    parser.add_argument("--target", required=True, choices=tuple(FIXED_TARGETS))
+    parser.add_argument("--private-root", required=True)
+    parser.add_argument("--junit", required=True)
+    return parser.parse_args(argv)
+
+
+def _validate_paths(args: argparse.Namespace) -> tuple[Path, Path, Path]:
+    raw_root = Path(args.private_root)
+    if not raw_root.is_absolute() or not raw_root.exists() or not raw_root.is_dir():
+        _die("private_root_must_be_an_existing_absolute_directory")
+    _assert_no_reparse(raw_root)
+    root = raw_root.resolve(strict=True)
+    if any(root.iterdir()):
+        _die("private_root_must_be_fresh")
+
+    protected = []
+    for source_root in PROTECTED_SOURCE_ROOTS:
+        if source_root.exists():
+            _assert_no_reparse(source_root)
+            protected.append(source_root.resolve(strict=True))
+    if any(_paths_overlap(root, source_root) for source_root in protected):
+        _die("private_root_must_be_outside_source_and_production")
+
+    if args.target not in FIXED_TARGETS:
+        _die(f"target_not_fixed:{args.target}")
+    source = _resolved_source(FIXED_TARGETS[args.target], args.target)
+    tests_dir = source / "tests"
+    if not tests_dir.is_dir():
+        _die(f"fixed_tests_missing:{tests_dir}")
+
+    junit = Path(os.path.abspath(os.fspath(Path(args.junit))))
+    if not junit.is_absolute():
+        _die("junit_must_be_absolute")
+    if not _is_strict_child(root, junit) or _same_path(junit, root / "root-summary.json"):
+        _die("junit_must_be_a_strict_child_of_private_root")
+    if not _is_strict_child(root, junit.parent):
+        _die("junit_parent_must_be_a_strict_child_of_private_root")
+    if junit.exists():
+        _die("junit_must_not_already_exist")
+    return root, source, junit
+
+
+def _install_original_guards(
+    guard: ModuleType,
+    root: Path,
+) -> object:
+    counters = guard.DenialCounters()
+    guard._install_fs_guard(root, counters)
+    guard._install_network_guard(counters)
+    guard._install_keyring_guard(counters)
+    guard._install_process_guard(root, counters)
+    return counters
+
+
+def main(argv: list[str] | None = None) -> int:
+    sys.dont_write_bytecode = True
+    args = _parse_args(sys.argv[1:] if argv is None else argv)
+
+    guard = _load_verified_guard()
+    root, source, junit = _validate_paths(args)
+    tests_dir = source / "tests"
+
+    # All environment roots and the report parent are prepared before any guard
+    # installation, as required by the dispatch order.
+    private_env = guard._private_environment(root)
+    junit.parent.mkdir(parents=True, exist_ok=True)
+    _assert_no_reparse(junit.parent)
+
+    os.environ.clear()
+    os.environ.update(private_env)
+    sys.dont_write_bytecode = True
+    tempfile.tempdir = str(root / "temp")
+    os.chdir(source)
+    if not sys.path or os.path.normcase(sys.path[0]) != os.path.normcase(str(source)):
+        sys.path.insert(0, str(source))
+
+    counters = _install_original_guards(guard, root)
+
+    basetemp = root / "pytest-basetemp"
+    pytest_log = root / "pytest.log"
+    summary_path = root / "root-summary.json"
+    pytest_args = [
+        "-p",
+        "no:cacheprovider",
+        f"--basetemp={basetemp}",
+        f"--junitxml={junit}",
+        f"--log-file={pytest_log}",
+        str(tests_dir),
+    ]
+
+    started_monotonic = time.monotonic()
+    started_utc = datetime.now(timezone.utc).isoformat()
+    pytest_exit: int | None = None
+    fatal_exception_type: str | None = None
+    summary_write_failed = False
+
+    try:
+        # Pytest and all product imports are deliberately after guard installation.
+        import pytest
+
+        pytest_exit = int(pytest.main(pytest_args, plugins=[]))
+    except BaseException as exc:
+        fatal_exception_type = type(exc).__name__
+        pytest_exit = 3
+    finally:
+        elapsed_seconds = round(time.monotonic() - started_monotonic, 3)
+        summary = {
+            "backend_selection": (
+                "no PREP395_BACKEND injection by consumer; tests supply FakeBackend "
+                "or test-local fake loopback services"
+            ),
+            "consumer_path": str(Path(__file__).resolve()),
+            "consumer_authored_by_lane_c": True,
+            "elapsed_seconds": elapsed_seconds,
+            "ended_utc": datetime.now(timezone.utc).isoformat(),
+            "fatal_exception_type": fatal_exception_type,
+            "fixed_targets": {name: str(path) for name, path in FIXED_TARGETS.items()},
+            "full_suite_pass_claimed": False,
+            "guard_controls_reused": list(REUSED_GUARD_FUNCTIONS),
+            "guard_denials": counters.snapshot(),
+            "guard_fixed_process_source": str(guard.FIXED_SOURCE),
+            "guard_path": str(GUARD_PATH),
+            "guard_sha256": GUARD_SHA256,
+            "inherited_limitations": [
+                "Python audit-hook filesystem control does not cover native code or native child processes",
+                "subprocess guard inheritance is incomplete for native children",
+                "process allowlists retain the reviewed B-line FIXED_SOURCE and REPO_ROOT; C child helpers are denied rather than broadened",
+                "guard denials remain actual red or gray test outcomes and are never converted to skips",
+                "stdout and stderr are captured by the external root controller, not copied into root-summary.json",
+            ],
+            "junit": str(junit),
+            "private_root": str(root),
+            "pytest_args": pytest_args,
+            "pytest_exit": pytest_exit,
+            "pytest_log": str(pytest_log),
+            "pytest_plugin_autoload": False,
+            "run_owner": "external_root_controller",
+            "selected_target": args.target,
+            "started_utc": started_utc,
+            "stdout_stderr_capture": "external_root_controller",
+            "summary_path": str(summary_path),
+            "target_source": str(source),
+            "tests_path": str(tests_dir),
+            "timeout_owner": "external_root_controller",
+            "timeout_seconds": 900,
+        }
+        try:
+            guard._write_summary(summary_path, summary)
+        except BaseException as exc:
+            summary_write_failed = True
+            print(
+                f"CSafetyRunner: summary_write_failed:{type(exc).__name__}",
+                file=sys.stderr,
+            )
+
+    actual_exit = int(pytest_exit if pytest_exit is not None else 3)
+    return 3 if summary_write_failed else actual_exit
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

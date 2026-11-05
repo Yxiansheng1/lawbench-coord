@@ -1,0 +1,50 @@
+[
+  {
+    "id": "item_28",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_42",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\root-variable-correction-20261027-212344.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_49",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\root-variable-correction-20261027-212344.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_52",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-PDF-GUI-variable-fix-20261027-212344.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

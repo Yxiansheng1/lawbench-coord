@@ -1,0 +1,95 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-sharded-bidirectional-v4-source-reviewed-current.json
+SHA bc864b0607e644237b026d8b9598c95ad0ed8f545aeb70fdfb468fe36c818384
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_CUMULATIVE_SOURCE_AND_FINITE_OFFLINE_V4_ONLY_NOT_SEMANTICS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\review-consumer.mjs",
+0008       "bytes": 49695,
+0009       "sha256": "ee5b52624529d760b25a1a9ac36ceafb80a358f453f21ddc9c89e810b78c02c7",
+0010       "mtime_ns": "1793540632162320800"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\offline-controls.mjs",
+0014       "bytes": 34986,
+0015       "sha256": "646e7ed6b2f2e1a0298a3696789996ffdd3ec60c151eb28405b67da4f0fb7173",
+0016       "mtime_ns": "1793540592142087200"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\source-manifest.json",
+0026       "bytes": 677,
+0027       "sha256": "b87d5b4243f637ac781a672b0127ea819d9cff708a729f0d8c949d5766fa7aad",
+0028       "mtime_ns": "1793540646858648900"
+0029     },
+0030     {
+0031       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\stage1-assessments.json",
+0032       "bytes": 10015,
+0033       "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0034       "mtime_ns": "1793538024944549000"
+0035     }
+0036   ],
+0037   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sharded-bidirectional-v4-passive-current.json",
+0038   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0039   "cache_origin": {
+0040     "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\stage1-assessments.json",
+0041     "bytes": 10015,
+0042     "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0043     "mtime_ns": "1793538024944549000"
+0044   },
+0045   "cache_byteheld": true,
+0046   "byteheld_functions": [
+0047     "scanDisplayMarkers",
+0048     "buildVisibleUnits",
+0049     "selectPilotInput",
+0050     "buildStage1Envelope",
+0051     "buildStage1Messages",
+0052     "validateStage1Result",
+0053     "buildRequestPayload",
+0054     "buildAuthorizationHeader",
+0055     "requestTimeoutForDeadline",
+0056     "unwrapChatCompletion",
+0057     "parseModelJson",
+0058     "redactCredential",
+0059     "serializeForArtifact",
+0060     "parseArguments",
+0061     "prepareOutputRoot",
+0062     "descendantPath",
+0063     "writeArtifact",
+0064     "readCredentialFromStdin",
+0065     "writeFailure",
+0066     "isMainModule"
+0067   ],
+0068   "actual_target_counts": {
+0069     "F": 117,
+0070     "C": 134,
+0071     "Q": 114,
+0072     "total": 365
+0073   },
+0074   "request_bytes": [
+0075     132675,
+0076     132659
+0077   ],
+0078   "shard_sizes": [
+0079     183,
+0080     182
+0081   ],
+0082   "pending_independent_reviews": true,
+0083   "qualifications": [
+0084     "Source author14commands13zero1readonlyGitpermissionsfailure; three UNAUTHORIZED Node --check parser invocations in two commands observednatural0, notAPPtest/semanticruntime0. These are rejected as source-process discipline; do not use their syntaxPASS as Rootverification. ExactshortNodeidentitieswereNOTcaptured, PARTIAL_NOT_PROVEN, no rerunforcleanidentity. No module execution/HTTP/businessmodel/Key observed from --check. Sourcejobcompleted retained, no historicstatusrewrite; APPforbiddenhistoricalcountnotinflated byparsercategory.",
+0085     "All Root newhunks/current changedfunctions/fullformal/allcommands/writefaces reviewed; unchanged30functions and source/cachebytes held vs fullyreviewedV3. Firstconsumer+controlsdiff displaytruncated aroundtransporthelper, that exactcurrenthelper/fullmain subsequentlyread; no fullnewoldrawoutputrereadclaim.",
+0086     "Current original authored offline controls and actual fixedcorpus shardbuilders ran 1.563s0/5pinsheld/guard0/model0/onecompleteNodeindependentOSgone. Source stdout authorednotexecuted remains stale text, observed execution authoritative. No unchangedgreen refill: newsubset/merge/diagnostic controls andchangedmain boundary verified.",
+0087     "Rootinitialpassivecontroller expected old cached_stage1 field absentinV4dispatch, KeyError BEFOREANYNode/env/model/Key. Corrected exactold_root cachepath; rawadminprelaunchfailure retained, notproductfailure orguardbypass.",
+0088     "New two fresh shard contexts disjoint/exhaustive183+182 ofsame365/fullcanonicalrefs/fullsourcecontext. Restoresoriginalpilot2requests withinNativeproduct32model48toolunchanged, no retries/health/fallback. Existing400sremaining900/49152/0.6 same. ExactresponseIDs/refs/union not entailment/factsPASS.",
+0089     "RootPSliteral EXACTacceptedandactuallyexecutedV2, staticparse qualification reused without needlessgreen. NewouterRootaliases/purpose/max1->2 independentlyreviewedhere; 8pins/source5data/cache held. Sourceauthorparserclaims never Rootcleanidentityproof.",
+0090     "No realcase/privateDoc/product/SDK/Skill/Host/NativeSession/R/history/integration/semantic/legal/business/securityPASS. V3transportcauseunknown, safe staticerrorcategories newobservationnotretrodiagnosis."
+0091   ],
+0092   "Packaging": "HOLD"
+0093 }

@@ -1,0 +1,18 @@
+{
+  "issues": [
+    "API_HEALTH127.0.0.1:9000 is unbound; actualAPI listens10.126.126.3/192.168.8.124",
+    "atomic_write XML viaos.replace fromuserTemp changes originalfile identity/ACLinheritance; forbiddenrisk",
+    "old_identities.extend calledwith2args raisesTypeErrorbeforestop",
+    "restoration is after except, not actualfinally; persisting error can skiprestoration",
+    "firststopclock setafter ControlService returns, potentially excludes blockingdispatchtime",
+    "dispatch_start/stop lackexplicit2service guard",
+    "maintenance wrapper/native descendants not registered forclosure; onlyoriginalidentitieschecked"
+  ],
+  "API_HEALTH": [
+    "10.126.126.3",
+    9000,
+    "/health"
+  ],
+  "maintenance_authorized": true,
+  "outage_started": false
+}

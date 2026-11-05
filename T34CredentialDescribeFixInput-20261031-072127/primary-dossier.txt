@@ -1,0 +1,146 @@
+ROOT RED: 12 failed / 4 passed / no pending; actual real React component with synthetic memory CredentialsApi. Initial missing fields show known state; post-save and post-unset malformed records wrong known state. Old tests unchanged. Not prior ConfigEditor rejection cause; production malformed reply not observed.
+
+ {
+  const [capability, setCapability] = useState<{
+    api: CredentialsApi
+    configured: boolean | null
+    writable: boolean
+  } | null>(null)
+  const [open, setOpen] = useState(false)
+  const [key, setKey] = useState('')
+  const [busy, setBusy] = useState(false)
+  const [message, setMessage] = useState('')
+  const api = useSyncExternalStore(subscribeCredentialsApi, currentCredentialsApi, currentCredentialsApi)
+  const generation = useRef(0)
+  const operation = useRef(0)
+  const busyGate = useRef(false)
+  const isCurrent = (startedAt: number, usedApi: CredentialsApi) =>
+    generation.current === startedAt && currentCredentialsApi() === usedApi
+  // readonly 资格必须由当前 API 实例的有效 describe 产生；旧实例留下的 true 不能跨代沿用。
+  const configured = capability !== null && capability.api === api ? capability.configured : null
+  const writable = capability !== null && capability.api === api && capability.writable === true
+
+  // 凭据插件可能在设置控件挂载后才注入、撤下或重新注入；能力换代时旧响应和旧忙碌门都失效。
+  useEffect(() => {
+    let active = true
+    const startedAt = ++generation.current
+    operation.current += 1
+    busyGate.current = false
+    setBusy(false)
+    setMessage('')
+    if (!api) {
+      setCapability(null)
+      return () => { active = false; generation.current += 1 }
+    }
+    setCapability(null)
+    const read = async () => {
+      try {
+        const info = (await api.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+        if (!active || !isCurrent(startedAt, api)) return
+        setCapability({ api, configured: info?.configured === true, writable: info?.writable !== false })
+      } catch {
+        if (!active || !isCurrent(startedAt, api)) return
+        setCapability({ api, configured: null, writable: false })
+        setMessage('没能读取外部 Key 状态')
+      }
+    }
+    void read()
+    return () => { active = false; generation.current += 1 }
+  }, [api])
+
+  const begin = () => {
+    busyGate.current = true
+    setBusy(true)
+    setMessage('')
+    return { op: ++operation.current, startedAt: ++generation.current }
+  }
+
+  const submit = async () => {
+    const secret = key.trim()
+    const usedApi = api
+    if (!usedApi || currentCredentialsApi() !== usedApi || !capability || capability.api !== usedApi || !capability.writable ||
+      !secret || busyGate.current) return
+    setKey('')
+    const { op, startedAt } = begin()
+    try {
+      await usedApi.set(EXTERNAL_LLM_KEY, secret)
+      if (!isCurrent(startedAt, usedApi)) return
+      setOpen(false)
+      setMessage('外部 Key 已保存')
+      try {
+        const info = (await usedApi.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: info?.configured === true, writable: info?.writable !== false })
+      } catch {
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('外部 Key 已保存，但没能读取当前状态')
+      }
+    } catch {
+      if (isCurrent(startedAt, usedApi)) setMessage('外部 Key 没有保存成功')
+    } finally {
+      if (operation.current === op && isCurrent(startedAt, usedApi)) {
+        busyGate.current = false
+        setBusy(false)
+      }
+    }
+  }
+  const clear = async () => {
+    const usedApi = api
+    if (!usedApi || currentCredentialsApi() !== usedApi || !capability || capability.api !== usedApi || !capability.writable ||
+      capability.configured !== true || busyGate.current) return
+    const { op, startedAt } = begin()
+    try {
+      await usedApi.unset(EXTERNAL_LLM_KEY)
+      if (!isCurrent(startedAt, usedApi)) return
+      let info: { configured: boolean; writable: boolean } | undefined
+      try {
+        info = (await usedApi.describe([EXTERNAL_LLM_KEY]))[EXTERNAL_LLM_KEY]
+      } catch {
+        if (!isCurrent(startedAt, usedApi)) return
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('未确认清除：没能读取当前状态')
+        return
+      }
+      if (!isCurrent(startedAt, usedApi)) return
+      if (!info) {
+        setCapability({ api: usedApi, configured: null, writable: false })
+        setMessage('未确认清除：没能读取当前状态')
+        return
+      }
+      setCapability({ api: usedApi, configured: info.configured === true, writable: info?.writable !== false })
+      setMessage(info.configured === false ? '外部 Key 已清除' : '未确认清除：外部 Key 仍显示为已设置')
+    } catch {
+      if (isCurrent(startedAt, usedApi)) setMessage('外部 Key 没有清除成功')
+    } finally {
+      if (operation.current === op && isCurrent(startedAt, usedApi)) {
+        busyGate.current = false
+        setBusy(false)
+      }
+    }
+  }
+  const canSubmit = key.trim().length > 0 && !busy && writable
+  return (
+    <span style={{ ...S.row, flexWrap: 'wrap' }}>
+      <span>{configured === null ? '状态未知' : configured ? '已设置' : '未设置'}</span>
+      {open ? (
+        <>
+          <input type="password" autoComplete="off" aria-label="外部模型 Key" style={{ ...S.input, width: 240 }} value={key}
+            onChange={(e) => setKey(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && canSubmit) { e.preventDefault(); void submit() } }} />
+          <Button size="sm" variant="primary" disabled={!canSubmit} onClick={() => void submit()}>保存外部 Key</Button>
+          <Button size="sm" variant="ghost" disabled={busy} onClick={() => { setKey(''); setOpen(false) }}>取消</Button>
+        </>
+      ) : <Button size="sm" variant="outline" disabled={busy || !writable} onClick={() => { setMessage(''); setOpen(true) }}>保存外部 Key</Button>}
+      {configured ? <Button size="sm" variant="ghost" disabled={busy || !writable} onClick={() => void clear()}>清除外部 Key</Button> : null}
+      {message ? <span role="status">{message}</span> : null}
+    </span>
+  )
+}
+
+
+
+{
+  "redproof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-credential-describe-red-current.json",
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-credential-describe-shape-20261031-071304.spec.ts",
+  "testsha": "81a4efe0ad842362742f36269a4cf7a7a4be76858869beeabc2d0cfb718790a2"
+}

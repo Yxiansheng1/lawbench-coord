@@ -1,0 +1,32 @@
+{
+  "at": "2026-11-01T15:14:12.470735+08:00",
+  "verdict": "CURRENT_SERVICE_AFTER_READ_PROVENANCE_SAME26_FAILURE_KEYS_NO_NEW_FAILURE_NOT_FULL_PASS",
+  "raw": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-service-whole-regression-current.json",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\FullServiceFinal-root-20261101-145505",
+  "actual_counts": {
+    "total": 1412,
+    "passed": 1344,
+    "failed": 18,
+    "errors": 8,
+    "skipped": 42
+  },
+  "source_inventory_held": 474,
+  "new_failure_keys": [],
+  "removed_failure_keys": [],
+  "direct_actual_guard_rows": 23,
+  "unknown_fullrun_rows": 3,
+  "guard_denials": {
+    "categories": {
+      "subprocess": 20,
+      "write": 2
+    },
+    "total": 22
+  },
+  "T37_excluded_before_collection": true,
+  "complete_OS_identities": 11,
+  "partial_NOT_PROVEN": [],
+  "OS_after": [],
+  "no_full_machine_helperOS_or_traffic_claim": true,
+  "whole_business_quality": "FAILED_PARTIAL",
+  "Packaging": "HOLD"
+}

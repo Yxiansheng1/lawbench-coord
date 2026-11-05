@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "kind": "T34",
+      "target": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-native-core-http.spec.ts",
+        "bytes": 8328,
+        "sha256": "3e4f334e368c8e2a80da474eb7879c8f8e1238e4a0234d962504ac7d8fbde892"
+      },
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18Current17NativeTestBinding-20261101-154019Before\\t34-native-core-http.spec.ts",
+      "old_literal": "CoreHttpEntry-20261025-163357",
+      "new_literal": "CoreHttpEntryCurrent17-20261101-142727",
+      "counts": 1,
+      "expected": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-native-core-http.spec.ts",
+        "bytes": 8337,
+        "sha256": "dc96b528e52fd0cfe26281ba3fe433838be492c76777c4a866e907ceec086028"
+      }
+    },
+    {
+      "kind": "T32",
+      "target": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t32-native-draft-http.spec.ts",
+        "bytes": 15231,
+        "sha256": "6b8906b493b07941a75d72743e4e20dc6a392cc146e8608bf308a2f1f309eba5"
+      },
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18Current17NativeTestBinding-20261101-154019Before\\t32-native-draft-http.spec.ts",
+      "old_literal": "NativeDraftEntry-20261025-165327",
+      "new_literal": "NativeDraftEntryCurrent17-20261101-142727",
+      "counts": 1,
+      "expected": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t32-native-draft-http.spec.ts",
+        "bytes": 15240,
+        "sha256": "1c672fe8d1da0e2b7f7db55e3840d2f389729b3cc3892653d0c93903e33d1fac"
+      }
+    }
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18Current17NativeTestBinding-20261101-154019.md",
+  "decision": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-current17-native-test-binding-decision-current.json",
+    "bytes": 988,
+    "sha256": "4bebe14667fb6fdbb1b443c85667d4d90217380b9464c3facfb2eb75f714a009"
+  },
+  "allowed_delta": "ONLY one exact fixed fixture preparation identity literal per test file; every function/assertion/validator/allow-root logic byte exact"
+}

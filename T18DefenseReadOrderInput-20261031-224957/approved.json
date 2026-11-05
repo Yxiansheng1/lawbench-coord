@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-31T22:49:57.103009+08:00",
+  "original_symptom": "Native actual read_material calls16/21, successfulresults17/22 BEFORE ask_user_question31; firstsave26 already denied27. Current TaskState read-before-question bool bound only LITIGATION_DOCS and GENERAL_DRAFTING at Agent constructor. Defense Skill step2 asks before step3 raw-material read.",
+  "wire_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-request-digest-resume-wire-review-current.json",
+  "native_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-request-digest-resume-runtime-current.json",
+  "product_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+  "source_sha256": "d8328b142489dc69d12f56156884d04f975b45b90eca7ce54a25c4c1c202fa0c",
+  "allowed_new_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-question-order-20261031-224957.spec.ts",
+  "base_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-read-question-order-20261030-163023.spec.ts",
+  "product_change_NOT_yet_allowed": true,
+  "no_model_requested": true
+}

@@ -1,0 +1,7 @@
+# 已确认成果GUI输入准备在飞，未运行
+2026-10-25T22:02:05.434456+08:00；真实heartbeat2026-10-25T13:50:54.654Z，唯一scan21:51:34.519522 unread0。Packaging HOLD。
+最新唯一B C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\lane-B-confirmed-read-1017-20261025-215536.job.json / actual01a17358-6c7e-7592-aef5-c5b0c704fabc，turn_context精确1017/max/cwdB，9命令8成功；一次旧dsh子模块只读gitstatus权限拒绝保留，不改权限/锁，不归API故障。已真实落盘server/probe正在完成三件，尚无正式终态；不把PID或文件存在称完成。绝对界2026-10-25T22:07:36.663564+08:00。
+root先完整回源A host/daily-case.ts/cases.ts/ui-index293：marker已有返回root不写，随后landOnDailyCase调用openCase真实POSTcase/open；上轮root写“监听后全写拒绝”不适合实际GUI。此次纠正为沿已审base唯一同case/path、可选template:null、最多4次重开例外；所有业务写拒绝，如实计POST，不伪称全GET。旧产品/旧guard不改。
+范围D:\Lawbeach\lawbench-B\docs\plan\evidence\T15\ConfirmedReadEntry-20261025-215536仅新server/probe/README+正式D:\Lawbeach\lawbench-coord\ORCH-B-ConfirmedReadReturn-20261025-215536.md，通过原baseASGI4后追加同guard/auth/nativeconfirm一次生成已确认54BMD/索引的合法输入，ASGI5不冒TCP/模型/GUI；不手写历史/任务/索引。原prepare/关闭/credential/socket/OCR/lifespan/Retainer守卫保持。root必须完整三件/formal/全部命令/累计AST差异先审，未安全准入不得prepare/serve/probe。结束不重开，来源/新fixedSHA闭合后才单独派A最小launcher5literal，而非旧脚本硬接。
+现成正确launcher basis CoreRuntimeGui prepare1f5ae62...91b37/start080abc3...9445/stop7e9bc2...f647已核全完整SHA记录outputs/ConfirmedRead-launch-basis-current.json及18旧pins，没写新launcher/没新GUI。
+上次ConfirmMd finite23ledger/ASGI4TCP19/native1confirmPASS只沿用，首红/唯一shape修/自然关闭原件保全不重跑。T31paperSTOP/CapsuleNative禁第三修/T52审核拒绝与全部安全禁区保持。

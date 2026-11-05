@@ -1,0 +1,28 @@
+  const reopenPersistedEvents = async (sessionId: string): Promise<readonly NativeEvent[]> => {
+    const verifier = new Context()
+    try {
+      await verifier.plugin(LlmRuntime)
+      await verifier.plugin(SessionStore)
+      await verifier.plugin(ProjectionRegistry)
+      await verifier.plugin(SystemPrompt, { personaPrefix: '' })
+      await verifier.plugin(ToolRuntime)
+      await verifier.plugin(AgentRegistry)
+      installModelSelectionProjection(verifier)
+      await verifier.plugin(JsonlPersistence, { root: persistenceRoot, compression: 'none' })
+      await verifier.plugin(AgentLoop, { agents: [] })
+      const handle = await verifier.sessionPersistence.open(sessionId, 'read')
+      try {
+        return (await handle.read()).events as readonly NativeEvent[]
+      } finally {
+        await handle.close()
+      }
+    } finally {
+      await verifier.fiber.dispose()
+    }
+  }
+  return {
+    live,
+    commands,
+    BrowserSession,
+    SessionLogOffset: SessionModule.SessionLogOffset,
+    persistenceRoot,

@@ -1,0 +1,112 @@
+{
+  "appdataSourceCount": 2,
+  "appdataSourcesUnchanged": true,
+  "copiedAppdata": [
+    {
+      "bytes": 638,
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scopes.json",
+      "mtime_ns": "1793202060773185300",
+      "relative": "request-scopes.json",
+      "sha256": "15425c85634ff41379d2b9c3003c1b88c352c99a1dca5a17dcb7f25e38e226fd",
+      "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scopes.json"
+    },
+    {
+      "bytes": 526,
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "mtime_ns": "1793202060700810100",
+      "relative": "request-scope-intents/79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "sha256": "3cda63fed3e1896ed90b1206a2bb42fbea7929317c791481a80924382a5ba6c2",
+      "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json"
+    }
+  ],
+  "credentials": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "failure": "two_stage_protocol_incomplete",
+  "finishedAtUtc": "2026-10-28T17:22:39.410+00:00",
+  "fixtureCount": 2,
+  "fixtureInputsUnchanged": true,
+  "forwardListener": false,
+  "host": "127.0.0.1",
+  "lifespan": "off",
+  "listenerClosed": true,
+  "logsClosed": true,
+  "netClientClosed": true,
+  "ocrStarted": false,
+  "outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "passed": false,
+  "pid": 43932,
+  "port": 55225,
+  "protocol": {
+    "beginCwds": [
+      "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case"
+    ],
+    "caseBound": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/tasks": 2,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 7
+    },
+    "cwdAliases": [
+      {
+        "from": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case",
+        "to": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t18\\explicitpriorqualityrevision-20261029-004226\\run-bf3ztj\\case"
+      }
+    ],
+    "denials": {},
+    "materialIdCount": 2,
+    "requestIds": [
+      "b91ca8e9-4d23-47bb-b249-c8e46fb7dd06"
+    ],
+    "selectionIds": [
+      "T-20261029012044-c562"
+    ],
+    "selectionInputs": [
+      [
+        "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md"
+      ]
+    ],
+    "sessionBound": true,
+    "stage1ChecklistPath": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+    "stageBegun": [
+      true,
+      false
+    ],
+    "stageClosed": [
+      true,
+      false
+    ],
+    "stageDrafts": [
+      [
+        "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v1.md",
+        "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v2.md",
+        "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v3.md",
+        "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md"
+      ],
+      []
+    ],
+    "taskBound": true,
+    "taskIds": [
+      "T-20261029012044-5869"
+    ],
+    "violations": []
+  },
+  "retainerClosed": true,
+  "retainerStarted": false,
+  "sourcePinCount": 346,
+  "sourcePinsUnchanged": true,
+  "startedAtUtc": "2026-10-28T17:20:35.904+00:00",
+  "status": "FAILED"
+}

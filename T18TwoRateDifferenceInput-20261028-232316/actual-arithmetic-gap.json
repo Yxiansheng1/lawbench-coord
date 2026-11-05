@@ -1,0 +1,15 @@
+{
+  "verdict": "ACTUAL_TWO_RATE_COMPARISON_NOT_RECOGNIZED_CHINESE_NUMBER_PARSER_ALREADY_WORKS",
+  "source_sha": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "actual_line": "- 问题：乙方逾期交货违约金为每日千分之一，甲方逾期付款违约金为每日万分之五，两者相差二十倍，明显不对等，对甲方不利。",
+  "current_guard_result": null,
+  "exact_ratio": "2",
+  "absolute_relative_gap_larger_over_smaller_minus_one": "1",
+  "claimed_multiple": 20,
+  "chinese_number_20_parser_already_supported": true,
+  "no_product_module_import": true,
+  "OS_identity_not_captured": true,
+  "scope": "ROOT_FINITE_PURE_SOURCE_AST_ACTUAL_SYNTHETIC_DRAFT_ONLY",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

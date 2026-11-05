@@ -1,0 +1,98 @@
+{
+  "at": "2026-10-29T22:13:19.490554+08:00",
+  "verdict": "STATIC25_CURRENT_SENTENCE_NINTH_WORKFLOW_GATE_ACCEPTED_BUILD0",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18SentencePrivateBuild-root-20261029-221202",
+  "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\private-output-20261029-221202",
+  "manifest_sha": "7f8e4c2b42f81e782034e742f4a46319ee338620c439e844a3223f454f208851",
+  "manifest_bytes": 58195,
+  "inventory25_exact": true,
+  "trees18_files39_refs14_exact": true,
+  "legacy18_unchanged": true,
+  "source_modules": {
+    "lawbench": 258,
+    "uiConversation": 91,
+    "sessionController": 42
+  },
+  "changed_output_paths": [
+    "profile-node_modules/lawbench-dsh/lib/agent.js",
+    "profile-node_modules/lawbench-dsh/lib/client.js"
+  ],
+  "contract_AST": {
+    "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+    "embedded": {
+      "agent": {
+        "schemas": 68,
+        "version": "1.6",
+        "exact": true
+      },
+      "host": {
+        "schemas": 68,
+        "version": "1.6",
+        "exact": true
+      }
+    },
+    "prompt": {
+      "sameHostRemote": true,
+      "package": "@deepseek-ai/dsh-api-session-controller",
+      "properties": [
+        "requestId",
+        "sessionId",
+        "mode",
+        "content",
+        "clientTimeZone",
+        "deliveryRestriction"
+      ],
+      "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+      "codecEqual": true
+    },
+    "generatedDeclarationIncludesPrompt": true
+  },
+  "current_gate_agent_sha": "16a82ad40de09d1895b6ceda188af70d630863c8fd369444490e62e7eeb2f9af",
+  "current_gate_host_sha": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b",
+  "compiled_gate_strings_present": true,
+  "build_exit": 0,
+  "elapsed_s": 9.5909036,
+  "OS": [
+    {
+      "pid": 60788,
+      "exe": "E:\\node\\node.exe",
+      "birthTicks": 639288799316265081,
+      "gone": true
+    },
+    {
+      "pid": 35132,
+      "exe": null,
+      "birthTicks": null,
+      "gone": true
+    },
+    {
+      "pid": 38252,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birthTicks": 639288799320582255,
+      "gone": true
+    },
+    {
+      "pid": 29408,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birthTicks": 639288799326186399,
+      "gone": true
+    },
+    {
+      "pid": 11900,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birthTicks": 639288799316343403,
+      "gone": true
+    }
+  ],
+  "OS_complete_count": 4,
+  "OS_partial_count": 1,
+  "full_OS_identity_proof": false,
+  "OS_qualification": "4 complete observed build exe/UTCbirth identities gone; 1 partial fast-exit PID identities retained as NOT_PROVEN. Natural build0; no forced stop. Static AST helper OS identity not collected separately.",
+  "AST_helper_OS_identity_not_collected": true,
+  "forced": false,
+  "GUI": false,
+  "model_calls": 0,
+  "original_contract_business_pass": false,
+  "Gate1": "INCOMPLETE",
+  "Packaging": "HOLD"
+}

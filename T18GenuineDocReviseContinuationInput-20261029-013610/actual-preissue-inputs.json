@@ -1,0 +1,194 @@
+{
+  "format": "genuine-t18-completed-preissue-continuation-v1",
+  "captured_at_utc": "2026-10-28T17:32:03.399705+00:00",
+  "source_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ",
+  "source_case": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case",
+  "case_files": [
+    {
+      "relative": "02案件材料/采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200"
+    },
+    {
+      "relative": "02案件材料/采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800"
+    },
+    {
+      "relative": "工作区/case.db",
+      "bytes": 98304,
+      "sha256": "b53339cbe9ba25d8d544e542b39167b06eb6e62c52e1cd10ed0aa751b8e53526",
+      "mtime_ns": "1793208044157422200"
+    },
+    {
+      "relative": "工作区/case.db-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+      "mtime_ns": "1793208044210566300"
+    },
+    {
+      "relative": "工作区/case.db-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": "1793208044210566300"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/reads.json",
+      "bytes": 531,
+      "sha256": "dd70f6bfb2382b40776d4d1ccd01501d439e338963990a097695fd02f50473cf",
+      "mtime_ns": "1793202074831340200"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/result.json",
+      "bytes": 9013,
+      "sha256": "5ea5e26193091960e3fd66f40d75bab98dcca49794973ae3b0d064a86fa0b1fc",
+      "mtime_ns": "1793202200955804500"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/task.json",
+      "bytes": 1059,
+      "sha256": "1678d883352739caafc33860df2e94161d8516065ba65501bea394b192b25dd0",
+      "mtime_ns": "1793202200958809300"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/修改清单/采购合同.json",
+      "bytes": 3149,
+      "sha256": "ca50d275c41d0043f233f7e81c2851d900b2ac399379d019f571f909b43871e5",
+      "mtime_ns": "1793202156744988600"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v1.md",
+      "bytes": 8988,
+      "sha256": "3a190540a7384dae5ee92262beff549937e9b77f34e8e5d8eca48568c9c550bb",
+      "mtime_ns": "1793202139988081000"
+    },
+    {
+      "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+      "bytes": 9170,
+      "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d",
+      "mtime_ns": "1793202187453275100"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/reads.json",
+      "bytes": 532,
+      "sha256": "c121bde3eb83e2c43715f87a2c8a1ccc6cbcc9980f132ebecd79f46588c17cd2",
+      "mtime_ns": "1793208078696042000"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/result.json",
+      "bytes": 2204,
+      "sha256": "15352d914ca8d37106ecefc7ca45d1b9042145661d0a8b1f1e0a78ac7db9cd1a",
+      "mtime_ns": "1793208159249622500"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/task.json",
+      "bytes": 889,
+      "sha256": "63758b80ede3c64d3ee8e747e9da5457b677f026e810b0a09635224735905c2d",
+      "mtime_ns": "1793208159252653600"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v1.md",
+      "bytes": 2649,
+      "sha256": "ca7f43c9e67b1c4dcd502015bd5cac359069b0a0337ede659a1484590918749a",
+      "mtime_ns": "1793208097197221300"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v2.md",
+      "bytes": 2355,
+      "sha256": "61e8a64cae9de8dea8f95177397f8524ed3e2de5d6d307b53782a7ba5788239c",
+      "mtime_ns": "1793208113424432000"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v3.md",
+      "bytes": 2354,
+      "sha256": "ed215779c1b3c57fce35db544669ab6d1a5efa1e9ba01790588347eb1dd59571",
+      "mtime_ns": "1793208132697269500"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+      "bytes": 2351,
+      "sha256": "b01af533b523c9752a84fd3801d3de1cfd46db5fb75642888aaa6bad493abe2f",
+      "mtime_ns": "1793208147740880400"
+    },
+    {
+      "relative": "工作区/任务/T-20261029012044-c562/task.json",
+      "bytes": 807,
+      "sha256": "f3a149c9694a3a0b5610f0513050b2de571d1ccf8ae9564a90531c28cafc5962",
+      "mtime_ns": "1793208044366153700"
+    },
+    {
+      "relative": "工作区/材料/_处理状态.md",
+      "bytes": 191,
+      "sha256": "4386eb8b24ab0cbe78a840a7d572614302e1902aed3fdb5bf76f655807554c8c",
+      "mtime_ns": "1793202060505116100"
+    },
+    {
+      "relative": "工作区/材料/index.json",
+      "bytes": 1475,
+      "sha256": "12bc5cd46b9237442fd63a6d8ded78b668df0e018194b21ec1d9394b45763e7a",
+      "mtime_ns": "1793202060502114400"
+    },
+    {
+      "relative": "工作区/材料/文本/02案件材料/采购合同.docx.md",
+      "bytes": 4189,
+      "sha256": "6bd4b99f7a6fd6fcaa553ea60497e1f91285a6665a896467465a5be2f72a91ab",
+      "mtime_ns": "1793202060495607300"
+    },
+    {
+      "relative": "工作区/材料/文本/02案件材料/采购部内部意见.txt.md",
+      "bytes": 951,
+      "sha256": "fb7e80a148f51cd032d6091e974b6432f62ce186422f37d1865b53c085a556eb",
+      "mtime_ns": "1793202060498114300"
+    }
+  ],
+  "source_sessions": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\sessions",
+  "session_files": [
+    {
+      "relative": "--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--/session-1cb28369-3a90-46dc-b047-e64986038394/session.v4.jsonl",
+      "bytes": 419109,
+      "sha256": "18f9cd26127b50f9cc220f9149f0769800d1577f5d8a8ecd9fed0d98f0b1912c",
+      "mtime_ns": "1793208159410941900"
+    }
+  ],
+  "appdata_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scopes.json",
+      "relative": "request-scopes.json",
+      "bytes": 955,
+      "sha256": "6b500bb2f9f5e725891c0bb38bce8a45307d27b502bc95c3fbb3d4219369f4b7",
+      "mtime_ns": "1793208044567577700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "relative": "request-scope-intents/79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+      "bytes": 526,
+      "sha256": "3cda63fed3e1896ed90b1206a2bb42fbea7929317c791481a80924382a5ba6c2",
+      "mtime_ns": "1793202060700810100"
+    }
+  ],
+  "session_id": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "session_header_cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case",
+  "physical_rows": 116,
+  "events": 115,
+  "original_59_event_prefix_byteexact": true,
+  "completed_preissue_task": "T-20261029012044-5869",
+  "completed_preissue_request": "b91ca8e9-4d23-47bb-b249-c8e46fb7dd06",
+  "original_draft": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+  "preissue_checklist": {
+    "title": "出稿前审查-合同审查意见",
+    "path": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+    "version": 4
+  },
+  "preissue_checklist_identity": {
+    "bytes": 2351,
+    "sha256": "b01af533b523c9752a84fd3801d3de1cfd46db5fb75642888aaa6bad493abe2f",
+    "mtime_ns": "1793208147740880400"
+  },
+  "strict_stage1_requires_4_1_NOT_MET": true,
+  "chapter_four_semantically_points_to_actual_acceptance_chapter": true,
+  "old_full_two_stage_result": "FAILED_IMMUTABLE",
+  "stage2_model_NOT_RUN": true,
+  "root_must_review_before_continuation": true
+}

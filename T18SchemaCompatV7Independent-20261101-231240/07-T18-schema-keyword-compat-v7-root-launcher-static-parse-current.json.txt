@@ -1,0 +1,12 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-launcher-static-parse-current.json
+SHA fea4474072a702743d5faf5eeb162431aa49e68c78df3d06cfb3e4f0bc9a250e
+FOCUSEDRANGES None
+0001 {
+0002   "operation": "Root CHANGED PS resolved-literal STATIC parse only; never execute",
+0003   "errors": [],
+0004   "Keyread": false,
+0005   "modelrequests": 0,
+0006   "new_CIM_birth_capture": true,
+0007   "no_runtime_or_watchdog_forced_proof": true,
+0008   "qualification": "Initial Root parsed unsubstituted template placeholders, generated syntax errors beforeANYexecution; originaladminfailure retained. Currentusesexactdriversortedquotedliteralreplacement withdummyprivatepaths, no product failure or assertionwaiver."
+0009 }

@@ -1,0 +1,11 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-A\\contracts\\_build\\gen_schemas.py",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadGeneratorClosure-20261101-120800Input\\generator-before.py",
+  "before_sha256": "104280826d163768834e43a49742e192e0c837d20aa9c0d75d1dc3d9f957b28e",
+  "expected_schemas": [
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadGeneratorClosure-20261101-120800Input\\task_begin.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadGeneratorClosure-20261101-120800Input\\request_scope.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadGeneratorClosure-20261101-120800Input\\task.schema.json"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadGeneratorClosure-20261101-120800.md"
+}

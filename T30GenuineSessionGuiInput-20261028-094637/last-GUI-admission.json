@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-27T21:44:45.484426+08:00",
+  "guidir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "entrydir": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736",
+  "runtime": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\private-output-20261027-194112",
+  "scripts": {
+    "prepare.ps1": {
+      "bytes": 21840,
+      "sha256": "0f76e9216ec9b29941e0fa7f0e6bd82496d9cd36cbda3aef8f5740079ccf9f58"
+    },
+    "start.ps1": {
+      "bytes": 81190,
+      "sha256": "c1f33da5c4dfb35b278315541fc47f2d7c4d943728ee8c6b2b068a49f099c0b0"
+    },
+    "stop.ps1": {
+      "bytes": 7157,
+      "sha256": "b87887fe29dc191cbe9237e3111f1ce9d48ab26ac330edc1e06c5804699a9eec"
+    }
+  },
+  "authors": [
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T32-native-PDF-citation-GUI-1017-20261027-211310.job.json",
+      "commands": 52,
+      "success": 45,
+      "write_faces": [
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\README.md",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\stop.ps1",
+        "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-native-PDF-citation-GUI-20261027-211310.md"
+      ],
+      "author_runtime": 0,
+      "full_cumulative_source_formal_raw_review": true
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T32-PDF-GUI-variable-fix-1017-20261027-212344.job.json",
+      "commands": 39,
+      "success": 34,
+      "write_faces": [
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\root-variable-correction-20261027-212344.md",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+        "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-PDF-GUI-variable-fix-20261027-212344.md"
+      ],
+      "author_runtime": 0,
+      "full_cumulative_source_formal_raw_review": true
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T32-PDF-entry-identity-repin-1017-20261027-214141.job.json",
+      "commands": 20,
+      "success": 16,
+      "write_faces": [
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\root-entry-identity-repin-20261027-214141.md",
+        "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+        "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-PDF-entry-identity-repin-20261027-214141.md"
+      ],
+      "author_runtime": 0,
+      "full_cumulative_source_formal_raw_review": true
+    }
+  ],
+  "full_cumulative_review": true,
+  "GUI_start_admitted": true,
+  "pure_source_variable_fix_byte_inverse": true,
+  "two_entry_literal_repin_byte_inverse": true,
+  "original_launchers_complete_byte_inverse_outside_reviewed_PDF_validation": true,
+  "parser_errors": 0,
+  "runtime25_same": true,
+  "dirty_retained": true,
+  "qualifications": [
+    "Main README source count prose 347 plus entry is inaccurate; actual347TOTAL=346B+entry, executable unchanged.",
+    "Variable correction raw39/34; SeqEqual comparison emitted errors under exit0, old document wrongly listed1; raw preserved.",
+    "B private6 only after validatedGUI, prepare/noGUI strict4; oldfinite33 not relabelled same-entrySHA or rerun, actualnewGUI required.",
+    "This is admission, not GUI PASS."
+  ],
+  "GUI_pass": false,
+  "whole_T32_pass": false,
+  "packaging": "HOLD"
+}

@@ -1,0 +1,208 @@
+{
+  "scope": "INDEPENDENT_V5_SOURCEONLY_NOT_RUNTIME_OR_SEMANTIC_PASS",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\review-consumer.mjs",
+      "bytes": 53968,
+      "sha256": "166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31",
+      "mtime_ns": "1793542358406267800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\offline-controls.mjs",
+      "bytes": 40367,
+      "sha256": "adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3",
+      "mtime_ns": "1793542458789326300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\source-manifest.json",
+      "bytes": 677,
+      "sha256": "74639b12e714b1fb9c6ebdd5c17c9ec33ea4948bb6baeb7cfb05a0cdcff41dc7",
+      "mtime_ns": "1793542475390540200"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-explicit-deadline-http-v5-saved-key-root-admin.py",
+      "bytes": 15714,
+      "sha256": "4135151a88f8f19954d2b999c08dd51aa6fe2cbfeb2c37ce585089fdd5b5a25a",
+      "mtime_ns": "1793542496299042200"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-explicit-deadline-http-v5-reviewed-runtime-root-admin.py",
+      "bytes": 3673,
+      "sha256": "de4bd5281c12725e1a1dc16ff330f26eac8566c776eea6fcc74108083162175f",
+      "mtime_ns": "1793542496368739100"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-root-launcher-static-parse-current.json",
+      "bytes": 522,
+      "sha256": "d42891b4b864aea2d589b068b1afb675c7399beec000543dd4322fc96f7a9593",
+      "mtime_ns": "1793542496382546800"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-source-reviewed-current.json",
+      "bytes": 4482,
+      "sha256": "e069b2a3ff37dc52870e14c81799f8c6e1e9f1241762ca5f4d69f60e71ec46bf",
+      "mtime_ns": "1793542844070772900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb",
+      "mtime_ns": "1793529580417735200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-B-T18ExplicitDeadlineHttpV5-20261101-221038.md",
+      "bytes": 6535,
+      "sha256": "2ff1dadeb60864437aabe804273fab49907a08ef632e962d318a2f5a6bf74628",
+      "mtime_ns": "1793542238477724300"
+    }
+  ],
+  "data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+    "mtime_ns": "1793529580412201500"
+  },
+  "cache_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038\\stage1-assessments.json",
+    "bytes": 10015,
+    "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+    "mtime_ns": "1793538024944549000"
+  },
+  "requirements": [
+    "FULLcurrenttransport Promise lifecycle: publichttp.request fixedROUTE/POST/bodyexactUTF8/contentlength/auth/agentfalse/signal400sremaining900. No retry/redirect/fallback/globalagent/SDKchange. Onecallsettlement end/error/abort/close/overflow; capturedpartialprefix/actualstatus/4MiB; owningrequestresponse/socket destruction andlateeventerrorhandlers/listeners/signalcleanup.",
+    "Memoryhttp.requestcontrols callrealexportedperformRequest no sockets; oldpureprotocol assertionprefix held. Requestoptions/body and success/partialerror/aborted/prematureclose/requesterror/timeout/abort/overflow/expiredprecall/lateevents/unknowncode/redaction checks. Discriminate realNodeeventsemantics vs mocks; flag concrete reachable defects, not speculativeframework.",
+    "Frozen originalnetworkguard mediates http andlowernet/socket, unchangedsha. No observedsecuritydenialbypass; originalV4 actualUND_ERR_HEADERS_TIMEOUT blockedfirstcall304655ms not servercause or modeltemperature proof. Same deadline400s notraised;900whole/max2/qwen38-27b0.6/49152/body/prompt/inventory/cache/shards held.",
+    "FullunchangedV4protocol mayreusebyteinverse butnewtransport/setupcleanup cumulativeaudit required.365F/C/Qtargets183+182/exactIDset/allrefs/mergeoriginal; no newStage1HTTP/modelhistory/NativeR. Syntheticdataonly; exactcanonicalrefsnotsemanticfactualPASS.",
+    "FULLcurrentRootdriver/admitter/inverses:8externalpins/authorallterminal/oneuseadmissiongatebeforeKey/anonymousstdin/privateenv/noproxy/preload/exactPIDexeUTCbirthcleanup/ownscan. PSliteralstaticreusedV4/V2 doesnotprovewholecurrentoutercode. No hostilelocalactor ACL/fullmachine/servercancelproof. No modelbeforefinalacceptance."
+  ],
+  "A_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\00-review-consumer.mjs.txt",
+      "bytes": 62691,
+      "sha256": "4a8e759adb192544cccc4f8b433f1e450484d3a66cf6fd953fa6d9ca76f16a70",
+      "mtime_ns": "1793542844071785600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\01-offline-controls.mjs.txt",
+      "bytes": 47621,
+      "sha256": "25cfdc3193f7452b62c2897a2609d650f6c1b4f9a3e00ac9f219cda1bb0d50cd",
+      "mtime_ns": "1793542844078585400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\02-source-manifest.json.txt",
+      "bytes": 995,
+      "sha256": "7fa77b2233f39e554c9f3cb2e12408a60eeac98ed487887e31042f81f15f64e3",
+      "mtime_ns": "1793542844083823000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\06-T18-explicit-deadline-http-v5-source-reviewed-current.json.txt",
+      "bytes": 5098,
+      "sha256": "6cd506abdffc66228f2d3594dddeac9e876d09f3dad4ee72fd9d45b272513abd",
+      "mtime_ns": "1793542844163360300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793542844170224500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\08-ORCH-B-T18ExplicitDeadlineHttpV5-20261101-221038.md.txt",
+      "bytes": 6735,
+      "sha256": "5172f1c495ea187ce72fa145bf0e51ddbc1bc6821431b3868737d188802d5442",
+      "mtime_ns": "1793542844171895000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\review-consumer.mjs.diff.txt",
+      "bytes": 9725,
+      "sha256": "eb501a088b62d71966c40eb91d94089191f0b16bb6cecfa69a3a9633efe55aaf",
+      "mtime_ns": "1793542844179681300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\offline-controls.mjs.diff.txt",
+      "bytes": 16053,
+      "sha256": "763cded9a1f3dee00968ec2ac26f51e001d5b7b5e45753970453ab4b30f9ab38",
+      "mtime_ns": "1793542844188020000"
+    }
+  ],
+  "C_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\00-review-consumer.mjs.txt",
+      "bytes": 62691,
+      "sha256": "4a8e759adb192544cccc4f8b433f1e450484d3a66cf6fd953fa6d9ca76f16a70",
+      "mtime_ns": "1793542844071785600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\01-offline-controls.mjs.txt",
+      "bytes": 47621,
+      "sha256": "25cfdc3193f7452b62c2897a2609d650f6c1b4f9a3e00ac9f219cda1bb0d50cd",
+      "mtime_ns": "1793542844078585400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\02-source-manifest.json.txt",
+      "bytes": 995,
+      "sha256": "7fa77b2233f39e554c9f3cb2e12408a60eeac98ed487887e31042f81f15f64e3",
+      "mtime_ns": "1793542844083823000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\03-run-explicit-deadline-http-v5-saved-key-root-admin.py.txt",
+      "bytes": 16830,
+      "sha256": "fbca752354ffc1a2e95851275294df213c2233e416ce46fc3b434f9a7835f39a",
+      "mtime_ns": "1793542844089039200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\04-admit-explicit-deadline-http-v5-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4068,
+      "sha256": "d8e7e98b95c6e12a5c4d1b6babf13c478dfc7fed85cf24d999b856ef70c0330d",
+      "mtime_ns": "1793542844145734500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\05-T18-explicit-deadline-http-v5-root-launcher-static-parse-current.json.txt",
+      "bytes": 814,
+      "sha256": "7f4d0156717901d99b0d20d80cc6b42f0bb68233fadb3193d20e2d1c7427b684",
+      "mtime_ns": "1793542844153561900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\06-T18-explicit-deadline-http-v5-source-reviewed-current.json.txt",
+      "bytes": 5098,
+      "sha256": "6cd506abdffc66228f2d3594dddeac9e876d09f3dad4ee72fd9d45b272513abd",
+      "mtime_ns": "1793542844163360300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793542844170224500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\08-ORCH-B-T18ExplicitDeadlineHttpV5-20261101-221038.md.txt",
+      "bytes": 6735,
+      "sha256": "5172f1c495ea187ce72fa145bf0e51ddbc1bc6821431b3868737d188802d5442",
+      "mtime_ns": "1793542844171895000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\review-consumer.mjs.diff.txt",
+      "bytes": 9725,
+      "sha256": "eb501a088b62d71966c40eb91d94089191f0b16bb6cecfa69a3a9633efe55aaf",
+      "mtime_ns": "1793542844179681300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ExplicitHttpV5Independent-20261101-222044\\offline-controls.mjs.diff.txt",
+      "bytes": 16053,
+      "sha256": "763cded9a1f3dee00968ec2ac26f51e001d5b7b5e45753970453ab4b30f9ab38",
+      "mtime_ns": "1793542844188020000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-root-driver-inverse.diff.txt",
+      "bytes": 4319,
+      "sha256": "f2d96f2156eb53a8fe37b2dc47e2f6b4939e83e965d2a2643ef8402726636fb4",
+      "mtime_ns": "1793542496367739700"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-explicit-deadline-http-v5-root-admitter-inverse.diff.txt",
+      "bytes": 4725,
+      "sha256": "58d0d6a878a148139501924fbc7772553ed6dcc681500c432fae0e5adc91bb0e",
+      "mtime_ns": "1793542496377776000"
+    }
+  ]
+}

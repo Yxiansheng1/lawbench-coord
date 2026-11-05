@@ -1,0 +1,82 @@
+{
+  "document_status": "REFERENCE_ONLY_NOT_RUNTIME_ADMISSION",
+  "author_runtime": 0,
+  "note": "This file documents the frozen inputs. It cannot authorize execution.",
+  "sources": [
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-395-human-auth-readonly-current.json",
+      "bytes": 3415,
+      "sha256": "ded48e494b1b98485afd1ff70608c9629557291bf85464ee2bac0254def4f5a7"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-human-WER-crash-metadata-current.json",
+      "bytes": 1104,
+      "sha256": "a1cda1d8d778e54886af02ef19cf757c39473cd3cd2cb057213a0192700aa683"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-human-diagnostic-window-current.json",
+      "bytes": 1219,
+      "sha256": "02f71ec6150cec089f9fef25182b9af29b19cc9987deb06e03157b089878abfd"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-isolated-final-candidate-root-current.json",
+      "bytes": 2334,
+      "sha256": "5bfd8002c0238769de01d839bc3f8d26d097fe5abb4e942b41d09d57fd45c59f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\backends.py",
+      "bytes": 10931,
+      "sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-C\\prep395\\deploy\\isolated-synthetic-crash-20261028-001334\\run-isolated-ocr.ps1",
+      "bytes": 37041,
+      "sha256": "eb92b2877ed181946d3dac74a3c10994474d0071dca594ccd7db4d3d0cada8e8"
+    }
+  ],
+  "prepared_image": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCRIsolatedLocalPrepare-root-20261028-005149\\private\\temp\\prepared\\preprocessed-page1.png",
+    "bytes": 132843,
+    "sha256": "6c8399569502b6444544960b3e6f32ed43e5ada8a47ff6f7c039127ab813c40a"
+  },
+  "model": {
+    "path": "C:/prep395/models/Xiaomi-OCR-0.BF16.gguf",
+    "bytes": 1516744960,
+    "sha256": "d796fa2cd211ba39a40f37691fc0046aa49f59c7968ec844eb9e81f2ae476a52"
+  },
+  "mmproj": {
+    "path": "C:/prep395/models/Xiaomi-OCR-0.mmproj-bf16.gguf",
+    "bytes": 207346624,
+    "sha256": "634d6bc95781ebf4a3f06570a59859fa5082d488db540fd474bc6b4061aec90e"
+  },
+  "native_cli": {
+    "path": "C:/prep395/llama/llama-mtmd-cli.exe",
+    "status": "NOT_ADMITTED",
+    "bytes": null,
+    "sha256": null,
+    "help_validation": "ROOT_REQUIRED_BEFORE_ADMISSION"
+  },
+  "prompt": "Extract all information from the main body of the document image and represent it in markdown format, ignoring headers and footers. Tables should be expressed in OTSL format, formulas in the document should be represented using LATEX format, and the parsing should be organized according to the reading order.",
+  "approved_argv_flags": [
+    "-m",
+    "--mmproj",
+    "--image",
+    "-p",
+    "-n",
+    "4096",
+    "-c",
+    "32768",
+    "-ngl",
+    "99",
+    "--temp",
+    "0"
+  ],
+  "image_first_material_semantics": true,
+  "single_attempt": true,
+  "no_http": true,
+  "no_retry": true,
+  "human_scope": "one synthetic counterfactual diagnostic, at most 300 seconds, no production stop/restart/policy change",
+  "prior_PS_helper": "POLICY_REFUSED_NOT_RUN_MUST_NOT_INLINE_EXECUTE_OR_PORT_IT",
+  "full_suite": false,
+  "Packaging": "HOLD"
+}

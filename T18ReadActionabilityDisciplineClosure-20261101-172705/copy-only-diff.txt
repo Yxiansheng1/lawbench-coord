@@ -1,0 +1,15 @@
+--- 
++++ 
+@@ -409,9 +409,9 @@
+                     "INVALID_ARGUMENT",
+                     "defense_citation_not_read",
+                     f"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。"
+-                    f"请先核对起止为第{low}至第{high}{unit_name}，"
+-                    f"用 case_read_material 完整读取材料 {material_id}，再保存辩护意见。"
+-                    "若该范围仍是待识别占位文本，请待识别文本生成后再读取并保存。",
++                    f"请先调用 case_list_materials，找到 material_id={material_id} 的材料，取其 name；"
++                    f"再用 case_read_material 的 name 参数传该名称，按升序区间第{low}至第{high}{unit_name}完整读取后重新保存。"
++                    "区间起止倒置请改为升序；若该范围仍是待识别占位文本，请待识别文本生成后再读取并保存。",
+                 )
+         return _save_locked(
+             ctx.tasks, ctx.root, ctx.case_id, task, title, a["content"],

@@ -1,0 +1,47 @@
+{
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundaryCurrentIndependent-20261101-164639\\current-product.py",
+      "bytes": 24502,
+      "sha256": "28011ed87968abf4138c1817301a8a58589f4ac3b6f7b8574d5435341ce35c45"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundaryCurrentIndependent-20261101-164639\\same-thirteen-tests.py",
+      "bytes": 23084,
+      "sha256": "fe2841296774f75d984ffcd49f9ed6656cc6f0a70935259509af56f6207b064f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundaryCurrentIndependent-20261101-164639\\cumulative-business-diff.txt",
+      "bytes": 5089,
+      "sha256": "067be68b119a5aec513e11e74d75b781a87c5cc4fd8db64f46f2b46d8ca9892f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundaryCurrentIndependent-20261101-164639\\original-context.json",
+      "bytes": 19256,
+      "sha256": "b8d7dda7d02dea0a2f3ac74f046f729acf4f23d18cb7a52fad87e037f9ea0593"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18BoundaryCurrentIndependent-20261101-164639\\actual-evidence.json",
+      "bytes": 4972,
+      "sha256": "8181444b62d3c5e2630fd20383506cbbcc2603b0ab3c057c53827addb5205771"
+    }
+  ],
+  "live_refs": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+      "bytes": 24502,
+      "sha256": "28011ed87968abf4138c1817301a8a58589f4ac3b6f7b8574d5435341ce35c45"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+      "bytes": 23084,
+      "sha256": "fe2841296774f75d984ffcd49f9ed6656cc6f0a70935259509af56f6207b064f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadProductFix-20261101-144353Before\\drafts.py",
+      "bytes": 20481,
+      "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822"
+    }
+  ],
+  "no_author_rationale_or_other_review_verdict_shared": true
+}

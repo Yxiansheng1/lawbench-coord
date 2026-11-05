@@ -1,0 +1,369 @@
+{
+  "verdict": "REAL_WORKFLOW_FAILED_USED_INTERNAL_OPINION_FACTS_WITHOUT_ITS_SOURCE_CITATIONS",
+  "at": "2026-10-28T21:19:40.783394+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-211427",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-znIBMz",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitationMissingActualFailure-root-20261028-211940",
+  "draft_path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-znIBMz\\case\\工作区\\任务\\T-20261028211432-5e7d\\草稿\\合同审查意见-v2.md",
+  "draft_sha256": "f6cf41fddb2f7a5fd71cf3181b760619658c520b429f578da611c2f07e27a1f7",
+  "draft_bytes": 7454,
+  "physical_JSONL_rows": 59,
+  "model_POST": 10,
+  "model_HTTP200": 10,
+  "tool_calls": 9,
+  "actual_answers_before_first_save": true,
+  "save_checks": [
+    {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "1. 明确两批货物的具体交货时间（第一批5月10日前、第二批5月20日前）",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "3. 增加5%质量保证金条款",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 问题：合同仅约定5月20日前分两批交付，未明确第一批（HW200×200）的交货时间。根据采购部意见，第一批须于2026年5月10日前到货用于现场施工，合同现状无法保障该时间节点，可能导致工程延误。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 修改建议：明确两批货物的具体交货时间，第一批2026年5月10日前，第二批2026年5月20日前。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批（HW200×200规格，150吨）于2026年5月10日前交付；第二批（HN300×150规格，150吨）于2026年5月20日前交付。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五个工作日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 问题：财务部要求按惯例留5%作为质量保证金，质保期满无质量问题后支付。合同现状为收货后90日内全额付款，未设置质量保证金，对货物质量问题的后续保障不足。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 修改建议：在付款条款中增加5%质量保证金约定，质保期满后支付。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%，剩余5%作为质量保证金，质保期满且无质量问题后三十日内支付。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「9.1 双方确认以下电子邮件地址为有效通知地址：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：在第六条违约责任中增加：「6.4 乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，并要求乙方赔偿因此造成的损失。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：在第四条验收中增加：「4.3 标的物质保期为验收合格之日起十二个月。质保期内出现质量问题的，乙方应在接到甲方通知后三日内免费维修或更换。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 12,
+        "must_fix": 0,
+        "hints": 12
+      }
+    },
+    {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "1. 明确两批货物的具体交货时间（第一批5月10日前、第二批5月20日前）",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "3. 增加5%质量保证金条款",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 问题：合同仅约定5月20日前分两批交付，未明确第一批（HW200×200）的交货时间。根据采购部意见，第一批须于2026年5月10日前到货用于现场施工，合同现状无法保障该时间节点，可能导致工程延误。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 修改建议：明确两批货物的具体交货时间，第一批2026年5月10日前，第二批2026年5月20日前。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「3.1 交货时间：分两批交付。第一批（HW200×200规格，150吨）于2026年5月10日前交付；第二批（HN300×150规格，150吨）于2026年5月20日前交付。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「4.1 甲方应于到货后十五个工作日内完成验收，逾期未提出书面异议的，视为验收合格。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 问题：财务部要求按惯例留5%作为质量保证金，质保期满无质量问题后支付。合同现状为收货后90日内全额付款，未设置质量保证金，对货物质量问题的后续保障不足。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 修改建议：在付款条款中增加5%质量保证金约定，质保期满后支付。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「5.2 甲方应于收到货物后九十日内支付合同总价款的95%，剩余5%作为质量保证金，质保期满且无质量问题后三十日内支付。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：「9.1 双方确认以下电子邮件地址为有效通知地址：甲方：【待补充：甲方邮箱】；乙方：【待补充：乙方邮箱】。通知自发出之日起视为送达。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：在第六条违约责任中增加：「6.4 乙方逾期交货超过二十日的，甲方有权书面通知乙方解除本合同，并要求乙方赔偿因此造成的损失。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 推荐措辞：在第四条验收中增加：「4.3 标的物质保期为验收合格之日起十二个月。质保期内出现质量问题的，乙方应在接到甲方通知后三日内免费维修或更换。」",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 12,
+        "must_fix": 0,
+        "hints": 12
+      }
+    }
+  ],
+  "edit_list": {
+    "path": "工作区/任务/T-20261028211432-5e7d/修改清单/采购合同.json",
+    "accepted": 5,
+    "out_of_scope": [
+      {
+        "id": 4,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "manual_reason_present": true,
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "JSONL_reopen_NOT_REACHED": true,
+  "complete_OS_gone": 7,
+  "OS": [
+    {
+      "pid": 38268,
+      "parent": 18224,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T13:14:27.9659750Z"
+    },
+    {
+      "pid": 17944,
+      "parent": 38268,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T13:14:28.4441730Z"
+    },
+    {
+      "pid": 23048,
+      "parent": 17944,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T13:14:28.4513230Z"
+    },
+    {
+      "pid": 40612,
+      "parent": 17944,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T13:14:28.5146920Z"
+    },
+    {
+      "pid": 42156,
+      "parent": 40612,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T13:14:28.6168150Z"
+    },
+    {
+      "pid": 36812,
+      "parent": 40612,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T13:14:29.0073270Z"
+    },
+    {
+      "pid": 42368,
+      "parent": 36812,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T13:14:29.0150930Z"
+    }
+  ],
+  "port": {
+    "port": 50125,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T13:17:09.805+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 36812,
+    "port": 50125,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /api/tasks": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/progress": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/task/end": 1,
+        "POST /core/tool": 6
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T13:14:30.925+00:00",
+    "status": "STOPPED"
+  },
+  "sources": [
+    {
+      "role": "fixture",
+      "id": "采购合同",
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200",
+      "same": true
+    },
+    {
+      "role": "fixture",
+      "id": "采购部内部意见",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800",
+      "same": true
+    }
+  ],
+  "key_scan": {
+    "files": 27,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "source_held": true,
+  "elapsed_s": 163.76500000000124,
+  "forced": false,
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 13,
+  "manifest_sha256": "217fb35d6c5da34970dc514169c4945ea02baa61064ba0e952e57e1be28b4807"
+}

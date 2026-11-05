@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+20 !== 19
+
+    at main (D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\CrossExamFiniteExtraction-20261029-140102\verify-L0-listing-finite.mts:700:10)
+    at async <anonymous> (D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\CrossExamFiniteExtraction-20261029-140102\verify-L0-listing-finite.mts:859:1) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 20,
+  expected: 19,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.21.0
+

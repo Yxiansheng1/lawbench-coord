@@ -1,0 +1,210 @@
+{
+  "scope": "INDEPENDENT_V4_SOURCEONLY_NOT_SEMANTIC_OR_RUNTIME_PASS",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\review-consumer.mjs",
+      "bytes": 49695,
+      "sha256": "ee5b52624529d760b25a1a9ac36ceafb80a358f453f21ddc9c89e810b78c02c7",
+      "mtime_ns": "1793540632162320800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\offline-controls.mjs",
+      "bytes": 34986,
+      "sha256": "646e7ed6b2f2e1a0298a3696789996ffdd3ec60c151eb28405b67da4f0fb7173",
+      "mtime_ns": "1793540592142087200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\source-manifest.json",
+      "bytes": 677,
+      "sha256": "b87d5b4243f637ac781a672b0127ea819d9cff708a729f0d8c949d5766fa7aad",
+      "mtime_ns": "1793540646858648900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-sharded-bidirectional-v4-saved-key-root-admin.py",
+      "bytes": 15710,
+      "sha256": "040fb069dc842da14c8b336d7ab26c6b8df3cb73e1c657250b8dd7166dd130f5",
+      "mtime_ns": "1793540461152435700"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-sharded-bidirectional-v4-reviewed-runtime-root-admin.py",
+      "bytes": 3666,
+      "sha256": "42a5c8807eaaf15b7d352b64ef2f075e8cd3b62fda870de79acde918b1ccb199",
+      "mtime_ns": "1793540461153968900"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sharded-bidirectional-v4-root-launcher-static-parse-current.json",
+      "bytes": 438,
+      "sha256": "478dbf79387e7e490f26c8069e826ec4953abe38b5e84a366b374f94f686ddce",
+      "mtime_ns": "1793540461278502600"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sharded-bidirectional-v4-source-reviewed-current.json",
+      "bytes": 5410,
+      "sha256": "bc864b0607e644237b026d8b9598c95ad0ed8f545aeb70fdfb468fe36c818384",
+      "mtime_ns": "1793540879982744600"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb",
+      "mtime_ns": "1793529580417735200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-B-T18ShardedBidirectionalV4-20261101-213929.md",
+      "bytes": 6113,
+      "sha256": "251103caf0302a1108225a3ffc66f9cff207fa154bf9b2f5fef42f82d9c0c6de",
+      "mtime_ns": "1793540369625988200"
+    }
+  ],
+  "data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+    "mtime_ns": "1793529580412201500"
+  },
+  "cache_pin": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\stage1-assessments.json",
+    "bytes": 10015,
+    "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+    "mtime_ns": "1793538024944549000"
+  },
+  "requirements": [
+    "New deterministic183+182 contiguousbalancedpartition ofsame365 targets, no filters/contentselection/datachanges. Everyrequest fullcanonicalsource/draft/selfcheck/targets+active review_target_ids; EXACTactiveIDset/equalcount percall, knowninactiveoutputrejected, refsotherfamilyanyfullknownincludingoutsideactive. Strictmerge disjoint/exhaustive/canonicalfullunion beforefinalsuccess, no missingwaiver.",
+    "CurrentcacheStage1byteheld andvalidator unchanged. Twofreshsystem/usercontexts no prioroutput/history/R. Original400targetcappreKey; assessment160/quoteoverride/rootPASS/schema/refs unchanged. Source/cache5pins +Node/PW/Rootdriver=8external beforeKey.",
+    "Transportonlynewstaticwhitelist errorName/code/causeCode, no messages/stack/arbitrarycode/URL/headers/credential exposure. Originalerrorclassification/partialbody/readerclose/no retry/health/redirect/fallback held. V3actualfailed313s noHTTPbody/servercauseunknown, not semanticred orKey401.",
+    "Two requests maxqwen38-27b0.6/49152/400sremaining900/4MiB; stoponfirstfailure, preservefirstsuccess/partialraw, no partialgreen. Rootdrivermax2 restoresoriginaldiagnostic2 whileNativeproduct32model48tool unchanged. No budget/model/temp rise.",
+    "FullnewRootdriver/admitter/gate/8pins/cleanenv/noproxy/DPAPIstdin/exactownPIDexeUTCbirthcleanup/sharedUTF8raw+JSONescapedscan; PSliteralexactV2 reuse notfullnewoutercodeproof. Currentuser/sharedwritableworkspace trust only, no hostilelocalactor/owneronlyACL guarantee.",
+    "Newauthor Nodecheck3forbidden parserinvocations explicitlyrejecteddiscipline not usedasRootPASS, no cleanruntime0claim; sourceRootfullreview+legitimateaffectedoffline proof separate. SyntaxdoesnotmeanAPPruntime/moduleexecution. Fullraw/outputqualifications retained.",
+    "Allsource/targetID/quotes/union/protocol checks NOTsemantic/factual/legal/businessPASS; Rootfutureactualall365manualcounterexample+falsepositivejudge required. No productintegration/framework/SDKchanges yet; approvedsyntheticfixture only."
+  ],
+  "A_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\00-review-consumer.mjs.txt",
+      "bytes": 57548,
+      "sha256": "29d64973c06a662e5d1eb6fc9cf3f7900e28ca11a4b693d92263d1cd35c9aa6d",
+      "mtime_ns": "1793540879983755700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\01-offline-controls.mjs.txt",
+      "bytes": 41208,
+      "sha256": "7b1dd1d0ec948e071e633ab8db4a869ebfcfa26852b7d528f4c486a47bbb5239",
+      "mtime_ns": "1793540879990150100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\02-source-manifest.json.txt",
+      "bytes": 995,
+      "sha256": "80893ece6239494e91d3b7b0b4a7ee25d05f74043f4371a0e0486f4f086cf4b0",
+      "mtime_ns": "1793540879996425500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\06-T18-sharded-bidirectional-v4-source-reviewed-current.json.txt",
+      "bytes": 6090,
+      "sha256": "f297b7d18bef8a7599eda3bba01aa8b3d170e40ba5906e6ec640e88bfa19e860",
+      "mtime_ns": "1793540880076830100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793540880083762700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\08-ORCH-B-T18ShardedBidirectionalV4-20261101-213929.md.txt",
+      "bytes": 6313,
+      "sha256": "ea62a735e4ab43dedf625e0c78612ec83c66ded97f3fa30e45b264890d69e1cd",
+      "mtime_ns": "1793540880086276800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\review-consumer.mjs.diff.txt",
+      "bytes": 21267,
+      "sha256": "b6f27625497c9ea6c938bce0d76ac875b0f93c74c9b10d1f23233692ff07dd73",
+      "mtime_ns": "1793540880093229200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\offline-controls.mjs.diff.txt",
+      "bytes": 14804,
+      "sha256": "8bed44d05f15b6a6abfa71ae9c24cbbf19192065bf7de81edf22376ab64cf4b3",
+      "mtime_ns": "1793540880103277600"
+    }
+  ],
+  "C_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\00-review-consumer.mjs.txt",
+      "bytes": 57548,
+      "sha256": "29d64973c06a662e5d1eb6fc9cf3f7900e28ca11a4b693d92263d1cd35c9aa6d",
+      "mtime_ns": "1793540879983755700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\01-offline-controls.mjs.txt",
+      "bytes": 41208,
+      "sha256": "7b1dd1d0ec948e071e633ab8db4a869ebfcfa26852b7d528f4c486a47bbb5239",
+      "mtime_ns": "1793540879990150100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\02-source-manifest.json.txt",
+      "bytes": 995,
+      "sha256": "80893ece6239494e91d3b7b0b4a7ee25d05f74043f4371a0e0486f4f086cf4b0",
+      "mtime_ns": "1793540879996425500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\03-run-sharded-bidirectional-v4-saved-key-root-admin.py.txt",
+      "bytes": 16825,
+      "sha256": "25bcdf5f3db0bf238d1c0a4ea2da2ddebf484e142f4f8930d0bc75d5c5835f27",
+      "mtime_ns": "1793540880002469600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\04-admit-sharded-bidirectional-v4-reviewed-runtime-root-admin.py.txt",
+      "bytes": 4060,
+      "sha256": "67052e4d2912e8df5cfdb9efddb7df8cb7ee92710cc7106c44f7c15577b4742f",
+      "mtime_ns": "1793540880059865500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\05-T18-sharded-bidirectional-v4-root-launcher-static-parse-current.json.txt",
+      "bytes": 724,
+      "sha256": "2b311e209f6cc9e1bcf921a8f38088a387a3fed3300bd314a93e624b24e8cd6c",
+      "mtime_ns": "1793540880066729600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\06-T18-sharded-bidirectional-v4-source-reviewed-current.json.txt",
+      "bytes": 6090,
+      "sha256": "f297b7d18bef8a7599eda3bba01aa8b3d170e40ba5906e6ec640e88bfa19e860",
+      "mtime_ns": "1793540880076830100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\07-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b",
+      "mtime_ns": "1793540880083762700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\08-ORCH-B-T18ShardedBidirectionalV4-20261101-213929.md.txt",
+      "bytes": 6313,
+      "sha256": "ea62a735e4ab43dedf625e0c78612ec83c66ded97f3fa30e45b264890d69e1cd",
+      "mtime_ns": "1793540880086276800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\review-consumer.mjs.diff.txt",
+      "bytes": 21267,
+      "sha256": "b6f27625497c9ea6c938bce0d76ac875b0f93c74c9b10d1f23233692ff07dd73",
+      "mtime_ns": "1793540880093229200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18ShardedV4Independent-20261101-214759\\offline-controls.mjs.diff.txt",
+      "bytes": 14804,
+      "sha256": "8bed44d05f15b6a6abfa71ae9c24cbbf19192065bf7de81edf22376ab64cf4b3",
+      "mtime_ns": "1793540880103277600"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sharded-bidirectional-v4-root-driver-inverse.diff.txt",
+      "bytes": 6312,
+      "sha256": "9375ec622bcb26720190c264253c82cbb6903e5a6bbd5e490a9a950d77bf0c96",
+      "mtime_ns": "1793540461154974200"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-sharded-bidirectional-v4-root-admitter-inverse.diff.txt",
+      "bytes": 4729,
+      "sha256": "047f30ba5e43629e857a2d1cec60e956a1e009279f15451f3882935f6ebe1a39",
+      "mtime_ns": "1793540461154974200"
+    }
+  ]
+}

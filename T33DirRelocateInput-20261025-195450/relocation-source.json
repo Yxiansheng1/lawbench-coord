@@ -1,0 +1,48 @@
+{
+  "case": {
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\case",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\case"
+  },
+  "original_jpeg": {
+    "bytes": 47379,
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\input\\ready\\转账截图.jpg",
+    "hash": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad",
+    "mtime_ns": 1792908466041209400,
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\input\\ready\\转账截图.jpg"
+  },
+  "original_prepared": {
+    "bytes": 58171,
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\prepared.json",
+    "hash": "5f4e694b327946c08612b15dd6a3781a709a134f0dff1ccf964024db4cd69ab9",
+    "mtime_ns": 1792908466243536400,
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\prepared.json"
+  },
+  "provenance": {
+    "external_to_case": true,
+    "newly_copied_private_source": true
+  },
+  "ready": {
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\input\\ready",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\input\\ready"
+  },
+  "run_root": {
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745"
+  },
+  "schema": "T33-relocate-source-v1",
+  "source": {
+    "bytes": 47379,
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\input\\ready\\relocation-source.jpg",
+    "hash": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad",
+    "mtime_ns": 1792908466393316600,
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\input\\ready\\relocation-source.jpg"
+  },
+  "source_path": {
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\input\\ready\\relocation-source.jpg",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\input\\ready\\relocation-source.jpg"
+  },
+  "target_path": {
+    "canonical": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t33\\relocateentry-20261025-135639\\runs\\t33-host-20261025-140745\\input\\ready\\relocation-moved.jpg",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\RelocateEntry-20261025-135639\\runs\\T33-host-20261025-140745\\input\\ready\\relocation-moved.jpg"
+  }
+}

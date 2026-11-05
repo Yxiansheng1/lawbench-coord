@@ -1,0 +1,23 @@
+{
+  "old_native": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\ReadGetEntry-20261025-105313\\server.py",
+  "old_sha": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca",
+  "new_native": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\TaskSelectionEntry-20261025-154140\\server.py",
+  "new_sha": "ed7be2e8530f128d3068e793cc04c0d05deb7d68aefd243353c428df06d5fd34",
+  "old_runs_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\ReadGetEntry-20261025-105313\\runs",
+  "new_runs_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\TaskSelectionEntry-20261025-154140\\runs",
+  "target": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\TaskSelectionGui-20261025-155216",
+  "old_source_pins": {
+    "prepare.ps1": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37",
+    "start.ps1": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445",
+    "stop.ps1": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647",
+    "README.md": "c1c8b4ecaa97ff427f2ad0af2255084a0aa23213d77f17e51c53e8ee640635b0"
+  },
+  "finite_HTTP": {
+    "requests": 15,
+    "native_task_posts": 1,
+    "other_task_posts_denied": 4,
+    "corebegin_denied": 1,
+    "natural_exit": true,
+    "result_reference": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-task-entry-root-run-current.json"
+  }
+}

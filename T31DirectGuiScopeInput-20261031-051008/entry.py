@@ -1,0 +1,1239 @@
+#!/usr/bin/env python3
+"""T31 small source-only GUI scope service adapter.
+
+This entry verifies and executes the pinned original canonical entry in a
+private namespace.  It composes that unchanged implementation with the
+pinned approved scope policy.  It does not replace canonical guard, layout,
+admission, registry, application, or loop helpers.
+"""
+from __future__ import annotations
+
+import argparse
+import asyncio
+import hashlib
+import inspect
+import json
+import os
+import pathlib
+import re
+import sqlite3
+import stat
+import sys
+import threading
+import time
+import types
+from typing import Any
+
+import httpx
+import uvicorn
+
+
+SELF_ROOT = pathlib.Path(__file__).resolve().parent
+PLANNED_GUI_ROOT = pathlib.Path(
+    r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T31"
+    r"\GuiScopeSubmission-20261031-050218"
+)
+
+CANONICAL_PATH = pathlib.Path(
+    r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T34"
+    r"\CanonicalOriginalGUI-20261031-022702\entry.py"
+)
+CANONICAL_BYTES = 88654
+CANONICAL_SHA256 = (
+    "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+)
+POLICY_PATH = pathlib.Path(
+    r"D:\Lawbeach\lawbench-B\docs\plan\evidence\T31"
+    r"\GuiScopePolicyContract-20261031-045658\scope-policy.py"
+)
+POLICY_BYTES = 24402
+POLICY_SHA256 = (
+    "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb"
+)
+FIXTURE_ROOT = SELF_ROOT
+EXPECTED_MATERIALS = {
+    "scope-a.txt": (
+        37,
+        "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8",
+    ),
+    "scope-b.txt": (
+        37,
+        "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91",
+    ),
+    "scope-c.txt": (
+        39,
+        "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439",
+    ),
+}
+SCOPE_SOURCE_NAME = "scope-source"
+MAX_SECONDS = 600
+MAX_EVIDENCE_TEXT = 160
+
+
+def _plain_sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _file_bytes(path: pathlib.Path) -> bytes:
+    info = path.lstat()
+    if not stat.S_ISREG(info.st_mode) or info.st_size > 1_048_576:
+        raise RuntimeError("unexpected_source_file")
+    return path.read_bytes()
+
+
+def _verified_file(
+    path: pathlib.Path, expected_bytes: int, expected_sha256: str
+) -> bytes:
+    data = _file_bytes(path)
+    if len(data) != expected_bytes or _plain_sha256_bytes(data) != expected_sha256:
+        raise RuntimeError("pinned_source_identity")
+    return data
+
+
+def _load_canonical() -> types.ModuleType:
+    source = _verified_file(CANONICAL_PATH, CANONICAL_BYTES, CANONICAL_SHA256)
+    module = types.ModuleType("_t31_canonical_original_private")
+    module.__file__ = str(CANONICAL_PATH)
+    module.__package__ = None
+    exec(compile(source, str(CANONICAL_PATH), "exec"), module.__dict__)
+    module.EVIDENCE_ROOT = SELF_ROOT
+    module.RUNS_ROOT = SELF_ROOT
+    if module.__dict__.get("__name__") == "__main__":
+        raise RuntimeError("canonical_main_executed_at_load")
+    return module
+
+
+ORIGINAL = _load_canonical()
+
+
+def _fixture_state() -> dict[str, dict[str, Any]]:
+    state: dict[str, dict[str, Any]] = {}
+    for name, (expected_bytes, expected_sha256) in EXPECTED_MATERIALS.items():
+        data = _verified_file(FIXTURE_ROOT / name, expected_bytes, expected_sha256)
+        state[name] = {
+            "bytes": len(data),
+            "sha256": _plain_sha256_bytes(data),
+        }
+    return state
+
+
+def _scope_files(root: pathlib.Path) -> dict[str, dict[str, Any]]:
+    scope_root = root / SCOPE_SOURCE_NAME
+    if not scope_root.is_dir() or scope_root.is_symlink():
+        raise RuntimeError("scope_source_missing")
+    names = sorted(path.name for path in scope_root.iterdir())
+    if names != sorted(EXPECTED_MATERIALS):
+        raise RuntimeError("scope_source_shape")
+    result: dict[str, dict[str, Any]] = {}
+    for name, (expected_bytes, expected_sha256) in EXPECTED_MATERIALS.items():
+        path = scope_root / name
+        data = _verified_file(path, expected_bytes, expected_sha256)
+        result[name] = {
+            "bytes": len(data),
+            "sha256": _plain_sha256_bytes(data),
+        }
+    return result
+
+
+def _copy_scope_sources(raw_root: str) -> pathlib.Path:
+    root = ORIGINAL._validate_root(raw_root)
+    admission = ORIGINAL._admit(raw_root)
+    if admission != root / "admission.json":
+        raise ORIGINAL.Deny("original_admission_path")
+    source_before = _fixture_state()
+    target = root / SCOPE_SOURCE_NAME
+    target.mkdir(mode=0o700, parents=False, exist_ok=False)
+    for name in sorted(EXPECTED_MATERIALS):
+        data = _verified_file(
+            FIXTURE_ROOT / name,
+            EXPECTED_MATERIALS[name][0],
+            EXPECTED_MATERIALS[name][1],
+        )
+        path = target / name
+        with path.open("xb") as stream:
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+    if _scope_files(root) != source_before or _fixture_state() != source_before:
+        raise ORIGINAL.Deny("scope_copy_identity")
+    return admission
+
+
+def _capture_host_values(
+    root: pathlib.Path, appdata: pathlib.Path
+) -> tuple[int, int, str]:
+    port_text = os.environ.get("LB_PORT")
+    forward_text = os.environ.get("LB_FORWARD_PORT")
+    token = os.environ.get("LB_TOKEN")
+    host_appdata = os.environ.get("LB_APPDATA")
+    if port_text is None or re.fullmatch(r"[0-9]+", port_text) is None:
+        raise ORIGINAL.Deny("invalid_LB_PORT")
+    if forward_text is None or re.fullmatch(r"[0-9]+", forward_text) is None:
+        raise ORIGINAL.Deny("invalid_LB_FORWARD_PORT")
+    if token is None or re.fullmatch(r"[0-9a-f]{64}", token) is None:
+        raise ORIGINAL.Deny("invalid_LB_TOKEN")
+    if host_appdata is None or ORIGINAL._norm(host_appdata) != ORIGINAL._norm(appdata):
+        raise ORIGINAL.Deny("LB_APPDATA_not_prepared")
+    host_port = int(port_text, 10)
+    forward_port = int(forward_text, 10)
+    if not 1 <= host_port <= 65535:
+        raise ORIGINAL.Deny("LB_PORT_out_of_range")
+    if not 10000 <= forward_port <= 65535:
+        raise ORIGINAL.Deny("LB_FORWARD_PORT_out_of_range")
+    if forward_port == host_port:
+        raise ORIGINAL.Deny("LB_FORWARD_PORT_matches_host")
+    if 65001 <= forward_port <= 65005 or forward_port == 18765:
+        raise ORIGINAL.Deny("LB_FORWARD_PORT_reserved")
+    if not root.is_dir():
+        raise ORIGINAL.Deny("root_missing")
+    return host_port, forward_port, token
+
+
+def _host_values(root: pathlib.Path, appdata: pathlib.Path) -> tuple[int, str]:
+    host_port, _forward_port, token = _capture_host_values(root, appdata)
+    return host_port, token
+
+
+class RefusingModelTransport(httpx.BaseTransport, httpx.AsyncBaseTransport):
+    """A real HTTPX transport that refuses before a socket can be opened."""
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._count = 0
+        self._methods: dict[str, int] = {}
+        self._paths: dict[str, int] = {}
+
+    def _record(self, request: httpx.Request) -> None:
+        method = request.method.upper()[:16]
+        path = request.url.path[:160]
+        with self._lock:
+            self._count += 1
+            self._methods[method] = self._methods.get(method, 0) + 1
+            self._paths[path] = self._paths.get(path, 0) + 1
+
+    def _raise(self, request: httpx.Request) -> None:
+        self._record(request)
+        raise httpx.ConnectError(
+            "T31 expected model boundary refusal", request=request
+        )
+
+    def handle_request(self, request: httpx.Request) -> httpx.Response:
+        self._raise(request)
+
+    async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
+        self._raise(request)
+
+    def evidence(self) -> dict[str, Any]:
+        with self._lock:
+            return {
+                "classification": "EXPECTED_MODEL_BOUNDARY_REFUSALS",
+                "count": self._count,
+                "methods": dict(sorted(self._methods.items())),
+                "paths": dict(sorted(self._paths.items())),
+            }
+
+    def close(self) -> None:
+        return None
+
+    async def aclose(self) -> None:
+        return None
+
+
+POLICY_FACTORY_NAMES = (
+    "build_scope_firewall",
+    "make_scope_firewall",
+    "create_scope_firewall",
+    "scope_firewall",
+    "build_policy",
+    "make_policy",
+    "create_policy",
+)
+
+
+def _load_policy_base(canonical: types.ModuleType) -> type:
+    source = _verified_file(POLICY_PATH, POLICY_BYTES, POLICY_SHA256)
+    module = types.ModuleType("_t31_approved_scope_policy_private")
+    module.__file__ = str(POLICY_PATH)
+    module.__package__ = None
+    exec(compile(source, str(POLICY_PATH), "exec"), module.__dict__)
+    direct = [
+        value
+        for value in module.__dict__.values()
+        if isinstance(value, type)
+        and value is not canonical.Firewall
+        and issubclass(value, canonical.Firewall)
+        and value.__module__ == module.__name__
+    ]
+    found: list[type] = direct
+    if not found:
+        for name in POLICY_FACTORY_NAMES:
+            factory = module.__dict__.get(name)
+            if not callable(factory) or not inspect.isfunction(factory):
+                continue
+            parameters = list(inspect.signature(factory).parameters.values())
+            required = [
+                item
+                for item in parameters
+                if item.default is inspect.Parameter.empty
+                and item.kind
+                in {
+                    inspect.Parameter.POSITIONAL_ONLY,
+                    inspect.Parameter.POSITIONAL_OR_KEYWORD,
+                }
+            ]
+            try:
+                if not required:
+                    value = factory()
+                elif (
+                    len(required) == 1
+                    and required[0].name in {"firewall", "base", "base_class"}
+                ):
+                    value = factory(canonical.Firewall)
+                else:
+                    continue
+            except Exception:
+                continue
+            if isinstance(value, type) and issubclass(value, canonical.Firewall):
+                found.append(value)
+    unique = list(dict.fromkeys(found))
+    if len(unique) != 1:
+        raise ORIGINAL.Deny("approved_scope_policy_class_contract")
+    return unique[0]
+
+
+def _policy_init_values(
+    policy_base: type,
+    *,
+    app: Any,
+    root: pathlib.Path,
+    case: pathlib.Path,
+    case_id: str,
+    host_token: str,
+    lb: Any,
+    scope_root: pathlib.Path,
+    ownership: "PortOwnership",
+    expected_materials: dict[str, tuple[int, str]],
+) -> dict[str, Any]:
+    available = {
+        "app": app,
+        "root": root,
+        "case": case,
+        "case_id": case_id,
+        "host_token": host_token,
+        "lb": lb,
+        "scope_root": scope_root,
+        "ownership": ownership,
+        "expected_materials": expected_materials,
+    }
+    parameters = inspect.signature(policy_base.__init__).parameters.values()
+    accepts_extra = any(
+        item.kind == inspect.Parameter.VAR_KEYWORD for item in parameters
+    )
+    selected = {
+        item.name: available[item.name]
+        for item in parameters
+        if item.name != "self"
+        and item.name in available
+        and item.kind
+        in {
+            inspect.Parameter.POSITIONAL_OR_KEYWORD,
+            inspect.Parameter.KEYWORD_ONLY,
+        }
+    }
+    required = [
+        item
+        for item in parameters
+        if item.name != "self"
+        and item.default is inspect.Parameter.empty
+        and item.kind
+        in {
+            inspect.Parameter.POSITIONAL_ONLY,
+            inspect.Parameter.POSITIONAL_OR_KEYWORD,
+            inspect.Parameter.KEYWORD_ONLY,
+        }
+        and item.name not in selected
+    ]
+    if required or (accepts_extra and not selected):
+        raise ORIGINAL.Deny("approved_scope_policy_constructor_contract")
+    return selected
+
+
+class PortOwnership:
+    def __init__(self, host_port: int, forward_port: int) -> None:
+        self.host_port = host_port
+        self.forward_port = forward_port
+        self.host_listener = False
+        self.forward_listener = False
+
+    @property
+    def both(self) -> bool:
+        return self.host_listener and self.forward_listener
+
+    def evidence(self) -> dict[str, Any]:
+        return {
+            "apiPort": self.host_port,
+            "forwardPort": self.forward_port,
+            "apiListenerOwned": self.host_listener,
+            "forwardListenerOwned": self.forward_listener,
+            "bothOwned": self.both,
+            "loopbackOnly": True,
+        }
+
+
+def _material_rows(index: dict[str, Any]) -> list[dict[str, Any]]:
+    rows = index.get("materials")
+    return [row for row in rows if isinstance(row, dict)] if isinstance(rows, list) else []
+
+
+def _row_sha256(row: dict[str, Any]) -> str | None:
+    value = row.get("sha256", row.get("sha"))
+    return value if isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value) else None
+
+
+def _bounded_ids(value: Any, *, depth: int = 0) -> list[str]:
+    if depth > 8:
+        return []
+    found: list[str] = []
+    if isinstance(value, str):
+        if 1 <= len(value) <= MAX_EVIDENCE_TEXT:
+            found.append(value)
+    elif isinstance(value, (list, tuple)):
+        for item in value[:64]:
+            found.extend(_bounded_ids(item, depth=depth + 1))
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            if isinstance(key, str) and any(
+                marker in key.lower()
+                for marker in ("id", "scope", "policy", "selected", "status")
+            ):
+                found.extend(_bounded_ids(item, depth=depth + 1))
+    return list(dict.fromkeys(found))[:128]
+
+
+def _extract_named(response: Any, names: set[str]) -> Any:
+    if not isinstance(response, dict):
+        return None
+    stack: list[tuple[dict[str, Any], int]] = [(response, 0)]
+    while stack:
+        value, depth = stack.pop(0)
+        for key, item in value.items():
+            if key in names:
+                return item
+            if depth < 3 and isinstance(item, dict):
+                stack.append((item, depth + 1))
+    return None
+
+
+class ScopeEvidenceFirewall:
+    def __new__(cls, *args: Any, **kwargs: Any):
+        policy_base = kwargs.pop("_policy_base")
+        policy_kwargs = kwargs.pop("_policy_kwargs")
+        scoped = type("ApprovedScopeEvidenceFirewall", (policy_base,), {})
+        scoped._adapter_policy_base = policy_base
+        scoped._complete = cls._complete
+        scoped._policy = cls._policy
+        scoped.adapter_evidence = cls.adapter_evidence
+        scoped._verify_index_binding = cls._verify_index_binding
+        scoped._publish_scope_evidence = cls._publish_scope_evidence
+        scoped.__init__ = cls.__init__
+        instance = object.__new__(scoped)
+        instance.__init__(
+            *args,
+            **kwargs,
+            _adapter_lb=policy_kwargs["lb"],
+            _adapter_scope_root=policy_kwargs["scope_root"],
+            _adapter_ownership=policy_kwargs["ownership"],
+            _adapter_expected=policy_kwargs["expected_materials"],
+        )
+        return instance
+
+    def __init__(
+        self,
+        *args: Any,
+        **kwargs: Any,
+    ) -> None:
+        adapter_lb = kwargs.pop("_adapter_lb")
+        self._adapter_scope_root = kwargs.pop("_adapter_scope_root")
+        self._adapter_ownership = kwargs.pop("_adapter_ownership")
+        self._adapter_expected = kwargs.pop("_adapter_expected")
+        self._adapter_lb = adapter_lb
+        self._adapter_lock = threading.RLock()
+        self._adapter_bound_ids: tuple[str, ...] = ()
+        self._adapter_native_binding = False
+        self._adapter_material_rows: list[dict[str, Any]] = []
+        self._adapter_imports: list[dict[str, Any]] = []
+        self._adapter_task_values: dict[str, Any] = {}
+        self._adapter_policy_values: list[Any] = []
+        self._adapter_failure: str | None = None
+        self._adapter_last_publish_error: str | None = None
+        self._adapter_policy_base.__init__(self, *args, **kwargs)
+
+    def _policy(
+        self, method: str, path: str, data: Any, query: bytes
+    ) -> str | None:
+        lowered = path.lower()
+        if "core" in lowered or "send" in lowered:
+            with self._adapter_lock:
+                ready = (
+                    self._adapter_native_binding
+                    and len(self._adapter_bound_ids) == 3
+                    and self._adapter_ownership.both
+                )
+            self._deny("SCOPE_BINDING_NOT_READY") if not ready else None
+            if not ready:
+                return "SCOPE_BINDING_NOT_READY"
+        return self._adapter_policy_base._policy(self, method, path, data, query)
+
+    def _verify_index_binding(self) -> bool:
+        index = self._adapter_lb.materials.index(ORIGINAL.EXPECTED_CASE_ID)
+        rows = _material_rows(index)
+        by_name: dict[str, dict[str, Any]] = {}
+        actual_rows_by_name: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            name = row.get("name")
+            if not isinstance(name, str) or name not in self._adapter_expected:
+                continue
+            if name in by_name:
+                raise ORIGINAL.Deny("native_material_duplicate_name")
+            sha256 = _row_sha256(row)
+            expected_sha256 = self._adapter_expected[name][1]
+            if sha256 != expected_sha256:
+                raise ORIGINAL.Deny("native_material_sha_mismatch")
+            if row.get("status") != "parsed":
+                raise ORIGINAL.Deny("native_material_not_parsed")
+            if row.get("origin") != "ref" or not row.get("ref_id"):
+                raise ORIGINAL.Deny("native_material_ref_mismatch")
+            material_id = row.get("material_id")
+            if not isinstance(material_id, str) or not material_id:
+                raise ORIGINAL.Deny("native_material_id_missing")
+            by_name[name] = {
+                "material_id": material_id,
+                "name": name,
+                "sha256": sha256,
+                "status": "parsed",
+                "origin": "ref",
+                "ref_id": row["ref_id"],
+            }
+            actual_rows_by_name[name] = dict(row)
+        if set(by_name) != set(self._adapter_expected):
+            raise ORIGINAL.Deny("native_material_set_mismatch")
+        ids = tuple(row["material_id"] for row in by_name.values())
+        if len(set(ids)) != 3:
+            raise ORIGINAL.Deny("native_material_ids_not_distinct")
+        binder = getattr(self, "bind_materials", None)
+        if not callable(binder):
+            binder = getattr(self._adapter_lb, "bind_materials", None)
+        if not callable(binder):
+            raise ORIGINAL.Deny("native_material_binder_missing")
+        binder([actual_rows_by_name[name] for name in sorted(actual_rows_by_name)])
+        with self._adapter_lock:
+            if self._adapter_native_binding:
+                raise ORIGINAL.Deny("native_material_bind_repeated")
+            self._adapter_material_rows = list(by_name.values())
+            self._adapter_bound_ids = ids
+            self._adapter_native_binding = True
+        return True
+
+    def _publish_scope_evidence(self) -> None:
+        with self._adapter_lock:
+            document = {
+                "format": "lawbench-t31-small-gui-scope-evidence-v1",
+                "caseId": ORIGINAL.EXPECTED_CASE_ID,
+                "nativeIndexBindingVerified": self._adapter_native_binding,
+                "materialResponseVerified": False,
+                "materialResponseShaPolicy": (
+                    "public GET /api/materials intentionally omits sha256"
+                ),
+                "boundMaterialIds": list(self._adapter_bound_ids),
+                "boundMaterials": list(self._adapter_material_rows),
+                "importScans": list(self._adapter_imports[-16:]),
+                "taskValues": dict(self._adapter_task_values),
+                "policyValues": list(self._adapter_policy_values[-32:]),
+                "adapterFailure": self._adapter_failure,
+                "ownership": self._adapter_ownership.evidence(),
+            }
+        try:
+            ORIGINAL._write_json(
+                self._adapter_scope_root / "scope-evidence.json", document
+            )
+            self._adapter_last_publish_error = None
+        except Exception as exc:
+            self._adapter_last_publish_error = type(exc).__name__
+
+    def _complete(
+        self, method: str, path: str, status: int | None, response: Any
+    ) -> None:
+        self._adapter_policy_base._complete(
+            self, method, path, status, response
+        )
+        succeeded = (
+            status == 200
+            and isinstance(response, dict)
+            and response.get("ok") is True
+        )
+        if not succeeded:
+            return
+        if method == "POST" and path == "/api/materials/import":
+            scan = _extract_named(response, {"scan", "import_scan"})
+            added = scan.get("added") if isinstance(scan, dict) else None
+            with self._adapter_lock:
+                self._adapter_imports.append(
+                    {
+                        "added": added if isinstance(added, int) else None,
+                        "status": "ok",
+                    }
+                )
+        material_response = method == "GET" and path == "/api/materials"
+        import_response = method == "POST" and path == "/api/materials/import"
+        if material_response or import_response:
+            try:
+                self._verify_index_binding()
+            except Exception as exc:
+                with self._adapter_lock:
+                    self._adapter_failure = getattr(
+                        exc, "code", type(exc).__name__
+                    )
+        task_value = _extract_named(
+            response,
+            {
+                "task_id",
+                "session_id",
+                "case_id",
+                "request_id",
+                "request_scope",
+                "selected_material_ids",
+                "material_ids",
+            },
+        )
+        if task_value is not None:
+            with self._adapter_lock:
+                self._adapter_task_values[path] = _bounded_ids(task_value)
+        policy_value = _extract_named(response, {"policy", "policy_result", "scope"})
+        if policy_value is not None:
+            with self._adapter_lock:
+                self._adapter_policy_values.append(_bounded_ids(policy_value))
+        self._publish_scope_evidence()
+
+    def adapter_evidence(self) -> dict[str, Any]:
+        with self._adapter_lock:
+            return {
+                "nativeIndexBindingVerified": self._adapter_native_binding,
+                "materialResponseVerified": False,
+                "boundMaterialIds": list(self._adapter_bound_ids),
+                "boundMaterials": list(self._adapter_material_rows),
+                "importScans": list(self._adapter_imports),
+                "taskValues": dict(self._adapter_task_values),
+                "policyValues": list(self._adapter_policy_values),
+                "adapterFailure": self._adapter_failure,
+                "evidencePublishError": self._adapter_last_publish_error,
+            }
+
+
+def _make_firewall(
+    native: Any,
+    *,
+    root: pathlib.Path,
+    case: pathlib.Path,
+    host_token: str,
+    lb: Any,
+    ownership: PortOwnership,
+) -> ScopeEvidenceFirewall:
+    base = _load_policy_base(ORIGINAL)
+    value_map = {
+        "app": native,
+        "root": root,
+        "case": case,
+        "case_id": ORIGINAL.EXPECTED_CASE_ID,
+        "host_token": host_token,
+        "lb": lb,
+        "scope_root": root,
+        "ownership": ownership,
+        "expected_materials": EXPECTED_MATERIALS,
+    }
+    policy_kwargs = _policy_init_values(
+        base,
+        app=native,
+        root=root,
+        case=case,
+        case_id=ORIGINAL.EXPECTED_CASE_ID,
+        host_token=host_token,
+        lb=lb,
+        scope_root=root,
+        ownership=ownership,
+        expected_materials=EXPECTED_MATERIALS,
+    )
+    return ScopeEvidenceFirewall(
+        _policy_base=base,
+        _policy_kwargs=value_map,
+        **policy_kwargs,
+    )
+
+
+def _task_store_observation(
+    lb: Any, case_root: pathlib.Path
+) -> dict[str, Any]:
+    tasks = getattr(lb, "tasks", None)
+    candidates = [tasks]
+    for owner in (tasks,):
+        if owner is not None:
+            for attribute in ("store", "task_store", "_store"):
+                value = getattr(owner, attribute, None)
+                if value is not None and value not in candidates:
+                    candidates.append(value)
+    path_value = None
+    for candidate in candidates:
+        if isinstance(candidate, (str, os.PathLike)):
+            path_value = candidate
+            break
+        for attribute in ("path", "db_path", "store_path", "file"):
+            value = getattr(candidate, attribute, None)
+            if isinstance(value, (str, os.PathLike)):
+                path_value = value
+                break
+        if path_value is not None:
+            break
+    if path_value is None:
+        return {
+            "observed": False,
+            "reason": "native_task_store_path_not_exposed",
+            "rewritten": False,
+        }
+    path = pathlib.Path(path_value).resolve()
+    case = case_root.resolve()
+    if path != case and case not in path.parents:
+        return {
+            "observed": False,
+            "reason": "native_task_store_outside_case",
+            "rewritten": False,
+        }
+    if not path.is_file() or path.is_symlink():
+        return {
+            "observed": False,
+            "reason": "native_task_store_file_missing",
+            "rewritten": False,
+        }
+    data = path.read_bytes()
+    observed_scope: Any = None
+    try:
+        if path.suffix.lower() in {".json", ".jsonl"}:
+            values = []
+            if path.suffix.lower() == ".json":
+                values = [json.loads(data)]
+            else:
+                values = [
+                    json.loads(line)
+                    for line in data.decode("utf-8").splitlines()
+                    if line.strip()
+                ]
+            for value in values[-64:]:
+                found = _extract_named(value, {"request_scope", "current_request_scope"})
+                if found is not None:
+                    observed_scope = _bounded_ids(found)
+        elif path.suffix.lower() in {".db", ".sqlite", ".sqlite3"}:
+            uri = path.as_uri() + "?mode=ro"
+            with sqlite3.connect(uri, uri=True) as connection:
+                tables = connection.execute(
+                    "SELECT name FROM sqlite_master WHERE type='table'"
+                ).fetchall()
+                for (table,) in tables[:64]:
+                    if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", table):
+                        continue
+                    columns = connection.execute(
+                        f"PRAGMA table_info('{table}')"
+                    ).fetchall()
+                    scope_column = next(
+                        (
+                            row[1]
+                            for row in columns
+                            if row[1] in {"request_scope", "current_request_scope"}
+                        ),
+                        None,
+                    )
+                    if scope_column:
+                        row = connection.execute(
+                            f'SELECT "{scope_column}" FROM "{table}" '
+                            f'ORDER BY rowid DESC LIMIT 1'
+                        ).fetchone()
+                        if row is not None:
+                            try:
+                                decoded = json.loads(row[0])
+                                observed_scope = _bounded_ids(decoded)
+                            except (TypeError, json.JSONDecodeError):
+                                observed_scope = _bounded_ids(str(row[0]))
+                        break
+    except Exception as exc:
+        return {
+            "observed": False,
+            "reason": f"native_task_store_read_{type(exc).__name__}",
+            "pathWithinCase": True,
+            "rewritten": False,
+        }
+    return {
+        "observed": observed_scope is not None,
+        "pathWithinCase": True,
+        "bytes": len(data),
+        "sha256": _plain_sha256_bytes(data),
+        "currentRequestScope": observed_scope,
+        "rewritten": False,
+    }
+
+
+def _inventory(root: pathlib.Path) -> dict[str, tuple[int, str]]:
+    rows = ORIGINAL._tree_files(root)
+    return {row["path"]: (row["bytes"], row["sha256"]) for row in rows}
+
+
+async def _serve(root: pathlib.Path, seconds: int) -> tuple[str, str]:
+    manifest, _admission, layout = ORIGINAL._verify_admission(root)
+    host_port, forward_port, host_token = _capture_host_values(
+        root, layout["appdata"]
+    )
+    fixture_before = _fixture_state()
+    scope_before = _scope_files(root)
+    target_logs_before = ORIGINAL._target_log_identity(layout["case"])
+    target_inventory_before = _inventory(layout["case"])
+    started_path = root / "started.json"
+    ORIGINAL._write_json(
+        started_path,
+        {
+            "status": "started",
+            "pid": os.getpid(),
+            "started_at": ORIGINAL._now(),
+            "root": str(root),
+            "case_id": ORIGINAL.EXPECTED_CASE_ID,
+            "host_port": host_port,
+            "forward_port": forward_port,
+            "requested_seconds": seconds,
+        },
+    )
+
+    guard = ORIGINAL.BASE.Guard()
+    credential_counts = {"local": 0, "external": 0, "keyring": 0}
+    credential_lock = threading.Lock()
+    transport = RefusingModelTransport()
+    ownership = PortOwnership(host_port, forward_port)
+    restore = None
+    logs = None
+    lb = None
+    firewall = None
+    api_server = None
+    forward_server = None
+    api_task = None
+    forward_task = None
+    api_port: int | None = None
+    forward_listener_port: int | None = None
+    net_closed = False
+    logs_closed = False
+    transport_closed = False
+    failure: str | None = None
+    started_at = ORIGINAL._now()
+
+    def local_key() -> str:
+        with credential_lock:
+            credential_counts["local"] += 1
+        return "T31-small-branch-gui-fake-local-token"
+
+    def external_key() -> str:
+        with credential_lock:
+            credential_counts["external"] += 1
+        return "T31-small-branch-gui-fake-external-token"
+
+    try:
+        ORIGINAL._scrub_env(layout)
+        ORIGINAL._install_keyring(credential_counts, guard, credential_lock)
+        ORIGINAL._assert_b_sources()
+        guard.phase = "product_import"
+        restore = ORIGINAL._install_guards(guard)
+        sys.path.insert(0, str(ORIGINAL.B_SERVICE))
+        from lawbench import contracts as imported_contracts
+        from lawbench import logs as imported_logs
+        from lawbench.app import create_app
+        from lawbench.case import gate as gate_module
+        from lawbench.case import materials as materials_module
+        from lawbench.config import Config
+        from lawbench.ingest import libreoffice as lo_module
+
+        logs = imported_logs
+        module_file = pathlib.Path(sys.modules["lawbench"].__file__).resolve()
+        if module_file.parents[2] != ORIGINAL.B_PRODUCT_ROOT.resolve():
+            raise ORIGINAL.Deny("product_root_not_current_b")
+        gate_module._registry_onedrive_folders = lambda: []
+        lo_module.find_soffice = lambda: None
+
+        def no_convert(*_args: Any, **_kwargs: Any):
+            guard.deny("office_conversion")
+            raise ORIGINAL.Deny("office_conversion")
+
+        materials_module.Converter.convert = no_convert
+        guard.phase = "app_create"
+        config = Config(
+            token=host_token,
+            appdata=layout["appdata"],
+            port=host_port,
+            forward_port=forward_port,
+            skills_dirs=[ORIGINAL.SKILLS_DIR],
+            contracts_dir=ORIGINAL.B_CONTRACTS,
+            validate_responses=True,
+        )
+        native = create_app(
+            config,
+            key_getter=local_key,
+            external_key_getter=external_key,
+            transport=transport,
+        )
+        lb = native.state.lb
+        ORIGINAL._assert_wiring(lb, layout["appdata"], host_port, host_token)
+        lb.retainer = ORIGINAL.DisabledRetainer()
+
+        def no_recycle(*_args: Any, **_kwargs: Any):
+            guard.deny("recycle")
+            raise ORIGINAL.Deny("recycle")
+
+        lb.materials.can_recycle = no_recycle
+        lb.materials.recycle = no_recycle
+        with credential_lock:
+            if credential_counts["local"] or credential_counts["external"]:
+                raise ORIGINAL.Deny("credential_getter_at_startup")
+
+        firewall = _make_firewall(
+            native,
+            root=root,
+            case=layout["case"],
+            host_token=host_token,
+            lb=lb,
+            ownership=ownership,
+        )
+        forward = ORIGINAL.forward_app(
+            lb.net,
+            transport=transport,
+            external_key_getter=external_key,
+        )
+        api_server = uvicorn.Server(
+            uvicorn.Config(
+                app=firewall,
+                host="127.0.0.1",
+                port=host_port,
+                workers=1,
+                lifespan="off",
+                ws="none",
+                loop="asyncio",
+                http="h11",
+                access_log=False,
+                log_level="warning",
+                log_config=None,
+                server_header=False,
+                date_header=False,
+                proxy_headers=False,
+            )
+        )
+        forward_server = uvicorn.Server(
+            uvicorn.Config(
+                app=forward,
+                host="127.0.0.1",
+                port=forward_port,
+                workers=1,
+                lifespan="on",
+                ws="none",
+                loop="asyncio",
+                http="h11",
+                access_log=False,
+                log_level="warning",
+                log_config=None,
+                server_header=False,
+                date_header=False,
+                proxy_headers=False,
+            )
+        )
+        guard.phase = "server_start"
+        api_task = asyncio.create_task(api_server.serve())
+        await ORIGINAL._started(api_server, api_task)
+        forward_task = asyncio.create_task(forward_server.serve())
+        await ORIGINAL._started(forward_server, forward_task)
+        api_listener = ORIGINAL._listener(api_server)
+        forward_listener = ORIGINAL._listener(forward_server)
+        api_port = int(api_listener.getsockname()[1])
+        forward_listener_port = int(forward_listener.getsockname()[1])
+        if api_port != host_port or forward_listener_port != forward_port:
+            raise ORIGINAL.Deny("listener_port_mismatch")
+        ownership.host_listener = True
+        ownership.forward_listener = True
+        if not ownership.both:
+            raise ORIGINAL.Deny("listener_ownership_incomplete")
+        if imported_contracts.version() != "1.6":
+            raise ORIGINAL.Deny("contract_version_not_1_6")
+        ORIGINAL._write_json(
+            root / "ready.json",
+            {
+                "status": "ready",
+                "host": "127.0.0.1",
+                "port": api_port,
+                "forwardPort": forward_listener_port,
+                "pid": os.getpid(),
+                "started_at": ORIGINAL._now(),
+                "contract_version": "1.6",
+                "case_path": str(layout["case"]),
+                "case_id": ORIGINAL.EXPECTED_CASE_ID,
+                "sourceRoot": str(root / SCOPE_SOURCE_NAME),
+                "scopeSourceRoot": str(root / SCOPE_SOURCE_NAME),
+                "scopeSourceFiles": scope_before,
+                "ownership": ownership.evidence(),
+                "sourcePins": {
+                    "canonical": {
+                        "bytes": CANONICAL_BYTES,
+                        "sha256": CANONICAL_SHA256,
+                    },
+                    "policy": {
+                        "bytes": POLICY_BYTES,
+                        "sha256": POLICY_SHA256,
+                    },
+                },
+            },
+        )
+        guard.phase = "serving"
+        deadline = asyncio.get_running_loop().time() + seconds
+        while asyncio.get_running_loop().time() < deadline:
+            if (root / "stop.request").is_file():
+                break
+            if api_task.done():
+                await api_task
+                raise ORIGINAL.Deny("api_server_exited_early")
+            if forward_task.done():
+                await forward_task
+                raise ORIGINAL.Deny("forward_server_exited_early")
+            remaining = deadline - asyncio.get_running_loop().time()
+            await asyncio.sleep(min(0.25, max(0.0, remaining)))
+    except asyncio.CancelledError:
+        failure = "cancelled"
+    except Exception as exc:
+        failure = getattr(exc, "code", type(exc).__name__)
+    finally:
+        guard.phase = "shutdown"
+        for server in (api_server, forward_server):
+            if server is not None:
+                server.should_exit = True
+        for task in (api_task, forward_task):
+            if task is None:
+                continue
+            try:
+                await asyncio.wait_for(asyncio.shield(task), timeout=15)
+            except asyncio.TimeoutError:
+                failure = failure or "graceful_shutdown_timeout"
+            except Exception as exc:
+                failure = failure or type(exc).__name__
+        if lb is not None:
+            try:
+                lb.net.client.close()
+                net_closed = bool(lb.net.client.is_closed)
+            except Exception:
+                net_closed = False
+        if logs is not None:
+            try:
+                logs.close()
+                logs_closed = True
+            except Exception:
+                logs_closed = False
+        try:
+            transport.close()
+            transport_closed = True
+        except Exception:
+            transport_closed = False
+        if restore is not None:
+            restore()
+
+    source_case_unchanged = False
+    target_logs_unchanged = False
+    fixture_unchanged = False
+    scope_unchanged = False
+    target_inventory_after: dict[str, tuple[int, str]] = {}
+    task_store: dict[str, Any] = {}
+    try:
+        source_case_unchanged = ORIGINAL._row_map(
+            ORIGINAL._tree_files(ORIGINAL.SOURCE_CASE_ROOT)
+        ) == ORIGINAL._row_map(ORIGINAL._expected_rows())
+        target_logs_unchanged = (
+            ORIGINAL._target_log_identity(layout["case"]) == target_logs_before
+        )
+        fixture_unchanged = _fixture_state() == fixture_before
+        scope_unchanged = _scope_files(root) == scope_before
+        target_inventory_after = _inventory(layout["case"])
+        if lb is not None:
+            task_store = _task_store_observation(lb, layout["case"])
+    except Exception as exc:
+        failure = failure or getattr(exc, "code", type(exc).__name__)
+    adapter_state = firewall.adapter_evidence() if firewall is not None else {}
+    guard_state = guard.snapshot()
+    if guard_state.get("violations") or any(credential_counts.values()):
+        failure = failure or "guard_or_credential_violation"
+    if not source_case_unchanged:
+        failure = failure or "source_case_changed"
+    if not target_logs_unchanged:
+        failure = failure or "old_target_logs_changed"
+    if not fixture_unchanged or not scope_unchanged:
+        failure = failure or "scope_fixture_changed"
+    if adapter_state.get("adapterFailure"):
+        failure = failure or str(adapter_state["adapterFailure"])
+    if not adapter_state.get("nativeIndexBindingVerified"):
+        failure = failure or "native_index_binding_missing"
+    api_done = bool(api_task is not None and api_task.done())
+    forward_done = bool(forward_task is not None and forward_task.done())
+    api_closed = ORIGINAL._closed(api_server)
+    forward_closed = ORIGINAL._closed(forward_server)
+    if not all((api_done, forward_done, api_closed, forward_closed)):
+        failure = failure or "listener_cleanup_incomplete"
+    if not net_closed or not logs_closed or not transport_closed:
+        failure = failure or "resource_cleanup_incomplete"
+    final = {
+        "outcome": "COMPLETED_FOR_ROOT_REVIEW" if failure is None else "FAILED_FOR_ROOT_REVIEW",
+        "root": str(root),
+        "startedAt": started_at,
+        "finishedAt": ORIGINAL._now(),
+        "requestedSeconds": seconds,
+        "failureCode": failure,
+        "caseId": ORIGINAL.EXPECTED_CASE_ID,
+        "sourceCaseUnchanged": source_case_unchanged,
+        "oldTargetLogsUnchanged": target_logs_unchanged,
+        "fixtureSourcesUnchanged": fixture_unchanged,
+        "scopeCopiesUnchanged": scope_unchanged,
+        "scopeSourceRoot": str(root / SCOPE_SOURCE_NAME),
+        "sourcePins": {
+            "canonical": {
+                "bytes": CANONICAL_BYTES,
+                "sha256": CANONICAL_SHA256,
+            },
+            "policy": {
+                "bytes": POLICY_BYTES,
+                "sha256": POLICY_SHA256,
+            },
+            "fixtures": scope_before,
+        },
+        "targetInventoryBefore": target_inventory_before,
+        "targetInventoryAfter": target_inventory_after,
+        "targetInventoryMayChangeThroughNativeProduct": True,
+        "taskStore": task_store,
+        "scopeEvidence": adapter_state,
+        "modelBoundary": transport.evidence(),
+        "actualModelUpstreamPosts": 0,
+        "credentials": credential_counts,
+        "credentialsDisabled": True,
+        "guard": guard_state,
+        "servers": {
+            "api": {
+                "host": "127.0.0.1",
+                "port": api_port,
+                "lifespan": "off",
+            },
+            "forward": {
+                "host": "127.0.0.1",
+                "port": forward_listener_port,
+                "lifespan": "on",
+            },
+            "pid": os.getpid(),
+            "ownership": ownership.evidence(),
+        },
+        "cleanup": {
+            "apiServerTaskDone": api_done,
+            "forwardServerTaskDone": forward_done,
+            "apiListenerClosed": api_closed,
+            "forwardListenerClosed": forward_closed,
+            "netClientClosed": net_closed,
+            "logsClosed": logs_closed,
+            "transportClosed": transport_closed,
+            "forcedPythonFinally": False,
+            "rootRetained": True,
+        },
+        "ocrStarted": False,
+        "retainerStarted": False,
+        "notAcceptance": (
+            "Source/service evidence only. Root must independently review the "
+            "native import, two-of-three selection, task/session scope, JSONL, "
+            "OS/Windows behavior, model refusal, full packet, and whole T31."
+        ),
+    }
+    ORIGINAL._write_json(root / "final-metadata.json", final)
+    return str(root / "final-metadata.json"), failure or ""
+
+
+def _serve_checked(raw_root: str, seconds: int) -> tuple[pathlib.Path, str, str]:
+    root = ORIGINAL._validate_root(raw_root)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    final_path = ""
+    failure = ""
+    try:
+        final_path, failure = loop.run_until_complete(_serve(root, seconds))
+    except BaseException as exc:
+        failure = getattr(exc, "code", type(exc).__name__)
+        try:
+            ORIGINAL._write_json(
+                root / "run-error.json",
+                {
+                    "outcome": "FAILED_FOR_ROOT_REVIEW",
+                    "exceptionType": type(exc).__name__,
+                    "guardCode": getattr(exc, "code", None),
+                    "rootRetained": True,
+                },
+            )
+        except BaseException:
+            pass
+    finally:
+        try:
+            loop.run_until_complete(loop.shutdown_asyncgens())
+        except BaseException:
+            pass
+        loop.close()
+        asyncio.set_event_loop(None)
+    try:
+        ORIGINAL._write_json(
+            root / "loop-closed.json",
+            {
+                "closedAt": ORIGINAL._now(),
+                "eventLoopClosed": True,
+                "finalMetadataWritten": bool(
+                    final_path and pathlib.Path(final_path).is_file()
+                ),
+            },
+        )
+    except BaseException:
+        failure = failure or "loop_close_evidence_failed"
+    return root, failure, final_path
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="T31 small GUI scope service")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--admit", action="store_true")
+    mode.add_argument("--serve", action="store_true")
+    parser.add_argument("--root", required=True)
+    parser.add_argument("--seconds", type=int, default=600)
+    args = parser.parse_args()
+    if args.admit:
+        try:
+            report = _copy_scope_sources(args.root)
+        except BaseException as exc:
+            print(
+                f"admit refused: {getattr(exc, 'code', type(exc).__name__)}",
+                file=sys.stderr,
+            )
+            return 2
+        print(report)
+        return 0
+    if not 1 <= args.seconds <= MAX_SECONDS:
+        parser.error(f"--seconds must be 1..{MAX_SECONDS}")
+    try:
+        _, failure, final_path = _serve_checked(args.root, args.seconds)
+    except BaseException as exc:
+        print(
+            f"serve refused: {getattr(exc, 'code', type(exc).__name__)}",
+            file=sys.stderr,
+        )
+        return 2
+    if final_path:
+        print(final_path)
+    if failure:
+        print(f"serve failed: {failure}", file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,57 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-handle-closure.diff.txt
+SHA 7b26b5c6ca1879086205f7dc44072e0c876da5b44c7828a5712a9e68e87b7816
+0001 --- V7_C_AMEND_A1
+0002 +++ V7_HANDLE_CLOSURE
+0003 @@ -51,7 +51,7 @@
+0004  env['NODE_USE_ENV_PROXY']='0'
+0005  assert not any(k.upper()in{'HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','NODE_OPTIONS','NODE_EXTRA_CA_CERTS'} for k in env)
+0006  driver=r'''$ErrorActionPreference='Stop'
+0007 -$bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$completed=$false;$forced=$false
+0008 +$bytes=$null;$secret=$null;$escaped=$null;$child=$null;$birth=$null;$childStarted=$false;$ownedHandle=$null;$completed=$false;$forced=$false
+0009  $clock=[Diagnostics.Stopwatch]::StartNew();$phase='ROOT_GATE'
+0010  function Read-SharedOwnedBytes([string]$LiteralPath){
+0011   $inputStream=$null;$memory=$null
+0012 @@ -79,7 +79,8 @@
+0013   $psi.StandardInputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardOutputEncoding=[Text.UTF8Encoding]::new($false);$psi.StandardErrorEncoding=[Text.UTF8Encoding]::new($false)
+0014   $psi.ArgumentList.Add(SOURCE_LITERAL);$psi.ArgumentList.Add('--credential-stdin');$psi.ArgumentList.Add('--root');$psi.ArgumentList.Add(MODELROOT_LITERAL)
+0015   $phase='OWNED_NODE_START'
+0016 - $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start()
+0017 + $child=[Diagnostics.Process]::new();$child.StartInfo=$psi;[void]$child.Start();$childStarted=$true
+0018 + $ownedHandle=$child.SafeHandle
+0019   $ownedChildIdentity=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0020   if(-not $ownedChildIdentity -or $ownedChildIdentity.ParentProcessId -ne $PID -or [IO.Path]::GetFullPath($ownedChildIdentity.ExecutablePath) -ine [IO.Path]::GetFullPath(NODE_LITERAL)){throw 'Owned child CIM identity unavailable'}
+0021   $birth=$ownedChildIdentity.CreationDate.ToUniversalTime().ToString('o')
+0022 @@ -88,8 +89,7 @@
+0023   $child.StandardInput.WriteLine($secret);$child.StandardInput.Close()
+0024   $remaining=[Math]::Max(1,900000-[int]$clock.ElapsedMilliseconds)
+0025   if(-not $child.WaitForExit($remaining)){
+0026 -  $q=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0027 -  if($q -and [IO.Path]::GetFullPath($q.ExecutablePath) -ieq [IO.Path]::GetFullPath(NODE_LITERAL) -and $q.CreationDate.ToUniversalTime().ToString('o') -ceq $birth){$child.Kill();$forced=$true}
+0028 +  $child.Kill();$forced=$true
+0029    if(-not $child.WaitForExit(5000)){throw 'Owned child still active after watchdog'}
+0030   }
+0031   $stdout=Redact-OwnedString ($stdoutTask.GetAwaiter().GetResult());$stderr=Redact-OwnedString ($stderrTask.GetAwaiter().GetResult())
+0032 @@ -110,11 +110,19 @@
+0033   [pscustomobject]@{kind='ROOT_DRIVER_FAILURE';phase=$phase;error_type=$_.Exception.GetType().Name;consumer_completed=$completed;credential_output=$false;forced_stop=$forced}|ConvertTo-Json -Compress
+0034   exit 91
+0035  }finally{
+0036 - if($null -ne $child -and -not $child.HasExited -and $null -ne $birth){
+0037 -  $q=Get-CimInstance Win32_Process -Filter ('ProcessId='+$child.Id)
+0038 -  if($q -and [IO.Path]::GetFullPath($q.ExecutablePath) -ieq [IO.Path]::GetFullPath(NODE_LITERAL) -and $q.CreationDate.ToUniversalTime().ToString('o') -ceq $birth){$child.Kill()}
+0039 + try{
+0040 +  if($null -ne $child){
+0041 +   try{
+0042 +    if($childStarted -and -not $child.HasExited){
+0043 +     $child.Kill();$forced=$true
+0044 +     if(-not $child.WaitForExit(5000)){throw 'Owned child still active after final cleanup'}
+0045 +    }
+0046 +   }finally{$child.Dispose()}
+0047 +  }
+0048 + }finally{
+0049 +  $ownedHandle=$null
+0050 +  if($null -ne $bytes){[Array]::Clear($bytes,0,$bytes.Length)};$secret=$null;$escaped=$null
+0051   }
+0052 - if($null -ne $child){$child.Dispose()};if($null -ne $bytes){[Array]::Clear($bytes,0,$bytes.Length)};$secret=$null;$escaped=$null
+0053  }'''
+0054  for token,value in sorted([('NODE_LITERAL',NODE),('ROOT_LITERAL',root),('SOURCE_LITERAL',source),('MODELROOT_LITERAL',modelroot),('START_LITERAL',root/'child-start.json'),('STDOUT_LITERAL',root/'consumer-stdout.txt'),('STDERR_LITERAL',root/'consumer-stderr.txt'),('SCAN_LITERAL',root/'owned-usedKey-scan.json')],key=lambda item:len(item[0]),reverse=True): driver=driver.replace(token,quote(value))
+0055  # This program text contains no credential. Persist before admission consumption for reproducible review.

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\dock-review.spec.ts",
+    "bytes": 23025,
+    "sha256": "3dad925cd3493fe182d21da7165deffa6b40da1c95c82449c8cf479264b49edc",
+    "mtime_ns": "1792379417918423200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\helpers\\dock-lab.ts",
+    "bytes": 7545,
+    "sha256": "5cd9786339a7432e8df0ccbbbf253a471b80c5a9bdc879fc0cd889116b35155d",
+    "mtime_ns": "1792379417920422900"
+  }
+]

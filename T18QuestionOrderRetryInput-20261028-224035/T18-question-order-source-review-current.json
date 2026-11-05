@@ -1,0 +1,15 @@
+{
+  "verdict": "QUESTION_ORDER_OBSERVER_EXACT_THREE_REGION_INVERSE_PENDING_FINITE",
+  "source_sha": "207cd958ef0d4040396455d80ca6db377a58517177aea4fdae32b4e3bf02ab45",
+  "test_sha": "1a7830de70c5c8bef763ef9ea4ce8a8d4afd8ed3ca74960b5783470e11eb8e9a",
+  "author_actual": "01a182e8-eaa1-7e30-8741-a3b6d2feb409",
+  "commands": 57,
+  "success": 44,
+  "nonzero": 13,
+  "author_runtime": 0,
+  "all_commands_source_test_note_formal_writefaces_read": true,
+  "all_other_consumer_bytes_exact": true,
+  "known_static_concern": "VM returned record has foreign prototype; helper prohibits prior denied ask retry despite earlier real59row evidence",
+  "product_and_all_frozen_inputs_held": true,
+  "Packaging": "HOLD"
+}

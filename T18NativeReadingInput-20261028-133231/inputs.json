@@ -1,0 +1,55 @@
+{
+  "nativeBaseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\native-real-conversation.mts",
+  "nativeFixedInputs": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\fixed-inputs.json",
+  "nativeAccepted": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\native-real-four-turn-root-accepted-current.json",
+  "nativeScopeAccepted": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-invalid-scope-native-http-accepted-current.json",
+  "nativeScopePacket": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32InvalidScopeCancelNativeHttpFixed-root-20261027-162859",
+  "guardBlueprint": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T31/GenuineBranchGui-20261028-124426/entry.py",
+  "fixtureFiles": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\_任务说明.md",
+      "name": "_任务说明.md",
+      "bytes": 1187,
+      "sha256": "61e1eecac52180c237b2ac930cd73c8abec475b54f7a7470262c7f54a108971a",
+      "isTestInstruction": true
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\借条.md",
+      "name": "借条.md",
+      "bytes": 997,
+      "sha256": "6d5e4d3d49a9b7a170887aa08cb0307a2aa6dc6a37078a201c758f9bce9f752d",
+      "isTestInstruction": false
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\情况说明.txt",
+      "name": "情况说明.txt",
+      "bytes": 528,
+      "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+      "isTestInstruction": false
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\案情摘要.md",
+      "name": "案情摘要.md",
+      "bytes": 367,
+      "sha256": "abf7f30579a38451507fb2d7e829101aa9bde489e54c997ffd7686123bf48e87",
+      "isTestInstruction": false
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\还款记录.txt",
+      "name": "还款记录.txt",
+      "bytes": 292,
+      "sha256": "b4771733911533c53be9d4f149e8c479329d0cef0d1f19fc800ba5ad0cbbcfc7",
+      "isTestInstruction": false
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷\\银行流水.md",
+      "name": "银行流水.md",
+      "bytes": 955,
+      "sha256": "e207bc2e50a01f5f26b605e9d913d5d58e780a72766b376748c0fa9e8e0a9495",
+      "isTestInstruction": false
+    }
+  ],
+  "fixtureJudgingNotes": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\要点.md",
+  "originalTicket": "D:/Lawbeach/lawbench-B/docs/plan/lawbench-工单集-第一版开发-20260928.md",
+  "syntheticDeclaredInJudgingNotes": true
+}

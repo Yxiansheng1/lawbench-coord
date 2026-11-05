@@ -1,0 +1,36 @@
+{
+  "kind": "FIXED_READONLY_395_NATIVE_INVENTORY",
+  "server_utc": "2026-10-30T11:34:00.3574393Z",
+  "free_physical_KiB": 14391172,
+  "files": [
+    {
+      "path": "C:\\prep395\\llama\\llama-mtmd-cli.exe",
+      "exists": true,
+      "bytes": 91136,
+      "sha256": "1c984293418dbfbe3e58d242a94029e1e155f5beaea721570e27300f1adf086c"
+    },
+    {
+      "path": "C:\\prep395\\python\\python.exe",
+      "exists": true,
+      "bytes": 91648,
+      "sha256": "4796bc182e858e4440f638fe5dab250d6172745ddec84e41c6afbc192a3198f9"
+    },
+    {
+      "path": "C:\\prep395\\models\\Xiaomi-OCR-0.BF16.gguf",
+      "exists": true,
+      "bytes": 1516744960,
+      "sha256": "d796fa2cd211ba39a40f37691fc0046aa49f59c7968ec844eb9e81f2ae476a52"
+    },
+    {
+      "path": "C:\\prep395\\models\\Xiaomi-OCR-0.mmproj-bf16.gguf",
+      "exists": true,
+      "bytes": 207346624,
+      "sha256": "634d6bc95781ebf4a3f06570a59859fa5082d488db540fd474bc6b4061aec90e"
+    }
+  ],
+  "inference_requests": 0,
+  "production_changes": 0,
+  "policy_changes": 0,
+  "credential_files_read": 0,
+  "dump_read": false
+}

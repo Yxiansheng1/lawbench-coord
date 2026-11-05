@@ -1,0 +1,123 @@
+{
+  "red1": {
+    "verdict": "PUBLIC_CORE_ACTIONABLE_ID_NAME_HINT_RED1_REPRODUCED",
+    "failed": 1,
+    "passed": 0,
+    "deselected": 13,
+    "pytest_s": 1.23,
+    "controller_s": 3.547000000005937,
+    "source_pins_held": 534,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 38000,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:59:11.059452+00:00",
+        "birth_filetime_ticks": "134379971510594519",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 15756,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:59:11.270701+00:00",
+        "birth_filetime_ticks": "134379971512707015",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "directID_read_actual": "MATERIAL_NOT_FOUND no reads/result changes",
+    "scopedList_nameMapping_read_save_actual": "Same ID maps to name; original currentversion line2 readledger then samecontentsavedv1 exactphysicalbytes",
+    "only_fail": "Final publictool order/name mapping instruction absent; all precedingactualflow/privacy/state/fixturechecks passed",
+    "historic_model_loop_causality": "NOT_PROVEN",
+    "no_model_OCR_GUI_defaultlifespan": true,
+    "Packaging": "HOLD"
+  },
+  "green14": {
+    "verdict": "SAME_FOURTEEN_REAL_FS_PASS_ON_FRESH_SHORT_OWNED_ROOT_LIMITED",
+    "tests": 14,
+    "passed": 14,
+    "failed": 0,
+    "errors": 0,
+    "pytest_s": 7.88,
+    "controller_s": 10.125,
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18AG-20261101-171317",
+    "source_pins_held": 541,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 39644,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:13:17.951036+00:00",
+        "birth_filetime_ticks": "134379979979510357",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 23952,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:13:18.183810+00:00",
+        "birth_filetime_ticks": "134379979981838101",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "public_list_ID_to_name_read_save_actual": true,
+    "original_red1_and_longroot9_failures_preserved": true,
+    "only_differential_control_change": "Fresh shorter packet/private-root path binding, same source/tests/guards/assertions; no existing root reused/moved or policy changed",
+    "longpath_status": "OPEN: original atomic temporary path260 FileNotFoundError under longer owned root; shorter control supports this boundary, does not fix or waive Windows longpath defect",
+    "model_loop_causality": "NOT_PROVEN",
+    "business_quality": "FAILED_PARTIAL",
+    "whole_service_proof": "1419=1351PASS18FAIL8ERROR42SKIP at prior24502B28011; currentonlyerrorcopy+Specdelta, no derived currentwholePASS",
+    "source_process_qualifications": [
+      "Author exceeded capsule-only scope with repeatedtarget/testsource, case modules/metadata, budgetcarrysource and prohibited readonly Git diff/stat. No explicit Git write command; index refresh not proven absent.23/23zero, no APP/parser/test/model runtime.",
+      "Source deadline after ready two .NET writes, no formal/deletion record. Not completed handback or source-process compliance/style PASS. Existing Root full independent review admits finite authorized test, old status/raw remain unchanged."
+    ],
+    "cleanup_limits": "OriginalEnv.close ignores rmtreefailures; no fullmachine/helperOS/client/Net/thread/traffic claim",
+    "Packaging": "HOLD"
+  },
+  "source_process": {
+    "verdict": "ROOT_FULL_BYTE_REVIEW_TERMINAL_READY_COPY_AND_SPEC_ADMITTED_FINITE_TEST_ONLY",
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18CitationActionabilityCopyFix-20261101-170019.job.json",
+    "actualThread": "01a19656-b05d-7172-b8b1-947621f2aeb2",
+    "source_state": "deadline_exceeded",
+    "formal_absent": true,
+    "commands": 23,
+    "zero": 23,
+    "nonzero": 0,
+    "dotNet_write_commands": [
+      18,
+      19
+    ],
+    "author_APP_model_runtime": 0,
+    "product": {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+      "bytes": 24627,
+      "sha256": "1eb572b55aca29eac58b2909b723eedc86660a1003d4f0b0b4fd22923b9d31fb"
+    },
+    "Spec": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+      "bytes": 204122,
+      "sha256": "31c88d6eb89ad7625e5977430a2d64a600784a59cfa79b9fb41faebc1e04e9b2"
+    },
+    "whole_product_inverse_ONLY_existing_errorcopy": true,
+    "whole_Spec_inverse_ONLY_one_existing_paragraph": true,
+    "helper_logic_lock_singlecheck_UI_save_locked_TaskStore_SDK_guard_schema_bytes_held": true,
+    "original14tests_bytes_held": true,
+    "Root_full_changed_faces_all_command_writefaces_original_interfaces_setup_finally_reviewed": true,
+    "qualifications": [
+      "Author exceeded capsule-only scope with repeatedtarget/testsource, case modules/metadata, budgetcarrysource and prohibited readonly Git diff/stat. No explicit Git write command; index refresh not proven absent.23/23zero, no APP/parser/test/model runtime.",
+      "Source deadline after ready two .NET writes, no formal/deletion record. Not completed handback or source-process compliance/style PASS. Existing Root full independent review admits finite authorized test, old status/raw remain unchanged."
+    ],
+    "model_loop_causality": "NOT_PROVEN",
+    "business_quality": "FAILED_PARTIAL",
+    "Packaging": "HOLD"
+  },
+  "limits": "Longroot atomic temp260 OPEN; numericgate/current14 on shortroot only; modelqualityFAILED_PARTIAL. No source-process compliance/stylePASS from deadline author."
+}

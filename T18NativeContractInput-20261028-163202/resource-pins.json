@@ -1,0 +1,38 @@
+{
+  "contract": {
+    "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+    "bytes": 39994,
+    "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+    "mtime_ns": 1792379578857675200
+  },
+  "internal_opinion": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+    "bytes": 823,
+    "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+    "mtime_ns": 1792379578787315800
+  },
+  "task_and_test_notes": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\_任务说明.md",
+    "bytes": 1055,
+    "sha256": "0e6830a53849d7129ec9482401b57c30cd786880551b1cef78a1487faf724083",
+    "mtime_ns": 1792379578787315800
+  },
+  "root_only_judging_notes": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\要点.md",
+    "bytes": 10225,
+    "sha256": "764d2afb937419cb70182891268915064a58e1ff3ce51a9a31d80862ffc7657d",
+    "mtime_ns": 1792379578789316500
+  },
+  "skill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\SKILL.md",
+    "bytes": 15303,
+    "sha256": "339e3f09001421424c319ef17d9082084b54e6b6d90938afff92a3c7b33575c9",
+    "mtime_ns": 1792400314780285300
+  },
+  "historical_gap_report": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\skill-report.md",
+    "bytes": 28682,
+    "sha256": "f27c0ade5c7ef75901c6ac72d9965dab3cdbe4af58513d40a4dd9c234e92cca4",
+    "mtime_ns": 1792379577970236300
+  }
+}

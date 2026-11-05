@@ -1,0 +1,196 @@
+{
+  "verdict": "REAL_CONTRACT_FAIL_RATE_OPERAND_SENTENCE_GRAMMAR_NOT_HANDLED_AND_MANUAL_REASON_SUFFIX_FALSE_POSITIVE",
+  "at": "2026-10-28T20:26:28.399690+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-202043",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18RatioGrammarActualFailure-root-20261028-202628",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-Q5tQMz",
+  "elapsed_s": 225.85900000000038,
+  "natural_exit": 1,
+  "forced": false,
+  "model_POST": 11,
+  "model_HTTP200": 11,
+  "tool_calls": 10,
+  "actual_answers_before_first_draft": true,
+  "answer_callback": 1,
+  "answer_ids": [
+    "our_party",
+    "purpose",
+    "focus"
+  ],
+  "native_session": "session-744b01d6-8a1c-4e82-98ce-9bc2adc7c952",
+  "request_id": "f0617a97-925b-4f5c-ae6d-6d480eb4d564",
+  "task_id": "T-20261028202048-ddc3",
+  "case_id": "d2a8e8b9-e5bc-4563-8904-58d5c8d32adc",
+  "draft": {
+    "title": "合同审查意见",
+    "path": "工作区/任务/T-20261028202048-ddc3/草稿/合同审查意见-v3.md",
+    "version": 3,
+    "bytes": 7913,
+    "sha256": "3e609211745c95de2ad30b84cd7a2e38048a856cf881c625a876c51acb006c48",
+    "textLength": 3096
+  },
+  "actual_wrong_sentence": "逾期交货违约金（千分之一/日）是逾期付款违约金（万分之五/日）的20倍。",
+  "exact_math_expected": 2,
+  "actual_math_claimed": 20,
+  "guard_prior_only_former_latter_grammar_missed_actual_direct_subject_sentence": true,
+  "actual_manual": "该条需人工修改（find跨越超链接，系统未收下）",
+  "actual_manual_semantically_states_cross_hyperlink_cause_plus_status": true,
+  "edit_list": {
+    "path": "工作区/任务/T-20261028202048-ddc3/修改清单/采购合同.json",
+    "accepted": 5,
+    "out_of_scope": [
+      {
+        "id": 5,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "JSONL_reopen_NOT_REACHED": true,
+  "physical_JSONL_rows": 64,
+  "physical_JSONL_sha256": "4c3cc3369ebc47ec632415acd9469f454d6d9319f901f53f18f42d71c8a5e09e",
+  "complete_OS_gone": 7,
+  "OS": [
+    {
+      "pid": 12264,
+      "parent": 41160,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T12:20:43.6993130Z"
+    },
+    {
+      "pid": 46244,
+      "parent": 12264,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:20:44.1938340Z"
+    },
+    {
+      "pid": 15788,
+      "parent": 46244,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T12:20:44.2018150Z"
+    },
+    {
+      "pid": 39020,
+      "parent": 46244,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:20:44.2675070Z"
+    },
+    {
+      "pid": 44640,
+      "parent": 39020,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T12:20:44.3747910Z"
+    },
+    {
+      "pid": 40564,
+      "parent": 39020,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T12:20:44.7745560Z"
+    },
+    {
+      "pid": 23072,
+      "parent": 40564,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T12:20:44.7828300Z"
+    }
+  ],
+  "port": {
+    "port": 57527,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T12:24:27.981+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 40564,
+    "port": 57527,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /api/tasks": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/progress": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/task/end": 1,
+        "POST /core/tool": 7
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T12:20:46.871+00:00",
+    "status": "STOPPED"
+  },
+  "sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": 1792379578857675200,
+      "same": true
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": 1792379578787315800,
+      "same": true
+    }
+  ],
+  "owned_key_scan": {
+    "files": 28,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 13,
+  "manifest_sha256": "d4359a992f2c8dea24813b0c3fbc6b806d85240ca69b419915f317cabb6b5190"
+}

@@ -1,0 +1,54 @@
+{
+  "caseId": "872b161f-27d4-40bf-879e-ee457ef6454b",
+  "childSessionId": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+  "cleanup": {
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "rootRetained": true,
+    "serverTaskDone": true
+  },
+  "credentials": {
+    "externalGetterCalls": 0,
+    "keyringRejections": 0,
+    "localGetterCalls": 0
+  },
+  "credentialsDisabled": true,
+  "failureCode": "final_target_inventory",
+  "finalTargetObservation": {},
+  "finishedAt": "2026-10-28T11:18:16.094+08:00",
+  "guard": {
+    "counts": {
+      "anyio_worker_start": 3
+    },
+    "unexpected_outbound_violations": 0,
+    "violations": []
+  },
+  "lifespan": "off",
+  "listener": {
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "port": 55513,
+    "websocket": false
+  },
+  "notAcceptance": "Child-directory absence only awaits root GUI and OS recycle proof. Projection-cache presence and SQLite auxiliary-file lifecycle are observations, not acceptance proof. This service run is not GUI, session-delete, recycle-bin, USB, model, OCR, packaging, or whole-T30 acceptance.",
+  "ocrStarted": false,
+  "outcome": "FAILED_FOR_ROOT_REVIEW",
+  "requestedSeconds": 600,
+  "requests": {
+    "auth_denials": 0,
+    "case_open_attempts": 1,
+    "case_open_ok": 1,
+    "delete_route_observed": false,
+    "policy_denials": {},
+    "read_ok": 25,
+    "requests": 146
+  },
+  "retainerStarted": false,
+  "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-110751",
+  "routeReads": 25,
+  "sourceSessionId": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+  "sourceUnchanged": true,
+  "startedAt": "2026-10-28T11:08:14.019+08:00",
+  "targetLogsUnchanged": false
+}

@@ -1,0 +1,71 @@
+# T34 ConfigEditor 预写入读取/组合契约证据
+
+状态：`NOT_RUN`。本目录只交付可由根审查器执行的无 GUI、无模型、只读取证器；A 线未执行 Node，不把静态交付写成契约通过。
+
+## 范围
+
+本取证只回答 ConfigEditor 正式写文件之前的真实 profile 读取与组合 API 契约问题：
+
+- 依次对三份根批准的既有合成 profile 调用 `loadProfileDirectory(..., { userLayer: false })`、`readProfilePatches(...)`、`composeEntries([patches])`。
+- 对每份 profile，只读取六个已批准 package/patch 文件，校验 bytes、SHA-256、纳秒 mtime 及 home patch 不存在；执行前后各校验一次。
+- 对四个已批准的 primary source 文件做同样的前后 pin；只有 app-boot `lib/index.js` 在全部 pin 通过后才动态导入。
+- 不启动服务、Context、Agent、应用或 GUI，不调用设置写入、文件写入、reconcile、runProfile、boot 或任何额外方法。
+
+这份证据不等同于“原生 Settings.mutate 成功”，也不证明或新增任何关于 T34 known-origin 设置拒绝原因的结论。
+
+## 输入与设置
+
+- 固定输入：同目录 `literal-inputs.json`。前三行之外的输入行复制自根批准的 `approved-inputs.json`；`mtime_ns` 仅为保留精确整数而编码为十进制字符串。
+- 固定脚本不按当前文件状态重建基线。脚本内部保留同一期望值，先拒绝任何输入元数据漂移，再校验运行环境。
+- 固定动态导入：`D:\Lawbeach\lawbench-A\dsh\packages\boot\app-boot\lib\index.js`。
+- 不需安装、构建、启动或测试命令。根执行器负责进程隔离、网络/监听/process/worker 防护、私有环境、超时和 stdout 记录。
+- 只读消费，不需要清理。脚本不写文件、不监听端口、不发起网络请求；仅向 stdout 输出一行固定 JSON。
+
+根审查通过后，在仓库根目录使用根批准的 Node 运行时执行：
+
+```powershell
+node .\docs\plan\evidence\T34\ProfileReadContract-20261030-075459\profile-read-contract.mjs
+```
+
+## 固定输出
+
+成功时每个 case 固定输出：
+
+```json
+{
+  "label": "label1",
+  "stage": "COMPOSE_OK",
+  "stages": {
+    "load": "PASS",
+    "read": "PASS",
+    "compose": "PASS"
+  },
+  "layers": 3,
+  "skipped": 0,
+  "patches": 0,
+  "composed": 0,
+  "targetNamespaceCount": 1,
+  "targetRowDisabled": false,
+  "targetConfigProvidersExternal": true
+}
+```
+
+其中 `patches`、`composed` 的实际值只能由根执行产生；上例仅说明字段和类型。最终成功输出为：
+
+```json
+{"stage":"PASS","cases":[...]}
+```
+
+任何失败只输出固定元数据，不输出已部分得到的 case：
+
+```json
+{"stage":"FAILED","errorName":"Error","errorCode":"PROFILE_READ_VALIDATION"}
+```
+
+失败时 `errorName`/`errorCode` 只来自脚本内的窄白名单，未知值分别收敛为 `Unknown`/`UNKNOWN`。不输出 message、reason、stack、路径、文件名、profile 配置值、patch 内容或密钥。
+
+退出码 0 仅当三案均为三个 `PASS` 阶段、`layers === 3`、`skipped === 0`、`targetNamespaceCount === 1`，且六份 profile 文件与四份 primary 文件的 bytes/SHA/mtime 前后未变、三个 home patch 前后均不存在。否则退出码为 1。
+
+## 明确限制
+
+`readProfilePatches` 的调用上下文按执行令提供 `cwd` 和空的 `startedBundles`，但这三个指定导出不消费这两个字段；本证据不声称它们参与本次读取或组合结果。原生 profile 加载会在内部跳过不可用 bundle，因此脚本明确输出 `skipped` 计数，只有计数为 0 才算成功。

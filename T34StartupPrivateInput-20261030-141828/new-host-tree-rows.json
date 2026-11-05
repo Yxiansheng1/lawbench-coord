@@ -1,0 +1,102 @@
+[
+  {
+    "path": "archive-plan.ts",
+    "bytes": 3121,
+    "sha256": "16cb52d5485e2cac25cc964d131afab454823a53efd69c4f69b84d259c774585"
+  },
+  {
+    "path": "attach-sessions.ts",
+    "bytes": 7937,
+    "sha256": "52a902ed4695a6f233efcd0792ee4f7b7c8b4f0a922149a912323b38dd3367cc"
+  },
+  {
+    "path": "case-wiki.ts",
+    "bytes": 5053,
+    "sha256": "95caed4a9d58a343af78713a6cddd664272693d962ee6847130ca241cbec27f0"
+  },
+  {
+    "path": "daily-case.ts",
+    "bytes": 4740,
+    "sha256": "b7f9bab6606433c040fae1884e32532f5f6a9e466781723d5270b238745a19f2"
+  },
+  {
+    "path": "desk-actions.ts",
+    "bytes": 14915,
+    "sha256": "a201d546f5703d402750d2bb16053287c0f34470e3ac54b512a8011691c5590c"
+  },
+  {
+    "path": "desk-node.ts",
+    "bytes": 2772,
+    "sha256": "820da49bb8fc692373819bbe43a126b4c2dd91a5bb3d93a7a7828039e6a7acf2"
+  },
+  {
+    "path": "document-preview.ts",
+    "bytes": 17057,
+    "sha256": "dacda113a153707df61a911f898f1735a0513c1dc8811c53f23a82677ede4b07"
+  },
+  {
+    "path": "document-read.ts",
+    "bytes": 9505,
+    "sha256": "ff65b5c749c20ed25c008f55f2127c18eaa0615e96cb789c7d39a8bc8153e5f1"
+  },
+  {
+    "path": "hidden-cases.ts",
+    "bytes": 2680,
+    "sha256": "6a4091e383f9d7b40ac4b21ce99919be05220ce85863b73c5b2e44173ab6c493"
+  },
+  {
+    "path": "http-json.ts",
+    "bytes": 3192,
+    "sha256": "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+  },
+  {
+    "path": "index.ts",
+    "bytes": 63665,
+    "sha256": "cb3679ae85ea6b4f56406b5cbb1e01c1fe0e4739bb22d0ccf05cd4c7ac8fbf83"
+  },
+  {
+    "path": "install-layout.ts",
+    "bytes": 6054,
+    "sha256": "0d0cbfbc88c69dbc57ead5939de8ce9440682d320768842d385093929103ffb7"
+  },
+  {
+    "path": "path-state.ts",
+    "bytes": 1861,
+    "sha256": "a1a388046870e6dba6cc7803b8d712d5dbcf0df5dc212295514eccca6150a7e1"
+  },
+  {
+    "path": "public-search.ts",
+    "bytes": 11493,
+    "sha256": "a978859a2c606c5d8df820bb6356fdc2340947a283ff9d31ebf812c569a49bd7"
+  },
+  {
+    "path": "README.md",
+    "bytes": 64,
+    "sha256": "4cee05f2fa6d339df7651d243593e8fac2dac3dcecfad4ad5e86d42ed58750e5"
+  },
+  {
+    "path": "selfcheck-node.ts",
+    "bytes": 2203,
+    "sha256": "c1b8819223ff0e212e4565edb9c0688262b495af3a13430442290eb3828a9590"
+  },
+  {
+    "path": "selfcheck.ts",
+    "bytes": 5868,
+    "sha256": "add111a2d2e6d72e44214ed3c77a7b42e7e0f780a98bde70d9623dd7cab616b1"
+  },
+  {
+    "path": "skills.ts",
+    "bytes": 3801,
+    "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+  },
+  {
+    "path": "supervisor.ts",
+    "bytes": 17523,
+    "sha256": "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599"
+  },
+  {
+    "path": "task-answer.ts",
+    "bytes": 4914,
+    "sha256": "154625adb8a24e0e9c0f4e46287fc4525195fb6c261f30cc3b689000c9f8def6"
+  }
+]

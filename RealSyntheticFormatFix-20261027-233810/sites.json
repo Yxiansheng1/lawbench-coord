@@ -1,0 +1,22 @@
+[
+  {
+    "line": 334,
+    "argument_count": 2,
+    "source": "[Console]::WriteLine(\n            'PHASE {0}: process started; pid={1}' -f $phase, $record.process.pid\n        )"
+  },
+  {
+    "line": 426,
+    "argument_count": 4,
+    "source": "[Console]::WriteLine(\n            'PHASE {0}: exit={1}; status={2}; natural_exit={3}' -f\n                $phase,\n                $(if ($null -eq $record.exit_code) { 'NULL' } else { $record.exit_code }),\n                $record.status,\n                $record.process.natural_exit\n        )"
+  },
+  {
+    "line": 477,
+    "argument_count": 2,
+    "source": "[Console]::WriteLine('LAUNCH_RESULT: status={0}; exit={1}' -f $overallStatus, $overallExitCode)"
+  },
+  {
+    "line": 494,
+    "argument_count": 3,
+    "source": "[Console]::Error.WriteLine(\n        'LAUNCH_RESULT: status={0}; exit=2; failure={1}; exception_type={2}' -f\n            $overallStatus,\n            $currentFailureCode,\n            $_.Exception.GetType().FullName\n    )"
+  }
+]

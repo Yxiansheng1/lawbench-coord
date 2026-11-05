@@ -1,0 +1,29 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\_build\\gen_schemas.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\gen_schemas.py",
+      "sha256": "6902e298c64573473c3898768099093126241f69c1e3faeb8e143795fde86762"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\Spec.md",
+      "sha256": "022be19131f2aa1d4d5619383145793f91c2b9705b8c8b54889a193a0c058e9e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\test_read_bound_20261101_114236.py",
+      "sha256": "ccd486bb5be5ae21c6a0821434be8e45b0fc5f95b238b314a25f4c920b6ce14b"
+    }
+  ],
+  "spec_tail": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\Spec20_12-tail.txt",
+  "spec_append_row": "| 1.7 | 2026-11-01 | \u8fa9\u62a4\u610f\u89c1\u6709\u754c\u8bfb\u53d6\uff1a`case_read_material` \u7684 `$defs/args` \u65b0\u589e\u53ef\u9009\u6574\u6570 `end`\uff08\u542b\u672c\u7aef\uff0c>=1\uff09\uff1b\u7701\u7565 `end` \u65f6\u4fdd\u6301\u539f\u6709\u4ece `start` \u5411\u540e\u8bfb\u53d6\u7684\u884c\u4e3a\uff1b\u4f20 `end` \u65f6\u5305\u542b\u8be5\u7ed3\u675f\u5355\u5143\uff0c\u987b\u4e0d\u5c0f\u4e8e `start` \u4e14\u4e0d\u8d85\u8fc7\u6750\u6599\u672b\u5355\u5143\uff1b`more_names` \u4e0d\u80fd\u4e0e `start`\u3001`end`\u3001`offset` \u540c\u65f6\u4f7f\u7528\uff1b\u8fa9\u62a4\u610f\u89c1\u4efb\u52a1\u5f53\u524d\u8981\u6c42\u8bfb\u53d6\u65f6\u663e\u5f0f\u7ed9\u51fa `start=end` \u7684\u5355\u5355\u5143\u8303\u56f4\u3002\u8fd4\u56de\u7ed3\u6784\u4e0d\u53d8\u3002 |",
+  "expected_schemas": [
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\task_begin.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\request_scope.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\task.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\request_scope_store.schema.json",
+    "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadBContractClosure-20261101-123400Input\\request_scope_intent.schema.json"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadBContractClosure-20261101-123400.md"
+}

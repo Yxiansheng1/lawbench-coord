@@ -1,0 +1,32 @@
+{
+  "verdict": "ORIGINAL_ACTUAL_FAILED_SEALED_NOT_QUALITY_PASS",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CrossExamActualFailure-root-20261029-121017",
+  "files": 13,
+  "manifest_sha256": "5182184d616638d585bec89d28f9a90af87d60c955f225e7c02f7a56ee324197",
+  "model_POST": 16,
+  "model_HTTP200": 16,
+  "elapsed_s": 152.54699999999139,
+  "complete_owned_OS_gone": 7,
+  "Listen0": true,
+  "actual_final_draft_bytes": 4048,
+  "actual_final_draft_sha256": "58cf8a6035690f3f74e8f5d2186b5de4626506bd69e7cf5e4226fc43d02cc55f",
+  "actual_final_citation_stats": {
+    "citations": 27,
+    "must_fix": 0,
+    "hints": 3
+  },
+  "source_GET": 0,
+  "production_JSONL_reopen": "NOT_REACHED",
+  "source8_SHA_size_mtime_ns_held": true,
+  "admission514_held": true,
+  "private25_held": true,
+  "key_scan": {
+    "files": 36,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "manual_quality": "FAILED",
+  "original_report": "FAILED",
+  "Packaging": "HOLD"
+}

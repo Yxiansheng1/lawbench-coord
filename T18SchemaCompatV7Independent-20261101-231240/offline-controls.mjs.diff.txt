@@ -1,0 +1,34 @@
+--- CLOSED_V6
++++ V7
+@@ -878,7 +878,7 @@
+     ["enum", "type"],
+   );
+   assert.equal(branch.properties.refs.type, "array");
+-  assert.equal(branch.properties.refs.uniqueItems, true);
++  assert.equal(Object.prototype.hasOwnProperty.call(branch.properties.refs, "uniqueItems"), false);
+   assert.deepEqual(
+     Object.keys(branch.properties.assessment).sort(),
+     ["maxLength", "minLength", "type"],
+@@ -942,11 +942,11 @@
+   assert.equal(otherBranch.properties.refs.maxItems, referenceIds.length);
+   assert.deepEqual(
+     Object.keys(positiveBranch.properties.refs).sort(),
+-    ["items", "maxItems", "minItems", "type", "uniqueItems"],
++    ["items", "maxItems", "minItems", "type"],
+   );
+   assert.deepEqual(
+     Object.keys(otherBranch.properties.refs).sort(),
+-    ["items", "maxItems", "minItems", "type", "uniqueItems"],
++    ["items", "maxItems", "minItems", "type"],
+   );
+   assert.equal(positiveBranch.properties.refs.items.type, "string");
+   assert.equal(otherBranch.properties.refs.items.type, "string");
+@@ -991,7 +991,7 @@
+ assert.equal(noEligibleRefsBranch.properties.refs.maxItems, 0);
+ assert.deepEqual(
+   Object.keys(noEligibleRefsBranch.properties.refs).sort(),
+-  ["maxItems", "minItems", "type", "uniqueItems"],
++  ["maxItems", "minItems", "type"],
+ );
+ assert.equal(
+   Object.prototype.hasOwnProperty.call(noEligibleRefsBranch.properties.refs, "items"),

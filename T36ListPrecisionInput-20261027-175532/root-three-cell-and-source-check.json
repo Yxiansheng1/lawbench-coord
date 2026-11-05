@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-27T18:00:24.834156+08:00",
+  "state": "EXACT_THREE_CELLS_AND_18_SOURCE_IDENTITY_CHECKED_PENDING_ROOT_SEMANTIC_ACCEPTANCE",
+  "document": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+  "document_bytes": 9082,
+  "document_sha256": "40d9ce79bba882e56f41abd51cce98cfe566e1efa10c1e810e73c5a7b02d3a9f",
+  "three_changes": [
+    {
+      "row": 4,
+      "cell": 7,
+      "before": " 由程序生成案件 wiki，并作为其他任务的案件卡片输入 ",
+      "after": " 律师点击“生成案件 wiki”或“更新案件 wiki”后，由程序按流水线生成并保存案件 wiki；生成的案件卡片作为其他任务的案件卡片输入 "
+    },
+    {
+      "row": 10,
+      "cell": 7,
+      "before": " 保存质证意见表和发问提纲草稿 ",
+      "after": " 保存质证意见表草稿；律师需要庭审发问提纲时，另保存发问提纲草稿 "
+    },
+    {
+      "row": 17,
+      "cell": 8,
+      "before": " 日期由计算程序产生；数罪并罚、缓刑、减刑及法定刑档次由律师判断 ",
+      "after": " 日期由计算程序产生；数罪并罚、缓刑考验期、减刑后的新刑期由律师判断；法定刑档次由律师核实 "
+    }
+  ],
+  "all_other_document_bytes_exact": true,
+  "skills": 18,
+  "exact_approved_flags": [
+    "contract-review",
+    "criminal-evidence-review",
+    "cross-exam-opinion",
+    "defense-opinion"
+  ],
+  "general": 8,
+  "specialized": 10,
+  "all21_original_inputs_unchanged": true,
+  "main_formal_source_map_unchanged": true,
+  "B_tracked_diff_exact": true,
+  "runtime_tests_build_model_GUI": 0
+}

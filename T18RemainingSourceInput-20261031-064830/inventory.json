@@ -1,0 +1,35 @@
+{
+  "baseline": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueSourceStrict-20261031-063859\\check.py",
+    "bytes": 19968,
+    "sha256": "5b0bc55bbde05d086207dbcfaa911c2f946d9ed74e1c50cebc58e79c3f43ac65"
+  },
+  "items": [
+    {
+      "key": "doc-revise",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingSourceInput-20261031-064830\\doc-revise.json",
+      "gets": 17,
+      "casefiles": 27,
+      "units": [
+        "line",
+        "para"
+      ],
+      "original": "T18-doc-revise-clause-actual-root-closed-current.json"
+    },
+    {
+      "key": "litigation",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingSourceInput-20261031-064830\\litigation.json",
+      "gets": 15,
+      "casefiles": 19,
+      "units": [
+        "line"
+      ],
+      "original": "T18-litigation-native-actual-root-closed-current.json"
+    }
+  ],
+  "scope": "Only original consumer source stage AFTER failed strict gates; current sourceGet to genuine sameversion copied materials. No modelretry. DOCX para expected from genuine existing parsed47unit Markdown, not new DOCX parse/conversion fidelity claim; TXT expected raw original lines. Sentence existingGET5 already run excluded; defense citations0 no fabricatedsourcecheck.",
+  "old_original_consumers": {
+    "doc-revise": "source call2825 AFTER failed explicitpriorread2768",
+    "litigation": "sourcecall2892 AFTER failed askdenial1875"
+  }
+}

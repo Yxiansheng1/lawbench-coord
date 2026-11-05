@@ -1,0 +1,3 @@
+工单号：T33-cleanup-propagation-20261027-082404；静态发现为外层 cleanup 忽略 `fixture.doCleanups()` 的布尔结果，已按令仅替换为外层 `assertTrue(fixture.doCleanups(), ...)` 单语句；测试脚本 after SHA-256 `82344abd145f9346968cc97682ff271e7259eae0186934b7833045382e6a5106`，RUNTIME_NOT_RUN，Packaging HOLD / Gate 1 未完成 / GUI_NOT_VERIFIED。
+分支最新提交 SHA：无；本次严格禁止 Git 写，未暂存、未提交、未 rebase/stash/reset/clean/checkout/push；全树 `git status` 的 `dsh` 子模块权限拒绝已如实记录，未修锁或扩权。
+交付说明：`D:\Lawbeach\lawbench-B\docs\plan\evidence\T33\NativeAmbiguity-20261027-081551\cleanup-propagation-20261027-082404.md`；旧 README SHA-256 `49da7ac4e5237d3a3f0b03b903560303f736081d7085a1edad2dea894b82acd8` 保持历史原样，由新说明标注其脚本旧身份已被本次 after SHA 后续补充。

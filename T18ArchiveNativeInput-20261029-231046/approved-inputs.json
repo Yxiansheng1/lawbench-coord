@@ -1,0 +1,92 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\SKILL.md",
+    "bytes": 16290,
+    "sha256": "7ede544356b715f4aae7e4ebd54eb8e07ef4c7c6038590c47ad2a440c4caa7dd",
+    "mtime_ns": "1792400314794479300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\_任务说明.md",
+    "bytes": 896,
+    "sha256": "795a02d8831f3df8f15982c1951ef1274a6a5e9c86b4504e9b45639cbb2b24d0",
+    "mtime_ns": "1792379578764764700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\要点.md",
+    "bytes": 10478,
+    "sha256": "8f53db067cbc2be563bfcc677b784ef02a748efa2044faa5a265e9dd98f3b972",
+    "mtime_ns": "1792379578772274600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\01委托手续\\委托代理合同.txt",
+    "bytes": 561,
+    "sha256": "69d0b48af34aa2f761d0ac772d13f4930d5115657db027bc24241cf7f0df79b7",
+    "mtime_ns": "1792379578762765400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\01委托手续\\律师费发票.txt",
+    "bytes": 289,
+    "sha256": "1a14fde51955b2743c019a3a3883777bf012e3a018f131b7d64ecb02e40d8500",
+    "mtime_ns": "1792379578762765400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\01委托手续\\授权委托书.txt",
+    "bytes": 372,
+    "sha256": "55d5e0a65a30f3c4f0e6ed82520170267d996b62d75bcc949d28511024cd0db3",
+    "mtime_ns": "1792379578762765400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方文件\\~$起诉状.txt",
+    "bytes": 49,
+    "sha256": "2375a024e1ccbd473ac94d96264662971498ef294823756224df836ab853ca40",
+    "mtime_ns": "1792379578762765400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方文件\\民事起诉状.txt",
+    "bytes": 555,
+    "sha256": "184fd0078dec7b94df8f74422234b5304d7c9379c738a5889fffc44642f34abc",
+    "mtime_ns": "1792379578762765400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方证据\\对账单.txt",
+    "bytes": 142,
+    "sha256": "bbaac85ad10b6f61c006897559630378ffbb7ee98a44d246b38bc14acbb975e6",
+    "mtime_ns": "1792379578763764800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方证据\\微信图片_20260301.txt",
+    "bytes": 47,
+    "sha256": "e38e6392a760c79997f3432e0cc7dde5b9b8a9304234e64ebf3afdf7ab630e47",
+    "mtime_ns": "1792379578763764800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方证据\\聊天记录.txt",
+    "bytes": 291,
+    "sha256": "76bb99927bebdcb39b8b4902766cfe7e2c916b37c53de37cb932081a53a6f9da",
+    "mtime_ns": "1792379578763764800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\我方证据\\送货单.txt",
+    "bytes": 237,
+    "sha256": "3c4bddcb4fdb74f90ee185a10e9efebd8eae81c40af063b5e3580b9436e1fbe2",
+    "mtime_ns": "1792379578763764800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\case-archiving\\tests\\样本01-买卖合同调解\\03一审\\法院文书\\民事调解书.txt",
+    "bytes": 849,
+    "sha256": "a5256bafdfc16039a7afd3cefeb54a91b68671f4f0e77d4c1e73b7cc615a6792",
+    "mtime_ns": "1792379578764764700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_archive_match.schema.json",
+    "bytes": 3505,
+    "sha256": "24f5655a3f300cbe850f8e8ce939735c28dc0d523a9027c5247274450da5f0f5",
+    "mtime_ns": "1792682285551485900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_save_archive_plan.schema.json",
+    "bytes": 9815,
+    "sha256": "dc4972f0f086802441ef8155f4845e3eab2ea95f066a2dd62f09131ded2dcddc",
+    "mtime_ns": "1792682285552493100"
+  }
+]

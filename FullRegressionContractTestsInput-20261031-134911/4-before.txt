@@ -1,0 +1,500 @@
+import { readFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import {
+  CASE_LIST_BEFORE_SENTENCE_READ_DENIAL,
+  CONTRACT_DRAFT_SKILL,
+  CONTRACT_REVIEW_SKILL,
+  CRIMINAL_APPLICATIONS_SKILL,
+  CROSS_EXAM_OPINION_SKILL,
+  DEFENSE_OPINION_SKILL,
+  DOC_REVISE_SKILL,
+  GENERAL_DRAFTING_SKILL,
+  LegalAgent,
+  LITIGATION_DOCS_SKILL,
+  SENTENCE_CALC_SKILL,
+  questionRequirementDenial,
+  questionsBeforeReadDenial,
+} from '../agent/index.ts'
+import {
+  TaskState,
+  type Budget,
+  type Params,
+  type QuestionExecutionIdentity,
+} from '../agent/task-state.ts'
+import { LawbenchRemote } from '../host/index.ts'
+import type { Supervisor } from '../host/supervisor.ts'
+import { CoreClient, type CoreCommand, type CoreResult, type Logger } from '../shared/core-client.ts'
+
+const CASE = 'case-sentence-workflow-gate'
+const SESSION = 'session-sentence-workflow-gate'
+const OTHER_SESSION = 'session-sentence-workflow-gate-other'
+const TASK = 'T-sentence-workflow-gate'
+const BUDGET: Budget = { model_calls: 32, tool_calls: 40, minutes: 45 }
+const PARAMS: Params = { thinking: '中', window: '128K', max_tokens: 16384 }
+const QUESTIONS = ['purpose', 'penalty', 'custody'] as const
+const REPO_SKILLS = join(__dirname, '..', '..', 'skills')
+const LIST = JSON.parse(readFileSync(
+  join(__dirname, '..', '..', 'contracts', 'examples', 'tool_list.result.json'),
+  'utf8',
+)) as unknown
+const READ = JSON.parse(readFileSync(
+  join(__dirname, '..', '..', 'contracts', 'examples', 'tool_read.result.json'),
+  'utf8',
+)) as unknown
+const CALC = JSON.parse(readFileSync(
+  join(__dirname, '..', '..', 'contracts', 'examples', 'tool_calc_sentence.result.json'),
+  'utf8',
+)) as unknown
+const SAVED = JSON.parse(readFileSync(
+  join(__dirname, '..', '..', 'contracts', 'examples', 'tool_save_draft.result.json'),
+  'utf8',
+)) as unknown
+const EDIT_LIST = {
+  path: 'outputs/合成修改清单.json',
+  accepted: 1,
+  out_of_scope: [],
+}
+const NO_LOG: Logger = () => {}
+
+type Question = { key: string; question: string; fromMaterials: boolean }
+type Questions = (skillName: string) => Promise<Question[]>
+type Call = { command: CoreCommand; body: Record<string, unknown> }
+type ListMode = 'valid' | 'failed' | 'invalid'
+
+class MemoryCore extends CoreClient {
+  readonly calls: Call[] = []
+  private sequence = 0
+  private deferredList: { promise: Promise<CoreResult>; resolve: (value: CoreResult) => void } | undefined
+
+  constructor(
+    private readonly skill: string | null = SENTENCE_CALC_SKILL,
+    private readonly listMode: ListMode = 'valid',
+  ) {
+    super(() => undefined, NO_LOG)
+  }
+
+  toolNames(): string[] {
+    return this.calls.filter((call) => call.command === 'tool').map((call) => String(call.body.tool))
+  }
+
+  deferNextList(): (value: unknown) => void {
+    let resolve!: (value: CoreResult) => void
+    const promise = new Promise<CoreResult>((done) => { resolve = done })
+    this.deferredList = { promise, resolve }
+    return (value: unknown) => resolve({ ok: true, value })
+  }
+
+  override async call<T = unknown>(
+    command: CoreCommand,
+    body: Record<string, unknown>,
+  ): Promise<CoreResult<T>> {
+    this.calls.push({ command, body })
+    if (command === 'task/begin') {
+      this.sequence += 1
+      return {
+        ok: true,
+        value: {
+          task_id: `${TASK}-${this.sequence}`,
+          case_id: CASE,
+          skill: this.skill,
+          params: PARAMS,
+          budget: BUDGET,
+        },
+      } as unknown as CoreResult<T>
+    }
+    if (command === 'context') {
+      return {
+        ok: true,
+        value: {
+          l0: { text: '合成案件卡片' },
+          l1: { text: '合成任务输入', truncated: false, toc: [] },
+        },
+      } as unknown as CoreResult<T>
+    }
+    if (command === 'tool') {
+      const tool = String(body.tool)
+      if (tool === 'case_list_materials') {
+        if (this.deferredList) {
+          const response = await this.deferredList.promise
+          this.deferredList = undefined
+          return response as CoreResult<T>
+        }
+        if (this.listMode === 'failed') {
+          return { ok: false, error: { code: 'INTERNAL', message: '合成清单失败' } } as CoreResult<T>
+        }
+        if (this.listMode === 'invalid') {
+          return { ok: true, value: { materials: 'not-an-array', total: 'bad' } } as unknown as CoreResult<T>
+        }
+        return { ok: true, value: LIST } as unknown as CoreResult<T>
+      }
+      if (tool === 'case_read_material') return { ok: true, value: READ } as unknown as CoreResult<T>
+      if (tool === 'case_calc_sentence') return { ok: true, value: CALC } as unknown as CoreResult<T>
+      if (tool === 'case_save_draft') return { ok: true, value: SAVED } as unknown as CoreResult<T>
+      if (tool === 'case_save_edit_list') return { ok: true, value: EDIT_LIST } as unknown as CoreResult<T>
+    }
+    return { ok: true, value: {} } as unknown as CoreResult<T>
+  }
+}
+
+const agentObj = (id = SESSION) => ({
+  id,
+  session: { header: { cwd: 'D:\\Lawbeach\\fixtures\\合成刑期材料' } },
+})
+const enter = () => ({ kind: 'enter' as const, messages: [] })
+
+function makeAgent(core: CoreClient, skillQuestions?: Questions): LegalAgent {
+  return new LegalAgent(
+    core,
+    NO_LOG,
+    () => {},
+    () => {},
+    () => false,
+    () => false,
+    async () => ({
+      enabled: false,
+      model: null,
+      contextWindow: null,
+      keyConfigured: false,
+      supportsTools: true,
+    }),
+    skillQuestions,
+  )
+}
+
+function currentHostQuestions(): Questions {
+  const up = () => ({ endpoint: () => undefined, state: 'running' }) as unknown as Supervisor
+  const remote = new LawbenchRemote(up(), tmpdir(), () => undefined, [REPO_SKILLS])
+  return (skillName: string) => remote.skillQuestions(skillName)
+}
+
+async function start(agent: LegalAgent, target = agentObj()) {
+  const decision = await agent.preStep(target, 1, enter())
+  return { decision, state: agent.tasks.get(target.id) }
+}
+
+function sentenceTask(taskId = TASK): TaskState {
+  return new TaskState(
+    taskId,
+    BUDGET,
+    PARAMS,
+    0,
+    'local',
+    undefined,
+    true,
+    CASE,
+    SESSION,
+    QUESTIONS,
+    false,
+    false,
+    true,
+  )
+}
+
+function askArgs(ids: readonly string[] = QUESTIONS) {
+  return {
+    questions: ids.map((id) => ({
+      id,
+      question: `请确认 ${id}`,
+      header: '必问',
+      options: [{ label: `确认 ${id}`, description: '合成测试选项' }],
+    })),
+  }
+}
+
+function askIdentity(callId: string): QuestionExecutionIdentity {
+  return { callId, token: Symbol(callId) }
+}
+
+function allAnswers() {
+  return {
+    answers: QUESTIONS.map((id) => ({
+      id,
+      selected: [`确认 ${id}`],
+      custom: '',
+    })),
+  }
+}
+
+function observe(
+  agent: LegalAgent,
+  agentId: string,
+  callId: string,
+  token: symbol,
+  result: Readonly<{ isError: boolean; value?: unknown }>,
+): void {
+  agent.observeToolResult({
+    name: 'ask_user_question',
+    callId,
+    token,
+    agent: { id: agentId },
+  }, result)
+}
+
+function cancel(agent: LegalAgent, identity: QuestionExecutionIdentity): void {
+  agent.cancelQuestionAsk(SESSION, {
+    name: 'ask_user_question',
+    callId: identity.callId,
+    token: identity.token,
+    agent: { id: SESSION },
+  })
+}
+
+describe('sentence-calc 工作流顺序闸门', () => {
+  it('实际 Skill 固定三项；未列清单的读取在预算和 Core 前拒绝，成功列清单后可在提问前读取', async () => {
+    const resolve = currentHostQuestions()
+    const machineQuestions = await resolve(SENTENCE_CALC_SKILL)
+    expect(machineQuestions.map((question) => question.key)).toEqual([...QUESTIONS])
+    expect(machineQuestions.map((question) => question.fromMaterials)).toEqual([false, true, true])
+
+    const unavailableCore = new MemoryCore()
+    const unavailableAgent = makeAgent(unavailableCore)
+    const unavailable = await start(unavailableAgent)
+    expect(unavailable.decision).toEqual({ kind: 'reject' })
+    expect(unavailable.state).toBeUndefined()
+    expect(unavailableCore.calls.some((call) =>
+      call.command === 'task/end' && call.body.reason === 'blocked')).toBe(true)
+
+    const core = new MemoryCore()
+    const agent = makeAgent(core, resolve)
+    const { decision, state } = await start(agent)
+    expect(decision.kind).toBe('enter')
+    expect(state?.requiredQuestionIds).toEqual([...QUESTIONS])
+    expect(state?.sentenceWorkflow).toBe(true)
+    expect(state?.materialListConfirmedForReads).toBe(false)
+
+    expect(agent.preTool(SESSION, 'case_read_wiki', { section: '概览' })).toEqual({ kind: 'allow' })
+    expect(agent.preTool(SESSION, 'case_search', { query: '合成日期' })).toEqual({ kind: 'allow' })
+    expect(agent.preTool(SESSION, 'case_list_materials', {})).toEqual({ kind: 'allow' })
+    const coreCalls = core.calls.length
+    const toolCalls = state!.toolCalls
+    state!.toolCalls = state!.budget.tool_calls
+    state!.modelCalls = state!.budget.model_calls
+    expect(agent.preTool(SESSION, 'case_read_material', { name: '刑事判决书' })).toEqual({
+      kind: 'deny',
+      reason: CASE_LIST_BEFORE_SENTENCE_READ_DENIAL,
+    })
+    await expect(agent.executeTool(SESSION, 'case_read_material', { name: '刑事判决书' }))
+      .rejects.toThrow(CASE_LIST_BEFORE_SENTENCE_READ_DENIAL)
+    expect(core.calls.length).toBe(coreCalls)
+    expect(state!.budgetHit).toBe(false)
+
+    state!.toolCalls = toolCalls
+    state!.modelCalls = 0
+    await agent.executeTool(SESSION, 'case_list_materials', {})
+    expect(state!.materialListConfirmedForReads).toBe(true)
+    expect(agent.preTool(SESSION, 'case_read_material', { name: '刑事判决书' }))
+      .toEqual({ kind: 'allow' })
+    await agent.executeTool(SESSION, 'case_read_material', { name: '刑事判决书' })
+    expect(state!.questionsAnswered).toBe(false)
+    expect(core.toolNames()).toEqual(['case_list_materials', 'case_read_material'])
+  })
+
+  it('失败或结果契约不合法的清单不解锁；旧任务的迟到成功不标记新任务', async () => {
+    for (const listMode of ['failed', 'invalid'] as const) {
+      const core = new MemoryCore(SENTENCE_CALC_SKILL, listMode)
+      const agent = makeAgent(core, currentHostQuestions())
+      const { state } = await start(agent)
+      await expect(agent.executeTool(SESSION, 'case_list_materials', {})).rejects.toThrow()
+      expect(state?.materialListConfirmedForReads).toBe(false)
+      expect(agent.preTool(SESSION, 'case_read_material', { name: '刑事判决书' })).toEqual({
+        kind: 'deny',
+        reason: CASE_LIST_BEFORE_SENTENCE_READ_DENIAL,
+      })
+      await expect(agent.executeTool(SESSION, 'case_read_material', { name: '刑事判决书' }))
+        .rejects.toThrow(CASE_LIST_BEFORE_SENTENCE_READ_DENIAL)
+      expect(core.toolNames()).toEqual(['case_list_materials'])
+    }
+
+    const core = new MemoryCore()
+    const agent = makeAgent(core, currentHostQuestions())
+    const { state: oldState } = await start(agent)
+    const resolveList = core.deferNextList()
+    const pendingList = agent.executeTool(SESSION, 'case_list_materials', {})
+    const fresh = sentenceTask(`${TASK}-fresh`)
+    agent.tasks.set(SESSION, fresh)
+    resolveList(LIST)
+    await pendingList
+    expect(oldState?.materialListConfirmedForReads).toBe(true)
+    expect(fresh.materialListConfirmedForReads).toBe(false)
+    expect(agent.preTool(SESSION, 'case_read_material', { name: '刑事判决书' })).toEqual({
+      kind: 'deny',
+      reason: CASE_LIST_BEFORE_SENTENCE_READ_DENIAL,
+    })
+  })
+
+  it('计算和写入在三个真实联合答案前拒绝，错误、取消、空答、错会话、错调用与错令牌都不解锁', async () => {
+    const core = new MemoryCore()
+    const agent = makeAgent(core, currentHostQuestions())
+    const { state } = await start(agent)
+    await agent.executeTool(SESSION, 'case_list_materials', {})
+    const draft = { title: '刑期计算表', content: '合成刑期计算表正文' }
+    const calc = {
+      penalty: '有期徒刑',
+      years: 3,
+      months: 6,
+      execution_start: null,
+      custody: [],
+    }
+    const editList = {
+      name: '刑事判决书',
+      edits: [{ id: 1, para: 1, action: 'delete', find: '合成原文', comment: '合成修改' }],
+    }
+
+    state!.toolCalls = state!.budget.tool_calls
+    state!.modelCalls = state!.budget.model_calls
+    const coreCalls = core.calls.length
+    expect(agent.preTool(SESSION, 'case_calc_sentence', calc)).toEqual({
+      kind: 'deny',
+      reason: questionRequirementDenial(QUESTIONS),
+    })
+    expect(agent.preTool(SESSION, 'case_save_draft', draft)).toEqual({
+      kind: 'deny',
+      reason: questionRequirementDenial(QUESTIONS),
+    })
+    expect(agent.preTool(SESSION, 'case_save_edit_list', editList)).toEqual({
+      kind: 'deny',
+      reason: questionRequirementDenial(QUESTIONS),
+    })
+    await expect(agent.executeTool(SESSION, 'case_calc_sentence', calc))
+      .rejects.toThrow(questionRequirementDenial(QUESTIONS))
+    await expect(agent.executeTool(SESSION, 'case_save_draft', draft))
+      .rejects.toThrow(questionRequirementDenial(QUESTIONS))
+    await expect(agent.executeTool(SESSION, 'case_save_edit_list', editList))
+      .rejects.toThrow(questionRequirementDenial(QUESTIONS))
+    expect(core.calls.length).toBe(coreCalls)
+    expect(state!.budgetHit).toBe(false)
+    state!.toolCalls = 0
+    state!.modelCalls = 0
+
+    const failed = askIdentity('failed-answer')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), failed)).toEqual({ kind: 'allow' })
+    observe(agent, SESSION, failed.callId, failed.token, { isError: true, value: allAnswers() })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+
+    const cancelled = askIdentity('cancelled-answer')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), cancelled)).toEqual({ kind: 'allow' })
+    cancel(agent, cancelled)
+    observe(agent, SESSION, cancelled.callId, cancelled.token, { isError: false, value: allAnswers() })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+
+    const empty = askIdentity('empty-answer')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), empty)).toEqual({ kind: 'allow' })
+    observe(agent, SESSION, empty.callId, empty.token, {
+      isError: false,
+      value: {
+        answers: QUESTIONS.map((id) => ({ id, selected: ['  '], custom: ' ' })),
+      },
+    })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+
+    const wrongSession = askIdentity('wrong-session')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), wrongSession)).toEqual({ kind: 'allow' })
+    observe(agent, OTHER_SESSION, wrongSession.callId, wrongSession.token, {
+      isError: false,
+      value: allAnswers(),
+    })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+    cancel(agent, wrongSession)
+
+    const wrongCall = askIdentity('wrong-call')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), wrongCall)).toEqual({ kind: 'allow' })
+    observe(agent, SESSION, 'not-the-call', wrongCall.token, { isError: false, value: allAnswers() })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+    cancel(agent, wrongCall)
+
+    const wrongToken = askIdentity('wrong-token')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), wrongToken)).toEqual({ kind: 'allow' })
+    observe(agent, SESSION, wrongToken.callId, Symbol('not-the-token'), {
+      isError: false,
+      value: allAnswers(),
+    })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+    cancel(agent, wrongToken)
+
+    const wrongCase = askIdentity('wrong-case')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), wrongCase)).toEqual({ kind: 'allow' })
+    const mutableState = state as { caseId: string }
+    mutableState.caseId = 'case-other'
+    observe(agent, SESSION, wrongCase.callId, wrongCase.token, { isError: false, value: allAnswers() })
+    expect(state!.missingQuestionIds()).toEqual([...QUESTIONS])
+    mutableState.caseId = CASE
+    cancel(agent, wrongCase)
+
+    const stale = askIdentity('stale-task-answer')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), stale)).toEqual({ kind: 'allow' })
+    const fresh = sentenceTask(`${TASK}-fresh`)
+    agent.tasks.set(SESSION, fresh)
+    observe(agent, SESSION, stale.callId, stale.token, { isError: false, value: allAnswers() })
+    expect(fresh.missingQuestionIds()).toEqual([...QUESTIONS])
+
+    await agent.executeTool(SESSION, 'case_list_materials', {})
+    const correct = askIdentity('correct-joint-three')
+    expect(agent.preTool(SESSION, 'ask_user_question', askArgs(), correct)).toEqual({ kind: 'allow' })
+    observe(agent, SESSION, correct.callId, correct.token, { isError: false, value: allAnswers() })
+    expect(fresh.questionsAnswered).toBe(true)
+    expect(agent.preTool(SESSION, 'case_calc_sentence', calc)).toEqual({ kind: 'allow' })
+    expect(agent.preTool(SESSION, 'case_save_draft', draft)).toEqual({ kind: 'allow' })
+    expect(agent.preTool(SESSION, 'case_save_edit_list', editList)).toEqual({ kind: 'allow' })
+    await agent.executeTool(SESSION, 'case_calc_sentence', calc)
+    await agent.executeTool(SESSION, 'case_save_draft', draft)
+    await agent.executeTool(SESSION, 'case_save_edit_list', editList)
+    expect(core.toolNames().slice(-3)).toEqual([
+      'case_calc_sentence',
+      'case_save_draft',
+      'case_save_edit_list',
+    ])
+  })
+
+  it('默认关闭；既有八类和 NONE 仍按原语义工作，诉讼先问后读不变', async () => {
+    const plain = new TaskState(TASK, BUDGET, PARAMS)
+    expect(plain.sentenceWorkflow).toBe(false)
+    expect(plain.materialListConfirmedForReads).toBe(false)
+
+    const known = [
+      CONTRACT_REVIEW_SKILL,
+      DOC_REVISE_SKILL,
+      GENERAL_DRAFTING_SKILL,
+      CONTRACT_DRAFT_SKILL,
+      CROSS_EXAM_OPINION_SKILL,
+      CRIMINAL_APPLICATIONS_SKILL,
+      DEFENSE_OPINION_SKILL,
+      LITIGATION_DOCS_SKILL,
+    ] as const
+    const oneQuestion: Questions = async () => [
+      { key: 'required', question: '请确认必问项', fromMaterials: false },
+    ]
+    for (const skill of known) {
+      const core = new MemoryCore(skill)
+      const agent = makeAgent(core, oneQuestion)
+      const { decision, state } = await start(agent)
+      expect(decision.kind).toBe('enter')
+      expect(state?.requiredQuestionIds).toEqual(['required'])
+      expect(state?.sentenceWorkflow).toBe(false)
+      expect(agent.preTool(SESSION, 'case_calc_sentence', {})).toEqual({ kind: 'allow' })
+      if (skill === LITIGATION_DOCS_SKILL) {
+        expect(agent.preTool(SESSION, 'case_read_material', { name: '合成材料' })).toEqual({
+          kind: 'deny',
+          reason: questionsBeforeReadDenial(['required']),
+        })
+      } else {
+        expect(agent.preTool(SESSION, 'case_read_material', { name: '合成材料' }))
+          .toEqual({ kind: 'allow' })
+      }
+      expect(agent.preTool(SESSION, 'case_save_draft', { title: '合成草稿', content: '合成正文' }))
+        .toEqual({ kind: 'deny', reason: questionRequirementDenial(['required']) })
+    }
+
+    const noneCore = new MemoryCore(null)
+    const noneAgent = makeAgent(noneCore, async () => [])
+    const { decision, state } = await start(noneAgent)
+    expect(decision.kind).toBe('enter')
+    expect(state?.sentenceWorkflow).toBe(false)
+    expect(state?.requiredQuestionIds).toEqual([])
+    expect(noneAgent.preTool(SESSION, 'case_read_material', { name: '合成材料' }))
+      .toEqual({ kind: 'allow' })
+    expect(noneAgent.preTool(SESSION, 'case_calc_sentence', {})).toEqual({ kind: 'allow' })
+    expect(noneAgent.preTool(SESSION, 'case_save_draft', { title: '合成草稿', content: '合成正文' }))
+      .toEqual({ kind: 'allow' })
+  })
+})

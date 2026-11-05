@@ -1,0 +1,93 @@
+{
+  "target_source_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940",
+  "sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotWireClosure-20261101-184726Before\\review-consumer.mjs",
+      "bytes": 25844,
+      "sha256": "13195af9b5271da752a8f2a1d976df26ca71e48bd89f34f42942782a0228cd67"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\review-consumer.mjs",
+      "bytes": 26655,
+      "sha256": "a4ea250ed0538381d34cfcce0c4a28af5a23212c59201eded28a49cc40e88717"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotWireClosure-20261101-184726Before\\offline-controls.mjs",
+      "bytes": 7280,
+      "sha256": "fdedc96d9238fd2879772c9aa1e6ff7cded37753c06ac550a3190863be84f67a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\offline-controls.mjs",
+      "bytes": 13731,
+      "sha256": "30dc22d7dc3e932d9f0d1a56c713bba0a3dead98ff3f45fa7881b055390744f9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\source-manifest.json",
+      "bytes": 523,
+      "sha256": "5f94e6eaab7b440290b0afdec9861bd2ec41eabf1973b8c75570a2e872cfe291"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-input-provenance-current.json",
+      "bytes": 1438,
+      "sha256": "f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb"
+    }
+  ],
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\00-review-consumer.mjs.txt",
+      "bytes": 29936,
+      "sha256": "710fb323d559663d0bd28c125473be3b5a67cebc4fdbf52c054fd381a0ebe65a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\01-review-consumer.mjs.txt",
+      "bytes": 30919,
+      "sha256": "04e9964f2d8468985bbc8f6d4f9a92b98d3dabc44d4fd5661e6457c9e3e0785f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\02-offline-controls.mjs.txt",
+      "bytes": 8727,
+      "sha256": "cfd8e1e23739eabec9abb5cff45e95c13a61568b979d425bfe089175ebacdd3b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\03-offline-controls.mjs.txt",
+      "bytes": 16412,
+      "sha256": "73dd83d35d4621985fd1b0627ec362084f2aa39ff4d941ed0238591b480c94c4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\04-source-manifest.json.txt",
+      "bytes": 793,
+      "sha256": "1b998d3df7dcd9815b5ea295b1a557b9d5b8af94ab76613d169d89ab289315aa"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\05-T18-isolated-semantic-pilot-input-provenance-current.json.txt",
+      "bytes": 1828,
+      "sha256": "8cb126f70eae72162c37375d7f95088d61cea69e8362f3169fce5495a77b416b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\review-consumer.mjs.diff.txt",
+      "bytes": 11581,
+      "sha256": "046c4e16ee170573158539797b0e93769c64e48b319eecd363b291bf8f00bb19"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotIndependent-20261101-185816\\offline-controls.mjs.diff.txt",
+      "bytes": 9136,
+      "sha256": "c39f7eb32319a3847366814c32f82620b0c111aa67d3d9ba10252e4b0613345b"
+    }
+  ],
+  "original_data_pin": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18IsolatedSemanticPilot-20261101-183940Inputs\\fixed-data.json",
+    "bytes": 17427,
+    "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+  },
+  "actual_data_shape": "format,evidence[receipt_id,material_id,unit,start,end,has_more,text],draft[title,version,content],visible_selfcheck,coverage,scope",
+  "scope": "Readonly source safety/protocol review of isolated two-stage semantic capability prototype. No productioncode, NativeSession/R, defaultSDK/app, or current businessPASS claimed. No model/Key/runtime executed.",
+  "requirements": [
+    "Two freshcontexts. stage1 evidenceONLY/no draft/selfcheck/expectedanswers; stage2 evidence+parsedcandidates+actualoldv3draft+selfcheck+coverage.",
+    "Only http://10.126.126.1:8000/v1/chat/completions POST, Bearer rawRootstdinKey, no Keyenv/args/files/hash/log/delegation; all artifactsredacted. Never realcredential read in this source job.",
+    "StrictAPI envelope thenJSON and exactquotes/receipt/candidatejoins; malformed/empty/unanchored/length/non200/timeout -> failure, never legal/businessPASS.",
+    "qwen38-27b0.6/max49152/streamfalse/max2requests/no retry/redirecterror/400s each900sRoot; no additionalhost/model/temp/budget/SDK/globalpolicy.",
+    "Exactsource/inputmanifest SHA-size beforeCLI runtime, freshRootprivateoutputdescendantwrites, strictmain guard makesimportofflinesafe, no defaultapp/GUI/OCR/Retainer/SSH/GPU/maintenance.",
+    "No testcaseexpectedkeywords/semanticNLP classifier. Same original oldRED remains; prototype can only demonstrate capability, not completeness guarantee.",
+    "Offline controls fake sentinels only; no fetch/Key/Nodechild/model/filewrite network. No authorruntime untilRootadmitted."
+  ]
+}

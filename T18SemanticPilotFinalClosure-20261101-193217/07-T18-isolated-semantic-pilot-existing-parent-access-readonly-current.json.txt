@@ -1,0 +1,140 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-isolated-semantic-pilot-existing-parent-access-readonly-current.json
+SHA ee911834d3b2158a983bd4e91c1d05b85c5862982605a0a4c99b85d1eecc6ed6
+0001 [
+0002   {
+0003     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer",
+0004     "owner": "MORELITERAI\\morel",
+0005     "areAccessRulesProtected": false,
+0006     "entries": [
+0007       {
+0008         "identity": "S-1-5-21-1381080640-1423934081-2753609353-1447724742",
+0009         "rights": "Modify, Synchronize",
+0010         "type": "Allow",
+0011         "inherited": false,
+0012         "inheritance": "ContainerInherit, ObjectInherit",
+0013         "propagation": "None"
+0014       },
+0015       {
+0016         "identity": "S-1-5-21-2601792449-1918527094-1271273014-2206753312",
+0017         "rights": "Modify, Synchronize",
+0018         "type": "Allow",
+0019         "inherited": false,
+0020         "inheritance": "ContainerInherit, ObjectInherit",
+0021         "propagation": "None"
+0022       },
+0023       {
+0024         "identity": "MoreLiterai\\CodexSandboxUsers",
+0025         "rights": "Modify, Synchronize",
+0026         "type": "Allow",
+0027         "inherited": false,
+0028         "inheritance": "ContainerInherit, ObjectInherit",
+0029         "propagation": "None"
+0030       },
+0031       {
+0032         "identity": "MoreLiterai\\CodexSandboxUsers",
+0033         "rights": "Modify, Synchronize",
+0034         "type": "Allow",
+0035         "inherited": true,
+0036         "inheritance": "ContainerInherit, ObjectInherit",
+0037         "propagation": "None"
+0038       },
+0039       {
+0040         "identity": "S-1-5-21-282618488-2079572664-2212818904-621477262",
+0041         "rights": "Modify, Synchronize",
+0042         "type": "Allow",
+0043         "inherited": true,
+0044         "inheritance": "ContainerInherit, ObjectInherit",
+0045         "propagation": "None"
+0046       },
+0047       {
+0048         "identity": "NT AUTHORITY\\SYSTEM",
+0049         "rights": "FullControl",
+0050         "type": "Allow",
+0051         "inherited": true,
+0052         "inheritance": "ContainerInherit, ObjectInherit",
+0053         "propagation": "None"
+0054       },
+0055       {
+0056         "identity": "BUILTIN\\Administrators",
+0057         "rights": "FullControl",
+0058         "type": "Allow",
+0059         "inherited": true,
+0060         "inheritance": "ContainerInherit, ObjectInherit",
+0061         "propagation": "None"
+0062       },
+0063       {
+0064         "identity": "MoreLiterai\\morel",
+0065         "rights": "FullControl",
+0066         "type": "Allow",
+0067         "inherited": true,
+0068         "inheritance": "ContainerInherit, ObjectInherit",
+0069         "propagation": "None"
+0070       }
+0071     ],
+0072     "attributes": "Directory"
+0073   },
+0074   {
+0075     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs",
+0076     "owner": "MORELITERAI\\morel",
+0077     "areAccessRulesProtected": false,
+0078     "entries": [
+0079       {
+0080         "identity": "S-1-5-21-2601792449-1918527094-1271273014-2206753312",
+0081         "rights": "Modify, Synchronize",
+0082         "type": "Allow",
+0083         "inherited": true,
+0084         "inheritance": "ContainerInherit, ObjectInherit",
+0085         "propagation": "None"
+0086       },
+0087       {
+0088         "identity": "MoreLiterai\\CodexSandboxUsers",
+0089         "rights": "Modify, Synchronize",
+0090         "type": "Allow",
+0091         "inherited": true,
+0092         "inheritance": "ContainerInherit, ObjectInherit",
+0093         "propagation": "None"
+0094       },
+0095       {
+0096         "identity": "S-1-5-21-1381080640-1423934081-2753609353-1447724742",
+0097         "rights": "Modify, Synchronize",
+0098         "type": "Allow",
+0099         "inherited": true,
+0100         "inheritance": "ContainerInherit, ObjectInherit",
+0101         "propagation": "None"
+0102       },
+0103       {
+0104         "identity": "S-1-5-21-282618488-2079572664-2212818904-621477262",
+0105         "rights": "Modify, Synchronize",
+0106         "type": "Allow",
+0107         "inherited": true,
+0108         "inheritance": "ContainerInherit, ObjectInherit",
+0109         "propagation": "None"
+0110       },
+0111       {
+0112         "identity": "NT AUTHORITY\\SYSTEM",
+0113         "rights": "FullControl",
+0114         "type": "Allow",
+0115         "inherited": true,
+0116         "inheritance": "ContainerInherit, ObjectInherit",
+0117         "propagation": "None"
+0118       },
+0119       {
+0120         "identity": "BUILTIN\\Administrators",
+0121         "rights": "FullControl",
+0122         "type": "Allow",
+0123         "inherited": true,
+0124         "inheritance": "ContainerInherit, ObjectInherit",
+0125         "propagation": "None"
+0126       },
+0127       {
+0128         "identity": "MoreLiterai\\morel",
+0129         "rights": "FullControl",
+0130         "type": "Allow",
+0131         "inherited": true,
+0132         "inheritance": "ContainerInherit, ObjectInherit",
+0133         "propagation": "None"
+0134       }
+0135     ],
+0136     "attributes": "Directory"
+0137   }
+0138 ]

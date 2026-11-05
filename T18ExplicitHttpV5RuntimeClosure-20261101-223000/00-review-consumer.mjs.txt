@@ -1,0 +1,478 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18ExplicitDeadlineHttpV5-20261101-221038\review-consumer.mjs
+SHA 166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31
+EXPLICIT currentlines 950..1424; earlier unchangedpureprotocol outside thisfocusedreview
+0950     const onEnd = () => finish();
+0951     const onError = () => {
+0952       if (settled) return;
+0953       settled = true;
+0954       cleanup();
+0955       reject(new PilotProtocolError("credential", "STDIN_FAILED"));
+0956     };
+0957     process.stdin.on("data", onData);
+0958     process.stdin.on("end", onEnd);
+0959     process.stdin.on("error", onError);
+0960     process.stdin.resume();
+0961   });
+0962 }
+0963 
+0964 const TRANSPORT_ERROR_NAME_CATEGORIES = Object.freeze({
+0965   TypeError: "TYPE_ERROR",
+0966   AbortError: "ABORT_ERROR",
+0967   TimeoutError: "TIMEOUT_ERROR",
+0968   Error: "ERROR",
+0969 });
+0970 const TRANSPORT_ERROR_CODE_CATEGORIES = new Set([
+0971   "UND_ERR_HEADERS_TIMEOUT",
+0972   "UND_ERR_BODY_TIMEOUT",
+0973   "UND_ERR_CONNECT_TIMEOUT",
+0974   "UND_ERR_SOCKET",
+0975   "ECONNRESET",
+0976   "ECONNREFUSED",
+0977   "ETIMEDOUT",
+0978   "ENETUNREACH",
+0979   "EHOSTUNREACH",
+0980   "ABORT_ERR",
+0981 ]);
+0982 
+0983 function safeErrorProperty(error, property) {
+0984   try {
+0985     return error && error[property];
+0986   } catch {
+0987     return undefined;
+0988   }
+0989 }
+0990 
+0991 function staticTransportCode(code) {
+0992   if (code === undefined || code === null) return null;
+0993   return TRANSPORT_ERROR_CODE_CATEGORIES.has(code) ? code : "OTHER";
+0994 }
+0995 
+0996 function transportDiagnosticForError(error) {
+0997   const errorName = safeErrorProperty(error, "name");
+0998   const cause = safeErrorProperty(error, "cause");
+0999   return {
+1000     errorName: typeof errorName === "string" &&
+1001       Object.prototype.hasOwnProperty.call(TRANSPORT_ERROR_NAME_CATEGORIES, errorName)
+1002       ? TRANSPORT_ERROR_NAME_CATEGORIES[errorName]
+1003       : "OTHER",
+1004     errorCode: staticTransportCode(safeErrorProperty(error, "code")),
+1005     causeCode: staticTransportCode(safeErrorProperty(cause, "code")),
+1006   };
+1007 }
+1008 
+1009 export async function performRequest(stage, requestBody, credential, deadline) {
+1010   const startedAt = Date.now();
+1011   const timeoutMs = requestTimeoutForDeadline(startedAt, deadline);
+1012   if (timeoutMs <= 0) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+1013   const signal = AbortSignal.timeout(timeoutMs);
+1014   const requestBodyBuffer = Buffer.from(requestBody, "utf8");
+1015   const contentLength = Buffer.byteLength(requestBody, "utf8");
+1016 
+1017   return new Promise((resolve) => {
+1018     let request = null;
+1019     let response = null;
+1020     let socket = null;
+1021     let responseStatus = null;
+1022     const chunks = [];
+1023     let capturedBytes = 0;
+1024     let overflow = false;
+1025     let settled = false;
+1026     let requestClosed = false;
+1027     let responseClosed = false;
+1028     const prematureCloseError = { name: "Error" };
+1029 
+1030     const resultBody = () => Buffer.concat(chunks, capturedBytes).toString("utf8");
+1031 
+1032     const cleanupResponseListeners = () => {
+1033       if (!response) return;
+1034       response.off("data", onResponseData);
+1035       response.off("end", onResponseEnd);
+1036       response.off("error", onResponseError);
+1037       response.off("aborted", onResponseAborted);
+1038       response.off("close", onResponseClose);
+1039     };
+1040 
+1041     const cleanupRequestListeners = () => {
+1042       if (!request) return;
+1043       request.off("response", onResponse);
+1044       request.off("error", onRequestError);
+1045       request.off("socket", onSocket);
+1046       request.off("close", onRequestClose);
+1047     };
+1048 
+1049     const cleanupWhenClosed = () => {
+1050       if (!settled) return;
+1051       if (requestClosed) cleanupRequestListeners();
+1052       if (!response || responseClosed) cleanupResponseListeners();
+1053     };
+1054 
+1055     const detachSignal = () => {
+1056       signal.removeEventListener("abort", onAbort);
+1057     };
+1058 
+1059     const destroyOwned = () => {
+1060       try {
+1061         if (response) response.destroy();
+1062       } catch {
+1063         // Destruction is best-effort after the owned transport has settled.
+1064       }
+1065       try {
+1066         if (request) request.destroy();
+1067       } catch {
+1068         // Destruction is best-effort after the owned transport has settled.
+1069       }
+1070       try {
+1071         if (socket) socket.destroy();
+1072       } catch {
+1073         // Destruction is best-effort after the owned transport has settled.
+1074       }
+1075     };
+1076 
+1077     const finish = (result) => {
+1078       if (settled) return false;
+1079       settled = true;
+1080       detachSignal();
+1081       resolve(result);
+1082       destroyOwned();
+1083       cleanupWhenClosed();
+1084       return true;
+1085     };
+1086 
+1087     const finishSuccess = () => finish({
+1088       status: responseStatus,
+1089       body: resultBody(),
+1090       capturedBytes,
+1091       responseOverflow: overflow,
+1092       durationMs: Date.now() - startedAt,
+1093       transportError: null,
+1094       transportDiagnostic: null,
+1095     });
+1096 
+1097     const finishFailure = (error) => {
+1098       if (settled) return false;
+1099       const signalReason = safeErrorProperty(signal, "reason");
+1100       const signalTimedOut = signal.aborted === true &&
+1101         safeErrorProperty(signalReason, "name") === "TimeoutError";
+1102       const timedOut = safeErrorProperty(error, "name") === "TimeoutError" || signalTimedOut;
+1103       const wholeDeadlineExpired = Date.now() >= deadline ||
+1104         (timedOut && timeoutMs < PER_CALL_TIMEOUT_MS);
+1105       const diagnosticError = signalTimedOut &&
+1106         safeErrorProperty(error, "name") !== "TimeoutError"
+1107         ? signalReason
+1108         : error;
+1109       return finish({
+1110         status: responseStatus,
+1111         body: resultBody(),
+1112         capturedBytes,
+1113         responseOverflow: overflow,
+1114         durationMs: Date.now() - startedAt,
+1115         transportError: wholeDeadlineExpired
+1116           ? "ENTIRE_CALL_CAP_EXCEEDED"
+1117           : timedOut ? "TIMEOUT" : "TRANSPORT_FAILURE",
+1118         transportDiagnostic: transportDiagnosticForError(diagnosticError),
+1119       });
+1120     };
+1121 
+1122     const onAbort = () => {
+1123       finishFailure(safeErrorProperty(signal, "reason"));
+1124     };
+1125 
+1126     const onResponse = (incomingResponse) => {
+1127       if (settled) {
+1128         const ignoreLateError = () => {};
+1129         incomingResponse.on("error", ignoreLateError);
+1130         incomingResponse.once("close", () => {
+1131           incomingResponse.off("error", ignoreLateError);
+1132         });
+1133         try {
+1134           incomingResponse.destroy();
+1135         } catch {
+1136           // A late response is outside the settled owning call.
+1137         }
+1138         return;
+1139       }
+1140       response = incomingResponse;
+1141       responseStatus = Number.isInteger(response.statusCode) ? response.statusCode : null;
+1142       response.on("data", onResponseData);
+1143       response.on("end", onResponseEnd);
+1144       response.on("error", onResponseError);
+1145       response.on("aborted", onResponseAborted);
+1146       response.on("close", onResponseClose);
+1147     };
+1148 
+1149     const onResponseData = (value) => {
+1150       if (settled) return;
+1151       const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
+1152       if (capturedBytes + chunk.byteLength > RESPONSE_CAP_BYTES) {
+1153         overflow = true;
+1154         finishSuccess();
+1155         return;
+1156       }
+1157       chunks.push(chunk);
+1158       capturedBytes += chunk.byteLength;
+1159     };
+1160 
+1161     const onResponseEnd = () => {
+1162       if (settled) return;
+1163       finishSuccess();
+1164     };
+1165 
+1166     const onResponseError = (error) => {
+1167       finishFailure(error);
+1168     };
+1169 
+1170     const onResponseAborted = () => {
+1171       finishFailure(prematureCloseError);
+1172     };
+1173 
+1174     const onResponseClose = () => {
+1175       responseClosed = true;
+1176       if (!settled) finishFailure(prematureCloseError);
+1177       cleanupWhenClosed();
+1178     };
+1179 
+1180     const onRequestError = (error) => {
+1181       finishFailure(error);
+1182     };
+1183 
+1184     const onSocket = (assignedSocket) => {
+1185       socket = assignedSocket;
+1186       if (settled) {
+1187         const ignoreLateError = () => {};
+1188         assignedSocket.on("error", ignoreLateError);
+1189         assignedSocket.once("close", () => {
+1190           assignedSocket.off("error", ignoreLateError);
+1191         });
+1192         try {
+1193           assignedSocket.destroy();
+1194         } catch {
+1195           // A late socket is outside the settled owning call.
+1196         }
+1197       }
+1198     };
+1199 
+1200     const onRequestClose = () => {
+1201       requestClosed = true;
+1202       if (!settled && !response) finishFailure(prematureCloseError);
+1203       cleanupWhenClosed();
+1204     };
+1205 
+1206     signal.addEventListener("abort", onAbort, { once: true });
+1207     try {
+1208       const authorization = buildAuthorizationHeader(credential);
+1209       request = http.request(ROUTE, {
+1210         method: "POST",
+1211         headers: {
+1212           "Content-Type": "application/json",
+1213           Authorization: authorization,
+1214           "Content-Length": String(contentLength),
+1215         },
+1216         agent: false,
+1217         signal,
+1218       });
+1219       request.on("response", onResponse);
+1220       request.on("error", onRequestError);
+1221       request.on("socket", onSocket);
+1222       request.on("close", onRequestClose);
+1223       request.end(requestBodyBuffer);
+1224     } catch (error) {
+1225       finishFailure(error);
+1226     }
+1227   });
+1228 }
+1229 
+1230 async function writeFailure(artifactsDir, credential, error, runStartedAt, timings) {
+1231   const safeCode = error instanceof PilotProtocolError && /^[A-Z0-9_]+$/.test(error.code)
+1232     ? error.code
+1233     : "INTERNAL_FAILURE";
+1234   const stage = error instanceof PilotProtocolError && /^[a-z0-9_]+$/.test(error.stage)
+1235     ? error.stage
+1236     : "runtime";
+1237   const status = `FAIL_${safeCode}`;
+1238   await writeArtifact(artifactsDir, "error.json", { stage, code: safeCode }, credential);
+1239   await writeArtifact(artifactsDir, "timings.json", {
+1240     ...timings,
+1241     totalMs: Date.now() - runStartedAt,
+1242   }, credential);
+1243   await writeArtifact(artifactsDir, "final-report.json", {
+1244     status,
+1245     protocol_capability_only: true,
+1246     legal_or_business_pass: false,
+1247     stage,
+1248     code: safeCode,
+1249   }, credential);
+1250   return { status, stage, code: safeCode };
+1251 }
+1252 
+1253 async function runMain() {
+1254   const runStartedAt = Date.now();
+1255   const deadline = runStartedAt + ENTIRE_CALL_CAP_MS;
+1256   let artifactsDir = null;
+1257   let credential = "";
+1258   let timings = {};
+1259   try {
+1260     const args = parseArguments(process.argv.slice(2));
+1261     const pinned = await verifyPinnedSources();
+1262     let data;
+1263     try {
+1264       data = JSON.parse(pinned.fixedDataBytes.toString("utf8"));
+1265     } catch {
+1266       fail("input", "FIXED_DATA_INVALID");
+1267     }
+1268     const input = selectPilotInput(data);
+1269     const units = buildVisibleUnits(input.receipts);
+1270     const stage1Parsed = parsePinnedStage1Assessments(pinned.stage1CacheBytes, units);
+1271     const inventory = buildFragmentInventory(units, input.draft, input.visibleSelfcheck);
+1272     const targetCount = assertTargetCountWithinPilotCap(inventory);
+1273     const shardPlan = buildReviewShards(inventory);
+1274 
+1275     artifactsDir = await prepareOutputRoot(args.root);
+1276     credential = await readCredentialFromStdin();
+1277     await writeArtifact(artifactsDir, "route.json", {
+1278       method: "POST",
+1279       url: ROUTE,
+1280       redirect: "error",
+1281       model: MODEL,
+1282       parameters: PARAMETERS,
+1283       maxRequests: MAX_REQUESTS,
+1284       requestStages: REQUEST_STAGES,
+1285       perCallTimeoutMs: PER_CALL_TIMEOUT_MS,
+1286       entireCallCapMs: ENTIRE_CALL_CAP_MS,
+1287       responseCapBytes: RESPONSE_CAP_BYTES,
+1288       targetCap: TARGET_CAP,
+1289       reusedStage1: true,
+1290       sourceCacheIdentity: pinned.sourceCacheIdentity,
+1291       requestHeadersPersisted: false,
+1292     }, credential);
+1293     await writeArtifact(artifactsDir, "inventory.json", {
+1294       reusedStage1: true,
+1295       sourceCacheIdentity: pinned.sourceCacheIdentity,
+1296       targetCount,
+1297       sourceUnitCount: units.length,
+1298       sourceTargetCount: inventory.sourceTargets.length,
+1299       draftTargetCount: inventory.draftTargets.length,
+1300       selfcheckTargetCount: inventory.selfcheckTargets.length,
+1301       sourceUnits: units,
+1302       sourceParents: inventory.sourceParents,
+1303       draftParents: inventory.draftParents,
+1304       selfcheckParents: inventory.selfcheckParents,
+1305       targets: inventory.targets,
+1306     }, credential);
+1307     await writeArtifact(artifactsDir, "stage1-assessments-reused.json", {
+1308       reusedStage1: true,
+1309       sourceCacheIdentity: pinned.sourceCacheIdentity,
+1310       assessments: stage1Parsed.assessments,
+1311     }, credential);
+1312     await writeArtifact(artifactsDir, "shard-plan.json", {
+1313       targetCount,
+1314       shardCount: shardPlan.length,
+1315       shards: shardPlan,
+1316     }, credential);
+1317 
+1318     const shardReviewSets = [];
+1319     for (const shard of shardPlan) {
+1320       const stage = shard.shard_id;
+1321       if (Date.now() >= deadline) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+1322       const stage2Payload = buildRequestPayload(
+1323         buildStage2Messages(
+1324           units,
+1325           stage1Parsed.assessments,
+1326           inventory,
+1327           input.actualCoverage,
+1328           shard.review_target_ids,
+1329         ),
+1330       );
+1331       const stage2Body = JSON.stringify(stage2Payload);
+1332       await writeArtifact(artifactsDir, `${stage}-request.json`, { body: stage2Body }, credential);
+1333       await writeArtifact(artifactsDir, `${stage}-digests.json`, {
+1334         messages: digest(JSON.stringify(stage2Payload.messages)),
+1335         requestBody: digest(stage2Body),
+1336       }, credential);
+1337       const stage2Response = await performRequest(stage, stage2Body, credential, deadline);
+1338       timings = { ...timings, [`${stage}Ms`]: stage2Response.durationMs };
+1339       await writeArtifact(artifactsDir, `${stage}-response.json`, {
+1340         status: stage2Response.status,
+1341         body: stage2Response.body,
+1342         bodyOverflow: stage2Response.responseOverflow,
+1343         capturedBytes: stage2Response.capturedBytes,
+1344         transportError: stage2Response.transportError,
+1345         transportDiagnostic: stage2Response.transportDiagnostic,
+1346       }, credential);
+1347       if (Date.now() >= deadline) fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+1348       if (stage2Response.transportError === "ENTIRE_CALL_CAP_EXCEEDED") {
+1349         fail(stage, "ENTIRE_CALL_CAP_EXCEEDED");
+1350       }
+1351       if (stage2Response.transportError === "TIMEOUT") fail(stage, "TIMEOUT");
+1352       if (stage2Response.transportError) fail(stage, "TRANSPORT_FAILURE");
+1353       if (stage2Response.status !== 200) fail(stage, "HTTP_NON_200");
+1354       if (stage2Response.responseOverflow) fail(stage, "RESPONSE_TOO_LARGE");
+1355       const stage2Parsed = validateStage2Result(
+1356         parseModelJson(unwrapChatCompletion(stage2Response.body)),
+1357         inventory,
+1358         shard.review_target_ids,
+1359       );
+1360       await writeArtifact(artifactsDir, `${stage}-parsed.json`, stage2Parsed, credential);
+1361       shardReviewSets.push(stage2Parsed.reviews);
+1362     }
+1363     const stage2Parsed = mergeShardReviews(inventory, shardPlan, shardReviewSets);
+1364     await writeArtifact(artifactsDir, "stage2-parsed.json", stage2Parsed, credential);
+1365     const status = outputStatusForReviews(stage2Parsed.reviews);
+1366     timings = { ...timings, totalMs: Date.now() - runStartedAt };
+1367     await writeArtifact(artifactsDir, "timings.json", timings, credential);
+1368     await writeArtifact(artifactsDir, "final-report.json", {
+1369       status,
+1370       protocol_capability_only: true,
+1371       legal_or_business_pass: false,
+1372       reusedStage1: true,
+1373       sourceCacheIdentity: pinned.sourceCacheIdentity,
+1374       sourceUnitCount: units.length,
+1375       sourceTargetCount: inventory.sourceTargets.length,
+1376       draftTargetCount: inventory.draftTargets.length,
+1377       selfcheckTargetCount: inventory.selfcheckTargets.length,
+1378       stage1AssessmentReuseCount: stage1Parsed.assessments.length,
+1379       stage2ReviewCount: stage2Parsed.reviews.length,
+1380       targetCount,
+1381       shardCount: shardPlan.length,
+1382       callsMade: 2,
+1383     }, credential);
+1384     process.stdout.write(`status=${status}\nreport=${redactCredential(path.join(artifactsDir, "final-report.json"), credential)}\n`);
+1385     return 0;
+1386   } catch (error) {
+1387     if (artifactsDir) {
+1388       try {
+1389         const failure = await writeFailure(artifactsDir, credential, error, runStartedAt, timings);
+1390         process.stderr.write(`status=${failure.status}\nstage=${failure.stage}\n`);
+1391       } catch {
+1392         process.stderr.write("status=FAIL_ARTIFACT_WRITE\nstage=output\n");
+1393       }
+1394     } else {
+1395       const code = error instanceof PilotProtocolError && /^[A-Z0-9_]+$/.test(error.code)
+1396         ? error.code
+1397         : "INTERNAL_FAILURE";
+1398       const stage = error instanceof PilotProtocolError && /^[a-z0-9_]+$/.test(error.stage)
+1399         ? error.stage
+1400         : "runtime";
+1401       process.stderr.write(`status=FAIL_${code}\nstage=${stage}\n`);
+1402     }
+1403     return 1;
+1404   }
+1405 }
+1406 
+1407 function isMainModule() {
+1408   if (!process.argv[1]) return false;
+1409   const moduleUrl = new URL(import.meta.url);
+1410   if (moduleUrl.protocol !== "file:") return false;
+1411   let modulePath = decodeURIComponent(moduleUrl.pathname);
+1412   if (process.platform === "win32" && /^\/[A-Za-z]:\//.test(modulePath)) modulePath = modulePath.slice(1);
+1413   const invoked = path.resolve(process.argv[1]);
+1414   const current = path.normalize(modulePath);
+1415   return process.platform === "win32"
+1416     ? invoked.toLowerCase() === current.toLowerCase()
+1417     : invoked === current;
+1418 }
+1419 
+1420 if (isMainModule()) {
+1421   runMain().then((code) => {
+1422     process.exitCode = code;
+1423   });
+1424 }

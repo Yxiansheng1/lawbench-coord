@@ -1,0 +1,148 @@
+# T34 投影观察器绑定顺序修复
+
+状态：`SOURCE_ONLY_AMEND_HANDOFF / AUTHOR_RUNTIME_ZERO / ROOT_AUDIT_FINITE_AND_ONE_RUN_REQUIRED`
+
+本目录只处理一次已确认的诊断误判：旧观察器用
+`service.constructor === ImportedClass` 判断服务是否来自同一生产模块。真实
+Cordis 的 `createTraceable()` 会包装服务实例上的每个字符串键函数属性，
+包括读取到的 `constructor`；`getPrototypeOf` 没有相应 trap。因此即使服务
+与动态导入项共享同一个真实 class，旧的 `constructor` 比较仍会得到代理函数，
+并误报 `service_class_mismatch`。
+
+这不是底层产品拒绝的原因。本次修复只让观察器在保持精确模块 SHA-256、
+export 引入和 class 原型身份证明的前提下，正确识别同一服务 class。成功绑定
+或抓到 `settings/rejected` 都不能单独证明产品根因已被修复。
+
+## 已有现场与撤回的推断
+
+在完整审计及有限助手检查后，原始新启动的 GUI 现场
+`ProjectionObserver-20261030-061810/runs/T34-private-projection-observer-20261030-064836`
+实际复现了 `settings/rejected`，但观察器状态为 `not_installed`，失败原因为
+`service_class_mismatch`；两个 `hashVerified` 均为 `true`，
+`constructorIdentity` 为 `false`，事件数为 0。该目录当时已有的 15 个完整
+OS 身份已结束，60762 端口无监听，窗口已消失，5 个源码持有进程已结束。
+Python 进程身份为真实，文件未出现虚假的 `finally` 完成声明。
+
+根侧先前从 `withProps` 第 96 行作出的完整原因推断已经撤回。实际相关源码为
+`createTraceable()` 第 123-143 行：第 140-142 行会包装每个字符串键函数
+属性，`getProto` 没有对应 trap。旧比较因此不是模块同一性的有效否定证据。
+
+## 唯一源码变更
+
+本目录中的 8 个源文件均由已核验的
+`ProjectionObserver-20261030-061810` 快照复制。旧目录及其全部 runs、
+报告和源文件保持不可变。相对旧快照只做以下必要改动：
+
+| 文件 | 唯一改动 |
+| --- | --- |
+| `projection-observer.mjs` | 两个 `.sameServiceClass` 表达式改为对导入 class 的精确原型比较 |
+| `prepare.ps1` | `$EvidenceRoot` 指向本目录 |
+| `start.ps1` | `$EvidenceRoot` 指向本目录；回填本目录 `entry.py`、observer 的实际字节和 SHA-256 |
+| `stop.ps1` | 只把 owned runs 根指向本目录 |
+| `entry.py` | 只把 `EVIDENCE_ROOT` 指向本目录 |
+| `frame-classifier-finite.mjs` | 只把 `CURRENT_OBSERVER` 指向本目录当前 observer |
+| `literal-inputs.json` | 原字节复制，不改 |
+| `README.md` | 本说明 |
+
+`projection-observer.mjs` 只把以下两项替换为：
+
+```js
+Object.getPrototypeOf(configEditorService) === ConfigEditor.prototype
+Object.getPrototypeOf(settingsService) === SettingsForms.prototype
+```
+
+固定模块 URL、模块字节/SHA-256 校验、export 检查、服务存在性检查、包装器、
+`once`、`Reflect.apply(original, this, arguments)`、返回值、错误对象、
+8 事件/16 KiB 上限、恢复逻辑和导出均保持原字节或原语义。没有按 class 名、
+duck typing、catch-all、成功 seed 或私有 symbol 解包放宽绑定。
+
+格式、任务名和 run 前缀继续使用 T34 原值。600 秒上限、清理/finally、循环、
+路由、settings 和既有的 source/profile identity 断言均保持原位。
+
+## 新增有限助手
+
+`binding-finite.mjs` 只做真实 Cordis 绑定路径的有限检查：
+
+1. 从 `node:assert/strict` 和 `node:fs` 导入助手依赖。
+2. 只读取批准的 Cordis 实际文件，先断言 60,361 字节和 SHA-256
+   `6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e`。
+3. 校验通过后才动态导入精确 URL
+   `file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js`。
+4. 创建全新空 `Context` 和一个真实 `Service`，服务名固定为自有名称
+   `t34-binding-finite-owned-service`。
+5. 只通过 `ctx.get(name,false)` 走实际 tracing，断言旧
+   `traced.constructor !== Service`，同时断言
+   `Object.getPrototypeOf(traced) === Service.prototype`、raw service 原型仍是
+   `Service.prototype`，并验证一个普通函数输出不变。
+6. 在 `finally` 中 `await ctx.fiber.dispose()`，再断言自有服务已移除。
+
+助手不实例化 ConfigEditor、Settings 或任何产品 app/RPC/Agent/Native/Session，
+不访问其他服务名、网络、进程、模型、Key 或环境凭据，也不写文件。它只输出
+一个有限 JSON PASS 行。作者未运行该助手。
+
+## 当前文件身份
+
+| 文件 | 字节 | SHA-256 |
+| --- | ---: | --- |
+| `entry.py` | 88,654 | `c504d34463f627b5f4632a4faf7fafc8398ac6c3cbcc444a6935f6cb6a0741f0` |
+| `frame-classifier-finite.mjs` | 7,048 | `5b6203710b1c1df027c297ba3caa30fe13483504d5fbb565a27f167a0a4bb7dd` |
+| `literal-inputs.json` | 13,679 | `5775e35bd7345ba9e7f80be654d60f4fcc7e292aa6390c8426b6ddf140b86387` |
+| `prepare.ps1` | 13,563 | `dfceea89a46b81131dbee5c200443200ac903b7523724ff9fdf77bca939c2287` |
+| `projection-observer.mjs` | 18,544 | `0871eff40533f60776742cc20372b7a85b701a940b735f72035d37333c946c6b` |
+| `start.ps1` | 76,332 | `462520ce1887478520d9df4b505c76f4431876d07af7e9dcc0d0691994b2bd1d` |
+| `stop.ps1` | 7,180 | `3ea70a2886e68fd975a5e4f96b26f111248f4bad6b260414c91c4dc9391ce96d` |
+| `binding-finite.mjs` | 2,104 | `6e2ce94e8f8618d572512acd820fc143f0148dcaefdcc6b541e676d40b92f2f5` |
+
+`start.ps1` 中的 `$NativeEntryBytes`/`$NativeEntrySha256` 和
+`$ObserverBytes`/`$ObserverSha256` 分别精确钉住上表的新 `entry.py` 和
+`projection-observer.mjs`。`README.md` 自身不写入自引用哈希；最终身份由协调
+目录交回件记录。
+
+## 根侧执行顺序
+
+根必须先完整审阅本目录、与 8 个既有快照的逆变换 diff、manifest/输出格式、
+setup/finally/cleanup、全部写面、source/profile identity、B346 和字面 pins。
+审阅通过后按以下顺序执行，不得跳步或把局部 PASS 当作 T34 整条 PASS：
+
+```powershell
+& 'E:\node\node.exe' 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\binding-finite.mjs'
+& 'E:\node\node.exe' 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\frame-classifier-finite.mjs'
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\prepare.ps1'
+& 'C:\Users\morel\AppData\Local\Programs\Python\Python312\python.exe' -B -X utf8 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\entry.py' --admit --root '<runRoot>'
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\start.ps1' -RunRoot '<runRoot>' -LifetimeSeconds 600
+& 'D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\ProjectionBindingFix-20261030-065353\stop.ps1' -RunRoot '<runRoot>'
+```
+
+`<runRoot>` 必须直接位于本目录 `runs` 下，名称保持
+`T34-private-projection-observer-YYYYMMDD-HHMMSS`。旧 prepared、admission、
+served root、run 或事件一律不得复用。有限原型检查失败时停止，不启动新 GUI。
+只有在实际绑定检查通过后才允许做一次原 T34 真实禁用投影路径的新私有观察。
+
+运行后根必须确认所有 owned OS 进程、端口和窗口关闭，保留原始观察输出并按
+安全分类器给出实际结果。若只抓到 `settings/rejected`，应如实记录已知
+拒绝类别和帧，不宣称底层产品原因已捕获或 T34 已通过。
+
+## 作者边界
+
+- `author_runtime=0`
+- `product_changes=false`
+- `sdk_changes=false`
+- `cordis_changes=false`
+- `model_calls=0`
+- `http_calls=0`
+- `gui_actions=0`
+- `tool_test_build_import_calls=0`
+- `git_writes=0`
+- `installs_or_package_changes=0`
+- `credential_reads=0`
+- `old_evidence_rewrites=0`
+
+`NOT_RUN`：`binding-finite.mjs`、`frame-classifier-finite.mjs`、prepare、
+admission、start、GUI 设置动作、observer capture、stop、runtime6、395、
+模型、私钥、真实案卷、原生投影 PASS 与整条 T34 PASS。旧 `finitePASS` 只能
+用于函数完全未变的旧分类器事实，不能用于本次绑定或原生成功。
+
+作者运行期间没有产品/测试脚本执行；只进行文件读取、哈希、复制、最小文本
+编辑和状态核对。四条只读命令误填 `bash` 后均在执行前被运行器拒绝，没有
+产生命令效果；三条只读命令误用相对 `pwsh.exe`，均成功且未改文件。这些偏差
+已如实记录，未因此启动 setup、切换 legacy、修改沙箱/审批/ACL 或拆 writer 锁。

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/api/task_create.schema.json",
+  "title": "POST /api/task",
+  "description": "设置该会话当前的选择（胶囊、Skill、输入、参数、模型路由），写成一张待执行的任务单；同一会话只保留最新一张（新的顶掉旧的）；执行时不消耗：之后每条消息都按它运行，直到下一次设置或清除。entry 与 skill 都为 null 表示自由对话（1.2 起；1.1 是一条消息用掉一张）",
+  "$defs": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+        },
+        "session_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+        },
+        "entry": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "发起任务的胶囊 id（capsules.json 中的 id，改名不影响）；自由对话为 null"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "skill": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "lawbench://contracts/common.schema.json#/$defs/rel_path"
+          },
+          "description": "选用的草稿或成果路径，服务端计算版本和 sha256"
+        },
+        "params": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/params"
+        },
+        "route": {
+          "enum": [
+            "local",
+            "external"
+          ],
+          "description": "T38：任务路由留痕，缺省 local；不驱动本地流水线"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "session_id",
+        "entry",
+        "skill",
+        "inputs",
+        "params"
+      ]
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "ok": {
+              "const": true
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "task_id": {
+                  "$ref": "lawbench://contracts/common.schema.json#/$defs/task_id"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "task_id"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "ok",
+            "value"
+          ]
+        },
+        {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/fail"
+        }
+      ]
+    },
+    "value": {
+      "type": "object",
+      "properties": {
+        "task_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/task_id"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "task_id"
+      ]
+    }
+  }
+}

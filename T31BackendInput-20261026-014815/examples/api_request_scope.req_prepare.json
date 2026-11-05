@@ -1,0 +1,10 @@
+{
+  "action": "prepare",
+  "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+  "session_id": "s_01HZX",
+  "request_id": "12ab34cd-56ef-4abc-8def-0123456789ab",
+  "material_ids": [
+    "M0001",
+    "M0002"
+  ]
+}

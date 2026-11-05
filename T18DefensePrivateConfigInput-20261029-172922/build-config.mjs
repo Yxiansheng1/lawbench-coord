@@ -1,0 +1,314 @@
+/**
+ * Fixed inputs and output policy for the T31 private runtime build.
+ *
+ * This file is intentionally data-only. The literal hashes below were taken
+ * from the reviewed working tree at D:\Lawbeach\lawbench-A on 2026-10-26.
+ * The host-source pin includes the reviewed T31 health-auth modification.
+ * A mismatch stops the build before the output directory is created.
+ */
+
+export const EVIDENCE_ROOT = String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T18\CriminalApplicationQuestionPrivateBuild-20261029-151130`
+export const REPO_ROOT = String.raw`D:\Lawbeach\lawbench-A`
+export const DSH_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh`
+export const LAW_BENCH_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh-ext`
+export const UI_CONVERSATION_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation`
+export const SESSION_CONTROLLER_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller`
+export const TYPERT_GENERATOR_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\typert\generator`
+export const TSDOWN_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\tsdown@0.22.2_oxc-resolver@_f113eb69000457c8d5954142d0822f52\node_modules\tsdown`
+export const TSX_LOADER = String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\tsx@4.22.4\node_modules\tsx\dist\loader.mjs`
+export const ESBUILD_ROOT = String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\esbuild@0.28.1\node_modules\esbuild`
+
+export const EXPECTED_A_HEAD = 'a23271abee333a9a256fd46a3141da16975c2380'
+export const OUTPUT_NAME_PATTERN = /^private-output-[0-9]{8}-[0-9]{6}$/
+export const OUTPUT_PREFIX = 'private-output-'
+
+export const NODE_PIN = Object.freeze({
+  executable: String.raw`E:\node\node.exe`,
+  version: 'v24.21.0',
+  bytes: 93580104,
+  sha256: 'ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32',
+})
+
+export const LAW_BENCH_PACKAGE_ID = 'lawbench-dsh'
+export const UI_CONVERSATION_PACKAGE_ID = '@deepseek-ai/dsh-client-ui-conversation'
+export const SESSION_CONTROLLER_PACKAGE_ID = '@deepseek-ai/dsh-api-session-controller'
+
+export const LAW_BENCH_NODE_ENTRIES = Object.freeze({
+  agent: 'agent/index.ts',
+  host: 'host/index.ts',
+  credentials: 'credentials/index.ts',
+  'session-store': 'session-store/index.ts',
+  index: 'ui/host.ts',
+})
+
+export const LAW_BENCH_BUILD_FILES = Object.freeze([
+  'agent.js',
+  'client.js',
+  'credentials.js',
+  'host.js',
+  'index.js',
+  'session-store.js',
+])
+
+/**
+ * Canonical tree digest:
+ * - recurse through regular files only;
+ * - reject links/reparse points;
+ * - sort POSIX-style relative paths by ordinal byte order;
+ * - hash the UTF-8 text `path\tbytes\tfile-sha256` joined by LF, plus one LF.
+ */
+export const TREE_DIGEST_ALGORITHM = 'ordinal-path-tab-size-tab-sha256-lf-v1'
+
+export const TREE_PINS = Object.freeze([
+  Object.freeze({
+    id: 'lawbench-agent-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\agent`,
+    selector: 'all',
+    files: 4,
+    bytes: 75605,
+    sha256: 'fe13bc5a86d899dd087969f3abc9f28eaa3fa99fed4669fc478bb12bc496196f',
+  }),
+  Object.freeze({
+    id: 'lawbench-credentials-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\credentials`,
+    selector: 'all',
+    files: 4,
+    bytes: 20408,
+    sha256: 'c4ca46f1ce6647c56c10f083332cfdd938907eaf22255e4673256637c07d095f',
+  }),
+  Object.freeze({
+    id: 'lawbench-host-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\host`,
+    selector: 'all',
+    files: 20,
+    bytes: 186034,
+    sha256: 'e946b4618f02b90154205d5794db077a6e0da6dc31727b611bf61e5e9ce19a80',
+  }),
+  Object.freeze({
+    id: 'lawbench-session-store-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\session-store`,
+    selector: 'all',
+    files: 5,
+    bytes: 70071,
+    sha256: '51da6a3cd97a14233db41e52c1b00210d48eb4f63e626aa590200e629f8ee74e',
+  }),
+  Object.freeze({
+    id: 'lawbench-shared-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\shared`,
+    selector: 'all',
+    files: 9,
+    bytes: 34130,
+    sha256: 'a4182a25056dc5e91587966184b63a19305cb982a988c3bafa3b3c7bae22de2b',
+  }),
+  Object.freeze({
+    id: 'lawbench-ui-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\ui`,
+    selector: 'all',
+    files: 92,
+    bytes: 637497,
+    sha256: '16453fdee71df01f487d95f1b5afed87203d7a5191150cea63930b9f62b743a1',
+  }),
+  Object.freeze({
+    id: 'embedded-contract-schemas',
+    root: String.raw`D:\Lawbeach\lawbench-A\contracts`,
+    selector: 'version-and-schema-json',
+    files: 69,
+    bytes: 251741,
+    sha256: 'a0da8077fcece9ada61c2efb09be5b340f67deaa55606252697134b7a3043800',
+  }),
+  Object.freeze({
+    id: 'ui-conversation-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\src`,
+    selector: 'all',
+    files: 79,
+    bytes: 592784,
+    sha256: '0b4843e97e37caf9b453c469604966b304c899b52c7d72993f37d03daf224414',
+  }),
+  Object.freeze({
+    id: 'session-controller-source',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\src`,
+    selector: 'all',
+    files: 34,
+    bytes: 340866,
+    sha256: '52771d9796f48ceb872c6fe9f7ac5de42eec576feda4db7eba7fe7098a89d059',
+  }),
+  Object.freeze({
+    id: 'typert-generator-runtime',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\typert\generator\lib\types`,
+    selector: 'all',
+    files: 32,
+    bytes: 559777,
+    sha256: '3dfc33eea95b5edcccfcbe6c6f6255abdaeb046226f89563f65e702992d295b8',
+  }),
+  Object.freeze({
+    id: 'tsdown-installed-package',
+    root: TSDOWN_ROOT,
+    selector: 'all',
+    files: 49,
+    bytes: 203850,
+    sha256: 'a9c4d06e0869eb22c8eb0c3be1315227d6525dd1d30da7c43e830a2ef6c66870',
+  }),
+  Object.freeze({
+    id: 'tsx-installed-package',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\tsx@4.22.4\node_modules\tsx`,
+    selector: 'all',
+    files: 53,
+    bytes: 522956,
+    sha256: '52ecedb35b24ab7768b8b4e0c051c090e85a8d1f70b15eca02be497d5bdffb9b',
+  }),
+  Object.freeze({
+    id: 'esbuild-installed-package',
+    root: ESBUILD_ROOT,
+    selector: 'all',
+    files: 10,
+    bytes: 149038,
+    sha256: '3a91c31246e1cd399db3ac0ef60627b758f6973457dc923908001cc326a41161',
+  }),
+  Object.freeze({
+    id: 'esbuild-win32-x64',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\@esbuild+win32-x64@0.28.1\node_modules\@esbuild\win32-x64`,
+    selector: 'all',
+    files: 3,
+    bytes: 11671045,
+    sha256: 'a0963ef3a8b22a3cd9273bea498e29a9ef4881f2a4dc80e4fda5c15ab52ca045',
+  }),
+  Object.freeze({
+    id: 'lightningcss-installed-package',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\lightningcss@1.32.0\node_modules\lightningcss`,
+    selector: 'all',
+    files: 14,
+    bytes: 510515,
+    sha256: '0f26ab338f0cc2d22d04b1995eb5922beea43b045259a01b086ed210f6943850',
+  }),
+  Object.freeze({
+    id: 'lightningcss-win32-x64',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\lightningcss-win32-x64-msvc@1.32.0\node_modules\lightningcss-win32-x64-msvc`,
+    selector: 'all',
+    files: 4,
+    bytes: 9514088,
+    sha256: '4c2a040d50a5206802f7cacb0b23839642c221728a2fa1b80432291472710d8c',
+  }),
+  Object.freeze({
+    id: 'rolldown-installed-package',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\rolldown@1.1.1\node_modules\rolldown`,
+    selector: 'all',
+    files: 48,
+    bytes: 773777,
+    sha256: '7f7621e5577a9df636bed3e1d07018d32bf509444838a97ae43c29efd441ca3f',
+  }),
+  Object.freeze({
+    id: 'rolldown-win32-x64',
+    root: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\@rolldown+binding-win32-x64-msvc@1.1.1\node_modules\@rolldown\binding-win32-x64-msvc`,
+    selector: 'all',
+    files: 3,
+    bytes: 31085946,
+    sha256: 'b8dfc6550ee47d94278114b42811f062719c93d9dc44e593ba96d6d016a578df',
+  }),
+])
+
+export const FILE_PINS = Object.freeze([
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\scripts\build.mjs`, sha256: '34e0f5d6136d203f56816bf181d359ce7941bc7e09048fce2ec62cc145646b33' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\scripts\contracts-source.mjs`, sha256: '6460a6963458f9a74e18e15f26aeaa292bf9a00222bc45eea8c71d8d9c4e5baf' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\package.json`, sha256: '3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\tsconfig.json`, sha256: 'db6444cb6b3fef772b06b324cebb36610a4e418445bf40981001bb0c1ada560b' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\pnpm-lock.yaml`, sha256: '725fd6cb47b936ae30aae013826b2315a45b3d968ae75a9d053d60702626e371' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\cordis.patch.yml`, sha256: 'e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\persona.md`, sha256: 'a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\package.json`, sha256: 'eb332130b7347793c65c6e72af2afb8543e767d86857400dbb23ff0c46d527b4' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\pnpm-lock.yaml`, sha256: '60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\tsconfig.base.json`, sha256: '2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\tsconfig.base.client.json`, sha256: '117086f80fc5558dd6d01d24cd7dfe7b495df8757dff402021218fa64605961e' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\tsdown.config.ts`, sha256: 'af5cf6832716fce53f1443b9daa1f4434a8dd5ac90d9f8bf59aaae937b1904a4' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\apps\desktop-host\tsdown.config.ts`, sha256: 'b4f1307af10f4e9c6da83f84bef23fda9ea63c1847b906a472db20ae66f3d42d' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\apps\desktop-host\package.json`, sha256: 'ff8440f98dcd25a9fd9beb02fd8b2549cc4db380f4b4e141ff7c09786d8c7c7d' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\tsdown.client.ts`, sha256: '8afeabc31d95e2c0ff5735193273f4d67bb1ef81f1adf3f45eb5adbef9510b33' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\modules\src\client\manifest.ts`, sha256: '2e44bce01dc004fcb6a21b68445dfd3a8cb05fb2b715b1df8e75ed642609686e' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\web\src\platform.ts`, sha256: '72e7a9bf2187a8a79c3871cddaa067afc25b5c2d28abb7373e6a8113122413ac' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\scripts\client-build-environment.ts`, sha256: '064ee73384745e7b327c8465fb31b0b99cce5b3824363cdac9eb455ff17b4bb8' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\scripts\bundle-input-isolation.ts`, sha256: '8aefbe91d41896534b331934d3176ab91138efdf8ca6bfacfb769144f17e6d0d' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\package.json`, sha256: '9e002e9f9c09ec329e82995cbf1fe47d64dd5f516c8912bc98f73db327f567d1' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\tsdown.config.ts`, sha256: '4acc39edb5ad2c3185bd23829f44fabb261e0f9869d2e3467c2252540554921b' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\tsconfig.client.json`, sha256: '685e91ab3bd0d295078dcbaf380592c41b0ecb54829888a0adb673c8784722a7' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\tsconfig.host.json`, sha256: 'a7c5dc13e35d90765adb38462921e77231afbd849ae3182ed69514fd0b4d8873' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\package.json`, sha256: 'ef7d21eec0e9b35212cc773f984afd7e24daca7063de8fad69a287e661c55a81' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\tsdown.config.ts`, sha256: '6a3e90c2069eb648d1d0173bb2caab3d531cfcf9760ab20da230bffb2089bc49' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\tsconfig.client.json`, sha256: '528291c006fbedf632516b38af09217f68611ab74dc5a75bf8bf61f52f59aabf' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\tsconfig.host.json`, sha256: '217832dd9347e63d00457214fab8bcefa07f63c5d91e92761b3570ca841cc32e' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\typert\generator\package.json`, sha256: '4b67dbba685c48f9f1998f8a285480d12ac49db87cf925d8400e9a314bcfa0b6' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\typescript\package.json`, sha256: '9332e97c30d3e53ed54910b89207ed657fb444066484df6e5b6965bf130865e9' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\typescript\lib\typescript.js`, sha256: '569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\esbuild@0.28.1\node_modules\esbuild\package.json`, sha256: 'd55d1d19fcc5b6079e4a71dd4111340c79c682bc36835ac7058a0c364c7db58a' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\lightningcss\package.json`, sha256: '1b7fbd47a660ecb37d1fa8304a14b726aa44a31bb3d3338f417593f6276b762f' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\rolldown@1.1.1\node_modules\rolldown\package.json`, sha256: '360850b91156f78e7bf9c1dc0ffe6ca7ce091f4c7f2f25ad630adecbb774ec98' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\@rolldown+binding-win32-x64-msvc@1.1.1\node_modules\@rolldown\binding-win32-x64-msvc\package.json`, sha256: 'f267b0debacb9a43aba234e1d54dccd33872233ef069c557a34476c459066a5e' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\lightningcss-win32-x64-msvc@1.32.0\node_modules\lightningcss-win32-x64-msvc\package.json`, sha256: '76456a8ca20848b96b5819f115368bebfbb941c51c860b62073e3e591c836b8b' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh\node_modules\.pnpm\@esbuild+win32-x64@0.28.1\node_modules\@esbuild\win32-x64\package.json`, sha256: '4a63b84fa1059fef348e29e3a39c26168213bb7f0aa1ac0174e439cc1e62a9f8' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\runtime\resolve-from-dsh.mjs`, sha256: '1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\runtime\network-guard.cjs`, sha256: 'cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\runtime\dsh-home\profiles\desktop\package.json`, sha256: 'bb7315c3844542261d160da20c0b9c963b5e56464cb81f546862fb2d46f43c3f' }),
+])
+
+export const REFERENCE_PINS = Object.freeze([
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\project\package.json`, sha256: '8c88bf33f554e0ac41c28d0c6267ee919baa79630afc8819a2c57b2a2e2aa7d3' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T50\20261023-211421\project\cordis.patch.yml`, sha256: '7bb1e3fa7bb7bdb412487db11e1be48d025521130dd7104d5b9210ab3e3b025f' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\CoreRuntimeGui-20261025-145707\start.ps1`, sha256: '080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\CoreRuntimeGui-20261025-145707\prepare.ps1`, sha256: '1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\CoreRuntimeGui-20261025-145707\stop.ps1`, sha256: '7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\PATCHES.md`, sha256: 'f488f59084d4402ede036f163e17ff1b1186b0e3541c5f76a8c0b4918e601a0a' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-request-submission-scope.patch`, sha256: 'e76c9c520b567d7aef47a7ee16fcff403a35d5913e52219375126bbeef09991a' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-request-submission-ordering.patch`, sha256: '9187cbe653f8b86488c9a29c4813de391a71022f053337b25de2db7276bd0012' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-request-submission-scope-test.patch`, sha256: '6a9f60203b41fe454d881cc05704b4e57d9009da49e595d6e194cbc3f6c52da1' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-request-submission-failure-cleanup.patch`, sha256: '28f174027664a20da6fa07370460ab17b3c94032426d4dd5d88ff1f0311cb169' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-native-claimed-request-idempotency.patch`, sha256: 'd3527b61841a596c66293f3ecbd42973ef4b74045eaa34779d3de11afbc7f862' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-session-control-stream-type-arguments.patch`, sha256: '5a146f11b743f69c8b382b1d28420b55a13ba06e84f1fe6bec4d3f5f1324ce73' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-submission-admission-revalidation.patch`, sha256: '6ba11ae09a9e7adec05831479a84541adac0e72297f1729415718d95ecfcdf1d' }),
+  Object.freeze({ path: String.raw`D:\Lawbeach\lawbench-A\dsh-patches\P-29-scoped-queued-delivery-policy.patch`, sha256: '50bddd4121541d7d51aec5a91379b02d4545726134f46a670e90100f38e0af1b' }),
+])
+
+export const OUTPUT_ROOT = 'profile-node_modules'
+
+export const OUTPUT_PACKAGES = Object.freeze([
+  Object.freeze({
+    id: LAW_BENCH_PACKAGE_ID,
+    root: `${OUTPUT_ROOT}/lawbench-dsh`,
+    manifestSource: String.raw`D:\Lawbeach\lawbench-A\dsh-ext\package.json`,
+  }),
+  Object.freeze({
+    id: UI_CONVERSATION_PACKAGE_ID,
+    root: `${OUTPUT_ROOT}/@deepseek-ai/dsh-client-ui-conversation`,
+    manifestSource: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\client\ui-conversation\package.json`,
+  }),
+  Object.freeze({
+    id: SESSION_CONTROLLER_PACKAGE_ID,
+    root: `${OUTPUT_ROOT}/@deepseek-ai/dsh-api-session-controller`,
+    manifestSource: String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\session-controller\package.json`,
+  }),
+])
+
+export const INTENDED_OUTPUTS = Object.freeze([
+  'manifest.json',
+  'profile-node_modules/lawbench-dsh/package.json',
+  'profile-node_modules/lawbench-dsh/cordis.patch.yml',
+  'profile-node_modules/lawbench-dsh/persona.md',
+  'profile-node_modules/lawbench-dsh/lib/agent.js',
+  'profile-node_modules/lawbench-dsh/lib/client.js',
+  'profile-node_modules/lawbench-dsh/lib/credentials.js',
+  'profile-node_modules/lawbench-dsh/lib/host.js',
+  'profile-node_modules/lawbench-dsh/lib/index.js',
+  'profile-node_modules/lawbench-dsh/lib/session-store.js',
+  'profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/package.json',
+  'profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/index.js',
+  'profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js',
+  'profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js.map',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/package.json',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/index.js',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js.map',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.js',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.d.ts',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.js',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts.map',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/types.js',
+  'profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/remote-events.js',
+])

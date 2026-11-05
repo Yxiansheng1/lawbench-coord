@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 2,
+  "job": "WindowsPackageP1Repair1-20261102-024557",
+  "status": "PREPARED_SOURCE_ONLY_NOT_EXECUTED",
+  "target": {
+    "platform": "win32",
+    "arch": "x64",
+    "installer": "nsis",
+    "signed": false,
+    "artifactLabel": "PRIVATE ACCEPTANCE CANDIDATE - NOT A PUBLISHED RELEASE"
+  },
+  "roots": {
+    "evidenceRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557",
+    "runsRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsPackageP1Repair1-20261102-024557\\runs",
+    "aRoot": "D:\\Lawbeach\\lawbench-A",
+    "bRoot": "D:\\Lawbeach\\lawbench-B",
+    "coordRoot": "D:\\Lawbeach\\lawbench-coord",
+    "installedBaselineRoot": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台",
+    "resourceRoot": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217"
+  },
+  "literalPins": {
+    "nodeExecutable": {
+      "executable": "E:\\node\\node.exe",
+      "version": "v24.21.0",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    "electron": "44.0.0",
+    "electronBuilder": "26.15.3",
+    "asar": "3.4.1",
+    "nsis": "3.0.4.1",
+    "nsisResources": "3.4.1",
+    "winCodeSign": "2.6.0",
+    "sevenZip": "7zip-win-x64",
+    "icons": "icons@1.1.0",
+    "productName": "连越律师工作台 P1验收候选",
+    "productVersion": "0.1.0",
+    "contractsVersion": "1.7",
+    "officeRuntimeVersion": "0.2.2",
+    "officeAssetCount": 21
+  },
+  "algorithm": "ordinal-path-tab-size-tab-sha256-lf-v1",
+  "closureState": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18-current-closure-state.json",
+    "sha256": "f5326863202ec6318b99b96fe7b2f9e3f47413c6abaf01a2efadf5c22d319b9b7",
+    "baseCommit": "a23271abee333a9a256fd46a3141da16975c2380",
+    "pins": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+        "bytes": 62098,
+        "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+        "bytes": 37867,
+        "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+        "bytes": 50993,
+        "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1"
+      }
+    ]
+  },
+  "privateBuildTrees": [
+    {
+      "id": "dsh-ext-agent",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent",
+      "selector": "all",
+      "files": 5,
+      "bytes": 132793,
+      "sha256": "f0643d96f6759111610eb4623ea992809b043e1b89eb2abe8b26383a36494aee"
+    },
+    {
+      "id": "dsh-ext-credentials",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\credentials",
+      "selector": "all",
+      "files": 4,
+      "bytes": 20408,
+      "sha256": "c4ca46f1ce6647c56c10f083332cfdd938907eaf22255e4673256637c07d095f"
+    },
+    {
+      "id": "dsh-ext-host",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host",
+      "selector": "all",
+      "files": 20,
+      "bytes": 188498,
+      "sha256": "54c836bfda442012238675ea3ca80949b8a8197d23633548e236345a14de1f63"
+    },
+    {
+      "id": "dsh-ext-session-store",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store",
+      "selector": "all",
+      "files": 5,
+      "bytes": 70071,
+      "sha256": "51da6a3cd97a14233db41e52c1b00210d48eb4f63e626aa590200e629f8ee74e"
+    },
+    {
+      "id": "dsh-ext-shared",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared",
+      "selector": "all",
+      "files": 9,
+      "bytes": 34130,
+      "sha256": "a4182a25056dc5e91587966184b63a19305cb982a988c3bafa3b3c7bae22de2b"
+    },
+    {
+      "id": "dsh-ext-ui",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui",
+      "selector": "all",
+      "files": 92,
+      "bytes": 641236,
+      "sha256": "e8f1c5200721ae97c9d82f56e6c56c5f07727da62b4db18107375df564d6b6cc"
+    },
+    {
+      "id": "dsh-packages-client-ui-conversation-src",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src",
+      "selector": "all",
+      "files": 79,
+      "bytes": 592784,
+      "sha256": "0b4843e97e37caf9b453c469604966b304c899b52c7d72993f37d03daf224414"
+    },
+    {
+      "id": "dsh-packages-api-session-controller-src",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src",
+      "selector": "all",
+      "files": 34,
+      "bytes": 340866,
+      "sha256": "52771d9796f48ceb872c6fe9f7ac5de42eec576feda4db7eba7fe7098a89d059"
+    },
+    {
+      "id": "dsh-packages-typert-generator-lib-types",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\generator\\lib\\types",
+      "selector": "all",
+      "files": 32,
+      "bytes": 559777,
+      "sha256": "3dfc33eea95b5edcccfcbe6c6f6255abdaeb046226f89563f65e702992d295b8"
+    },
+    {
+      "id": "tsdown",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\tsdown@0.22.2_oxc-resolver@_f113eb69000457c8d5954142d0822f52\\node_modules\\tsdown",
+      "selector": "all",
+      "files": 49,
+      "bytes": 203850,
+      "sha256": "a9c4d06e0869eb22c8eb0c3be1315227d6525dd1d30da7c43e830a2ef6c66870"
+    },
+    {
+      "id": "tsx",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\tsx@4.22.4\\node_modules\\tsx",
+      "selector": "all",
+      "files": 53,
+      "bytes": 522956,
+      "sha256": "52ecedb35b24ab7768b8b4e0c051c090e85a8d1f70b15eca02be497d5bdffb9b"
+    },
+    {
+      "id": "esbuild",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\esbuild@0.28.1\\node_modules\\esbuild",
+      "selector": "all",
+      "files": 10,
+      "bytes": 149038,
+      "sha256": "3a91c31246e1cd399db3ac0ef60627b758f6973457dc923908001cc326a41161"
+    },
+    {
+      "id": "win32-x64",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64",
+      "selector": "all",
+      "files": 3,
+      "bytes": 11671045,
+      "sha256": "a0963ef3a8b22a3cd9273bea498e29a9ef4881f2a4dc80e4fda5c15ab52ca045"
+    },
+    {
+      "id": "lightningcss",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lightningcss@1.32.0\\node_modules\\lightningcss",
+      "selector": "all",
+      "files": 14,
+      "bytes": 510515,
+      "sha256": "0f26ab338f0cc2d22d04b1995eb5922beea43b045259a01b086ed210f6943850"
+    },
+    {
+      "id": "lightningcss-win32-x64-msvc",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lightningcss-win32-x64-msvc@1.32.0\\node_modules\\lightningcss-win32-x64-msvc",
+      "selector": "all",
+      "files": 4,
+      "bytes": 9514088,
+      "sha256": "4c2a040d50a5206802f7cacb0b23839642c221728a2fa1b80432291472710d8c"
+    },
+    {
+      "id": "rolldown",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\rolldown@1.1.1\\node_modules\\rolldown",
+      "selector": "all",
+      "files": 48,
+      "bytes": 773777,
+      "sha256": "7f7621e5577a9df636bed3e1d07018d32bf509444838a97ae43c29efd441ca3f"
+    },
+    {
+      "id": "binding-win32-x64-msvc",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@rolldown+binding-win32-x64-msvc@1.1.1\\node_modules\\@rolldown\\binding-win32-x64-msvc",
+      "selector": "all",
+      "files": 3,
+      "bytes": 31085946,
+      "sha256": "b8dfc6550ee47d94278114b42811f062719c93d9dc44e593ba96d6d016a578df"
+    },
+    {
+      "id": "ajv",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\node_modules\\.pnpm\\ajv@8.20.0\\node_modules\\ajv",
+      "selector": "all",
+      "files": 466,
+      "bytes": 1033496,
+      "sha256": "c9dd2e33c83d7d2277123f7de5b011c4ced784537b951ed83bb4bcd17072687b"
+    },
+    {
+      "id": "ajv-formats",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\node_modules\\.pnpm\\ajv-formats@3.0.1_ajv@8.20.0\\node_modules\\ajv-formats",
+      "selector": "all",
+      "files": 15,
+      "bytes": 56763,
+      "sha256": "99d62da4cd77b26f3b9fcbf4ccc7bb0855fa59c5019d8fd6823b1a37e75dbacf"
+    },
+    {
+      "id": "yaml",
+      "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\node_modules\\.pnpm\\yaml@2.9.0\\node_modules\\yaml",
+      "selector": "all",
+      "files": 233,
+      "bytes": 685953,
+      "sha256": "4e71cc93f23272c4f39200a30d5ab937ae8c6e02b789f6593a8f28719511782e"
+    }
+  ],
+  "payloadTrees": [
+    {
+      "id": "b-service-safe",
+      "root": "D:\\Lawbeach\\lawbench-B\\service\\lawbench",
+      "selector": "service-safe",
+      "priorUnsafeSelectorPin": {
+        "files": 94,
+        "bytes": 20797389,
+        "sha256": "7605d061decaad4129247361cfaca5cbc8e98761465c84d3a86dcced33d422e3"
+      },
+      "safeManifestStatus": "ROOT_TO_PRODUCE_AFTER_SAFE_SELECTOR_REVIEW"
+    },
+    {
+      "id": "b-contracts-safe",
+      "root": "D:\\Lawbeach\\lawbench-B\\contracts",
+      "selector": "contracts-safe",
+      "priorUnsafeSelectorPin": {
+        "files": 74,
+        "bytes": 271894,
+        "sha256": "505ef7c9db66c02bd625d41a688769a95e22f044e3fb698e06d8a45843bc9415"
+      },
+      "safeManifestStatus": "ROOT_TO_PRODUCE_AFTER_SAFE_SELECTOR_REVIEW"
+    },
+    {
+      "id": "b-skills-approved",
+      "root": "D:\\Lawbeach\\lawbench-B\\skills",
+      "selector": "skills-approved",
+      "priorUnsafeSelectorPin": {
+        "files": 438,
+        "bytes": 819295,
+        "sha256": "41694120c14050004a099eb2c5abdb4513a9575f286e52fd2a1b7029eb0209fa"
+      },
+      "safeManifestStatus": "ROOT_TO_PRODUCE_AFTER_SAFE_SELECTOR_REVIEW"
+    },
+    {
+      "id": "a-engines-safe",
+      "root": "D:\\Lawbeach\\lawbench-A\\engines",
+      "selector": "engine-safe",
+      "priorAllSelectorDigestRejected": true,
+      "rejectedPriorSha256": "778f1711d8352f1b95ea26fb3671df526e60c4f0b9c224b29e8b42dceb16c93b",
+      "safeManifestStatus": "ROOT_TO_PRODUCE_AFTER_SAFE_SELECTOR_REVIEW"
+    }
+  ],
+  "payloadPolicy": {
+    "prefilterBeforeOpen": true,
+    "refuseReparsePoints": true,
+    "deniedDirectorySegments": [
+      ".git",
+      ".pytest_cache",
+      ".mypy_cache",
+      ".ruff_cache",
+      "__pycache__",
+      "test",
+      "tests",
+      "test-results",
+      "fixtures",
+      "docs",
+      "credential",
+      "credentials",
+      "keyring",
+      "secrets",
+      "userdata",
+      "user-data",
+      "user-output",
+      "user-outputs",
+      "outputs",
+      "results",
+      "case",
+      "cases",
+      "tmp",
+      "temp"
+    ],
+    "deniedExtensions": [
+      ".xlsx",
+      ".xls",
+      ".xlsm",
+      ".xlsb",
+      ".ods",
+      ".csv",
+      ".tsv",
+      ".db",
+      ".sqlite",
+      ".sqlite3",
+      ".log",
+      ".pyc",
+      ".pyo",
+      ".key",
+      ".pem",
+      ".p12",
+      ".pfx",
+      ".doc",
+      ".docx",
+      ".pdf",
+      ".rtf"
+    ],
+    "engineAllowedExtensions": [
+      ".cjs",
+      ".css",
+      ".dll",
+      ".exe",
+      ".gif",
+      ".html",
+      ".ico",
+      ".ini",
+      ".jar",
+      ".jpeg",
+      ".jpg",
+      ".js",
+      ".json",
+      ".map",
+      ".mjs",
+      ".node",
+      ".otf",
+      ".pak",
+      ".png",
+      ".pyd",
+      ".so",
+      ".svg",
+      ".ttf",
+      ".txt",
+      ".wasm",
+      ".woff",
+      ".woff2",
+      ".yaml",
+      ".yml"
+    ],
+    "engineAllowedDirectories": [
+      "assets",
+      "bin",
+      "lib",
+      "resources",
+      "runtime",
+      "src",
+      "vendor"
+    ],
+    "engineUnsupported": "Unexpanded allowed directories or unknown executable payload shapes fail explicitly; no stub, substitution, or silent omission."
+  },
+  "files": [
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\build.mjs","bytes":5498,"sha256":"34e0f5d6136d203f56816bf181d359ce7941bc7e09048fce2ec62cc145646b33"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\contracts-source.mjs","bytes":1471,"sha256":"6460a6963458f9a74e18e15f26aeaa292bf9a00222bc45eea8c71d8d9c4e5baf"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json","bytes":1257,"sha256":"3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\tsconfig.json","bytes":977,"sha256":"db6444cb6b3fef772b06b324cebb36610a4e418445bf40981001bb0c1ada560b"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\pnpm-lock.yaml","bytes":2006,"sha256":"725fd6cb47b936ae30aae013826b2315a45b3d968ae75a9d053d60702626e371"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\cordis.patch.yml","bytes":19570,"sha256":"e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md","bytes":2706,"sha256":"a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\package.json","bytes":3665,"sha256":"9e002e9f9c09ec329e82995cbf1fe47d64dd5f516c8912bc98f73db327f567d1"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsdown.config.ts","bytes":147,"sha256":"4acc39edb5ad2c3185bd23829f44fabb261e0f9869d2e3467c2252540554921b"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsconfig.client.json","bytes":1914,"sha256":"685e91ab3bd0d295078dcbaf380592c41b0ecb54829888a0adb673c8784722a7"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsconfig.host.json","bytes":434,"sha256":"a7c5dc13e35d90765adb38462921e77231afbd849ae3182ed69514fd0b4d8873"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\package.json","bytes":6030,"sha256":"ef7d21eec0e9b35212cc773f984afd7e24daca7063de8fad69a287e661c55a81"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsdown.config.ts","bytes":187,"sha256":"6a3e90c2069eb648d1d0173bb2caab3d531cfcf9760ab20da230bffb2089bc49"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsconfig.client.json","bytes":1155,"sha256":"528291c006fbedf632516b38af09217f68611ab74dc5a75bf8bf61f52f59aabf"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsconfig.host.json","bytes":1912,"sha256":"217832dd9347e63d00457214fab8bcefa07f63c5d91e92761b3570ca841cc32e"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\generator\\package.json","bytes":1224,"sha256":"4b67dbba685c48f9f1998f8a285480d12ac49db87cf925d8400e9a314bcfa0b6"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\package.json","bytes":16691,"sha256":"eb332130b7347793c65c6e72af2afb8543e767d86857400dbb23ff0c46d527b4"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\pnpm-lock.yaml","bytes":1011346,"sha256":"60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.json","bytes":48244,"sha256":"2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.client.json","bytes":472,"sha256":"117086f80fc5558dd6d01d24cd7dfe7b495df8757dff402021218fa64605961e"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\tsdown.config.ts","bytes":1449,"sha256":"af5cf6832716fce53f1443b9daa1f4434a8dd5ac90d9f8bf59aaae937b1904a4"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\tsdown.config.ts","bytes":236,"sha256":"b4f1307af10f4e9c6da83f84bef23fda9ea63c1847b906a472db20ae66f3d42d"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\package.json","bytes":1004,"sha256":"ff8440f98dcd25a9fd9beb02fd8b2549cc4db380f4b4e141ff7c09786d8c7c7d"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\tsdown.client.ts","bytes":35328,"sha256":"8afeabc31d95e2c0ff5735193273f4d67bb1ef81f1adf3f45eb5adbef9510b33"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\modules\\src\\client\\manifest.ts","bytes":21045,"sha256":"2e44bce01dc004fcb6a21b68445dfd3a8cb05fb2b715b1df8e75ed642609686e"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\web\\src\\platform.ts","bytes":840,"sha256":"72e7a9bf2187a8a79c3871cddaa067afc25b5c2d28abb7373e6a8113122413ac"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\client-build-environment.ts","bytes":16577,"sha256":"064ee73384745e7b327c8465fb31b0b99cce5b3824363cdac9eb455ff17b4bb8"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\bundle-input-isolation.ts","bytes":3973,"sha256":"8aefbe91d41896534b331934d3176ab91138efdf8ca6bfacfb769144f17e6d0d"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\typescript\\package.json","bytes":3527,"sha256":"9332e97c30d3e53ed54910b89207ed657fb444066484df6e5b6965bf130865e9"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\typescript\\lib\\typescript.js","bytes":9144216,"sha256":"569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron-builder\\package.json","bytes":1653,"sha256":"181429cbec2bbf9286b8e421034dde4386ddefc5fe938b6e15711d63126fd51f"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\package.json","bytes":744,"sha256":"3280e83f3a5a5d0825f44708a12c7c695b03034dd0e07356790c655de67cbedf"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\scripts\\electron-builder-config.mjs","bytes":16906,"sha256":"742a01a0a1395d3ace4253df57b10f44f753a299d8bf25064e1bf874125128db"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\scripts\\lawbench-product.mjs","bytes":3461,"sha256":"b6a3cf9b25b4dd3f34e02fc930ffc6081c4c2086d59663ea16af4296929ecfeb"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\scripts\\desktop-build-paths.mjs","bytes":4835,"sha256":"6776018342fbe8a9788ba39946ead02e8013246e9ec50b8f8c37a109bbca360e"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\scripts\\installer.nsh","bytes":10603,"sha256":"f0ae5bf904d0748358f2012d24f06b36f46cdf2ea5af8dd26af434d991ddb449"},
+    {"path":"D:\\Lawbeach\\lawbench-A\\packaging\\versions.lock","bytes":6743,"sha256":"60bd4cb98cbc5ef80b9ee27a6b88ce78bc1ddece79e3a39c8bbc8490ce61452e"}
+  ],
+  "baselineFiles": [
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\连越律师工作台.exe","bytes":244441088,"sha256":"9b6c8ded711e2f97f65f81cf1dec6965bfc3f77158bc33237b9ee20d106f6182"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\chrome_100_percent.pak","bytes":719654,"sha256":"ab7c4b7b6cb8832a31d44b95ec50ce52294f49422a3bdde4e21968eca2930cbe"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\chrome_200_percent.pak","bytes":1269017,"sha256":"30fa4a6e27c9ff2fb0f939f01158477e621a67d86e9ecb84cf11b3947db8eb9d"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\d3dcompiler_47.dll","bytes":4741488,"sha256":"a05f99734f7c4822fefc12b367af21fd0976ed6608752fb1e1e80b6ece7ecbbb"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\dxcompiler.dll","bytes":25744896,"sha256":"494a0ca088d1b9dd8ff673d590aaddd6bdcff09c938befef8c88c2016c49ee9a"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\dxil.dll","bytes":1509760,"sha256":"77e039c905030a641e53658a008b74e90635a5ea9b6b79eabd0f2003bdfca59a"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\ffmpeg.dll","bytes":3113472,"sha256":"0b4a5071d9cee1c8318f365d977f271ce771be8cce214cd12e24b714e239ff16"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\icudtl.dat","bytes":10876560,"sha256":"9f48c7f9c7c94d516a14870707e910ab94d75ae640ff6842c4af53276cd26ebe"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\LICENSE.electron.txt","bytes":1096,"sha256":"5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\LICENSES.chromium.html","bytes":20472827,"sha256":"f2310820377f4d8f2a5f6bc8744b985d6772cef9ee7d8d197b01fdb330db0bb8"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\resources.pak","bytes":12435136,"sha256":"c981108783cb7f15dcb4a8e94536d27791df70040344750684615c5beb954098"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\snapshot_blob.bin","bytes":368776,"sha256":"3b44e8f5e909ca00da26c051791dcd5f57fd7ae36ec58ccf3ea9242f4f6ca98f"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\THIRD-PARTY-LICENSES.md","bytes":4042,"sha256":"81b6a01e89b7a967e41a3c012eafb501c20b73fdafe86ab7e483bee564bb087a"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\v8_context_snapshot.bin","bytes":742208,"sha256":"5a4d92091bb4e7979b43802ddd70f7b775a6edc8d93a78de33fa47a17ddbfc8f"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\version","bytes":6,"sha256":"fa825b8c682299935776ae3334f8159d72c6a9d290bbe5fc673a2749b356b266"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\vk_swiftshader_icd.json","bytes":106,"sha256":"32d83ff113fef532a9f97e0d2831f8656628ab1c99e9060f0332b1532839afd9"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\vk_swiftshader.dll","bytes":5520384,"sha256":"a3239fabefee509d40221a55d0bb1711746f59c9b620ffdb34335b450592acbb"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\vulkan-1.dll","bytes":939008,"sha256":"f3b192d1df5dc8d046c84d6e15bc575c9f6605fe0497b126d8b6664a9a75032f"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\7zip-installer-COPYING.txt","bytes":27032,"sha256":"1e7e6bae5a5bde32f1ae5a7c37a082d1ab03cf89354f7f936ac40be9e39a6531"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\7zip-installer-LICENSE.txt","bytes":6341,"sha256":"7b7022cccdee7bddd07f5fd847161e33551cec411e9c9967c14008ee36d5ce3f"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\resources\\app.asar","bytes":127384598,"sha256":"e1def883558e62669963120557506804dd5fd20ce2b0d04f4d3715e6c0f54ed8"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\resources\\elevate.exe","bytes":107520,"sha256":"9b1fbf0c11c520ae714af8aa9af12cfd48503eedecd7398d8992ee94d1b4dc37"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\resources\\icon.png","bytes":123011,"sha256":"f0be1c895c9a94614ceac0535dad8770d4dee7f83c9a9bc7ffedcaf825436eb9"},
+    {"path":"C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\resources\\tray.ico","bytes":15773,"sha256":"6ed2e8bfec6f7b3157d069f84917df3beda5f94d43519bb3faeb20286f281b15"}
+  ],
+  "assets": [
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\electron-v44.0.0-win32-x64.zip","bytes":157455369,"sha256":"e61aa3bcea8152bc0730abd015e47c032d778a0ef10e2a1c78ba3c4ea47942f9"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\python.3.12.10.flat.nupkg","bytes":14515433,"sha256":"0eb85c2dfccccf1b17352de4c397f69194035b7d37149eacc16f1147d93de3b8"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\nsis-3.0.4.1.7z","bytes":1287512,"sha256":"9877df902530f96357d13a7a31ae2b9df67f48b11ffc9a1700a7c961574ec5fa"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\nsis-resources-3.4.1.7z","bytes":730800,"sha256":"593a9a92ef958321293ac6a2ee61e64bf1bd543142a5bd6b3d310709cc924103"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\winCodeSign-2.6.0.7z","bytes":5635384,"sha256":"cdaec7154dda7cc31f88d886e2489379a0625a737d610b5ae7f62a12f16743a4"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\7zip-win-x64.tar.gz","bytes":491982,"sha256":"be071f15bd6da2f78fe81c6ddef2009b0c4d8a51f36b780cb806c7e6df95e1b3"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\icons-bundle.tar.gz","bytes":3143719,"sha256":"2241c9501aa5ddd19317956449f50a1bc311df2c34058aae9bf8bfe62081eaec"},
+    {"path":"C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\installed-python-pins.json","bytes":7113,"sha256":"97c2616caaa276c7b1bbc20d1f6ba79befc537864f4350c5b87eb9c170a599dc"}
+  ],
+  "resourceChecks": {
+    "officeAssetsIndex": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\WindowsPackagingResources-20261102-0217\\office-assets-index.json",
+    "officeWorker": {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\office-runtime\\worker.mjs",
+      "sha256": "a98061fdc2c4cb680e18c8b5505bbbd09513eaaa295d41ea91848658aac93540"
+    },
+    "officePackageJson": {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\office-runtime\\package.json",
+      "sha256": "851e4487727ceabd95f6834f5428657a031d6908a3bfc1fcf212adfddd779afe"
+    },
+    "officePackageLock": {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\office-runtime\\package-lock.json",
+      "sha256": "c949f4906537746baeba6e1a100bb6414dffef999023edb4cc7ac449123c025f"
+    },
+    "installedTools": [
+      {
+        "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\tools\\libreoffice\\program\\soffice.exe",
+        "bytes": 523176,
+        "sha256": "a2823391857db1dd8ebbd8234267f9ec58ec7e5b5fc434665c0ecec4671cb988"
+      },
+      {
+        "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\tools\\pandoc\\pandoc.exe",
+        "bytes": 233626888,
+        "sha256": "8063cc4bc334a73d1400e7434a34b13ff75b3709cec5a511595630eb9a3ea098"
+      }
+    ]
+  },
+  "baselinePolicy": {
+    "kind": "declared read-only installed Electron 44 static shell/runtime and static tools baseline",
+    "notClaimedCurrentShellRebuild": true,
+    "currentPluginSourcesOverrideBaselineAppAsar": true,
+    "unsupportedShellOrSourceMismatch": "explicit gap"
+  },
+  "buildPolicy": {
+    "allRuntimeWritesBelowFreshRunRoot": true,
+    "freshRunRootRequired": true,
+    "refuseReparsePoints": true,
+    "gitWritesAllowed": false,
+    "networkAllowed": false,
+    "modelAllowed": false,
+    "appLaunchAllowed": false,
+    "installerExecutionAllowed": false,
+    "sdkUpgradeAllowed": false,
+    "securitySettingChangeAllowed": false,
+    "npmInstallAllowed": false,
+    "globalCacheWritesAllowed": false,
+    "finiteCommandTimeoutsSeconds": {
+      "privateBuild": 300,
+      "stageAndRepack": 180,
+      "nsis": 240
+    }
+  }
+}

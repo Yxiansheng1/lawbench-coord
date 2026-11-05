@@ -1,0 +1,55 @@
+{
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+      "bytes": 39858,
+      "sha256": "e6f5e5fb98b6f249e397d85f98fe7eac3a7dae9869e1daa57abbc34f0fee7967"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\state.ts",
+      "bytes": 18994,
+      "sha256": "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\settings-t34.spec.ts",
+      "bytes": 36195,
+      "sha256": "14b9e21982a6ec0d4cf51ebde716f82c1e91cddeac660eb7f3a6a312f94751c3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 50958,
+      "sha256": "f2f8444f9cc4f83a98153f40dc81fb32dcf5e0c21c846101c60433c274896ead"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 22291,
+      "sha256": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 63665,
+      "sha256": "cb3679ae85ea6b4f56406b5cbb1e01c1fe0e4739bb22d0ccf05cd4c7ac8fbf83"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.config.mjs",
+      "bytes": 2641,
+      "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tsconfig.json",
+      "bytes": 977,
+      "sha256": "db6444cb6b3fef772b06b324cebb36610a4e418445bf40981001bb0c1ada560b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    }
+  ],
+  "Root_static_candidate": "Initial describe and post-set describe use info?.configured===true and info?.writable!==false, so absent/malformed/missing boolean fields can show false known state and write capability. Post-unset rejects absentinfo but not nonbooleanfields. SDK CredentialInfo requires boolean configured/writable; actualGateway docs says returned business value notdecoded.",
+  "not_previous_ConfigEditor_root_cause": true,
+  "only_synthetic_memory_CredentialsApi": true,
+  "real_credentials_UI_SystemStore_keyring_network_prohibited": true,
+  "product_unchanged_until_ROOT_RED": true,
+  "known_current_private25": "GeneralReadOrderPrivateBuild-20261030-164557/private-output-20261030-171028 remains OLD unchanged until later approved build; never claim oldcompiledclient tests newUI source"
+}

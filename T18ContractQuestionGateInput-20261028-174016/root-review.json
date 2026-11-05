@@ -1,0 +1,21 @@
+{
+  "verdict": "CONFIRMED_GAP_MINIMAL_CONTRACT_AGENT_GATE_APPROVED_WITH_ROOT_CORRECTIONS",
+  "author": {
+    "commands": 111,
+    "success": 83,
+    "nonzero": 28,
+    "Bash_preexec_denied": 21,
+    "runtime": 0
+  },
+  "accepted": "Actualmodelask0 andcurrentA/actualcompiled194112/toolslifecycles showonlypromptinstruction; selectedskillandhostquestions alreadyavailable.",
+  "root_corrections": [
+    "REJECT metadataerror/missingcontractSkill=>emptyallow; failclosed for selectedcontractreview. Validexplicitemptyquestions case distinct.",
+    "Scope initialenforcementONLYcontract-review; do not infer all18fromMaterials rowsaremandatory.",
+    "USE tools/result finalfrozen normalized outcome after postExecute/callerCancelled/materialization; tools/post-execute is not yetfinal and could incorrectlymarkcancelled/blockedresults.",
+    "Captureactualexecutionidentity+taskstate beforeasynccall, checksamecurrentstate/task/session/case onfinalresult; no semanticmapping arbitraryids. Requireactualdeclaredquestionkeys andnonemptyrealanswers; keys do notprovequestionsemanticwording.",
+    "Guard saveUnfinished/directagentexecute andnoanswerbudgetnotice; do not falselyclaimdraftsaved."
+  ],
+  "source_contract": "A/dsh/packages/core/tools/src/index.ts153-198,1637-1714 finalresultnotification; actualread. Bsuggestedpostexecute narrowed/rejected; fullfindings/historyretained.",
+  "B_dirty_qualification": "Authorbefore/afterstatuscomparison0; rootwillseparatelyreadonlyverify unchanged B.",
+  "Packaging": "HOLD"
+}

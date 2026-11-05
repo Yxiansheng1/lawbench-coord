@@ -1,0 +1,88 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-fragment-bidirectional-v3-source-reviewed-current.json
+SHA 1203343fddbab24c246f9e8995cee406d9e38c1e20a696eec38aeefdbbcc3366
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_FULL_SOURCE_AND_FINITE_OFFLINE_V3_ONLY_NOT_SEMANTICS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\review-consumer.mjs",
+0008       "bytes": 41790,
+0009       "sha256": "a9e8398643f8139aa6b9a36ba1daca7940a8c4b3d1e4dc6057441e25bd120d1a",
+0010       "mtime_ns": "1793539225924986500"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\offline-controls.mjs",
+0014       "bytes": 25223,
+0015       "sha256": "13ac577aacb787d3fb290a0a389f110bab55339cbac52cb11f1c9fb43ca1f1cf",
+0016       "mtime_ns": "1793539193299636000"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\source-manifest.json",
+0026       "bytes": 699,
+0027       "sha256": "6d541e8545f2e7f6d8182903d3d00e51da7d6673f85c0455b8d21246b4ec1aed",
+0028       "mtime_ns": "1793539265478044500"
+0029     },
+0030     {
+0031       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508\\stage1-assessments.json",
+0032       "bytes": 10015,
+0033       "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0034       "mtime_ns": "1793538024944549000"
+0035     }
+0036   ],
+0037   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-fragment-bidirectional-v3-passive-current.json",
+0038   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0039   "cache_origin": {
+0040     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18VisibleUnitSemanticV2Actual-root-20261101-205930\\model-output\\artifacts\\stage1-parsed.json",
+0041     "bytes": 10015,
+0042     "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0043     "mtime_ns": "1793538024944549000"
+0044   },
+0045   "cache_byteheld": true,
+0046   "byteheld_functions": [
+0047     "scanDisplayMarkers",
+0048     "buildVisibleUnits",
+0049     "selectPilotInput",
+0050     "buildStage1Envelope",
+0051     "buildStage1Messages",
+0052     "validateStage1Result",
+0053     "buildRequestPayload",
+0054     "buildAuthorizationHeader",
+0055     "requestTimeoutForDeadline",
+0056     "unwrapChatCompletion",
+0057     "parseModelJson",
+0058     "redactCredential",
+0059     "serializeForArtifact",
+0060     "parseArguments",
+0061     "prepareOutputRoot",
+0062     "descendantPath",
+0063     "writeArtifact",
+0064     "readCredentialFromStdin",
+0065     "performRequest",
+0066     "writeFailure",
+0067     "isMainModule"
+0068   ],
+0069   "actual_target_counts": {
+0070     "F": 117,
+0071     "C": 134,
+0072     "Q": 114,
+0073     "total": 365
+0074   },
+0075   "request_bytes": 129463,
+0076   "pending_independent_reviews": true,
+0077   "qualifications": [
+0078     "Sourceauthor17commands14zero/3nonzero(identifierscan no-match,BashPREEXEC E_ACCESS_DENIED,PSregexparseerror);13patch events inclnewcontrolsdelete/add andformal, .NETcopies+onefinalmanifestwrite. Manyunapprovedreadonlysourceidentifier/segmentrereads andoneDirectoryExists retained; formalblanketallsubstantivenative qualified. No actualAPP/test/Node/Python/businessmodel/Key/runtime; no securitypolicy/ACLchanges. Not cleanprocessPASS.",
+0079     "Rootallcommandtext/writefaces/fullcurrentconsumer+controls/formal/setupcleanup read; firstcombineddisplaytruncated nearcontrolsstart, that segment separatelyread; unchangedlargeoldrawreadoutputs notallreread.",
+0080     "Some old controls replaced for changed schema; unchanged21functions byteheld and acceptedV2offline controls qualification reused for unaffected API/auth/redaction/markers. No claim newcontrols independentlyexecuteall oldcases, no overlapcountsum. Current newnegative and fullactualcorpus test actually ran0/1.563s/5pinsheld/guard0/onecompleteNodeOSgone; authoredstdout still says notexecuted, Rootobservedactualcode overridesstaleprintedlabel without sourceedit/rerun.",
+0081     "NewspanparentCP/QP replaces oldD:/S: tables with same LF textreconstruction, an authorimplementationdeviation nottransportloss. Sourcefull62units/headers retained; F/C/Q boundaries are syntactic notsemanticfacts.",
+0082     "RootdriverdraftPSliteral differs V2ONLY requests_cap2->1; outerdriver aliases+max1+extra8thcachepin. InitialRootliteralParser calledbeforepathsubstitution generatedstaticerrors; rawunboundRED retained, properboundstaticerrors0 beforeanyexecution/Key. SharedRead helper byteheld; no unnecessarygreenrerun.",
+0083     "Current onlysource/offline accepted. Modeljudgments/refs notentailment/fact/legal/businessPASS; noNativeSession/R/history/productintegration/hostilelocalactor/owneronlyACL guarantee."
+0084   ],
+0085   "Packaging": "HOLD"
+0086 }

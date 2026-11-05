@@ -1,0 +1,13 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+  "test_before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadFixturePrep-20261101-114647-before.py",
+  "original_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\FullRegression\\SafetyLoggingFix-20261031-133032\\bootstrap.py",
+  "original_bootstrap_sha256": "4b3c956626e822cb39af5341ed410ea4fdeeefcf1d8f3b432028bd23578ba8b2",
+  "bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadFixturePrep-20261101-114647\\bootstrap.py",
+  "replacement": {
+    "old": "        str(tests_dir),",
+    "new": "        'D:\\\\Lawbeach\\\\lawbench-B\\\\service\\\\tests\\\\test_read_bound_20261101_114236.py',",
+    "count": 1
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadFixturePrep-20261101-114647.md"
+}

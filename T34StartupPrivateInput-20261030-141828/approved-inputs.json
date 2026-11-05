@@ -1,0 +1,55 @@
+{
+  "old": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T34-idempotence-private-config-1017-20261030-085828.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\A-T34-idempotence-private-config-order-20261030-085828.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\A-handback-T34-idempotence-private-config-20261030-085828.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T34IdempotencePrivateInput-20261030-085828",
+    "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\IdempotencePrivateBuild-20261030-085828",
+    "builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\IdempotencePrivateBuild-20261030-085828\\build-private.mjs",
+    "config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\IdempotencePrivateBuild-20261030-085828\\build-config.mjs",
+    "new_ui_tree": {
+      "files": 92,
+      "bytes": 639385,
+      "sha256": "57c096501f307c3633bd0139d135a2f00b4facf005303d594fc02db239617209"
+    },
+    "model": "deepseek-v4.1-flash-1017",
+    "effort": "max",
+    "state": "SOURCE_ONLY_EXACT_UI_TREE_PRIVATE_CONFIG",
+    "actual_thread": "01a18a52-655c-79b1-aa38-bc45edcc52c7",
+    "CLI_PID": 54852,
+    "context_verified": true,
+    "first_ASCII_order_read_verified": true,
+    "snapshot_commands": 65,
+    "snapshot_success": 56,
+    "status_snapshot": "completed",
+    "author_runtime": 0,
+    "full_raw_reviewed": true
+  },
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsStartupPrivateBuild-20261030-141828",
+  "old_host_tree": {
+    "id": "lawbench-host-source",
+    "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host",
+    "selector": "all",
+    "files": 20,
+    "bytes": 186034,
+    "sha256": "e946b4618f02b90154205d5794db077a6e0da6dc31727b611bf61e5e9ce19a80"
+  },
+  "new_host_tree": {
+    "files": 20,
+    "bytes": 188418,
+    "sha256": "3dbe7d097306c8e1734fa458e4f3889cd2f89e9f776b5d6f6935392bcecf73b3"
+  },
+  "only_host_index_rebinding": {
+    "old": {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 61281,
+      "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+    },
+    "new": {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 63665,
+      "sha256": "cb3679ae85ea6b4f56406b5cbb1e01c1fe0e4739bb22d0ccf05cd4c7ac8fbf83"
+    }
+  },
+  "unit_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-startup-ready-unit-current.json"
+}

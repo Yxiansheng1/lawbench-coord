@@ -1,0 +1,16 @@
+{
+  "verdict": "EXACT_OLD15_BODY_INVERSE_AND_LOCAL_ROUTE_ADAPTER_REVIEWED",
+  "actual_author": "01a182d0-752f-7ef3-bced-23210091a3d1",
+  "commands": 31,
+  "success": 27,
+  "nonzero": 4,
+  "author_runtime": 0,
+  "copy_sha": "74b4028d3e5e66b7509a25889c1446cdb154b934262e1f9ff74113cbd06f284d",
+  "original_sha": "7a520b1c07908286fd04a00f154ac63b0e3b0c4931c432ccada2965cba68bbcf",
+  "old15_literal": true,
+  "production_sources_held": true,
+  "root_previous_diagnosis_corrected": "EXTERNAL_ROUTE_UNAVAILABLE before question provider; criminal-reading-notes external example not contract-review",
+  "formal_hash_typo_preserved": "failed-copy SHA transposition incorrectly reversed in new formal; actual bbbc... verified independently",
+  "model_calls": 0,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\refine.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\00-refine.py",
+    "bytes": 5582,
+    "sha256": "a4263eb872a56567d979db4675f0255f72cd6fe64c999af5c8f3c04f632ca333"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\llm.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\01-llm.py",
+    "bytes": 8911,
+    "sha256": "e5856059e4d467f38be1a49cfd8c10ad7649f50914530d5205d94bb990112157"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\02-net.py",
+    "bytes": 25896,
+    "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\logs.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\03-logs.py",
+    "bytes": 2455,
+    "sha256": "7576265fd8bf4967d9d99b7b67c22607af36fc640ccd8333602ba4ff15bdcdc6"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\errors.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\04-errors.py",
+    "bytes": 3204,
+    "sha256": "f580d733d88a15a70df089f8b1bcd6bfffcac6b8a78013532aab61d2d20d33f4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\llm\\tokens.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\05-tokens.py",
+    "bytes": 3064,
+    "sha256": "e910265859035817b0b34fd0fd17faec6e73247323902d5f8df5865964aa42cb"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ocr\\client395.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\06-client395.py",
+    "bytes": 4571,
+    "sha256": "9d33c3d6f4bafea793352070fb017c857fe4785520ac9b38ffb8e90afbac60fd"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ocr\\render.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\07-render.py",
+    "bytes": 2892,
+    "sha256": "600fbb3c368c6a0dbc71fd173c94ba5455af8518717284b852ccee8b72849ae3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ingest\\__init__.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\08-__init__.py",
+    "bytes": 5581,
+    "sha256": "24ae4f31fff9c1d4d844742d0b7bb083ab4c413e28c4bf0db3416d144b00df4c"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\README.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\09-README.md",
+    "bytes": 9653,
+    "sha256": "2a0169abc98195a4c70ebdd7b9e9d0aa0eab9bb4b3edef3485959ec2c5c034bc"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\_gen\\case_criminal01.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\10-case_criminal01.py",
+    "bytes": 7509,
+    "sha256": "f4ff04da809b73d76be38e3c27b67554bb8f29bb58a38dc168dccd1a0ef4db85"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\criminal-01\\转账截图.jpg",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\11-转账截图.jpg",
+    "bytes": 47379,
+    "sha256": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\app.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\12-app.py",
+    "bytes": 17514,
+    "sha256": "011cf2e510d1ed03fe8dc8b14cc10feef5aa012e1a22e119a819fb6f8fecc5f1"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\keycheck.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\13-keycheck.py",
+    "bytes": 2663,
+    "sha256": "b327144e62c234e94d60f4734e032a5aa7ec5f19bf861cbfd253c8ee596390e3"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\config.py",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\RealSyntheticOCRRefineInput-20261027-225347\\14-config.py",
+    "bytes": 4237,
+    "sha256": "8f74540a688427e9973411aefb44b2ee1a38dbf1c62af17b2c07992ad80c0711"
+  }
+]

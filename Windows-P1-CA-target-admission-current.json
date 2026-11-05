@@ -1,0 +1,111 @@
+{
+  "target": "WindowsP1CA-20261102-110449",
+  "owner_order": "D:\\Lawbeach\\lawbench-coord\\OWNER-WindowsP1-CA补齐与根因归类-20261102-104639.md",
+  "owner_sha256": "eecee7f26e65083005aa1a6ea97c9d809997a1dbe74d3fd3e73800099dc520b1",
+  "status": "CA_TARGET_COMPLETED_HANDED_BACK_LIMITED_ACCEPTANCE_PASS",
+  "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449",
+  "build_start_utc": "2026-11-02T03:04:49Z",
+  "build_deadline_utc": "2026-11-02T03:44:49Z",
+  "acceptance_minutes": 30,
+  "acceptance_start_utc": "2026-11-02T03:29:08.403696+00:00",
+  "acceptance_deadline_utc": "2026-11-02T03:59:08.403696+00:00",
+  "maximum_same_cause": 2,
+  "maximum_rebuilds_authorized": 1,
+  "NSIS_attempts": 1,
+  "current_run": "20261102-112500",
+  "native_exec_session": null,
+  "new_CA_pin": {
+    "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\python\\Lib\\site-packages\\certifi\\cacert.pem",
+    "destination": "python/Lib/site-packages/certifi/cacert.pem",
+    "bytes": 240216,
+    "sha256": "9cc2a774b5198dcff14d9be1e66091f538975d867ce029a96bce15a55dfd730f",
+    "source": "Existing same-version certifi public CA bundle, not a private key. Byte-identical copy, no download/upgrade/system trust change."
+  },
+  "retained_resource_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+      "bytes": 585532,
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\PP-OCRv6_det_small.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/PP-OCRv6_det_small.onnx",
+      "bytes": 9929594,
+      "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\engines\\retainer\\tools\\ocr-driver\\vendor\\rapidocr\\models\\PP-OCRv6_rec_small.onnx",
+      "destination": "engines/retainer/tools/ocr-driver/vendor/rapidocr/models/PP-OCRv6_rec_small.onnx",
+      "bytes": 21234383,
+      "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884",
+      "source": "Existing source static model; byte-identical copy, no download"
+    },
+    {
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\连越律师工作台\\python\\Lib\\site-packages\\docx\\templates\\default.docx",
+      "destination": "python/Lib/site-packages/docx/templates/default.docx",
+      "bytes": 38116,
+      "sha256": "2094b5bddffe9cf973d61fe03388413804f034160718494a65db7e98da40d35d",
+      "source": "Existing python-docx library built-in default template only; byte-identical copy"
+    }
+  ],
+  "old_installer_preserved": true,
+  "T18_closed": true,
+  "no_product_test_assertion_changes": true,
+  "fixture_input_qualification": "Only extra synthetic task/end reason cancelled corrected to original enum aborted; no product/test file or assertion edited.",
+  "current_runtime_active": false,
+  "preparation_attempt": 3,
+  "preparation1_actual_stage_s": 454.3085963,
+  "preparation2_cause": "Standard Windows path length: corrected exact contained paths to extended-length spelling; no global policy change",
+  "root_stop_attempt": "Not executed; first process already naturally exited1 before identity check",
+  "build_completed_utc": "2026-11-02T03:29:08.403696+00:00",
+  "build_segment_closed": true,
+  "NSIS_actual_s": 18.751482,
+  "artifact": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449\\runs\\20261102-112500\\out\\LawBench-PRIVATE-CA-REBUILD-0.1.0-win-x64.exe",
+    "bytes": 811663733,
+    "sha256": "567e8452b73a6ae1e90f94db8375bcd16ced60567026edcb22c22ae45f2789ec"
+  },
+  "installed_root": "D:\\Lawbeach\\_acceptance\\WindowsP1CA-20261102-110449",
+  "preparation_attempts": 3,
+  "verified_copy_elapsed_s": 57.828000000008615,
+  "current_phase": "handed back; no runtime",
+  "bounded_resource_inventory": "19 explicit files in4 classes plus embedded dictionary18708 characters",
+  "P8_root_groups": {
+    "document": "D:/Lawbeach/lawbench-coord/P8-根因归类-20261102-112708.md",
+    "counts": [
+      34,
+      16,
+      2,
+      2
+    ]
+  },
+  "acceptance_concluded_utc": "2026-11-02T03:40:02.828657+00:00",
+  "acceptance_segment_closed": true,
+  "latest_summary": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-ORCH-打包CA补齐-20261102-114002.md",
+  "source_review": "Only packaging controls changed; exact one CA add, preserved whole source/dest SHA, standard extended path representation. Current19 source/install SHA checked. Root finiteP6/P7 actual outputs reviewed.",
+  "controller_sources_current": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449\\build-private.mjs",
+      "bytes": 33710,
+      "sha256": "cee5fd164fec14fa56c6a8cbfd4a26f94af90c35d7f01a7fbb2ea62513e5340a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449\\build-config.mjs",
+      "bytes": 5395,
+      "sha256": "bc5c8e4741870c5308291ac38e764996cbe1ec0ce0f1db81694c682ca01a3970"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449\\build-windows-candidate.ps1",
+      "bytes": 85109,
+      "sha256": "273950d2c9e93d2b0f23dda9aecd8fd84d4edb6af5f6c23e720fcdefeb8eb5e0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T20\\WindowsP1CA-20261102-110449\\builder.config.json",
+      "bytes": 33224,
+      "sha256": "955be79f198921e713aaf4dfe03b20220fb553185ee3c2d80a46709b94770e90"
+    }
+  ]
+}

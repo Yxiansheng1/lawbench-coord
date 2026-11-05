@@ -1,0 +1,138 @@
+{
+  "scope": "OWNER_MAINLINE_CYCLE2_LITERAL_BINDING_ONLY",
+  "newroot": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322",
+  "approved_inputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle2-20261101-111322Input\\approved-inputs.json",
+    "bytes": 2217,
+    "sha256": "4623131be223e1cdc4a6cb20b6d50857c14863b7c317833c90a3b82ce968c98f"
+  },
+  "skill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\defense-opinion\\SKILL.md",
+    "bytes": 22785,
+    "sha256": "2111e3235e4dc9e76b6fb427c4d3d23bbe0c17cb39a1ec72bd5ef070885c12dc"
+  },
+  "files": [
+    {
+      "before": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle2-20261101-111322Input\\before-native-defense-opinion.mts",
+        "bytes": 156887,
+        "sha256": "c8d843ff7f3d66204b5235c53e1634d27f39d336c4037100e9f24815e9c341ac"
+      },
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle1-20261101-105907\\native-defense-opinion.mts",
+        "bytes": 156887,
+        "sha256": "c8d843ff7f3d66204b5235c53e1634d27f39d336c4037100e9f24815e9c341ac"
+      },
+      "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\native-defense-opinion.mts",
+      "replacements": [
+        {
+          "old": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle1-20261101-105907Input\\\\approved-inputs.json",
+          "new": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle2-20261101-111322Input\\\\approved-inputs.json",
+          "count": 1
+        },
+        {
+          "old": "2e6b9e6da29f57ba7843c0111c0b392a4e464da8f91bb835bf2417fe8c631ce6",
+          "new": "4623131be223e1cdc4a6cb20b6d50857c14863b7c317833c90a3b82ce968c98f",
+          "count": 1
+        }
+      ],
+      "expected": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\native-defense-opinion.mts",
+        "bytes": 156887,
+        "sha256": "70c1e2dd5f37874b67f13b5c1f131deb6656fe825a7e44550889d3947e5585e2"
+      }
+    },
+    {
+      "before": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle2-20261101-111322Input\\before-b-service-defense-opinion.py",
+        "bytes": 53711,
+        "sha256": "1de5352685d5bc8cf8c25eb421eaddb0fb89ed69431a7dd846dffb27f8ed6c13"
+      },
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle1-20261101-105907\\b-service-defense-opinion.py",
+        "bytes": 53711,
+        "sha256": "1de5352685d5bc8cf8c25eb421eaddb0fb89ed69431a7dd846dffb27f8ed6c13"
+      },
+      "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\b-service-defense-opinion.py",
+      "replacements": [
+        {
+          "old": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle1-20261101-105907Input",
+          "new": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle2-20261101-111322Input",
+          "count": 1
+        },
+        {
+          "old": "2e6b9e6da29f57ba7843c0111c0b392a4e464da8f91bb835bf2417fe8c631ce6",
+          "new": "4623131be223e1cdc4a6cb20b6d50857c14863b7c317833c90a3b82ce968c98f",
+          "count": 1
+        }
+      ],
+      "expected": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\b-service-defense-opinion.py",
+        "bytes": 53711,
+        "sha256": "8d2679788ae0cf3c8e3a299d72e97693329a9cdf19a346c65bd97e055ee70aee"
+      }
+    },
+    {
+      "before": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T18MainlineCycle2-20261101-111322Input\\before-literalfixed-inputs.json",
+        "bytes": 12014,
+        "sha256": "333b427e5478b07de147c371c7b149464844c190d9d50c3201becb4316dc066c"
+      },
+      "original": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle1-20261101-105907\\literalfixed-inputs.json",
+        "bytes": 12014,
+        "sha256": "333b427e5478b07de147c371c7b149464844c190d9d50c3201becb4316dc066c"
+      },
+      "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\literalfixed-inputs.json",
+      "replacements": [
+        {
+          "old": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle1-20261101-105907Input\\\\approved-inputs.json",
+          "new": "D:\\\\Lawbeach\\\\lawbench-coord\\\\T18MainlineCycle2-20261101-111322Input\\\\approved-inputs.json",
+          "count": 1
+        },
+        {
+          "old": "2e6b9e6da29f57ba7843c0111c0b392a4e464da8f91bb835bf2417fe8c631ce6",
+          "new": "4623131be223e1cdc4a6cb20b6d50857c14863b7c317833c90a3b82ce968c98f",
+          "count": 1
+        },
+        {
+          "old": "44cd01606577963da6dca861521d3af9af1e1337c0043cfc08e4863d720f08df",
+          "new": "2111e3235e4dc9e76b6fb427c4d3d23bbe0c17cb39a1ec72bd5ef070885c12dc",
+          "count": 2
+        },
+        {
+          "old": "\"bytes\": 20018",
+          "new": "\"bytes\": 22785",
+          "count": 2
+        },
+        {
+          "old": "1793501660789086200",
+          "new": "1793502746263533300",
+          "count": 1
+        },
+        {
+          "old": "D:\\\\Lawbeach\\\\lawbench-B\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18MainlineCycle1-20261101-105907",
+          "new": "D:\\\\Lawbeach\\\\lawbench-B\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18MainlineCycle2-20261101-111322",
+          "count": 2
+        },
+        {
+          "old": "c8d843ff7f3d66204b5235c53e1634d27f39d336c4037100e9f24815e9c341ac",
+          "new": "70c1e2dd5f37874b67f13b5c1f131deb6656fe825a7e44550889d3947e5585e2",
+          "count": 1
+        },
+        {
+          "old": "1de5352685d5bc8cf8c25eb421eaddb0fb89ed69431a7dd846dffb27f8ed6c13",
+          "new": "8d2679788ae0cf3c8e3a299d72e97693329a9cdf19a346c65bd97e055ee70aee",
+          "count": 1
+        }
+      ],
+      "expected": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18MainlineCycle2-20261101-111322\\literalfixed-inputs.json",
+        "bytes": 12014,
+        "sha256": "009b5777f6cd5d95eeec14cbeab12f7c838bfc8b2874b004c0a1a880cc5b5b4d"
+      }
+    }
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18MainlineCycle2-20261101-111322Binding.md",
+  "unchanged_original_functions_model_budget_assertions_guards": true
+}

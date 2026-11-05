@@ -1,0 +1,38 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+    "bytes": 37946,
+    "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\0-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\agent.ts",
+    "bytes": 27451,
+    "sha256": "486662e133184cfbc8b816b445339ab0b75200fd771dba1af1562b28d8e7bdc5",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\1-agent.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+    "bytes": 31340,
+    "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\2-index.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\fork.ts",
+    "bytes": 1397,
+    "sha256": "de80ecbf0e6a7961c096a2d7f0304bc6f6c83f897268304e28352357da06bfb0",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\3-fork.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tests\\t31-compiled-session-gateway.finite.ts",
+    "bytes": 28784,
+    "sha256": "6ba19f6c3eb71a9ab08ee815ef1c2d9583a00b30a1dfef1661e268445ec9bb4e",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\4-t31-compiled-session-gateway.finite.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.t31-compiled-session-gateway.config.mjs",
+    "bytes": 3450,
+    "sha256": "c4df61b6e2d308e227841609ce70832d774c7ae65b89b8cf77f807769b234f1a",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeRealConversationInput-20261028-000823\\5-vitest.t31-compiled-session-gateway.config.mjs"
+  }
+]

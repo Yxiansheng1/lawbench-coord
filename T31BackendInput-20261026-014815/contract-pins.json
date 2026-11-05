@@ -1,0 +1,18 @@
+[
+  {
+    "relative": "common.schema.json",
+    "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+  },
+  {
+    "relative": "core/task_begin.schema.json",
+    "sha256": "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571"
+  },
+  {
+    "relative": "files/task.schema.json",
+    "sha256": "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed"
+  },
+  {
+    "relative": "api/request_scope.schema.json",
+    "sha256": "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "human_reply": "允许5分钟维护，现在没有真实案件任务",
+  "scope": "One existing-service error-log maintenance, at most300s from first stop through restoration; API prep395 and OCR prep395-ocr interruptions authorized, 9B and6000D untouched",
+  "xml": {
+    "path": "C:/prep395/services/prep395-ocr.xml",
+    "bytes": 738,
+    "sha256": "6f38260bf02c49b6e8a64fe9c4deae7bdf3a08970719b456e372e516ed02bc98",
+    "original_log_mode": "none",
+    "original_logpath_absent": true
+  },
+  "request": {
+    "bytes": 177698,
+    "sha256": "0b04102960d29ce77935b5a2d7efd5d1fc616aab9770e5260fc893183cfef0d5"
+  },
+  "python": {
+    "path": "C:/prep395/python/python.exe",
+    "bytes": 91648,
+    "sha256": "4796bc182e858e4440f638fe5dab250d6172745ddec84e41c6afbc192a3198f9"
+  },
+  "original_native": {
+    "path": "C:/prep395/llama/llama-server.exe",
+    "bytes": 9216,
+    "sha256": "9d7ec1f038329210f6be353a89752ea4a762f9defa80560d37102ccce7b09a06"
+  },
+  "current_http": "Existing server36704 original production flags in readonly-source evidence; exactsameimage/request, onegeneration only",
+  "forbidden_prior": "Do not execute, inline, encode or port the old policy-refused isolated-server PS helper; this authorized existing production maintenance is a different operation, no new GPU/server instance or policy change",
+  "documentation_rejection": "Prior Root document-write exec was rejectedPREEXEC blocked bypolicy;0executed. Do not retry that write or recreate those blocked artifacts. This order is a newly authorized maintenance-controller source task in a new folder, not a documentwrite retry."
+}

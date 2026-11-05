@@ -1,0 +1,22 @@
+{
+  "status": "EXACT_TWO_FIXTURE_EXPECTED_HASH_ASSERTIONS_FIXED_PRODUCT_UNCHANGED_NOT_RUN",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18CitedUnreadEdgeFixtureClosure-20261101-151902.job.json",
+  "actualThread": "01a195fa-1031-7f13-b2f0-32a6cc3fec81",
+  "commands": 3,
+  "zero": 3,
+  "nonzero": 0,
+  "test": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+    "bytes": 18000,
+    "sha256": "b9542217e14d90f6d63d1e5b75a8dc8a027d88c2d8be31d5097c47aabeeb526d"
+  },
+  "whole_inverse_twoassertions_only": true,
+  "original8985prefix_held": true,
+  "author_runtime": 0,
+  "old4REDremainsvalid_because_failure_before_expectedhash": true,
+  "Root_prelaunch_admin_qualifications": [
+    "Source review literal single vs double quotes mismatch corrected before any runtime",
+    "Initial source closure runner workdir slash normalization rejected before author startup, corrected exact template workdir before launch"
+  ],
+  "Packaging": "HOLD"
+}

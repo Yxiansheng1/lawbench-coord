@@ -1,0 +1,231 @@
+{
+  "verdict": "REAL_CURRENT_FEEDBACK_WORKED_ORDER_OBSERVER_MISCOUNTS_DENIED_DRAFT_ATTEMPT",
+  "at": "2026-10-28T22:25:44.037510+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionGateContractRuntime-root-20261028-221812",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-xORN3S",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18FeedbackOrderObserverFailure-root-20261028-222544",
+  "error": {
+    "name": "Error",
+    "message": "party/purpose/focus were not answered before the first review draft"
+  },
+  "model_POST": 12,
+  "model_HTTP200": 12,
+  "tool_calls": 11,
+  "physical_rows": 70,
+  "first_denied_draft_result_seq": 32,
+  "successful_answer_result_seq": 37,
+  "first_successful_draft_call_seq": 41,
+  "first_successful_draft_result_seq": 42,
+  "actual_three_answer_ids": [
+    "our_party",
+    "purpose",
+    "focus"
+  ],
+  "actual_answers_before_first_successfully_saved_draft": true,
+  "denied_attempt_not_persisted": true,
+  "save_checks": [
+    {
+      "version": 1,
+      "passed": true,
+      "stats": {
+        "citations": 12,
+        "must_fix": 0,
+        "hints": 12
+      }
+    },
+    {
+      "version": 2,
+      "passed": false,
+      "stats": {
+        "citations": 23,
+        "must_fix": 1,
+        "hints": 7
+      }
+    },
+    {
+      "version": 3,
+      "passed": true,
+      "stats": {
+        "citations": 25,
+        "must_fix": 0,
+        "hints": 7
+      }
+    },
+    {
+      "version": 4,
+      "passed": true,
+      "stats": {
+        "citations": 25,
+        "must_fix": 0,
+        "hints": 7
+      }
+    }
+  ],
+  "actual_feedback_notice_once_seq": 45,
+  "final_internal_opinion_cites_present": true,
+  "final_draft_path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-xORN3S\\case\\工作区\\任务\\T-20261028221818-8c46\\草稿\\合同审查意见-v4.md",
+  "final_draft_bytes": 6916,
+  "final_draft_sha": "322134603f27217a9f2e486b9dd8b4ed4bf3f365a53faa236469fa43e024c68b",
+  "edit_list": {
+    "path": "工作区/任务/T-20261028221818-8c46/修改清单/采购合同.json",
+    "accepted": 4,
+    "out_of_scope": [
+      {
+        "id": 5,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "redline_POST": 0,
+  "revised_DOCX": 0,
+  "task_terminal_check_NOT_REACHED": true,
+  "task_running_after_early_observer_abort_not_separate_root_cause_claim": true,
+  "JSONL_reopen_NOT_REACHED": true,
+  "complete_OS_gone": 7,
+  "OS": [
+    {
+      "pid": 17488,
+      "parent": 36392,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T14:18:12.4659470Z"
+    },
+    {
+      "pid": 40560,
+      "parent": 17488,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T14:18:12.9951920Z"
+    },
+    {
+      "pid": 3932,
+      "parent": 40560,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T14:18:13.0026320Z"
+    },
+    {
+      "pid": 32628,
+      "parent": 40560,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T14:18:13.0750530Z"
+    },
+    {
+      "pid": 30820,
+      "parent": 32628,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T14:18:13.1895730Z"
+    },
+    {
+      "pid": 37044,
+      "parent": 32628,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T14:18:13.6466740Z"
+    },
+    {
+      "pid": 7460,
+      "parent": 37044,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T14:18:13.6571550Z"
+    }
+  ],
+  "port": {
+    "port": 54588,
+    "Listen": 0
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "B_final": {
+    "credentials": {
+      "externalKeyGetter": 0,
+      "keyGetter": 0
+    },
+    "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "failure": null,
+    "finishedAtUtc": "2026-10-28T14:21:55.110+00:00",
+    "fixtureCount": 2,
+    "fixtureInputsUnchanged": true,
+    "forwardListener": false,
+    "host": "127.0.0.1",
+    "lifespan": "off",
+    "listenerClosed": true,
+    "logsClosed": true,
+    "netClientClosed": true,
+    "ocrStarted": false,
+    "outbound": {
+      "attempts": 0,
+      "denied": 0
+    },
+    "passed": true,
+    "pid": 37044,
+    "port": 54588,
+    "protocol": {
+      "caseBound": true,
+      "counts": {
+        "GET /api/materials": 1,
+        "GET /api/settings": 1,
+        "GET /health": 1,
+        "POST /api/case/open": 1,
+        "POST /api/materials/import": 1,
+        "POST /api/request/scope": 1,
+        "POST /api/task": 1,
+        "POST /core/context": 1,
+        "POST /core/task/begin": 1,
+        "POST /core/tool": 8
+      },
+      "denials": {},
+      "materialIdCount": 2,
+      "redlinePath": null,
+      "sessionBound": true,
+      "taskBound": true,
+      "violations": []
+    },
+    "retainerClosed": true,
+    "retainerStarted": false,
+    "sourcePinCount": 346,
+    "sourcePinsUnchanged": true,
+    "startedAtUtc": "2026-10-28T14:18:16.215+00:00",
+    "status": "STOPPED"
+  },
+  "sources": [
+    {
+      "role": "fixture",
+      "id": "采购合同",
+      "path": "D:\\Lawbeach\\lawbench-B\\tests\\fixtures\\contract-01\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "mtime_ns": "1792379578857675200",
+      "same": true
+    },
+    {
+      "role": "fixture",
+      "id": "采购部内部意见",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\contract-review\\tests\\样本01-钢材采购\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "mtime_ns": "1792379578787315800",
+      "same": true
+    }
+  ],
+  "key_scan": {
+    "files": 29,
+    "exactDedicatedKeyHits": 0,
+    "hitPaths": [],
+    "otherCredentialsRead": false,
+    "fullMemoryEraseClaim": false
+  },
+  "source_held": true,
+  "elapsed_s": 224.65599999999904,
+  "forced": false,
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "files": 13,
+  "manifest_sha256": "4b561a1c6fbe602f7b3725e7f55433a1320a38e6d32bfb40bb94d217defbed5d"
+}

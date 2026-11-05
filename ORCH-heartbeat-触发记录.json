@@ -1,0 +1,41 @@
+{
+  "automation_id": "lawbench-abc",
+  "trigger": "2026-10-29T13:19:16.672Z",
+  "previous_real_trigger": "2026-10-29T12:31:15.933Z",
+  "scan_at": "2026-10-29T21:19:32.393304+08:00",
+  "scan_count": 1,
+  "overlap_minutes": 30,
+  "unread": 0,
+  "consumed": 0,
+  "ABC_updates": 1,
+  "meaningful_change": false,
+  "jobs_at_scan": {
+    "A": {
+      "state": "completed",
+      "commands_returned": 25,
+      "successful_commands": 24
+    },
+    "B": {
+      "state": "process_started",
+      "commands_returned": 47,
+      "successful_commands": 43
+    },
+    "C": {
+      "state": "completed",
+      "commands_returned": 22,
+      "successful_commands": 18
+    },
+    "D": {
+      "state": "completed",
+      "commands_returned": 47,
+      "successful_commands": 38
+    }
+  },
+  "current_work": "Same original sentence-calc source B active; no new completed handback or actual runtime result at scan",
+  "whole_project_PASS": false,
+  "Packaging": "HOLD",
+  "actual_received_heartbeat": "2026-10-29T13:19:16.672Z",
+  "scan_evidence": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\heartbeat-20261029-131916\\scan.json",
+  "previous_canonical_preserved": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\heartbeat-20261029-131916\\previous-canonical-receipt.json",
+  "ABC_updated_at": "2026-10-29T22:02:29.966192+08:00"
+}

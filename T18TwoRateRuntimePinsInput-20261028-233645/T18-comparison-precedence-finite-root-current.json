@@ -1,0 +1,52 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ComparisonPrecedenceFinite-root-20261028-233530",
+  "results": [
+    {
+      "name": "rate-unit",
+      "exit": 0,
+      "elapsed_s": 3.264999999999418,
+      "natural": true,
+      "forced": false,
+      "identities": [
+        {
+          "pid": 8972,
+          "parent": 46136,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-10-28T15:35:30.4589020Z"
+        }
+      ],
+      "OS_after": [],
+      "stdout": "CASE direct-actual rejected=true chinese20=true corrected2=saved save-ui-before-mutation=true\nCASE named-actual chinese20=true arabic20=true save-ui-before-mutation=true corrected2=saved both-seams\nCASE actual-red rejected=true exact=1/1000,5/10000,2,20 side-effects=false\nCASE two-rate-actual chinese20=true arabic20=true save-ui-before-mutation=true\nCASE corrected=save other-skill=unchanged ui-shared=guard-before-write ui-corrected=saved\nCASE direct-direction exact=true reversed-correct=accepted reversed-wrong=rejected ascii-brackets=accepted direct-rates=accepted\nCASE direct-negative-controls quote,question,hypothetical,negation,third-rate,unmatched-subject,unit-mismatch=unchanged\nCASE exact-percent arabic,chinese reversed=accepted\nCASE direct-precedence 20-with-difference2=rejected old-diagnostic=exact prewrite-mutation=false correct2-with-difference2=saved\nCASE former-latter-precedence 20-with-difference2=rejected old-diagnostic=exact prewrite-mutation=false correct2-with-difference2=saved\nCASE metadata-failure rollback=true progress-untouched=true\nCASE named-precedence 20-with-difference2=rejected both-orders=true old-diagnostic=exact save-ui-before-mutation=true correct2-with-difference2=saved\nCASE named-negative-controls missing,sameparty,unintroduced,thirdparty,thirdrate,order,units,quote,negation,hypothetical,generic,duplicates=unchanged\nCASE named-direction swapped20=rejected exact=1/2 swapped0.5=accepted\nCASE negative-controls quoted,code,blockquote,ambiguous,question,negation,hypothetical,units,zero,unsupported,embedded,oversized,signed,order=unchanged\nCASE two-rate-candidates 2,二,1,一,0.5=accepted\nCASE two-rate-equal one=accepted twenty=rejected no-zero-division=true\nCASE two-rate-swapped candidates=unchanged 20=rejected\nCASE two-rate-controls units,unitless,thirdrate,thirdparty,sameparty,missingintro,order,missing,duplicate,quote,negation,conditional,question=unchanged\n",
+      "stderr": "test_actual_direct_subject_sentence_is_rejected_before_save_and_ui (__main__.RateRatioGuardTests.test_actual_direct_subject_sentence_is_rejected_before_save_and_ui) ... ok\ntest_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation (__main__.RateRatioGuardTests.test_actual_named_party_sentence_is_rejected_before_any_save_ui_mutation) ... ok\ntest_actual_reported_sentence_is_rejected_before_any_save_mutation (__main__.RateRatioGuardTests.test_actual_reported_sentence_is_rejected_before_any_save_mutation) ... ok\ntest_actual_two_rate_difference_is_rejected_before_any_save_ui_mutation (__main__.RateRatioGuardTests.test_actual_two_rate_difference_is_rejected_before_any_save_ui_mutation) ... ok\ntest_corrected_ratio_other_skill_and_ui_share_the_write_seam (__main__.RateRatioGuardTests.test_corrected_ratio_other_skill_and_ui_share_the_write_seam) ... ok\ntest_direct_subject_direction_and_bracket_variants_use_exact_positions (__main__.RateRatioGuardTests.test_direct_subject_direction_and_bracket_variants_use_exact_positions) ... ok\ntest_direct_subject_nonassertions_and_unbound_rates_are_not_blocked (__main__.RateRatioGuardTests.test_direct_subject_nonassertions_and_unbound_rates_are_not_blocked) ... ok\ntest_exact_arabic_percentage_chinese_and_reversed_ratio_are_accepted (__main__.RateRatioGuardTests.test_exact_arabic_percentage_chinese_and_reversed_ratio_are_accepted) ... ok\ntest_existing_direct_comparison_precedes_supported_difference (__main__.RateRatioGuardTests.test_existing_direct_comparison_precedes_supported_difference) ... ok\ntest_existing_former_latter_comparison_precedes_supported_difference (__main__.RateRatioGuardTests.test_existing_former_latter_comparison_precedes_supported_difference) ... ok\ntest_existing_metadata_rollback_semantics_remain (__main__.RateRatioGuardTests.test_existing_metadata_rollback_semantics_remain) ... ok\ntest_existing_named_comparison_precedes_supported_difference_in_both_orders (__main__.RateRatioGuardTests.test_existing_named_comparison_precedes_supported_difference_in_both_orders) ... ok\ntest_named_party_comparison_ambiguities_are_not_blocked (__main__.RateRatioGuardTests.test_named_party_comparison_ambiguities_are_not_blocked) ... ok\ntest_named_party_comparison_resolves_direction_by_labels (__main__.RateRatioGuardTests.test_named_party_comparison_resolves_direction_by_labels) ... ok\ntest_quotes_code_ambiguity_question_negation_units_and_unsupported_forms_are_not_blocked (__main__.RateRatioGuardTests.test_quotes_code_ambiguity_question_negation_units_and_unsupported_forms_are_not_blocked) ... ok\ntest_two_rate_difference_accepts_all_supported_candidate_interpretations (__main__.RateRatioGuardTests.test_two_rate_difference_accepts_all_supported_candidate_interpretations) ... ok\ntest_two_rate_difference_equal_rates_are_handled_without_zero_division (__main__.RateRatioGuardTests.test_two_rate_difference_equal_rates_are_handled_without_zero_division) ... ok\ntest_two_rate_difference_swapped_party_order_keeps_the_same_candidate_set (__main__.RateRatioGuardTests.test_two_rate_difference_swapped_party_order_keeps_the_same_candidate_set) ... ok\ntest_two_rate_difference_unsupported_and_nonassertion_forms_are_not_blocked (__main__.RateRatioGuardTests.test_two_rate_difference_unsupported_and_nonassertion_forms_are_not_blocked) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.296s\n\nOK\n"
+    },
+    {
+      "name": "affected-current-save",
+      "exit": 0,
+      "elapsed_s": 3.6090000000003783,
+      "natural": true,
+      "forced": false,
+      "identities": [
+        {
+          "pid": 12740,
+          "parent": 46136,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-10-28T15:35:33.7517860Z"
+        }
+      ],
+      "OS_after": [],
+      "stdout": "CASE ai-finished rejected=true ui-finished-allowed-by-separate-path=true no-write=true\nCASE contracts request,response,examples valid=true unknown-field-rejected=true\nCASE draft-binding path-task=registered-task=true running,finished-rejected side-effects=false\nCASE import-boundary forbidden=0 lifespan=false network=false\nCASE invalid-source cross-case,shapes,unregistered,missing rejected=true\nCASE lock-recheck forged-source-task rejected=true side-effects=false\nCASE ui-route endpoint=_endpoint Route=true fakeState=true contract=true unknown-rejected=true event-loop=false(mxc-denied)\nCASE unstable-states running,pending,abnormal,result-running rejected=true side-effects=false\nCASE concurrency same-task saves=2 versions=2,3 collision=false old-preserved=true\nCASE readonly-locate finished-save,unregistered-reject=true unrelated-expired-unchanged=true\nCASE sources=draft-nonlatest,confirmed-output title-from-registry=true old-preserved=true\nCASE failures write,metadata propagated=true new-rolled-back=true old-preserved=true\n",
+      "stderr": "test_ai_finished_guard_and_ui_lock_boundary (__main__.ContractCase.test_ai_finished_guard_and_ui_lock_boundary) ... ok\ntest_contracts_and_examples_reject_unknown_fields (__main__.ContractCase.test_contracts_and_examples_reject_unknown_fields) ... ok\ntest_draft_path_task_must_match_its_registered_result (__main__.ContractCase.test_draft_path_task_must_match_its_registered_result) ... ok\ntest_import_boundary_has_no_forbidden_products (__main__.ContractCase.test_import_boundary_has_no_forbidden_products) ... ok\ntest_invalid_cross_case_and_unregistered_sources_are_rejected (__main__.ContractCase.test_invalid_cross_case_and_unregistered_sources_are_rejected) ... ok\ntest_lock_recheck_rejects_path_task_disagreement (__main__.ContractCase.test_lock_recheck_rejects_path_task_disagreement) ... ok\ntest_real_ui_route_asgi_with_fake_state (__main__.ContractCase.test_real_ui_route_asgi_with_fake_state) ... ok\ntest_running_pending_abnormal_and_result_running_have_no_side_effects (__main__.ContractCase.test_running_pending_abnormal_and_result_running_have_no_side_effects) ... ok\ntest_same_task_concurrent_saves_get_distinct_versions (__main__.ContractCase.test_same_task_concurrent_saves_get_distinct_versions) ... ok\ntest_source_locate_never_closes_an_unrelated_expired_task (__main__.ContractCase.test_source_locate_never_closes_an_unrelated_expired_task) ... ok\ntest_two_sources_new_versions_and_old_state_preserved (__main__.ContractCase.test_two_sources_new_versions_and_old_state_preserved) ... ok\ntest_write_and_metadata_failures_never_return_success_or_remove_old (__main__.ContractCase.test_write_and_metadata_failures_never_return_success_or_remove_old) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.502s\n\nOK\n"
+    }
+  ],
+  "current_source_sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822",
+  "test_sha256": "62c4ba868e92f825ab085c517f8e373eb5b80960495a77f5af42f882e2bc0e2d",
+  "source_unchanged": true,
+  "production_delta_exact_inverse_preserves_all_other_old_bytes": true,
+  "B346_changed_only_reviewed_drafts": [
+    "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py"
+  ],
+  "temporary_owned_dirs_no_residue": true,
+  "scope": "PURE_STANDALONE_ACTUAL_DRAFT_SAVE_AND_AFFECTED_UI_SAVE_ONLY_NOT_HTTP_MODEL_GUI",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

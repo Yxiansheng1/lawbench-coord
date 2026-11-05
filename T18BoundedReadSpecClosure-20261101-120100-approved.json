@@ -1,0 +1,12 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-A\\docs\\src\\Spec.md",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadSpecClosure-20261101-120100-before.md",
+  "before_sha256": "808c030b18b3588958308b3999a446d754c446805b9af4b88856da58d84bcd22",
+  "mapping": {
+    "\u4f20 `end` \u65f6\u987b\u4e0e `start` \u76f8\u540c\uff0c\u8868\u793a\u53ea\u8bfb\u4e00\u4e2a\u5df2\u5b9a\u4f4d\u5355\u5143\uff1b": "\u4f20 `end` \u65f6\u5305\u542b\u8be5\u7ed3\u675f\u5355\u5143\uff0c\u987b\u4e0d\u5c0f\u4e8e `start` \u4e14\u4e0d\u8d85\u8fc7\u6750\u6599\u672b\u5355\u5143\uff1b"
+  },
+  "counts": {
+    "\u4f20 `end` \u65f6\u987b\u4e0e `start` \u76f8\u540c\uff0c\u8868\u793a\u53ea\u8bfb\u4e00\u4e2a\u5df2\u5b9a\u4f4d\u5355\u5143\uff1b": 1
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadSpecClosure-20261101-120100.md"
+}

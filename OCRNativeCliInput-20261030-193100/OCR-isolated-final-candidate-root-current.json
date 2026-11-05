@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-28T01:11:56.055551+08:00",
+  "verdict": "CUMULATIVE_STATIC_SOURCE_REVIEW_COMPLETE_PS51_PARSER_PASS_PURE_RUNTIME_NOT_RUN_POLICY_REFUSED",
+  "actual_thread": "01a17e4a-e130-7c13-8c28-390e5c6803e9",
+  "context_verified": {
+    "model": "deepseek-v4.1-flash-1017",
+    "effort": "max",
+    "cwd": "D:/Lawbeach/lawbench-C"
+  },
+  "actual_commands": 22,
+  "success": 18,
+  "nonzero": 4,
+  "author_runtime": 0,
+  "formal_note_17_success5_nonzero_is_incorrect_preserved": true,
+  "actual_last_git_show_exit0_contains_nested128_preserved": true,
+  "full_cumulative_source_finally_exact_delta_all_commands_formal_note_writefaces_reviewed": true,
+  "source_sha256": "eb92b2877ed181946d3dac74a3c10994474d0071dca594ccd7db4d3d0cada8e8",
+  "only_delta": [
+    "fresh final-attempt identity flag guards sole Kill",
+    "explicit UTF8 manifest decode",
+    "own listener closure failure nonzero; preserve shared cleanup status"
+  ],
+  "parser": {
+    "actual_engine": "WindowsPowerShell5.1.26100.9711",
+    "parse_errors": 0,
+    "candidate_execution": false
+  },
+  "pure_runtime_attempt": {
+    "command": "WindowsPowerShell5.1 -NoLogo -NoProfile -File outputs/check-OCR-isolated-pure-root-admin.ps1 -ProofRoot <owned root> -Prepared <existing prepared>",
+    "directory": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCRPureAdmission-root-20261028-010926",
+    "exit_code": 1,
+    "before_helper_execution": true,
+    "error": "File cannot be loaded because running scripts is disabled on this system. FullyQualifiedErrorId UnauthorizedAccess; SecurityError.",
+    "automatic_approval_rejection": false,
+    "execution_policy_changed": false,
+    "bypass_or_alternate_execution": false,
+    "pure_matrix_pass": false
+  },
+  "prepared_local_png_reused": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-isolated-local-prepare-root-current.json",
+  "new_render_runs": 0,
+  "GPU_instances": 0,
+  "production_changes": 0,
+  "root_HTTP": 0,
+  "next": "No policy bypass. Preserve candidate and no-Key independent work. Additional production GPU instance still needs separately reviewed impact and human confirmation; user resting, no pop-up now.",
+  "not_OCR_cause_or_quality_pass": true
+}

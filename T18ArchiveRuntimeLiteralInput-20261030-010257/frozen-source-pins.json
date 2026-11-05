@@ -1,0 +1,22 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ArchiveCurrentConsumer-20261030-005655\\native-archive.mts",
+    "bytes": 172273,
+    "sha256": "3cb19daa9e03bd952a645f9b2eb9ddcce124398d1552f7b21896ec824e05010e"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ArchiveCurrentConsumer-20261030-005655\\b-service-archive.py",
+    "bytes": 54743,
+    "sha256": "7facdd335d06cc2c6f5d728e27b5334618057e85cf6c81c20e020473d85e0780"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ArchiveCurrentConsumer-20261030-005655\\literalfixed-inputs.json",
+    "bytes": 15338,
+    "sha256": "5719d1b29d6fce4031c75a443bee14113cf1700d13dbdbee43d6ab482fb43fc4"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ArchiveCurrentConsumer-20261030-005655\\archive-order-finite.mts",
+    "bytes": 7163,
+    "sha256": "fc01d193cd0c8d23c451786fb65dded7576e0ac55703078acd56e2ac66e05588"
+  }
+]

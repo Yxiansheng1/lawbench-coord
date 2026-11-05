@@ -1,0 +1,808 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18VisibleUnitSemanticPilotV2-20261101-195816\offline-controls.mjs
+SHA 94ea1da30b6c9ada096dd179ae89304d6a935158c2f48d09555e0265822f7782
+0001 import assert from "node:assert/strict";
+0002 import {
+0003   COMPLETION_STATUS,
+0004   ENTIRE_CALL_CAP_MS,
+0005   FIXED_DATA_FORMAT,
+0006   MAX_SEQUENTIAL_CALLS,
+0007   MODEL,
+0008   PARAMETERS,
+0009   PER_CALL_TIMEOUT_MS,
+0010   RESPONSE_CAP_BYTES,
+0011   ROUTE,
+0012   buildAuthorizationHeader,
+0013   buildRequestPayload,
+0014   buildSpanTables,
+0015   buildStage1Envelope,
+0016   buildStage1Messages,
+0017   buildStage2Envelope,
+0018   buildStage2Messages,
+0019   buildVisibleUnits,
+0020   joinAssessmentsToUnits,
+0021   outputStatusForReviews,
+0022   parseModelJson,
+0023   performRequest,
+0024   redactCredential,
+0025   requestTimeoutForDeadline,
+0026   selectPilotInput,
+0027   serializeForArtifact,
+0028   unwrapChatCompletion,
+0029   validateStage1Result,
+0030   validateStage2Result,
+0031 } from "./review-consumer.mjs";
+0032 
+0033 const REDACTION_MARKER = "\u2588";
+0034 
+0035 function assertProtocolError(fn, expectedCode) {
+0036   assert.throws(fn, (error) => error && error.code === expectedCode);
+0037 }
+0038 
+0039 function cloneStage2Records(records) {
+0040   return records.map((record) => ({
+0041     ...record,
+0042     draft_refs: [...record.draft_refs],
+0043     selfcheck_refs: [...record.selfcheck_refs],
+0044     issues: [...record.issues],
+0045   }));
+0046 }
+0047 
+0048 const label7 = "\u3010\u7B2C7\u884C\u3011";
+0049 const label8 = "\u3010\u7B2C8\u884C\u3011";
+0050 const label9 = "\u3010\u7B2C9\u884C\u3011";
+0051 const receiptText = [
+0052   label7,
+0053   "HEADER_SENTINEL only",
+0054   label8,
+0055   "",
+0056   label9,
+0057   "DETAIL_SENTINEL independent detail.",
+0058   "",
+0059 ].join("\n");
+0060 const receipt = {
+0061   receipt_id: "RECEIPT_SENTINEL",
+0062   material_id: "MATERIAL_SENTINEL",
+0063   unit: "line",
+0064   text: receiptText,
+0065   start: 7,
+0066   end: 9,
+0067 };
+0068 const input = {
+0069   receipts: [receipt],
+0070   draft: "DRAFT_ONE_SENTINEL first line.\nDRAFT_TWO_SENTINEL second line.\n",
+0071   visibleSelfcheck: "SELFCHECK_ONE_SENTINEL first line.\n",
+0072   actualCoverage: { note: "COVERAGE_SENTINEL" },
+0073 };
+0074 const fixedData = {
+0075   format: FIXED_DATA_FORMAT,
+0076   evidence: input.receipts,
+0077   draft: {
+0078     content: input.draft,
+0079     title: "DRAFT_TITLE_SENTINEL",
+0080     version: 3,
+0081   },
+0082   visible_selfcheck: input.visibleSelfcheck,
+0083   coverage: input.actualCoverage,
+0084 };
+0085 
+0086 const selectedInput = selectPilotInput(fixedData);
+0087 assert.equal(selectedInput.receipts, input.receipts);
+0088 assert.equal(selectedInput.draft, input.draft);
+0089 assert.equal(selectedInput.visibleSelfcheck, input.visibleSelfcheck);
+0090 assert.equal(selectedInput.actualCoverage, input.actualCoverage);
+0091 assertProtocolError(
+0092   () => selectPilotInput({ ...fixedData, draft: { ...fixedData.draft, version: "3" } }),
+0093   "ORIGINAL_DRAFT_NOT_TEXT",
+0094 );
+0095 assertProtocolError(
+0096   () => selectPilotInput({ ...fixedData, evidence_receipts: input.receipts, evidence: undefined }),
+0097   "EVIDENCE_RECEIPTS_MISSING",
+0098 );
+0099 assertProtocolError(
+0100   () => selectPilotInput({ ...fixedData, draft: { ...fixedData.draft, content: { text: input.draft } } }),
+0101   "ORIGINAL_DRAFT_NOT_TEXT",
+0102 );
+0103 assertProtocolError(
+0104   () => selectPilotInput({ ...fixedData, visible_selfcheck: { content: input.visibleSelfcheck } }),
+0105   "VISIBLE_SELFCHECK_NOT_TEXT",
+0106 );
+0107 assertProtocolError(
+0108   () => selectPilotInput({ ...fixedData, coverage: [] }),
+0109   "ACTUAL_COVERAGE_INVALID",
+0110 );
+0111 
+0112 // Three synthetic visible units: a header-only unit, a blank unit, and an independent detail.
+0113 const units = buildVisibleUnits(input.receipts);
+0114 assert.deepEqual(units.map((unit) => unit.unit_id), [
+0115   "RECEIPT_SENTINEL#L7",
+0116   "RECEIPT_SENTINEL#L8",
+0117   "RECEIPT_SENTINEL#L9",
+0118 ]);
+0119 assert.deepEqual(units.map((unit) => unit.unit), ["line", "line", "line"]);
+0120 assert.deepEqual(units.map((unit) => unit.text), [
+0121   `${label7}\nHEADER_SENTINEL only\n`,
+0122   `${label8}\n\n`,
+0123   `${label9}\nDETAIL_SENTINEL independent detail.\n`,
+0124 ]);
+0125 assert.equal(units.map((unit) => unit.text).join(""), receiptText);
+0126 assert.equal(units.length, 3);
+0127 assert.ok(units[0].text.endsWith("\n"));
+0128 assert.equal(units[1].text, `${label8}\n\n`);
+0129 assert.ok(units[2].text.startsWith(`${label9}\n`));
+0130 assert.ok(units[2].text.endsWith(".\n"));
+0131 
+0132 assertProtocolError(
+0133   () => buildVisibleUnits([{ ...receipt, unit: "page" }]),
+0134   "UNIT_LABEL_INVALID",
+0135 );
+0136 assertProtocolError(
+0137   () => buildVisibleUnits([{ ...receipt, unit: "line_label" }]),
+0138   "UNIT_LABEL_INVALID",
+0139 );
+0140 assertProtocolError(
+0141   () => buildVisibleUnits([{ ...receipt, text: `PREFIX_SENTINEL\n${receiptText}` }]),
+0142   "FIRST_MARKER_NOT_AT_START",
+0143 );
+0144 assertProtocolError(
+0145   () => buildVisibleUnits([{
+0146     ...receipt,
+0147     text: `${label7}\nHEADER_SENTINEL only\n\u3010\u7B2C10\u884C\u3011\n\n${label9}\nDETAIL_SENTINEL independent detail.\n`,
+0148   }]),
+0149   "MARKER_SEQUENCE_INVALID",
+0150 );
+0151 assertProtocolError(
+0152   () => buildVisibleUnits([{
+0153     ...receipt,
+0154     text: receiptText
+0155       .replace(label7, "\u3010\u7B2C6\u884C\u3011")
+0156       .replace(label8, label7)
+0157       .replace(label9, label8),
+0158   }]),
+0159   "RANGE_START_MISMATCH",
+0160 );
+0161 assertProtocolError(
+0162   () => buildVisibleUnits([{ ...receipt, end: 10 }]),
+0163   "RANGE_END_MISMATCH",
+0164 );
+0165 const malformed08 = "\u3010\u7B2C08\u884C\u3011";
+0166 const malformedMixedText = receiptText.replace(
+0167   label8,
+0168   `${malformed08}\n${label8}`,
+0169 );
+0170 assertProtocolError(
+0171   () => buildVisibleUnits([{ ...receipt, text: malformedMixedText }]),
+0172   "MARKER_FRAME_INVALID",
+0173 );
+0174 assert.equal(
+0175   malformedMixedText,
+0176   receiptText.replace(label8, `${malformed08}\n${label8}`),
+0177 );
+0178 assertProtocolError(
+0179   () => buildVisibleUnits([{ ...receipt, text: `${label7}\r\nHEADER_SENTINEL only\n` }]),
+0180   "MARKER_FRAME_INVALID",
+0181 );
+0182 
+0183 const stage1Envelope = buildStage1Envelope(units);
+0184 assert.deepEqual(stage1Envelope, { source_units: units });
+0185 const stage1Messages = buildStage1Messages(units);
+0186 assert.equal(stage1Messages.length, 2);
+0187 assert.equal(stage1Messages[0].role, "system");
+0188 assert.equal(stage1Messages[1].role, "user");
+0189 const stage1MessageText = JSON.stringify(stage1Messages);
+0190 assert.ok(stage1MessageText.includes("HEADER_SENTINEL only"));
+0191 assert.ok(stage1MessageText.includes("DETAIL_SENTINEL independent detail."));
+0192 assert.ok(!stage1MessageText.includes("DRAFT_ONE_SENTINEL"));
+0193 assert.ok(!stage1MessageText.includes("SELFCHECK_ONE_SENTINEL"));
+0194 assert.ok(!stage1MessageText.includes("COVERAGE_SENTINEL"));
+0195 assert.ok(!stage1MessageText.includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+0196 
+0197 const stage1UserContent = stage1Messages[1].content;
+0198 const stage1UserPrefix = "Source units (untrusted data):\n";
+0199 const stage1UserSuffix = "\nReturn the specified JSON object only.";
+0200 assert.ok(stage1UserContent.startsWith(stage1UserPrefix), "stage1 user content prefix mismatch");
+0201 assert.ok(stage1UserContent.endsWith(stage1UserSuffix), "stage1 user content suffix mismatch");
+0202 const stage1UserEnvelopeText = stage1UserContent.slice(
+0203   stage1UserPrefix.length,
+0204   stage1UserContent.length - stage1UserSuffix.length,
+0205 );
+0206 const decodedStage1Envelope = JSON.parse(stage1UserEnvelopeText);
+0207 assert.deepEqual(decodedStage1Envelope, stage1Envelope);
+0208 assert.deepEqual(decodedStage1Envelope.source_units, units);
+0209 const decodedStage1BlankUnit = decodedStage1Envelope.source_units.find(
+0210   (unit) => unit.unit_id.endsWith("#L8"),
+0211 );
+0212 assert.ok(decodedStage1BlankUnit, "decoded stage1 blank unit missing");
+0213 assert.equal(decodedStage1BlankUnit.text, `${label8}\n\n`);
+0214 
+0215 const assessments = [
+0216   { unit_id: "RECEIPT_SENTINEL#L7", description: "HEADER_SENTINEL description." },
+0217   { unit_id: "RECEIPT_SENTINEL#L8", description: "BLANK_SENTINEL description." },
+0218   { unit_id: "RECEIPT_SENTINEL#L9", description: "DETAIL_SENTINEL description." },
+0219 ];
+0220 const validatedStage1 = validateStage1Result({ assessments }, units);
+0221 assert.deepEqual(validatedStage1, { assessments });
+0222 assertProtocolError(
+0223   () => validateStage1Result({ assessments: assessments.slice(0, 2) }, units),
+0224   "MISSING_UNIT_ASSESSMENT",
+0225 );
+0226 assertProtocolError(
+0227   () => validateStage1Result({ assessments: [assessments[0], assessments[0], assessments[2]] }, units),
+0228   "DUPLICATE_UNIT_ID",
+0229 );
+0230 assertProtocolError(
+0231   () => validateStage1Result({
+0232     assessments: [assessments[0], assessments[1], { ...assessments[2], unit_id: "UNKNOWN_UNIT_SENTINEL" }],
+0233   }, units),
+0234   "UNKNOWN_UNIT_ID",
+0235 );
+0236 assertProtocolError(
+0237   () => validateStage1Result({
+0238     assessments: [{ ...assessments[0], model_quote: "MODEL_QUOTE_SENTINEL" }, assessments[1], assessments[2]],
+0239   }, units),
+0240   "ASSESSMENT_SCHEMA_INVALID",
+0241 );
+0242 assertProtocolError(
+0243   () => validateStage1Result({ assessments, transcript: "RAW_STAGE1_TRANSCRIPT_SENTINEL" }, units),
+0244   "RESPONSE_SCHEMA_INVALID",
+0245 );
+0246 
+0247 const joinedUnits = joinAssessmentsToUnits(units, validatedStage1.assessments);
+0248 assert.deepEqual(joinedUnits.map((unit) => unit.text), units.map((unit) => unit.text));
+0249 assert.deepEqual(joinedUnits.map((unit) => unit.description), assessments.map((item) => item.description));
+0250 assert.deepEqual(units.map((unit) => unit.text), [
+0251   `${label7}\nHEADER_SENTINEL only\n`,
+0252   `${label8}\n\n`,
+0253   `${label9}\nDETAIL_SENTINEL independent detail.\n`,
+0254 ]);
+0255 
+0256 const spans = buildSpanTables(input.draft, input.visibleSelfcheck);
+0257 assert.equal(spans.draftSpans.map((span) => span.text).join(""), input.draft);
+0258 assert.equal(spans.selfcheckSpans.map((span) => span.text).join(""), input.visibleSelfcheck);
+0259 assert.equal(spans.draftSpans[0].text, "DRAFT_ONE_SENTINEL first line.\n");
+0260 assert.equal(spans.draftSpans[1].text, "DRAFT_TWO_SENTINEL second line.\n");
+0261 assert.equal(spans.selfcheckSpans[0].text, "SELFCHECK_ONE_SENTINEL first line.\n");
+0262 
+0263 const stage2Envelope = buildStage2Envelope(
+0264   units,
+0265   validatedStage1.assessments,
+0266   spans.draftSpans,
+0267   spans.selfcheckSpans,
+0268   input.actualCoverage,
+0269 );
+0270 assert.deepEqual(Object.keys(stage2Envelope).sort(), [
+0271   "actual_coverage",
+0272   "original_draft_spans",
+0273   "source_units",
+0274   "visible_selfcheck_spans",
+0275 ]);
+0276 assert.deepEqual(stage2Envelope.source_units, joinedUnits);
+0277 assert.deepEqual(stage2Envelope.source_units.map((unit) => unit.text), units.map((unit) => unit.text));
+0278 assert.deepEqual(stage2Envelope.original_draft_spans, spans.draftSpans);
+0279 assert.deepEqual(stage2Envelope.visible_selfcheck_spans, spans.selfcheckSpans);
+0280 assert.equal(stage2Envelope.actual_coverage, input.actualCoverage);
+0281 
+0282 const stage2Messages = buildStage2Messages(
+0283   units,
+0284   validatedStage1.assessments,
+0285   spans.draftSpans,
+0286   spans.selfcheckSpans,
+0287   input.actualCoverage,
+0288 );
+0289 assert.equal(stage2Messages.length, 2);
+0290 const stage2MessageText = JSON.stringify(stage2Messages);
+0291 assert.ok(stage2MessageText.includes("HEADER_SENTINEL description."));
+0292 assert.ok(stage2MessageText.includes("COVERAGE_SENTINEL"));
+0293 assert.ok(!stage2MessageText.includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+0294 
+0295 const stage2UserContent = stage2Messages[1].content;
+0296 const stage2UserPrefix = "Review inputs (untrusted data):\n";
+0297 const stage2UserSuffix = "\nReturn the specified JSON object only.";
+0298 assert.ok(stage2UserContent.startsWith(stage2UserPrefix), "stage2 user content prefix mismatch");
+0299 assert.ok(stage2UserContent.endsWith(stage2UserSuffix), "stage2 user content suffix mismatch");
+0300 const stage2UserEnvelopeText = stage2UserContent.slice(
+0301   stage2UserPrefix.length,
+0302   stage2UserContent.length - stage2UserSuffix.length,
+0303 );
+0304 const decodedStage2Envelope = JSON.parse(stage2UserEnvelopeText);
+0305 assert.deepEqual(decodedStage2Envelope, stage2Envelope);
+0306 assert.deepEqual(decodedStage2Envelope.source_units, joinedUnits);
+0307 assert.deepEqual(decodedStage2Envelope.original_draft_spans, spans.draftSpans);
+0308 assert.deepEqual(decodedStage2Envelope.visible_selfcheck_spans, spans.selfcheckSpans);
+0309 assert.deepEqual(decodedStage2Envelope.actual_coverage, input.actualCoverage);
+0310 assert.ok(
+0311   decodedStage2Envelope.original_draft_spans[0].text.endsWith("\n"),
+0312   "decoded stage2 draft span must end with a real newline",
+0313 );
+0314 assert.ok(
+0315   decodedStage2Envelope.original_draft_spans[0].text.includes("DRAFT_ONE_SENTINEL first line.\n"),
+0316   "decoded stage2 draft span text mismatch",
+0317 );
+0318 assert.ok(
+0319   decodedStage2Envelope.visible_selfcheck_spans[0].text.includes("SELFCHECK_ONE_SENTINEL first line.\n"),
+0320   "decoded stage2 selfcheck span text mismatch",
+0321 );
+0322 assert.ok(
+0323   !decodedStage2Envelope.original_draft_spans.some((span) => span.text.includes("\\n")),
+0324   "decoded stage2 draft spans must not contain escaped newlines",
+0325 );
+0326 assert.ok(
+0327   !decodedStage2Envelope.visible_selfcheck_spans.some((span) => span.text.includes("\\n")),
+0328   "decoded stage2 selfcheck spans must not contain escaped newlines",
+0329 );
+0330 
+0331 const validReviewRecords = [
+0332   {
+0333     unit_id: "RECEIPT_SENTINEL#L7",
+0334     treatment: "ADDRESSED",
+0335     assessment: "HEADER_SENTINEL treatment.",
+0336     draft_refs: ["D:1"],
+0337     selfcheck_refs: ["S:1"],
+0338     issues: [],
+0339   },
+0340   {
+0341     unit_id: "RECEIPT_SENTINEL#L8",
+0342     treatment: "OMITTED",
+0343     assessment: "BLANK_SENTINEL treatment.",
+0344     draft_refs: [],
+0345     selfcheck_refs: [],
+0346     issues: [],
+0347   },
+0348   {
+0349     unit_id: "RECEIPT_SENTINEL#L9",
+0350     treatment: "UNCLEAR",
+0351     assessment: "DETAIL_SENTINEL treatment.",
+0352     draft_refs: ["D:2"],
+0353     selfcheck_refs: [],
+0354     issues: [],
+0355   },
+0356 ];
+0357 const stage2Context = {
+0358   units,
+0359   draftSpans: spans.draftSpans,
+0360   selfcheckSpans: spans.selfcheckSpans,
+0361 };
+0362 const validatedStage2 = validateStage2Result({
+0363   reviews: [
+0364     validReviewRecords[2],
+0365     validReviewRecords[0],
+0366     validReviewRecords[1],
+0367   ],
+0368 }, stage2Context);
+0369 assert.deepEqual(validatedStage2.reviews.map((review) => review.unit_id), units.map((unit) => unit.unit_id));
+0370 assert.deepEqual(validatedStage2.reviews.map((review) => review.source.text), units.map((unit) => unit.text));
+0371 assert.deepEqual(validatedStage2.reviews[0].draft_quotes, ["DRAFT_ONE_SENTINEL first line.\n"]);
+0372 assert.deepEqual(validatedStage2.reviews[0].selfcheck_quotes, ["SELFCHECK_ONE_SENTINEL first line.\n"]);
+0373 assert.deepEqual(validatedStage2.reviews[2].draft_quotes, ["DRAFT_TWO_SENTINEL second line.\n"]);
+0374 assert.deepEqual(validatedStage2.reviews[1].draft_quotes, []);
+0375 assert.deepEqual(validatedStage2.reviews[1].selfcheck_quotes, []);
+0376 assert.ok(validatedStage2.reviews.every((review) => review.issues.length === 0));
+0377 assert.equal(outputStatusForReviews(validatedStage2.reviews), COMPLETION_STATUS);
+0378 assert.equal(outputStatusForReviews(validatedStage2.reviews), "UNIT_REVIEW_COMPLETE_REQUIRES_ROOT_MANUAL_JUDGMENT");
+0379 assert.notEqual(outputStatusForReviews(validatedStage2.reviews), "PASS");
+0380 
+0381 assertProtocolError(
+0382   () => validateStage2Result({ reviews: validReviewRecords.slice(0, 2) }, stage2Context),
+0383   "MISSING_UNIT_REVIEW",
+0384 );
+0385 assertProtocolError(
+0386   () => validateStage2Result({ reviews: [validReviewRecords[0], validReviewRecords[0], validReviewRecords[2]] }, stage2Context),
+0387   "DUPLICATE_UNIT_ID",
+0388 );
+0389 assertProtocolError(
+0390   () => validateStage2Result({
+0391     reviews: [validReviewRecords[0], validReviewRecords[1], { ...validReviewRecords[2], unit_id: "UNKNOWN_UNIT_SENTINEL" }],
+0392   }, stage2Context),
+0393   "UNKNOWN_UNIT_ID",
+0394 );
+0395 assertProtocolError(
+0396   () => validateStage2Result({
+0397     reviews: [{ ...validReviewRecords[0], draft_refs: ["D:999"] }, validReviewRecords[1], validReviewRecords[2]],
+0398   }, stage2Context),
+0399   "UNKNOWN_DRAFT_SPAN_REF",
+0400 );
+0401 assertProtocolError(
+0402   () => validateStage2Result({
+0403     reviews: [{ ...validReviewRecords[0], draft_refs: ["D:1", "D:1"] }, validReviewRecords[1], validReviewRecords[2]],
+0404   }, stage2Context),
+0405   "DRAFT_REF_DUPLICATE",
+0406 );
+0407 assertProtocolError(
+0408   () => validateStage2Result({
+0409     reviews: [{ ...validReviewRecords[0], selfcheck_refs: ["S:999"] }, validReviewRecords[1], validReviewRecords[2]],
+0410   }, stage2Context),
+0411   "UNKNOWN_SELFCHECK_SPAN_REF",
+0412 );
+0413 assertProtocolError(
+0414   () => validateStage2Result({
+0415     reviews: [{ ...validReviewRecords[0], selfcheck_refs: ["S:1", "S:1"] }, validReviewRecords[1], validReviewRecords[2]],
+0416   }, stage2Context),
+0417   "SELFCHECK_REF_DUPLICATE",
+0418 );
+0419 assertProtocolError(
+0420   () => validateStage2Result({
+0421     reviews: [{ ...validReviewRecords[0], draft_refs: [] }, validReviewRecords[1], validReviewRecords[2]],
+0422   }, stage2Context),
+0423   "ADDRESSED_WITHOUT_DRAFT_REF",
+0424 );
+0425 assertProtocolError(
+0426   () => validateStage2Result({
+0427     reviews: [{ ...validReviewRecords[0], source_quote: "MODEL_SOURCE_QUOTE_SENTINEL" }, validReviewRecords[1], validReviewRecords[2]],
+0428   }, stage2Context),
+0429   "REVIEW_SCHEMA_INVALID",
+0430 );
+0431 assertProtocolError(
+0432   () => validateStage2Result({
+0433     reviews: [{ ...validReviewRecords[0], draft_quotes: ["MODEL_DRAFT_QUOTE_SENTINEL"] }, validReviewRecords[1], validReviewRecords[2]],
+0434   }, stage2Context),
+0435   "REVIEW_SCHEMA_INVALID",
+0436 );
+0437 assertProtocolError(
+0438   () => validateStage2Result({
+0439     reviews: [{ ...validReviewRecords[0], treatment: "PASS" }, validReviewRecords[1], validReviewRecords[2]],
+0440   }, stage2Context),
+0441   "TREATMENT_INVALID",
+0442 );
+0443 assertProtocolError(
+0444   () => validateStage2Result({ reviews: validReviewRecords, overallPASS: true }, stage2Context),
+0445   "RESPONSE_SCHEMA_INVALID",
+0446 );
+0447 assertProtocolError(
+0448   () => validateStage2Result({
+0449     reviews: [{ ...validReviewRecords[0], issues: ["   "] }, validReviewRecords[1], validReviewRecords[2]],
+0450   }, stage2Context),
+0451   "ISSUE_INVALID",
+0452 );
+0453 
+0454 const passIssueRecords = cloneStage2Records(validReviewRecords);
+0455 passIssueRecords[0].issues = ["PASS"];
+0456 const passIssueResult = validateStage2Result({ reviews: passIssueRecords }, stage2Context);
+0457 assert.deepEqual(passIssueResult.reviews[0].issues, ["PASS"]);
+0458 assert.equal(outputStatusForReviews(passIssueResult.reviews), COMPLETION_STATUS);
+0459 assert.notEqual(outputStatusForReviews(passIssueResult.reviews), "PASS");
+0460 
+0461 const stage2CompletionBody = JSON.stringify({
+0462   id: "CHAT_COMPLETION_SENTINEL_2",
+0463   object: "chat.completion",
+0464   model: MODEL,
+0465   choices: [{
+0466     index: 0,
+0467     message: { role: "assistant", content: JSON.stringify({ reviews: validReviewRecords }) },
+0468     finish_reason: "stop",
+0469   }],
+0470 });
+0471 assert.deepEqual(
+0472   validateStage2Result(parseModelJson(unwrapChatCompletion(stage2CompletionBody)), stage2Context),
+0473   validatedStage2,
+0474 );
+0475 
+0476 const payload = buildRequestPayload(stage1Messages);
+0477 const requestBody = JSON.stringify(payload);
+0478 assert.equal(ROUTE, "http://10.126.126.1:8000/v1/chat/completions");
+0479 assert.equal(MAX_SEQUENTIAL_CALLS, 2);
+0480 assert.equal(PER_CALL_TIMEOUT_MS, 400_000);
+0481 assert.equal(ENTIRE_CALL_CAP_MS, 900_000);
+0482 assert.equal(RESPONSE_CAP_BYTES, 4 * 1024 * 1024);
+0483 assert.equal(payload.model, "qwen38-27b");
+0484 assert.equal(MODEL, "qwen38-27b");
+0485 assert.equal(payload.temperature, 0.6);
+0486 assert.equal(PARAMETERS.temperature, 0.6);
+0487 assert.equal(payload.max_tokens, 49152);
+0488 assert.equal(PARAMETERS.max_tokens, 49152);
+0489 assert.equal(payload.stream, false);
+0490 assert.equal(PARAMETERS.stream, false);
+0491 assert.deepEqual(payload.messages, stage1Messages);
+0492 
+0493 const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
+0494 assert.equal(buildAuthorizationHeader(credentialSentinel), `Bearer ${credentialSentinel}`);
+0495 assert.ok(!requestBody.includes(credentialSentinel));
+0496 assert.ok(!JSON.stringify(stage2Messages).includes(credentialSentinel));
+0497 assertProtocolError(() => buildAuthorizationHeader(` ${credentialSentinel}`), "CREDENTIAL_INVALID");
+0498 const redacted = serializeForArtifact({
+0499   direct: credentialSentinel,
+0500   nested: { [credentialSentinel]: [`prefix:${credentialSentinel}:suffix`] },
+0501 }, credentialSentinel);
+0502 assert.ok(!redacted.includes(credentialSentinel));
+0503 assert.ok(redacted.includes(REDACTION_MARKER));
+0504 assert.equal(redactCredential(`a${credentialSentinel}b`, credentialSentinel), `a${REDACTION_MARKER}b`);
+0505 
+0506 // The Unicode block is outside printable ASCII, including its JSON-escaped spelling.
+0507 assert.ok([...REDACTION_MARKER].every((character) => character.charCodeAt(0) > 126));
+0508 assert.ok([...JSON.stringify(REDACTION_MARKER).slice(1, -1)].every((character) => character.charCodeAt(0) > 126));
+0509 assert.equal(REDACTION_MARKER, "\u2588");
+0510 
+0511 const oneCharCredential = "R";
+0512 assert.equal(buildAuthorizationHeader(oneCharCredential), "Bearer R");
+0513 const oneCharSerialized = serializeForArtifact({
+0514   direct: oneCharCredential,
+0515   error: `raw error ${oneCharCredential} tail`,
+0516   jsonbody: JSON.stringify({ message: oneCharCredential }),
+0517   nested: {
+0518     [`raw-key:${oneCharCredential}`]: [oneCharCredential, oneCharCredential],
+0519   },
+0520 }, oneCharCredential);
+0521 assert.ok(!oneCharSerialized.includes(oneCharCredential));
+0522 const persistedOneChar = JSON.parse(oneCharSerialized);
+0523 assert.equal(persistedOneChar.direct, REDACTION_MARKER);
+0524 assert.equal(persistedOneChar.error, `raw error ${REDACTION_MARKER} tail`);
+0525 assert.equal(persistedOneChar.jsonbody, `{"message":"${REDACTION_MARKER}"}`);
+0526 assert.deepEqual(persistedOneChar.nested, {
+0527   [`raw-key:${REDACTION_MARKER}`]: [REDACTION_MARKER, REDACTION_MARKER],
+0528 });
+0529 
+0530 const quoteBackslashCredential = 'CREDENTIAL_"QUOTE"\\BACKSLASH_SENTINEL';
+0531 const jsonEscapedCredential = JSON.stringify(quoteBackslashCredential).slice(1, -1);
+0532 const quoteBackslashSerialized = serializeForArtifact({
+0533   error: `raw error ${quoteBackslashCredential}`,
+0534   responseBody: JSON.stringify({ error: { message: quoteBackslashCredential } }),
+0535   nested: {
+0536     [`raw-key:${quoteBackslashCredential}`]: [
+0537       quoteBackslashCredential,
+0538       jsonEscapedCredential,
+0539     ],
+0540     [`escaped-key:${jsonEscapedCredential}`]: [
+0541       quoteBackslashCredential,
+0542       jsonEscapedCredential,
+0543     ],
+0544   },
+0545 }, quoteBackslashCredential);
+0546 assert.ok(!quoteBackslashSerialized.includes(quoteBackslashCredential));
+0547 assert.ok(!quoteBackslashSerialized.includes(jsonEscapedCredential));
+0548 assert.ok(quoteBackslashSerialized.includes(REDACTION_MARKER));
+0549 const persistedQuoteBackslash = JSON.parse(quoteBackslashSerialized);
+0550 assert.equal(persistedQuoteBackslash.error, `raw error ${REDACTION_MARKER}`);
+0551 assert.equal(persistedQuoteBackslash.responseBody, `{"error":{"message":"${REDACTION_MARKER}"}}`);
+0552 assert.deepEqual(persistedQuoteBackslash.nested, {
+0553   [`raw-key:${REDACTION_MARKER}`]: [REDACTION_MARKER, REDACTION_MARKER],
+0554   [`escaped-key:${REDACTION_MARKER}`]: [REDACTION_MARKER, REDACTION_MARKER],
+0555 });
+0556 
+0557 assert.equal(requestTimeoutForDeadline(1_000, 901_000), 400_000);
+0558 assert.equal(requestTimeoutForDeadline(501_000, 901_000), 400_000);
+0559 assert.equal(requestTimeoutForDeadline(801_000, 901_000), 100_000);
+0560 assert.equal(requestTimeoutForDeadline(901_000, 901_000), 0);
+0561 assert.equal(requestTimeoutForDeadline(902_000, 901_000), 0);
+0562 
+0563 const stage1Content = JSON.stringify({ assessments });
+0564 const stage1CompletionBody = JSON.stringify({
+0565   id: "CHAT_COMPLETION_SENTINEL_1",
+0566   object: "chat.completion",
+0567   created: 1,
+0568   model: MODEL,
+0569   choices: [{
+0570     index: 0,
+0571     message: { role: "assistant", content: stage1Content },
+0572     finish_reason: "stop",
+0573   }],
+0574   usage: { prompt_tokens: 1, completion_tokens: 1, total_tokens: 2 },
+0575 });
+0576 assert.equal(unwrapChatCompletion(stage1CompletionBody), stage1Content);
+0577 assert.equal(
+0578   unwrapChatCompletion(JSON.stringify({
+0579     model: MODEL,
+0580     choices: [{
+0581       message: { role: "assistant", content: stage1Content, tool_calls: [] },
+0582       finish_reason: "stop",
+0583     }],
+0584   })),
+0585   stage1Content,
+0586 );
+0587 assert.deepEqual(
+0588   validateStage1Result(parseModelJson(unwrapChatCompletion(stage1CompletionBody)), units),
+0589   validatedStage1,
+0590 );
+0591 assertProtocolError(
+0592   () => unwrapChatCompletion(JSON.stringify({ model: MODEL, assessments: [] })),
+0593   "COMPLETION_INVALID",
+0594 );
+0595 assertProtocolError(() => unwrapChatCompletion("{"), "COMPLETION_INVALID");
+0596 assertProtocolError(
+0597   () => unwrapChatCompletion(JSON.stringify({
+0598     model: MODEL,
+0599     choices: [{ message: { role: "assistant", reasoning_content: "REASONING_SENTINEL" }, finish_reason: "stop" }],
+0600   })),
+0601   "COMPLETION_CONTENT_INVALID",
+0602 );
+0603 assertProtocolError(
+0604   () => unwrapChatCompletion(JSON.stringify({
+0605     model: MODEL,
+0606     choices: [{ message: { role: "assistant", content: "TRUNCATED_CONTENT_SENTINEL" }, finish_reason: "length" }],
+0607   })),
+0608   "COMPLETION_NOT_FINISHED",
+0609 );
+0610 assertProtocolError(
+0611   () => unwrapChatCompletion(JSON.stringify({
+0612     model: MODEL,
+0613     error: { type: "SENTINEL_ERROR" },
+0614   })),
+0615   "COMPLETION_ERROR",
+0616 );
+0617 assertProtocolError(
+0618   () => unwrapChatCompletion(JSON.stringify({
+0619     model: MODEL,
+0620     choices: [{
+0621       message: {
+0622         role: "assistant",
+0623         content: stage1Content,
+0624         tool_calls: [{ id: "TOOL_CALL_SENTINEL" }],
+0625       },
+0626       finish_reason: "stop",
+0627     }],
+0628   })),
+0629   "COMPLETION_TOOL_CALLS_UNSUPPORTED",
+0630 );
+0631 assertProtocolError(
+0632   () => unwrapChatCompletion(JSON.stringify({
+0633     model: MODEL,
+0634     choices: [{
+0635       message: {
+0636         role: "assistant",
+0637         content: stage1Content,
+0638         tool_calls: { id: "TOOL_CALL_SENTINEL" },
+0639       },
+0640       finish_reason: "stop",
+0641     }],
+0642   })),
+0643   "COMPLETION_TOOL_CALLS_UNSUPPORTED",
+0644 );
+0645 assertProtocolError(
+0646   () => unwrapChatCompletion(JSON.stringify({
+0647     model: "DIFFERENT_MODEL_SENTINEL",
+0648     choices: [{
+0649       message: { role: "assistant", content: stage1Content },
+0650       finish_reason: "stop",
+0651     }],
+0652   })),
+0653   "COMPLETION_MODEL_MISMATCH",
+0654 );
+0655 assertProtocolError(
+0656   () => unwrapChatCompletion(JSON.stringify({
+0657     choices: [{
+0658       message: { role: "assistant", content: stage1Content },
+0659       finish_reason: "stop",
+0660     }],
+0661   })),
+0662   "COMPLETION_MODEL_MISMATCH",
+0663 );
+0664 assertProtocolError(
+0665   () => unwrapChatCompletion(JSON.stringify({
+0666     model: MODEL.toUpperCase(),
+0667     choices: [{
+0668       message: { role: "assistant", content: stage1Content },
+0669       finish_reason: "stop",
+0670     }],
+0671   })),
+0672   "COMPLETION_MODEL_MISMATCH",
+0673 );
+0674 
+0675 assert.deepEqual(parseModelJson('{"reviews":[]}'), { reviews: [] });
+0676 assert.deepEqual(parseModelJson('```json\n{"reviews":[]}\n```'), { reviews: [] });
+0677 assertProtocolError(() => parseModelJson('prefix {"reviews":[]}'), "MALFORMED_JSON");
+0678 assertProtocolError(() => parseModelJson('```json\n```json\n{"reviews":[]}\n```\n```'), "MALFORMED_JSON");
+0679 
+0680 // --- Response-path controls against the SAME exported performRequest implementation ---
+0681 // No network, real timers, sleep calls, or model calls: globalThis.fetch is replaced in memory
+0682 // and restored in a finally block.
+0683 function makeFakeResponse({ status, chunks, throwAfterChunks }) {
+0684   const state = { cancelCalls: 0, releaseLockCalls: 0, reads: 0 };
+0685   const reader = {
+0686     async read() {
+0687       state.reads += 1;
+0688       if (state.reads <= chunks.length) {
+0689         return { done: false, value: new Uint8Array(Buffer.from(chunks[state.reads - 1], "utf8")) };
+0690       }
+0691       if (throwAfterChunks) {
+0692         const failure = new Error("FAKE_READER_FAILURE_SENTINEL");
+0693         failure.name = "FakeReaderFailure";
+0694         throw failure;
+0695       }
+0696       return { done: true, value: undefined };
+0697     },
+0698     async cancel() {
+0699       state.cancelCalls += 1;
+0700       return undefined;
+0701     },
+0702     releaseLock() {
+0703       state.releaseLockCalls += 1;
+0704     },
+0705   };
+0706   return {
+0707     response: { status, body: { getReader: () => reader } },
+0708     state,
+0709   };
+0710 }
+0711 
+0712 const fakeCredential = "OFFLINE_FAKE_CREDENTIAL_SENTINEL";
+0713 const fakeRequestBody = JSON.stringify({ model: MODEL, probe: "FAKE_REQUEST_BODY_SENTINEL" });
+0714 const originalFetch = globalThis.fetch;
+0715 try {
+0716   // Partial response: one prefix chunk, then a reader failure.
+0717   const failing = makeFakeResponse({
+0718     status: 200,
+0719     chunks: ["{\"partial_prefix\":"],
+0720     throwAfterChunks: true,
+0721   });
+0722   let fetchCalls = 0;
+0723   const failingCalls = [];
+0724   globalThis.fetch = async (url, options) => {
+0725     fetchCalls += 1;
+0726     failingCalls.push({ url, options });
+0727     return failing.response;
+0728   };
+0729   const failingResult = await performRequest(
+0730     "stage1",
+0731     fakeRequestBody,
+0732     fakeCredential,
+0733     Date.now() + ENTIRE_CALL_CAP_MS,
+0734   );
+0735   assert.equal(fetchCalls, 1);
+0736   assert.equal(failingCalls[0].url, ROUTE);
+0737   assert.equal(failingCalls[0].options.method, "POST");
+0738   assert.equal(failingCalls[0].options.redirect, "error");
+0739   assert.equal(failingCalls[0].options.headers.Authorization, `Bearer ${fakeCredential}`);
+0740   assert.ok(failingCalls[0].options.signal);
+0741   assert.equal(failingResult.status, 200);
+0742   assert.equal(failingResult.body, "{\"partial_prefix\":");
+0743   assert.equal(failingResult.capturedBytes, Buffer.byteLength("{\"partial_prefix\":", "utf8"));
+0744   assert.equal(failingResult.responseOverflow, false);
+0745   assert.equal(failingResult.transportError, "TRANSPORT_FAILURE");
+0746   assert.equal(failing.state.cancelCalls, 1);
+0747   assert.equal(failing.state.releaseLockCalls, 1);
+0748 
+0749   // Complete response: all chunks returned, no reader failure.
+0750   const complete = makeFakeResponse({
+0751     status: 200,
+0752     chunks: ["{\"ok\":", "true}"],
+0753     throwAfterChunks: false,
+0754   });
+0755   globalThis.fetch = async () => complete.response;
+0756   const completeResult = await performRequest(
+0757     "stage1",
+0758     fakeRequestBody,
+0759     fakeCredential,
+0760     Date.now() + ENTIRE_CALL_CAP_MS,
+0761   );
+0762   assert.equal(completeResult.status, 200);
+0763   assert.equal(completeResult.body, "{\"ok\":true}");
+0764   assert.equal(completeResult.capturedBytes, Buffer.byteLength("{\"ok\":true}", "utf8"));
+0765   assert.equal(completeResult.responseOverflow, false);
+0766   assert.equal(completeResult.transportError, null);
+0767   assert.equal(complete.state.cancelCalls, 0);
+0768   assert.equal(complete.state.releaseLockCalls, 1);
+0769 
+0770   // Response cap: an oversized chunk is never retained and the reader is cancelled.
+0771   const overflow = makeFakeResponse({
+0772     status: 200,
+0773     chunks: ["A".repeat(RESPONSE_CAP_BYTES + 1)],
+0774     throwAfterChunks: false,
+0775   });
+0776   globalThis.fetch = async () => overflow.response;
+0777   const overflowResult = await performRequest(
+0778     "stage1",
+0779     fakeRequestBody,
+0780     fakeCredential,
+0781     Date.now() + ENTIRE_CALL_CAP_MS,
+0782   );
+0783   assert.equal(overflowResult.status, 200);
+0784   assert.equal(overflowResult.body, "");
+0785   assert.equal(overflowResult.capturedBytes, 0);
+0786   assert.equal(overflowResult.responseOverflow, true);
+0787   assert.equal(overflowResult.transportError, null);
+0788   assert.equal(overflow.state.cancelCalls, 1);
+0789   assert.equal(overflow.state.releaseLockCalls, 1);
+0790 
+0791   // Already-expired deadline: no fetch attempt.
+0792   let expiredFetchCalls = 0;
+0793   globalThis.fetch = async () => {
+0794     expiredFetchCalls += 1;
+0795     throw new Error("SHOULD_NOT_BE_CALLED");
+0796   };
+0797   await assert.rejects(
+0798     () => performRequest("stage1", fakeRequestBody, fakeCredential, Date.now() - 1),
+0799     (error) => error && error.code === "ENTIRE_CALL_CAP_EXCEEDED",
+0800   );
+0801   assert.equal(expiredFetchCalls, 0);
+0802 } finally {
+0803   globalThis.fetch = originalFetch;
+0804 }
+0805 
+0806 process.stdout.write("offline controls passed\n");

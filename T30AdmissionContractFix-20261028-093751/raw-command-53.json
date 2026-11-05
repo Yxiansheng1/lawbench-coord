@@ -1,0 +1,8 @@
+{
+  "id": "item_66",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command '$p='\"'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\fixed-inputs.json'; \"'$text=Get-Content -Raw -LiteralPath $p; [PSCustomObject]@{OpenBrace=([regex]::Matches($text,'\"'\\\\{')).Count;CloseBrace=([regex]::Matches(\"'$text,'\"'\\\\}')).Count;OpenBracket=([regex]::Matches(\"'$text,'\"'\\\\[')).Count;CloseBracket=([regex]::Matches(\"'$text,'\"'\\\\]')).Count;EntryObjects=([regex]::Matches(\"'$text,'\"'\\\"group\\\":')).Count;EntryIds=([regex]::Matches(\"'$text,'\"'\\\"id\\\":')).Count} | Format-List\"",
+  "aggregated_output": "\r\nOpenBrace    : 33\r\nCloseBrace   : 33\r\nOpenBracket  : 1\r\nCloseBracket : 1\r\nEntryObjects : 32\r\nEntryIds     : 32\r\n\r\n",
+  "exit_code": 0,
+  "status": "completed"
+}

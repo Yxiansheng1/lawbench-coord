@@ -1,0 +1,578 @@
+{
+  "verdict": "ACTUAL_CRIMINAL_APPLICATION_FAILED_REQUIRES_ROOT_REVIEW",
+  "at_utc": "2026-10-29T07:26:18.134053+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CriminalApplicationGateRecoveryRuntime-root-20261029-152448",
+  "elapsed_s": 64.82800000000861,
+  "driver_exit_code": 1,
+  "consumer_status": "FAILED",
+  "error": {
+    "name": "Error",
+    "message": "draft machine checks failed: hasLegalVerificationPlaceholder"
+  },
+  "secondary_errors": [],
+  "model_POST": 11,
+  "model_HTTP200": 11,
+  "native_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-01ff8f1c-6569-4883-8c57-187b115b2240",
+    "createdAt": 1793258693860,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "native_session": "session-01ff8f1c-6569-4883-8c57-187b115b2240",
+  "task": "T-20261029152453-6b16",
+  "native_request": "9faccf0c-418c-4844-851b-0f75a7775520",
+  "actual_tool_counts": {
+    "skill": 1,
+    "case_read_wiki": 1,
+    "case_list_materials": 1,
+    "case_read_material": 3,
+    "ask_user_question": 2,
+    "case_save_draft": 2
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "call_id": "chatcmpl-tool-97e659150b958363",
+      "seq": 11,
+      "arguments_sha256": "b775fbf53e02e9d5ca569704f175ecb59aacb70609612ff4bf09bb9b320d47a8",
+      "result_seq": 12,
+      "is_error": false,
+      "result_sha256": "d372ea9b5be0ef302ab86e951229498bc1d595487081f0784d222238fa7348ae"
+    },
+    {
+      "name": "case_read_wiki",
+      "call_id": "chatcmpl-tool-ba7b18240a55eb85",
+      "seq": 16,
+      "arguments_sha256": "f924dd55ba5d18c97122d8ae4419833d3ee1890e8a8d5d7dd02f514b3e90aae7",
+      "result_seq": 17,
+      "is_error": false,
+      "result_sha256": "ddff4ff87c342490033e37fabe3c4b67a6a916bc0e75ac022706b1116b63e75f"
+    },
+    {
+      "name": "case_list_materials",
+      "call_id": "chatcmpl-tool-bbbfd261bac4a1c1",
+      "seq": 21,
+      "arguments_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "result_seq": 22,
+      "is_error": false,
+      "result_sha256": "e359abaef5701984fab0e7242e09e23b7aa66923538213b562570296f17f73a1"
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-98c2ce4f8fa971cc",
+      "seq": 26,
+      "arguments_sha256": "4fc43cd5abc6af4442a0afeea6a3553276b000ace81c9c01d11d1c5930978938",
+      "result_seq": 27,
+      "is_error": false,
+      "result_sha256": "f64bc21172fe4d155ff11091681149fd4f61aaa1745c5b68543e97c23a55bef5",
+      "name_argument": "起诉意见书",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-ab700b24a2b552a4",
+      "seq": 31,
+      "arguments_sha256": "19bacd204010d55614c403ef31bb9f0b6097637ca12b9989a118ffb1e8708155",
+      "result_seq": 32,
+      "is_error": false,
+      "result_sha256": "ef2ac1319f5371240a78187a6713bf9ad12a7796513bca5c6609b45468216249",
+      "name_argument": "退赔收条",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-ad9672ecfa42e206",
+      "seq": 36,
+      "arguments_sha256": "0056134adeeb29b51ce7548d733ba4c2baeb7c9b307507e7c943ff0155002a9b",
+      "result_seq": 37,
+      "is_error": false,
+      "result_sha256": "f578bc6586a74c4407f7a79322e959be28b38b7cfbc90003d957a984caf50318",
+      "name_argument": "讯问笔录",
+      "more_names": null,
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "ask_user_question",
+      "call_id": "chatcmpl-tool-90ad386a9c73a053",
+      "seq": 41,
+      "arguments_sha256": "6c8e1a9618b5169aecf49f3d95c7b8732d6bd6b0ec9412318181de94bd07d150",
+      "result_seq": 42,
+      "is_error": true,
+      "result_sha256": "ff92ed97996383322ec0ca8f4cd6a20e744e3db7d10aadc517f5686c77e5df76",
+      "question_ids": [
+        "authority"
+      ],
+      "answer_ids": []
+    },
+    {
+      "name": "ask_user_question",
+      "call_id": "chatcmpl-tool-bcc2da7210ce6e87",
+      "seq": 46,
+      "arguments_sha256": "2c2c97a2e7f20b6a5f8f130b886d082afa4d131f3a5c7885f39e4d440f2a9545",
+      "result_seq": 47,
+      "is_error": false,
+      "result_sha256": "55e8c9baf4b3334c316badf8a52605393ac801239717002f7e067372bbb6f746",
+      "question_ids": [
+        "doc_type",
+        "authority"
+      ],
+      "answer_ids": [
+        "doc_type",
+        "authority"
+      ]
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-9861b293b3de5155",
+      "seq": 51,
+      "arguments_sha256": "ad7b371ec86e6ce7a8ccfc27a8a408b08325d29854463fd8b08e9fd359352c7c",
+      "result_seq": 52,
+      "is_error": false,
+      "result_sha256": "6c9369973c402b75abb6c6d6e2e2ae20d5924bde15b6f44b281a45dfba09384f",
+      "title": "取保候审申请书",
+      "path": "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v1.md",
+      "version": 1,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "犯罪嫌疑人：张某甲，男，1988年4月12日出生，公民身份号码990102198804120000，现羁押于虚构市第一看守所",
+            "citation": "〔起诉意见书 第40行〕",
+            "message": "1988年4月12日 标的是 起诉意见书 第40行，实际在 起诉意见书 第6行"
+          },
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "犯罪嫌疑人：张某甲，男，1988年4月12日出生，公民身份号码990102198804120000，现羁押于虚构市第一看守所",
+            "citation": "〔起诉意见书 第40行〕",
+            "message": "990102198804120000 标的是 起诉意见书 第40行，实际在 起诉意见书 第6行"
+          },
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "张某甲到案后如实供述了骗取被害人吴某80,000元的主要犯罪事实，具有坦白情节",
+            "citation": "〔起诉意见书 第29行〕",
+            "message": "80000 标的是 起诉意见书 第29行，实际在 起诉意见书 第13行、起诉意见书 第22行"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2026年【待补充】月【待补充】日",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 7,
+          "must_fix": 3,
+          "hints": 1
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-bbe452eaca509709",
+      "seq": 56,
+      "arguments_sha256": "2773ffe4b894a64d8135b443dd69e9f6df0eb7be5dc98faf3085b359afbba9e9",
+      "result_seq": 57,
+      "is_error": false,
+      "result_sha256": "fafb85be1245557f809b9b9c6378f5fca73f81ffba6bbdf69aa3bd2e76980143",
+      "title": "取保候审申请书",
+      "path": "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v2.md",
+      "version": 2,
+      "citation_check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "2026年【待补充】月【待补充】日",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 10,
+          "must_fix": 0,
+          "hints": 1
+        }
+      }
+    }
+  ],
+  "actual_question_texts": [
+    {
+      "seq": 41,
+      "result_seq": 42,
+      "is_error": true,
+      "questions": [
+        {
+          "id": "authority",
+          "question": "取保候审申请书的受理机关？根据起诉意见书，案件已移送虚构区人民检察院审查起诉，取保候审申请应向该检察院提出。请确认。",
+          "options": [
+            {
+              "label": "虚构区人民检察院（推荐）",
+              "description": "审查起诉阶段向检察院提出取保候审申请"
+            },
+            {
+              "label": "虚构市公安局虚构区分局",
+              "description": "向原侦查机关提出"
+            }
+          ]
+        }
+      ],
+      "error_text": "Error: 提交成果前必须先取得律师对必问问题的真实回答。还缺：doc_type、authority"
+    },
+    {
+      "seq": 46,
+      "result_seq": 47,
+      "is_error": false,
+      "questions": [
+        {
+          "id": "doc_type",
+          "question": "请确认文书类型：取保候审申请书？",
+          "options": [
+            {
+              "label": "取保候审申请书（推荐）",
+              "description": "申请对犯罪嫌疑人变更强制措施为取保候审"
+            }
+          ]
+        },
+        {
+          "id": "authority",
+          "question": "受理机关？根据起诉意见书，案件已移送虚构区人民检察院审查起诉。",
+          "options": [
+            {
+              "label": "虚构区人民检察院（推荐）",
+              "description": "审查起诉阶段向检察院提出取保候审申请"
+            },
+            {
+              "label": "虚构市公安局虚构区分局",
+              "description": "向原侦查机关提出"
+            }
+          ]
+        }
+      ],
+      "error_text": null
+    }
+  ],
+  "actual_two_answers_before_first_successful_save": true,
+  "actual_answer_records": [
+    {
+      "id": "doc_type",
+      "seq": 47
+    },
+    {
+      "id": "authority",
+      "seq": 47
+    }
+  ],
+  "unsupported_question_ids_attempted": [],
+  "callback_observation_independently_proven": true,
+  "question_prefill_semantics": "PENDING_ROOT_MANUAL_REVIEW",
+  "final_draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx\\case\\工作区\\任务\\T-20261029152453-6b16\\草稿\\取保候审申请书-v2.md",
+    "bytes": 2630,
+    "sha256": "8b1c9229926999e68722044942b5de90c36776df6d8a54aa75854c9ed97535cc",
+    "mtime_ns": "1793258747408292400",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "2026年【待补充】月【待补充】日",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 10,
+        "must_fix": 0,
+        "hints": 1
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 40
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 30
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 29
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+        "name": "讯问笔录",
+        "loc": {
+          "unit": "line",
+          "from": 24
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "db23a6b76c0dc00ccd5c73d1d7537023cc7f576a97947ae75bb306d812723275",
+        "name": "退赔收条",
+        "loc": {
+          "unit": "line",
+          "from": 3
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 13
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 22
+        }
+      }
+    ]
+  },
+  "coverage_actual": {
+    "total": 3,
+    "fully_read": [
+      "讯问笔录",
+      "起诉意见书",
+      "退赔收条"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "read_ranges": {
+    "v": 1,
+    "task_id": "T-20261029152453-6b16",
+    "reads": [
+      {
+        "material_id": "M0002",
+        "material_version": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+        "unit": "line",
+        "from": 1,
+        "to": 42,
+        "at": "2026-10-29T15:25:03+08:00"
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "db23a6b76c0dc00ccd5c73d1d7537023cc7f576a97947ae75bb306d812723275",
+        "unit": "line",
+        "from": 1,
+        "to": 5,
+        "at": "2026-10-29T15:25:06+08:00"
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+        "unit": "line",
+        "from": 1,
+        "to": 31,
+        "at": "2026-10-29T15:25:08+08:00"
+      }
+    ]
+  },
+  "physical_rows": 64,
+  "events": 63,
+  "event_types": {
+    "agent/inbox/spliced": 2,
+    "turn/start": 1,
+    "step/start": 11,
+    "system/message": 1,
+    "user/message": 3,
+    "request/header": 1,
+    "request/context": 1,
+    "assistant/message": 11,
+    "tool/call": 10,
+    "tool/result": 10,
+    "step/end": 11,
+    "turn/end": 1
+  },
+  "production_JSONL_reopen": "NOT_REACHED",
+  "identities": [
+    {
+      "pid": 48796,
+      "parent": 50276,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-29T07:24:48.7250200Z"
+    },
+    {
+      "pid": 5376,
+      "parent": 48796,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T07:24:49.2537730Z"
+    },
+    {
+      "pid": 20528,
+      "parent": 5376,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T07:24:49.2617780Z"
+    },
+    {
+      "pid": 39784,
+      "parent": 5376,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T07:24:49.3338210Z"
+    },
+    {
+      "pid": 10320,
+      "parent": 39784,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-29T07:24:49.4425250Z"
+    },
+    {
+      "pid": 38920,
+      "parent": 39784,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-29T07:24:49.7611420Z"
+    },
+    {
+      "pid": 36852,
+      "parent": 38920,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T07:24:49.7703270Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 55050,
+  "Listen_count": 0,
+  "B_passed": true,
+  "B_failure": null,
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credential_getters": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_protocol": {
+    "caseBound": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/source": 8,
+      "GET /api/tasks": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/scan": 1,
+      "POST /api/request/scope": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 7
+    },
+    "denials": {},
+    "draftPaths": [
+      "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v1.md",
+      "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v2.md"
+    ],
+    "draftSaves": [
+      {
+        "contentLength": 944,
+        "contentSha256": "70f98c99124731840e1c8281cd4baea6cec7d76da6fbe2c917c68a12609512a9",
+        "path": "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v1.md",
+        "titleLength": 7,
+        "version": 1
+      },
+      {
+        "contentLength": 978,
+        "contentSha256": "8b1c9229926999e68722044942b5de90c36776df6d8a54aa75854c9ed97535cc",
+        "path": "工作区/任务/T-20261029152453-6b16/草稿/取保候审申请书-v2.md",
+        "titleLength": 7,
+        "version": 2
+      }
+    ],
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003"
+    ],
+    "materialNames": {
+      "M0001": "讯问笔录",
+      "M0002": "起诉意见书",
+      "M0003": "退赔收条"
+    },
+    "materialVersions": {
+      "M0001": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+      "M0002": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+      "M0003": "db23a6b76c0dc00ccd5c73d1d7537023cc7f576a97947ae75bb306d812723275"
+    },
+    "requestBound": true,
+    "requestId": "9faccf0c-418c-4844-851b-0f75a7775520",
+    "scopePrepared": true,
+    "selectionId": "T-20261029152453-3d1d",
+    "sessionBound": true,
+    "taskBound": true,
+    "taskId": "T-20261029152453-6b16",
+    "violations": []
+  },
+  "B_cleanup": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "forced_stop": false,
+  "original_source6_SHA_size_mtime_ns_held": true,
+  "fixed_admission_rows_held": 510,
+  "private25_held": true,
+  "owned_text_key_scan": {
+    "files": 29,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_quality_all_PASS": false,
+  "manual_review_required": true,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,10 @@
+# Batch6 owner follow-up: correct two tests, SOURCE ONLY
+First tool: read this entire ASCII order with exact native pwsh, login=false. No Bash, Git, recursive listing, tests, parser, tsc, build, prepare, HTTP, GUI, model calls, or self-testing. Only deepseek-v4.1-flash-1017 / max. All prior jobs are terminal. Do not touch product source or any other test.
+Owner explicitly requests correcting the new test failure and material-remove conflict before rebuilding. Prior rule forbids weakening assertions to obtain green. Preserve original behavioral intent and add stronger scoped evidence where needed.
+Allowed files ONLY:
+D:/Lawbeach/lawbench-A/dsh-ext/tests/owner-batch6-material-management.spec.tsx
+D:/Lawbeach/lawbench-A/dsh-ext/tests/material-remove.spec.ts
+Handback ONLY D:/Lawbeach/lawbench-coord/HANDBACK-A-Batch6-test-followup-current.md
+Known actual failures: new test expects section.style.minHeight === '0', actual DOM canonical CSS is '0px'; preserve required zero min height, fix DOM-normalized expectation without dropping it. Old material-remove test asserts whole box text does not contain '已移除', but required new status-select option is '已移除'; preserve assertion that the removed-items SUMMARY/control is absent when there are no removed records, scope locator to that actual old control, and retain existing positive counterpart and assertions. Do not suppress the required status option.
+Read these two files fully and only relevant current product component lines if needed. Root already ran full suite; do not rerun it or edit raw outputs. Preserve dirty files and exact before bytes. Supply precise before/after hashes and whole-byte inverse, changed lines, explanation of unchanged behavior. No skip/todo/deselection/assertion weakening.
+Deadline: six minutes or 2026-11-03T17:49:00+08, whichever comes first. One source-only pass then hand back. Do not ask to commit. No runtime claims.

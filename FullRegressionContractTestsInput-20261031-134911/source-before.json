@@ -1,0 +1,62 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\case-tab.spec.ts",
+    "bytes": 6306,
+    "sha256": "058f9b4f7b3789056f7c715b60a73c9ef868ab461cf6c47245a177aac4264470",
+    "mtime_ns": "1792616506757327800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\source-tab-lifecycle.spec.ts",
+    "bytes": 7398,
+    "sha256": "413095d8614af783e2a78df37a571400aa9444d64764c423de394fcd0e8f301e",
+    "mtime_ns": "1792619879873697500"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t35-prompt-refine.spec.ts",
+    "bytes": 4825,
+    "sha256": "0150cd2db14a782f532efd2591baad84d7ad291a1b818030c87e349ccbe5cb9d",
+    "mtime_ns": "1792738172811258900"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\loop-fuses.spec.ts",
+    "bytes": 25014,
+    "sha256": "851c902630243b7c1b2021c7e8a41520f5a24646d5e6df781f441d707f7c39af",
+    "mtime_ns": "1792392584143159600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\sentence-workflow-gate-20261029-215838.spec.ts",
+    "bytes": 19784,
+    "sha256": "90a9682fd9c7344c984027624884e0c26ddcd28b87b1df2e3f3fd41e1668635e",
+    "mtime_ns": "1793282532951897700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\doc-revise-question-gate.spec.ts",
+    "bytes": 12428,
+    "sha256": "5ad9d9a049be0a323089b5d4c1c4a4967a6b9119ac1c47811b8437a15d19dd40",
+    "mtime_ns": "1793211084044211600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\remote-methods.spec.ts",
+    "bytes": 4368,
+    "sha256": "57d894e1420589528bdd4e92f31e70d5e0a0a79431e334e4599e339a88a2201a",
+    "mtime_ns": "1792379417923423600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\agent.spec.ts",
+    "bytes": 10300,
+    "sha256": "7a520b1c07908286fd04a00f154ac63b0e3b0c4931c432ccada2965cba68bbcf",
+    "mtime_ns": "1792955808277640200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\live-writer.spec.ts",
+    "bytes": 32502,
+    "sha256": "420d76ac911a33004ead730d7a34ba9bc7205e8b984c699226f5f23745206172",
+    "mtime_ns": "1792379417922423400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\dev\\fake-service.mjs",
+    "bytes": 27923,
+    "sha256": "54229b71b8df17bf0f02de9a222ee739c810cf2001a93739b7decbe6c56aa761",
+    "mtime_ns": "1792857461412086000"
+  }
+]

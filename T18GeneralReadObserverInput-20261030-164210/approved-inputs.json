@@ -1,0 +1,72 @@
+{
+  "old": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-main-general-current-1017-20261030-155336.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-main-general-current-order-20261030-155336.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-main-general-current-20261030-155336.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18MainGeneralCurrentInput-20261030-155336",
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\native-general-drafting.mts",
+    "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\b-service-general-drafting.py",
+    "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\literalfixed-inputs.json",
+    "old": {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-cleanup-contract-1017-20261029-040438.job.json",
+      "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-cleanup-contract-order-20261029-040438.md",
+      "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-cleanup-contract-20261029-040438.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralCleanupContractInput-20261029-040438",
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438",
+      "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\native-general-drafting.mts",
+      "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\b-service-general-drafting.py",
+      "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\literalfixed-inputs.json",
+      "helper": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCleanupContract-20261029-040438\\cleanup-context-finite.mts",
+      "old": {
+        "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-current-runtime-pins-1017-20261029-035529.job.json",
+        "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-current-runtime-pins-order-20261029-035529.md",
+        "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-current-runtime-pins-20261029-035529.md",
+        "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralCurrentRuntimeInput-20261029-035529",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529",
+        "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\native-general-drafting.mts",
+        "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\b-service-general-drafting.py",
+        "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingCurrentRuntime-20261029-035529\\literalfixed-inputs.json",
+        "private_output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404",
+        "old": {
+          "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-title-contract-1017-20261029-033824.job.json",
+          "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-title-contract-order-20261029-033824.md",
+          "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-title-contract-20261029-033824.md",
+          "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralTitleContractInput-20261029-033824",
+          "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralDraftingTitleContract-20261029-033824",
+          "state": "ORIGINAL_GENERAL_DRAFTING_CONFIRMED_GENERAL_TITLE_CONTRACT",
+          "author_runtime": 0
+        },
+        "state": "NEW_COPY_TWO_IMPORTS_FOUR_COMPILED_ROWS_ONLY",
+        "author_runtime": 0
+      },
+      "state": "CONFIRMED_POST_DISPOSE_CONSUMER_GUARD_AND_NO_MODEL_ACTUAL_CONTEXT_FINITE",
+      "author_runtime": 0
+    },
+    "state": "SOURCE_ONLY_CURRENT_MAIN_FLOW_REGRESSION_METADATA",
+    "owner_decision": "D:\\Lawbeach\\lawbench-coord\\OWNER-主要单元功能先行全量待同步发版-20261030-155256.md"
+  },
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210",
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\native-general-drafting.mts",
+      "bytes": 101383,
+      "sha256": "b37fac29f8f26ef4985329b9694e5775a0addff67db95c634055b03788ccb5d9",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadObserverInput-20261030-164210\\native-general-drafting.mts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\b-service-general-drafting.py",
+      "bytes": 42437,
+      "sha256": "44bb8b5ff60309a7d7dc3c1474ab4efebe00995673927f59137dbb1f86346203",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadObserverInput-20261030-164210\\b-service-general-drafting.py"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\MainGeneralCurrent-20261030-155336\\literalfixed-inputs.json",
+      "bytes": 11922,
+      "sha256": "e6f63625680de2394aa841b51a2c29a8b5a14c9b7fcc524a437c3c2b09abbc38",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadObserverInput-20261030-164210\\literalfixed-inputs.json"
+    }
+  ],
+  "current_compiled_is_only_temporary_source_baseline_NOT_ADMITTED": true,
+  "actual_failure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-main-general-current-manual-business-review-current.json"
+}

@@ -1,0 +1,89 @@
+{
+  "verdict": "ACTUAL_SIXTH_SKILL_QUESTION_IDS_AND_WRITE_ORDER_PASS_OTHER_GATES_FAILED",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CriminalApplicationGateRecovery-20261029-151913\\run-cCkNwx",
+  "old_red": "run-sVxmpy ask0/save2",
+  "new_joint_ask_seq": 46,
+  "actual_answers_seq": 47,
+  "successful_callback_invocations": 1,
+  "rejected_partial_ask": {
+    "seq": 41,
+    "result_seq": 42,
+    "IDs": [
+      "authority"
+    ],
+    "reason": "Exact production missing_questions denial doc_type/authority",
+    "answers_delivered": false
+  },
+  "all_actual_successful_saves_after_answers": true,
+  "actual_save_denied_before_question_NOT_OBSERVED": true,
+  "missing_answer_write_block_proven_in_focused_ToolRuntime_unit": true,
+  "actual_question_displayed_provided_type_and_agency": true,
+  "actual_question_agency_location_citation_MISSING": true,
+  "synthetic_choice_only_not_real_human_reply": true,
+  "reported_citation_resolutions": 8,
+  "source_resolution_checks_reached": true,
+  "source3_reads": [
+    {
+      "names": [
+        "起诉意见书"
+      ],
+      "parts": [
+        {
+          "name": "起诉意见书",
+          "material_id": "M0002",
+          "unit": "line",
+          "start": 1,
+          "end": 42,
+          "read": true
+        }
+      ],
+      "textSha256": "f64bc21172fe4d155ff11091681149fd4f61aaa1745c5b68543e97c23a55bef5",
+      "textLength": 1656
+    },
+    {
+      "names": [
+        "退赔收条"
+      ],
+      "parts": [
+        {
+          "name": "退赔收条",
+          "material_id": "M0003",
+          "unit": "line",
+          "start": 1,
+          "end": 5,
+          "read": true
+        }
+      ],
+      "textSha256": "ef2ac1319f5371240a78187a6713bf9ad12a7796513bca5c6609b45468216249",
+      "textLength": 263
+    },
+    {
+      "names": [
+        "讯问笔录"
+      ],
+      "parts": [
+        {
+          "name": "讯问笔录",
+          "material_id": "M0001",
+          "unit": "line",
+          "start": 1,
+          "end": 31,
+          "read": true
+        }
+      ],
+      "textSha256": "f578bc6586a74c4407f7a79322e959be28b38b7cfbc90003d957a984caf50318",
+      "textLength": 895
+    }
+  ],
+  "task_settlement": {
+    "attempted": true,
+    "outcome": "settled",
+    "taskId": "T-20261029152453-6b16",
+    "taskState": "finished",
+    "terminalStatus": "completed",
+    "attempts": 1
+  },
+  "productionJSONLreopen": "NOT_REACHED",
+  "fullT18": false,
+  "Packaging": "HOLD"
+}

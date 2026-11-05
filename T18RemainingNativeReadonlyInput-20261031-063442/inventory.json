@@ -1,0 +1,48 @@
+{
+  "status": "PREPARED_METADATA_ONLY_NOT_DISPATCHED",
+  "baseline": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadonlyReopen-20261031-062200\\readback.mjs",
+    "bytes": 8938,
+    "sha256": "14a5a1bba490624f7767fce4ccf35924a7fd2103c5cad9858a9a3ae65596e920"
+  },
+  "items": [
+    {
+      "key": "doc-revise",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingNativeReadonlyInput-20261031-063442\\doc-revise.json",
+      "rows": 152,
+      "events": 151,
+      "session": "session-1cb28369-3a90-46dc-b047-e64986038394",
+      "request": "60ba5317-d564-4d60-bd8d-060adf2a3f41",
+      "proof": "T18-doc-revise-clause-actual-root-closed-current.json"
+    },
+    {
+      "key": "litigation",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingNativeReadonlyInput-20261031-063442\\litigation.json",
+      "rows": 69,
+      "events": 68,
+      "session": "session-3d81eff5-9d11-4e00-b13d-a8d96f9cc660",
+      "request": "42dedbcf-5d8b-4711-a2a6-57b583dbb701",
+      "proof": "T18-litigation-native-actual-root-closed-current.json"
+    },
+    {
+      "key": "defense",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingNativeReadonlyInput-20261031-063442\\defense.json",
+      "rows": 174,
+      "events": 173,
+      "session": "session-e6327d1c-cacf-4536-9ff9-feb45e3e1ded",
+      "request": "234a044f-25c5-404f-82d3-fd90842bd067",
+      "proof": "T18-defense-native-actual-root-closed-current.json"
+    },
+    {
+      "key": "sentence",
+      "approved": "D:\\Lawbeach\\lawbench-coord\\T18RemainingNativeReadonlyInput-20261031-063442\\sentence.json",
+      "rows": 64,
+      "events": 63,
+      "session": "session-eba7f2cc-3818-4d4d-b0b5-6940c5438513",
+      "request": "e6bf8681-a085-420b-9db7-cde83eadc2d4",
+      "proof": "T18-sentence-native-actual-root-closed-current.json"
+    }
+  ],
+  "excluded": "archive/navigation/current-general already accepted actual reopen; do not repeat closed greens",
+  "current_B_writer": "T18-preissue-source-readback ACTIVE; no dispatch until terminal"
+}

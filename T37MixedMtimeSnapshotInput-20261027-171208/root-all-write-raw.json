@@ -1,0 +1,28 @@
+[
+  {
+    "id": "item_27",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\server.py",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_37",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\mtime-snapshot-20261027-171208.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T37-mixed-mtime-snapshot-20261027-171208.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

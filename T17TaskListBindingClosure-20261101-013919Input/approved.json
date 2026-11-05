@@ -1,0 +1,137 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskListRecovery-20261101-013252",
+  "test": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskListRecovery-20261101-013252\\test_public_task_list.py",
+  "bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\FullRegression\\SafetyLoggingFix-20261031-133032\\bootstrap.py",
+  "bootstrap_sha256": "4b3c956626e822cb39af5341ed410ea4fdeeefcf1d8f3b432028bd23578ba8b2",
+  "current_task_source_sha256": "a5f4d01587def86b1308eef91c06263ceab7d0a24c7b7f663d54bdee33d7ec01",
+  "case_registry_constructor": "CaseRegistry(private_appdata, B/contracts/case_db.sql); no open/check_root/forget/database initialization",
+  "store_constructor": "TaskStore(real_cases, None, None); RequestScopeStore constructor only, no claim/prepare",
+  "public_method": "TaskStore.list(case_id); ui.routes(st) original /api/tasks Route selected, _endpoint calls st.tasks.list",
+  "endpoint_state": "SimpleNamespace(config=Config(token=synthetic43char,appdata=private_appdata,skills_dirs=[],contracts_dir=B/contracts), tasks=real_store)",
+  "templates": {
+    "file_cases.json": {
+      "v": 1,
+      "cases": [
+        {
+          "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+          "root": "D:\\案件\\张某诈骗案",
+          "name": "张某诈骗案",
+          "last_opened": "2026-09-28T09:30:00+08:00"
+        }
+      ]
+    },
+    "file_task.json": {
+      "v": 1,
+      "task_id": "T-20260928093000-7c1f",
+      "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+      "kind": "agent",
+      "session_id": "s_01HZX",
+      "entry": "case-analysis",
+      "skill": "criminal-reading-notes",
+      "route": "external",
+      "step": null,
+      "inputs": [
+        {
+          "index": 1,
+          "title": "刑事阅卷笔录",
+          "path": "成果/刑事阅卷笔录-v1.md",
+          "version": 1,
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "params": {
+        "thinking": "低",
+        "window": "64K",
+        "max_tokens": 16384
+      },
+      "budget": {
+        "model_calls": 8,
+        "tool_calls": 24,
+        "minutes": 45
+      },
+      "state": "pending",
+      "created_at": "2026-09-28T09:30:00+08:00"
+    },
+    "file_result.json": {
+      "v": 1,
+      "task_id": "T-20260928093000-7c1f",
+      "status": "completed",
+      "usage": {
+        "model_calls": 6,
+        "tool_calls": 14,
+        "elapsed_s": 480
+      },
+      "drafts": [
+        {
+          "title": "刑事阅卷笔录",
+          "path": "工作区/任务/T-20260928093000-7c1f/草稿/刑事阅卷笔录-v2.md",
+          "version": 2
+        }
+      ],
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "B",
+            "severity": "must_fix",
+            "excerpt": "借款金额 60,000 元〔借条 第3页〕",
+            "citation": "〔借条 第3页〕",
+            "message": "该金额在〔借条 第2页〕，不在第3页"
+          }
+        ],
+        "stats": {
+          "citations": 12,
+          "must_fix": 1,
+          "hints": 0
+        }
+      },
+      "coverage": {
+        "total": 3,
+        "fully_read": [
+          "借条"
+        ],
+        "partially_read": [
+          {
+            "name": "银行流水",
+            "read_units": 40,
+            "total_units": 120
+          }
+        ],
+        "not_read": [],
+        "unreadable": [
+          {
+            "name": "证据/照片2",
+            "reason": "识别未完成"
+          }
+        ]
+      },
+      "citations": [
+        {
+          "material_id": "M0001",
+          "material_version": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "name": "借条",
+          "loc": {
+            "unit": "page",
+            "from": 2
+          }
+        }
+      ],
+      "finished_at": "2026-09-28T09:30:00+08:00"
+    }
+  },
+  "expected_cases": 6,
+  "scope": "New necessary public list + original UI route in-memory ASGI recovery after27Bsourcefix; not default app/lifespan/auth/GUI/native/model/network coverage",
+  "bootstrap_current": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskListRecovery-20261101-013252\\bootstrap.py",
+  "bootstrap_current_sha256": "f3ccb4496db7fbd38a14dabab4f3a7f5b656783fe2f792b2d6485365051d56eb",
+  "test_before": "D:\\Lawbeach\\lawbench-coord\\T17TaskListBindingClosure-20261101-013919Input\\test-before.py",
+  "canonical_imports": [
+    "from lawbench.case.registry import CaseRegistry",
+    "from lawbench.case.task import TaskStore",
+    "from lawbench import contracts, logs",
+    "from lawbench.api import ui"
+  ],
+  "original_list_return": "return {\"tasks\": out}",
+  "original_endpoint_envelope": "body = {\"ok\": True, \"value\": value}",
+  "actual_validator": "contracts.validate(schema_path, pointer, data)",
+  "actual_api_response_schema": "api/tasks_list.schema.json#/$defs/response"
+}

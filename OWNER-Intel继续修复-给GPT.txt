@@ -1,0 +1,144 @@
+【Intel x64 继续修复 · OWNER 令】
+
+工单全文：D:\Lawbeach\lawbench-coord\OWNER-Intel包缺陷排查-20261104-010000.md
+请先完整读这份工单，再动手。
+
+────────────
+
+一、今晚的状态
+
+Windows 与 Apple 芯片包已交付律师，这两个不再改动。
+Intel x64 连续两次失败（run 41665876425、41672986472），均卡在 Build 阶段的签名。
+按「同一失败原因连续 2 次即停」已停。
+
+但这两次不是同一个根因，第二次还暴露了一个更严重的问题。
+
+────────────
+
+二、缺陷 A：签名脚本漏签 Electron Framework
+
+现象：
+  连越律所AI工作台.app/Contents/Frameworks/Electron Framework.framework/Versions/A/
+    Electron Framework: code object is not signed at all
+
+判断：
+  sign-adhoc.sh 第 1 步用
+    find ... -type f \( -name '*.dylib' -o -name '*.so' -o -name '*.node' -o -perm -u+x \)
+  来挑可执行文件。-perm -u+x 在 BSD find 下要求「所有指定位都置位」，
+  Electron Framework 这个主二进制的权限位与普通可执行文件不同，没被匹配到，
+  因此从未被签名。
+
+  第一次失败（Helper (Renderer) 未签）和这次（Electron Framework 未签）
+  是同一类问题的两次暴露：靠「文件名模式 + 权限位」挑文件，挑不全是必然的。
+
+修法要求：
+  第 1 步改成不依赖权限位的全量扫描：
+  1. 遍历 $APP/Contents 下所有普通文件
+  2. 对每个文件跑 file -b，输出含 Mach-O 的就 sign
+  3. 仍排除 Contents/Resources/tools/LibreOffice.app/** 与
+     Contents/Resources/app.asar.unpacked/**
+  4. 主可执行文件（CFBundleExecutable）仍推迟到最后显式签一次（保留你已做的修法）
+  不许用 --deep 走捷径，不许删掉最后的 codesign --verify --strict。
+
+────────────
+
+三、缺陷 B：x64 包里混进 arm64 二进制（这条更要紧）
+
+现象：x64 构建日志里出现
+  .../Resources/runtime/primary-runtime/dependencies/pnpm/dist/node_modules/
+    @reflink/reflink-darwin-arm64/reflink.darwin-arm64.node: replacing existing signature
+
+在 x64 构建里出现了 arm64 的 .node。
+
+为什么比签名严重：
+  签名失败是构建层错误，看得见。
+  架构混入是产物层错误，可能签得过、装得上、运行时才崩。
+  这是最容易「看起来成功、实际交付出去是坏的」的一类问题。
+
+────────────
+
+四、顺序（不许颠倒）
+
+  1. 先查架构（缺陷 B）→ 出清单交回给我
+  2. 我确认架构没问题之后，再修签名（缺陷 A）
+  3. 本地能验证的先验证（干净检出、无 lib/ 残留）
+  4. 再触发 CI，arch=x64 单跑（不要 both）
+  5. 出包后自查：架构全清单 + 签名 verify + smoke
+  6. 交回给我，我自己核
+
+理由：如果架构是错的，签名修好了也没用——你会把一个坏包交回来。
+先查架构，再修签名。这条是硬要求。
+
+────────────
+
+五、架构清单怎么查
+
+对连越律所AI工作台.app/Contents 下所有下列文件跑 file -b 或 lipo -info：
+  · 所有 *.node
+  · 所有 *.dylib
+  · 所有 *.so
+  · Contents/MacOS/** 下所有文件
+  · Contents/Frameworks/** 下所有文件
+  · Contents/Resources/runtime/** 下所有可执行文件
+  · Contents/Resources/python/** 下的解释器与扩展模块
+
+输出清单：每个文件的路径 + 架构（arm64 / x86_64 / universal）
+
+判据：
+  全部 x86_64 或 universal  → 架构没问题，只修缺陷 A
+  有 arm64 混入            → 必须先修，修完再谈签名
+
+如果确认有混入，要查的是「为什么 x64 构建会装 arm64 的包」。方向：
+  · pnpm 在 mac-x64 目标下是否装了两个架构的可选依赖
+    （optionalDependencies 里的 darwin-arm64 / darwin-x64 双份）
+  · packaging/mac/build.sh 里安装 Node 运行时依赖那一步，架构参数有没有传对
+  · @reflink 这类带平台后缀的包，是否被当作普通依赖全量安装了
+
+不许用「删掉整个 @reflink」来回避——先确认这个包是干什么的、被谁用。
+
+────────────
+
+六、边界
+
+允许：
+  改 packaging/mac/sign-adhoc.sh
+  改 packaging/mac/build.sh 里与架构选择相关的部分
+  改 packaging/versions.lock 的 [mac] 段（如需）
+  新增限定路径的补丁（P-34 起）
+
+不允许：
+  fork / push deepseek-ai/deepseek-harness（公开仓库，会泄密）
+  用 --deep 签名捷径
+  删掉 codesign --verify --strict
+  改产品代码、断言、守卫逻辑
+  拆测试 / skip / @ts-ignore / 放宽 strict
+  改动 Windows 与 arm64 的产物（这两个已交付）
+  把「签名通过」当作「可以交付」的证据
+
+────────────
+
+七、时间与止损
+
+明天白天做，不赶夜工。
+缺陷 B 的架构清单是第一交付物，先拿到清单再动手改。
+同一失败原因连续 2 次即停。
+GitHub 私有仓库配额有限，配额告警立即停并交回。
+
+────────────
+
+八、回执（三件）
+
+1. Intel-x64产物架构清单-<时间戳>.md
+   每个 .node/.dylib/可执行文件的路径 + 架构
+   明确结论：有没有 arm64 混入
+
+2. Intel-x64签名修复-<时间戳>.md
+   改了什么、为什么改、before/after 字节与 SHA
+
+3. Intel-x64构建结果-<时间戳>.md
+   run id、每个 leg 结论、dmg 名/字节/SHA256
+   架构复核结果（修复后的包）
+   smoke 结果
+
+未通过的项一律写「未通过」。
+「签名通过」不等于「产物正确」，两件事分别写。

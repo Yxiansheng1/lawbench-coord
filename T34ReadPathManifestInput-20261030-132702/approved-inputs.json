@@ -1,0 +1,55 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137",
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\entry.py",
+      "bytes": 88653,
+      "sha256": "9101f2800f60e69ab5cd46466d113db9f22012623511089ca1ce38820677bc48"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\literal-inputs.json",
+      "bytes": 25656,
+      "sha256": "d559488fd75f01214bc7bb695d59b7f31a19fc7b96aee0e86d79b096a3493293"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\prepare.ps1",
+      "bytes": 13562,
+      "sha256": "7b110608aafc64225ecb15c97b22c88f0b6d2600a94f90038b031ae0c9f6b76d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\README.md",
+      "bytes": 2334,
+      "sha256": "a96544bf1f383239030f85e3ce57d88caceba38845f0adf4cbdcbb4d494bab38"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\settings-read-observer.mjs",
+      "bytes": 11515,
+      "sha256": "b53e64830958656d39b92f5360cb41856847f0cd083fbd94248d1d8c97080d08"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\start.ps1",
+      "bytes": 86064,
+      "sha256": "6e59c4d4237f9ce48213f50f76ff3d3bfef889466588093ffb9a73549e8bd68d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\SettingsReadPathGUI-20261030-132137\\stop.ps1",
+      "bytes": 7179,
+      "sha256": "712d51399bf01e957f92ba30ccccbf7793757c140dab0bdae838abe4e33a7261"
+    }
+  ]
+}

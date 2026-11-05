@@ -1,0 +1,25 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18ExplicitDeadlineHttpV5-20261101-221038\source-manifest.json
+SHA 74639b12e714b1fb9c6ebdd5c17c9ec33ea4948bb6baeb7cfb05a0cdcff41dc7
+0001 {
+0002   "algorithm": "sha256",
+0003   "consumer": {
+0004     "path": "review-consumer.mjs",
+0005     "bytes": 53968,
+0006     "sha256": "166fedcd07bc31e4a3b2c09d73aa1f23ccbde19189dcd3e30315e1e387667c31"
+0007   },
+0008   "fixed_data": {
+0009     "path": "fixed-data.json",
+0010     "bytes": 17427,
+0011     "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+0012   },
+0013   "offline_controls": {
+0014     "path": "offline-controls.mjs",
+0015     "bytes": 40367,
+0016     "sha256": "adc91fa3c58362ef5fa05e4dbc621c8787283821ad27b7203e2af8c71fd1c3d3"
+0017   },
+0018   "stage1_assessments": {
+0019     "path": "stage1-assessments.json",
+0020     "bytes": 10015,
+0021     "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1"
+0022   }
+0023 }

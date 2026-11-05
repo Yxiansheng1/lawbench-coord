@@ -1,0 +1,50 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\documents.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\00-documents.tsx",
+    "sha256": "698c7710f519a130bb0b8533a682f83fee76f308fdf54ca39883042878ce4af2",
+    "bytes": 20616
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\01-citation.ts",
+    "sha256": "d525f0cb5cfc5bc95f79bc2aeb859cbb8cf5b19f6646f117ce526ecc87f2a0b5",
+    "bytes": 7651
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\citation-deps.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\02-citation-deps.ts",
+    "sha256": "c10922a9ab721a9dc1fbee982adcfd486e2cce3ce9a60d0f63fe4be6506134a0",
+    "bytes": 1383
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\source.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\03-source.tsx",
+    "sha256": "0d9d319d90eb3b100e3c89afe9e5582d104c1a25672b93ce724e3b8044740d8a",
+    "bytes": 5947
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\session-case.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\04-session-case.tsx",
+    "sha256": "24b338439d87272417a89ad46a1aeff213131489f67ec6fccdc2abb680e99e5f",
+    "bytes": 2061
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-navigation.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\05-document-citation-navigation.spec.tsx",
+    "sha256": "6c438973fd59868a9fb5ca596c842c4bf8314e5127a9807b654cfe7bec0114b7",
+    "bytes": 8979
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\documents.spec.tsx",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\06-documents.spec.tsx",
+    "sha256": "42fc98715f1e7524cb5ef56e4da19297b4686671216ff72115649801f02881da",
+    "bytes": 27208
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\vitest.config.mjs",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T32DocumentCitationFixInput-20261027-192523\\07-vitest.config.mjs",
+    "sha256": "62e4d81d88c1500f03805c4e76d030a9837065e960d1efe7935a039da91b3fbf",
+    "bytes": 2641
+  }
+]

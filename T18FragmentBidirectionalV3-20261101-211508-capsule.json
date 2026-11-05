@@ -1,0 +1,72 @@
+{
+  "old_readonly_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816",
+  "new_source_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18FragmentBidirectionalV3-20261101-211508",
+  "old_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\review-consumer.mjs",
+      "bytes": 34922,
+      "sha256": "9830ff15d8cd415fc138ea45112d9bdaef3dd88cdfd462be7274dd7584c7f98d",
+      "mtime_ns": "1793537046224765800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\offline-controls.mjs",
+      "bytes": 29641,
+      "sha256": "94ea1da30b6c9ada096dd179ae89304d6a935158c2f48d09555e0265822f7782",
+      "mtime_ns": "1793537046393332700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18VisibleUnitSemanticPilotV2-20261101-195816\\source-manifest.json",
+      "bytes": 524,
+      "sha256": "09ca726380b653bc817b2c2a76a1ded47d06e67b9238ae97a2f4c17185e34e6c",
+      "mtime_ns": "1793537058962298400"
+    }
+  ],
+  "actual_stage1_cache": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18VisibleUnitSemanticV2Actual-root-20261101-205930\\model-output\\artifacts\\stage1-parsed.json",
+    "bytes": 10015,
+    "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+    "mtime_ns": "1793538024944549000"
+  },
+  "fixed_data_SHA": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+  "new_files": [
+    "review-consumer.mjs",
+    "offline-controls.mjs",
+    "fixed-data.json",
+    "stage1-assessments.json",
+    "source-manifest.json"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18FragmentBidirectionalV3-20261101-211508.md",
+  "Root_design": {
+    "feasibility_formal": {
+      "path": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-C-T18PostUnitV2GranularityFeasibility-20261101-210507.md",
+      "bytes": 19936,
+      "sha256": "443fdd5b0ce5ed106a99d1340548ed67088a5713de7cf73789df7029eaef9ccd",
+      "mtime_ns": "1793538556842150800"
+    },
+    "verdict": "ACCEPT_BOUNDED_STRUCTURAL_HYPOTHESIS_ONLY_WITH_ROOT_AMENDMENTS",
+    "accepted": [
+      "lossless smaller syntactic source fragments with full parent context",
+      "independent reverse draft and selfcheck target obligations",
+      "same data/model/temperature/token/request deadline; no integration until actual capability"
+    ],
+    "rejected": [
+      "Not proven cause exclusive of model/params; no uniqueness claim",
+      "C proposed missing targets accepted at90percent rejected: exact100percentidset still mandatory, rawpartial remains failure",
+      "Modelwritten exact rationale quotes rejected: repeats original V1 quote reconstruction failure; canonical quotes machinejoined by IDs only",
+      "No CONTENT/FORMAT semanticclassifier or filters; no bracket grammar stack/context_prefixduplication/framework",
+      "No forced treatmentdifference or casekeyword assertions in modelinput or product; actual semanticjudgment Root only"
+    ],
+    "amendments": [
+      "Reuse actual V2 stage1-parsed bytes after same original validator and full exactidset. Stage1 builders/prompts/validators untouched and no unchanged request rerun. New fresh-context one-call stage2 diagnostic only. Cached artifact is provenance-pinned data, not generated Nativehistory/Session/R.",
+      "All text stays visible and losslessly reconstructed. Source exact numbered header retained in parentunits metadata; body split by literal punctuation/newline/bar boundary runs, same rules for draft/selfcheck; no fact-boundary claim.",
+      "Short deterministic targetIDs F0001/C0001/Q0001 and parent/offset provenance; no hidden selection. Every target produces exactstrict record. Maximum400targets beforeKey/request; if exceeds, no model."
+    ],
+    "no_new_model_admission": true
+  }
+}

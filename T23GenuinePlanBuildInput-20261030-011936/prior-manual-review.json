@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-29T17:11:28.308916+00:00",
+  "verdict": "MANUAL_PRIMARY_REQUIREMENTS_NOT_FULLY_MET_TECHNICAL_PASS_RETAINED",
+  "full_final_draft_read": true,
+  "full_actual_plan_read": true,
+  "all10_canonical_TXT_read": true,
+  "all3_asks_and_raw_answers_read": true,
+  "visible_final_reply_read": true,
+  "actual_valid_question_seq": 46,
+  "actual_answer_seq": 47,
+  "first_draft_seq": 51,
+  "plan_seq": 56,
+  "production_denials": [
+    {
+      "seq": 36,
+      "result": 37,
+      "kind": "invalid_question_ask"
+    },
+    {
+      "seq": 41,
+      "result": 42,
+      "kind": "missing_questions"
+    }
+  ],
+  "one_actual_callback_attempt_and_answer": true,
+  "successful_list_then_match_then_two_limited_reads": true,
+  "positive": [
+    "parties Zhao/Ding vs Qian/Wu and sales-contract cause match actual contract and mediation source",
+    "entrust2026-02-10 and close2026-06-18 distinguish invoice/filing/payment dates correctly",
+    "actual fixed six plan entries1,2,3,4,7,14 with three evidence items, temporary file and unrelated picture excluded; no model-generated15 fakeinput",
+    "13-field persisted plan equals actual model arguments after actual authorized synthetic answers; jzl/result/fee preserved",
+    "lawyer null follows empty local profile; checklist separately identifies material lawyer Zhou without changing profile",
+    "new deterministic nonPDF/stamp warning actually returned in tool result and displayed in final visible answer",
+    "hand signature/no substitute/e-sign and3month reminder visible; no actual upload performed",
+    "9 actualSourceGETs/10citationoccurrences/current versions unchanged; twoFhint not automatically fatal"
+  ],
+  "remaining_failures": [
+    "successful four-question callback does not display extracted parties/cause/dates plus sources for confirmation; metadata existed in an earlier production-denied ask only",
+    "already supplied JZL number is asked open-ended again rather than confirmation-only in successful ask",
+    "required per-item visible selfcheck absent; reasoning or checklist cannot be called visible selfcheck"
+  ],
+  "qualifications": [
+    "plan opinion evidence-sufficiency/rights-protection statements require lawyer review; this is not merits certification",
+    "no T23 archive generation or output-document visual quality verified yet",
+    "bothFhints concern operator-supplied or matched-file metadata and remain hints, not blanket fatal errors",
+    "no same-source model rerun or prompt/semantic heuristics added to force green"
+  ],
+  "business_all_PASS": false,
+  "technical_original_report_unchanged": true,
+  "Packaging": "HOLD"
+}

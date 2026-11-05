@@ -1,0 +1,3277 @@
+{
+  "builder_before": "D:\\Lawbeach\\lawbench-coord\\T18DefenseSearchPrivateBuild-20261101-030307Input\\build-private-original.mjs",
+  "config_before": "D:\\Lawbeach\\lawbench-coord\\T18DefenseSearchPrivateBuild-20261101-030307Input\\build-config-before.mjs",
+  "newroot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18DefenseSearchPrivateBuild-20261101-030307",
+  "replacements": [
+    [
+      "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14NullRecoveryPrivateBuild-20261101-005211",
+      "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18DefenseSearchPrivateBuild-20261101-030307"
+    ],
+    [
+      "89963",
+      "92013"
+    ],
+    [
+      "433b220f8a72503872b79d7de6bea0fdaa53d21d98b6569b667bd8fa0495b5a6",
+      "d210ac7044b6aaef65fdc01c9742431433974008605fb3af100ddf08099731d7"
+    ],
+    [
+      "a9a26fd6fffc3fc458e6f04e18848ad035db80e67723886e73d3f1425a815451",
+      "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93"
+    ],
+    [
+      "8c68eb6b99e36f774cddd0f7cd30fb0441c27d3e55b01d6eb733381538a0d899",
+      "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    ]
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18DefenseSearchPrivateBuild-20261101-030307.md",
+  "old_builder_sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "old_config_sha256": "be91ffca1e58f344ab156989d65a5b9c924b7e6d64f9b7df2db7848857c99975",
+  "other17trees41files14refs_held": true,
+  "approved_trees_proofs": [
+    {
+      "id": "lawbench-agent-source",
+      "actual": {
+        "files": 4,
+        "bytes": 92013,
+        "sha256": "d210ac7044b6aaef65fdc01c9742431433974008605fb3af100ddf08099731d7"
+      },
+      "rows": [
+        [
+          "README.md",
+          66,
+          "18dad2a97b4860934be8e15e007c3bb435c222aeaf0113cb1fe9adfaee9eda32"
+        ],
+        [
+          "index.ts",
+          59185,
+          "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93"
+        ],
+        [
+          "repetition.ts",
+          7466,
+          "e21e2cb7f0d05e82ea2fae37224296188e70c9930521e8474f0992ba0593b323"
+        ],
+        [
+          "task-state.ts",
+          25296,
+          "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+        ]
+      ]
+    },
+    {
+      "id": "lawbench-credentials-source",
+      "actual": {
+        "files": 4,
+        "bytes": 20408,
+        "sha256": "c4ca46f1ce6647c56c10f083332cfdd938907eaf22255e4673256637c07d095f"
+      },
+      "rows": [
+        [
+          "README.md",
+          78,
+          "a5a1d83858f546d196f1560eed13696e669266d1e55ace0f85b16d4f089c9996"
+        ],
+        [
+          "credman.ts",
+          5519,
+          "280ecc5f56e55af939f5d3a883a1369aae5ee6d675c143e71ee9b67c624101a8"
+        ],
+        [
+          "index.ts",
+          10859,
+          "2a94e990c5cb46f9973b5bef0825f1103777569b1f4263b46653391ed89050de"
+        ],
+        [
+          "keychain.ts",
+          3952,
+          "23d6c337a28afd59c948ca6dcc5d4b04018ba8f492d8f2ef9344079de498271e"
+        ]
+      ]
+    },
+    {
+      "id": "lawbench-host-source",
+      "actual": {
+        "files": 20,
+        "bytes": 188498,
+        "sha256": "54c836bfda442012238675ea3ca80949b8a8197d23633548e236345a14de1f63"
+      },
+      "rows": [
+        [
+          "README.md",
+          64,
+          "4cee05f2fa6d339df7651d243593e8fac2dac3dcecfad4ad5e86d42ed58750e5"
+        ],
+        [
+          "archive-plan.ts",
+          3121,
+          "16cb52d5485e2cac25cc964d131afab454823a53efd69c4f69b84d259c774585"
+        ],
+        [
+          "attach-sessions.ts",
+          7937,
+          "52a902ed4695a6f233efcd0792ee4f7b7c8b4f0a922149a912323b38dd3367cc"
+        ],
+        [
+          "case-wiki.ts",
+          5053,
+          "95caed4a9d58a343af78713a6cddd664272693d962ee6847130ca241cbec27f0"
+        ],
+        [
+          "daily-case.ts",
+          4740,
+          "b7f9bab6606433c040fae1884e32532f5f6a9e466781723d5270b238745a19f2"
+        ],
+        [
+          "desk-actions.ts",
+          14915,
+          "a201d546f5703d402750d2bb16053287c0f34470e3ac54b512a8011691c5590c"
+        ],
+        [
+          "desk-node.ts",
+          2772,
+          "820da49bb8fc692373819bbe43a126b4c2dd91a5bb3d93a7a7828039e6a7acf2"
+        ],
+        [
+          "document-preview.ts",
+          17057,
+          "dacda113a153707df61a911f898f1735a0513c1dc8811c53f23a82677ede4b07"
+        ],
+        [
+          "document-read.ts",
+          9505,
+          "ff65b5c749c20ed25c008f55f2127c18eaa0615e96cb789c7d39a8bc8153e5f1"
+        ],
+        [
+          "hidden-cases.ts",
+          2680,
+          "6a4091e383f9d7b40ac4b21ce99919be05220ce85863b73c5b2e44173ab6c493"
+        ],
+        [
+          "http-json.ts",
+          3192,
+          "8905fadfaf67bb5cedb703c34441ee6c9456b8cb8946c489154aadfada002732"
+        ],
+        [
+          "index.ts",
+          63665,
+          "cb3679ae85ea6b4f56406b5cbb1e01c1fe0e4739bb22d0ccf05cd4c7ac8fbf83"
+        ],
+        [
+          "install-layout.ts",
+          6054,
+          "0d0cbfbc88c69dbc57ead5939de8ce9440682d320768842d385093929103ffb7"
+        ],
+        [
+          "path-state.ts",
+          1861,
+          "a1a388046870e6dba6cc7803b8d712d5dbcf0df5dc212295514eccca6150a7e1"
+        ],
+        [
+          "public-search.ts",
+          11493,
+          "a978859a2c606c5d8df820bb6356fdc2340947a283ff9d31ebf812c569a49bd7"
+        ],
+        [
+          "selfcheck-node.ts",
+          2203,
+          "c1b8819223ff0e212e4565edb9c0688262b495af3a13430442290eb3828a9590"
+        ],
+        [
+          "selfcheck.ts",
+          5868,
+          "add111a2d2e6d72e44214ed3c77a7b42e7e0f780a98bde70d9623dd7cab616b1"
+        ],
+        [
+          "skills.ts",
+          3801,
+          "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+        ],
+        [
+          "supervisor.ts",
+          17523,
+          "3cc9a30ff53bff82d57b6f881767c89218d77d519a8f7d4d6fe6953f828ce599"
+        ],
+        [
+          "task-answer.ts",
+          4994,
+          "f88d5397c3c1b0398b1db48065e1441bae292dc0fc2fada09eee203e7fcc227f"
+        ]
+      ]
+    },
+    {
+      "id": "lawbench-session-store-source",
+      "actual": {
+        "files": 5,
+        "bytes": 70071,
+        "sha256": "51da6a3cd97a14233db41e52c1b00210d48eb4f63e626aa590200e629f8ee74e"
+      },
+      "rows": [
+        [
+          "case-roots.ts",
+          5066,
+          "3952a9778a89971427d61f94ca062db6eb25dd1462974dc503c4bbcc02dfad1c"
+        ],
+        [
+          "index.ts",
+          18019,
+          "f0b335c7e2eb0a83544ac9acefd95c079abaaae1a297383d7d2a6cde066619a8"
+        ],
+        [
+          "projection-cache.ts",
+          6688,
+          "b1f5400c548938d737ab886fb0efd168c7acf8661737bc60335eb201184df266"
+        ],
+        [
+          "router.ts",
+          33400,
+          "1cda52fc09b579ac5f97adbe7d6c7f57bbac83ceba4cb07607d4e0207493447d"
+        ],
+        [
+          "trash.ts",
+          6898,
+          "3f00751520be9fadb72a62d8bb2ccd0ab21fe8b4001671c1cd9f862daa1d8391"
+        ]
+      ]
+    },
+    {
+      "id": "lawbench-shared-source",
+      "actual": {
+        "files": 9,
+        "bytes": 34130,
+        "sha256": "a4182a25056dc5e91587966184b63a19305cb982a988c3bafa3b3c7bae22de2b"
+      },
+      "rows": [
+        [
+          "api-routes.ts",
+          7429,
+          "b2efae9b895c0c455cebbd8f43996c518e8a4e622a45c104f122922e86692130"
+        ],
+        [
+          "case-folders.ts",
+          5665,
+          "7b964d2fad12f56e46101a3b02f5225f4b5a3fe93e08849ccc14fd7f343eb47d"
+        ],
+        [
+          "contracts.ts",
+          4742,
+          "2b4f550ea89a4efcc41ffd59327332d8aeea535cc2918dee3db7310b4719342b"
+        ],
+        [
+          "core-client.ts",
+          3666,
+          "5deeb42f96b2b23225f90adb8642fa9529f419a01a8e14f731378b4f2ac74c50"
+        ],
+        [
+          "file-log.ts",
+          1745,
+          "7b0751b754c052e6a403229e568659cd7d8945cfdd02d2df185d158a51e29bc8"
+        ],
+        [
+          "product.ts",
+          1477,
+          "896bf3f2afed0c2f7d0266164dfe872f2a0f100bdd58ea08802ad6b419ad49ef"
+        ],
+        [
+          "remote-methods.ts",
+          5227,
+          "b3b306e90fa8cb6e6abbd0ca4d65aaab213ab691fcb0f0764d26a27c9ab54631"
+        ],
+        [
+          "turn-notices.ts",
+          4045,
+          "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0"
+        ],
+        [
+          "virtual.d.ts",
+          134,
+          "731db1da441b03b2b1ad74818dda1774dc4bc2d6c704ac44c389c625a597575c"
+        ]
+      ]
+    },
+    {
+      "id": "lawbench-ui-source",
+      "actual": {
+        "files": 92,
+        "bytes": 641236,
+        "sha256": "e8f1c5200721ae97c9d82f56e6c56c5f07727da62b4db18107375df564d6b6cc"
+      },
+      "rows": [
+        [
+          "README.md",
+          60,
+          "a207a2449caaf13ceaeb711dfda296dfcc039bce5373ecc35295d79475971f99"
+        ],
+        [
+          "answer.tsx",
+          6985,
+          "bb57f3806370815fe9b14251b805e15ea57164b33cad45ce110ac73d9c453377"
+        ],
+        [
+          "archive-logic.ts",
+          5410,
+          "9ba0f3b658f4fb6e6b0bd912ff2213000d4a1a99e7c35aa84f2435d912b76b64"
+        ],
+        [
+          "archive.tsx",
+          10171,
+          "8ffc860f555e2bcdcba1f248b93353d804fd41c6e9e118b0b3fdd4cdd0f5fc22"
+        ],
+        [
+          "brand-assets.ts",
+          65084,
+          "d344da890b5a4484507ccf2f28468a1ffef51b114bf85dc719a1f14f2c13a032"
+        ],
+        [
+          "brand.tsx",
+          3829,
+          "1016a3295be095156e0ac7ea5bc91cce7ff1d6ce20c7994320ad29f1b92f3ab2"
+        ],
+        [
+          "capsules.ts",
+          6295,
+          "9fe2ea4a3045063c49b3d3c9ee75ced42fc8040b4a3a9ee2fd6aefd70e49a4a2"
+        ],
+        [
+          "case-switcher.tsx",
+          4910,
+          "789d91f75932741730a606bec1ba75861af64c89d420f11dab236fa779067931"
+        ],
+        [
+          "case-tab.tsx",
+          3614,
+          "9c8907f3933e569f5d1414885425538a95a9b12eb88cc783203e02973a2f852d"
+        ],
+        [
+          "cases.ts",
+          19799,
+          "b12000ab4b3faae5a18802d169fb41752c068f17ce29e8511a8ea77f806106de"
+        ],
+        [
+          "citation-deps.ts",
+          1383,
+          "c10922a9ab721a9dc1fbee982adcfd486e2cce3ce9a60d0f63fe4be6506134a0"
+        ],
+        [
+          "citation.ts",
+          7651,
+          "d525f0cb5cfc5bc95f79bc2aeb859cbb8cf5b19f6646f117ce526ecc87f2a0b5"
+        ],
+        [
+          "daily-error.tsx",
+          719,
+          "64f13c8006bf7fe93ddc2e660bac4de6c85f9ca8b60ba6fdb39b69a59371ff42"
+        ],
+        [
+          "dialogs.tsx",
+          12350,
+          "da51a25f728409be767ac9e7bbb578400bb22846c3fb78d4bab5ed17b21d01df"
+        ],
+        [
+          "dock.tsx",
+          48424,
+          "d9db5ade5a4936a6367453835f0b4d4213e7778d061a050d9ae8d64b9efc3787"
+        ],
+        [
+          "document-preview.tsx",
+          6472,
+          "e99222c7e07118bc53e7dd3e5849d64d4f70522ed852ffee27a4b881f0f8e026"
+        ],
+        [
+          "documents.tsx",
+          21776,
+          "a276632db5ae38af61d0e81b743c960b539c5d76c11f170a3d7cdc10dbe85d55"
+        ],
+        [
+          "drop-case.ts",
+          9924,
+          "0598dc2340633d73d4e7ce1791bd918b9703db7a17145540dc2bbb7ea2dac440"
+        ],
+        [
+          "dsh-shims.d.ts",
+          1843,
+          "8b2d514c6f24a0c5cfe75b13a1f34e4aea2c1f67bac2f16d73af6f2a066d15d6"
+        ],
+        [
+          "estimate.ts",
+          7269,
+          "21e8c1d0d64a2882f2d2381de917aaf9d2cb66284967ff16fab5f4b2ca0852a7"
+        ],
+        [
+          "fixtures/README.md",
+          2690,
+          "178a7772e99dd0568b21d565313ab65540aa160db391070931da6d9f08ab4a8b"
+        ],
+        [
+          "fixtures/archive_build.json",
+          949,
+          "128541cb6db8beab94640d86646d5c508572a23536f9fe5265623aae2c442d6a"
+        ],
+        [
+          "fixtures/capsules.json",
+          7608,
+          "98823d8b64382f14f4e647f2d528962e6ba20715d9f6a7f94f887a0a58f444b6"
+        ],
+        [
+          "fixtures/capsules.req.json",
+          6993,
+          "ea12fcff7251d39e5335435acd4fa00b7cd70b24491e2e200f7e49198becc552"
+        ],
+        [
+          "fixtures/capsules_reset.json",
+          6271,
+          "83516419569eed5075de12ef4531c46f0d9f2c3d448daa69fb3e333e8e8a3383"
+        ],
+        [
+          "fixtures/case_open.fail.json",
+          174,
+          "551a3a2d5bedbd96f9537dc92d8bfe22c511a9295640b9971c8af0bd238f3c22"
+        ],
+        [
+          "fixtures/case_open.json",
+          274,
+          "937a0d0a973287ff4523e59796629574189c330f8ea7d131db34fb2c678f1c38"
+        ],
+        [
+          "fixtures/case_recent.json",
+          1192,
+          "5dcd7028e0cf4487256017d8213ca967cb59bfde69a7a0e8c8aeef4b657a454a"
+        ],
+        [
+          "fixtures/invoice_run.json",
+          284,
+          "ab47c226007f04ac5d09bff075bbc4b55113dd439bacada9a44e6dc622a2bf06"
+        ],
+        [
+          "fixtures/materials_import.fail.json",
+          236,
+          "9d16e6784a3121389a76928ec1c32bd6f1b005bf6cc281140506b0277fa9f034"
+        ],
+        [
+          "fixtures/materials_import.json",
+          688,
+          "cb88be98ec5f0aa0bcd6019f18347487df10887fdddcb821785a5e84b61c5ed9"
+        ],
+        [
+          "fixtures/materials_import.req.json",
+          215,
+          "c0ce9a24e448329cd10a8aa18d7d6d5cd718960fa45ee6bf631212ce9a696034"
+        ],
+        [
+          "fixtures/materials_list.json",
+          4193,
+          "c470c224d4647b0cdbdcb81feed73d7ccb86a8626a86088c190e5f84c60e82c3"
+        ],
+        [
+          "fixtures/materials_scan.json",
+          130,
+          "aa32bd626ecbd67676e8025d016f012a3dfc59a85925be62d6f7663611994cb8"
+        ],
+        [
+          "fixtures/ocr_cancel.json",
+          100,
+          "8ce114cdcd01ec81b13962ace7c78992d9e28911e5f313136cfc3e4cf37730d0"
+        ],
+        [
+          "fixtures/ocr_list.json",
+          1236,
+          "c155845ee97d7e5b89f2899927ab73afd81cdedd74941cb194f6e434df4abdc6"
+        ],
+        [
+          "fixtures/ocr_submit.fail.json",
+          182,
+          "d4259a390e35eae072e27c0e2607567e0d06d14afc4f53554200ed07033fb7b7"
+        ],
+        [
+          "fixtures/ocr_submit.json",
+          117,
+          "dddf390f99d0e79a3a9255efc633c7adb76262bd4d4e7b466419317ec8e3246f"
+        ],
+        [
+          "fixtures/ocr_submit.req.json",
+          144,
+          "5fab054d28515b3fa40621872ec631a9607b9ee3063cb663d6c0d6e43e7cf321"
+        ],
+        [
+          "fixtures/outputs_confirm.json",
+          323,
+          "92d64149fe7505dc73eb45b4e57ab1229cb328dd890d8acf3d5a6f4566380ed2"
+        ],
+        [
+          "fixtures/outputs_list.json",
+          546,
+          "059813923fd861044eac1d8f2c6d1734c587f96dec2f1098de9cac3014c251b8"
+        ],
+        [
+          "fixtures/outputs_list.req.json",
+          56,
+          "6dcbf451957ceef2f377dbc860dec1e81938d810c5c05bbb83727e602dce4dc2"
+        ],
+        [
+          "fixtures/pipeline_cancel.json",
+          32,
+          "ed3cdacaf0b92870687e0d366d87edd85723582473d4bfcd05455574d48150ae"
+        ],
+        [
+          "fixtures/pipeline_run.json",
+          74,
+          "3118aeffecea6f4b8950ba98dbd012d7c8733502055db0ce3fe1ba1c02f7899a"
+        ],
+        [
+          "fixtures/pipeline_run.req.json",
+          186,
+          "fc3c68e684a767d4896dada0fb63444583d2a91ed6e5b5151e29245158095abf"
+        ],
+        [
+          "fixtures/pipeline_status.json",
+          159,
+          "027f9ade09171a04791700aede5c5af0870b3f324952d39887a5af6d2ae3d910"
+        ],
+        [
+          "fixtures/prompt_refine.json",
+          182,
+          "0b19c74610f6e7958bd2dd35314343d3029d0becb1346046dc28d7c86239ac9b"
+        ],
+        [
+          "fixtures/redline.json",
+          348,
+          "2f7c18ef38684db6a941ae66cd7abf4226f4e855293e2e48d9e5c2ca12760f74"
+        ],
+        [
+          "fixtures/retainer_driver.json",
+          120,
+          "6a3712e346c8248c6d9a7dccc4bb3946a9dce7582f6c12ef957414c783fef854"
+        ],
+        [
+          "fixtures/search.json",
+          938,
+          "7816e3efcd4d76e7e93560389bc2f11bd17698db91075959b86f6fb23629d2aa"
+        ],
+        [
+          "fixtures/source.json",
+          412,
+          "68d72b7e36a3f998fa210ba97966603de6ffa959156de797d930c6562e76c524"
+        ],
+        [
+          "fixtures/task_create.json",
+          74,
+          "11b5d7b26e63f025c1acc936bb0625e375ff12656fde82ae1bac72c42d35878a"
+        ],
+        [
+          "fixtures/task_create.req.json",
+          252,
+          "2b6840306be51f2897ea5649f80fd87a195aa9685a0651cd75ffbe5d091e01b3"
+        ],
+        [
+          "fixtures/task_current.json",
+          345,
+          "8100745e234bb9bf67a663e4fcb8d9cd6d9b5a463f26f6b48bc5ef15bd3ba6d3"
+        ],
+        [
+          "fixtures/task_current.req.json",
+          37,
+          "9ee46ee5479165faf4d16e13518e6d5050617729ce68ba5db8a24c029d3b383f"
+        ],
+        [
+          "fixtures/tasks_list.json",
+          3530,
+          "5467f02f1a409db540b40ce52d700770d3e05ab53448af4e718d1a090bffc596"
+        ],
+        [
+          "fixtures/wiki_suggestions.json",
+          1386,
+          "15a6d64b6290df343d65e8e1ce002361a15b3dfa534eba9bdfc8a5ddbafcf51b"
+        ],
+        [
+          "folder-actions.ts",
+          5859,
+          "74fc8aa9b66c908783145514c88cdd18b1daf6aaeb0338c97407990d34f7430d"
+        ],
+        [
+          "format.ts",
+          11807,
+          "48b525966723d5591b05bae95ed685e42089bc73f5068bfe586567d40869fcfe"
+        ],
+        [
+          "hidden-cases.ts",
+          3194,
+          "08fe90a535d9d72d73a9349428f3886b798391b883c323b93e193a5a22af7cd1"
+        ],
+        [
+          "home-page.tsx",
+          15286,
+          "3fba63f0dbe6f3d6dad02dfcbc5bb78d725673cd1fa249ca7facc69e19539645"
+        ],
+        [
+          "home.tsx",
+          13760,
+          "bddd3d972c72f6eaf9b41a3a7ad614b4766caca88c1d751792d2f03c64467fdf"
+        ],
+        [
+          "host.ts",
+          218,
+          "9bbcf9f92525bf885263df63b6da495327a57f44d3ff1f02e0dc9be5c8bb488d"
+        ],
+        [
+          "index.tsx",
+          30047,
+          "165bdbb32254a7be826d929cbd4861761cd82a82f2868c3eb5acd5994606edf0"
+        ],
+        [
+          "input-import.tsx",
+          5327,
+          "a0891e884b1f518bbbfdb3497b1a732879f028be30f1eb79737b5d4167f06af6"
+        ],
+        [
+          "intake.ts",
+          6524,
+          "926f787ca7fc7f92efb03a2ec0faa0029ecfe5243af4d1335371ef08bb3e689a"
+        ],
+        [
+          "invoice-logic.ts",
+          9874,
+          "0c12bbdb8ed97ddd6fcd33fa43c0b795d43a9f9b78405f20d78e4c83abf37d94"
+        ],
+        [
+          "invoice.tsx",
+          14042,
+          "188dd448b10f15204e803aea598be3c4fe0150bc42da8a3294db42e9e342d10a"
+        ],
+        [
+          "kit.tsx",
+          10336,
+          "2c963a25cdf00a45409c41182056823f5e927028ee2dd7a7a44441f8a3000dd3"
+        ],
+        [
+          "material-batch.ts",
+          18759,
+          "e3459ae28cf5c3a3f068786ddcb5c6db18353a8af17b30d1b71cce3c7c448796"
+        ],
+        [
+          "material-batch.tsx",
+          3632,
+          "1fdd2a32cbef1ec04be59e1197bd852b287e1a900c3ffcad4cebab6382cb0586"
+        ],
+        [
+          "materials.tsx",
+          26603,
+          "4b482392cf71b685cd87bcc160189142552fa50068d13a9072d30a16cbb6b782"
+        ],
+        [
+          "ocr-watch.ts",
+          4859,
+          "a665cfaa66313d6773e98a7c2e87b48e5260bb75b868919618b323f5061e8f52"
+        ],
+        [
+          "overview.tsx",
+          6851,
+          "0dc865818e41336fd3e4d4e36dc1718c3acb0095f5d381791dce86e504b3bc75"
+        ],
+        [
+          "platform.ts",
+          708,
+          "891b8ae12eb5edaa94240501fa43c4eda9183901b252c02d40a4105ab2286abc"
+        ],
+        [
+          "prompt-refine.tsx",
+          11154,
+          "fb9bd0b4d1738792d35d0a61c439046490b8dd0107a9491f90c067c14335ced6"
+        ],
+        [
+          "remote-access.tsx",
+          8459,
+          "b7cb7938b1425412da4f0426733c061a1f639b11603c3fa61de79f626a456fbb"
+        ],
+        [
+          "remote.ts",
+          1646,
+          "1e9c82cd362f32b36be5e52cbf847c3e5c3997c55b35587491c449cc425dd88e"
+        ],
+        [
+          "result-cards.tsx",
+          22409,
+          "cfaccbfb7a6118634fdf92e642b7de043918232cb478307008f16d1946ba979a"
+        ],
+        [
+          "retainer.ts",
+          4968,
+          "e5861353facee429ae8dd0f2b2b1d358e124f62be72aaedd89dc34474838e9e0"
+        ],
+        [
+          "rightbar.ts",
+          3948,
+          "8948f1f31ff34abd58ad26480a2faecc73cc78ece3ffdbe92fc22c612cd4d17e"
+        ],
+        [
+          "session-case.tsx",
+          2061,
+          "24b338439d87272417a89ad46a1aeff213131489f67ec6fccdc2abb680e99e5f"
+        ],
+        [
+          "session-delete.tsx",
+          4002,
+          "141a0f2a93e7e89b50acfedac8181347dcd43795f32f0f7839079187d4966a7f"
+        ],
+        [
+          "settings-draft.ts",
+          6551,
+          "b43141a6ac8be1b80c5015714abbe3ad4990161a2107a9611afc280813b1e1f5"
+        ],
+        [
+          "settings.tsx",
+          40242,
+          "00cb7f3149ae7c6418eedfe423a400c146877ea80b4dbba58ffbb5f71f40572d"
+        ],
+        [
+          "source.tsx",
+          5947,
+          "0d9d319d90eb3b100e3c89afe9e5582d104c1a25672b93ce724e3b8044740d8a"
+        ],
+        [
+          "state.ts",
+          18994,
+          "d93174f1f1ac88eb6c5552c740774178a636ef8d2eeff592297750492a0257cb"
+        ],
+        [
+          "store.ts",
+          911,
+          "01c96cfd6b4c0df8b7a64d01fefcc6e92cb12c8d37791a8a3d836e414bc565d6"
+        ],
+        [
+          "tasksheet.ts",
+          6083,
+          "433e84bce0812f83fe42011e68a81041b26d5c79477f0d4bcb2554bc593c3c56"
+        ],
+        [
+          "web-search.tsx",
+          13643,
+          "8c726bd6318160df8bdbee1df4ac78be6820c369cf2bf0ef03112e59d71a292b"
+        ],
+        [
+          "wiki-card.tsx",
+          12394,
+          "aa3080aff89e12caf173e838ef6635203ed51858a64c5e93ab58521de5db5e5a"
+        ],
+        [
+          "wiki-entry.tsx",
+          3494,
+          "bab17f70847616a3de42df17f3c53ff9ad64790091fc688119595bfd6b382fe1"
+        ]
+      ]
+    },
+    {
+      "id": "embedded-contract-schemas",
+      "actual": {
+        "files": 69,
+        "bytes": 251741,
+        "sha256": "a0da8077fcece9ada61c2efb09be5b340f67deaa55606252697134b7a3043800"
+      },
+      "rows": [
+        [
+          "VERSION",
+          4,
+          "e5cd57eee9635f3612a2a913746f7f794cdb573cc3e16f6b7d8e613f92beac83"
+        ],
+        [
+          "api/archive_build.schema.json",
+          6331,
+          "d131ddbd7cd873f35bae3fce02088b365f9121f7482d3e533d7409d2a5d993b3"
+        ],
+        [
+          "api/capsules.schema.json",
+          1010,
+          "4fed1ca16b33b1bf278ed2dbabd51e22676a4dcc67925730ee8c1ffe7fcf09ee"
+        ],
+        [
+          "api/capsules_reset.schema.json",
+          1024,
+          "31b2b726834a49dd1c073c69878490105776c398c0669e43fb48ed82289d2884"
+        ],
+        [
+          "api/case_forget.schema.json",
+          1866,
+          "c1235747e4f2dfecfeb5ce68d4e5840e9e5a8a070f1c005b29d839098f627fed"
+        ],
+        [
+          "api/case_open.schema.json",
+          4241,
+          "bda9de2ca0f5e202336ade4f196a86591a450c40a6d18af96d89851cf964334d"
+        ],
+        [
+          "api/case_recent.schema.json",
+          3876,
+          "d944d7b7ae09caea5ec923e8ad8447a6dd0daae9c504619463b203c156226971"
+        ],
+        [
+          "api/connection_test.schema.json",
+          3537,
+          "1826a778e74d9c096e9faa1356f98f3463db3a35cf6d90054049d4d851b51c84"
+        ],
+        [
+          "api/documents_save.schema.json",
+          3582,
+          "84680bf99aad21f48fbb1071e0011eb39772e2d388058984fa598a2edf3c2db9"
+        ],
+        [
+          "api/invoice_run.schema.json",
+          11347,
+          "c0695984bbe570ea59407e9be4f4912589d0f1e8cb01c352a33a17baf96ecffa"
+        ],
+        [
+          "api/materials_import.schema.json",
+          7664,
+          "078e4e0edd00f83d79e0dd1320a7e47dc552af946b6d272a3ff2fa2a20c3637b"
+        ],
+        [
+          "api/materials_list.schema.json",
+          9956,
+          "370943e6c57008f24fc1d6dd298604a3f02436daabf3ddfe88317cc084eb42e0"
+        ],
+        [
+          "api/materials_relocate.schema.json",
+          3210,
+          "cfb1c096dd1409c5f48282dc5d1b8a4d7f078714175f7c049873e293a6fcad5f"
+        ],
+        [
+          "api/materials_remove.schema.json",
+          4591,
+          "58cd883f1b08968d7dc21bd6cb2f60be653769b038a3857bce43b950fc1733e3"
+        ],
+        [
+          "api/materials_scan.schema.json",
+          2657,
+          "7fc07b739b11744b969aefa58fc9dce49ac1c55f16b9e8b79e043120bafdf476"
+        ],
+        [
+          "api/ocr_cancel.schema.json",
+          1725,
+          "869f4f661fc57c8e849ac45265a33b4e5d5fe43f757eb1e057d4799d754ac89c"
+        ],
+        [
+          "api/ocr_list.schema.json",
+          5642,
+          "1d496f418997646061ea529e1020d6f23af6e139b4d49ce4152384e2649e2b91"
+        ],
+        [
+          "api/ocr_submit.schema.json",
+          2815,
+          "ae743f4adc57dc23d02f7148a42d2a85279530d200e0600da0cdc36fb386340d"
+        ],
+        [
+          "api/outputs_confirm.schema.json",
+          3676,
+          "307698ce8452955c678c2763baa19bac730bd915ce6ab68d8308064f12ecb5d6"
+        ],
+        [
+          "api/outputs_list.schema.json",
+          1180,
+          "5d377e4b7584ad69dc97c18fd4e5c7b91b95c0375c57e2b7f41f6c30e7553413"
+        ],
+        [
+          "api/pipeline_cancel.schema.json",
+          1244,
+          "f9fa09ca4aa3099aeb76be9b3791a7025b7a91c679875b3ef32d11c3cd0aec9e"
+        ],
+        [
+          "api/pipeline_run.schema.json",
+          2003,
+          "9935be97dd5b8b1a5322cccd62c6cca3a0f87493723278bb0d78cac88219cf21"
+        ],
+        [
+          "api/pipeline_status.schema.json",
+          4221,
+          "aedd0388b2f3842e6a8530b63c596b572ca51ed5c141ca8cbe8ebf0a8faf0acd"
+        ],
+        [
+          "api/prompt_refine.schema.json",
+          3637,
+          "a457b33f8a2d865e5b8cd0e800c6c3a48409eb392e9e0d3badfe73b00bef915e"
+        ],
+        [
+          "api/redline.schema.json",
+          3312,
+          "900787ec427bd96f858fdf43e2a1526db8cf9bc12a5f4cdb2481222921793fe5"
+        ],
+        [
+          "api/remote_access.schema.json",
+          4390,
+          "31740171c8024772affe49c7754def9ddbceb8966f75dc2db3678cedf0354d22"
+        ],
+        [
+          "api/request_scope.schema.json",
+          4555,
+          "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c"
+        ],
+        [
+          "api/retainer_driver.schema.json",
+          1889,
+          "422bc80849febc85acce94b37cd519f9a3d6854e9eb3bce4b5064af932888220"
+        ],
+        [
+          "api/search.schema.json",
+          1267,
+          "b0e61a2a6a13896fab98cc50459d503f54268a2899c6c771a578388f562ffd22"
+        ],
+        [
+          "api/settings.schema.json",
+          931,
+          "f8fdf47838d36416aef88b92690c965aa85c94f6293d8e7aa5c3fa7a36124553"
+        ],
+        [
+          "api/source.schema.json",
+          4025,
+          "211414531b073515b52ea0eafbcb9cd5b6e9ffa9741ba0449b82206f387f03ab"
+        ],
+        [
+          "api/task_create.schema.json",
+          3230,
+          "27146bdf5719b6c102c087f5d0123f28823bf4054270fe553e3f9907bd86c9ce"
+        ],
+        [
+          "api/task_current.schema.json",
+          5988,
+          "4425ac661ac23ecd5a177ae4cba84264ebe2b79fb6304b5745f2a99197bedc9b"
+        ],
+        [
+          "api/tasks_list.schema.json",
+          7839,
+          "6b3225cd2ce8af6617d2cd023b27401bbedbe8da48d84ba30f54dbfc593bed4e"
+        ],
+        [
+          "api/wiki_review.schema.json",
+          4684,
+          "067513d9290ee9922fffdb088d284a24f433c36ea481318707e508831c7b19a1"
+        ],
+        [
+          "api/wiki_suggestions.schema.json",
+          1944,
+          "64a6437381e1729b57cf0c69a24580f509538ffdb00b16e5cee838b9e50743d4"
+        ],
+        [
+          "common.schema.json",
+          17837,
+          "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+        ],
+        [
+          "core/context.schema.json",
+          5197,
+          "778e77caa5110464c093fb33b5064c4ee4a4dd87433d4598dd5ab7089b21f0c7"
+        ],
+        [
+          "core/progress.schema.json",
+          1561,
+          "642de13c265ff579cd1d8124e5e6eed942a1492e1fec4d562ca125fc31dd81c3"
+        ],
+        [
+          "core/task_begin.schema.json",
+          6382,
+          "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571"
+        ],
+        [
+          "core/task_end.schema.json",
+          2684,
+          "ab6b6a2c9999dd6b39cb74bd990b6a8bfe3386cb409f1d4a45507a52bc4647c6"
+        ],
+        [
+          "core/tool.schema.json",
+          1245,
+          "4ebb29206f1bb36a95924d8755cd5f569cb4d6d7d8ba6a90e23e70b7eed80c71"
+        ],
+        [
+          "files/case_card.schema.json",
+          3421,
+          "09f1fbf7d8662aa5497d13d7a9f3732698de1ff8bd261b7ba6de0727581a4e2a"
+        ],
+        [
+          "files/cases.schema.json",
+          1341,
+          "31543bb738bd876ca4ca1358a66db7ddebf50dd00af9ca99f0b01443e8ae20cf"
+        ],
+        [
+          "files/material_index.schema.json",
+          4658,
+          "3a35d31a2a438d4a6b55dfb8be326fbbd3360cc3e0d16f94a4ff485015ab6483"
+        ],
+        [
+          "files/material_refs.schema.json",
+          1669,
+          "09b47821d4167e7badd111ded813a8d0894e8879a70ed7cc4f96e7b9b740fc62"
+        ],
+        [
+          "files/outputs_index.schema.json",
+          2202,
+          "535397567c567e004b191d316e6a5aec0867dcfb2d88ef0c4f1141ffd2bc3ad0"
+        ],
+        [
+          "files/reads.schema.json",
+          1463,
+          "d58c762972159024afe81a9db4e89d1bea1f972222e83eac9c7bb47aa2d1b379"
+        ],
+        [
+          "files/result.schema.json",
+          2572,
+          "40f3f270433418363d07a02f0ff4d0b52c3e864a0c452ea68393fa4875349be3"
+        ],
+        [
+          "files/settings.schema.json",
+          7756,
+          "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+        ],
+        [
+          "files/task.schema.json",
+          4155,
+          "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed"
+        ],
+        [
+          "files/wiki_pending.schema.json",
+          1643,
+          "042a76f163044245f74b1d276d14557d7e986fe084d9913ce967d36880f11b62"
+        ],
+        [
+          "prep395/extract.schema.json",
+          4284,
+          "0ce032df0161b39786e2a0cc0dc10262cd5d70f4e7fd480b7bed7607cdb6d9ad"
+        ],
+        [
+          "prep395/health.schema.json",
+          944,
+          "69f56b9bf99c4fa7f71736b2cb5506d6b23e41f19faf13410daf1e026aaf3cab"
+        ],
+        [
+          "prep395/ocr_page.schema.json",
+          2378,
+          "ba3bbfa5748db74797f22e1d50be900e8e1e6e37eadbdcb380c7c43e6aaee698"
+        ],
+        [
+          "skill/archive_catalog.schema.json",
+          2062,
+          "2aeb9b8264502994764bf0808795c603305807d925dee7d6df5d9358faa422b1"
+        ],
+        [
+          "skill/capsules.schema.json",
+          4239,
+          "0a6425f48d27e5f573533174377494c1dbe86699a4edfd1574edd71190faf0d0"
+        ],
+        [
+          "skill/frontmatter.schema.json",
+          1186,
+          "8f5681af36338ce395ae88ed745f341fee1142bbfc38779a7f3e012d09bfd95a"
+        ],
+        [
+          "tools/case_archive_match.schema.json",
+          3375,
+          "f14cc490213424ce9b4a6fd2c05c9e460d47bc625d676a6cc20f10000d068035"
+        ],
+        [
+          "tools/case_calc_sentence.schema.json",
+          4441,
+          "6ba0ce150dea9de1ba4f3fd21bac8c9082cb1f16f11fd397468fa1b50eba3cf4"
+        ],
+        [
+          "tools/case_list_materials.schema.json",
+          842,
+          "106c025f947896dcf766a028d620ad8b04b02555b31f6a7b15d44bce795f38b9"
+        ],
+        [
+          "tools/case_read_input.schema.json",
+          1735,
+          "8b6eedeb68d38dafa79ec180f77e65283b4446708b1abdd4398060e0663413f3"
+        ],
+        [
+          "tools/case_read_material.schema.json",
+          5831,
+          "0e69d51b21653006c01fe7d95c6b2c05ad18c942d69cf5b9fab03c5df882ef81"
+        ],
+        [
+          "tools/case_read_wiki.schema.json",
+          1430,
+          "f068983b652f85e7351450a8be5033bd39a1f5753fd71e2f92c4647e69534f6d"
+        ],
+        [
+          "tools/case_save_archive_plan.schema.json",
+          9452,
+          "0bc15810336e5cd3adbf63e37b1a67fbf568de4d9f1c5523002538b179dd1418"
+        ],
+        [
+          "tools/case_save_draft.schema.json",
+          1687,
+          "e3cddc974b53277645bb278fe9ccdb51470357f5939a88a2840337a46d66a3f5"
+        ],
+        [
+          "tools/case_save_edit_list.schema.json",
+          3716,
+          "ce0dbebecf0a84a9f5ad9ff50b362c2117f28e4c415a633924c12a6e8232b24b"
+        ],
+        [
+          "tools/case_search.schema.json",
+          2065,
+          "79d7ccfa3de0d543ccff632a2067c1b30897f743fb6ca9ad25be7ceea0c8ed51"
+        ],
+        [
+          "tools/case_suggest_wiki.schema.json",
+          1195,
+          "1875097f8e990ffd4406823a5da6cdf030de929fce28aeeb85a4e073ff99e1a7"
+        ]
+      ]
+    },
+    {
+      "id": "ui-conversation-source",
+      "actual": {
+        "files": 79,
+        "bytes": 592784,
+        "sha256": "0b4843e97e37caf9b453c469604966b304c899b52c7d72993f37d03daf224414"
+      },
+      "rows": [
+        [
+          "client/apply.ts",
+          30352,
+          "089b52686cb492332e8cb11516c9b2b3513f4b5fe4686fc535373530715acc8c"
+        ],
+        [
+          "client/context-occupancy.ts",
+          905,
+          "00f785594ab5a5fa75e10d0f9ddad781d49d0d550b8ecac12604010e275a80a8"
+        ],
+        [
+          "client/contract/composer-blocks.ts",
+          1031,
+          "911770f822c495d3210c595d45ae4b42551aaaa51ff22bb95b060cd1da7cb454"
+        ],
+        [
+          "client/contract/composer-submission.ts",
+          474,
+          "fe98da79d5832de1cbc2e5706c5cc0b70c4d9b89442082e9931fc2f8be15ee12"
+        ],
+        [
+          "client/contract/context-producer.ts",
+          1338,
+          "7975b6c3af776872a6ff064913262cdc4208a1f85429c64fe67939ae0a24718a"
+        ],
+        [
+          "client/contract/conversation.ts",
+          12524,
+          "16837f2a6bc45e8b12567828b68be2da662f7aee4b5876e9fd7e89482f8f4ef4"
+        ],
+        [
+          "client/contract/draft-editor.ts",
+          4613,
+          "9b91dbb86ca651fe1ee538a0ace7b6988cb1c51a26141e13a9f13db82661de32"
+        ],
+        [
+          "client/contract/groups.ts",
+          5357,
+          "c83233b50cc09277042548daedff7c1a355de70a4b81895089a43811bc09f4c9"
+        ],
+        [
+          "client/contract/input.ts",
+          14872,
+          "279d43b5679125d4527407ecd978c1a6f6bf073d1c9d308bf4a14003b1fd036e"
+        ],
+        [
+          "client/contract/records.ts",
+          10762,
+          "4fe132948a41de4ddf3e53c7000b02bb0b4f4d34b22dde1298a1a4bbffa9113e"
+        ],
+        [
+          "client/contract/request-inspection.ts",
+          7299,
+          "276817bdd6c5fdf691d0adba06dfdd578016c567c1b8b218bf93c8ebcf39d3e7"
+        ],
+        [
+          "client/contract/slots.ts",
+          23892,
+          "a8bdfe0472007b99daeb45cabf40b775a48cc813d5e2e2293db06add590e4eaf"
+        ],
+        [
+          "client/contract/snapshot.ts",
+          1453,
+          "0c2abe05175c503093ae1e4c94ff85acf3f613df913bf68a0611fbc9e525abb7"
+        ],
+        [
+          "client/contract/system-prompt.ts",
+          4331,
+          "bcc10aa1bcc748deb847b9e264d0f5ed92d80f97b98c071826b01fe10e6c03e3"
+        ],
+        [
+          "client/contract/views.ts",
+          955,
+          "c988de1f667043ada70d8d2d7c7cd89751d08ddff9754bdc3810d340b3b971df"
+        ],
+        [
+          "client/conversation/assembler.ts",
+          39810,
+          "cc27326109bf0658b15ff906316f3b6abb493da9c452c5202ef9c0acd0a5ddb3"
+        ],
+        [
+          "client/conversation/assembly.ts",
+          12961,
+          "7022ce9b52345d3b5c7a85094cfe974d195f5c10f155bc5f38457bf6dd7c068f"
+        ],
+        [
+          "client/conversation/definition-registry.ts",
+          2268,
+          "af83ece4e166278c5238b30bd19906f8abd1e813c44eb8fe7403be90fe7fa561"
+        ],
+        [
+          "client/conversation/event-registry.ts",
+          2321,
+          "95d1672d9720b7294a1389a550493d4ba2b69a804a7d44fc6904e404b8854d76"
+        ],
+        [
+          "client/conversation/group-registry.ts",
+          2003,
+          "73ebf9982d84f589458c9ce60ff51e67d916f9331334f768d6f93edb5fd3b390"
+        ],
+        [
+          "client/conversation/group-store.ts",
+          9158,
+          "5fcccc47703f466d90a7b1b4e2aa0f8a2cefa783e481673176c47f11c6e73104"
+        ],
+        [
+          "client/conversation/historical-images.ts",
+          7190,
+          "76e5431532ad5a996d0f1f198dc3ed787240c54175eeeefc33b868fee8197aeb"
+        ],
+        [
+          "client/conversation/location-index.ts",
+          24701,
+          "dd1177a01cb5d09efbd1049d1209bed96232c64221ef44240a7118e839bdecc1"
+        ],
+        [
+          "client/conversation/view-registry.ts",
+          823,
+          "b65588acd518aa81cf6d96967f160600631257cbd10f87322b5ca1b7cee1d291"
+        ],
+        [
+          "client/image-labels.ts",
+          2504,
+          "62d977bd9002cd1ceeb21678f13378569d3ef3989d8637646db90e4ae83e7110"
+        ],
+        [
+          "client/index.ts",
+          5614,
+          "7aaa12f5dc0d1e7ce895896317d5c296caa565ac7d3fcd7e0d545cc57f323231"
+        ],
+        [
+          "client/input/blocks.ts",
+          1825,
+          "270ed3eea51aa4e73932e905d2cfabe94d85e8e4f1d0870f3ae7cc08b917126c"
+        ],
+        [
+          "client/input/decorations.ts",
+          3001,
+          "a61ba7792443ff61e5b8904247c94831118ea30f291d53f1c81ec18313d97d0f"
+        ],
+        [
+          "client/input/editor/ComposerContentEditable.tsx",
+          1965,
+          "1a2a70d24d48b04e13057c40b3cec916c5f3a81c71b8c5a6006b83861b972cd8"
+        ],
+        [
+          "client/input/editor/DecoratorPortals.tsx",
+          1502,
+          "eff2df39693b18afeb7df6af47c440841b05304178255ea28f1e8359f4230b7f"
+        ],
+        [
+          "client/input/editor/DraftEditor.tsx",
+          2823,
+          "7b41e1d8be057bf0b3a8658c79514090d18be175b481ababec3e4690c1093e7d"
+        ],
+        [
+          "client/input/editor/ReferenceChip.module.css",
+          511,
+          "8b1d1c03119183b0ff52ee18c956ed482293d699967944597a9c50d193102932"
+        ],
+        [
+          "client/input/editor/ReferenceChip.tsx",
+          1570,
+          "1241cce54ba4312d9544825d583aa838822af3c6170a94b2d0215e8e58a166ac"
+        ],
+        [
+          "client/input/editor/chip-node.tsx",
+          6595,
+          "db1396ab22a7ab37132f472b2b4ebfa029fb131cb3e9dc23fb0737f0e5a6d9fe"
+        ],
+        [
+          "client/input/editor/claim-decor.ts",
+          2812,
+          "fa44d77f97738a457d689ea614d0d1df7c2c35f56aa64367aea90d55d7849cea"
+        ],
+        [
+          "client/input/editor/composer-editor.module.css",
+          518,
+          "dc4b8bcd6fec30190d0c550aa39dbe74e62d89d5158b989c700672c296edc5f4"
+        ],
+        [
+          "client/input/editor/keymap.ts",
+          8777,
+          "0c992afc82935e8445a1120cf4f1cab9614c7550180c18be582f106e2c1bbf45"
+        ],
+        [
+          "client/input/editor/projection.ts",
+          9527,
+          "da64ac33a785902aa01b7c83779bbb84ce89248150aed65f005bf15bbc7e6e02"
+        ],
+        [
+          "client/input/editor/reference-activation.ts",
+          1552,
+          "409b30d2c34080552c415853408f0cd5b789ec1be6d5e7c916246fbcafff0480"
+        ],
+        [
+          "client/input/editor/runtime.ts",
+          14407,
+          "0f04fcc93609bd56142aab831db38334eb684910aaa87525068f319d0141a872"
+        ],
+        [
+          "client/input/editor/span-map.ts",
+          5260,
+          "b738bbd5d09857e1be6ca9273db3e94ff2d320605df3b662f04c9007c91dd7e7"
+        ],
+        [
+          "client/input/editor/text-ref.ts",
+          4053,
+          "82633d3e8dc432cea8ef4aca28bd95323668b35fea168d7b640b56813278b2bb"
+        ],
+        [
+          "client/input/editor/view-binding.ts",
+          6196,
+          "9bef4a68caf0b70f26fbb2967b8840d1fa14eeae048328d9251d8aa9a4939ff7"
+        ],
+        [
+          "client/input/facade.ts",
+          34681,
+          "942796246f6bcd44f51a18be879b81a5be93019e4f1d90a942aded131b971474"
+        ],
+        [
+          "client/input/hub.ts",
+          11399,
+          "a65c0f4a0105a1fa06a8d82d137e7e651ee5fc0165cb661b2e69e16a4a085071"
+        ],
+        [
+          "client/input/machine.ts",
+          9391,
+          "9ef6e23919b2527340afa76b6b8f1954db9138a7b62c94c6178e166734ff55ff"
+        ],
+        [
+          "client/input/submission-policy.ts",
+          3529,
+          "fd64ed49cf98558345033d75d17de97048d9bc947d17f85963890221583164bd"
+        ],
+        [
+          "client/locales.ts",
+          34666,
+          "944310abfbac368e4be9f24838addd9872df76c59b0d64c5d05f328d0c0fd739"
+        ],
+        [
+          "client/queue/QueueDock.module.css",
+          5815,
+          "eb9ec9684578b474e73ac7e5ff9beaefe13f78d24489669389f83afdc8724968"
+        ],
+        [
+          "client/queue/QueueDock.tsx",
+          19903,
+          "d4673e4e4f17a30fcf9dd1f9e0ae5991c258966223e3ac6bdc9dd79e2a185af5"
+        ],
+        [
+          "client/service.ts",
+          29198,
+          "5d1cc54069a51353cb346071ce7c2ae1ca5e0f96e6b77ec27f92a0471e6d28f0"
+        ],
+        [
+          "client/settings/EnterBehaviorRow.module.css",
+          993,
+          "4cc511211f097ee6ee0b882a63dfd0c8dc44396f115bb28661b7f94cf3a993db"
+        ],
+        [
+          "client/settings/EnterBehaviorRow.tsx",
+          2610,
+          "c4feff11ad20f14d3c534fe7da2ca6b7a680b66dd3dc6f7e5036df7391282321"
+        ],
+        [
+          "client/skeleton/ContextMeter.module.css",
+          3061,
+          "e797489423a959481600296afb54578ce8b9c7b5106be752b0e177628ef98bff"
+        ],
+        [
+          "client/skeleton/ContextMeter.tsx",
+          7402,
+          "84e568164bb26fadc8cae50d82de7dbd4d14be0d957f5ae7fd9c4575a1f1568d"
+        ],
+        [
+          "client/skeleton/ConversationContent.tsx",
+          9045,
+          "3dfcc635e128f9b798673ba4dfb91a5e25ef96d001124603c672e7beafefa204"
+        ],
+        [
+          "client/skeleton/ConversationHeader.tsx",
+          1311,
+          "4d8eb123dfcda64d1930ec59402f72b1fcda1f6c63197243a33c52069c57ab94"
+        ],
+        [
+          "client/skeleton/ConversationMainPanel.tsx",
+          2670,
+          "8079942f608f4e9daa70af6a05a25d8b79d08811abd30276feaa91e5fcd873e9"
+        ],
+        [
+          "client/skeleton/ConversationPanel.tsx",
+          564,
+          "d7b63905cb18887648b5cbb1d09d85cae6ec97a0a9e70299602363c56f325b29"
+        ],
+        [
+          "client/skeleton/ConversationRoot.module.css",
+          18353,
+          "d9d856868adfdc8a300600e060e6262afa42fc3bfc8019b5a597dec326b0c59c"
+        ],
+        [
+          "client/skeleton/ConversationRoot.tsx",
+          582,
+          "e423e43755ae1d23e0be314410bc71bdeafae5010a261f511527b486b5b8c3fa"
+        ],
+        [
+          "client/skeleton/ConversationSession.tsx",
+          6946,
+          "a7eecaec5677b04fab9f9982ea49ae29267db924d36284f7b3e59a8f5109f72a"
+        ],
+        [
+          "client/skeleton/ConversationWidthControls.tsx",
+          7602,
+          "0c2d8cc42f7b41e0362b41f544f76e6ec6e1078b81e1488cfdf45b5308feaec4"
+        ],
+        [
+          "client/skeleton/DefaultConversationViews.tsx",
+          1984,
+          "513f408c2b9adcacdc3343e9731ae75192a0854820a4202296bd4939028be42f"
+        ],
+        [
+          "client/skeleton/EmptyHero.tsx",
+          12194,
+          "f9224a3be613c123a136573c92bbe9fd65bb08461ce80099302827850edbbba0"
+        ],
+        [
+          "client/skeleton/HeroShell.module.css",
+          6103,
+          "38a98b030dc643553bbbfaffeb8e98ca4668c59e55165da57aca31e89ee92f44"
+        ],
+        [
+          "client/skeleton/InputBar.module.css",
+          12826,
+          "3728d67da4e1d1c2dd102d66f42f0c129a5c1e17e6a1167d738c999d0d87f60b"
+        ],
+        [
+          "client/skeleton/InputBar.tsx",
+          25273,
+          "e6017a7fd286998cd46a5b3cf1f29f2236ffc7f1caea90ac8e0bb33973355c1d"
+        ],
+        [
+          "client/skeleton/TodoPanel.module.css",
+          2571,
+          "4177256462b4cde12c43eabc6433216bf2747cefcf911a93b4d1f1a2568011cc"
+        ],
+        [
+          "client/skeleton/TodoPanel.tsx",
+          5026,
+          "8be70f4479c1984ca7e58ea089d0121b42855bb8dc5f16b05b2e643c4bbe3d55"
+        ],
+        [
+          "client/skeleton/control-row-layout.ts",
+          1724,
+          "4d8e50b98ed790259f0c33e44fcc3406676369544a2fe75f1efb44401a4b87ed"
+        ],
+        [
+          "client/skeleton/safari.ts",
+          1728,
+          "6fa60fb7d6050218d95d5a9944021aaa52d4803ce290cae9f886e01bb6440c61"
+        ],
+        [
+          "client/stop-sequence.ts",
+          1982,
+          "6f6805d1ca29a93f0cd12c4da7eda161ee41b479b89af480818e593ed8d46fe0"
+        ],
+        [
+          "client/stop-shortcut.ts",
+          3526,
+          "0317b2d29713d3deb13dd3f85e6710b7b07016d699644f593e28eebbb36915cd"
+        ],
+        [
+          "client/stores.ts",
+          2097,
+          "2c5c4471628d01dea68c9d858fefbfe8e92e7025e28109155be01d1bf0229528"
+        ],
+        [
+          "client/view-selection.ts",
+          849,
+          "8eaea9005aa22686355898bdbd5ace2ce6d406010cc6df2bf185cf38f8161668"
+        ],
+        [
+          "css-modules.d.ts",
+          123,
+          "e28410d74a0d763364c04fa690c2ca2202ad3019c74f8f5205e8dc6cba69c02f"
+        ],
+        [
+          "index.ts",
+          1268,
+          "c24943b43a77f236523d61538814dcfa96870f928850b68807697fab4a45e67d"
+        ],
+        [
+          "submission-settings.ts",
+          1384,
+          "d3975f454930090642bf9a64c641587138ae6e09d3db1121ce63ab4c8e8b8a29"
+        ]
+      ]
+    },
+    {
+      "id": "session-controller-source",
+      "actual": {
+        "files": 34,
+        "bytes": 340866,
+        "sha256": "52771d9796f48ceb872c6fe9f7ac5de42eec576feda4db7eba7fe7098a89d059"
+      },
+      "rows": [
+        [
+          "agent.ts",
+          22822,
+          "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769"
+        ],
+        [
+          "archived-session-gate.ts",
+          2426,
+          "1445070c0a9da7ebe7e3032a24ab9fcc4a803973ac12d4adf4b872ea0f0d0e18"
+        ],
+        [
+          "assistant-stream.ts",
+          3392,
+          "ebe1cfa8156abdd1cc677cba8c8f08991120632d510554c05f0be772993e9272"
+        ],
+        [
+          "catalog.ts",
+          4834,
+          "0554b609a5b46b8209e06a4be7c645931a71aece267f53d7be241957eb2dcf6b"
+        ],
+        [
+          "client/contract/events.ts",
+          7054,
+          "64acca2457e9853a5a0159e13a335412ab622e55b88f4a0ab71eb6d9c8430d8d"
+        ],
+        [
+          "client/contract/session.ts",
+          7866,
+          "a951a13b82257d37aee93b8f426dd70cd03d43b0f200e10e2cff675b05c8ece4"
+        ],
+        [
+          "client/contract/sessions.ts",
+          7662,
+          "082745c4204535e99dd7ce1111834df67e0f73b8cbd5ddeec41ca6dddfc2b6de"
+        ],
+        [
+          "client/contract/snapshot.ts",
+          3803,
+          "2bce8bea78abba375566c1231bb090a89b0407af4082912542869ba0a69e72ac"
+        ],
+        [
+          "client/index.ts",
+          5311,
+          "d90c6dcb93af854c6789240556e0f483be142e9bfadbf1b50eeb10bd7cf09c53"
+        ],
+        [
+          "client/ordered-baseline.ts",
+          1694,
+          "0a7903af3ccce78150fed0d82d1eeab1784da4b434ab8db4f89edb1805678066"
+        ],
+        [
+          "client/scope.ts",
+          2879,
+          "b28c4b20cd640de8ee369aa5f60672c866d0ea6cce8190f849b7a62347f8649c"
+        ],
+        [
+          "client/session-wire-event.ts",
+          2007,
+          "22dc43f3fc68a28b366dee96a9e3450bc083dfdc7301c6cc5b48ce2acf73f534"
+        ],
+        [
+          "client/sessions/assistant-stream.ts",
+          8899,
+          "6a5dd6365dc47f26e26cbb243af453c5ae441d08fe5133203e66a69ec15667fc"
+        ],
+        [
+          "client/sessions/history-records.ts",
+          1140,
+          "e560d8aff073e46ea6936fcf4048b6785da0b986c0b085eba67a00a4cca86388"
+        ],
+        [
+          "client/sessions/lineage.ts",
+          3264,
+          "8348b9fc3df11661ef43c16528a3f4a5c2afadb70d0bef83ddcb2a9af3216505"
+        ],
+        [
+          "client/sessions/manager.ts",
+          37023,
+          "e7dfa21eff0234ffa458ade61dffd80e97aff11d6e5a735c9c1b22d838571802"
+        ],
+        [
+          "client/sessions/notifier.ts",
+          2848,
+          "34a7984f65b30363dde994f60b0b3a775955d4596dc60ab53cc6a043355be74e"
+        ],
+        [
+          "client/sessions/projection-store.ts",
+          10497,
+          "4090c0656cde02645c3b495fc4a83cc56cb5456a0a70f3fbd99feb99cd65ff47"
+        ],
+        [
+          "client/sessions/remotes.ts",
+          1685,
+          "0ea0f978301dbf926246668e46600bd576adb3ed093d55c271a4de1cac2149ba"
+        ],
+        [
+          "client/sessions/service.ts",
+          27778,
+          "9c6e0730aa36ee821cf2781894694d290990167c7246816b86cb309876518d71"
+        ],
+        [
+          "client/sessions/session.ts",
+          40534,
+          "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73"
+        ],
+        [
+          "client/time-zone.ts",
+          514,
+          "f050fc997ef97c8e2d6ebbc964933f30f6140978487bec993642016bc8724d6a"
+        ],
+        [
+          "client/transport.ts",
+          8759,
+          "a3c5886db9b10a357a2026278ed88884600fcdb1bac3b78e4ff9c2151cefd5ac"
+        ],
+        [
+          "commands.ts",
+          31548,
+          "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c"
+        ],
+        [
+          "control.ts",
+          3592,
+          "1c68ae048ae911ac2e169b92b0e038ae0a3adc13a02c25ceb0b46536c5821b57"
+        ],
+        [
+          "file-references.ts",
+          1520,
+          "870a790822334996b731d05901e4dc4b6a8ac6dec431b697b2c95db41739d91b"
+        ],
+        [
+          "history.ts",
+          16577,
+          "20a2b002816817b04d7bae25e429034f79dbfa445ec2f7d90e4525a9c1652db8"
+        ],
+        [
+          "index.ts",
+          22912,
+          "476bd968693ed4f290f8bb7b7c3b30fffcc470730aaec21db9f29a62f6368b02"
+        ],
+        [
+          "list.ts",
+          13557,
+          "d3590501fd305210a30c92a92d408db719852ca562079b31996ec11fde25d15a"
+        ],
+        [
+          "media-references.ts",
+          5893,
+          "1e50e7f3bb81875652821f7ad2ccaa4b9afbe8fb58cc582d44079a0fb229c6dd"
+        ],
+        [
+          "model-selection-projection.ts",
+          3041,
+          "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f"
+        ],
+        [
+          "remote-events.ts",
+          396,
+          "c44915bb22ce3bb812932fa3901de01b69da03a82e9aac3f14d92a906e226fb5"
+        ],
+        [
+          "skill-catalog.ts",
+          4415,
+          "58ef2e2ae82b4a2440c6e09a93a21c19c3fa46e8cb42ac9933ade3ed643301d0"
+        ],
+        [
+          "types.ts",
+          22724,
+          "221f869b04c353e77271b95aa9a5b0b15299148710a112ba89f6c08ca1ea7a51"
+        ]
+      ]
+    },
+    {
+      "id": "typert-generator-runtime",
+      "actual": {
+        "files": 32,
+        "bytes": 559777,
+        "sha256": "3dfc33eea95b5edcccfcbe6c6f6255abdaeb046226f89563f65e702992d295b8"
+      },
+      "rows": [
+        [
+          "analyzer.d.ts",
+          6571,
+          "897fc37691c137d3037bcb6e3e361de6a416226aa3f2cafcc524889b06d16fa9"
+        ],
+        [
+          "analyzer.d.ts.map",
+          2465,
+          "1db1ab795bf4da559cace6217cf13bac2d58a0360f3a59a4b3ce0d4a951e3e90"
+        ],
+        [
+          "analyzer.js",
+          143289,
+          "b6be6d30d8a7a359ac56e87558a485641f320e9ed022d5b041217f4f5bb3d137"
+        ],
+        [
+          "analyzer.js.map",
+          131955,
+          "463f281ee6414ae83829df2ad2297c4bf4366d6878fcae8a4b4e5d52269447de"
+        ],
+        [
+          "cordis-catalog.d.ts",
+          9016,
+          "97b98beae1783c0824703c6dd99adb77d6fddcbcc49fc19a97ac2e56dbefb6c0"
+        ],
+        [
+          "cordis-catalog.d.ts.map",
+          3078,
+          "14cc306357d7d477f56073e715df0abe558ec85ffb82a591a483774514cfc512"
+        ],
+        [
+          "cordis-catalog.js",
+          40779,
+          "2e55ba0d45b6db9e256e4c03f577678331e6e50794e3fb21bac8c2c2762c5b1e"
+        ],
+        [
+          "cordis-catalog.js.map",
+          29302,
+          "345259578013c4571ad327ba8d806af9c4435f5c2da3303980ba2c3e05dd0e99"
+        ],
+        [
+          "emitter.d.ts",
+          1900,
+          "bf6969b623540f5828cfc0efdb7952366fae765bc3e847a2683191f55c7c0cd4"
+        ],
+        [
+          "emitter.d.ts.map",
+          1154,
+          "4548226d46e04d464062c5583770ba66f0ec17041b7f8fbd8f0c98319f81e8b5"
+        ],
+        [
+          "emitter.js",
+          46059,
+          "b607b1cdabba24b64a7cd0cbcff3f281093bb99df6a60cad30ca8707c6b6114d"
+        ],
+        [
+          "emitter.js.map",
+          43096,
+          "5c37326e24ab0cbc685ca58906d10d157b40b90a537ca1c48bac51975d74add8"
+        ],
+        [
+          "index.d.ts",
+          813,
+          "b20fb2648f0032a76cdf04ffb2650ae8287382b902ca7f615793142fee7c076a"
+        ],
+        [
+          "index.d.ts.map",
+          534,
+          "128d169504fe1658e8d8bf7bc6c97b709e11d87e4e56c66dca897f337523770e"
+        ],
+        [
+          "index.js",
+          564,
+          "0f48baee88fc519d1cf9437a49bdfbab92c4129d1cc961a18dbd74072b3108e2"
+        ],
+        [
+          "index.js.map",
+          358,
+          "9e143d4bd1fbbd05c915d8803391c848195b9fff64a4c6d9581b850d3a9e8da9"
+        ],
+        [
+          "model.d.ts",
+          14898,
+          "2e1c2551f446fd96a66ac0be732194b05eafae8594c4af9f2a3f70555ec527bf"
+        ],
+        [
+          "model.d.ts.map",
+          12473,
+          "5904b8fb061af7cee7587461f43381e5c51f85e4cb93f58f799fb083c76c8c61"
+        ],
+        [
+          "model.js",
+          2099,
+          "e279fb8c505127ab1ead2bb27afbb78b46eaf73be2db7166ba4c28d03d3d305b"
+        ],
+        [
+          "model.js.map",
+          2248,
+          "fd0d6f583024fc5b9b9159f533f7669fabec4e76ad41de4be7892b885a3b9890"
+        ],
+        [
+          "renderer.d.ts",
+          3657,
+          "543535d827da8da013817f5f2b6b1d448651f668c44b40c5682b628b701fd43c"
+        ],
+        [
+          "renderer.d.ts.map",
+          1426,
+          "296e91593208439f45f7c9f780425c872e80e3296fe1aa4303d8680d12bc8558"
+        ],
+        [
+          "renderer.js",
+          18138,
+          "1f8263549493958f88638786681b19ce6225988d46d3e4fa760e19f87f44e612"
+        ],
+        [
+          "renderer.js.map",
+          17142,
+          "4b50a68b800d70e67bdde51f0d5d0b0decd4aefe23e4cdcd7f9c5f232f62890d"
+        ],
+        [
+          "tsdown-plugin.d.ts",
+          1545,
+          "09a7c6e7632f564c7816388d74cf82dcbbfe1123ce3eaac5e4d136b682cc4f3a"
+        ],
+        [
+          "tsdown-plugin.d.ts.map",
+          702,
+          "1af4496589bdff0a1c9215e4256b2a7fb0202fca8726313a10a82c80d71bf68c"
+        ],
+        [
+          "tsdown-plugin.js",
+          6359,
+          "580e74861ea1ff5b1c5d8dd56812de5d4a7af9e671a68e4f0ff220e81203d9b5"
+        ],
+        [
+          "tsdown-plugin.js.map",
+          5202,
+          "95d1f21ec6e38c193b1540df9b724bd425e7c0626c9dfe6c687eb2b9f98c286e"
+        ],
+        [
+          "workspace.d.ts",
+          2348,
+          "9d7666079cfa3e7893e5b0522ec37d051f7a1af3a4ad9d0bd7cf40fcc1580da0"
+        ],
+        [
+          "workspace.d.ts.map",
+          871,
+          "c3d8c32d324bcd6e87bea40344c332b0467e9fd0de62b0a0b4988d16db25e112"
+        ],
+        [
+          "workspace.js",
+          5554,
+          "e645c2baebfa2c8f19d0bd8e33489efdd0ea0e94ab36705b71ed12a2226af3d5"
+        ],
+        [
+          "workspace.js.map",
+          4182,
+          "5189d75de87eef8900b7dd95657127806756915989079417b3f6153a0499f49f"
+        ]
+      ]
+    },
+    {
+      "id": "tsdown-installed-package",
+      "actual": {
+        "files": 49,
+        "bytes": 203850,
+        "sha256": "a9c4d06e0869eb22c8eb0c3be1315227d6525dd1d30da7c43e830a2ef6c66870"
+      },
+      "rows": [
+        [
+          "LICENSE",
+          1159,
+          "e6856ae5da11ab9028d3dde5fd2bffacaa4e696b8413fd01ef82c7f6537ef371"
+        ],
+        [
+          "README.md",
+          1873,
+          "65af8acb8cea67811bdef1ab7392ee33f627eab1d0e697b11ec85dfdbceec31a"
+        ],
+        [
+          "client.d.ts",
+          1382,
+          "2c9f752dc487ec1a6e7a5904304c2c23a633bea1d2baec1ef57c4c436ef20ce4"
+        ],
+        [
+          "dist/build-BxT2lm9L.mjs",
+          33767,
+          "b5bcc0cc5de1486ca2cb6f07f8d17af9a17710f6981afdf47e279d5b82424a75"
+        ],
+        [
+          "dist/config-BJZDmsYq.d.mts",
+          1052,
+          "493680fa6b5e4ca0c3ea91cc8549704b52e678af9cd86989fb45e7cc83336e80"
+        ],
+        [
+          "dist/config.d.mts",
+          271,
+          "728e4ee5bf8efe8421987930abdefc2d9469bb5c96d30d997d228b1bdcf1ed05"
+        ],
+        [
+          "dist/config.mjs",
+          186,
+          "cf6c03ec9b0fe885b7da34e430232266df6fcb5cebd2f18e387e0480f9dfe732"
+        ],
+        [
+          "dist/debug-DQISqjIY.mjs",
+          643,
+          "d36cf1527e48455c2fefc32442d04b1abb274aa764207c7b4d7310259a8c4f0d"
+        ],
+        [
+          "dist/detect-B97OSl92.mjs",
+          4504,
+          "d360f7fa1da75de4acb6d9d821189b4b23b7deab976cfbd2a8792ded41049843"
+        ],
+        [
+          "dist/format-DMceewlS.mjs",
+          10260,
+          "66db4a1e5ca2d2469abc0c927bb02602c163f5a3a47ced762b385a5a252f991d"
+        ],
+        [
+          "dist/fs-qxJxxoCE.mjs",
+          1403,
+          "46fba2ba317419e34e04630cfd087d4b02fefa3b57a670c0dcf4ab46f096d3bf"
+        ],
+        [
+          "dist/general-Cp4NiJNK.mjs",
+          1806,
+          "2bfee619f68d5475d67691339a9dfb3ddc61dc3c4a60b7d40baff4e74fbec6d9"
+        ],
+        [
+          "dist/index-C0LaRpVv.d.mts",
+          13735,
+          "20d4521e9c8b38361b5f6a08e0d37979e1ac25c79262fb415a1b28144ba22ca3"
+        ],
+        [
+          "dist/index.d.mts",
+          2549,
+          "2813e0fee497265f85921e11f1fd69a4cc374d5cd77ee0677c5c5f8538781e5c"
+        ],
+        [
+          "dist/index.mjs",
+          475,
+          "03a553648aebef93d56f03c03b3df736bb690bb537ebd6efb3fe6d3920d9168b"
+        ],
+        [
+          "dist/internal.d.mts",
+          762,
+          "a6a0de1dbb78b09776929db238f83dbac321552f5ff36adf52b9fb79ad014a67"
+        ],
+        [
+          "dist/internal.mjs",
+          322,
+          "bb7f4470acb48c017a5d5d70305c3fce0f5ffed2051dc7883c093cf3efb69fd6"
+        ],
+        [
+          "dist/logger-BxuhTmAE.mjs",
+          3790,
+          "b30b48d8ce1ae419a29f86746fea770f2f9f616e89355eaffe16cb98f7a2e4ed"
+        ],
+        [
+          "dist/options-DWGUHu4D.mjs",
+          38240,
+          "787add55bc20925a40735725db821b0d8f8aedfd724c6178ec9a4eaadae47bcf"
+        ],
+        [
+          "dist/plugins.d.mts",
+          825,
+          "4bc86f05ee513925ebceb26b31fdcb5f1509315f3310e7f69e8e16c24c1623ea"
+        ],
+        [
+          "dist/plugins.mjs",
+          263,
+          "b882c02a66193b634412d1c53f202ec9e4475536063a0cd366f21c9786858c36"
+        ],
+        [
+          "dist/run.d.mts",
+          11,
+          "4f1bad288ada6326583a3e6a0a54d7627a03eac3b668adeea9dded12ac5656b8"
+        ],
+        [
+          "dist/run.mjs",
+          4651,
+          "8d448db9de258b65c039ce51d4ac0a98bb730b16817757bc8140f28288672ee6"
+        ],
+        [
+          "dist/target-CqeSqtms.mjs",
+          1419,
+          "263302964b567e998c9ac708a8ddd156eed085a60e74ea6a7515490c8752424a"
+        ],
+        [
+          "dist/types-F1pJie3k.d.mts",
+          35493,
+          "524e2005a0873e182fe074a34ddea5a56384ab2ec13dd5062df0c8416f7d069c"
+        ],
+        [
+          "dist/watch-C3ocHLCt.mjs",
+          8975,
+          "effa072d899f77f127c04ba14adb49c60d08e8847bc78d26b3e708ebf98e864a"
+        ],
+        [
+          "esm-shims.js",
+          322,
+          "f022abc3ba214b2ff433d5da4177cfedc2e0b62f71a77fadf744fd52f10c826c"
+        ],
+        [
+          "node_modules/.bin/publint",
+          1853,
+          "537bb4280fc74fb3c23b3d522246ce81201171dafbc648f9e15acbb97f9fe23a"
+        ],
+        [
+          "node_modules/.bin/publint.CMD",
+          746,
+          "edd9aadc0bf1c782d473aa5141df9e4c985323ce439e0b68563caebf6aab89d1"
+        ],
+        [
+          "node_modules/.bin/publint.ps1",
+          1599,
+          "77eb2b3303e843aee50692cd5eb8026daf2fd142643df10f90145e8365225700"
+        ],
+        [
+          "node_modules/.bin/rolldown",
+          1867,
+          "a93a81cb02f3ef43b62420787310aa192fb53ae132e8b727c02fa6962c39cfaa"
+        ],
+        [
+          "node_modules/.bin/rolldown.CMD",
+          752,
+          "d9d46d041b4ed52c73ae1af7e0c9b801f0efc1e9158eea52a3b07e03cc5ed5aa"
+        ],
+        [
+          "node_modules/.bin/rolldown.ps1",
+          1609,
+          "a0d5f00392f99a73234ceb3c12def4d66492eac9b64d8d85b70e4c0a1918e141"
+        ],
+        [
+          "node_modules/.bin/semver",
+          1855,
+          "d4790f39c8770b785e97149d81aa0421d42565fd2946d65e546c5ecf284f9365"
+        ],
+        [
+          "node_modules/.bin/semver.CMD",
+          740,
+          "63383a562f611213e0d24086917728008dc62b39f9cfaec4971afadc9299f302"
+        ],
+        [
+          "node_modules/.bin/semver.ps1",
+          1597,
+          "71dd01d837cbf0df90770948e3005d827f26f3eccd00dfa43f2b00fd180761be"
+        ],
+        [
+          "node_modules/.bin/tree-kill",
+          1849,
+          "2a64b62da335d0bfd19842202e4a732754f045cd16b3c7db552e59f552a9dd40"
+        ],
+        [
+          "node_modules/.bin/tree-kill.CMD",
+          750,
+          "28d0e0d94f754103732e083e6e56eb69d76e5eefb124c81efb285db8e18d63e8"
+        ],
+        [
+          "node_modules/.bin/tree-kill.ps1",
+          1599,
+          "4f254b67d57019e853486f689126a12ab6092ecca2027224af9e1740fa34b59a"
+        ],
+        [
+          "node_modules/.bin/tsc",
+          1867,
+          "fbb61659d109fdb9ee54035d9151f6d5c53b3b07c8d44e5f748489de873e9527"
+        ],
+        [
+          "node_modules/.bin/tsc.CMD",
+          760,
+          "d9ca9aaa24fa2973bdcb6ae72e11d6ec63d46e51d00d7fcfeef18353d9bb117b"
+        ],
+        [
+          "node_modules/.bin/tsc.ps1",
+          1613,
+          "bae771bd786df51e1ba0ee4270547279e32644faccb582356fe92f6e10afcc9e"
+        ],
+        [
+          "node_modules/.bin/tsserver",
+          1897,
+          "ea2f623a960026f0102face68cccb87a6fb294b92a87cd752a0d7b87b467a7ed"
+        ],
+        [
+          "node_modules/.bin/tsserver.CMD",
+          770,
+          "0e94ef430a5d468bf2d1e7aa852a70314c07d36de599b2e6a265f071f9089f13"
+        ],
+        [
+          "node_modules/.bin/tsserver.ps1",
+          1633,
+          "cd6e9e12898350747ce32de0ec982f72f33a2a3ffb13e1fe314452ea81a85757"
+        ],
+        [
+          "node_modules/.bin/tsx",
+          1817,
+          "830d012bd0907b3cc3c244a0960b6f92a276e1842bbe13524ce6c5e79aaf4c5d"
+        ],
+        [
+          "node_modules/.bin/tsx.CMD",
+          718,
+          "a5336eed39ad03c5fcc2e8d75c8bef83d0d7f019a3e38f5824bab8da8b42fe78"
+        ],
+        [
+          "node_modules/.bin/tsx.ps1",
+          1567,
+          "c665b1c45070d5abbfbfab83de8421e7e54200d3a8abc10553c5d1ddd0dd2fb1"
+        ],
+        [
+          "package.json",
+          4254,
+          "6325a4c40333613429a8b8064d53781f7d473399bcafb64bff8c6e7ebead460a"
+        ]
+      ]
+    },
+    {
+      "id": "tsx-installed-package",
+      "actual": {
+        "files": 53,
+        "bytes": 522956,
+        "sha256": "52ecedb35b24ab7768b8b4e0c051c090e85a8d1f70b15eca02be497d5bdffb9b"
+      },
+      "rows": [
+        [
+          "LICENSE",
+          1088,
+          "8dded67841a9261a622c739fb61c81785e93765de852828ceeb9403d20a74581"
+        ],
+        [
+          "README.md",
+          1387,
+          "44e63909767a6f7b21d4103df9417e3ab88bae17a3bc77b93fdcfb94176e3211"
+        ],
+        [
+          "dist/cjs/api/index.cjs",
+          650,
+          "a15d3802fd3286a8544c877b13b219f7c3e1a1ab21e83f758192b9f7210de718"
+        ],
+        [
+          "dist/cjs/api/index.d.cts",
+          1090,
+          "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee"
+        ],
+        [
+          "dist/cjs/api/index.d.mts",
+          1090,
+          "8c2b1a98cc24f9efb1d8705b3c3c1929d3a4f42273466da97df62c7b253eaeee"
+        ],
+        [
+          "dist/cjs/api/index.mjs",
+          568,
+          "600ba2de0ee0c1592a4b2306daf4a9db960c588c5562e68bc2b77fa7d2f5414c"
+        ],
+        [
+          "dist/cjs/index.cjs",
+          545,
+          "49069c795ff40f563ab0b1f3d32336e58f61f8d5dc7dece0173097eb0b4067ad"
+        ],
+        [
+          "dist/cjs/index.mjs",
+          464,
+          "ae97ad3e7f4a51370750712a5a4f940c21bac6c369fc3cd30d2472c7b339f76c"
+        ],
+        [
+          "dist/cli.cjs",
+          120491,
+          "cafff497ea8f0a25ab33acb1e7561328ab12c0664c2673ec489c6a2cd3b571a3"
+        ],
+        [
+          "dist/cli.mjs",
+          120402,
+          "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+        ],
+        [
+          "dist/client-D3mGB526.cjs",
+          626,
+          "f39baa1746411223094df90350710061f9986e07396dd311e3a74ed3df1b63e7"
+        ],
+        [
+          "dist/client-D_mPDF5S.mjs",
+          582,
+          "3a59578e44917527095c006ecd29b6e61fe5bbf05d5bc809cc7cc6112beedbbd"
+        ],
+        [
+          "dist/esm/api/index.cjs",
+          1303,
+          "1e4e4b2dbb41d31b58b748d64c6b6f137f86b8113a010e99e13d92a7e260490d"
+        ],
+        [
+          "dist/esm/api/index.d.cts",
+          1152,
+          "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c"
+        ],
+        [
+          "dist/esm/api/index.d.mts",
+          1152,
+          "eb9096c517da313cbedce8818d9cadb82bbf02cd6f4a65db4cee42ac01f4272c"
+        ],
+        [
+          "dist/esm/api/index.mjs",
+          1148,
+          "6108c0ae308c9399e240e9d6cb43d2a291f4a55418c982f3ae017f9357a86053"
+        ],
+        [
+          "dist/esm/index.cjs",
+          1316,
+          "db3b7f0d773da7dc057826c14c2144f8e7642216478239fa0906ff5ed8813e3d"
+        ],
+        [
+          "dist/esm/index.mjs",
+          806,
+          "1c7ca3706f7cad59a29568f46592263c17dc0c462d3ded7866e5eddeebaff78e"
+        ],
+        [
+          "dist/get-pipe-path-D4YM6rQt.cjs",
+          435,
+          "4676e923789ccd968968161547bcac8fb8337b76c0d033f6049332d0ac4025ec"
+        ],
+        [
+          "dist/get-pipe-path-_tAJyU_v.mjs",
+          368,
+          "559be651995cc7188166ca09af99ea08b9b1453767e42fff203b53fa1a403217"
+        ],
+        [
+          "dist/index-BWFBUo6r.cjs",
+          1181,
+          "fe29b97b254312970fceb8995a519abc8751f26972c221281959a7d77858a464"
+        ],
+        [
+          "dist/index-D9F1FXzN.cjs",
+          54685,
+          "25149b5ccbb804aba96f2bacb4cf49f6657f606d37d559ed9ca0e2087362aba5"
+        ],
+        [
+          "dist/index-XurvG3JN.mjs",
+          54496,
+          "128dc5756da9bec342781ee30127611c958f921e15016b06dd866de28d906245"
+        ],
+        [
+          "dist/index-gbaejti9.mjs",
+          1058,
+          "76febbe946957c96066d1d59293c4a26fc874c05876394cf4c178e4f4d0b6ba8"
+        ],
+        [
+          "dist/lexer-DQCqS3nf.mjs",
+          13456,
+          "6b77bebaee2dd7741177e287a78ef4329d9ef91f6939d09cfcf0029b3859f883"
+        ],
+        [
+          "dist/lexer-DgIbo0BU.cjs",
+          13507,
+          "9b92935847bf0f6daade96b21c8271139ed8b48ef3fa59647af0ef1d36770db0"
+        ],
+        [
+          "dist/loader.cjs",
+          831,
+          "f1d1dba840cb20875fcd1fd0932c0e6053e124845b0f93c079be5139aae08683"
+        ],
+        [
+          "dist/loader.mjs",
+          713,
+          "7dcee7691241fdd4a59a52879597d22d603d770a764282724eaca7cab03b389f"
+        ],
+        [
+          "dist/node-features-B9BBLzwu.mjs",
+          635,
+          "f324cd636e296f32b792c57719c3eccb759504bd88cb19ec3618740e086df211"
+        ],
+        [
+          "dist/node-features-CQLdkVE6.cjs",
+          811,
+          "465bf87bb3a950640a443d3b3a395263043c7e7bf9fbaea4cd3111a50fc531a8"
+        ],
+        [
+          "dist/package-Bj47PlGH.mjs",
+          31,
+          "31b587813befa47ca880321f641a6eba6a0a2e0fcd94d966d39cab68b570ad7f"
+        ],
+        [
+          "dist/package-DMqO70yR.cjs",
+          47,
+          "9a5f5918de8055cf26c5df3fbdc61d3d2ead8303119a360a810a43d85ac6e6d6"
+        ],
+        [
+          "dist/patch-repl.cjs",
+          506,
+          "33f5f6755270054783f4c568d0d48d4a79fecde965ec6f91ca27f0f949ba6da6"
+        ],
+        [
+          "dist/patch-repl.mjs",
+          496,
+          "3850acac507aa554620693d272bed6b7ac1e1b8ab5af406581c632522ad8c872"
+        ],
+        [
+          "dist/preflight.cjs",
+          1008,
+          "5ef95c5c4b5875dbc270b9591676a2138e4df82bcebde945eebb1eadf721b192"
+        ],
+        [
+          "dist/preflight.mjs",
+          973,
+          "ed9364ea1eb3dfd8477ab92cd4add34b163355b65727ba21eae0de463fd33ece"
+        ],
+        [
+          "dist/register-BOkp8V6j.cjs",
+          38194,
+          "27207674d8a75f1332863ddbed1bfae0740861a092b92c418f7916b97a4129a1"
+        ],
+        [
+          "dist/register-BnTWPeIB.mjs",
+          37727,
+          "d00720a0c2a5d07998fc2ca4b9f6a62c8ba9091dd2c134eb659b2ef24cbb16cc"
+        ],
+        [
+          "dist/register-CKju0f8h.cjs",
+          18835,
+          "bb60bafe25b4a742066387dfcdf8a057a3783658a3e02cfe542713dc86037975"
+        ],
+        [
+          "dist/register-CqMfTiWi.mjs",
+          16990,
+          "983f77efe73f7cd4ec9479e3809606f1e2f54f5e94457171c93107bd97ad4936"
+        ],
+        [
+          "dist/repl.cjs",
+          798,
+          "bd40f96bdb621ee9a090ccb56ef42e63571a9ea0efe554a76693ebc98dafd50f"
+        ],
+        [
+          "dist/repl.mjs",
+          755,
+          "f35d60ad607c0cfb6b468b303e2c3efab55a0de2275251e880ecbbfbaafcb92d"
+        ],
+        [
+          "dist/require-CjvaJWEr.cjs",
+          524,
+          "933caf845ab6b9c6aa13b2a21dd08da71a3d45b5e4244d3f4bd47eceb808da3d"
+        ],
+        [
+          "dist/require-DzmC1hVr.mjs",
+          465,
+          "f4ad896f108a89d5a721609a3c40900f4c577c42274cbbdd3d156e5df6c300b1"
+        ],
+        [
+          "dist/suppress-warnings.cjs",
+          497,
+          "028063d20bd49083f03a0b1ed4f7a3d55fac1f64f5aca0e58e1ec61601f20ee7"
+        ],
+        [
+          "dist/suppress-warnings.mjs",
+          484,
+          "4c7d8eb24f7c16282453bc18d649c310028a63d3850e6590338932cdd896017f"
+        ],
+        [
+          "dist/temporary-directory-B83uKxJF.cjs",
+          166,
+          "da189099aba4a7aff1e0ca337cd71410a0f96abc66298403db041cb812cbd24c"
+        ],
+        [
+          "dist/temporary-directory-BDDVQOvU.mjs",
+          151,
+          "918e7718e0579ae7d800c3dc9fc6c27626102198463bbb4051e40b2dbcf932b5"
+        ],
+        [
+          "dist/types-Cxp8y2TL.d.ts",
+          135,
+          "f462b6fc33bc3f82d1551ac0678834dfff89192ce1e848eb0bb8ca5bfe8bc76f"
+        ],
+        [
+          "node_modules/.bin/esbuild",
+          1983,
+          "832e0406e3a0a9be9b5c385d5ae4506c031eff8b16edb4b8145a371d5e4be4e5"
+        ],
+        [
+          "node_modules/.bin/esbuild.CMD",
+          816,
+          "5a544772607d26f24d7a6c39e569d2d747e6e62c48750df879094b6c13607959"
+        ],
+        [
+          "node_modules/.bin/esbuild.ps1",
+          1739,
+          "6a94cc9d76b48c0200399892c0a1c8f0a893e9ecc5976325f22c4e5477644183"
+        ],
+        [
+          "package.json",
+          1600,
+          "b0d63b124b9b85b53d09cff256fa7832cb6a774f8b90ae1353e63df5275824b2"
+        ]
+      ]
+    },
+    {
+      "id": "esbuild-installed-package",
+      "actual": {
+        "files": 10,
+        "bytes": 149038,
+        "sha256": "3a91c31246e1cd399db3ac0ef60627b758f6973457dc923908001cc326a41161"
+      },
+      "rows": [
+        [
+          "LICENSE.md",
+          1069,
+          "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681"
+        ],
+        [
+          "README.md",
+          175,
+          "6d481cd60ec3c679e5e395f547ab4221147f35642894f6b95a8df38fd25c87bd"
+        ],
+        [
+          "bin/esbuild",
+          9350,
+          "fe9a7b65a540d8df1a0f59941d52e7c1260c36fed9a2af3dd966f15381b6eb76"
+        ],
+        [
+          "install.js",
+          11773,
+          "612294e278914443bdcf81cb17f54afec34dbdd2ebd999a6ee187912320cc315"
+        ],
+        [
+          "lib/main.d.ts",
+          23392,
+          "161c8e0690c46021506e32fda85956d785b70f309ae97011fd27374c065cac9b"
+        ],
+        [
+          "lib/main.js",
+          97214,
+          "8331fe1d8b3a07381f33cc425fcfaa94776e263113653f80ec3ba433e9657e73"
+        ],
+        [
+          "node_modules/.bin/esbuild",
+          1128,
+          "521a2ee623b83b415c3e838a4376489a6541dbadb770d9ab729b8e0c82a06ec7"
+        ],
+        [
+          "node_modules/.bin/esbuild.CMD",
+          176,
+          "f6033fc00ca5f6ba4a09a0c42e588e2a8276d1e4412dd18be1f7b7c69c30f3a5"
+        ],
+        [
+          "node_modules/.bin/esbuild.ps1",
+          781,
+          "89667fe75f31f1870e1b6bca9e95b0e73ce768787abb252a753d51ec266b44f2"
+        ],
+        [
+          "package.json",
+          3980,
+          "d55d1d19fcc5b6079e4a71dd4111340c79c682bc36835ac7058a0c364c7db58a"
+        ]
+      ]
+    },
+    {
+      "id": "esbuild-win32-x64",
+      "actual": {
+        "files": 3,
+        "bytes": 11671045,
+        "sha256": "a0963ef3a8b22a3cd9273bea498e29a9ef4881f2a4dc80e4fda5c15ab52ca045"
+      },
+      "rows": [
+        [
+          "README.md",
+          143,
+          "29cf512fa580b72392176bf694933ae0decaf18116fdeee917511b445411ce16"
+        ],
+        [
+          "esbuild.exe",
+          11670528,
+          "ec02ee9b14ab332416fedd10614dfb80eed5304d94f67745067c011934a8c3c3"
+        ],
+        [
+          "package.json",
+          374,
+          "4a63b84fa1059fef348e29e3a39c26168213bb7f0aa1ac0174e439cc1e62a9f8"
+        ]
+      ]
+    },
+    {
+      "id": "lightningcss-installed-package",
+      "actual": {
+        "files": 14,
+        "bytes": 510515,
+        "sha256": "0f26ab338f0cc2d22d04b1995eb5922beea43b045259a01b086ed210f6943850"
+      },
+      "rows": [
+        [
+          "LICENSE",
+          15648,
+          "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+        ],
+        [
+          "README.md",
+          6058,
+          "5c0c95d29d204230e9bdb1b998b6dc960f88524f4202e2375062b75bba2b957b"
+        ],
+        [
+          "node/ast.d.ts",
+          212319,
+          "3fd8a5aefd8c3feb3936ca66f5aa89dff7bf6e6537b4158dbd0f6e0d65ed3b9e"
+        ],
+        [
+          "node/ast.js.flow",
+          216648,
+          "e5989bbd0fc456a6e01f8b291f503121ca1cbea2abcca6c1a2130c2e69654183"
+        ],
+        [
+          "node/browserslistToTargets.js",
+          929,
+          "18b2c767c8623273e0c5ead5bb8e09f3f843d8401aaa6518dbdd20337849f37b"
+        ],
+        [
+          "node/composeVisitors.js",
+          11393,
+          "0d5aeaeaf42ccc6c64d10add07aa243102cdc8c6c25c3e2ebb1b01c46a1356f5"
+        ],
+        [
+          "node/flags.js",
+          666,
+          "646027f1c0977cf151916b221edf51c2b4287ff5b5028c60243f6b014e9a388d"
+        ],
+        [
+          "node/index.d.ts",
+          18604,
+          "41c41c6e90133bb2a14f7561f29944771886e5535945b2b372e2f6ed6987746e"
+        ],
+        [
+          "node/index.js",
+          1665,
+          "8b7f10ff14d65a382bd7041a747df4a0d4b7c4e22b2842bcaca2588cd86bb045"
+        ],
+        [
+          "node/index.js.flow",
+          20788,
+          "2d59ea45908b37ccc08aa36b9c4123788e7d9424e09949c9fb216d3ce8aa9e16"
+        ],
+        [
+          "node/index.mjs",
+          276,
+          "e1a8e4ea3242b6e95d13aeddb3ef95ff9d3282852e23257618f784566484e452"
+        ],
+        [
+          "node/targets.d.ts",
+          867,
+          "a18642ddf216f162052a16cba0944892c4c4c977d3306a87cb673d46abbb0cbf"
+        ],
+        [
+          "node/targets.js.flow",
+          819,
+          "2a8a5ce45165daf3ccc368e9c9bb48a6683fd15e4276b42998a625b26bd795e5"
+        ],
+        [
+          "package.json",
+          3835,
+          "1b7fbd47a660ecb37d1fa8304a14b726aa44a31bb3d3338f417593f6276b762f"
+        ]
+      ]
+    },
+    {
+      "id": "lightningcss-win32-x64",
+      "actual": {
+        "files": 4,
+        "bytes": 9514088,
+        "sha256": "4c2a040d50a5206802f7cacb0b23839642c221728a2fa1b80432291472710d8c"
+      },
+      "rows": [
+        [
+          "LICENSE",
+          15648,
+          "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+        ],
+        [
+          "README.md",
+          121,
+          "7a8ce7a98de104127a9414f2ad3d1c36e169609c8c85b0e9c232dc723178bd2c"
+        ],
+        [
+          "lightningcss.win32-x64-msvc.node",
+          9497600,
+          "83e7e838ef1bbf5454c651103574fec31a1cec0b453b999d1173365cbc6c7841"
+        ],
+        [
+          "package.json",
+          719,
+          "76456a8ca20848b96b5819f115368bebfbb941c51c860b62073e3e591c836b8b"
+        ]
+      ]
+    },
+    {
+      "id": "rolldown-installed-package",
+      "actual": {
+        "files": 48,
+        "bytes": 773777,
+        "sha256": "7f7621e5577a9df636bed3e1d07018d32bf509444838a97ae43c29efd441ca3f"
+      },
+      "rows": [
+        [
+          "LICENSE",
+          1302,
+          "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
+        ],
+        [
+          "README.md",
+          665,
+          "3d65150aadb440393668579bd47674f9c6d51f32d1f352510e0c1d6ddf549005"
+        ],
+        [
+          "bin/cli.mjs",
+          46,
+          "4f32d8fafabe786e739f8be56df684e56def00e63a32858ad9d5ede57406bc6c"
+        ],
+        [
+          "dist/cli.d.mts",
+          11,
+          "4f1bad288ada6326583a3e6a0a54d7627a03eac3b668adeea9dded12ac5656b8"
+        ],
+        [
+          "dist/cli.mjs",
+          39095,
+          "13d99db25244c63ecb3256add713543e9fdcb43bc724bf60fa36c42d33e090a2"
+        ],
+        [
+          "dist/config.d.mts",
+          549,
+          "49419557df5eb9d3e436c10e75bafa7a90bdb6c42468016859c9a3ae9cc9a17e"
+        ],
+        [
+          "dist/config.mjs",
+          267,
+          "7e862b77fa213efa4f15bc36c78661c59083658c0535b61db53b76d3717ffd93"
+        ],
+        [
+          "dist/experimental-index.d.mts",
+          11933,
+          "a69d310bf0ba37a6dbc23b358b9ba2010e466ce044c1395132e52906550074b9"
+        ],
+        [
+          "dist/experimental-index.mjs",
+          13174,
+          "9557686ceeed45f92d30be2d805b609ef9c2bc771a3bfd4a62dfce37f7aa7df7"
+        ],
+        [
+          "dist/experimental-runtime-types.d.ts",
+          2917,
+          "f294628e6f1c7984c17f84b294f33017fe9b45b4e48403d2f47bdbf64e872564"
+        ],
+        [
+          "dist/filter-index.d.mts",
+          6831,
+          "0260c87f5cc44550e83339f4f83f34d236f79eaa0a32489721a59730a2e6b952"
+        ],
+        [
+          "dist/filter-index.mjs",
+          11219,
+          "51721047fbb0fdc5a5c8973f18c5689464be6dbf0a2e935164d8890427009920"
+        ],
+        [
+          "dist/get-log-filter.d.mts",
+          257,
+          "943cf205423e82a72a73e448ecf7b9140389e06f6ad83092b785243743c6e348"
+        ],
+        [
+          "dist/get-log-filter.mjs",
+          2037,
+          "8d267b4293c32da393c1b189264ecce44a9f0ca767293de300904b006ad221f0"
+        ],
+        [
+          "dist/index.d.mts",
+          5154,
+          "966ec2dcbea20b6aeb909ef819593878ae40b2ccbdeba661a81055f419e628b4"
+        ],
+        [
+          "dist/index.mjs",
+          1535,
+          "f4ecdcf80d3270fa619def8d5cfe6410fb7862b847ff4fe1cd3338510ff7d966"
+        ],
+        [
+          "dist/parallel-plugin-worker.d.mts",
+          11,
+          "4f1bad288ada6326583a3e6a0a54d7627a03eac3b668adeea9dded12ac5656b8"
+        ],
+        [
+          "dist/parallel-plugin-worker.mjs",
+          1078,
+          "20858403fb96cfa276752c3db8cf566a5f5bdbc535c5499deea6d45152bb5db9"
+        ],
+        [
+          "dist/parallel-plugin.d.mts",
+          608,
+          "5b8671d71fab7d164feadaf4f6f0829bfb84d790e285e2bd7f3aa7e3a288a12c"
+        ],
+        [
+          "dist/parallel-plugin.mjs",
+          187,
+          "0fff1fcfb26076a52caf31772881e55e8dbd7f039f268124e438638e8d84e0c2"
+        ],
+        [
+          "dist/parse-ast-index.d.mts",
+          1089,
+          "da397e9f526593c882933a28a9309b418b95b66ec078a0e50432b278abb42664"
+        ],
+        [
+          "dist/parse-ast-index.mjs",
+          2148,
+          "14718f7d0b88cf61616809f8aadd15c767b080c75fd81e0bd605c1747c457231"
+        ],
+        [
+          "dist/plugins-index.d.mts",
+          977,
+          "60b25a2fb753b786f7b12994e137fa24a520469d31b56c7fe00fb32673840efc"
+        ],
+        [
+          "dist/plugins-index.mjs",
+          1082,
+          "0647bca57de6574afcfab7ad06ad8a1e8dc36c22eeac96021627ecdbbd3f6c10"
+        ],
+        [
+          "dist/shared/binding-CfwqjDbP.mjs",
+          29413,
+          "85158a655c37cfc853aa3375ee012a7c4fb7faa787bd4814cd1d86944c9232d9"
+        ],
+        [
+          "dist/shared/binding-DgGsNpT9.d.mts",
+          66294,
+          "9ca402c3d7fba76198ab019aff3167393bcaa423840d6cf6c68513b82dbbb33a"
+        ],
+        [
+          "dist/shared/bindingify-input-options-B7_WBoOp.mjs",
+          77051,
+          "c933e7872742c3d82332a2a02345f5cd87d1de9e15de40dd4a475d8dcce8eec1"
+        ],
+        [
+          "dist/shared/constructors-Bx1tSad6.d.mts",
+          3002,
+          "a8a2a5f37d11ced63cec37655d57505daccceb086463ac297c2db873c6eabd97"
+        ],
+        [
+          "dist/shared/constructors-DnT9y_13.mjs",
+          2909,
+          "de54a665a0a10483dc753129757dcf48c42eef64bd498bc07a28e88c1c302b8b"
+        ],
+        [
+          "dist/shared/define-config-ChOOV2QZ.d.mts",
+          142182,
+          "15e7e7310ae72d7c67a037b0532dd60df707c6848f325d2186172646b55a1f94"
+        ],
+        [
+          "dist/shared/define-config-Demdg3_4.mjs",
+          130,
+          "e887326cc80caa4248166a9ce863134fc4f7e1314ad9a3d7e380bd1a43f746ab"
+        ],
+        [
+          "dist/shared/error-C0TrL0_H.mjs",
+          2926,
+          "f02994a43f3b34d7f9ec130c64ac2afc2d01fcb9eed0699c32945af8c4ef4eb0"
+        ],
+        [
+          "dist/shared/get-log-filter-BpNVNJ5-.d.mts",
+          861,
+          "612574f9831f5cf185ce3db6a21741b100a63276caaa07527c7bd02f1959e2e4"
+        ],
+        [
+          "dist/shared/load-config-BDGEgD4M.mjs",
+          4229,
+          "5bf85229308183595eb827b599fd6f7ef06a9bafd497b1877c74df995e462d5d"
+        ],
+        [
+          "dist/shared/logging-BSNejiLS.d.mts",
+          1449,
+          "c73fdf42528325dd17940937ed787b15ae3445c6a2dae1a2b74bc4d87d337ca2"
+        ],
+        [
+          "dist/shared/logs-aMKUxRpj.mjs",
+          5826,
+          "c25fc16c6d826b417e3756bb8d6d01a93ccccfba2a4178f4d3cb9457e0962c4c"
+        ],
+        [
+          "dist/shared/misc-CoQm4NHO.mjs",
+          714,
+          "2d19de9fbda4fecd2f965a8ada67ab27f297f9234a9537cc480206f3dd0de6a1"
+        ],
+        [
+          "dist/shared/normalize-string-or-regex-DGbe3BlX.mjs",
+          2131,
+          "3a0cb9462daeedb8662bf8921306dc98146017dbde008dcfcaca1b1e0a59da30"
+        ],
+        [
+          "dist/shared/parse-yrGA-p2H.mjs",
+          2628,
+          "8d9c272a378bbba512fbeb3eb032db65dbdc7158883c84255d7671b7d208fec8"
+        ],
+        [
+          "dist/shared/prompt-DYnaB1Nb.mjs",
+          49757,
+          "96c80b72acf6f5309b8b800892fe3bd14167878f6495a536eb12c4a30e1ba6db"
+        ],
+        [
+          "dist/shared/resolve-tsconfig-D3YLh9ff.mjs",
+          4731,
+          "fd054315d6fae80d43d706ecbf8b6f200eda4c3c59b0ba13ccf257ee257a4d29"
+        ],
+        [
+          "dist/shared/rolldown-Bkyb2CgX.mjs",
+          986,
+          "19af09d826840ec6eee772121e61e775f387594746a675f82eb449f0e89c107e"
+        ],
+        [
+          "dist/shared/rolldown-build-abS241_6.mjs",
+          154166,
+          "69c1680184eb655269765b19e500505adcd7021dc9cf5212d461d106eda61f18"
+        ],
+        [
+          "dist/shared/transform-C-XSNVrd.d.mts",
+          5947,
+          "2c798d07ffa82e8417f4455469bbbb9c39691ee2d81cf06a3d43285000f64ff3"
+        ],
+        [
+          "dist/shared/watch-eT_pxdfY.mjs",
+          11934,
+          "02337201e2d29f004bfa1a952335db160eb23f1affaef3c4c8951072d3178cc4"
+        ],
+        [
+          "dist/utils-index.d.mts",
+          24299,
+          "b51d6a7558dc9c4e8bf68fe64f9a01933a2c5c5792c55e66922a03865fe3b1a8"
+        ],
+        [
+          "dist/utils-index.mjs",
+          70355,
+          "352270399b79387c46ba1cb287254511bbba25e5b44854aefea3187d1a62705e"
+        ],
+        [
+          "package.json",
+          5685,
+          "360850b91156f78e7bf9c1dc0ffe6ca7ce091f4c7f2f25ad630adecbb774ec98"
+        ]
+      ]
+    },
+    {
+      "id": "rolldown-win32-x64",
+      "actual": {
+        "files": 3,
+        "bytes": 31085946,
+        "sha256": "b8dfc6550ee47d94278114b42811f062719c93d9dc44e593ba96d6d016a578df"
+      },
+      "rows": [
+        [
+          "README.md",
+          108,
+          "327b514303b86e589a6d6bb831928bb9720678fb72648f81c8c2cdcb2f7a856f"
+        ],
+        [
+          "package.json",
+          782,
+          "f267b0debacb9a43aba234e1d54dccd33872233ef069c557a34476c459066a5e"
+        ],
+        [
+          "rolldown-binding.win32-x64-msvc.node",
+          31085056,
+          "9829ecf9ec567a303c4c58ef758762a951c15e8438b25c0d712e2e1f00f2ce9a"
+        ]
+      ]
+    }
+  ],
+  "config_data": {
+    "trees": [
+      {
+        "id": "lawbench-agent-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent",
+        "selector": "all",
+        "files": 4,
+        "bytes": 92013,
+        "sha256": "d210ac7044b6aaef65fdc01c9742431433974008605fb3af100ddf08099731d7"
+      },
+      {
+        "id": "lawbench-credentials-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\credentials",
+        "selector": "all",
+        "files": 4,
+        "bytes": 20408,
+        "sha256": "c4ca46f1ce6647c56c10f083332cfdd938907eaf22255e4673256637c07d095f"
+      },
+      {
+        "id": "lawbench-host-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host",
+        "selector": "all",
+        "files": 20,
+        "bytes": 188498,
+        "sha256": "54c836bfda442012238675ea3ca80949b8a8197d23633548e236345a14de1f63"
+      },
+      {
+        "id": "lawbench-session-store-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\session-store",
+        "selector": "all",
+        "files": 5,
+        "bytes": 70071,
+        "sha256": "51da6a3cd97a14233db41e52c1b00210d48eb4f63e626aa590200e629f8ee74e"
+      },
+      {
+        "id": "lawbench-shared-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared",
+        "selector": "all",
+        "files": 9,
+        "bytes": 34130,
+        "sha256": "a4182a25056dc5e91587966184b63a19305cb982a988c3bafa3b3c7bae22de2b"
+      },
+      {
+        "id": "lawbench-ui-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui",
+        "selector": "all",
+        "files": 92,
+        "bytes": 641236,
+        "sha256": "e8f1c5200721ae97c9d82f56e6c56c5f07727da62b4db18107375df564d6b6cc"
+      },
+      {
+        "id": "embedded-contract-schemas",
+        "root": "D:\\Lawbeach\\lawbench-A\\contracts",
+        "selector": "version-and-schema-json",
+        "files": 69,
+        "bytes": 251741,
+        "sha256": "a0da8077fcece9ada61c2efb09be5b340f67deaa55606252697134b7a3043800"
+      },
+      {
+        "id": "ui-conversation-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\src",
+        "selector": "all",
+        "files": 79,
+        "bytes": 592784,
+        "sha256": "0b4843e97e37caf9b453c469604966b304c899b52c7d72993f37d03daf224414"
+      },
+      {
+        "id": "session-controller-source",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src",
+        "selector": "all",
+        "files": 34,
+        "bytes": 340866,
+        "sha256": "52771d9796f48ceb872c6fe9f7ac5de42eec576feda4db7eba7fe7098a89d059"
+      },
+      {
+        "id": "typert-generator-runtime",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\generator\\lib\\types",
+        "selector": "all",
+        "files": 32,
+        "bytes": 559777,
+        "sha256": "3dfc33eea95b5edcccfcbe6c6f6255abdaeb046226f89563f65e702992d295b8"
+      },
+      {
+        "id": "tsdown-installed-package",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\tsdown@0.22.2_oxc-resolver@_f113eb69000457c8d5954142d0822f52\\node_modules\\tsdown",
+        "selector": "all",
+        "files": 49,
+        "bytes": 203850,
+        "sha256": "a9c4d06e0869eb22c8eb0c3be1315227d6525dd1d30da7c43e830a2ef6c66870"
+      },
+      {
+        "id": "tsx-installed-package",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\tsx@4.22.4\\node_modules\\tsx",
+        "selector": "all",
+        "files": 53,
+        "bytes": 522956,
+        "sha256": "52ecedb35b24ab7768b8b4e0c051c090e85a8d1f70b15eca02be497d5bdffb9b"
+      },
+      {
+        "id": "esbuild-installed-package",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\esbuild@0.28.1\\node_modules\\esbuild",
+        "selector": "all",
+        "files": 10,
+        "bytes": 149038,
+        "sha256": "3a91c31246e1cd399db3ac0ef60627b758f6973457dc923908001cc326a41161"
+      },
+      {
+        "id": "esbuild-win32-x64",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64",
+        "selector": "all",
+        "files": 3,
+        "bytes": 11671045,
+        "sha256": "a0963ef3a8b22a3cd9273bea498e29a9ef4881f2a4dc80e4fda5c15ab52ca045"
+      },
+      {
+        "id": "lightningcss-installed-package",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lightningcss@1.32.0\\node_modules\\lightningcss",
+        "selector": "all",
+        "files": 14,
+        "bytes": 510515,
+        "sha256": "0f26ab338f0cc2d22d04b1995eb5922beea43b045259a01b086ed210f6943850"
+      },
+      {
+        "id": "lightningcss-win32-x64",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lightningcss-win32-x64-msvc@1.32.0\\node_modules\\lightningcss-win32-x64-msvc",
+        "selector": "all",
+        "files": 4,
+        "bytes": 9514088,
+        "sha256": "4c2a040d50a5206802f7cacb0b23839642c221728a2fa1b80432291472710d8c"
+      },
+      {
+        "id": "rolldown-installed-package",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\rolldown@1.1.1\\node_modules\\rolldown",
+        "selector": "all",
+        "files": 48,
+        "bytes": 773777,
+        "sha256": "7f7621e5577a9df636bed3e1d07018d32bf509444838a97ae43c29efd441ca3f"
+      },
+      {
+        "id": "rolldown-win32-x64",
+        "root": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@rolldown+binding-win32-x64-msvc@1.1.1\\node_modules\\@rolldown\\binding-win32-x64-msvc",
+        "selector": "all",
+        "files": 3,
+        "bytes": 31085946,
+        "sha256": "b8dfc6550ee47d94278114b42811f062719c93d9dc44e593ba96d6d016a578df"
+      }
+    ],
+    "files": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+        "bytes": 25296,
+        "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae",
+        "mtime_ns": "1793442905913018000"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+        "bytes": 59185,
+        "sha256": "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93",
+        "mtime_ns": "1793459070523199900"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\build.mjs",
+        "sha256": "34e0f5d6136d203f56816bf181d359ce7941bc7e09048fce2ec62cc145646b33"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\scripts\\contracts-source.mjs",
+        "sha256": "6460a6963458f9a74e18e15f26aeaa292bf9a00222bc45eea8c71d8d9c4e5baf"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\package.json",
+        "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tsconfig.json",
+        "sha256": "db6444cb6b3fef772b06b324cebb36610a4e418445bf40981001bb0c1ada560b"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\pnpm-lock.yaml",
+        "sha256": "725fd6cb47b936ae30aae013826b2315a45b3d968ae75a9d053d60702626e371"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\cordis.patch.yml",
+        "sha256": "e8c84bdfa142be2032f31b3e33040721efad0f2b1593b5a6a5b79bb01e91fcb4"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md",
+        "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\package.json",
+        "sha256": "eb332130b7347793c65c6e72af2afb8543e767d86857400dbb23ff0c46d527b4"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\pnpm-lock.yaml",
+        "sha256": "60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.json",
+        "sha256": "2526f3bfc40abc15e30e9b6a94386ba234686028cafb3fbcbd215eb842325e2e"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsconfig.base.client.json",
+        "sha256": "117086f80fc5558dd6d01d24cd7dfe7b495df8757dff402021218fa64605961e"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\tsdown.config.ts",
+        "sha256": "af5cf6832716fce53f1443b9daa1f4434a8dd5ac90d9f8bf59aaae937b1904a4"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\tsdown.config.ts",
+        "sha256": "b4f1307af10f4e9c6da83f84bef23fda9ea63c1847b906a472db20ae66f3d42d"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop-host\\package.json",
+        "sha256": "ff8440f98dcd25a9fd9beb02fd8b2549cc4db380f4b4e141ff7c09786d8c7c7d"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\tsdown.client.ts",
+        "sha256": "8afeabc31d95e2c0ff5735193273f4d67bb1ef81f1adf3f45eb5adbef9510b33"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\modules\\src\\client\\manifest.ts",
+        "sha256": "2e44bce01dc004fcb6a21b68445dfd3a8cb05fb2b715b1df8e75ed642609686e"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\web\\src\\platform.ts",
+        "sha256": "72e7a9bf2187a8a79c3871cddaa067afc25b5c2d28abb7373e6a8113122413ac"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\client-build-environment.ts",
+        "sha256": "064ee73384745e7b327c8465fb31b0b99cce5b3824363cdac9eb455ff17b4bb8"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\scripts\\bundle-input-isolation.ts",
+        "sha256": "8aefbe91d41896534b331934d3176ab91138efdf8ca6bfacfb769144f17e6d0d"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\package.json",
+        "sha256": "9e002e9f9c09ec329e82995cbf1fe47d64dd5f516c8912bc98f73db327f567d1"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsdown.config.ts",
+        "sha256": "4acc39edb5ad2c3185bd23829f44fabb261e0f9869d2e3467c2252540554921b"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsconfig.client.json",
+        "sha256": "685e91ab3bd0d295078dcbaf380592c41b0ecb54829888a0adb673c8784722a7"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\client\\ui-conversation\\tsconfig.host.json",
+        "sha256": "a7c5dc13e35d90765adb38462921e77231afbd849ae3182ed69514fd0b4d8873"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\package.json",
+        "sha256": "ef7d21eec0e9b35212cc773f984afd7e24daca7063de8fad69a287e661c55a81"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsdown.config.ts",
+        "sha256": "6a3e90c2069eb648d1d0173bb2caab3d531cfcf9760ab20da230bffb2089bc49"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsconfig.client.json",
+        "sha256": "528291c006fbedf632516b38af09217f68611ab74dc5a75bf8bf61f52f59aabf"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\tsconfig.host.json",
+        "sha256": "217832dd9347e63d00457214fab8bcefa07f63c5d91e92761b3570ca841cc32e"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\generator\\package.json",
+        "sha256": "4b67dbba685c48f9f1998f8a285480d12ac49db87cf925d8400e9a314bcfa0b6"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\typescript\\package.json",
+        "sha256": "9332e97c30d3e53ed54910b89207ed657fb444066484df6e5b6965bf130865e9"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\typescript\\lib\\typescript.js",
+        "sha256": "569177652966bd528c319171c7dd22860dbf72bde116cbc4f644f1d02bb12e39"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\esbuild@0.28.1\\node_modules\\esbuild\\package.json",
+        "sha256": "d55d1d19fcc5b6079e4a71dd4111340c79c682bc36835ac7058a0c364c7db58a"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\lightningcss\\package.json",
+        "sha256": "1b7fbd47a660ecb37d1fa8304a14b726aa44a31bb3d3338f417593f6276b762f"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\rolldown@1.1.1\\node_modules\\rolldown\\package.json",
+        "sha256": "360850b91156f78e7bf9c1dc0ffe6ca7ce091f4c7f2f25ad630adecbb774ec98"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@rolldown+binding-win32-x64-msvc@1.1.1\\node_modules\\@rolldown\\binding-win32-x64-msvc\\package.json",
+        "sha256": "f267b0debacb9a43aba234e1d54dccd33872233ef069c557a34476c459066a5e"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lightningcss-win32-x64-msvc@1.32.0\\node_modules\\lightningcss-win32-x64-msvc\\package.json",
+        "sha256": "76456a8ca20848b96b5819f115368bebfbb941c51c860b62073e3e591c836b8b"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\package.json",
+        "sha256": "4a63b84fa1059fef348e29e3a39c26168213bb7f0aa1ac0174e439cc1e62a9f8"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\resolve-from-dsh.mjs",
+        "sha256": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+        "sha256": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\dsh-home\\profiles\\desktop\\package.json",
+        "sha256": "bb7315c3844542261d160da20c0b9c963b5e56464cb81f546862fb2d46f43c3f"
+      }
+    ],
+    "refs": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\package.json",
+        "sha256": "8c88bf33f554e0ac41c28d0c6267ee919baa79630afc8819a2c57b2a2e2aa7d3"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\cordis.patch.yml",
+        "sha256": "7bb1e3fa7bb7bdb412487db11e1be48d025521130dd7104d5b9210ab3e3b025f"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\start.ps1",
+        "sha256": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\prepare.ps1",
+        "sha256": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\stop.ps1",
+        "sha256": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\PATCHES.md",
+        "sha256": "f488f59084d4402ede036f163e17ff1b1186b0e3541c5f76a8c0b4918e601a0a"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope.patch",
+        "sha256": "e76c9c520b567d7aef47a7ee16fcff403a35d5913e52219375126bbeef09991a"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-ordering.patch",
+        "sha256": "9187cbe653f8b86488c9a29c4813de391a71022f053337b25de2db7276bd0012"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-scope-test.patch",
+        "sha256": "6a9f60203b41fe454d881cc05704b4e57d9009da49e595d6e194cbc3f6c52da1"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-request-submission-failure-cleanup.patch",
+        "sha256": "28f174027664a20da6fa07370460ab17b3c94032426d4dd5d88ff1f0311cb169"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-native-claimed-request-idempotency.patch",
+        "sha256": "d3527b61841a596c66293f3ecbd42973ef4b74045eaa34779d3de11afbc7f862"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-session-control-stream-type-arguments.patch",
+        "sha256": "5a146f11b743f69c8b382b1d28420b55a13ba06e84f1fe6bec4d3f5f1324ce73"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-submission-admission-revalidation.patch",
+        "sha256": "6ba11ae09a9e7adec05831479a84541adac0e72297f1729415718d95ecfcdf1d"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-patches\\P-29-scoped-queued-delivery-policy.patch",
+        "sha256": "50bddd4121541d7d51aec5a91379b02d4545726134f46a670e90100f38e0af1b"
+      }
+    ],
+    "outputs": [
+      "manifest.json",
+      "profile-node_modules/lawbench-dsh/package.json",
+      "profile-node_modules/lawbench-dsh/cordis.patch.yml",
+      "profile-node_modules/lawbench-dsh/persona.md",
+      "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "profile-node_modules/lawbench-dsh/lib/client.js",
+      "profile-node_modules/lawbench-dsh/lib/credentials.js",
+      "profile-node_modules/lawbench-dsh/lib/host.js",
+      "profile-node_modules/lawbench-dsh/lib/index.js",
+      "profile-node_modules/lawbench-dsh/lib/session-store.js",
+      "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/package.json",
+      "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/index.js",
+      "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js",
+      "profile-node_modules/@deepseek-ai/dsh-client-ui-conversation/lib/client.js.map",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/package.json",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/index.js",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/client.js.map",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.js",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.d.ts",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.js",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.d.ts.map",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/types.js",
+      "profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/types/remote-events.js"
+    ],
+    "tsx": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\tsx@4.22.4\\node_modules\\tsx\\dist\\loader.mjs"
+  }
+}

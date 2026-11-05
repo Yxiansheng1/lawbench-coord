@@ -1,0 +1,26 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationQuestionOrderInput-20261029-192258\\0-index.ts",
+    "bytes": 46958,
+    "sha256": "442b67e8573f93647c1eac00e4ed810f3820bca7dcd8c4c515287aa94d81d3b1"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationQuestionOrderInput-20261029-192258\\1-task-state.ts",
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-question-gate-20261029-172117.spec.ts",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationQuestionOrderInput-20261029-192258\\2-defense-question-gate-20261029-172117.spec.ts",
+    "bytes": 20288,
+    "sha256": "7fff83589539e15b622218d34a3053d0c0bd7748d02d2cf12075a120d2dba1c8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationQuestionOrderInput-20261029-192258\\3-SKILL.md",
+    "bytes": 14163,
+    "sha256": "3a97dae221b074c79c35f5a99ee035de220ae04aba6489e273bee034f47a86d8"
+  }
+]

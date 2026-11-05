@@ -1,0 +1,123 @@
+{
+  "format": "lawbench-owner-stopped-T18-frozen-target-v1",
+  "at": "2026-11-02T01:55:03.216201+08:00",
+  "base_commit": "a23271abee333a9a256fd46a3141da16975c2380",
+  "base_commit_verified_readonly_git": true,
+  "commit_created": false,
+  "target": "base commit plus EXACT three current dirty-worktree file snapshots, not claim clean commit tree",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1",
+      "mtime_ns": "1793550228132006600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\grounding-review.ts",
+      "bytes": 37867,
+      "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8",
+      "mtime_ns": "1793555139498153300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 50993,
+      "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1",
+      "mtime_ns": "1793555139694751700"
+    }
+  ],
+  "dependency_pin_count": 464,
+  "unit_actual_root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726",
+  "results": {
+    "tests": 37,
+    "passed": 37,
+    "failed": 0,
+    "pending": 0,
+    "unit_exit": 0,
+    "types_exit": 0
+  },
+  "source_unchanged_during_actual_run": true,
+  "evidence": [
+    {
+      "origin": "D:\\Lawbeach\\lawbench-coord\\OWNER-T18-停止条件与收口-20261102-014226.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\00-OWNER-T18-停止条件与收口-20261102-014226.md",
+      "bytes": 3920,
+      "sha256": "d0448bcf6aa6fba5aecb91acd80d889335b275a53d90fb240f1c036a974fc92c"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-green-unit-current.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\01-T18-native-grounding-green-unit-current.json",
+      "bytes": 11843,
+      "sha256": "3af22f125389cd46e23d0796a3f27d5fa5e56b7ef55f6e89b799d6185be51d07"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-green-unit-admission-current.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\02-T18-native-grounding-green-unit-admission-current.json",
+      "bytes": 99490,
+      "sha256": "dc225032a6900af7c7d633fdc5cc284371430057431398a83deccccbffe49e53"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\results.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\03-results.json",
+      "bytes": 15030,
+      "sha256": "feb416fe7f81195e0079f0730f3a5187fa4b29573c139412e6751db514545650"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\unit-invocation.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\04-unit-invocation.json",
+      "bytes": 116169,
+      "sha256": "3f4657472aa205d92bd6b3b9f8105747b7b6a57859c79ac024649a3f90abf06e"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\unit-result.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\05-unit-result.json",
+      "bytes": 939,
+      "sha256": "9d66d1cda06691bc9a77a3637541b390a52d13d49f17e50acb56f129ceece91b"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\types-result.json",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\06-types-result.json",
+      "bytes": 499,
+      "sha256": "5d3beefdcc4707219b61f9d8c54a6da0544bea5211a83dc43942109b0bbe5b9a"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\unit.stdout.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\07-unit.stdout.txt",
+      "bytes": 168,
+      "sha256": "c5fb4a04656b2d196b73a1f944b31827c0567c6fa45cfcd87a42a9636a7558e1"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\unit.stderr.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\08-unit.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\types.stdout.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\09-types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726\\types.stderr.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\10-types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "origin": "D:\\Lawbeach\\lawbench-coord\\REVIEW-B-T18GroundingFinalReviewB-20261102-010118.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\11-REVIEW-B-T18GroundingFinalReviewB-20261102-010118.md",
+      "bytes": 5816,
+      "sha256": "06989b0ee1dd7b37d42c9c1771db08d2cbab48a320c4554c994c5172b4d4b2bd"
+    },
+    {
+      "origin": "D:\\Lawbeach\\lawbench-coord\\REVIEW-C-T18GroundingFinalReviewC-20261102-010118.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18-closure-frozen-20261102-015503\\12-REVIEW-C-T18GroundingFinalReviewC-20261102-010118.md",
+      "bytes": 4055,
+      "sha256": "07299218bed46efa86ea5eb1a6d3e5f6adf468871083aa7c27e0d3ada193bcbe"
+    }
+  ],
+  "logical_freeze_not_OS_ACL_change": true
+}

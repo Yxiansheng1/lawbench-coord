@@ -1,0 +1,19 @@
+--- BEFORE_FRAME_FIX/review-consumer.mjs
++++ CURRENT/review-consumer.mjs
+@@ -79,12 +79,15 @@
+   for (;;) {
+     const newlineIndex = text.indexOf("\n", lineStart);
+     const lineEnd = newlineIndex === -1 ? text.length : newlineIndex;
+-    const match = DISPLAY_MARKER_LINE.exec(text.slice(lineStart, lineEnd));
++    const line = text.slice(lineStart, lineEnd);
++    const match = DISPLAY_MARKER_LINE.exec(line);
+     if (match !== null) {
+       if (newlineIndex === -1) fail("inventory", "MARKER_NOT_TERMINATED");
+       const number = Number(match[1]);
+       if (!Number.isSafeInteger(number)) fail("inventory", "MARKER_NOT_POSITIVE");
+       markers.push({ number, start: lineStart });
++    } else if (line.startsWith("\u3010\u7B2C")) {
++      fail("inventory", "MARKER_FRAME_INVALID");
+     }
+     if (newlineIndex === -1) break;
+     lineStart = newlineIndex + 1;

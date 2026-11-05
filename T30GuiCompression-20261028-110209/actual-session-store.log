@@ -1,0 +1,4 @@
+{"ts":"2026-10-28T02:53:17.611Z","source":"session-store","level":"info","event":"session_store.started","case_roots":0,"allow_outside_case":false}
+{"ts":"2026-10-28T02:53:22.405Z","source":"session-store","level":"info","event":"session_store.case_roots_refreshed","count":1}
+{"ts":"2026-10-28T02:53:23.911Z","source":"session-store","level":"warn","event":"session_store.case_root_skipped","index":1,"code":"ERROR"}
+{"ts":"2026-10-28T02:54:18.422Z","source":"session-store","level":"warn","event":"session_store.case_root_skipped","index":1,"code":"ERROR"}

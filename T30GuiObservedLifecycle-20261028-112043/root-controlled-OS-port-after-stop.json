@@ -1,0 +1,78 @@
+{
+  "controlledOS": [
+    {
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birthTicks": "639287536906572576",
+      "pid": 5348,
+      "gone": true,
+      "role": "relay"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536911520961",
+      "pid": 43480,
+      "gone": true,
+      "role": "electron"
+    },
+    {
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birthTicks": "639287536867613646",
+      "pid": 43676,
+      "gone": true,
+      "role": "supervisor"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536913707613",
+      "pid": 41220,
+      "gone": true,
+      "role": "electron-child"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536913747685",
+      "pid": 35360,
+      "gone": true,
+      "role": "electron-child"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536913904651",
+      "pid": 39748,
+      "gone": true,
+      "role": "electron-child"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536916205294",
+      "pid": 9552,
+      "gone": true,
+      "role": "host"
+    },
+    {
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birthTicks": "639287536933609188",
+      "pid": 15172,
+      "gone": true,
+      "role": "native-service"
+    },
+    {
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\apps\\desktop\\node_modules\\electron\\dist\\electron.exe",
+      "birthTicks": "639287536932933878",
+      "pid": 44364,
+      "gone": true,
+      "role": "native-service"
+    }
+  ],
+  "listenCount": 0,
+  "finalMetadata": true,
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-110751",
+  "Packaging": "HOLD",
+  "nativePort": 55513,
+  "GUI_PASS": false,
+  "loopClosed": true,
+  "allControlledGone": true,
+  "pythonCleanupClaimed": false,
+  "portClosureMeasured": true,
+  "pythonForcedStop": false
+}

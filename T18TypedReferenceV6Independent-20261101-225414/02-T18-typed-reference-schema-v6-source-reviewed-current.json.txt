@@ -1,0 +1,133 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-typed-reference-schema-v6-source-reviewed-current.json
+SHA e0c27c2833f6bd2b0ea50db61032032b2ec0594e4a07aca92dbca2c222dbfbf7
+EXPLICITFOCUSEDLINES None; unchangedfunctions outside exactinverse/oldclosedproof, doNOTclaimfullconsumerreview
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_CUMULATIVE_V6_TYPED_GRAPH_SCHEMA_SOURCE_PLUS_AFFECTED_OFFLINE_NOT_SEMANTIC_PASS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\review-consumer.mjs",
+0008       "bytes": 56688,
+0009       "sha256": "1780ed662ce2dac7e8c4e7e7a00f441c205fe6a66aa0c6ffe43e64dd7d5a5b08",
+0010       "mtime_ns": "1793544582744400000"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\offline-controls.mjs",
+0014       "bytes": 50329,
+0015       "sha256": "83fcd21f27ba25b50b5f91ea603cfb86ac787b89c619f7cf17d9e7470d94a1d9",
+0016       "mtime_ns": "1793544656359539300"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\source-manifest.json",
+0026       "bytes": 699,
+0027       "sha256": "924ab1ebc4594e9594ddd3c66140317c364db95128a1260377d61bf084744825",
+0028       "mtime_ns": "1793544685837647400"
+0029     },
+0030     {
+0031       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\stage1-assessments.json",
+0032       "bytes": 10015,
+0033       "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0034       "mtime_ns": "1793538024944549000"
+0035     }
+0036   ],
+0037   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-typed-reference-schema-v6-passive-current.json",
+0038   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0039   "cache_byteheld": true,
+0040   "whole_inverse": {
+0041     "held_functions": [
+0042       "fail",
+0043       "isPlainObject",
+0044       "scanDisplayMarkers",
+0045       "buildVisibleUnits",
+0046       "isFragmentDelimiter",
+0047       "splitLosslessAtDelimiterRuns",
+0048       "paddedId",
+0049       "targetKind",
+0050       "buildCanonicalTargetIndex",
+0051       "validateExpectedTargetIds",
+0052       "addTargets",
+0053       "buildOriginalParentSpans",
+0054       "buildSpanFamily",
+0055       "buildFragmentInventory",
+0056       "assertTargetCountWithinPilotCap",
+0057       "buildReviewShards",
+0058       "joinAssessmentsToUnits",
+0059       "selectPilotInput",
+0060       "buildStage1Envelope",
+0061       "buildStage1Messages",
+0062       "buildAuthorizationHeader",
+0063       "requestTimeoutForDeadline",
+0064       "unwrapChatCompletion",
+0065       "parseModelJson",
+0066       "exactKeys",
+0067       "nonemptyString",
+0068       "validateStage1Result",
+0069       "parsePinnedStage1Assessments",
+0070       "validateSourceManifestShape",
+0071       "validateStage2Result",
+0072       "mergeShardReviews",
+0073       "redactCredential",
+0074       "serializeForArtifact",
+0075       "sha256",
+0076       "digest",
+0077       "outputStatusForReviews",
+0078       "parseArguments",
+0079       "verifyPinnedSources",
+0080       "prepareOutputRoot",
+0081       "descendantPath",
+0082       "writeArtifact",
+0083       "readCredentialFromStdin",
+0084       "safeErrorProperty",
+0085       "staticTransportCode",
+0086       "transportDiagnosticForError",
+0087       "performRequest",
+0088       "writeFailure",
+0089       "isMainModule"
+0090     ],
+0091     "changed_old_functions": [
+0092       "buildRequestPayload",
+0093       "allowedRefKinds",
+0094       "runMain"
+0095     ],
+0096     "added_functions": [
+0097       "buildStage2ResponseFormat",
+0098       "buildStage2ReviewRecordSchema"
+0099     ],
+0100     "tail_HTTPcontrols_byteheld": true,
+0101     "data_cache_byteheld": true,
+0102     "sourceauthor_extra_readbacks_qualified": "Three Select-String ownsource/control readbacks outsidefirstreadorder; no runtime; exactall16nativecommands0/no parser/model/Key. Manifest .NETdirectwriteextraexplicitwriteface reviewed.",
+0103     "Packaging": "HOLD"
+0104   },
+0105   "pending_independent_reviews": true,
+0106   "actual_target_counts": {
+0107     "F": 117,
+0108     "C": 134,
+0109     "Q": 114,
+0110     "total": 365
+0111   },
+0112   "shards": [
+0113     183,
+0114     182
+0115   ],
+0116   "request_bytes": [
+0117     141459,
+0118     143303
+0119   ],
+0120   "qualifications": [
+0121     "Rootfullnewconsumer/controlsdelta/sourceformal/allcommands/writefaces/explicit.NETmanifestwrite reviewed.48oldfunctionsbyteheld; validateStage2ResultexactexceptcalledallowedRefKindsnowtightened F->Conly/C->Fonly/Q->F,C. PromptONLYgenerictypedmapline, 2newpureschemahelpers, payloadoptionalarg, mainwiring. AllHTTPtransport/credential/setup/cleanup/artifacts/PS/olddata/cache byteheld.",
+0122     "Author16nativecommands16zero/runtime0observed; threeSelectStringownsource/controlreadbacksoutsideinitialorderqualified, nottests/parser/model. Patch6events+manifest.NETwriteface actualrawauthoritative. No authorNode/Python/HTTP/Key observed.",
+0123     "Affectedguardedoffline1.547s0/5pinsheld/guard0/onecompleteNodeOSgone/Key0/model0; originalallprotocol+V5httpmemorytailheld/newtypednegatives/newschemaobjectcontrols actuallyran. Actualcorpus365/cache62/shards183+182/formattedpayload141459/143303B. No semantic guarantee fromstaticshape/offline.",
+0124     "Schema only existingfieldenum/refdirection/nonemptypositiverefs/required/maxbounds. PARTIALstillmayempty; no changedmissing/dupe/refs/localUTF16/unknown/assertionwaiver. SchemaUnicodepointlength/providergrammaruniqueness notassumed authoritative; originallocalvalidator+Rootmanualstillrequired.",
+0125     "PublicvLLM0.29docs standardresponse_format json_schema documented, matchingactualpriorfingerprint but currentbackendfeaturecompatibilityNOTPROVEN. No serverflag/restart/install/SDKfallback/healthprobe/globalpolicy; HTTP400/protocolfailurestop. Same2max/400sremaining900/49152/temp0.6/streamfalse.",
+0126     "PriorV5 C_AMENDpreexistingfrozenguardlimits retained inroot-review-adjudication-current.json; NOToverallsecurityPASS. NoUDP/customlookupcallerintroduced. DoNOTmodify/re-auditfrozenunchangedguard. RootV6outerwholeinverseONLYaliases/purpose; PSsameV5/V4/V2. NewfocusedcurrentC reviewsinverse, notfullplatformclaim.",
+0127     "No casekeywords/Rootmanualcriteria inmodel/schema/sourceauthorinputs. FixedSYNTHETIConly; no product/NativeSession/R/history/integration/business/legal/releasePASS. AlloldV5rawred/partial183/manual/sealed39retained, no unchangedretry."
+0128   ],
+0129   "Packaging": "HOLD"
+0130 }

@@ -1,0 +1,46 @@
+{
+  "verdict": "SENTENCE_NINTH_GATE_SOURCE_ACCEPTED_PENDING_UNIT",
+  "at_utc": "2026-10-29T14:05:55.874104+00:00",
+  "accepted": true,
+  "actual_thread": "01a187f4-c17f-76d3-8a0e-6e761cf5638b",
+  "commands": 37,
+  "success": 34,
+  "nonzero": 3,
+  "author_runtime": 0,
+  "full500line_test_and_all_product_delta_reviewed": true,
+  "all37_commands_writefaces_README_formal_reviewed": true,
+  "source_byte_frozen": {
+    "dsh-ext/agent/index.ts": "140584362c259b6f2909f32f6c8489f47e447ceb2106db1475b76e3971c909ab",
+    "dsh-ext/agent/task-state.ts": "866a15366ba37b44f1c611c5b4ba48b51cf995f89b4931aaaf38e5bc1cb8cd99"
+  },
+  "new_test_sha256": "90a9682fd9c7344c984027624884e0c26ddcd28b87b1df2e3f3fd41e1668635e",
+  "two_preCore_boundaries_and_actual_valid_list_only": true,
+  "existing_final_question_lifecycle_unchanged": true,
+  "old_task_result_cannot_unlock_new_state": true,
+  "other_eight_NONE_and_budget_semantics_held": true,
+  "all_other_dirty_files_held": true,
+  "source_scope_deviations": [
+    "Broad rg through historical evidence/Skill test directories; no output adopted as new runtime fact; new test has no canonical golden dates.",
+    "Readonly missing manual-source.md retained; root provided manual JSON instead."
+  ],
+  "nonzero_breakdown": {
+    "readonly_Git_permission": 1,
+    "Bash_preexec_denial": 1,
+    "readonly_missing_path": 1
+  },
+  "cumulative_commands": 7616,
+  "cumulative_success": 6584,
+  "cumulative_nonzero": 1032,
+  "historical_runtime_violating_jobs": 6,
+  "unit_runner": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-T18-sentence-workflow-unit-root.ps1",
+  "unit_runner_sha256": "7d309f51bf134f70e3f5b4082ac0aa6791d0f8ae1fb9fdf3bcd3a0c4b6ee5e02",
+  "unit_scope": [
+    "tests/sentence-workflow-gate-20261029-215838.spec.ts",
+    "tests/litigation-question-order-20261029-192258.spec.ts",
+    "tests/contract-question-gate.spec.ts",
+    "tests/contract-question-gate-runtime.spec.ts",
+    "tests/task-state.spec.ts"
+  ],
+  "model_or_actual_NATIVE_PASS": false,
+  "Packaging": "HOLD"
+}

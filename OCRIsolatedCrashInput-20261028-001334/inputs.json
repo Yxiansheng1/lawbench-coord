@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\app.py",
+    "bytes": 17514,
+    "sha256": "011cf2e510d1ed03fe8dc8b14cc10feef5aa012e1a22e119a819fb6f8fecc5f1",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\0-app.py"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\backends.py",
+    "bytes": 10931,
+    "sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\1-backends.py"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\dewatermark.py",
+    "bytes": 5347,
+    "sha256": "1defd385791fbec594e9b09a9dcd6b6ec06ee0c019554dbc85185398b904748a",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\2-dewatermark.py"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\deploy\\install.ps1",
+    "bytes": 8623,
+    "sha256": "588860a0c7751e768c9dfeb4130f8e5bd7e6586888a6c86811251b2a52b5899d",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\3-install.ps1"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\deploy\\README.md",
+    "bytes": 7773,
+    "sha256": "aed79524e44f333ff17a5fa3d9299f99b6e8d733406065bf44ac6fd9843923b2",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\4-README.md"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-C\\prep395\\deploy\\操作单-换Xiaomi-OCR-0.md",
+    "bytes": 9323,
+    "sha256": "88ed242290634d31e9adf359d6e9196adcf69ff1f8c1de71b6bd5c8c2d0fd30b",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\5-操作单-换Xiaomi-OCR-0.md"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\ocr\\render.py",
+    "bytes": 2892,
+    "sha256": "600fbb3c368c6a0dbc71fd173c94ba5455af8518717284b852ccee8b72849ae3",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\OCRIsolatedCrashInput-20261028-001334\\6-render.py"
+  }
+]

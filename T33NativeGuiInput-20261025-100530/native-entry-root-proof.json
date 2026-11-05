@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-25T10:03:13.616434+08:00",
+  "verdict": "PASS_HOST_COMPATIBLE_NATIVE_ENTRY_FINITE_SLICE_ONLY",
+  "actual_model": "deepseek-v4.1-flash-1017",
+  "actual_effort": "max",
+  "thread": "01a170be-9950-7a50-a6fb-6da6f8ec75c9",
+  "commands": 65,
+  "successful": 57,
+  "script_lines": 1310,
+  "script_sha256": "93d957dc9a6d7c8ba0150fdf921de94f1854ae719a4fdd3d225c2f4725061139",
+  "run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\HostEntry-20261025-094816\\runs\\T33-host-20261025-095824",
+  "source_simulated_not_real_host": true,
+  "requests": 7,
+  "statuses": [
+    200,
+    401,
+    200,
+    200,
+    200,
+    403,
+    200
+  ],
+  "target": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T33\\HostEntry-20261025-094816\\runs\\T33-host-20261025-095824\\case\\02案件材料\\粘贴图片\\粘贴-20261025095923-a28b00d0-5b67-4d51-a130-b94f247d9545.jpg",
+  "target_bytes": 47379,
+  "target_sha256": "feeb9faf008bffb8bdea5977d7ffd269de1177d81b160e1883ba456f186059ad",
+  "simulated_source_preserved": true,
+  "cleanup": {
+    "pidPresent": false,
+    "listenCount": 0
+  },
+  "GUI_Host_RPC_clipboard_not_yet_verified": true
+}

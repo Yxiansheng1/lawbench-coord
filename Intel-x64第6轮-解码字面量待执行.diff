@@ -1,0 +1,11 @@
+--- a/packaging/mac/build.sh
++++ b/packaging/mac/build.sh
+@@ -431,7 +431,7 @@
+ 
+ def command(args):
+     result = subprocess.run(args, capture_output=True, timeout=30, check=True)
+-    return result.stdout.decode('utf-8', errors='backslashreplace').strip()
++    return result.stdout.decode('utf-8', 'replace').strip()
+ 
+ 
+ def classify(path):

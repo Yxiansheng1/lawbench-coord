@@ -1,0 +1,150 @@
+import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+import vm from 'node:vm'
+
+const OLD_OBSERVER = 'D:\\Lawbeach\\lawbench-coord\\T34ProjectionFramesInput-20261030-063418\\projection-observer.mjs.before'
+const CURRENT_OBSERVER = 'D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\projection-observer.mjs'
+const START = 'function moduleFrames(stack) {'
+const END = '\nfunction safeError('
+const MODULES = new Set([
+  '@deepseek-ai/dsh-config-editor/lib/index.js',
+  '@deepseek-ai/dsh-settings/lib/index.js',
+  '@deepseek-ai/dsh-api-settings-controller/lib/index.js',
+])
+
+function loadModuleFrames(filePath) {
+  const source = readFileSync(filePath, 'utf8')
+  const start = source.indexOf(START)
+  assert.notEqual(start, -1, `moduleFrames missing from ${filePath}`)
+  assert.equal(source.indexOf(START, start + START.length), -1)
+  const end = source.indexOf(END, start + START.length)
+  assert.notEqual(end, -1, `safeError boundary missing from ${filePath}`)
+  const functionSource = source.slice(start, end).trimEnd()
+  const classify = vm.runInNewContext(`(${functionSource})`, Object.create(null))
+  return (stack) => JSON.parse(JSON.stringify(classify(stack)))
+}
+
+function assertSafeFrames(frames, forbidden = []) {
+  assert.ok(Array.isArray(frames))
+  assert.ok(frames.length <= 4)
+  for (const frame of frames) {
+    assert.deepEqual(Object.keys(frame).sort(), ['column', 'line', 'module'])
+    assert.ok(MODULES.has(frame.module))
+    assert.ok(Number.isSafeInteger(frame.line) && frame.line > 0)
+    assert.ok(Number.isSafeInteger(frame.column) && frame.column > 0)
+  }
+  const text = JSON.stringify(frames)
+  for (const marker of ['D:', 'file:', 'C:/private', ...forbidden]) {
+    assert.equal(text.includes(marker), false, `unsafe output marker: ${marker}`)
+  }
+}
+
+const oldModuleFrames = loadModuleFrames(OLD_OBSERVER)
+const newModuleFrames = loadModuleFrames(CURRENT_OBSERVER)
+
+const configPhysical = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\boot\config-editor\lib\index.js`
+const settingsPhysical = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\settings\settings\lib\index.js`
+const controllerPhysical = String.raw`D:\Lawbeach\lawbench-A\dsh\packages\api\settings-controller\lib\index.js`
+
+const physicalStack = [
+  'Error: projection failure',
+  `    at edit (${configPhysical}:101:22)`,
+  `    at mutate (${settingsPhysical}:202:11)`,
+  `    at apply (${controllerPhysical}:303:9)`,
+].join('\n')
+const physicalExpected = [
+  { module: '@deepseek-ai/dsh-config-editor/lib/index.js', line: 101, column: 22 },
+  { module: '@deepseek-ai/dsh-settings/lib/index.js', line: 202, column: 11 },
+  { module: '@deepseek-ai/dsh-api-settings-controller/lib/index.js', line: 303, column: 9 },
+]
+assert.deepEqual(oldModuleFrames(physicalStack), [], 'old classifier must miss approved physical paths')
+assert.deepEqual(newModuleFrames(physicalStack), physicalExpected)
+assertSafeFrames(newModuleFrames(physicalStack))
+
+const fileUrlStack = [
+  '    at file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/config-editor/lib/index.js:111:3',
+  '    at file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/lib/index.js:222:4',
+  '    at file:///D:/Lawbeach/lawbench-A/dsh/packages/api/settings-controller/lib/index.js:333:5',
+].join('\n')
+assert.deepEqual(oldModuleFrames(fileUrlStack), [], 'old classifier must miss approved file URLs')
+assert.deepEqual(newModuleFrames(fileUrlStack), [
+  { module: '@deepseek-ai/dsh-config-editor/lib/index.js', line: 111, column: 3 },
+  { module: '@deepseek-ai/dsh-settings/lib/index.js', line: 222, column: 4 },
+  { module: '@deepseek-ai/dsh-api-settings-controller/lib/index.js', line: 333, column: 5 },
+])
+assertSafeFrames(newModuleFrames(fileUrlStack))
+
+const mixedSeparators = [
+  '    at edit (D:/Lawbeach/lawbench-A/dsh/packages/boot/config-editor/lib/index.js:121:7)',
+  `    at mutate (${settingsPhysical}:232:8)`,
+].join('\n')
+assert.deepEqual(newModuleFrames(mixedSeparators), [
+  { module: '@deepseek-ai/dsh-config-editor/lib/index.js', line: 121, column: 7 },
+  { module: '@deepseek-ai/dsh-settings/lib/index.js', line: 232, column: 8 },
+])
+
+const virtualStack = [
+  '    at edit (@deepseek-ai/dsh-config-editor/lib/index.js:131:1)',
+  '    at mutate (@deepseek-ai/dsh-settings/lib/index.js:242:2)',
+  '    at apply (@deepseek-ai/dsh-api-settings-controller/lib/index.js:353:3)',
+].join('\n')
+assert.deepEqual(newModuleFrames(virtualStack), [
+  { module: '@deepseek-ai/dsh-config-editor/lib/index.js', line: 131, column: 1 },
+  { module: '@deepseek-ai/dsh-settings/lib/index.js', line: 242, column: 2 },
+  { module: '@deepseek-ai/dsh-api-settings-controller/lib/index.js', line: 353, column: 3 },
+])
+assertSafeFrames(newModuleFrames(virtualStack))
+
+const dotLookalike = [
+  '    at edit (@deepseek-ai/dsh-config-editor/lib/indexXjs:141:1)',
+  '    at mutate (@deepseek-ai/dsh-settings/lib/indexXjs:252:2)',
+  '    at apply (@deepseek-ai/dsh-api-settings-controller/lib/indexXjs:363:3)',
+].join('\n')
+assert.ok(oldModuleFrames(dotLookalike).length > 0, 'old classifier must exhibit unescaped-dot red evidence')
+assert.deepEqual(newModuleFrames(dotLookalike), [])
+
+const privateSentinel = 'PRIVATE_SENTINEL_NEVER_EMIT'
+const negativeStack = [
+  String.raw`    at ${privateSentinel} (C:\private\${configPhysical}:10:2)`,
+  String.raw`    at ${privateSentinel} (${configPhysical}-private:11:3)`,
+  String.raw`    at ${privateSentinel} (${configPhysical}:12:4-private)`,
+  String.raw`    at ${privateSentinel} (C:\private\file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/lib/index.js:13:5)`,
+  String.raw`    at ${privateSentinel} (D:\Lawbeach\lawbench-A\dsh\packages\boot\other\lib\index.js:14:6)`,
+].join('\n')
+assert.deepEqual(newModuleFrames(negativeStack), [])
+assertSafeFrames(newModuleFrames(negativeStack), [privateSentinel, '-private'])
+
+const duplicateStack = [
+  `    at edit (${configPhysical}:151:1)`,
+  `    at async edit (${configPhysical}:151:1)`,
+  `    at callback (${configPhysical}:151:1)`,
+].join('\n')
+assert.deepEqual(newModuleFrames(duplicateStack), [
+  { module: '@deepseek-ai/dsh-config-editor/lib/index.js', line: 151, column: 1 },
+])
+
+const boundedStack = [
+  `    at edit (${configPhysical}:1:1)`,
+  '    at edit (file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/config-editor/lib/index.js:2:2)',
+  `    at mutate (${settingsPhysical}:3:3)`,
+  `    at apply (${controllerPhysical}:4:4)`,
+  '    at mutate (file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/lib/index.js:5:5)',
+  `    at edit (${configPhysical}:6:6)`,
+].join('\n')
+const bounded = newModuleFrames(boundedStack)
+assert.equal(bounded.length, 4)
+assertSafeFrames(bounded)
+
+for (const value of [undefined, null, {}, [], new String(physicalStack)]) {
+  assert.deepEqual(newModuleFrames(value), [])
+}
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  old_physical_frames: 0,
+  old_file_url_frames: 0,
+  old_dot_lookalike_red: true,
+  new_fixed_modules: MODULES.size,
+  max_frames: 4,
+  raw_paths_emitted: false,
+}))

@@ -1,0 +1,83 @@
+{
+  "at": "2026-10-28T21:43:33.6579754+08:00",
+  "new_test_scope": "LOCAL_AGENT_HOST_UNIT_AND_ACTUAL_TOOLRUNTIME_APPLY_PIPELINE; CoreClient in-memory substitute; no model or NativeR claim",
+  "GUI": false,
+  "source_changes": [],
+  "Packaging": "HOLD",
+  "results": [
+    {
+      "elapsed_s": 2.1788536,
+      "OS": [
+        {
+          "pid": 37960,
+          "ticks": "639287918080447226",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:28.0447226Z",
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "pid": 44812,
+          "ticks": "639287918080376928",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:28.0376928Z",
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "pid": 39060,
+          "ticks": "639287918077336822",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:27.7336822Z",
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "pid": 4904,
+          "ticks": "639287918080303599",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:28.0303599Z",
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "pid": 27088,
+          "ticks": "639287918080412384",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:28.0412384Z",
+          "exe": "E:\\node\\node.exe"
+        },
+        {
+          "pid": 18224,
+          "ticks": "639287918077400362",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:27.7400362Z",
+          "exe": "C:\\Windows\\system32\\conhost.exe"
+        }
+      ],
+      "forced": false,
+      "exit": 1,
+      "mode": "unit"
+    },
+    {
+      "elapsed_s": 3.7422713,
+      "OS": [
+        {
+          "pid": 38004,
+          "ticks": "639287918099224182",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:29.9224182Z",
+          "exe": "C:\\Windows\\system32\\conhost.exe"
+        },
+        {
+          "pid": 43104,
+          "ticks": "639287918099161257",
+          "gone": true,
+          "birthUTC": "2026-10-28T13:43:29.9161257Z",
+          "exe": "E:\\node\\node.exe"
+        }
+      ],
+      "forced": false,
+      "exit": 0,
+      "mode": "types"
+    }
+  ],
+  "model_calls": 0,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18DraftFeedbackUnit-root-20261028-214327"
+}

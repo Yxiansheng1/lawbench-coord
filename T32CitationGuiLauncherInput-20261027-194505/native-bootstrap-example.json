@@ -1,0 +1,134 @@
+{
+  "case_id": "88552933-da8a-4beb-b56e-56d46e042f35",
+  "citation": {
+    "loc": {
+      "from": 1,
+      "unit": "line"
+    },
+    "material_id": "M0001",
+    "material_version": "410a87a9c0853f886fe526ce940ba396d09929d1304b3f9c146f5612e7e1954f",
+    "name": "引用材料"
+  },
+  "citation_check": {
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "citations": 1,
+      "hints": 0,
+      "must_fix": 0
+    }
+  },
+  "coverage": {
+    "fully_read": [
+      "引用材料"
+    ],
+    "not_read": [],
+    "partially_read": [],
+    "total": 1,
+    "unreadable": []
+  },
+  "draft": {
+    "bytes": 115,
+    "relative_path": "工作区/任务/T-20261027193959-5de3/草稿/T32NativeCitation-v1.md",
+    "sha256": "7d508c8e29d2b6009be3c555ee45b099884065894567bd5b1c0a69232b01215d",
+    "text": "# T32 native document citation\n\n引用行：〔引用材料 第1行〕\n\n控制行：普通文字，没有出处。\n"
+  },
+  "finished_at": "2026-10-27T19:39:59.244+08:00",
+  "format": "T32-native-document-citation-bootstrap-v1",
+  "material": {
+    "bytes": 50,
+    "material_id": "M0001",
+    "name": "引用材料",
+    "origin": "ref",
+    "ref_id": "R01",
+    "sha256": "410a87a9c0853f886fe526ce940ba396d09929d1304b3f9c146f5612e7e1954f",
+    "type": "txt",
+    "unit": "line",
+    "unit_count": 1
+  },
+  "model_calls_zero": true,
+  "native_call_count": 6,
+  "native_calls": [
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 78,
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 46,
+      "method": "POST",
+      "path": "/api/materials/import",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 16,
+      "method": "POST",
+      "path": "/core/task/begin",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 14,
+      "method": "POST",
+      "path": "/core/tool",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 31,
+      "method": "POST",
+      "path": "/core/tool",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 15,
+      "method": "POST",
+      "path": "/core/task/end",
+      "status": 200
+    }
+  ],
+  "not_tcp_or_gui_proof": true,
+  "ocr_started": false,
+  "one_draft_only": true,
+  "read_record": {
+    "at": "2026-10-27T19:39:59+08:00",
+    "from": 1,
+    "material_id": "M0001",
+    "material_version": "410a87a9c0853f886fe526ce940ba396d09929d1304b3f9c146f5612e7e1954f",
+    "to": 1,
+    "unit": "line"
+  },
+  "read_response": {
+    "end": 1,
+    "has_more": false,
+    "material_id": "M0001",
+    "name": "引用材料",
+    "next_offset": null,
+    "next_start": null,
+    "start": 1,
+    "text": "【第1行】\nT32 合成引用原文，仅用于本地测试。",
+    "unit": "line"
+  },
+  "real_native_records_only": true,
+  "reference": {
+    "kind": "file",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativeDocumentCitationEntry-20261027-190830\\runs\\T32-citation-20261027-193956\\input\\ready\\引用材料.txt",
+    "ref_id": "R01",
+    "status": "ok"
+  },
+  "result_status": "cancelled",
+  "started_at": "2026-10-27T19:39:59.031+08:00",
+  "task_id": "T-20261027193959-5de3",
+  "task_state": "finished",
+  "transport": "ASGI-inprocess-no-socket",
+  "usage": {
+    "elapsed_s": 0,
+    "model_calls": 0,
+    "tool_calls": 2
+  }
+}

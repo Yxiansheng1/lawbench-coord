@@ -1,0 +1,43 @@
+[
+  {
+    "id": "item_28",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\server.py",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_39",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\summary-shape-20261027-170531.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T37-mixed-summary-shape-20261027-170531.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_48",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T37\\MixedMaterialsGui-20261027-164646\\summary-shape-20261027-170531.md",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T37-mixed-summary-shape-20261027-170531.md",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  }
+]

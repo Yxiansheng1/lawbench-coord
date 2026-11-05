@@ -1,0 +1,188 @@
+{
+  "at": "2026-10-28T01:18:12.281655+08:00",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\NativeRealNoKeyPreflight-root-20261028-011812",
+  "exit_code": 0,
+  "elapsed_s": 2.014999999999418,
+  "PID": 25916,
+  "natural_exit": true,
+  "forced_stop": false,
+  "identities": [
+    {
+      "pid": 25916,
+      "parent": 27996,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-27T17:18:12.2860100Z"
+    },
+    {
+      "pid": 41820,
+      "parent": 25916,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-27T17:18:12.3772680Z"
+    },
+    {
+      "pid": 28896,
+      "parent": 25916,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-27T17:18:12.4007700Z"
+    },
+    {
+      "pid": 35932,
+      "parent": 28896,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-27T17:18:12.5124550Z"
+    }
+  ],
+  "observations": [
+    [
+      {
+        "pid": 25916,
+        "parent": 27996,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-27T17:18:12.2860100Z"
+      },
+      {
+        "pid": 41820,
+        "parent": 25916,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-27T17:18:12.3772680Z"
+      },
+      {
+        "pid": 28896,
+        "parent": 25916,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-27T17:18:12.4007700Z"
+      }
+    ],
+    [
+      {
+        "pid": 25916,
+        "parent": 27996,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-27T17:18:12.2860100Z"
+      },
+      {
+        "pid": 41820,
+        "parent": 25916,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-27T17:18:12.3772680Z"
+      },
+      {
+        "pid": 28896,
+        "parent": 25916,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-27T17:18:12.4007700Z"
+      },
+      {
+        "pid": 35932,
+        "parent": 28896,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-27T17:18:12.5124550Z"
+      }
+    ]
+  ],
+  "OS_after": [],
+  "source_46_fixed_unchanged": true,
+  "consumer_sha256": "7909ea8f1e843538d20bce964d1036c17c930042b153cfaab3d0919072e5bc93",
+  "report": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-yWxUmf\\report.json",
+  "consumer_result": {
+    "format": "lawbench-native-real-conversation-v2",
+    "task": "A-native-real-conversation-20261028-000823",
+    "mode": "preflight-only",
+    "status": "CLEARSETUP_ONLY",
+    "authoredStatus": "AUTHORED_NOT_RUN",
+    "process": {
+      "executable": "E:\\node\\node.exe",
+      "pid": 28896,
+      "startedAtUtc": "2026-10-27T17:18:12.418Z",
+      "node": "v24.21.0",
+      "cwd": "D:\\Lawbeach\\lawbench-A\\dsh"
+    },
+    "fixture": {
+      "syntheticOnly": true,
+      "code": "LB-SYN-FORK-27",
+      "person": "林岚",
+      "amount": "2700",
+      "provider": "lawbench-6000d",
+      "model": "qwen38-27b",
+      "endpoint": "http://10.126.126.1:8000/v1",
+      "maxTokens": 256,
+      "compression": "none",
+      "tools": "empty registry"
+    },
+    "runRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-yWxUmf",
+    "admission": {
+      "initial": {
+        "manifestPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\fixed-inputs.json",
+        "manifestSha256": "ce6556a142705d454122d4a689dc1c7efa488b268f5d39058315d814e197a522",
+        "checkedAtUtc": "2026-10-27T17:18:12.625Z",
+        "entryCount": 46,
+        "originalSixCount": 6,
+        "runtimeModuleCount": 16
+      },
+      "final": {
+        "manifestPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\fixed-inputs.json",
+        "manifestSha256": "ce6556a142705d454122d4a689dc1c7efa488b268f5d39058315d814e197a522",
+        "checkedAtUtc": "2026-10-27T17:18:14.001Z",
+        "entryCount": 46,
+        "originalSixCount": 6,
+        "runtimeModuleCount": 16
+      }
+    },
+    "turns": [],
+    "network": [],
+    "networkSummary": {
+      "observations": 0,
+      "modelPostAttempts": 0,
+      "modelPostHttp200": 0,
+      "closedAttempts": 0
+    },
+    "nativeEvents": [],
+    "cleanup": {
+      "fiberDisposed": true,
+      "clientSessionsDisposed": true,
+      "fetchRestored": true,
+      "outputRedactionRestored": false,
+      "environmentRestored": true,
+      "keyCleared": true,
+      "failures": []
+    },
+    "claims": {
+      "fullT31": false,
+      "gui": false,
+      "compression": false,
+      "tools": false,
+      "packaging": false
+    },
+    "sourceSessionId": "session-756d680d-bda8-4cca-abc2-33ef8919f4df",
+    "preflight": {
+      "setupCompleted": true,
+      "productionSessionCreated": true,
+      "keyRead": false,
+      "promptsSubmitted": 0,
+      "modelNetworkAttempts": 0,
+      "fullConversationAssertionsEvaluated": false
+    },
+    "sourceAfterChild": {
+      "id": "session-756d680d-bda8-4cca-abc2-33ef8919f4df",
+      "header": {
+        "version": 4,
+        "id": "session-756d680d-bda8-4cca-abc2-33ef8919f4df",
+        "createdAt": 1793121493805,
+        "cwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-yWxUmf\\workspace",
+        "isSeeded": false
+      },
+      "inheritedEventCount": 0,
+      "events": []
+    }
+  },
+  "network_guard": {
+    "blocked_attempts": [],
+    "credential_reads": 0,
+    "mode": "actual_consumer_preflight_only"
+  },
+  "Key_reads": 0,
+  "HTTP_model_requests": 0,
+  "whole_native_conversation_PASS": false,
+  "GUI": false,
+  "verdict": "SETUP_ONLY_PASS_NOT_REAL_MODEL_OR_FORK"
+}

@@ -1,0 +1,45 @@
+{
+  "verdict": "STATIC_REJECTED_BEFORE_ANY_RUNTIME",
+  "accepted": false,
+  "actual_thread": "01a187ff-42ed-7d12-95cf-41f3f96a6631",
+  "commands": 49,
+  "success": 41,
+  "nonzero": 8,
+  "author_runtime": 0,
+  "full564line_MTS_diff_and494line_finite_READ": true,
+  "all49_commands_writefaces_README_formal_reviewed": true,
+  "confirmed_findings": [
+    {
+      "id": "CALLBACK_ORIGIN_COUNT",
+      "confirmed": true,
+      "proof": "Production LegalAgent.preTool rejects unknown IDs BEFORE ASK callback. Consumer invocationCount increments only user-questions/request. observeQuestionCallbacks still requires callbackAttempts=rejectedCalls+success. Controlled unknown-ID test artificially passes callbackAttempts2 for1realcallback; must separate production-denied attempts from syntheticcallback invocations and keep exact producer denial."
+    },
+    {
+      "id": "FIRST_SUCCESSFUL_SAVE_ORDER",
+      "confirmed": true,
+      "proof": "observeCalculationAndSaveTimeline only ensures first successful Core AFTER calc is save, but does not reject a successful save AFTERanswers and BEFOREcalc if another save follows calc. Existing main firstsave-after-calculation assertion must remain explicit for ALLsuccessfulSaves. Add this exact RED control."
+    },
+    {
+      "id": "UNIT_PRODUCER_DENIAL_LITERAL",
+      "confirmed": true,
+      "proof": "Finite invalidQuestionAskDenial uses invented ask_user_question 无效 text, while actual producer has exact long template. Use actual approved producer function/literal; source-only fixture cannot claim genuine producer coverage with invented denial."
+    }
+  ],
+  "manifest_wrong_old_own_paths_and_consumer_identity": true,
+  "manifest_order_expected_new_blueprint_except_MTS_self_identity": true,
+  "helper_actual_filename": "focused-finite-observer.mts",
+  "no_Node_or_model_executed": true,
+  "nonzero_breakdown": {
+    "Git_read_permission": 1,
+    "Bash_preexec_denials": 3,
+    "rg_no_match": 2,
+    "Git_no_index_diff_exit1": 1,
+    "PowerShell_quote_parse": 1
+  },
+  "cumulative_commands": 7687,
+  "cumulative_success": 6645,
+  "cumulative_nonzero": 1042,
+  "historical_runtime_violating_jobs": 6,
+  "old_failed_actual_unchanged": true,
+  "Packaging": "HOLD"
+}

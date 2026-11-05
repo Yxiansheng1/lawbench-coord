@@ -1,0 +1,73 @@
+{
+  "verdict": "EXACT_ORIGINAL_CLAUSE_HIERARCHY_RULE_SOURCE_AND_REQUIRED_CHECKS_ACCEPTED",
+  "skill": "D:\\Lawbeach\\lawbench-B\\skills\\doc-revise\\SKILL.md",
+  "bytes": 12189,
+  "sha256": "23b048df3ceeb8948e9a14dbc3c1e8031e98158908fb9421f30de5f875d1fccf",
+  "full_byte_inverse": true,
+  "added_lines": [
+    "- **条款与层级引用必须回原件核准**：修改涉及章、节、条、款、项等编号或层级时，回读原件核对具体编号及其上级层级；应指向原稿所描述的实际具体条款，不能只写其所属章、节等上位标题。审查意见中的编号只能作线索，也必须对原件复核；原件编号或层级不明确时，不猜补编号，在说明表里写明原件表述并请律师确认。",
+    "- 条款编号和层级已回原件核对；引用落在实际具体条款，未用上位标题替代，也未直接照抄审查意见编号；原件不明确的没有补造。"
+  ],
+  "B_tracked_checked": 3789,
+  "B_tracked_changed_only": [
+    "skills/doc-revise/SKILL.md"
+  ],
+  "writefaces": [
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\DocReviseClauseLevel-20261029-023750\\README.md",
+    "D:\\Lawbeach\\lawbench-B\\skills\\doc-revise\\SKILL.md",
+    "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-doc-revise-clause-level-20261029-023750.md"
+  ],
+  "checks": [
+    {
+      "command": [
+        "C:/Users/morel/AppData/Local/Programs/Python/Python312/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "D:\\Lawbeach\\lawbench-B\\skills\\_scripts\\build_skills.py",
+        "--root",
+        "D:\\Lawbeach\\lawbench-B\\skills",
+        "--check"
+      ],
+      "pid": 10200,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T18:40:54.293074+00:00",
+      "creation_filetime": "134376864542930742",
+      "elapsed_s": 0.23399999999674037,
+      "exit_code": 0,
+      "natural_exit": true,
+      "forced_stop": false,
+      "process_handle_signalled": true
+    },
+    {
+      "command": [
+        "C:/Users/morel/AppData/Local/Programs/Python/Python312/python.exe",
+        "-B",
+        "-X",
+        "utf8",
+        "-c",
+        "import sys,pathlib;sys.path.insert(0,'D:/Lawbeach/lawbench-B/contracts');import check_examples as c;sys.exit(1 if c.check_skills(pathlib.Path('D:/Lawbeach/lawbench-B/skills')) else 0)"
+      ],
+      "pid": 14732,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T18:40:54.525713+00:00",
+      "creation_filetime": "134376864545257127",
+      "elapsed_s": 0.3600000000005821,
+      "exit_code": 0,
+      "natural_exit": true,
+      "forced_stop": false,
+      "process_handle_signalled": true
+    }
+  ],
+  "checks_passed": true,
+  "old104_example_tests_reused_not_rerun": true,
+  "shared_rules_frontmatter_questions_unchanged": true,
+  "author_commands": 18,
+  "author_success": 17,
+  "author_nonzero": 1,
+  "author_runtime": 0,
+  "check_root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18DocReviseClauseChecks-root-20261029-024054",
+  "actual_model_started": false,
+  "old_failures_retained": true,
+  "Packaging": "HOLD"
+}

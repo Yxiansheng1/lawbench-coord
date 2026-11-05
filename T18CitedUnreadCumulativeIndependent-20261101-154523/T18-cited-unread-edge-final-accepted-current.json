@@ -1,0 +1,43 @@
+{
+  "verdict": "REAL_FS_NUMERIC_CITATION_LINE_PARA_PAGE_AND_AUTHORITATIVE_CARRY_ELEVEN_PASS_LIMITED",
+  "tests": 11,
+  "passed": 11,
+  "failed": 0,
+  "errors": 0,
+  "pytest_s": 6.054,
+  "controller_s": 8.297000000005937,
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadEdgeFinal-root-20261101-152042",
+  "source_pins_held": 509,
+  "source_changes": [],
+  "guard_denials": 0,
+  "forced": false,
+  "completeIdentities": [
+    {
+      "pid": 32008,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-11-01T07:20:48.787165+00:00",
+      "birth_filetime_ticks": "134379912487871652",
+      "running": true,
+      "exit_code": 259
+    },
+    {
+      "pid": 22736,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-11-01T07:20:48.994997+00:00",
+      "birth_filetime_ticks": "134379912489949972",
+      "running": true,
+      "exit_code": 259
+    }
+  ],
+  "independentCIMRows": [],
+  "matchingIdentityAlive": [],
+  "original6prefix_held": true,
+  "new5OLD_counterfactual": "4FAIL1PASS original save_draft function only; all current auth/scope/frozen guards held",
+  "initial_current_two_fixture_KeyErrors_preserved": true,
+  "NativeR_model_recovery_NOTYETPROVEN": true,
+  "cellProvenance": "OPEN",
+  "budgetcarryProof": "Original publicCore API syntheticusage fixture; not actual model budget or NativeR proof",
+  "business_quality": "FAILED_PARTIAL",
+  "cleanup_limits": "OriginalEnv.close ignores own rmtree failures; no blanket helperOS/fullmachine/client/Net/thread/traffic cleanup claim",
+  "Packaging": "HOLD"
+}

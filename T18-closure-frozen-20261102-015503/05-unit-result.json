@@ -1,0 +1,41 @@
+{
+  "mode": "unit",
+  "exit_code": 0,
+  "elapsed_s": 2.312999999994645,
+  "identities": [
+    {
+      "pid": 28680,
+      "parent": 39244,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-11-01T17:47:26.5727550Z"
+    },
+    {
+      "pid": 43696,
+      "parent": 28680,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-11-01T17:47:26.5924650Z"
+    },
+    {
+      "pid": 43896,
+      "parent": 28680,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-11-01T17:47:26.8705100Z"
+    },
+    {
+      "pid": 43852,
+      "parent": 28680,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-11-01T17:47:26.8799500Z"
+    },
+    {
+      "pid": 43860,
+      "parent": 28680,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-11-01T17:47:26.8844060Z"
+    }
+  ],
+  "partial_NOT_PROVEN": [],
+  "OS_after": [],
+  "forced": false,
+  "error": null
+}

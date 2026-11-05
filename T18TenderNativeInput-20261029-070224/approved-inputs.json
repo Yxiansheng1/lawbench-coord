@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\0-SKILL.md",
+    "bytes": 13036,
+    "sha256": "a7f19dc17bac500bb66e2dc7eb2bfe07653c6165d3c452e40b996649966ccdf6",
+    "mtime_ns": "1792400314792388400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\tests\\样本01-智慧法院投标\\招标文件.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\1-招标文件.txt",
+    "bytes": 2646,
+    "sha256": "298a4e0def9269d670a17c4455999940ba1b5a53d11021901f3b7b303f4f0a6d",
+    "mtime_ns": "1792379578844630200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\tests\\样本01-智慧法院投标\\补充通知.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\2-补充通知.txt",
+    "bytes": 554,
+    "sha256": "cd01f666a0122787ce48a122d32de8962fef003a9c3c91f9b89bc898cd4519f7",
+    "mtime_ns": "1792379578844630200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\tests\\样本01-智慧法院投标\\投标人情况.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\3-投标人情况.txt",
+    "bytes": 1058,
+    "sha256": "04976f7bc442a52e07cb4408da65be95bb22e9d9f85607d23bbc1c2757e69411",
+    "mtime_ns": "1792379578844630200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\tests\\样本01-智慧法院投标\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\4-_任务说明.md",
+    "bytes": 766,
+    "sha256": "0f741ddc16d477740673ed9ba9370124baf57a8857d5fc9885877451664fd36d",
+    "mtime_ns": "1792379578844630200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\tender-review\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18TenderNativeInput-20261029-070224\\5-要点.md",
+    "bytes": 10509,
+    "sha256": "a84387d199f03da4f8bdce84919ec3fb12c78b88a193a4340c7f73fcbf27bc25",
+    "mtime_ns": "1792379578846133600"
+  }
+]

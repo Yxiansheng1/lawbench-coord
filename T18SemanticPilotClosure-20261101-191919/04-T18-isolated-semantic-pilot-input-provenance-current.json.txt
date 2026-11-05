@@ -1,0 +1,37 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-isolated-semantic-pilot-input-provenance-current.json
+SHA f884f9acd94b2b8fcd2c49fd8544d9a400f0c7c4d58ecead6447fbef3867a2bb
+0001 {
+0002   "data": {
+0003     "path": "D:\\Lawbeach\\lawbench-coord\\T18IsolatedSemanticPilot-20261101-183940Inputs\\fixed-data.json",
+0004     "bytes": 17427,
+0005     "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69"
+0006   },
+0007   "original_Native": {
+0008     "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\sessions\\--D-Lawbeach-lawbench-B-docs-plan-evidence-T18-T18CitedUnreadNativeCase-20261101-151539-run-kbSMM2-case--\\session-746993df-9885-4b50-8910-0a854c63d872\\session.v4.jsonl",
+0009     "bytes": 300163,
+0010     "sha256": "05c23dae13e1b67aa77567a37fa0ce6df1be7262c5bcfd260d5c8bbf9b749c2d"
+0011   },
+0012   "original_physical_draft": {
+0013     "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v3.md",
+0014     "bytes": 5394,
+0015     "sha256": "c048cfd9f53ea0cc472a1ff90523b4800a1e0f75786c7fe6177811a85edc1a24"
+0016   },
+0017   "last_draft_native_call_seq": 117,
+0018   "last_draft_result_native_seq": 118,
+0019   "actual_read_receipts": 8,
+0020   "read_events": [
+0021     67,
+0022     72,
+0023     77,
+0024     82,
+0025     87,
+0026     92,
+0027     97,
+0028     108
+0029   ],
+0030   "final_visible_native_seq": 121,
+0031   "no_reuse_served_root": true,
+0032   "no_new_native_session_R_history": true,
+0033   "extraction_no_draft_or_selfcheck": true,
+0034   "model_author_expected_failure_labels_not_supplied": true
+0035 }

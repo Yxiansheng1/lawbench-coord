@@ -1,0 +1,10 @@
+# T31原目标：根据两条root真实红修固定scope和wiki版本旁路
+精确1017/max，当前B主与边界红源码两job都已completed，root审后原standalone5/5绿，但新增两条真实红：C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T31-root-review-20261026-023035\B-boundaries-red\stderr.txt（root2FAIL/exit1，非fixture故障）。先全文读该日志、本令、D:\Lawbeach\lawbench-coord\B-交回-T31BackendBoundaryRed-20261026-023647.md及当前scope代码与两个测试。全累计before保全C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T31-root-review-20261026-023035\B-before-boundary-fix-20261026-024437，旧dirty和两历史formal不改。
+
+目的不扩需求：task固定范围不能因字段丢失/变null静默全案，wiki缓存必须符合固定material+version来源。
+1. 缺/坏scope：从真实TaskStore.prepare/begin产生M1 scoped任务，root在内存副本缺scope或置null仍带原R/tid/case/session时，index_for_task返回3份而非拒绝。需要以任务权威持久R映射/固定scope证明区分“新R本来没有prepare而合法null”和“已有scoped任务数据丢坏”的不同；不靠task.get(None)猜全案，尤其现有R对应snapshot非空时任何本地篡改/缺失应失败关闭。验证身份/版本/claimtask同一，不让模型参数或UI提供权限。旧无R全案与真正新未prepareR/null兼容保持。不要为绕过失败而新增全案fallback或偷偷改公开四schema。
+2. wiki摘要：root真实固定M1 hash后，私有M-ID.md没有来源/版本证明仍返回唯一过期marker。查准确既有pipeline/steps/wiki.py和case_card材料快照的真实写入顺序/证明边界，可沿用可靠现成元数据验证，或在不能证明时明确不返回正文；不可拿当前原件hash相符/文件mtime/文件名相符冒摘要版本证明。scoped请求不得读全案wiki或未核验摘要；旧无R用户读取行为保持。不要启动pipeline/模型/新服务或造真实history/index。没有可信版本元数据时安全拒绝比猜测正确，说明尚未动态覆盖的可信生成分支。
+
+允许仅B直接相关task.py/request_scope.py/tools/inputs.py/context.py和必要上述范围内部辅助、同目标回归/README及formal，不改A/C/D/lib/公共四schema/guard/PDF/网络/默认lifespan/Key/权限/审批/锁/打包。原两边界红断言不得删/skip/弱化。原5例其它断言保留；其test_context...中手写INSIDE_WIKI后无证明还要求允许正文这一断言是原先不足的绿，可**只将该部分更正为安全拒绝且不包含marker**，并增加旧无R依旧可读的互补守卫；不能删除整个wiki场景或把旧5绿当新旁路合理。原setup真实CaseRegistry/Materials/TXT/TaskStore与拒socket/Converter窄桩保持。所有任务/result/索引仍由真实本地产品动作生成；只在内存做故障注入，不手写伪成功记录。
+
+作者只写代码/测试源码，禁止任何测试/unittest/pytest/collect/parser/Vitest/tsc/build/prepare/serve/probe/HTTP/GUI/模型或pipeline运行。root全审累计source/setup后重跑新红及真正受影响原5，按原证据修不削弱断言。每exec精确绝对pwsh/loginfalse，参数不准shell=bash，不parallelwrapper/短名/权限修理，Git只读不apply/add/commit/checkout/reset/stash/clean/push。拒绝不绕过。同一无信息失败不循环，无任意分钟/工程量上限，86400仅进程安全watchdog。写正式 D:\Lawbeach\lawbench-coord\B-交回-T31BackendBoundaryFix-20261026-024437.md，说明所有机制、实际文件、未验，不冒整T31完成。

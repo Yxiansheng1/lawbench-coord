@@ -1,0 +1,147 @@
+{
+  "case_id": "664601a6-7a3f-4c4e-b2ec-6fc29ad06e57",
+  "citation": {
+    "loc": {
+      "from": 2,
+      "unit": "page"
+    },
+    "material_id": "M0001",
+    "material_version": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191",
+    "name": "起诉意见书"
+  },
+  "citation_check": {
+    "passed": true,
+    "problems": [],
+    "stats": {
+      "citations": 1,
+      "hints": 0,
+      "must_fix": 0
+    }
+  },
+  "coverage": {
+    "fully_read": [],
+    "not_read": [],
+    "partially_read": [
+      {
+        "name": "起诉意见书",
+        "read_units": 1,
+        "total_units": 5
+      }
+    ],
+    "total": 1,
+    "unreadable": []
+  },
+  "derived_text": {
+    "page2_excludes_first_page_marker": true,
+    "page2_fragments": [
+      "经依法侦查查明",
+      "126,500"
+    ],
+    "pages": 5
+  },
+  "draft": {
+    "bytes": 113,
+    "relative_path": "工作区/任务/T-20261027211115-2559/草稿/T32NativePdfCitation-v1.md",
+    "sha256": "ce739802dac53c238ab148f00597aa6053c2bd82cfc66a3c4df18d18fed69fcc",
+    "text": "# T32 native PDF citation\n\n引用行：〔起诉意见书 第2页〕\n\n控制行：普通文字，没有出处。\n"
+  },
+  "finished_at": "2026-10-27T21:11:15.839+08:00",
+  "format": "T32-native-pdf-citation-bootstrap-v1",
+  "material": {
+    "bytes": 57132,
+    "material_id": "M0001",
+    "name": "起诉意见书",
+    "origin": "ref",
+    "ref_id": "R01",
+    "sha256": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191",
+    "type": "pdf",
+    "unit": "page",
+    "unit_count": 5
+  },
+  "model_calls_zero": true,
+  "native_call_count": 6,
+  "native_calls": [
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 61,
+      "method": "POST",
+      "path": "/api/case/open",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 63,
+      "method": "POST",
+      "path": "/api/materials/import",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 15,
+      "method": "POST",
+      "path": "/core/task/begin",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 14,
+      "method": "POST",
+      "path": "/core/tool",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 30,
+      "method": "POST",
+      "path": "/core/tool",
+      "status": 200
+    },
+    {
+      "channel": "bootstrap_asgi_inprocess",
+      "elapsed_ms": 16,
+      "method": "POST",
+      "path": "/core/task/end",
+      "status": 200
+    }
+  ],
+  "not_tcp_or_gui_proof": true,
+  "ocr_started": false,
+  "one_draft_only": true,
+  "pages_need_ocr": [],
+  "read_record": {
+    "at": "2026-10-27T21:11:15+08:00",
+    "from": 2,
+    "material_id": "M0001",
+    "material_version": "761224e4fd57ae5dee275ee50e31425304a31c44190c872592695d3342c3f191",
+    "to": 2,
+    "unit": "page"
+  },
+  "read_response": {
+    "end": 2,
+    "has_more": true,
+    "material_id": "M0001",
+    "name": "起诉意见书",
+    "next_offset": null,
+    "next_start": 3,
+    "start": 2,
+    "text": "【第2页】\n经依法侦查查明：\n2025年2月至2025年9月间，犯罪嫌疑人张某甲虚构其为\"虚构市某某投资咨询有限公司\"（\n以下简称\"某某投资\"）业务经理的身份，以代为办理低息贷款、需先缴纳\"保证金\"\"解冻\n费\"为由，先后骗取被害人吴某、郑某财物。\n其中：2025年3月10日，张某甲以缴纳保证金为名，诱使被害人吴某通过手机银行向其控\n制的尾号0417的账户转账人民币80,000元；2025年4月2日，张某甲又以解冻费为名，骗得\n吴某转账人民币16,500元。\n2025年6月18日，张某甲以相同手段骗得被害人郑某转账人民币30,000元。\n以上共计骗取人民币126,500元。",
+    "unit": "page"
+  },
+  "real_native_records_only": true,
+  "reference": {
+    "kind": "file",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\runs\\T32-pdf-citation-20261027-211112\\input\\ready\\起诉意见书.pdf",
+    "ref_id": "R01",
+    "status": "ok"
+  },
+  "result_status": "cancelled",
+  "started_at": "2026-10-27T21:11:15.616+08:00",
+  "task_id": "T-20261027211115-2559",
+  "task_state": "finished",
+  "transport": "ASGI-inprocess-no-socket",
+  "usage": {
+    "elapsed_s": 0,
+    "model_calls": 0,
+    "tool_calls": 2
+  }
+}

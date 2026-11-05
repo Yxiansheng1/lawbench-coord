@@ -1,0 +1,14 @@
+{
+  "source_sha256": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "source_bytes": 17262,
+  "test_sha256": "12ea5b4ce2bf26b71f5260bd00ad72c091f0557a9e03d404a67026301a3e99f1",
+  "test_bytes": 25644,
+  "only_pure_helpers_changed_all_other_oldbytes_exact": true,
+  "all_old8_test_methods_assertions_literal_same": true,
+  "existing_other_functions_literal_same": true,
+  "named_helper_two_explicit_labels_no_expected_party_fallback": true,
+  "full28_commands_source_formal_writefaces_reviewed": true,
+  "author_runtime": 0,
+  "qualification": "Some_negative_strings_have_leading_bullet_no_question_colon_and_may_skip_at_intro_not_full_branch_coverage",
+  "Packaging": "HOLD"
+}

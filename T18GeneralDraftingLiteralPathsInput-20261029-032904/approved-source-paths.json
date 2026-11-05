@@ -1,0 +1,50 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\借条.txt",
+    "bytes": 831,
+    "sha256": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\微信催款记录.txt",
+    "bytes": 592,
+    "sha256": "36942699507474ac9b8622b3fec7bd79fe8b198dadf52c4bb467b021887a95db",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\情况说明.txt",
+    "bytes": 528,
+    "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\还款记录.txt",
+    "bytes": 260,
+    "sha256": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\银行流水.txt",
+    "bytes": 600,
+    "sha256": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\样本01-借贷催款律师函\\_任务说明.md",
+    "bytes": 918,
+    "sha256": "237401ade2d8f4799b80f66a7c089895ac6cb0203c0f78e56d4d5e9ccf59e20d",
+    "mtime_ns": "1792379578820969100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\tests\\要点.md",
+    "bytes": 8526,
+    "sha256": "cddc926ac9189876a8c11d969b9fd9cda0b0105ecbf5f30f0b8a875e6d3b2be7",
+    "mtime_ns": "1792379578824479400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\SKILL.md",
+    "bytes": 13495,
+    "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31",
+    "mtime_ns": "1792400314791379400"
+  }
+]

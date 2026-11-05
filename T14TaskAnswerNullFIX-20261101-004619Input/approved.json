@@ -1,0 +1,29 @@
+{
+  "old_source": {
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\task-answer.ts",
+    "source_bytes": 4914,
+    "source_sha256": "154625adb8a24e0e9c0f4e46287fc4525195fb6c261f30cc3b689000c9f8def6",
+    "new_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-answer-null-20261101-003736.spec.ts",
+    "evidence": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T14\\T14TaskAnswerNullRED-20261101-003736",
+    "task_id": "T-20261101004000-a001",
+    "cases": 7,
+    "cause": "readTaskAnswer parses result/task JSON then dereferences result.drafts or task.session_id outside parse catch; JSON null is valid JSON and dereference throws",
+    "scope": "Existing T14/T17 task-answer error recovery, not generation semantic framework or security guard relaxation",
+    "forbidden": "No existing source/test/guard/config changes in RED; no symbolic-link capability probe, network, models, Key, credentials, .env, default app, test runtime by author"
+  },
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\task-answer-null-20261101-003736.spec.ts",
+  "test_bytes": 7644,
+  "test_sha256": "78dccf9ec63f8306a638cf7fc933344372c21a315f4e18f7cd263c8cc2fd4be0",
+  "old_RED": {
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T14TaskAnswerNull-red-root-20261101-004532",
+    "exit": 1,
+    "passed": 5,
+    "failed": 2,
+    "pending": 0,
+    "failed_names": [
+      "T14/T17 task-answer 错误恢复：JSON null 与非法 JSON 结果文件是 JSON null 时返回 TASK_NOT_FOUND 且不抛异常",
+      "T14/T17 task-answer 错误恢复：JSON null 与非法 JSON 任务文件是 JSON null 时返回 TASK_NOT_FOUND 且不抛异常"
+    ]
+  },
+  "product_edit_scope": "ONE null check after existing JSON parse/catch, before any later dereference; result===null OR task===null returns existing fail TASK_NOT_FOUND/NO_TASK. Keep every other byte exact."
+}

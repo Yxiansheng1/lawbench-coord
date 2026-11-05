@@ -1,0 +1,63 @@
+{
+  "previous": {
+    "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-read-current-pins-1017-20261030-171351.job.json",
+    "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-read-current-pins-20261030-171351.md",
+    "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-read-current-pins-20261030-171351.md",
+    "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadCurrentPinsInput-20261030-171351",
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210",
+    "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\native-general-drafting.mts",
+    "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+    "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\literalfixed-inputs.json",
+    "finite": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\general-read-order-finite.mts",
+    "state": "SOURCE_ONLY_EXACT_CURRENT_FOUR_RUNTIME_PINS_TWO_IMPORTS",
+    "previous": {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T18-general-read-observer-1017-20261030-164210.job.json",
+      "order": "D:\\Lawbeach\\lawbench-coord\\B-T18-general-read-observer-20261030-164210.md",
+      "formal": "D:\\Lawbeach\\lawbench-coord\\B-handback-T18-general-read-observer-20261030-164210.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadObserverInput-20261030-164210",
+      "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210",
+      "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\native-general-drafting.mts",
+      "service": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+      "manifest": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\literalfixed-inputs.json",
+      "finite": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\general-read-order-finite.mts",
+      "state": "SOURCE_ONLY_PRECISE_PRODUCTION_READ_DENIAL_CLASSIFIER_BEFORE_CURRENT_RUNTIME_PIN_REBIND"
+    }
+  },
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\native-general-drafting.mts",
+      "bytes": 108580,
+      "sha256": "17ca8da66d3dd2047df40f061482e040ff71a8cce3a690e83f6d1e0facdc7be5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\b-service-general-drafting.py",
+      "bytes": 42437,
+      "sha256": "44bb8b5ff60309a7d7dc3c1474ab4efebe00995673927f59137dbb1f86346203"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\general-read-order-finite.mts",
+      "bytes": 14005,
+      "sha256": "e07067dfa347f87466ed4fed6d2827365c22602f6efa10de2e5bbf41c2653090"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\literalfixed-inputs.json",
+      "bytes": 11938,
+      "sha256": "5ea298ec1c8754a82fc1c9fcf348cdcf95f59b649abdbe4f72bb0fc80fe4ce8f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\GeneralReadOrderRecovery-20261030-164210\\README.md",
+      "bytes": 4528,
+      "sha256": "f96f3689667c3c1e0e475a761b1568b31ebc5fb4a01b85be01ee4a0011f9a2b8"
+    }
+  ],
+  "static_rejection": "New classifier wrongly treats ALL non-read isError as fatal, including original supported production pre-answer case_save_draft denial. It also passes asked-order IDs instead of approved declared-order IDs to denial factory.",
+  "original_primary_observed": {
+    "run": "run-afhOHM",
+    "save_call_seq": 31,
+    "save_error_seq": 32,
+    "ask_seq": 36,
+    "answer_seq": 37,
+    "first_successful_save_seq": 41,
+    "write_denial_text": "Error: 提交成果前必须先取得律师对必问问题的真实回答。还缺：doc_type、recipient、goal"
+  }
+}

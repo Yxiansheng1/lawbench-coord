@@ -1,0 +1,27 @@
+{
+  "files": 4,
+  "bytes": 80724,
+  "sha256": "f104a046c7cc80cbd71e9d7ad8a918322958fcd61be0caa056b9200f288bf0d1",
+  "rows": [
+    {
+      "path": "README.md",
+      "bytes": 66,
+      "sha256": "18dad2a97b4860934be8e15e007c3bb435c222aeaf0113cb1fe9adfaee9eda32"
+    },
+    {
+      "path": "index.ts",
+      "bytes": 50901,
+      "sha256": "e78789e20dc9e015664d41cebc1b55097c6a70ba6e85ce221006d5d06a23bbec"
+    },
+    {
+      "path": "repetition.ts",
+      "bytes": 7466,
+      "sha256": "e21e2cb7f0d05e82ea2fae37224296188e70c9930521e8474f0992ba0593b323"
+    },
+    {
+      "path": "task-state.ts",
+      "bytes": 22291,
+      "sha256": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815"
+    }
+  ]
+}

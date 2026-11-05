@@ -1,0 +1,17 @@
+[
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js",
+    "bytes": 60361,
+    "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/core/agent/src/index.ts",
+    "bytes": 31340,
+    "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/core/session/src/index.ts",
+    "bytes": 60384,
+    "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d"
+  }
+]

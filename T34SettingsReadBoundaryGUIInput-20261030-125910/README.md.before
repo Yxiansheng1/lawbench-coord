@@ -1,0 +1,29 @@
+# T34 provider priority GUI source handoff
+
+状态：`SOURCE_ONLY_NOT_RUN / ROOT_FRESH_GUI_REQUIRED`。
+
+本目录是全新私有 profile 的一次候选交接，不改产品源码、SDK、默认 resolver、
+network guard 或既有 25 项私有构建。旧七件来自
+`RequiredUnsetGUI-20261030-094041`；除自有证据根、`entry.py` 身份和新私有组件
+绑定外，原有必需 unset 种子、guard、resolver、source case 与断言保持不变。
+
+`private-provider-binding.mjs` 在进程内注册第二个模块解析钩子。它先调用
+`nextResolve`，只在原 resolver 已成功解析出固定旧模块 URL 时，重定向到已通过静态
+接受的 81,412 字节私有组件。重定向前重复核验旧模块、私有组件和构建 manifest 的
+固定规范路径、文件类型、字节数与 SHA-256。日志仅允许最多 8 条固定元数据，
+不输出 specifier、context、URL、凭据或原始错误。该钩子只证明实际模块重定向，
+不证明导入成功、插件挂载、原生投影或 GUI 行为成功。
+
+`start.ps1` 在既有 `--import` resolver 之后追加本钩子，再保留原
+`--require` guard。没有修改 profile patch 的 `name`，也没有增加 RPC、wrapper、
+默认依赖解析规则或环境变量。`prepare.ps1` 创建全新 owned profile，并保留必需
+unset 的三个固定种子块。
+
+本交接未运行 `prepare`、admit、`start`、GUI、ordinary unset action、observer
+capture 或 `stop`；未运行 Node、Python、parser、AST、import、type、check、test、
+build、HTTP、模型、端口或进程探测。模型调用、真实凭据、真实案卷、网络连接与
+外部 GPU 均为 0。作者侧运行期为 0，Git 写入为 0。
+
+根侧必须完成静态复核后，在全新 run root 上进行一次 prepare、admit、start，
+再以精确 owned 窗口和实际 GUI 事件检查原生投影、hook 元数据、OS 端口、窗口与
+源码闭合。失败时保留失败，不做等价重跑。打包和整条 T34 通过仍未证明。

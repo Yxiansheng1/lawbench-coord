@@ -1,0 +1,44 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\0-SKILL.md",
+    "bytes": 14163,
+    "sha256": "3a97dae221b074c79c35f5a99ee035de220ae04aba6489e273bee034f47a86d8",
+    "mtime_ns": "1792400314784868200"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\tests\\样本01-借贷起诉状\\借条.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\1-借条.md",
+    "bytes": 997,
+    "sha256": "6d5e4d3d49a9b7a170887aa08cb0307a2aa6dc6a37078a201c758f9bce9f752d",
+    "mtime_ns": "1792379578831478400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\tests\\样本01-借贷起诉状\\银行流水.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\2-银行流水.md",
+    "bytes": 955,
+    "sha256": "e207bc2e50a01f5f26b605e9d913d5d58e780a72766b376748c0fa9e8e0a9495",
+    "mtime_ns": "1792379578831478400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\tests\\样本01-借贷起诉状\\情况说明.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\3-情况说明.txt",
+    "bytes": 528,
+    "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+    "mtime_ns": "1792379578831478400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\tests\\样本01-借贷起诉状\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\4-_任务说明.md",
+    "bytes": 1113,
+    "sha256": "6048d034e35c8538ad6b26cdf468d71c4a7dfa116efe8a03ca2e3bb3cd77e1eb",
+    "mtime_ns": "1792379578831478400"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\litigation-docs\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18LitigationNativeInput-20261029-185959\\5-要点.md",
+    "bytes": 8505,
+    "sha256": "bb4292722a5f6a8e632236a526eadbb573242c39b83304f69a1ae9972f7074d2",
+    "mtime_ns": "1792379578833551400"
+  }
+]

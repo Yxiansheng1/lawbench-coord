@@ -1,0 +1,17 @@
+{
+  "target": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\src\\Spec.md",
+    "bytes": 200381,
+    "sha256": "7cabd849bffa2baf90026b00a87188c5bda8402d04341aaa2e4e7cc3b2e601da"
+  },
+  "source_B_spec": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+    "bytes": 203807,
+    "sha256": "43b34592492cbf6cb75b59dbae3762ac0b60b9b67175d8a3b183532e1d5ad8f4"
+  },
+  "note": "- **辩护意见出处读取闸（T18）**：AI 保存辩护意见时，引用的页、段或行必须由本任务在当前材料版本中完整读取，读取区间按内含端点合并判断；检索命中、其他任务读取、旧版本读取和区间缺口都不算读取。该闸只约束 AI 的 `case_save_draft`，律师在界面的手工保存不变；Excel 单元格的版本与读取归属尚未证明，不能据此宣称已通过；本闸也不代表事实或法律内容正确。",
+  "insert_before": "### 9.3",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadSpecSync-20261101-153255Before.md",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18CitedUnreadSpecSync-20261101-153255.md",
+  "approved_delta": "ONLY ONE paragraph copied byte text from current B Spec; preserve original A newline style and allotherbytes; do not sync entire Bdoc"
+}

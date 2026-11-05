@@ -1,0 +1,990 @@
+{
+  "verdict": "ACTUAL_SENTENCE_CALC_FAILED_REQUIRES_ROOT_REVIEW",
+  "at_utc": "2026-10-29T13:55:15.985871+00:00",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceApiObservation-20261029-214710\\run-gySbhT",
+  "root_runtime": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18SentenceNativeRuntime-root-20261029-215321",
+  "elapsed_s": 103.28099999998813,
+  "driver_exit_code": 1,
+  "consumer_status": "FAILED",
+  "error": {
+    "name": "Error",
+    "message": "actual tool loop lacks case_list_materials"
+  },
+  "secondary_errors": [
+    {
+      "message": "cleanup failed",
+      "failures": [
+        "B HTTP service did not stop cleanly"
+      ]
+    }
+  ],
+  "model_POST": 11,
+  "model_HTTP200": 11,
+  "native_header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-9450ce32-36ec-4596-80c1-75fa29824de5",
+    "createdAt": 1793282006413,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceApiObservation-20261029-214710\\run-gySbhT\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "native_session": "session-9450ce32-36ec-4596-80c1-75fa29824de5",
+  "task": "T-20261029215326-30e9",
+  "native_request": "aa34285f-e0d4-4a8c-93ff-13106f259761",
+  "actual_tool_counts": {
+    "skill": 1,
+    "case_read_material": 1,
+    "case_calc_sentence": 1,
+    "case_save_draft": 7
+  },
+  "actual_tools": [
+    {
+      "name": "skill",
+      "call_id": "chatcmpl-tool-ab1955c8658721f2",
+      "seq": 11,
+      "arguments_sha256": "60ad42483c9e557dc1666c1984f0273b5cbf0d58f51b031f256bb0977be4a082",
+      "result_seq": 12,
+      "is_error": false,
+      "result_sha256": "e91d10f72b5b94de968eeba868d7fc8b32f0096aed46072c2817cc6a7d641795"
+    },
+    {
+      "name": "case_read_material",
+      "call_id": "chatcmpl-tool-a292735b83776421",
+      "seq": 16,
+      "arguments_sha256": "1de6a66aa0c2007d4c3b7040403dc1c1f36435927a523d34c1d4d57488496067",
+      "result_seq": 17,
+      "is_error": false,
+      "result_sha256": "c26d38b494a90b9e18a541197fb8f9e9961b64e41fa9107d3c7b8df828e88741",
+      "name_argument": "刑事判决书",
+      "more_names": [
+        "拘留证",
+        "逮捕证",
+        "羁押情况证明",
+        "起诉意见书"
+      ],
+      "start": null,
+      "end": null
+    },
+    {
+      "name": "case_calc_sentence",
+      "call_id": "chatcmpl-tool-afac7da01bb254ec",
+      "seq": 21,
+      "arguments_sha256": "76a5594363f5894ef770940ad60a633c8f3c7b9bbf08f87e46e69c0a1f97167c",
+      "result_seq": 22,
+      "is_error": false,
+      "result_sha256": "e32fe21266f4323abe8bdb988ae3fc867e1b8ce9d47260ffcab93dc6bbd1b42d",
+      "calculator_arguments": {
+        "penalty": "有期徒刑",
+        "years": 3,
+        "months": 6,
+        "custody": [
+          {
+            "from": "2026-01-15",
+            "to": "2026-02-20",
+            "kind": "刑事拘留"
+          },
+          {
+            "from": "2026-02-20",
+            "to": "2026-09-30",
+            "kind": "逮捕"
+          }
+        ]
+      },
+      "calculator_result": {
+        "start": "2026-01-15",
+        "end": "2029-07-14",
+        "offset_days": 259,
+        "custody_days": 259,
+        "milestones": [
+          {
+            "name": "执行满二分之一",
+            "date": "2027-10-14",
+            "basis": "有期徒刑执行原判刑期二分之一以上可提请假释（待律师核实）"
+          }
+        ],
+        "basis": [
+          "有期徒刑判决执行以前先行羁押的，羁押一日折抵刑期一日（待律师核实）"
+        ],
+        "notes": [
+          "各段羁押期间有重叠，重叠的日子只算一次"
+        ]
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-bd0a3142b429eaa9",
+      "seq": 26,
+      "arguments_sha256": "554cf1f23ca79f38adaa2ed4c4b0dd4c292dc3cf5a5716170846373f07797629",
+      "result_seq": 27,
+      "is_error": false,
+      "result_sha256": "6f749adc80f649c68c320c1bc59f053c21ffc1cedb9262cf4ecef3271bc08062",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v1.md",
+      "version": 1,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 刑种、刑期 | 有期徒刑三年六个月 |   |",
+            "citation": "〔刑事判决书 第3页〕",
+            "message": "出处位置不对：刑事判决书 第3页，这份材料按第N行定位"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |     |",
+            "citation": "〔拘留证 第1页〕",
+            "message": "出处位置不对：拘留证 第1页，这份材料按第N行定位"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |     |",
+            "citation": "〔逮捕证 第1页〕",
+            "message": "出处位置不对：逮捕证 第1页，这份材料按第N行定位"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |     |",
+            "citation": "〔羁押情况证明 第1页〕",
+            "message": "出处位置不对：羁押情况证明 第1页，这份材料按第N行定位"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "E",
+            "severity": "must_fix",
+            "excerpt": "| 判决书所写起止 | 自 2026-01-15 起至 2029-07-14 止 |   |",
+            "citation": "〔刑事判决书 第3页〕",
+            "message": "出处位置不对：刑事判决书 第3页，这份材料按第N行定位"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 逮捕证上日期为\"2026年2月2■日\"，识别不清；羁押情况证明和起诉意见书均写\"2026年2月20日变更为逮捕羁押\"，据此认定逮捕日期为2026年2月20日。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 5,
+          "must_fix": 5,
+          "hints": 4
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-ad7849ec77f808d9",
+      "seq": 31,
+      "arguments_sha256": "1635f9bbca13d4f43be35f8de650922cf7e7ae5d535eeb396c8c0978a923e7f5",
+      "result_seq": 32,
+      "is_error": false,
+      "result_sha256": "a9316993712ed6df632c29686fb6bf6c69c84aded640361a7a5b1f708c6dfb34",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v2.md",
+      "version": 2,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |     |",
+            "citation": "〔拘留证 第7行〕〔逮捕证 第7行〕〔羁押情况证明 第5行〕",
+            "message": "2026年9月30日 在所引材料（拘留证 第7行、逮捕证 第7行、羁押情况证明 第5行）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": "〔羁押情况证明 第8行〕",
+            "message": "2026年9月30日 在所引材料（羁押情况证明 第8行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 9,
+          "must_fix": 2,
+          "hints": 2
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-8f341810e31dd1a9",
+      "seq": 36,
+      "arguments_sha256": "89c8ff02bceed2702b629ce8de4cec160c31b18ce35b6a4d940d96750fca6716",
+      "result_seq": 37,
+      "is_error": false,
+      "result_sha256": "912e5e74bdf06212150842736ab673c19c6891a1afd5349b93c0f2a3c7aae715",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v3.md",
+      "version": 3,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "A",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |    ；止日【律师提供】 |",
+            "citation": "〔拘留证 第7行〕〔逮捕证 第7行〕〔羁押情况证明 第5行〕",
+            "message": "原文 逮捕证 第7行 是“■日”（识别不清），文中写成了“止日”；照抄原文并保留 ■"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |    ；止日【律师提供】 |",
+            "citation": "〔拘留证 第7行〕〔逮捕证 第7行〕〔羁押情况证明 第5行〕",
+            "message": "2026年9月30日 在所引材料（拘留证 第7行、逮捕证 第7行、羁押情况证明 第5行）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日【律师提供】（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": "〔羁押情况证明 第8行〕",
+            "message": "2026年9月30日 在所引材料（羁押情况证明 第8行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 9,
+          "must_fix": 3,
+          "hints": 2
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-b96b91ebe98079bc",
+      "seq": 41,
+      "arguments_sha256": "7e23f87a10ea43169eeca8cd5f1024f7c197bf4c66b78c6a4876bbd5144ee8e6",
+      "result_seq": 42,
+      "is_error": false,
+      "result_sha256": "1dab876524cca80f9dd177892bdbb87f154ce44a57e03b6d7c9c1fb4ad0e515f",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v4.md",
+      "version": 4,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至 2026-09-30 逮捕 |   ；逮捕止日【律师提供】 |",
+            "citation": "〔拘留证 第7行〕〔羁押情况证明 第5行〕",
+            "message": "2026年9月30日 在所引材料（拘留证 第7行、羁押情况证明 第5行）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日【律师提供】（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": "〔羁押情况证明 第8行〕",
+            "message": "2026年9月30日 在所引材料（羁押情况证明 第8行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 8,
+          "must_fix": 2,
+          "hints": 2
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a794aebe5378c1b1",
+      "seq": 46,
+      "arguments_sha256": "373580474a55b7d8a767a84ea1f840b43a75131b64d1f1a0f48cb966b060749c",
+      "result_seq": 47,
+      "is_error": false,
+      "result_sha256": "18edca3d920178112d269da746397edcb784c239c286a616ebf0a621ed3b5685",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v5.md",
+      "version": 5,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "| 先行羁押 | 2026-01-15 至 2026-02-20 刑事拘留；2026-02-20 至【律师提供：2026-09-30】逮捕 |    |",
+            "citation": "〔拘留证 第7行〕〔羁押情况证明 第5行〕",
+            "message": "2026年9月30日 在所引材料（拘留证 第7行、羁押情况证明 第5行）中找不到"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日【律师提供】（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": "〔羁押情况证明 第8行〕",
+            "message": "2026年9月30日 在所引材料（羁押情况证明 第8行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 8,
+          "must_fix": 2,
+          "hints": 2
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-ac73c7de4c78cdc7",
+      "seq": 51,
+      "arguments_sha256": "c22fbbe7e9d0a92028d22f81581bacee95821fff9a589d53956fff5d561f160b",
+      "result_seq": 52,
+      "is_error": false,
+      "result_sha256": "6def1c294953e1fdc1c57938fc8622b0e15ba9fa5502d051a94e54cf1d554130",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v6.md",
+      "version": 6,
+      "citation_check": {
+        "passed": false,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 逮捕羁押止日 | 2026-09-30 | 【律师提供】 |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "C",
+            "severity": "must_fix",
+            "excerpt": "- 羁押止日按律师要求算至2026年9月30日【律师提供】（羁押情况证明出具于2026年9月29日，证明至出具之日仍在押）。",
+            "citation": "〔羁押情况证明 第8行〕",
+            "message": "2026年9月30日 在所引材料（羁押情况证明 第8行）中找不到"
+          }
+        ],
+        "stats": {
+          "citations": 8,
+          "must_fix": 1,
+          "hints": 3
+        }
+      }
+    },
+    {
+      "name": "case_save_draft",
+      "call_id": "chatcmpl-tool-a942b5a8fac07c09",
+      "seq": 56,
+      "arguments_sha256": "2539ea03f81911bd96ea4f683c45c5815e4724f15685aba7308e5c3cde74e832",
+      "result_seq": 57,
+      "is_error": false,
+      "result_sha256": "280f6bb6d2f06d942dc68487e21737b6f57c18fc6aafeeea2d2db27aebe71fc6",
+      "title": "刑期计算表",
+      "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v7.md",
+      "version": 7,
+      "citation_check": {
+        "passed": true,
+        "problems": [
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 逮捕羁押止日 | 2026-09-30 | 【律师提供】 |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          },
+          {
+            "class": "F",
+            "severity": "hint",
+            "excerpt": "羁押止日按律师要求算至2026年9月30日【律师提供】。",
+            "citation": null,
+            "message": "含金额或日期但没有出处，确认是否需要补出处"
+          }
+        ],
+        "stats": {
+          "citations": 8,
+          "must_fix": 0,
+          "hints": 4
+        }
+      }
+    }
+  ],
+  "actual_question_texts": [],
+  "actual_three_answers_before_first_successful_save": false,
+  "actual_answers_before_material_reads": false,
+  "actual_answer_records": [],
+  "unsupported_question_ids_attempted": [],
+  "callback_observation_independently_proven": false,
+  "question_prefill_semantics": "PENDING_ROOT_MANUAL_REVIEW",
+  "final_draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceApiObservation-20261029-214710\\run-gySbhT\\case\\工作区\\任务\\T-20261029215326-30e9\\草稿\\刑期计算表-v7.md",
+    "bytes": 1419,
+    "sha256": "8adfaf2afeb899967bea0b97cf199667066d97ed78963368bc34d5bea87ad29e",
+    "mtime_ns": "1793282095385838500",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 逮捕羁押止日 | 2026-09-30 | 【律师提供】 |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "羁押止日按律师要求算至2026年9月30日【律师提供】。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 8,
+        "must_fix": 0,
+        "hints": 4
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0001",
+        "material_version": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+        "name": "刑事判决书",
+        "loc": {
+          "unit": "line",
+          "from": 16
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "bbe57c8d65553335463121e598a7009cd396fb3f3887f5e948b883213c167096",
+        "name": "拘留证",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "8c85c11e42b3d35f0ae2a63639924691a5ce8f06a5f5e61581642e39c90952d5",
+        "name": "逮捕证",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+        "name": "羁押情况证明",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+        "name": "刑事判决书",
+        "loc": {
+          "unit": "line",
+          "from": 17
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "8a6e9b8fad2a482745f6970e8b3d1733fac0af84b1a3ca2b756c806cc75c809e",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+        "name": "羁押情况证明",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      }
+    ]
+  },
+  "no_prior_and_normal_context_proven": true,
+  "actual_calc_arguments_and_results": [
+    {
+      "name": "case_calc_sentence",
+      "call_id": "chatcmpl-tool-afac7da01bb254ec",
+      "seq": 21,
+      "arguments_sha256": "76a5594363f5894ef770940ad60a633c8f3c7b9bbf08f87e46e69c0a1f97167c",
+      "result_seq": 22,
+      "is_error": false,
+      "result_sha256": "e32fe21266f4323abe8bdb988ae3fc867e1b8ce9d47260ffcab93dc6bbd1b42d",
+      "calculator_arguments": {
+        "penalty": "有期徒刑",
+        "years": 3,
+        "months": 6,
+        "custody": [
+          {
+            "from": "2026-01-15",
+            "to": "2026-02-20",
+            "kind": "刑事拘留"
+          },
+          {
+            "from": "2026-02-20",
+            "to": "2026-09-30",
+            "kind": "逮捕"
+          }
+        ]
+      },
+      "calculator_result": {
+        "start": "2026-01-15",
+        "end": "2029-07-14",
+        "offset_days": 259,
+        "custody_days": 259,
+        "milestones": [
+          {
+            "name": "执行满二分之一",
+            "date": "2027-10-14",
+            "basis": "有期徒刑执行原判刑期二分之一以上可提请假释（待律师核实）"
+          }
+        ],
+        "basis": [
+          "有期徒刑判决执行以前先行羁押的，羁押一日折抵刑期一日（待律师核实）"
+        ],
+        "notes": [
+          "各段羁押期间有重叠，重叠的日子只算一次"
+        ]
+      }
+    }
+  ],
+  "actual_calc_after_joint_answers": false,
+  "actual_grouped_read_before_joint_question": false,
+  "actual_list_before_grouped_read": false,
+  "actual_first_save_after_calc": true,
+  "actual_first_tool_after_calc_is_save": true,
+  "coverage_actual": {
+    "total": 5,
+    "fully_read": [
+      "刑事判决书",
+      "拘留证",
+      "羁押情况证明",
+      "起诉意见书",
+      "逮捕证"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "read_ranges": {
+    "v": 1,
+    "task_id": "T-20261029215326-30e9",
+    "reads": [
+      {
+        "material_id": "M0001",
+        "material_version": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+        "unit": "line",
+        "from": 1,
+        "to": 20,
+        "at": "2026-10-29T21:53:33+08:00"
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "bbe57c8d65553335463121e598a7009cd396fb3f3887f5e948b883213c167096",
+        "unit": "line",
+        "from": 1,
+        "to": 8,
+        "at": "2026-10-29T21:53:33+08:00"
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "8c85c11e42b3d35f0ae2a63639924691a5ce8f06a5f5e61581642e39c90952d5",
+        "unit": "line",
+        "from": 1,
+        "to": 8,
+        "at": "2026-10-29T21:53:33+08:00"
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+        "unit": "line",
+        "from": 1,
+        "to": 8,
+        "at": "2026-10-29T21:53:33+08:00"
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "8a6e9b8fad2a482745f6970e8b3d1733fac0af84b1a3ca2b756c806cc75c809e",
+        "unit": "line",
+        "from": 1,
+        "to": 8,
+        "at": "2026-10-29T21:53:33+08:00"
+      }
+    ]
+  },
+  "physical_rows": 64,
+  "events": 63,
+  "event_types": {
+    "agent/inbox/spliced": 2,
+    "turn/start": 1,
+    "step/start": 11,
+    "system/message": 1,
+    "user/message": 3,
+    "request/header": 1,
+    "request/context": 1,
+    "assistant/message": 11,
+    "tool/call": 10,
+    "tool/result": 10,
+    "step/end": 11,
+    "turn/end": 1
+  },
+  "production_JSONL_reopen": "NOT_REACHED",
+  "identities": [
+    {
+      "pid": 4372,
+      "parent": 54408,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-29T13:53:21.3290420Z"
+    },
+    {
+      "pid": 27352,
+      "parent": 4372,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T13:53:21.8271530Z"
+    },
+    {
+      "pid": 48572,
+      "parent": 27352,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T13:53:21.8394690Z"
+    },
+    {
+      "pid": 28540,
+      "parent": 27352,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T13:53:21.9172670Z"
+    },
+    {
+      "pid": 12616,
+      "parent": 28540,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-29T13:53:22.0314950Z"
+    },
+    {
+      "pid": 36840,
+      "parent": 28540,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-29T13:53:22.3476710Z"
+    },
+    {
+      "pid": 60844,
+      "parent": 36840,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-29T13:53:22.3583280Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "listener_port": 58253,
+  "Listen_count": 0,
+  "B_passed": false,
+  "B_failure": "sentence_calc_tool_order",
+  "B_outbound": {
+    "attempts": 0,
+    "denied": 0
+  },
+  "B_credential_getters": {
+    "externalKeyGetter": 0,
+    "keyGetter": 0
+  },
+  "B_protocol": {
+    "calculatorArgs": [
+      {
+        "custody": [
+          {
+            "from": "2026-01-15",
+            "kind": "刑事拘留",
+            "to": "2026-02-20"
+          },
+          {
+            "from": "2026-02-20",
+            "kind": "逮捕",
+            "to": "2026-09-30"
+          }
+        ],
+        "months": 6,
+        "penalty": "有期徒刑",
+        "years": 3
+      }
+    ],
+    "calculatorResults": [
+      {
+        "basis": [
+          "有期徒刑判决执行以前先行羁押的，羁押一日折抵刑期一日（待律师核实）"
+        ],
+        "custody_days": 259,
+        "end": "2029-07-14",
+        "milestones": [
+          {
+            "basis": "有期徒刑执行原判刑期二分之一以上可提请假释（待律师核实）",
+            "date": "2027-10-14",
+            "name": "执行满二分之一"
+          }
+        ],
+        "notes": [
+          "各段羁押期间有重叠，重叠的日子只算一次"
+        ],
+        "offset_days": 259,
+        "start": "2026-01-15"
+      }
+    ],
+    "caseBound": true,
+    "contextCalls": 1,
+    "contextL1Exact": true,
+    "counts": {
+      "GET /api/materials": 1,
+      "GET /api/tasks": 1,
+      "GET /health": 1,
+      "POST /api/case/open": 1,
+      "POST /api/materials/scan": 1,
+      "POST /api/task": 1,
+      "POST /core/context": 1,
+      "POST /core/progress": 1,
+      "POST /core/task/begin": 1,
+      "POST /core/task/end": 1,
+      "POST /core/tool": 9
+    },
+    "denials": {},
+    "draftPaths": [
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v1.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v2.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v3.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v4.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v5.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v6.md",
+      "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v7.md"
+    ],
+    "draftSaves": [
+      {
+        "contentLength": 614,
+        "contentSha256": "c61003024398e346af4659a7d2af0063c4b4176963b3a79ae3d0a88075176b2f",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v1.md",
+        "titleLength": 5,
+        "version": 1
+      },
+      {
+        "contentLength": 660,
+        "contentSha256": "39938410fb296ce4511796ae165a49c87a8b912785ac9c085dc24649f75f9877",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v2.md",
+        "titleLength": 5,
+        "version": 2
+      },
+      {
+        "contentLength": 675,
+        "contentSha256": "f9a93b1c9d4833a1b43eb702ff8e295bde81640306e653546dd795958577e1d4",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v3.md",
+        "titleLength": 5,
+        "version": 3
+      },
+      {
+        "contentLength": 668,
+        "contentSha256": "8036e40e74689c602ae95cd3e1dd9a301af1be598e628d4a155ec46c9837bc58",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v4.md",
+        "titleLength": 5,
+        "version": 4
+      },
+      {
+        "contentLength": 662,
+        "contentSha256": "557428bc58d581bc3260f2091158dd50adaa6272f755232c366d9182acdb0e4a",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v5.md",
+        "titleLength": 5,
+        "version": 5
+      },
+      {
+        "contentLength": 678,
+        "contentSha256": "4853d89f5cb047b805de1e3de5eb57659c4e781d0bc4e8ccf2abdc1133c28069",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v6.md",
+        "titleLength": 5,
+        "version": 6
+      },
+      {
+        "contentLength": 677,
+        "contentSha256": "8adfaf2afeb899967bea0b97cf199667066d97ed78963368bc34d5bea87ad29e",
+        "path": "工作区/任务/T-20261029215326-30e9/草稿/刑期计算表-v7.md",
+        "titleLength": 5,
+        "version": 7
+      }
+    ],
+    "materialIds": [
+      "M0001",
+      "M0002",
+      "M0003",
+      "M0004",
+      "M0005"
+    ],
+    "materialNames": {
+      "M0001": "刑事判决书",
+      "M0002": "拘留证",
+      "M0003": "羁押情况证明",
+      "M0004": "起诉意见书",
+      "M0005": "逮捕证"
+    },
+    "materialVersions": {
+      "M0001": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+      "M0002": "bbe57c8d65553335463121e598a7009cd396fb3f3887f5e948b883213c167096",
+      "M0003": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+      "M0004": "8a6e9b8fad2a482745f6970e8b3d1733fac0af84b1a3ca2b756c806cc75c809e",
+      "M0005": "8c85c11e42b3d35f0ae2a63639924691a5ce8f06a5f5e61581642e39c90952d5"
+    },
+    "requestBound": true,
+    "requestId": "aa34285f-e0d4-4a8c-93ff-13106f259761",
+    "requestScopeNone": true,
+    "requestScopePrepareCalls": 0,
+    "selectionId": "T-20261029215326-8f84",
+    "sessionBound": true,
+    "taskBound": true,
+    "taskId": "T-20261029215326-30e9",
+    "toolSequence": [
+      "case_read_material",
+      "case_calc_sentence",
+      "case_save_draft",
+      "case_save_draft",
+      "case_save_draft",
+      "case_save_draft",
+      "case_save_draft",
+      "case_save_draft",
+      "case_save_draft"
+    ],
+    "violations": []
+  },
+  "B_cleanup": {
+    "listenerClosed": true,
+    "netClientClosed": true,
+    "logsClosed": true,
+    "retainerClosed": true
+  },
+  "forced_stop": false,
+  "original_source8_SHA_size_mtime_ns_held": true,
+  "fixed_admission_rows_held": 514,
+  "private25_held": true,
+  "owned_text_key_scan": {
+    "files": 37,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "business_quality_all_PASS": false,
+  "manual_review_required": true,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

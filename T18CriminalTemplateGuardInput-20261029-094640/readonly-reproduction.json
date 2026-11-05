@@ -1,0 +1,8 @@
+{
+  "source_sha256": "e161fcb0df47bd87f4473022888c0db41c9360daa30599975193bdf48285283c",
+  "operation": "existing_closed_owned_run_verify_private_case_readonly",
+  "production_app_started": false,
+  "HTTP_model_Key": false,
+  "exception_type": "RuntimeError",
+  "exception_message": "private source area contains an extra file"
+}

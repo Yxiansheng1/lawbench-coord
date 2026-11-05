@@ -1,0 +1,183 @@
+{
+  "at": "2026-10-28T16:29:09.548334+08:00",
+  "verdict": "NATIVE_TECHNICAL_PASS_BUSINESS_QUALITY_FAIL_EXPLICIT_RULES_STILL_NOT_FOLLOWED",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeReadingRuntime-root-20261028-161713",
+  "run": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-GvaNIJ",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18StatusResult-root-20261028-162909",
+  "elapsed_s": 226.26600000000326,
+  "technicalPASS": true,
+  "businessQualityPASS": false,
+  "quality": {
+    "verdict": "FAIL_ACTUAL_MODEL_OUTPUT_RULE_FOLLOWING_DESPITE_LOADED_EXPLICIT_TEMPLATE",
+    "full_final_draft_read": true,
+    "businessPASS": false,
+    "missing_table_status": [
+      {
+        "line": 99,
+        "text": "| 2025-06-10还款20,000元性质 | 归还部分本金 | 材料记载 | 〔还款记录 第5行〕〔银行流水 第18行〕 |"
+      },
+      {
+        "line": 100,
+        "text": "| 2025-06-10还款20,000元性质 | 李某乙称归还本金2万元 | 当事人陈述（李某乙称） | 〔情况说明 第5行〕 |"
+      }
+    ],
+    "false_passed_selfcheck": {
+      "line": 125,
+      "text": "- 同一款项的归类、债务余款等冲突已在逐份笔录和要素汇总中并列原话、出处并标【待核实】：通过（2025-06-10的20,000元性质在案情摘要中列为争议焦点，已在要素汇总中并列各来源并标【待核实】）。"
+    },
+    "final_hint_claim": "\n- must_fix：0（已全部修正）\n- hints：6（均为内容摘要段含金额/日期但未附出处，属摘要性质，不影响关键事实的出处完整性）\n\n",
+    "actual_sixth_hint": {
+      "class": "F",
+      "severity": "hint",
+      "excerpt": "- 同一款项的归类、债务余款等冲突已在逐份笔录和要素汇总中并列原话、出处并标【待核实】：通过（2025-06-10的20,000元性质在案情摘要中列为争议焦点，已在要素汇总中并列各来源并标【待核实】）。",
+      "citation": null,
+      "message": "含金额或日期但没有出处，确认是否需要补出处"
+    },
+    "inference_boundary_concern": "Repayment-principal assumption and interest accounting period remain insufficiently qualified; inference marker alone is not proof of disputed classification.",
+    "source_rule_loaded_verified": true,
+    "do_not_continue_same_sample_prompt_patches_or_stochastic_retries": true,
+    "not_a_confirmed_tool_schema_or_transport_defect": true,
+    "legal_merits_not_adjudicated": true
+  },
+  "draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-GvaNIJ\\case\\工作区\\任务\\T-20261028161719-b107\\草稿\\阅卷笔录-v3.md",
+    "bytes": 10668,
+    "sha256": "57ecf8d3e3640d944dbf65d8db4c7cf77270b8a4068adcb33bf32be53f8c1423"
+  },
+  "sourceSHA": "807b05c900a5f4730c1d6099680425cae25d953bd6f1bad9a3be89a73aec5396",
+  "admission": {
+    "initial": {
+      "checkedAtUtc": "2026-10-28T08:17:14.832Z",
+      "manifestSha256": "39c880ade5260cb085aee1240298b996a9b59e89d3229a49627bce0c1066eb01",
+      "fixtureCount": 5,
+      "dependencyCount": 52,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    },
+    "final": {
+      "checkedAtUtc": "2026-10-28T08:20:58.148Z",
+      "manifestSha256": "39c880ade5260cb085aee1240298b996a9b59e89d3229a49627bce0c1066eb01",
+      "fixtureCount": 5,
+      "dependencyCount": 52,
+      "baselineFixedInputCount": 46,
+      "reviewedBSourcePinCount": 346,
+      "acceptedEvidenceCount": 4
+    }
+  },
+  "nativeSession": "session-781b4bb8-053c-41df-8dcc-348d536b22b0",
+  "nativeR": "0de6fa24-0daf-4be8-92e7-93e7522a276d",
+  "task": "T-20261028161719-b107",
+  "modelPosts": 12,
+  "modelHttp200": 12,
+  "actualTools": 11,
+  "budgetedTools": 6,
+  "sourceGETs": 34,
+  "citationStats": {
+    "citations": 68,
+    "must_fix": 0,
+    "hints": 6
+  },
+  "coverage": {
+    "total": 5,
+    "fully_read": [
+      "借条",
+      "情况说明",
+      "案情摘要",
+      "还款记录",
+      "银行流水"
+    ],
+    "partially_read": [],
+    "not_read": [],
+    "unreadable": []
+  },
+  "persistence": {
+    "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-GvaNIJ\\sessions",
+    "sessionReopened": true,
+    "liveEqualsReopened": true,
+    "physicalJsonlPath": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeReadingWorkflow-20261028-133231\\run-GvaNIJ\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-NativeReadingWorkflow-20261028-133231-run-GvaNIJ-case--\\session-781b4bb8-053c-41df-8dcc-348d536b22b0\\session.v4.jsonl",
+    "physicalJsonlBytes": 303736,
+    "physicalJsonlSha256": "06175b73a9c8971ec79cacaacfaf882655c2b2cd894b442fa7ba41dadc56425b",
+    "physicalEventCount": 68
+  },
+  "reminderMessages": 0,
+  "no_causal_repeat_recovery_claim": true,
+  "cleanup": {
+    "natural": true,
+    "forced": false,
+    "completeExeUTCBirthGone": 7,
+    "OS_after": [],
+    "port": 56400,
+    "Listen": 0,
+    "consumer": {
+      "agentCancelledOrIdle": true,
+      "browserDisposed": true,
+      "contextDisposed": true,
+      "bServiceStopped": true,
+      "fetchRestored": true,
+      "environmentRestored": true,
+      "outputRedactionRestored": true,
+      "keyCleared": true,
+      "failures": []
+    },
+    "BFinal": {
+      "credentials": {
+        "externalKeyGetter": 0,
+        "keyGetter": 0
+      },
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "failure": null,
+      "finishedAtUtc": "2026-10-28T08:20:56.090+00:00",
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "listenerClosed": true,
+      "logsClosed": true,
+      "netClientClosed": true,
+      "ocrStarted": false,
+      "outbound": {
+        "attempts": 0,
+        "denied": 0
+      },
+      "passed": true,
+      "pid": 28892,
+      "port": 56400,
+      "protocol": {
+        "caseBound": true,
+        "counts": {
+          "GET /api/materials": 1,
+          "GET /api/settings": 1,
+          "GET /api/source": 34,
+          "GET /api/tasks": 1,
+          "GET /health": 1,
+          "POST /api/case/open": 1,
+          "POST /api/materials/import": 1,
+          "POST /api/request/scope": 1,
+          "POST /api/task": 1,
+          "POST /core/context": 1,
+          "POST /core/progress": 4,
+          "POST /core/task/begin": 1,
+          "POST /core/task/end": 1,
+          "POST /core/tool": 9
+        },
+        "denials": {},
+        "materialIdCount": 5,
+        "sessionBound": true,
+        "taskBound": true,
+        "violations": []
+      },
+      "retainerClosed": true,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "sourcePinsUnchanged": true,
+      "startedAtUtc": "2026-10-28T08:17:17.077+00:00",
+      "status": "STOPPED"
+    },
+    "RetainerClosedSentinelOnly": true
+  },
+  "fullT18": false,
+  "wholeProject": false,
+  "Packaging": "HOLD",
+  "packetFiles": 37,
+  "manifestSHA": "6b11a5cb7fbe8a0b68a4531893ced2eaf0cfc82555dd03b7005957756ca275d2"
+}

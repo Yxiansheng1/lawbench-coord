@@ -1,0 +1,49 @@
+{
+  "source_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 50901,
+      "sha256": "e78789e20dc9e015664d41cebc1b55097c6a70ba6e85ce221006d5d06a23bbec",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\0-index.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 22291,
+      "sha256": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\1-task-state.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-drafting-question-gate.spec.ts",
+      "bytes": 9032,
+      "sha256": "c14bce581cfe033ab7a4cc6192ab8a3920c402094f16bf1b0f0a1445a499076a",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\2-general-drafting-question-gate.spec.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\litigation-question-order-20261029-192258.spec.ts",
+      "bytes": 25768,
+      "sha256": "58576d67eefd99d1b40139a0d82aa7b5462d485d4a2017da134a305108584ebf",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\3-litigation-question-order-20261029-192258.spec.ts"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\skills\\general-drafting\\SKILL.md",
+      "bytes": 12515,
+      "sha256": "a7be13fd93be6f6fe5ff97606cb6018f9f1b2795d4f700c00ae1930383b52f9a",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\4-SKILL.md"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\general-drafting\\SKILL.md",
+      "bytes": 13495,
+      "sha256": "2a167b44f4da3cde768834d9a476f2a252c8cf3138cba61f48d99bbf7214fe31",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\5-SKILL.md"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-main-general-current-manual-business-review-current.json",
+      "bytes": 2261,
+      "sha256": "84d1cf595b742d8227bc310a43bc4dd9f69b923dbba10db8592dbe60530bf282",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18GeneralReadOrderInput-20261030-163023\\6-T18-main-general-current-manual-business-review-current.json"
+    }
+  ],
+  "actual_failure": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-main-general-current-manual-business-review-current.json",
+  "test_only_before_fix": true,
+  "owner_latest": "Continue primary tests and necessary repairs; full suite still waits synchronized-release signal"
+}

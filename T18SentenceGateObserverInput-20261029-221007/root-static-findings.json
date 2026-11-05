@@ -1,0 +1,8 @@
+{
+  "read_observer": "observeReadTimeline2569 rejects ANYerror, including exact newproduction list-before-read denial evenifrealretryvalid.",
+  "calc_observer": "main3377 counts deniedpreCorecalls as successfulcalculator and compares attemptseq beforeanswers.",
+  "save_observer": "main3405 counts deniedpreanswerwrite as firstsave. ExactfailedpreCorecalls mustremainseparate fromsuccessfulCorecalls, no swallowing arbitrary errors.",
+  "required_contract": "Production denied attempts musthave exact producerreason, pairedcurrentturnNative result, be before correct unlock; successorder remains strict list/groupedread/jointanswers/calc/save. GySbhTnoLISTnoASK remains RED.",
+  "non_preemptive": "Newproduct gate now accepted with47unit; adapt consumer to actual producer contract BEFORE model, not weaken successful-flow assertions.",
+  "Aconfig_author_independent": true
+}

@@ -1,0 +1,404 @@
+# lawbench-dsh 组合包配置补丁（Spec 3.1）。
+# 叠加顺序：dsh-base → dsh-web-app（含其 presets/*）→ 本文件。按行 id 整行替换 config 或 disabled: true。
+# 替换的是整行 config：没写的字段会丢，所以每行写全自己要的字段。
+# 行 id 以 DSH 固定提交 477b4f420553e8a52c2fbccc464d7561b239c443 为准，换提交要重新核对。
+
+# ── 1. 关掉的行 ────────────────────────────────────────────────────────────
+
+# 官方 preset：都挂了命令、文件工具（D4）
+- id: preset-standard
+  disabled: true
+- id: preset-ptc
+  disabled: true
+- id: preset-minimal
+  disabled: true
+- id: preset-cordis
+  disabled: true
+
+# 联网
+- id: web
+  disabled: true
+- id: web-search-deepseek
+  disabled: true
+- id: web-fetch-http
+  disabled: true
+- id: mcp-resources
+  disabled: true
+
+# 插件管理（会用 pnpm 在线安装插件）
+- id: plugin-manager
+  disabled: true
+- id: ui-plugin-manager
+  disabled: true
+- id: plugin-package-inventory-deepseek
+  disabled: true
+
+# DeepSeek 账号和官方模型
+- id: deepseek-account
+  disabled: true
+- id: llm-deepseek
+  disabled: true
+- id: llm-deepseek-account
+  disabled: true
+
+# 遥测和反馈（另在环境变量中设 DSH_TELEMETRY_DISABLED=1）
+- id: session-telemetry-otel
+  disabled: true
+- id: message-feedback
+  disabled: true
+- id: ui-message-feedback
+  disabled: true
+
+# 标题生成（改由我方插件设标题）
+- id: session-title-llm
+  disabled: true
+
+# 文档预览（会在 DSH 目录缓存 PDF）
+- id: ui-sidebar-documentpreview
+  disabled: true
+- id: office-to-pdf
+  disabled: true
+
+# 官方品牌（第 3.4 节换成我方品牌）
+- id: ui-brand-official
+  disabled: true
+
+# ── 1b. 清单外、T4 复核反向检查补关的行（返修 2026-09-29）──────────────────
+
+# 侧栏浏览器：web profile 下关、desktop 下开；独立分区 webview 可访问任意网址（P1-1）
+- id: ui-sidebar-browser
+  disabled: true
+
+# 模型设置页：可自建指向任意地址的模型路由并覆盖 llm-pi-ai 行（P2-1）；服务器地址只在我方设置页改
+- id: ui-settings-models
+  disabled: true
+
+# 账号设置页和账号服务：DeepSeek 登录、充值、用量链接、飞书反馈表单（P2-2）
+- id: ui-settings-account
+  disabled: true
+- id: account-controller
+  disabled: true
+
+# 程序化工具调用运行时：mode 为 ptc / both 时给模型 run_code（P2-3，另见下方 tools 行锁 native）
+- id: ptc-runtime
+  disabled: true
+
+# DeepSeek 会话日志（目前不起作用，顺手关）
+- id: session-log-deepseek
+  disabled: true
+
+# ── 1c. 律师用不上的入口（T17 第一步，执行令 2026-09-30 08:54；调研注记第 4 节）────
+# Host 行和界面行成对关：只关 Host 行，界面照样挂着、调一个没人服务的命名空间。
+
+# 终端
+- id: terminal-controller
+  disabled: true
+- id: ui-sidebar-terminal
+  disabled: true
+
+# @ 文件引用、跨会话引用（session-reference 的 Host 行会把别的会话内容塞进本次请求，不需要界面，必须关）
+# 输入框占位文字"@ 文件或对话"已由源码补丁 P-18 去掉
+- id: file-reference-local
+  disabled: true
+- id: session-reference
+  disabled: true
+- id: ui-reference
+  disabled: true
+
+# 工作区文件浏览（read / stat 接受工作区外的绝对路径）
+- id: workspace-files
+  disabled: true
+- id: ui-sidebar-files
+  disabled: true
+# 每轮成果卡片：Host 半边硬依赖 workspace-files 提供的 workspaceFiles，随上一行关掉后会"启用但起不来"，显式关掉
+# （执行令 2026-09-30 09:39 裁决；要开回须连 workspace-files 一起开，记入 N41）
+- id: ui-deliverables
+  disabled: true
+
+# 在别的程序里打开；session-controller 自带的 openWorkspacePath 不受这两行约束，要改源码，候 N40
+- id: open-in-app
+  disabled: true
+- id: ui-open-in-app
+  disabled: true
+
+# 在线装插件的运行器（动态 Cordis 包）
+- id: cordis-host-runner
+  disabled: true
+- id: cordis-inspect-providers
+  disabled: true
+- id: cordis-client-runner
+  disabled: true
+- id: ui-cordis
+  disabled: true
+
+# 导出会话（/export、标题栏按钮、GET /api/session.export 整个会话记录加附件的 ZIP）
+- id: session-log-download
+  disabled: true
+
+# 设置里的"内置插件"及附属页
+- id: ui-settings-plugins
+  disabled: true
+- id: ui-settings-plugin-inventory
+  disabled: true
+- id: plugin-inventory
+  disabled: true
+- id: ui-settings-shell
+  disabled: true
+- id: ui-settings-agent-loop
+  disabled: true
+- id: ui-settings-subagent
+  disabled: true
+- id: ui-settings-web-search
+  disabled: true
+
+# ── 1d. 要取舍的入口（N41，用户 2026-09-30 同意主编排推荐；执行令 10:39 第 1 节）──────
+# 同样 Host 行和界面行成对关。
+
+# "权限"菜单（输入区和通用设置里的权限选择）。关掉后沙箱和审批按 base 的默认：
+# sandbox-policy 取 DSH_PERMISSION_MODE ?? 'workspace-write'，approval 为 ask；产品启动环境不设这个变量
+- id: permission
+  disabled: true
+- id: ui-permission
+  disabled: true
+
+# "模型"选择器：只有一条律所路由，新会话默认模型由 agent-default-model 行给出
+- id: ui-model-selection
+  disabled: true
+
+# "Agent 预设"设置页：会显示我方系统提示全文；preset 注册表（agent-preset-registry）保留
+- id: ui-agent-preset
+  disabled: true
+
+# /feedback 命令（会写 /.anonymous-user-id）
+- id: command-feedback
+  disabled: true
+
+# 轨迹视图；每轮记录改动（会在案件文件夹里跑 git、往系统临时目录复制改动的文件）
+- id: ui-trajectory
+  disabled: true
+- id: workspace-changes
+  disabled: true
+
+# "目标""计划"入口（模型侧 tool-goal、command-goal、plan-mode 早已关）
+- id: ui-goal
+  disabled: true
+- id: ui-plan
+  disabled: true
+
+# 权限关掉后沙箱和审批写死，不再读环境变量 DSH_PERMISSION_MODE（桌面端把整个进程环境传给 Host，
+# 机器上有人设了 danger-full-access 也不生效；1516 令第一节小项③）。整行替换，字段写全（workspaceRoot 同 base）
+- id: sandbox-policy
+  config:
+    mode: workspace-write
+    workspaceRoot: !!js process.cwd()
+- id: approval
+  config:
+    policy: ask
+
+# ── 2. 改配置的行 ──────────────────────────────────────────────────────────
+
+# 默认 preset 指向律师工作台；不改的话仍指向已关掉的 standard，新建会话报 agent-preset/not-found
+- id: agent-preset-registry
+  config:
+    default: lawbench
+
+# 律所模型路由（Spec 8.1、8.2）。
+# pi-ai 把模型条目的 id 原样作为请求里的 model 发给网关，没有单独的"上游模型名"字段，
+# 所以三个窗口条目无法都发 qwen38-27b —— 按 Spec 8.2 备选：只配一个 128K 条目（结论记在 dsh-patches\PATCHES.md）。
+# 思考档：chat-template 格式按档位填 chat_template_kwargs；关闭档 enable_thinking=false 且不带 reasoning_effort。
+# 重试（Spec 8.3）：llm-retry 行本身没有配置项，重试策略在路由的 retryPolicy 上；
+# 默认可重试错误码只有空响应、限流、服务端错误、超时、传输错误，不含 401 / 403。
+- id: llm-pi-ai
+  config:
+    providers:
+      lawfirm:
+        displayName: 律所模型
+        api: openai-completions
+        baseURL: http://127.0.0.1:18765/v1
+        apiKeyEnv: LAWFIRM_KEY
+        timeoutMs: 1200000
+        retryPolicy:
+          mode: normal
+          maxRetries: 1
+        models:
+          - id: qwen38-27b
+            name: 律所模型（128K）
+            contextWindow: 131072
+            input: [text]
+            reasoningEfforts:
+              off:
+              low: low
+              medium: medium
+              # 6000D 只接受 low / medium / xhigh（实测 2026-09-29：high 返回 400），界面"高"发 xhigh
+              high: xhigh
+        compat:
+          supportsStore: false
+          supportsDeveloperRole: false
+          maxTokensField: max_tokens
+          thinkingFormat: chat-template
+          chatTemplateKwargs:
+            enable_thinking:
+              $var: thinking.enabled
+            reasoning_effort:
+              $var: thinking.effort
+              omitWhenOff: true
+
+# 新会话默认用律所路由（base 默认是 deepseek-official / deepseek-flash，已关掉）
+- id: agent-default-model
+  config:
+    provider: lawfirm
+    model: qwen38-27b
+
+# 工具呈现模式锁成 native，不受环境变量 DSH_TOOLS_MODE 影响（P2-3）
+- id: tools
+  config:
+    mode: native
+    maxParallelSubCalls: 10
+
+# 工具结果永远不溢出到文件（阈值大于模型窗口，Spec 3.3）
+- id: spill-policy
+  config:
+    maxInlineTokens: 1000000
+
+- id: spill-local
+  config:
+    cleanupPeriodDays: 1
+
+# 开发者模式（界面叫"代码工作工具"）默认关闭：新安装默认是开，开着时新会话页显示 preset 选择入口
+- id: ui-settings
+  config:
+    enabled: false
+
+# 界面固定中文
+- id: locale
+  config:
+    preference: zh
+
+# 首次使用目录指向应用数据下的空目录，避免在"文档"里建 deepseek-harness/default-workspace
+- id: workspace-controller
+  config:
+    documentsDirectory: !!js "process.platform === 'darwin' ? process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:os').homedir(), 'Library', 'Application Support', 'lawbench', 'dsh-documents') : process.getBuiltinModule('node:path').join(process.env.LOCALAPPDATA ?? process.getBuiltinModule('node:os').homedir(), 'lawbench', 'dsh-documents')"
+    documentsLookupTimeoutMs: 10000
+
+# ── 3. 律师工作台 preset ───────────────────────────────────────────────────
+
+- insert:
+    - id: preset-lawbench
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: lawbench
+        name: 律师工作台
+        order: 1
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              complete: true
+              includeRuntimeContext: false
+              # 通用规则（Spec 9.2）全文在组合包的 persona.md（执行令 Q8：单独成文件由组合包引用）；
+              # 去掉文件首行的"【草稿…】"标记后作为系统提示
+              prefix: !!js "process.getBuiltinModule('node:fs').readFileSync(process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('lawbench-dsh/persona.md'), 'utf8').replace(/^【草稿[^\\n]*\\n+/, '').trim()"
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              providerName: lawbench-skills
+              includeDefaultRoots: false
+              watch: false
+              # Spec 10.1：管理员目录 %ProgramData%\lawbench\skills 在前（DSH 同级先到先得，同名时它覆盖内置），
+              # 内置目录 <安装目录>\skills 在后；开发期内置目录由 LAWBENCH_SKILLS_DIR 指定。装好的客户端（exe 旁有 resources\app.asar）
+              # 固定为安装目录、不读这个环境变量（T20 步骤 3；与 host\install-layout.ts 同一判断，ProgramData 下目录名同 ADMIN_DIR_NAME）
+              customSkillDirs: !!js "((p, fs) => { if (process.platform === 'darwin') { const res = p.join(p.dirname(process.execPath), '..', 'Resources'); const packaged = fs.existsSync(p.join(res, 'app.asar')); return ['/Library/Application Support/lawbench/skills', packaged ? p.join(res, 'skills') : process.env.LAWBENCH_SKILLS_DIR].filter(Boolean) } const inst = p.dirname(process.execPath); const packaged = fs.existsSync(p.join(inst, 'resources', 'app.asar')); return [p.join(process.env.ProgramData ?? 'C:\\\\ProgramData', 'lawbench', 'skills'), packaged ? p.join(inst, 'skills') : process.env.LAWBENCH_SKILLS_DIR].filter(Boolean) })(process.getBuiltinModule('node:path'), process.getBuiltinModule('node:fs'))"
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+          - id: compaction
+            name: cordis:group
+            group: true
+            isolate:
+              compaction: true
+              toolResultPruner: true
+            config:
+              # 令 0329 P0（用户真机：思考 → 加载技能 → 上下文已压缩 → 同一句思考 → 又加载技能……16/16 用完）：
+              # DSH 的压缩触发点 = min(窗口 × thresholdRatio, 窗口 − 本次请求的 maxTokens − headroomTokens)。headroomTokens 默认 65536，
+              # 我方按 Skill 的 max_tokens 发请求，触发点就成了 131072 − max_tokens − 65536：16384 的 Skill 和自由对话是 49152
+              # （真机右下角 52K/131K 正好越过它），32768 的是 32768，49152 的只有 16384——上下文不到一半就每一步都压缩，
+              # 把前面的案件卡片、任务输入、已加载的技能都换成一段摘要，模型只好从头再想、再加载。
+              # 这里把预留降到 16384（摘要自己最多写 8192）：触发点回到 98304 / 81920 / 65536（窗口的 75% / 62% / 50%）。
+              # 不降到 8192（复核 rv-A62 P2-2）：DSH 按 4 个字符 1 个 token 估，中文会少算一半多，并发读回三份材料就可能超过 8192 的余量。
+              - id: compaction-basic
+                name: '@deepseek-ai/dsh-compaction-basic'
+                config:
+                  thresholdRatio: 0.8
+                  headroomTokens: 16384
+                  maxTokens: 8192
+              # 压缩一触发就先剪工具结果：超过 thresholdChars 的只留头尾。原来 8192 / 4096 / 1024——一份材料一次读回 8000 字，
+              # 转成 JSON 文本后超过 8192，会被剪掉中间只剩头尾（技能全文 3000 到 6000 字，本来不剪）。
+              # 放到 48000：一次读回的材料（含一次读多份）不剪，只剪真正异常大的结果（tests\compaction-loop.spec.ts 守着）。
+              - id: tool-result-pruner
+                name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+                config:
+                  thresholdChars: 48000
+                  headChars: 32000
+                  tailChars: 8000
+          # 我方 Agent 插件：注册 11 个 case_* 工具；取任务与上下文、预算、思考档、进度与结束（Spec 1.2、9.2）
+          - id: legal-agent
+            name: 'lawbench-dsh/agent'
+            config:
+              validateContracts: true
+
+# ── 4. 我方全局行（T7）──────────────────────────────────────────────────────
+
+# 凭据：原 credentials 行（@deepseek-ai/dsh-credentials-local，Key 明文存 $DSH_HOME\.credentials.yaml）关掉，
+# 另插我方凭据插件提供同名服务 credentials（执行令 Q1：补丁不能改行的插件名，整行替换走不通）
+- id: credentials
+  disabled: true
+
+- insert:
+    - id: legal-credentials
+      name: 'lawbench-dsh/credentials'
+
+    # 界面插件（T13）：行名必须恰好是包名，DSH 的 modules 行才把它当界面插件（exports["./client"]）
+    - id: legal-ui
+      name: 'lawbench-dsh'
+
+    # 启动并看护工作台服务（Spec 1.3）；提供 lawbenchCore 服务和远程命名空间 lawbench
+    # 开发期由环境变量给出启动命令等；打包后由 T20 固定为内置 Python 与安装目录
+    - id: legal-host
+      name: 'lawbench-dsh/host'
+      config:
+        command: !!js "JSON.parse(process.env.LAWBENCH_SERVICE_CMD ?? '[]')"
+        cwd: !!js "process.env.LAWBENCH_SERVICE_CWD ?? process.getBuiltinModule('node:os').homedir()"
+        appData: !!js "process.platform === 'darwin' ? process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:os').homedir(), 'Library', 'Application Support', 'lawbench') : process.getBuiltinModule('node:path').join(process.env.LOCALAPPDATA ?? process.getBuiltinModule('node:os').homedir(), 'lawbench')"
+        forwardPort: 18765
+        portRange: !!js "process.env.LAWBENCH_SERVICE_PORTS ? process.env.LAWBENCH_SERVICE_PORTS.split('-').map(Number) : undefined"
+        env: !!js "JSON.parse(process.env.LAWBENCH_SERVICE_ENV ?? '{}')"
+        # listSkills 读的 Skill 目录（T13 执行令 Q4），与上面 preset 的 skill-filesystem 同一写法、同一顺序（管理员目录在前）
+        skillDirs: !!js "[process.platform === 'darwin' ? '/Library/Application Support/lawbench/skills' : process.getBuiltinModule('node:path').join(process.env.ProgramData ?? 'C:\\\\ProgramData', 'lawbench', 'skills'), process.env.LAWBENCH_SKILLS_DIR].filter(Boolean)"
+
+# ── 5. 会话记录进案件文件夹（T17 第三步，执行令 2026-09-30 15:16）─────────────────
+# 原行把所有会话记录存进 $DSH_HOME\sessions；换成我方路由：案件里的会话存 <案件>\工作区\会话，
+# 不在案件里的仍存 $DSH_HOME\sessions。路由内部用的仍是原版 JSONL 包（按 DSH 的模块解析取它的入口文件）。
+- id: session-persistence-jsonl
+  disabled: true
+
+# 会话投影缓存：原行把每个会话的投影（标题等，含律师发的原话）存进 $DSH_HOME\storages\session_projcache，不跟案件走
+# （第三步验收全盘搜特征串时发现），关掉。侧栏里没打开过的会话，标题、最近活动、是否空白只从这份缓存取（不重放记录），
+# 所以不能干脆不要：改由下面的 legal-session-store 用原版缓存类按案件存（<案件>\工作区\会话缓存，第三轮裁决 A-P2-1 ①）
+- id: session-projection-cache
+  disabled: true
+
+- insert:
+    - id: legal-session-store
+      name: 'lawbench-dsh/session-store'
+      config:
+        backendModule: !!js "process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('@deepseek-ai/dsh-session-persistence-jsonl')"
+        defaultRoot: !!js dshHomePath('sessions')
+        appData: !!js "process.platform === 'darwin' ? process.getBuiltinModule('node:path').join(process.getBuiltinModule('node:os').homedir(), 'Library', 'Application Support', 'lawbench') : process.getBuiltinModule('node:path').join(process.env.LOCALAPPDATA ?? process.getBuiltinModule('node:os').homedir(), 'lawbench')"
+        # 不在案件里的会话不许新建（N46 用户定 ②：没有打开案件就不能发消息）；已有的只读，不能续写
+        allowOutsideCase: false
+        # 会话投影缓存按案件存；写入节奏同 base 原行
+        projectionCache:
+          module: !!js "process.getBuiltinModule('node:module').createRequire(baseUrl).resolve('@deepseek-ai/dsh-session-projection-cache')"
+          writeEveryEvents: 200
+          writeIntervalMs: 5000

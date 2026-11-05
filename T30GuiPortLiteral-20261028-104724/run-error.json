@@ -1,0 +1,6 @@
+{
+  "exceptionType": "Deny",
+  "guardCode": "LB_FORWARD_PORT_not_fixed",
+  "outcome": "FAILED_FOR_ROOT_REVIEW",
+  "rootRetained": true
+}

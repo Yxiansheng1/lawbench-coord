@@ -1,0 +1,43 @@
+{
+  "verdict": "TWO_EXPRESSION_TABLE_FIDELITY_SOURCE_AND_FOCUSED_UNIT_ACCEPTED",
+  "at": "2026-10-29T19:37:27.272023+00:00",
+  "source": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\pipeline\\steps\\wiki.py",
+    "bytes": 33796,
+    "sha256": "96698902e8e0925376b742074fb7076edb41cf94f7ba83e0682d6c601607ef13",
+    "mtime_ns": "1793302118184076800"
+  },
+  "newtest": {
+    "path": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_wiki_table_fidelity_20261030_032635.py",
+    "bytes": 8722,
+    "sha256": "e46607d3f88bd31f499e41090849355a9dfd508c3c153c98aa761cc1593a0cfb",
+    "mtime_ns": "1793302142496383700"
+  },
+  "author_commands": 47,
+  "author_success": 41,
+  "author_nonzero": 6,
+  "author_runtime": 0,
+  "all_source_test_formal_commands_writefaces_reviewed": true,
+  "whole_module_two_expression_inverse": true,
+  "old_tests_unchanged": true,
+  "other345_product_pins_unchanged": true,
+  "pytest_tests_passed": 4,
+  "pytest_stdout_seconds": 1.89,
+  "root_total_elapsed_s": 2.6089999999967404,
+  "source_changes": [],
+  "network_or_process_guard_attempts": [],
+  "model_calls": 0,
+  "app_started": false,
+  "unit_wrapper_PID58988_and_child49432_exact_exe_birth_captured_then_CIM_absent": true,
+  "forced": false,
+  "first_root_unit_attempt": {
+    "packet": "T18WikiTableFidelityUnit-root-20261030-033231",
+    "pytest_exit": 4,
+    "tests_executed": 0,
+    "cause": "Root subprocess.Popen function guard broke Windows asyncio subclass at import; postexit image-query collector also asserted. Both ROOTADMIN failures, not product failures. Original preserved."
+  },
+  "unit": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-wiki-table-fidelity-unit-root-current.json",
+  "current_model_workflow_NOT_RUN": true,
+  "full_business_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,156 @@
+{
+  "read_ranges": [
+    {
+      "seq": 46,
+      "args": {
+        "name": "起诉意见书"
+      },
+      "result_seq": 47,
+      "is_error": true,
+      "content_sha256": "66a30a611f93bedbad071b811d9036e968abdc2181cc1a4d3cac855b5b98e914",
+      "content_bytes": 150
+    },
+    {
+      "seq": 56,
+      "args": {
+        "name": "起诉意见书"
+      },
+      "result_seq": 57,
+      "is_error": true,
+      "content_sha256": "13f985372311fc209d32463d60aaff1dd9415f0fe92e7a31077be84bbee22389",
+      "content_bytes": 121
+    },
+    {
+      "seq": 61,
+      "args": {
+        "name": "起诉意见书",
+        "start": 1
+      },
+      "result_seq": 62,
+      "is_error": true,
+      "content_sha256": "8ba96d0fe5fca79a4247d3b4074f4af03eb5f17ed6e1b0ea652437520cd52702",
+      "content_bytes": 166
+    },
+    {
+      "seq": 66,
+      "args": {
+        "name": "起诉意见书",
+        "start": 1,
+        "end": 1
+      },
+      "result_seq": 67,
+      "is_error": false,
+      "content_sha256": "405744144c8dabd0dbcd2b147d1534d7da893933513aca580f10039f38d9aaaa",
+      "content_bytes": 175
+    },
+    {
+      "seq": 71,
+      "args": {
+        "name": "起诉意见书",
+        "start": 1,
+        "end": 10
+      },
+      "result_seq": 72,
+      "is_error": false,
+      "content_sha256": "2982a574205a1f10a59e6a67146e0f153af17df184386c6bcc037cc5ff231a40",
+      "content_bytes": 983
+    },
+    {
+      "seq": 76,
+      "args": {
+        "name": "起诉意见书",
+        "start": 11,
+        "end": 20
+      },
+      "result_seq": 77,
+      "is_error": false,
+      "content_sha256": "81561260c76ddbe23193a8f83a614f818470d13f78400f23fa4cc1be0b2294a4",
+      "content_bytes": 1352
+    },
+    {
+      "seq": 81,
+      "args": {
+        "name": "起诉意见书",
+        "start": 21,
+        "end": 30
+      },
+      "result_seq": 82,
+      "is_error": false,
+      "content_sha256": "fca7d1b9058220c67bcf08e41b460a330615d06bd71c1d32ba914121eb3333fa",
+      "content_bytes": 1307
+    },
+    {
+      "seq": 86,
+      "args": {
+        "name": "讯问笔录",
+        "start": 1,
+        "end": 10
+      },
+      "result_seq": 87,
+      "is_error": false,
+      "content_sha256": "dcce7f3eed6c38e71bb730ee82a864243988756637eb12f62919e3f1faa9d3a5",
+      "content_bytes": 779
+    },
+    {
+      "seq": 91,
+      "args": {
+        "name": "讯问笔录",
+        "start": 11,
+        "end": 20
+      },
+      "result_seq": 92,
+      "is_error": false,
+      "content_sha256": "1131394e5dce3005e10e65fb40b06251cc4a42a30484c4ebe01e14bf16399296",
+      "content_bytes": 831
+    },
+    {
+      "seq": 96,
+      "args": {
+        "name": "讯问笔录",
+        "start": 21,
+        "end": 30
+      },
+      "result_seq": 97,
+      "is_error": false,
+      "content_sha256": "c3741e80d0c74b810f2568a6e2a228301e8f08bef489d34a5370c330681069c1",
+      "content_bytes": 602
+    },
+    {
+      "seq": 107,
+      "args": {
+        "name": "起诉意见书",
+        "start": 29,
+        "end": 29
+      },
+      "result_seq": 108,
+      "is_error": false,
+      "content_sha256": "387bf520f24891e87096f37219f9ef734abf21599935df82cfc63b1082ccbf61",
+      "content_bytes": 306
+    }
+  ],
+  "physical_drafts": [
+    {
+      "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v1.md",
+      "bytes": 5271,
+      "sha256": "1bda644d4d741ef93624af041ba3a93f44dddc54a34ef857018d9a44e81eb609",
+      "Native_args_equal": true,
+      "call_seq": 101
+    },
+    {
+      "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v2.md",
+      "bytes": 5418,
+      "sha256": "fa05436068c47497c3d314fe33d451a0bc22add58492e3ed9048ae53c17e7609",
+      "Native_args_equal": true,
+      "call_seq": 112
+    },
+    {
+      "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v3.md",
+      "bytes": 5394,
+      "sha256": "c048cfd9f53ea0cc472a1ff90523b4800a1e0f75786c7fe6177811a85edc1a24",
+      "Native_args_equal": true,
+      "call_seq": 117
+    }
+  ],
+  "all_physical_drafts_equal_original_Native_arguments": true,
+  "not_business_PASS": true
+}

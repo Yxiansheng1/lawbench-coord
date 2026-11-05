@@ -1,0 +1,16 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_read_bound_20261101_114236.py",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadNameClosure-20261101-120100-before.py",
+  "before_sha256": "f33460d20908be96fe338601715bd523b2910f9e866cf7fb1b43f729da3b1d6a",
+  "mapping": {
+    "\"name\": \"\u8303\u56f4.txt\"": "\"name\": \"\u8303\u56f4\"",
+    "\"name\": \"\u8d85\u957f\u5355\u5143.txt\"": "\"name\": \"\u8d85\u957f\u5355\u5143\"",
+    "\"more_names\": [\"\u53e6\u4e00\u4efd.txt\"]": "\"more_names\": [\"\u53e6\u4e00\u4efd\"]"
+  },
+  "counts": {
+    "\"name\": \"\u8303\u56f4.txt\"": 12,
+    "\"name\": \"\u8d85\u957f\u5355\u5143.txt\"": 2,
+    "\"more_names\": [\"\u53e6\u4e00\u4efd.txt\"]": 1
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18BoundedReadNameClosure-20261101-120100.md"
+}

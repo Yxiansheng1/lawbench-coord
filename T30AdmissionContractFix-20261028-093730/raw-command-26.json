@@ -1,0 +1,8 @@
+{
+  "id": "item_30",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\bash.exe\" -c '$f='\"'D:\\\\Lawbeach\\\\lawbench-coord\\\\T30GenuineSessionInput-20261028-092536\\\\1-router.ts'; rg -n \\\"async (create|open|flush|stat|list|recordOf|ownerOf|current|find)|recordOf\\\\(|ownerOf\\\\(\\\" \"'$f; Get-Content -LiteralPath $f | Select-Object -Skip 390 -First 470'",
+  "aggregated_output": "�b�~���\u00020 \u0000\r\u0000\n\u0000\u0019���N\u0001x:\u0000 \u0000B\u0000a\u0000s\u0000h\u0000/\u0000E\u0000_\u0000A\u0000C\u0000C\u0000E\u0000S\u0000S\u0000D\u0000E\u0000N\u0000I\u0000E\u0000D\u0000\r\u0000\n\u0000",
+  "exit_code": 1,
+  "status": "failed"
+}

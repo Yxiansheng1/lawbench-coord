@@ -1,0 +1,39 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18RoundCitationInitialFinite-root-20261029-104339",
+  "helper": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\RoundCitationFormat-20261029-103639\\verify-round-citation-finite.py",
+  "helper_sha256": "fe74fe89f49b24887b4774de1ecbef6630f253040539db4162dd2fffd4c49a67",
+  "exit": 1,
+  "elapsed_s": 2.389999999999418,
+  "identities": [
+    {
+      "pid": 51120,
+      "parent": 48856,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-29T02:43:39.6640960Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "OS_after": [],
+  "source_changes": [],
+  "pin_checks": 515,
+  "forced": false,
+  "fixture_result": null,
+  "wrapper": {
+    "exit": 1,
+    "error": {
+      "type": "AssertionError",
+      "message": "N45_NESTED_YEAR_ROUND_CITATION_MISSED"
+    },
+    "denied_attempts": []
+  },
+  "scope": "ACTUAL_CHECK_TEXT_FORMAT_ONLY_AND_ONE_N45_BOUNDARY",
+  "whole_consumer_RUN": false,
+  "HTTP_model_Key_not_started_by_root": true,
+  "Packaging": "HOLD",
+  "N45_probe": {
+    "input": "（京政发〔2024〕1号 第1段）",
+    "observed": [],
+    "expected_raw": "（京政发〔2024〕1号 第1段）",
+    "expected_ok": false
+  }
+}

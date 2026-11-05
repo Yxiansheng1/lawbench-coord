@@ -1,0 +1,14 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+  "source_sha256": "816869ed16178a3243b300455e5a509f139272437b11a7b50bb1421f01b22fa2",
+  "source_bytes": 14654,
+  "test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\t18_rate_ratio_20261028_194123.py",
+  "test_sha256": "6a2b80c38586817a45f68116cd0a2538bd00a7d7abba2511a8c012cba04dfc63",
+  "two_regex_prefixes_inverse": true,
+  "outside_purehelpers_fullbytes_exact": true,
+  "all_old5_test_methods_literal_same": true,
+  "new8_tests_not_weakened": true,
+  "test_unchanged_by_suffix_fix": true,
+  "author_runtime": 0,
+  "Packaging": "HOLD"
+}

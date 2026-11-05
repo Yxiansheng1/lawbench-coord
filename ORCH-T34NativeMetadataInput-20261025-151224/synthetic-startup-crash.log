@@ -1,0 +1,108 @@
+time: 2026-10-25T07:07:38.367Z
+source: host
+phase: startup
+app: @deepseek-ai/dsh-desktop 0.1.7-rc.2
+platform: win32 x64
+electron: 44.0.0
+node: 24.18.1
+locale: en
+shell pid: 67844
+
+--- error ---
+DesktopHostFatalError: dsh: startup failed: 1 required plugin did not activate
+
+Failed plugins (1):
+  modules (required)
+    Package: @deepseek-ai/dsh-client-modules
+    AggregateError: client-modules: 1 client package failed to compose:
+      other failures:
+        - client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+        at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:544:34)
+        at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+        at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+        at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#modules
+        at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#include
+    Error: client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+        at ClientModuleRegistry.reconcilePackage (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:876:10)
+        at ClientModuleRegistry.processOne (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:852:13)
+        at ClientModuleRegistry.flush (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:898:14)
+        at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:543:8)
+        at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+        at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+        at composeError (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:199:18)
+        at Fiber._execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1137:10)
+        at Fiber._reload (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1356:16)
+
+Plugins waiting for services (1):
+  Plugin      Missing services
+  client-hmr  clientModules
+    at ChildProcess.<anonymous> (file:///D:/Lawbeach/lawbench-A/dsh/apps/desktop/lib/main.js:3713:49)
+    at ChildProcess.emit (node:events:509:28)
+    at emit (node:internal/child_process:972:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:91:21)
+
+--- host diagnostic (as reported by the Host process) ---
+StartupError: dsh: startup failed: 1 required plugin did not activate
+
+Failed plugins (1):
+  modules (required)
+    Package: @deepseek-ai/dsh-client-modules
+    AggregateError: client-modules: 1 client package failed to compose:
+      other failures:
+        - client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+        at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:544:34)
+        at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+        at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+        at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#modules
+        at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#include
+    Error: client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+        at ClientModuleRegistry.reconcilePackage (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:876:10)
+        at ClientModuleRegistry.processOne (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:852:13)
+        at ClientModuleRegistry.flush (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:898:14)
+        at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:543:8)
+        at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+        at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+        at composeError (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:199:18)
+        at Fiber._execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1137:10)
+        at Fiber._reload (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1356:16)
+
+Plugins waiting for services (1):
+  Plugin      Missing services
+  client-hmr  clientModules
+    at auditStartupEntries (file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/app-boot/lib/index.js:4015:31)
+    ... 2 lines matching cause stack trace ...
+    at async main (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-desktop-host/lib/index.js:297:18) {
+  [cause]: AggregateError: Plugin activation failures
+      at new StartupError (file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/app-boot/lib/index.js:3877:49)
+      at auditStartupEntries (file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/app-boot/lib/index.js:4015:31)
+      at async boot (file:///D:/Lawbeach/lawbench-A/dsh/packages/boot/app-boot/lib/index.js:4089:3)
+      at async runProfile (file:///D:/Lawbeach/lawbench-A/dsh/apps/cli/lib/profile-boot-BZ2ZjNWi.js:271:15)
+      at async main (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-desktop-host/lib/index.js:297:18) {
+    [errors]: [
+      ClientPackageCompositionError [AggregateError]: client-modules: 1 client package failed to compose:
+        other failures:
+          - client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+          at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:544:34)
+          at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+          at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+          at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#modules
+          at file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/#include {
+        [errors]: [
+          Error: client-modules: package lawbench-dsh resolves from multiple active Loader sources: "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/index.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/, "file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/privateplugin/lib/host.js" from file:///D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/runs/T33-host-20261025-150705/gui/dsh-home/profiles/desktop/; remove one entry
+              at ClientModuleRegistry.reconcilePackage (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:876:10)
+              at ClientModuleRegistry.processOne (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:852:13)
+              at ClientModuleRegistry.flush (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:898:14)
+              at new ClientModuleRegistry (file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/project/node_modules/@deepseek-ai/dsh-client-modules/lib/index.js:543:8)
+              at Fiber.execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1068:24)
+              at file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1142:34
+              at composeError (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:199:18)
+              at Fiber._execute (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1137:10)
+              at Fiber._reload (file:///D:/Lawbeach/lawbench-A/dsh/vendor/cordis/lib/index.js:1356:16)
+        ]
+      }
+    ]
+  }
+}
+
+--- renderer console (error level, oldest first) ---
+(no error-level renderer console output was captured)

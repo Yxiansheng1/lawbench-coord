@@ -1,0 +1,80 @@
+{
+  "source_only": true,
+  "allowed_reads": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 59895,
+      "sha256": "7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90",
+      "mtime_utc": "2026-11-01T10:13:40.9101830Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae",
+      "mtime_utc": "2026-10-31T18:55:39.8380466Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\types.ts",
+      "bytes": 22007,
+      "sha256": "f5206fd5daf18d3899202c96ca0edb6e7c1a10ddc535edead062ed28f2261b2d",
+      "mtime_utc": "2026-10-19T03:11:04.6520027Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba",
+      "mtime_utc": "2026-10-23T03:11:38.7710406Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\agent.ts",
+      "bytes": 27451,
+      "sha256": "486662e133184cfbc8b816b445339ab0b75200fd771dba1af1562b28d8e7bdc5",
+      "mtime_utc": "2026-10-23T03:00:33.4773444Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t18-delivery-quality-20261031-173317.spec.ts",
+      "bytes": 15599,
+      "sha256": "372e9208bd0bcf195e4fbba3a6291f4af0630712452a96c78773ada6da8337c1",
+      "mtime_utc": "2026-10-31T09:42:06.5495166Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t18-delivery-coverage-20261031-1830.spec.ts",
+      "bytes": 15429,
+      "sha256": "0aed4d9f5ef082c881b34c556d53cbf68adfb88a7f2a2c9360095900db52b60b",
+      "mtime_utc": "2026-10-31T10:36:20.6925329Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_material.schema.json",
+      "bytes": 6090,
+      "sha256": "95fc7f5ee89b223b70d8eac74f1d16aa039abfefe5c1045f45e45b381bce7c5a",
+      "mtime_utc": "2026-11-01T04:12:55.7262348Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\tools\\case_read_wiki.schema.json",
+      "bytes": 1430,
+      "sha256": "f068983b652f85e7351450a8be5033bd39a1f5753fd71e2f92c4647e69534f6d",
+      "mtime_utc": "2026-11-01T04:12:55.7272347Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.result.json",
+      "bytes": 191,
+      "sha256": "92605b16a190940d5f7b8e786bdb9960fc5c2f48b991e5fcdcdf65783b3d21bd",
+      "mtime_utc": "2026-10-21T20:57:23.5832489Z"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_save_draft.result.json",
+      "bytes": 897,
+      "sha256": "084def0bf7bd065f686a07e0400da79d5191c4e5f4530ea9f66e93c106419eb0",
+      "mtime_utc": "2026-10-21T20:57:23.8113401Z"
+    }
+  ],
+  "allowed_writes": [
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18NativeGroundingReview-20261102-000134.md"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18NativeGroundingReview-20261102-000134.md",
+  "baseline_backup": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGroundingReview-20261102-000134",
+  "task_state_READ_ONLY": true
+}

@@ -1,0 +1,2 @@
+tests/contract-question-gate-runtime.spec.ts(154,85): error TS7006: Parameter 'command' implicitly has an 'any' type.
+tests/contract-question-gate-runtime.spec.ts(154,94): error TS7006: Parameter 'body' implicitly has an 'any' type.

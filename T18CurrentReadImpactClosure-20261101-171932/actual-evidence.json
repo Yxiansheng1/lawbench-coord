@@ -1,0 +1,226 @@
+{
+  "red2": {
+    "verdict": "REAL_FS_TWO_BOUNDARY_BUGS_REPRODUCED",
+    "failed": 2,
+    "passed": 0,
+    "deselected": 11,
+    "pytest_s": 1.737,
+    "controller_s": 3.985000000000582,
+    "source_pins_held": 519,
+    "completeIdentities": [
+      {
+        "pid": 37240,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.452825+00:00",
+        "birth_filetime_ticks": "134379949204528253",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 37292,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.660585+00:00",
+        "birth_filetime_ticks": "134379949206605851",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "guard_denials": 0,
+    "forced": false,
+    "actual_inverted_failed_page_saved_v1": true,
+    "actual_program_placeholder_page_saved_v1": true,
+    "fixture_assertions_passed_before_main_failure": true,
+    "source_process_qualifications": [
+      "Root caught public metadata passed to private texts.text_rel BEFORE runtime; corrected private index lookup exact full-byte inverse",
+      "Latest fixture author exceeded read boundaries with materials/texts/gate/app/helper source searches, coordination metadata, repeated hashes and prohibited git status/branch (read intent; no explicit Git write commands, index refresh not proven absent); raw deadline/noformal retained",
+      "Root independently reviewed complete ready test/preparer code and setup/finally, author lifecycle deviation NOT accepted as completed handback; finite TEST admission only, not source-process compliance PASS"
+    ],
+    "scope": "Actual public Core tools + owned real FS; no actual OCR/model/default lifespan/GUI/HTTP service or business quality PASS",
+    "Packaging": "HOLD"
+  },
+  "prior13": {
+    "verdict": "REAL_FS_SAME_THIRTEEN_PASS_PROVEN_BOUNDARY_RECOVERY",
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "errors": 0,
+    "pytest_s": 7.152,
+    "controller_s": 9.5,
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadBoundaryGREEN-root-20261101-164348",
+    "source_pins_held": 526,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 14868,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:43:49.037983+00:00",
+        "birth_filetime_ticks": "134379962290379830",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 36828,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:43:49.243022+00:00",
+        "birth_filetime_ticks": "134379962292430222",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "red2_original_preserved": true,
+    "test_source_bytes_held": true,
+    "real_page_after_placeholder_rejection_saves_v1": true,
+    "no_overlapping_count_sum": true,
+    "scope": "Original realFS public tools, current-task numeric citations only; no actual OCR/model/GUI/NativeR recovery or factual/legal quality PASS",
+    "cleanup_limits": "Original Env.close ignores rmtree failures; no blanket fullmachine/helperOS/client/Net/thread/traffic cleanup claim",
+    "business_quality": "FAILED_PARTIAL",
+    "Packaging": "HOLD"
+  },
+  "public_recovery_red1": {
+    "verdict": "PUBLIC_CORE_ACTIONABLE_ID_NAME_HINT_RED1_REPRODUCED",
+    "failed": 1,
+    "passed": 0,
+    "deselected": 13,
+    "pytest_s": 1.23,
+    "controller_s": 3.547000000005937,
+    "source_pins_held": 534,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 38000,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:59:11.059452+00:00",
+        "birth_filetime_ticks": "134379971510594519",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 15756,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:59:11.270701+00:00",
+        "birth_filetime_ticks": "134379971512707015",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "directID_read_actual": "MATERIAL_NOT_FOUND no reads/result changes",
+    "scopedList_nameMapping_read_save_actual": "Same ID maps to name; original currentversion line2 readledger then samecontentsavedv1 exactphysicalbytes",
+    "only_fail": "Final publictool order/name mapping instruction absent; all precedingactualflow/privacy/state/fixturechecks passed",
+    "historic_model_loop_causality": "NOT_PROVEN",
+    "no_model_OCR_GUI_defaultlifespan": true,
+    "Packaging": "HOLD"
+  },
+  "current14": {
+    "verdict": "SAME_FOURTEEN_REAL_FS_PASS_ON_FRESH_SHORT_OWNED_ROOT_LIMITED",
+    "tests": 14,
+    "passed": 14,
+    "failed": 0,
+    "errors": 0,
+    "pytest_s": 7.88,
+    "controller_s": 10.125,
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18AG-20261101-171317",
+    "source_pins_held": 541,
+    "guard_denials": 0,
+    "forced": false,
+    "completeIdentities": [
+      {
+        "pid": 39644,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:13:17.951036+00:00",
+        "birth_filetime_ticks": "134379979979510357",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 23952,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T09:13:18.183810+00:00",
+        "birth_filetime_ticks": "134379979981838101",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "public_list_ID_to_name_read_save_actual": true,
+    "original_red1_and_longroot9_failures_preserved": true,
+    "only_differential_control_change": "Fresh shorter packet/private-root path binding, same source/tests/guards/assertions; no existing root reused/moved or policy changed",
+    "longpath_status": "OPEN: original atomic temporary path260 FileNotFoundError under longer owned root; shorter control supports this boundary, does not fix or waive Windows longpath defect",
+    "model_loop_causality": "NOT_PROVEN",
+    "business_quality": "FAILED_PARTIAL",
+    "whole_service_proof": "1419=1351PASS18FAIL8ERROR42SKIP at prior24502B28011; currentonlyerrorcopy+Specdelta, no derived currentwholePASS",
+    "source_process_qualifications": [
+      "Author exceeded capsule-only scope with repeatedtarget/testsource, case modules/metadata, budgetcarrysource and prohibited readonly Git diff/stat. No explicit Git write command; index refresh not proven absent.23/23zero, no APP/parser/test/model runtime.",
+      "Source deadline after ready two .NET writes, no formal/deletion record. Not completed handback or source-process compliance/style PASS. Existing Root full independent review admits finite authorized test, old status/raw remain unchanged."
+    ],
+    "cleanup_limits": "OriginalEnv.close ignores rmtreefailures; no fullmachine/helperOS/client/Net/thread/traffic claim",
+    "Packaging": "HOLD"
+  },
+  "whole": {
+    "verdict": "CURRENT_SHARED_HELPER_WHOLE_SAME26_FAILURE_ERROR_KEYS_NO_NEW_FAILURE_NOT_FULL_PASS",
+    "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\FullServiceFinal-root-20261101-164511",
+    "raw": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-boundary-whole-regression-current.json",
+    "actual_counts": {
+      "total": 1419,
+      "passed": 1351,
+      "failed": 18,
+      "errors": 8,
+      "skipped": 42
+    },
+    "controller_s": 456.172,
+    "natural_exit": 1,
+    "forced": false,
+    "source_inventory_held": 474,
+    "new_failure_keys": [],
+    "removed_failure_keys": [],
+    "direct_actual_guard_rows": 23,
+    "unknown_fullrun_rows": 3,
+    "unknown_keys": [
+      {
+        "kind": "failure",
+        "classname": "tests.test_archive",
+        "name": "test_converter_unavailable"
+      },
+      {
+        "kind": "failure",
+        "classname": "tests.test_t5_convert_safety",
+        "name": "test_timeout_kills_own_tree_and_cleans"
+      },
+      {
+        "kind": "failure",
+        "classname": "tests.test_t5_lo_placement",
+        "name": "test_crash_exit_code_reason"
+      }
+    ],
+    "guard_denials": {
+      "categories": {
+        "subprocess": 20,
+        "write": 2
+      },
+      "total": 22
+    },
+    "T37_excluded_before_collection": true,
+    "complete_OS_identities": 13,
+    "partial_NOT_PROVEN": [],
+    "independent_CIM_rows": [],
+    "matching_identity_alive": [],
+    "original_all_RED_UNKNOWN_skip_preserved": true,
+    "original_1412_not_rewritten": true,
+    "no_overlap_sum": true,
+    "no_full_machine_helperOS_or_traffic_claim": true,
+    "native_write_mediation_not_complete": true,
+    "allowed_subprocess_hooks_not_inherited": true,
+    "business_quality": "FAILED_PARTIAL",
+    "Packaging": "HOLD"
+  },
+  "limitations": "Only current cumulative read-provenance/errorcopy. Longroot atomic temp260 originalhelper OPEN, separateBsource-repro underway; no model/business/NativeRdenialrecovery/GUI/Excelcell PASS. Oldmodelcase4 businessFAILED_PARTIAL; no closedwireaudit or semanticreview requested.",
+  "source_process": "Bcopy sourcejobdeadline after ready .NETwrites/noformal; Rootwholeinverse+fullindependentaudit admittedfiniteTEST, no completedauthor/processPASS. Currentfilebytes24627B1eb572/test26752B0f1460 unchanged."
+}

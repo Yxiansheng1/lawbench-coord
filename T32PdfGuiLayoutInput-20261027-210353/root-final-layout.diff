@@ -1,0 +1,94 @@
+--- 
++++ 
+@@ -410,13 +410,70 @@
+         return {entry.name for entry in entries}
+ 
+ 
+-def _assert_root_inventory(root: pathlib.Path) -> None:
+-    if _directory_names(root, "root_inventory") != {
++def _assert_gui_layout(root: pathlib.Path) -> None:
++    gui = root / "gui"
++    gui_directories = {
++        "dsh-home",
++        "electron-user-data",
++        "host-skills",
++        "logs",
++        "private-native",
++        "state",
++    }
++    if _directory_names(gui, "gui_inventory") != gui_directories:
++        raise Deny("gui_inventory")
++    for name in gui_directories:
++        path = gui / name
++        _no_reparse(path)
++        if not path.is_dir() or _link(path):
++            raise Deny("gui_directory_" + name)
++
++    current = _checked_file(gui / "state" / "current.json")
++    if (
++        not isinstance(current, dict)
++        or current.get("schemaVersion") != 1
++        or current.get("task") != "T33-native-gui"
++        or current.get("phase") not in {"prepared", "launching"}
++        or current.get("reason") != ""
++        or not isinstance(current.get("runRoot"), str)
++        or _norm(current["runRoot"]) != _norm(root)
++    ):
++        raise Deny("gui_current_state")
++    paths = current.get("paths")
++    required_paths = {"gui", "state", "nativeRun", "privateBuild"}
++    if (
++        not isinstance(paths, dict)
++        or not required_paths <= set(paths)
++        or any(not isinstance(value, str) for value in paths.values())
++    ):
++        raise Deny("gui_current_paths")
++    expected_paths = {
++        "gui": gui,
++        "state": gui / "state",
++        "nativeRun": root,
++        "privateBuild": pathlib.Path(
++            r"D:\Lawbeach\lawbench-A\docs\plan\evidence\T31"
++            r"\PrivateRuntimeBuild-20261026-043910"
++            r"\private-output-20261027-194112"
++        ),
++    }
++    for name, expected in expected_paths.items():
++        if _norm(paths[name]) != _norm(expected):
++            raise Deny("gui_current_path_" + name)
++
++
++def _assert_root_inventory(
++    root: pathlib.Path, allow_gui: bool = False
++) -> None:
++    root_entries = _directory_names(root, "root_inventory")
++    required_root_entries = {
+         "private",
+         "case",
+         "input",
+         "prepared.json",
+-    }:
++    }
++    has_gui = root_entries == required_root_entries | {"gui"}
++    if root_entries != required_root_entries and not (allow_gui and has_gui):
+         raise Deny("root_inventory")
+     if _directory_names(root / "private", "private_inventory") != {
+         "home",
+@@ -434,6 +491,8 @@
+         raise Deny("ready_inventory")
+     if _directory_names(root / "case", "case_empty_inventory"):
+         raise Deny("case_not_empty")
++    if has_gui:
++        _assert_gui_layout(root)
+ 
+ 
+ def _pdf_page_text(path: pathlib.Path) -> dict[int, str]:
+@@ -695,7 +754,7 @@
+         pathlib.Path(__file__).resolve()
+     ):
+         raise Deny("entry_source_identity")
+-    _assert_root_inventory(root)
++    _assert_root_inventory(root, allow_gui=True)
+     if any(os.path.lexists(root / name) for name in RUNTIME_ARTIFACTS):
+         raise Deny("runtime_artifact_exists")
+     return manifest, layout, source, prepared_sha256

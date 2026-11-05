@@ -1,0 +1,46 @@
+{
+  "verdict": "STATIC_REJECTED_BEFORE_ANY_B_FINITE_OR_FULL_CONSUMER_EXECUTION",
+  "all_80_commands_source_deltas_finite693lines_setup_cleanup_formal_README_reviewed": true,
+  "whole_manifest_allowed_inverse": true,
+  "B_service_unchanged": true,
+  "tracked_B_dirty_held": true,
+  "author_runtime": 0,
+  "commands": 80,
+  "success": 68,
+  "nonzero": 12,
+  "findings": [
+    {
+      "id": "F1",
+      "status": "CONFIRMED_STATIC",
+      "detail": "setupProduction obtains questionsBeforeReadDenial but omits it from returned object; main production.questionsBeforeReadDenial is undefined"
+    },
+    {
+      "id": "F2",
+      "status": "CONFIRMED_STATIC",
+      "detail": "Read order compares resultSeq only, allows a call before required answer with a later result; original predicate used call.seq; require BOTH call/result after answer"
+    },
+    {
+      "id": "F3",
+      "status": "CONFIRMED_RAW_IDENTITY",
+      "detail": "Frozen JSONL has69 physical rows: session v4 header plus68 events seq0..67; finite assumes68 rows and seq1..68"
+    },
+    {
+      "id": "F4",
+      "status": "CONFIRMED_NATIVE_NODE_BUILTIN_PROBE",
+      "detail": "VM-array strict deep equality against host arrays fails and VM Error is not instanceof host Error; root builtin-only probe exit0 confirmed ERR_ASSERTION/false/isNativeError true; no B code executed"
+    },
+    {
+      "id": "F5",
+      "status": "CONFIRMED_ACTUAL_EVENTS",
+      "detail": "Finite expected5 pre-answer successes omits actual wiki22/result23; actual6 successes and UNIT denial mutation must include23"
+    }
+  ],
+  "root_builtin_probe_OS_exe_birth_not_captured": true,
+  "root_builtin_probe_not_product_or_observer_execution": true,
+  "controlled_in_memory_UNIT_mutations_are_not_actual_or_persisted_Native_history": true,
+  "cumulative_commands": 7129,
+  "cumulative_success": 6161,
+  "cumulative_nonzero": 968,
+  "historical_runtime_violating_jobs": 6,
+  "Packaging": "HOLD"
+}

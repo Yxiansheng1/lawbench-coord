@@ -1,0 +1,51 @@
+{
+  "source_only": true,
+  "old_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453",
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\review-consumer.mjs",
+      "bytes": 56688,
+      "sha256": "1780ed662ce2dac7e8c4e7e7a00f441c205fe6a66aa0c6ffe43e64dd7d5a5b08",
+      "mtime_ns": "1793544582744400000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\offline-controls.mjs",
+      "bytes": 50329,
+      "sha256": "83fcd21f27ba25b50b5f91ea603cfb86ac787b89c619f7cf17d9e7470d94a1d9",
+      "mtime_ns": "1793544656359539300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\source-manifest.json",
+      "bytes": 699,
+      "sha256": "924ab1ebc4594e9594ddd3c66140317c364db95128a1260377d61bf084744825",
+      "mtime_ns": "1793544685837647400"
+    }
+  ],
+  "observed_actual_error": {
+    "HTTP": 400,
+    "message": "Grammar error: Unimplemented keys: [\"uniqueItems\"]",
+    "secondshard_NOT_SENT": true,
+    "no_semantic_result": true
+  },
+  "write_allowlist": [
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\review-consumer.mjs",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\offline-controls.mjs",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\fixed-data.json",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\stage1-assessments.json",
+    "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\source-manifest.json",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18SchemaKeywordCompatV7-20261101-230453.md"
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\0-SKILL.md",
+    "bytes": 12293,
+    "sha256": "81be87f93b4114df6b644789f66379cbde9c4d143e41c542bbda4a7229818243",
+    "mtime_ns": "1792400314781863700"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\借条.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\1-借条.txt",
+    "bytes": 831,
+    "sha256": "bab960f3ec5040f8c033beb02518b2750cfd223aef97261cdcf7d1a74f3d85ea",
+    "mtime_ns": "1792379578835066600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\银行流水.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\2-银行流水.txt",
+    "bytes": 600,
+    "sha256": "a33459efc500ecf11891f0c7229d6922721c64bfe3612b8b41dc45908f08ae24",
+    "mtime_ns": "1792379578836071300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\情况说明.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\3-情况说明.txt",
+    "bytes": 528,
+    "sha256": "475c478598269e56090cc3d404a7a850ffb06d3f043baf965a6aea29a500dcd7",
+    "mtime_ns": "1792379578835066600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\还款记录.txt",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\4-还款记录.txt",
+    "bytes": 260,
+    "sha256": "81d44bc76b5dc0aadf65c2e2f970c92ac1a5e4053d4b2df1490dab3ec08598c8",
+    "mtime_ns": "1792379578835066600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\_上游成果-民事起诉状草稿.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\5-_上游成果-民事起诉状草稿.md",
+    "bytes": 2149,
+    "sha256": "dc700a6a931b007c219d9d2a600c4f42c42f333128b48f51215f0816445ed23d",
+    "mtime_ns": "1792379578835066600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\样本01-借贷起诉状草稿\\_任务说明.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\6-_任务说明.md",
+    "bytes": 701,
+    "sha256": "161a3055b34963d2f8a6a84d8bb9a4a4c261d94f510988f8541fccb5438adfb0",
+    "mtime_ns": "1792379578835066600"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\pre-issue-check\\tests\\要点.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18PreIssueNativeInput-20261029-201144\\7-要点.md",
+    "bytes": 8024,
+    "sha256": "9eb651e75d3f00dfb6a7d16ebc6e6f0067aad64db50a77c25fd0ab57710fdf98",
+    "mtime_ns": "1792379578838590300"
+  }
+]

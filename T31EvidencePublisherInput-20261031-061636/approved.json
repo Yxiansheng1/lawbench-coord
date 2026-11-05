@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059\\entry.py",
+    "bytes": 43765,
+    "sha256": "f3c9ef443dce7c3ca320b3a317ac5ebcc5c44c7177a65aa9d2c5607749e80dcb"
+  },
+  "safety": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T32NativeDocumentCitationInput-20261027-190830\\10-MixedMaterialsGui-20261027-164646-server.py",
+    "bytes": 151304,
+    "sha256": "a5bebfc7d476ec508bfef90f143796bce648c95a1a7d184e066b3c5843bd47d5"
+  },
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\ScopeEvidencePublisher-20261031-061636",
+  "expected_bytes": 43775,
+  "expected_sha256": "1da8cf5594863d4f54027565149cc40dea210e63815590bed68ff08d9064eacb",
+  "old_literal": "self._adapter_run_root / \"scope-evidence.json\", document",
+  "new_literal": "self._adapter_run_root / \"scope-evidence.json\", document, mode=\"w\"",
+  "scope": "ONLY ORIGINAL TEST EVIDENCE PUBLISHER FIX; no app/GUI rerun",
+  "actual_primary_scope_pass": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-GUI-native-scope-functional-slices-current.json",
+  "actual_stale_summary_sealed": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-GUI-physical-scope-actual-sealed-current.json"
+}

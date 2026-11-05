@@ -1,0 +1,21 @@
+--- before/task.py
++++ current/task.py
+@@ -747,7 +747,17 @@
+         res = self.result(root, task_id)
+         res.update(status=status, finished_at=now_iso())
+         res["usage"] = {"model_calls": model_calls, "tool_calls": tool_calls, "elapsed_s": elapsed_s}
+-        res["coverage"] = self.coverage(root, case_id, task_id)
++        try:
++            res["coverage"] = self.coverage(root, case_id, task_id)
++        except ApiError as error:
++            if (
++                error.code != "INPUT_CHANGED"
++                or error.reason != "task_scope_version_changed"
++                or task.get("request_scope") is None
++                or status == "completed"
++            ):
++                raise
++            res["coverage"] = None
+         if not res["drafts"]:
+             # 没存过正式草稿：进行中.md 改名为 未完成-<时间>.md（F-RUN-04），由程序保存，不依赖模型
+             src = gate.resolve_internal(root, self.rel(task_id, f"草稿/{IN_PROGRESS}"), op="task_end")

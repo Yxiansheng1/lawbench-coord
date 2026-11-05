@@ -1,0 +1,1153 @@
+{
+  "order": "C-OCR-maintenance-controller-20261030-202123",
+  "verdict": "RESTORE_FAILED",
+  "scope": "ONE_EXISTING_OCR_MAINTENANCE_RESTORE_REQUIRED",
+  "started_utc": "2026-10-30T13:09:54.680219Z",
+  "first_stop_utc": "2026-10-30T13:09:54.724762Z",
+  "budget": {
+    "primary_seconds": 300.0,
+    "main_phase_seconds": 180.0,
+    "restore_reserve_seconds": 120.0,
+    "first_stop_monotonic": 1395554.968,
+    "main_deadline_monotonic": 1395734.968,
+    "overall_deadline_monotonic": 1395854.968,
+    "stop_dispatch_started_monotonic": 1395554.968
+  },
+  "phases": [
+    {
+      "phase": "run-output-created",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:54.683853Z",
+      "monotonic_ms": 1395554937.0,
+      "path": "C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\run"
+    },
+    {
+      "phase": "preflight-and-save-original-xml",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:54.689856Z",
+      "monotonic_ms": 1395554937.0,
+      "original_xml": {
+        "path": "C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\run\\original-ocr.xml",
+        "bytes": 738,
+        "sha256": "6f38260bf02c49b6e8a64fe9c4deae7bdf3a08970719b456e372e516ed02bc98"
+      },
+      "xml_original_times": {
+        "atime_ns": 1793365794686856300,
+        "mtime_ns": 1791611187191293500
+      }
+    },
+    {
+      "phase": "runtime-identity-preflight",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:54.720453Z",
+      "monotonic_ms": 1395554968.0,
+      "services": {
+        "prep395": {
+          "snapshot": {
+            "state": 4,
+            "pid": 9768,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "wrapper": {
+            "pid": 9768,
+            "exe": "C:\\prep395\\services\\prep395.exe",
+            "creation_filetime": 134364439879190208
+          },
+          "descendants": {
+            "root_pid": 9768,
+            "descendants": [
+              {
+                "pid": 2932,
+                "exe": "C:\\prep395\\python\\python.exe",
+                "creation_filetime": 134364439885013960,
+                "depth": 1,
+                "snapshot_name": "python.exe"
+              },
+              {
+                "pid": 2768,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134364439885076543,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          }
+        },
+        "prep395-ocr": {
+          "snapshot": {
+            "state": 4,
+            "pid": 29236,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "wrapper": {
+            "pid": 29236,
+            "exe": "C:\\prep395\\services\\prep395-ocr.exe",
+            "creation_filetime": 134375894586568699
+          },
+          "descendants": {
+            "root_pid": 29236,
+            "descendants": [
+              {
+                "pid": 36704,
+                "exe": "C:\\prep395\\llama\\llama-server.exe",
+                "creation_filetime": 134375894605370111,
+                "depth": 1,
+                "snapshot_name": "llama-server.exe"
+              },
+              {
+                "pid": 34244,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134375894605439953,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          }
+        },
+        "prep395-llm9b": {
+          "snapshot": {
+            "state": 4,
+            "pid": 7040,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "wrapper": {
+            "pid": 7040,
+            "exe": "C:\\prep395\\services\\prep395-llm9b.exe",
+            "creation_filetime": 134364439871270367
+          },
+          "descendants": {
+            "root_pid": 7040,
+            "descendants": [
+              {
+                "pid": 9652,
+                "exe": "C:\\prep395\\llama\\llama-server.exe",
+                "creation_filetime": 134364439878751939,
+                "depth": 1,
+                "snapshot_name": "llama-server.exe"
+              },
+              {
+                "pid": 9660,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134364439878781707,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          }
+        }
+      },
+      "direct_processes": {
+        "api-python": {
+          "pid": 2932,
+          "exe": "C:\\prep395\\python\\python.exe",
+          "creation_filetime": 134364439885013960
+        },
+        "ocr-native": {
+          "pid": 36704,
+          "exe": "C:\\prep395\\llama\\llama-server.exe",
+          "creation_filetime": 134375894605370111
+        },
+        "llm9b-native": {
+          "pid": 9652,
+          "exe": "C:\\prep395\\llama\\llama-server.exe",
+          "creation_filetime": 134364439878751939
+        }
+      },
+      "controller": {
+        "pid": 36528,
+        "exe": "C:\\prep395\\python\\python.exe",
+        "creation_filetime": 134378393945103396
+      },
+      "proof_scope": "SCM/Kernel32 wrapper required; Toolhelp32 descendants PARTIAL_NOTPROVEN"
+    },
+    {
+      "phase": "stop-deadline-armed",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:54.724762Z",
+      "monotonic_ms": 1395554968.0,
+      "main_deadline_monotonic": 1395734.968
+    },
+    {
+      "phase": "stop-api-dispatch",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:54.735795Z",
+      "monotonic_ms": 1395554984.0,
+      "before": {
+        "state": 4,
+        "pid": 9768,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      }
+    },
+    {
+      "phase": "stop-api",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:55.139527Z",
+      "monotonic_ms": 1395555390.0,
+      "after": {
+        "state": 1,
+        "pid": 0,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      }
+    },
+    {
+      "phase": "stop-ocr-dispatch",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:55.144531Z",
+      "monotonic_ms": 1395555390.0,
+      "before": {
+        "state": 4,
+        "pid": 29236,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      }
+    },
+    {
+      "phase": "stop-ocr",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:56.754581Z",
+      "monotonic_ms": 1395557000.0,
+      "after": {
+        "state": 1,
+        "pid": 0,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      }
+    },
+    {
+      "phase": "create-owned-log-directory",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:56.770659Z",
+      "monotonic_ms": 1395557015.0,
+      "path": "C:/prep395/logs/lb-ocr-maint-113cd8794f5d8ad5"
+    },
+    {
+      "phase": "apply-log-configuration",
+      "status": "PASS",
+      "utc": "2026-10-30T13:09:56.780655Z",
+      "monotonic_ms": 1395557031.0,
+      "xml_bytes": 941,
+      "xml_sha256": "d49cf2bfdc67c40081944b2f03a98660d657031699360338e6904eb4cc41cf6c",
+      "modified_evidence_path": "C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\run\\modified-ocr.xml",
+      "log_dir": "C:/prep395/logs/lb-ocr-maint-113cd8794f5d8ad5",
+      "args_delta": [
+        "--log-disable",
+        "--log-verbosity 1 --log-prefix --log-timestamps --log-colors off"
+      ],
+      "log_mode": "roll-by-size:1024:keep2",
+      "xml_write": "IN_PLACE_SAME_FILE"
+    },
+    {
+      "phase": "main-phase",
+      "status": "FAIL",
+      "utc": "2026-10-30T13:10:11.800085Z",
+      "monotonic_ms": 1395572046.0,
+      "error": "ControllerError: before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\maintenance-controller.py\", line 1924, in run_maintenance\n    ocr_started = start_after_absence(\n                  ^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\maintenance-controller.py\", line 1488, in start_after_absence\n    absence = require_owned_absent(\n              ^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5\\maintenance-controller.py\", line 1463, in require_owned_absent\n    raise ControllerError(\nControllerError: before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed\n"
+    },
+    {
+      "phase": "restore-and-final-verification",
+      "status": "FAIL",
+      "utc": "2026-10-30T13:10:30.234279Z",
+      "monotonic_ms": 1395590484.0,
+      "result": {
+        "status": "FAIL",
+        "started_utc": "2026-10-30T13:10:11.803076Z",
+        "finished_utc": "2026-10-30T13:10:30.234279Z",
+        "elapsed_ms": 18438.0,
+        "steps": [
+          {
+            "step": "stop-api",
+            "status": "PASS",
+            "elapsed_ms": 0.0,
+            "result": {
+              "before": {
+                "state": 1,
+                "pid": 0,
+                "win32_exit_code": 0,
+                "service_exit_code": 0,
+                "checkpoint": 0,
+                "wait_hint_ms": 0
+              },
+              "dispatch": "NOT_NEEDED",
+              "after": {
+                "state": 1,
+                "pid": 0,
+                "win32_exit_code": 0,
+                "service_exit_code": 0,
+                "checkpoint": 0,
+                "wait_hint_ms": 0
+              }
+            }
+          },
+          {
+            "step": "stop-ocr",
+            "status": "PASS",
+            "elapsed_ms": 0.0,
+            "result": {
+              "before": {
+                "state": 1,
+                "pid": 0,
+                "win32_exit_code": 0,
+                "service_exit_code": 0,
+                "checkpoint": 0,
+                "wait_hint_ms": 0
+              },
+              "dispatch": "NOT_NEEDED",
+              "after": {
+                "state": 1,
+                "pid": 0,
+                "win32_exit_code": 0,
+                "service_exit_code": 0,
+                "checkpoint": 0,
+                "wait_hint_ms": 0
+              }
+            }
+          },
+          {
+            "step": "restore-original-xml",
+            "status": "PASS",
+            "elapsed_ms": 0.0,
+            "result": {
+              "write": "IN_PLACE_SAME_FILE",
+              "bytes": 738,
+              "identity": {
+                "volume_serial": 3523483500,
+                "file_index": 2251799814060985
+              },
+              "same_file_object": true,
+              "written_utc": "2026-10-30T13:10:11.814077Z",
+              "timestamps_restored": true,
+              "original_mtime_ns": 1791611187191293500,
+              "bytes_match_original": true
+            }
+          },
+          {
+            "step": "start-ocr-and-health",
+            "status": "FAIL",
+            "elapsed_ms": 15000.0,
+            "error": "before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed"
+          },
+          {
+            "step": "start-api-and-health",
+            "status": "PASS",
+            "elapsed_ms": 2250.0,
+            "result": {
+              "service": {
+                "state": 4,
+                "pid": 36268,
+                "win32_exit_code": 0,
+                "service_exit_code": 0,
+                "checkpoint": 0,
+                "wait_hint_ms": 0
+              },
+              "wrapper": {
+                "pid": 36268,
+                "exe": "C:\\prep395\\services\\prep395.exe",
+                "creation_filetime": 134378394279232560
+              },
+              "health": {
+                "status": 200,
+                "body_bytes": 137,
+                "attempts": 1
+              },
+              "descendants": {
+                "root_pid": 36268,
+                "descendants": [
+                  {
+                    "pid": 12624,
+                    "exe": "C:\\prep395\\python\\python.exe",
+                    "creation_filetime": 134378394284216688,
+                    "depth": 1,
+                    "snapshot_name": "python.exe"
+                  },
+                  {
+                    "pid": 22832,
+                    "exe": "C:\\Windows\\System32\\conhost.exe",
+                    "creation_filetime": 134378394284295512,
+                    "depth": 2,
+                    "snapshot_name": "conhost.exe"
+                  }
+                ],
+                "errors": [],
+                "snapshot_error": null,
+                "proof": "SNAPSHOT_CAPTURED"
+              },
+              "absence_before_start": {
+                "labels": [
+                  "prep395"
+                ],
+                "generations": {
+                  "prep395": [
+                    0
+                  ]
+                },
+                "per_label": {
+                  "prep395": [
+                    {
+                      "observation": {
+                        "pid": 9768,
+                        "old_identity_absent": true,
+                        "observation": "PROCESS_NOT_FOUND",
+                        "error": "OpenProcess(9768) failed: WinError 87"
+                      },
+                      "generation": 0
+                    },
+                    {
+                      "observation": {
+                        "pid": 2932,
+                        "old_identity_absent": true,
+                        "observation": "PROCESS_NOT_FOUND",
+                        "error": "OpenProcess(2932) failed: WinError 87"
+                      },
+                      "generation": 0
+                    },
+                    {
+                      "observation": {
+                        "pid": 2768,
+                        "old_identity_absent": true,
+                        "observation": "PROCESS_NOT_FOUND",
+                        "error": "OpenProcess(2768) failed: WinError 87"
+                      },
+                      "generation": 0
+                    }
+                  ]
+                },
+                "tracked": 3,
+                "still_present": [],
+                "absence_pass": true,
+                "absence_proof": "PROVEN",
+                "unproven_rows": []
+              }
+            }
+          }
+        ],
+        "errors": [
+          {
+            "step": "start-ocr-and-health",
+            "error": "ControllerError: before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed"
+          }
+        ],
+        "final_checks": {
+          "xml_exact": true,
+          "ocr_service": {
+            "state": 4,
+            "pid": 29180,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "api_service": {
+            "state": 4,
+            "pid": 36268,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "llm9b_service": {
+            "state": 4,
+            "pid": 7040,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "ocr_health": {
+            "status": 200,
+            "body_bytes": 15,
+            "attempts": 6
+          },
+          "api_health": {
+            "status": 200,
+            "body_bytes": 129,
+            "attempts": 1
+          },
+          "llm9b_wrapper": {
+            "pid": 7040,
+            "exe": "C:\\prep395\\services\\prep395-llm9b.exe",
+            "creation_filetime": 134364439871270367
+          },
+          "llm9b_direct": {
+            "pid": 9652,
+            "exe": "C:\\prep395\\llama\\llama-server.exe",
+            "creation_filetime": 134364439878751939
+          },
+          "llm9b_service_unchanged": true,
+          "old_owned_identities": {
+            "labels": [
+              "prep395",
+              "prep395-ocr"
+            ],
+            "generations": {
+              "prep395": [
+                0
+              ],
+              "prep395-ocr": []
+            },
+            "per_label": {
+              "prep395": [
+                {
+                  "observation": {
+                    "pid": 9768,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(9768) failed: WinError 87"
+                  },
+                  "generation": 0
+                },
+                {
+                  "observation": {
+                    "pid": 2932,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(2932) failed: WinError 87"
+                  },
+                  "generation": 0
+                },
+                {
+                  "observation": {
+                    "pid": 2768,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(2768) failed: WinError 87"
+                  },
+                  "generation": 0
+                }
+              ],
+              "prep395-ocr": []
+            },
+            "tracked": 3,
+            "still_present": [],
+            "absence_pass": true,
+            "absence_proof": "PROVEN",
+            "unproven_rows": []
+          },
+          "old_owned_absence_pass": true,
+          "live_owned_identities": {
+            "prep395": {
+              "label": "prep395",
+              "live_generation": 1,
+              "tracked": 3,
+              "all_present": true,
+              "observations": [
+                {
+                  "pid": 12624,
+                  "old_identity_absent": false,
+                  "actual": {
+                    "pid": 12624,
+                    "exe": "C:\\prep395\\python\\python.exe",
+                    "creation_filetime": 134378394284216688
+                  },
+                  "observation": "IDENTITY_PRESENT"
+                },
+                {
+                  "pid": 22832,
+                  "old_identity_absent": false,
+                  "actual": {
+                    "pid": 22832,
+                    "exe": "C:\\Windows\\System32\\conhost.exe",
+                    "creation_filetime": 134378394284295512
+                  },
+                  "observation": "IDENTITY_PRESENT"
+                },
+                {
+                  "pid": 36268,
+                  "old_identity_absent": false,
+                  "actual": {
+                    "pid": 36268,
+                    "exe": "C:\\prep395\\services\\prep395.exe",
+                    "creation_filetime": 134378394279232560
+                  },
+                  "observation": "IDENTITY_PRESENT"
+                }
+              ]
+            },
+            "prep395-ocr": {
+              "label": "prep395-ocr",
+              "live_generation": 0,
+              "tracked": 3,
+              "all_present": false,
+              "observations": [
+                {
+                  "pid": 29236,
+                  "old_identity_absent": true,
+                  "observation": "PROCESS_NOT_FOUND",
+                  "error": "OpenProcess(29236) failed: WinError 87"
+                },
+                {
+                  "pid": 36704,
+                  "old_identity_absent": false,
+                  "observation": "ABSENCE_NOTPROVEN",
+                  "error": "QueryFullProcessImageNameW(36704) failed: WinError 31"
+                },
+                {
+                  "pid": 34244,
+                  "old_identity_absent": true,
+                  "observation": "PROCESS_NOT_FOUND",
+                  "error": "OpenProcess(34244) failed: WinError 87"
+                }
+              ]
+            }
+          },
+          "owned_capture_gaps": [],
+          "owned_capture_complete": true,
+          "ocr_final_descendants": {
+            "root_pid": 29180,
+            "descendants": [
+              {
+                "pid": 4356,
+                "exe": "C:\\prep395\\llama\\llama-server.exe",
+                "creation_filetime": 134378394277613718,
+                "depth": 1,
+                "snapshot_name": "llama-server.exe"
+              },
+              {
+                "pid": 30300,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134378394277816757,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          },
+          "api_final_descendants": {
+            "root_pid": 36268,
+            "descendants": [
+              {
+                "pid": 12624,
+                "exe": "C:\\prep395\\python\\python.exe",
+                "creation_filetime": 134378394284216688,
+                "depth": 1,
+                "snapshot_name": "python.exe"
+              },
+              {
+                "pid": 22832,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134378394284295512,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          },
+          "owned_log_files": {
+            "directory": "C:/prep395/logs/lb-ocr-maint-113cd8794f5d8ad5",
+            "exists": true,
+            "files": [],
+            "call_read_bytes": 0,
+            "cumulative_read_bytes": 0,
+            "read_budget_bytes": 4194304
+          },
+          "restored_endpoints": {
+            "ocr": {
+              "host": "127.0.0.1",
+              "port": 9101,
+              "health": "/health"
+            },
+            "api": {
+              "host": "10.126.126.3",
+              "port": 9000,
+              "health": "/health"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "errors": [
+    {
+      "phase": "main-phase",
+      "utc": "2026-10-30T13:10:11.783361Z",
+      "type": "ControllerError",
+      "message": "before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed"
+    }
+  ],
+  "http": null,
+  "cleanup": {
+    "status": "FAIL",
+    "started_utc": "2026-10-30T13:10:11.803076Z",
+    "finished_utc": "2026-10-30T13:10:30.234279Z",
+    "elapsed_ms": 18438.0,
+    "steps": [
+      {
+        "step": "stop-api",
+        "status": "PASS",
+        "elapsed_ms": 0.0,
+        "result": {
+          "before": {
+            "state": 1,
+            "pid": 0,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "dispatch": "NOT_NEEDED",
+          "after": {
+            "state": 1,
+            "pid": 0,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          }
+        }
+      },
+      {
+        "step": "stop-ocr",
+        "status": "PASS",
+        "elapsed_ms": 0.0,
+        "result": {
+          "before": {
+            "state": 1,
+            "pid": 0,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "dispatch": "NOT_NEEDED",
+          "after": {
+            "state": 1,
+            "pid": 0,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          }
+        }
+      },
+      {
+        "step": "restore-original-xml",
+        "status": "PASS",
+        "elapsed_ms": 0.0,
+        "result": {
+          "write": "IN_PLACE_SAME_FILE",
+          "bytes": 738,
+          "identity": {
+            "volume_serial": 3523483500,
+            "file_index": 2251799814060985
+          },
+          "same_file_object": true,
+          "written_utc": "2026-10-30T13:10:11.814077Z",
+          "timestamps_restored": true,
+          "original_mtime_ns": 1791611187191293500,
+          "bytes_match_original": true
+        }
+      },
+      {
+        "step": "start-ocr-and-health",
+        "status": "FAIL",
+        "elapsed_ms": 15000.0,
+        "error": "before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed"
+      },
+      {
+        "step": "start-api-and-health",
+        "status": "PASS",
+        "elapsed_ms": 2250.0,
+        "result": {
+          "service": {
+            "state": 4,
+            "pid": 36268,
+            "win32_exit_code": 0,
+            "service_exit_code": 0,
+            "checkpoint": 0,
+            "wait_hint_ms": 0
+          },
+          "wrapper": {
+            "pid": 36268,
+            "exe": "C:\\prep395\\services\\prep395.exe",
+            "creation_filetime": 134378394279232560
+          },
+          "health": {
+            "status": 200,
+            "body_bytes": 137,
+            "attempts": 1
+          },
+          "descendants": {
+            "root_pid": 36268,
+            "descendants": [
+              {
+                "pid": 12624,
+                "exe": "C:\\prep395\\python\\python.exe",
+                "creation_filetime": 134378394284216688,
+                "depth": 1,
+                "snapshot_name": "python.exe"
+              },
+              {
+                "pid": 22832,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134378394284295512,
+                "depth": 2,
+                "snapshot_name": "conhost.exe"
+              }
+            ],
+            "errors": [],
+            "snapshot_error": null,
+            "proof": "SNAPSHOT_CAPTURED"
+          },
+          "absence_before_start": {
+            "labels": [
+              "prep395"
+            ],
+            "generations": {
+              "prep395": [
+                0
+              ]
+            },
+            "per_label": {
+              "prep395": [
+                {
+                  "observation": {
+                    "pid": 9768,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(9768) failed: WinError 87"
+                  },
+                  "generation": 0
+                },
+                {
+                  "observation": {
+                    "pid": 2932,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(2932) failed: WinError 87"
+                  },
+                  "generation": 0
+                },
+                {
+                  "observation": {
+                    "pid": 2768,
+                    "old_identity_absent": true,
+                    "observation": "PROCESS_NOT_FOUND",
+                    "error": "OpenProcess(2768) failed: WinError 87"
+                  },
+                  "generation": 0
+                }
+              ]
+            },
+            "tracked": 3,
+            "still_present": [],
+            "absence_pass": true,
+            "absence_proof": "PROVEN",
+            "unproven_rows": []
+          }
+        }
+      }
+    ],
+    "errors": [
+      {
+        "step": "start-ocr-and-health",
+        "error": "ControllerError: before start of prep395-ocr: owned identities for ['prep395-ocr'] are still present; no new process is started and nothing is force killed"
+      }
+    ],
+    "final_checks": {
+      "xml_exact": true,
+      "ocr_service": {
+        "state": 4,
+        "pid": 29180,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      },
+      "api_service": {
+        "state": 4,
+        "pid": 36268,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      },
+      "llm9b_service": {
+        "state": 4,
+        "pid": 7040,
+        "win32_exit_code": 0,
+        "service_exit_code": 0,
+        "checkpoint": 0,
+        "wait_hint_ms": 0
+      },
+      "ocr_health": {
+        "status": 200,
+        "body_bytes": 15,
+        "attempts": 6
+      },
+      "api_health": {
+        "status": 200,
+        "body_bytes": 129,
+        "attempts": 1
+      },
+      "llm9b_wrapper": {
+        "pid": 7040,
+        "exe": "C:\\prep395\\services\\prep395-llm9b.exe",
+        "creation_filetime": 134364439871270367
+      },
+      "llm9b_direct": {
+        "pid": 9652,
+        "exe": "C:\\prep395\\llama\\llama-server.exe",
+        "creation_filetime": 134364439878751939
+      },
+      "llm9b_service_unchanged": true,
+      "old_owned_identities": {
+        "labels": [
+          "prep395",
+          "prep395-ocr"
+        ],
+        "generations": {
+          "prep395": [
+            0
+          ],
+          "prep395-ocr": []
+        },
+        "per_label": {
+          "prep395": [
+            {
+              "observation": {
+                "pid": 9768,
+                "old_identity_absent": true,
+                "observation": "PROCESS_NOT_FOUND",
+                "error": "OpenProcess(9768) failed: WinError 87"
+              },
+              "generation": 0
+            },
+            {
+              "observation": {
+                "pid": 2932,
+                "old_identity_absent": true,
+                "observation": "PROCESS_NOT_FOUND",
+                "error": "OpenProcess(2932) failed: WinError 87"
+              },
+              "generation": 0
+            },
+            {
+              "observation": {
+                "pid": 2768,
+                "old_identity_absent": true,
+                "observation": "PROCESS_NOT_FOUND",
+                "error": "OpenProcess(2768) failed: WinError 87"
+              },
+              "generation": 0
+            }
+          ],
+          "prep395-ocr": []
+        },
+        "tracked": 3,
+        "still_present": [],
+        "absence_pass": true,
+        "absence_proof": "PROVEN",
+        "unproven_rows": []
+      },
+      "old_owned_absence_pass": true,
+      "live_owned_identities": {
+        "prep395": {
+          "label": "prep395",
+          "live_generation": 1,
+          "tracked": 3,
+          "all_present": true,
+          "observations": [
+            {
+              "pid": 12624,
+              "old_identity_absent": false,
+              "actual": {
+                "pid": 12624,
+                "exe": "C:\\prep395\\python\\python.exe",
+                "creation_filetime": 134378394284216688
+              },
+              "observation": "IDENTITY_PRESENT"
+            },
+            {
+              "pid": 22832,
+              "old_identity_absent": false,
+              "actual": {
+                "pid": 22832,
+                "exe": "C:\\Windows\\System32\\conhost.exe",
+                "creation_filetime": 134378394284295512
+              },
+              "observation": "IDENTITY_PRESENT"
+            },
+            {
+              "pid": 36268,
+              "old_identity_absent": false,
+              "actual": {
+                "pid": 36268,
+                "exe": "C:\\prep395\\services\\prep395.exe",
+                "creation_filetime": 134378394279232560
+              },
+              "observation": "IDENTITY_PRESENT"
+            }
+          ]
+        },
+        "prep395-ocr": {
+          "label": "prep395-ocr",
+          "live_generation": 0,
+          "tracked": 3,
+          "all_present": false,
+          "observations": [
+            {
+              "pid": 29236,
+              "old_identity_absent": true,
+              "observation": "PROCESS_NOT_FOUND",
+              "error": "OpenProcess(29236) failed: WinError 87"
+            },
+            {
+              "pid": 36704,
+              "old_identity_absent": false,
+              "observation": "ABSENCE_NOTPROVEN",
+              "error": "QueryFullProcessImageNameW(36704) failed: WinError 31"
+            },
+            {
+              "pid": 34244,
+              "old_identity_absent": true,
+              "observation": "PROCESS_NOT_FOUND",
+              "error": "OpenProcess(34244) failed: WinError 87"
+            }
+          ]
+        }
+      },
+      "owned_capture_gaps": [],
+      "owned_capture_complete": true,
+      "ocr_final_descendants": {
+        "root_pid": 29180,
+        "descendants": [
+          {
+            "pid": 4356,
+            "exe": "C:\\prep395\\llama\\llama-server.exe",
+            "creation_filetime": 134378394277613718,
+            "depth": 1,
+            "snapshot_name": "llama-server.exe"
+          },
+          {
+            "pid": 30300,
+            "exe": "C:\\Windows\\System32\\conhost.exe",
+            "creation_filetime": 134378394277816757,
+            "depth": 2,
+            "snapshot_name": "conhost.exe"
+          }
+        ],
+        "errors": [],
+        "snapshot_error": null,
+        "proof": "SNAPSHOT_CAPTURED"
+      },
+      "api_final_descendants": {
+        "root_pid": 36268,
+        "descendants": [
+          {
+            "pid": 12624,
+            "exe": "C:\\prep395\\python\\python.exe",
+            "creation_filetime": 134378394284216688,
+            "depth": 1,
+            "snapshot_name": "python.exe"
+          },
+          {
+            "pid": 22832,
+            "exe": "C:\\Windows\\System32\\conhost.exe",
+            "creation_filetime": 134378394284295512,
+            "depth": 2,
+            "snapshot_name": "conhost.exe"
+          }
+        ],
+        "errors": [],
+        "snapshot_error": null,
+        "proof": "SNAPSHOT_CAPTURED"
+      },
+      "owned_log_files": {
+        "directory": "C:/prep395/logs/lb-ocr-maint-113cd8794f5d8ad5",
+        "exists": true,
+        "files": [],
+        "call_read_bytes": 0,
+        "cumulative_read_bytes": 0,
+        "read_budget_bytes": 4194304
+      },
+      "restored_endpoints": {
+        "ocr": {
+          "host": "127.0.0.1",
+          "port": 9101,
+          "health": "/health"
+        },
+        "api": {
+          "host": "10.126.126.3",
+          "port": 9000,
+          "health": "/health"
+        }
+      }
+    }
+  },
+  "limits": [
+    "One synthetic POST; no retry and no redirect handling.",
+    "Service descendants are captured by Toolhelp32 best-effort; missing descendants are NOTPROVEN.",
+    "A successful HTTP response is one interface sample, not proof of the original HTTP root cause.",
+    "The controller does not contact, inspect, or alter 6000D.",
+    "The OCR XML is rewritten inside the existing file in place; no replace, rename, unlink, chmod, or ACL call is used on it.",
+    "Restoration runs in an unavoidable finally from the first stop dispatch through the single POST.",
+    "Every planned service start first proves the previously captured identities of that same service are absent.",
+    "Diagnostic writes are best-effort after the first stop; only the pre-stop backup and the initial evidence are mandatory."
+  ],
+  "admission": {
+    "verdict": "ADMITTED_ONE_EXISTING_OCR_MAINTENANCE_RESTORE_REQUIRED",
+    "fresh_id": "113cd8794f5d8ad5",
+    "stage": "C:\\Users\\PC\\AppData\\Local\\Temp\\lb-ocr-maint-113cd8794f5d8ad5",
+    "authorized_services": [
+      "prep395",
+      "prep395-ocr"
+    ]
+  },
+  "old_identities": [
+    {
+      "pid": 9768,
+      "exe": "C:\\prep395\\services\\prep395.exe",
+      "creation_filetime": 134364439879190208
+    },
+    {
+      "pid": 29236,
+      "exe": "C:\\prep395\\services\\prep395-ocr.exe",
+      "creation_filetime": 134375894586568699
+    },
+    {
+      "pid": 2932,
+      "exe": "C:\\prep395\\python\\python.exe",
+      "creation_filetime": 134364439885013960
+    },
+    {
+      "pid": 36704,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "creation_filetime": 134375894605370111
+    }
+  ],
+  "persist_failures": [],
+  "owned_capture_gaps": [],
+  "finished_utc": "2026-10-30T13:10:30.238575Z"
+}

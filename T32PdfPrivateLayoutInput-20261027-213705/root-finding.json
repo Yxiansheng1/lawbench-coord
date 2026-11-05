@@ -1,0 +1,30 @@
+{
+  "verdict": "REPRODUCED_READONLY_ENTRY_PRIVATE_INVENTORY_REJECTION_ON_ACTUAL_FAILED_GUI_ROOT",
+  "guard_code": "private_inventory",
+  "root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\runs\\T32-pdf-citation-20261027-212929",
+  "entry_sha": "165565761356c1100baf7b101b4a39ff1dbcf668d89321e3b1874bae9246da9f",
+  "actual_private_names": [
+    "appdata",
+    "home",
+    "programdata",
+    "roaming",
+    "system",
+    "temp"
+  ],
+  "required_finite_names": [
+    "appdata",
+    "home",
+    "system",
+    "temp"
+  ],
+  "existing_owned_GUI_additions": [
+    "programdata",
+    "roaming"
+  ],
+  "checks_only": "Called already-reviewed entry inventory function; no prepare/serve/create_app/HTTP/task/model/GUIinput; no state edits",
+  "phase_not_faked": true,
+  "source_unchanged": true,
+  "product_failure_proven": false,
+  "port_conflict_not_proven": true,
+  "root_design_omission": true
+}

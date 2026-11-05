@@ -1,0 +1,62 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-source-reviewed-current.json
+SHA 903be365c8e86ecf87770347687a95a181fab204baa18eca4f5f90438e0628f0
+FOCUSEDRANGES None
+0001 {
+0002   "accepted": true,
+0003   "scope": "ROOT_V7_ONE_UNSUPPORTED_SCHEMA_KEY_PLUS_ROOT_CIM_BIRTH_CAPTURE_SOURCE_AFFECTED_OFFLINE_NOT_SEMANTIC_PASS",
+0004   "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\review-consumer.mjs",
+0005   "pins": [
+0006     {
+0007       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\review-consumer.mjs",
+0008       "bytes": 56665,
+0009       "sha256": "cba474a6babb427c11d461e7945b29edc5313071599a92771247645dce2129ec",
+0010       "mtime_ns": "1793545537454437900"
+0011     },
+0012     {
+0013       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\offline-controls.mjs",
+0014       "bytes": 50326,
+0015       "sha256": "cc677c978dd3a66232931303830f97751486643d195c7cf2c5a41e4664042767",
+0016       "mtime_ns": "1793545537630153800"
+0017     },
+0018     {
+0019       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\fixed-data.json",
+0020       "bytes": 17427,
+0021       "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0022       "mtime_ns": "1793529580412201500"
+0023     },
+0024     {
+0025       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\source-manifest.json",
+0026       "bytes": 700,
+0027       "sha256": "2ef8d1945c089f2a90aa39340fb4e287b1d6085b3903aa0fc8f8e6201a82aa7e",
+0028       "mtime_ns": "1793545789701676700"
+0029     },
+0030     {
+0031       "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18SchemaKeywordCompatV7-20261101-230453\\stage1-assessments.json",
+0032       "bytes": 10015,
+0033       "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+0034       "mtime_ns": "1793538024944549000"
+0035     }
+0036   ],
+0037   "offline_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-schema-keyword-compat-v7-passive-current.json",
+0038   "fixed_data_sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+0039   "cache_byteheld": true,
+0040   "pending_independent_reviews": true,
+0041   "request_bytes": [
+0042     141383,
+0043     143227
+0044   ],
+0045   "shards": [
+0046     183,
+0047     182
+0048   ],
+0049   "qualifications": [
+0050     "Consumerwholebyteinverse ONLY23BuniqueItemspropertyremoval; only4schemaexpectationhunkscontrolchanged. ALLlocalREF_DUPLICATE/typedgraph/ID/count/merge/UTF16/error/assertions/transport/data/cache/V5httpfakeheld. No semantic/validatorwaiver; providerrejectuniqueItems actualHTTP400614ms V6 preserved/secondNOTSENT.",
+0051     "V7B6/6nativecommands+2patches/direct.NETmanifestwrite; one7approved-pathTestPathmetadataoutsideorderqualified. OriginalmanifestWRONGalgorithm+filesarrayRootREJECTED beforeANYNode/privateRoot/Key/model; sourcejoboriginalcompletedretained. Freshmanifestclosure3/3+onepatch exact5keys/current4literalpins/fullraw/formal/writefacesreviewed. OriginalV7authorcompletePID/exe/birthNOTCAPTURED/naturalrunner0notindependentOSproof; no rerunforidentity. Closurecaptured29356/22cf/birth15:09:20.0296090Z.",
+0052     "Rootaffectedoffline1.516s0/noforce/5pinsheld/guard0/onecompleteNodeindependentOSgone/Key0/model0/alloriginalduplicate-negative andnewproviderabsenceassertions ran. Actual365/cache62/shards183+182; same2max/400remaining900/49152/0.6/streamfalse/no fallback.",
+0053     "AdditionalRootorchestrationrepair: V6actual.NETchildbirth .3010291 vs CIM .3010290 madeinnerwatchdogexactcomparisonfalse; outerRootcapturedCIMownership+cleanupindependent/naturalexit noforce. V7PSnowGet-Cim childidentity+parentPID/execheckBEFOREchildKeyfeed; useCIMbirthforbothinnerwatchdogandouterreadback. No timewindow/coarsematch/no policychange. NewPSstaticresolvedparse0, notruntime/forcedwatchdogPASS.",
+0054     "RootinitialparsermistakenlyparsedunsubstitutedPS_LITERALtemplate andgeneratedsyntaxerrorsBEFOREanyexecution; originalfailure retained. CorrectedSTATICquotedliteralreplacement sameasdriver/dummyprivatepaths, errors0. Rootcontrollercodeunchangedbythisadminparsecorrection; no productfail/guardbypass.",
+0055     "V7RootwholeinverseoutsidePS onlyaliases/root/purpose/verdict; all8pin/privateenv/anonymousstdin/watchdogduration/scan/cleanup logicheld. CurrentindependentC MUSTfullnewPS/sourcecause+aliases reviewbeforeadmit, existingfrozenguardC_AMENDnotreopened/modified/cleared.",
+0056     "Requestgrammarbackendotherkeywords stillactualunproven; HTTP400/protocolfailureSTOP/no fallback/featurelottery/serverflags/SDK/install. Semanticcriteria51acf unchanged NOTmodelinput; no newStage1/NativeSession/R/history/product/semantic/business/security/releasePASS."
+0057   ],
+0058   "Packaging": "HOLD"
+0059 }

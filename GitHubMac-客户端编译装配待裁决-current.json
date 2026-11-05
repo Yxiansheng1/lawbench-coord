@@ -1,0 +1,75 @@
+{
+  "state": "OWNER_DECLINED_FURTHER_REPAIR_HAND_BACK_SOURCE_AND_FAILURES",
+  "at": "2026-11-03T20:57:23.681517+08:00",
+  "commit": "b2bf9d9e787fc896a36c5335330bfc9926b843be",
+  "run": 41639004913,
+  "hostCompilation": "passed; first-generation Windows-bound artifact imports gone",
+  "clientErrors": 90,
+  "directTestFiles": [
+    {
+      "path": "packages/api/session-controller/tests/t31-material-admission.client.spec.ts",
+      "bytes": 22825,
+      "sha256": "1166b065c97ef634d7b0e2829927e148e56f3a3f851148fad92134205b45fc7b",
+      "errors": 6
+    },
+    {
+      "path": "packages/api/session-controller/tests/t31-native-disk-replay.client.spec.ts",
+      "bytes": 22800,
+      "sha256": "356b8bc5f6f5005584edc3efc7c784e4be362bb923505f997c0a69b5407f9aed",
+      "errors": 5
+    },
+    {
+      "path": "packages/api/session-controller/tests/t31-native-request-identity.client.spec.ts",
+      "bytes": 13951,
+      "sha256": "6edac6fce7e9e1dd6a9b41f53d8da9982f965402af2ed8755594d6f4065d8343",
+      "errors": 4
+    },
+    {
+      "path": "packages/api/session-controller/tests/t31-restricted-claim-replay.client.spec.ts",
+      "bytes": 15689,
+      "sha256": "5386e8b5aac7b9cfb76a5c254d1329e0b94881145ca6b675914f9b93b666cf56",
+      "errors": 4
+    },
+    {
+      "path": "packages/api/session-controller/tests/t31-scoped-queue-policy.client.spec.ts",
+      "bytes": 17228,
+      "sha256": "0b702783ee6c46706a293a3aa2b64532263bc4aa9a41420230d1336d864d135c",
+      "errors": 4
+    },
+    {
+      "path": "packages/api/session-controller/tests/t31-scoped-queued-steer.client.spec.ts",
+      "bytes": 18186,
+      "sha256": "fe96d6f18f65811d694bce8aa6e788f5fd3b84e2c247f5f9ea1dfd917ca2e426",
+      "errors": 4
+    },
+    {
+      "path": "packages/client/ui-conversation/tests/service-orchestration.client.spec.ts",
+      "bytes": 50248,
+      "sha256": "c1f3b208106e714fd238248689a3b2aab11eee7710115bffe18686a9d5606579",
+      "errors": 1
+    },
+    {
+      "path": "packages/client/ui-conversation/tests/t31-submission-registry-admit.client.spec.ts",
+      "bytes": 7330,
+      "sha256": "1c60e586a7420d8663577f5b3c5315abcccdc456ff8a1a811b4cf304b42eb761",
+      "errors": 3
+    }
+  ],
+  "downstreamErrors": "59 diagnostics originate in dsh-ext imported by cross-face tests under DSH aggregate strict configuration, not dsh-ext own project",
+  "proposal": {
+    "crossFaceSix": "Separate six new T31 host/client integration specs into an explicitly separate verification inventory, preserve byte-identical originals and all historical results. Do not claim these tests passed.",
+    "remainingTwo": [
+      "service-orchestration.client.spec.ts: omit optional submissionLifecycle property when undefined",
+      "t31-submission-registry-admit.client.spec.ts: retain typed vi.fn values and branded SessionId in expected fixture; preserve assertions"
+    ],
+    "furtherBuilds": "Only after changed source inventory and finite review; no unchanged rerun"
+  },
+  "excluded": [
+    "product runtime/source changes",
+    "assertion changes",
+    "blanket TypeScript strictness relaxation",
+    "T18/model/credential operations"
+  ],
+  "authorizationNeeded": "Previous user source-author restriction permits only exact DeepSeek authors; prior author service503 repeated stop preserved. Root exception for this named finite test/build assembly only, not general code authority.",
+  "ownerAnswer": "保留现状，先交源码和失败记录"
+}

@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NaturalManualFinite-root-20261028-210116",
+  "exit": 0,
+  "elapsed_s": 1.1410000000014406,
+  "natural": true,
+  "forced": false,
+  "identities": [
+    {
+      "pid": 43216,
+      "parent": 45772,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T13:01:16.8955860Z"
+    },
+    {
+      "pid": 41200,
+      "parent": 43216,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T13:01:16.9615510Z"
+    }
+  ],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_only_observer_function_inverse_all_other_bytes_held": true,
+  "source_sha256": "7482f47d2d219a3b7d28dacd58de8c190dde6b6b951946ddb9f05724fd727bbb",
+  "test_sha256": "e06e554ab46b792bc5aea1ed93ce20a0b8e3a1ee7763936ef1285d0976910a2a",
+  "stdout": "PASS manual-reason-observer: original and latest actual inputs and 22 focused cases\nPASS manual-reason-observer: 2 other-machine-reason controls\nPASS manual-reason-observer: latest natural cause/status and 10 new controls\n",
+  "stderr": "",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

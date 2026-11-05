@@ -1,0 +1,149 @@
+{
+  "private": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocRevisePrivateBuild-20261029-021504\\private-output-20261029-021948\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552453,
+      "sha256": "0e73a0e95b4d1248142f8a579a503f055eda11539f7ddf1614d8e1888e9d3329"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocRevisePrivateBuild-20261029-021504\\private-output-20261029-021948\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocRevisePrivateBuild-20261029-021504\\private-output-20261029-021948\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocRevisePrivateBuild-20261029-021504\\private-output-20261029-021948\\manifest.json",
+      "bytes": 58196,
+      "sha256": "3d60e0330055795f456080f8fb4dd74ca1d8446a1cb5124301836cc1adbc272e"
+    }
+  ],
+  "source_review": {
+    "verdict": "MINIMAL_DOC_REVISE_QUESTION_PREDICATE_SOURCE_REVIEWED_PENDING_UNIT",
+    "consumer_product": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "product_sha256": "d21dd7be6bc1fcb561063f259c2ad2e8d8714679f57982608823f5a896b1a5b0",
+    "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\doc-revise-question-gate.spec.ts",
+    "test_sha256": "5ad9d9a049be0a323089b5d4c1c4a4967a6b9119ac1c47811b8437a15d19dd40",
+    "full_product_byte_inverse": true,
+    "old_tests_taskstate_host_skill_held": true,
+    "author_actual_commands": 58,
+    "author_success": 51,
+    "author_runtime": 0,
+    "scope": "Exact contract-review plus doc-revise only; actual Host catalog and existing frozen final-answer gate; feedback remains contract-only",
+    "actual_red": "run-Jwpm24 6model200 ask0 saved1, source contract-only predicate",
+    "model_started": false,
+    "Packaging": "HOLD"
+  },
+  "build": {
+    "at": "2026-10-29T02:21:19.809237+08:00",
+    "verdict": "STATIC25_CURRENT_DOC_REVISE_QUESTION_GATE_ACCEPTED_BUILD0",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18DocRevisePrivateBuild-root-20261029-021948",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocRevisePrivateBuild-20261029-021504\\private-output-20261029-021948",
+    "manifest_sha": "3d60e0330055795f456080f8fb4dd74ca1d8446a1cb5124301836cc1adbc272e",
+    "manifest_bytes": 58196,
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "source_modules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "current_gate_agent_sha": "0e73a0e95b4d1248142f8a579a503f055eda11539f7ddf1614d8e1888e9d3329",
+    "current_gate_host_sha": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b",
+    "compiled_gate_strings_present": true,
+    "build_exit": 0,
+    "elapsed_s": 15.6704678,
+    "OS": [
+      {
+        "pid": 47584,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639288083953337311,
+        "gone": true
+      },
+      {
+        "pid": 38212,
+        "exe": null,
+        "birthTicks": null,
+        "gone": true
+      },
+      {
+        "pid": 45260,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288083962355748,
+        "gone": true
+      },
+      {
+        "pid": 37124,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639288083966683091,
+        "gone": true
+      },
+      {
+        "pid": 30060,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birthTicks": 639288083953402972,
+        "gone": true
+      },
+      {
+        "pid": 38620,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288083967865532,
+        "gone": true
+      }
+    ],
+    "OS_complete_count": 5,
+    "OS_partial_count": 1,
+    "full_OS_identity_proof": false,
+    "OS_qualification": "Five complete observed build exe/UTCbirth identities gone; one additional fast-exit child PID has null exe/birth, so its exact identity closure is NOT_PROVEN. Natural build0; no forced stop. Static AST helper OS identity not collected separately.",
+    "AST_helper_OS_identity_not_collected": true,
+    "forced": false,
+    "GUI": false,
+    "model_calls": 0,
+    "original_contract_business_pass": false,
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "unit32_types0": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-doc-revise-question-gate-unit-root-current.json"
+}

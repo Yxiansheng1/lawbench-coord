@@ -1,0 +1,26 @@
+{
+  "verdict": "CURRENT_CRIMINAL_APPLICATION_GATE_RECOVERY_SOURCE_ACCEPTED",
+  "entry_sha256": "fe37f8f0f11d4d8feca0ff6cd46a17a562d03c2153d6197ad957e28a3f4f3e44",
+  "service_sha256": "5841bfe21acd27ac6bc6dd468d8d2c1dedafbb28db52b176fb94d12032c7e28b",
+  "manifest_sha256": "e8d7b4bd0af0e21cb507defac4d1e1d122ce5bb136ff26512d8d678e2fe4fb5f",
+  "full_source_all_commands_reviewed": true,
+  "whole_manifest_inverse": true,
+  "B_service_wholebytes_held": true,
+  "setup_finally_held": true,
+  "whole_entry_inverse_exact2imports_only": true,
+  "compiled_manifest_SHA_changed_in_fixed_manifest_only": true,
+  "root_order_one_MTS_manifest_SHA_replacement_was_inapplicable_no_such_literal": true,
+  "author_runtime": 0,
+  "actual_commands": 36,
+  "success": 35,
+  "nonzero": 1,
+  "source_writefaces": [
+    "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t18\\criminalapplicationgaterecovery-20261029-151913\\literalfixed-inputs.json",
+    "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t18\\criminalapplicationgaterecovery-20261029-151913\\native-criminal-applications.mts",
+    "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t18\\criminalapplicationgaterecovery-20261029-151913\\readme.md",
+    "d:\\lawbeach\\lawbench-coord\\b-handback-t18-criminal-application-runtime-pins-20261029-151913.md"
+  ],
+  "old_served_source_unchanged": true,
+  "actual_model_started": false,
+  "Packaging": "HOLD"
+}

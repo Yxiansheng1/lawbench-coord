@@ -1,0 +1,50 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\tools\\drafts.py",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadBoundaryProductFix-20261101-162848Before\\drafts.py",
+  "test": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+  "helper_save_exact": "def _defense_unread_numeric_citation(tasks, root: str, task: dict,\n                                     cites: list[dict]) -> tuple[str, dict] | None:\n    \"\"\"返回首个未被本任务当前版本完整读取的数值型出处，不解析材料正文或材料名。\"\"\"\n    tid = task[\"task_id\"]\n    reads = tasks._read(root, tasks.rel(tid, \"reads.json\"), \"files/reads.schema.json\")[\"reads\"]\n    by_material_unit: dict[tuple[str, str, str], list[tuple[int, int]]] = {}\n    for rec in reads:\n        key = (rec[\"material_id\"], rec[\"material_version\"], rec[\"unit\"])\n        by_material_unit.setdefault(key, []).append((rec[\"from\"], rec[\"to\"]))\n    for cite in cites:\n        loc = cite[\"loc\"]\n        unit = loc[\"unit\"]\n        if unit not in (\"page\", \"para\", \"line\"):\n            continue\n        start = loc[\"from\"]\n        end = loc.get(\"to\", start)\n        next_unit = start\n        for read_start, read_end in sorted(\n                by_material_unit.get((cite[\"material_id\"], cite[\"material_version\"], unit), ())):\n            if read_end < next_unit:\n                continue\n            if read_start > next_unit:\n                break\n            next_unit = max(next_unit, read_end + 1)\n            if next_unit > end:\n                break\n        if next_unit <= end:\n            return cite[\"material_id\"], loc\n    return None\n\n\ndef save_draft(ctx: ToolContext, a: dict) -> dict:\n    title = a[\"title\"].strip()\n    if not title:\n        raise ApiError(\"INVALID_ARGUMENT\", \"empty_title\")\n    tid = ctx.task[\"task_id\"]\n    # 取版本号、写文件、改 result.json 都在这个任务的锁里（P1-3、P2-2）；\n    # 匹配已有版本不分大小写：NTFS 上 Report-v1.md 和 report-v1.md 是同一个文件\n    with ctx.tasks.task_lock(tid):\n        # 在任务锁里再核一次状态：/core/tool 在锁外查过，这之间 end 可能已经插进来（F2）\n        task = ctx.tasks.locate(tid)[2]\n        if task[\"state\"] != \"running\":\n            raise ApiError(\"TASK_NOT_FOUND\", \"not_running\")\n        cached_citation = None\n        if task.get(\"skill\") == \"defense-opinion\":\n            cached_citation = citation_check(ctx, a[\"content\"])\n            unread = _defense_unread_numeric_citation(\n                ctx.tasks, ctx.root, task, cached_citation[1])\n            if unread is not None:\n                material_id, loc = unread\n                unit_name = {\"page\": \"页\", \"para\": \"段\", \"line\": \"行\"}[loc[\"unit\"]]\n                loc_text = (f\"第{loc['from']}{unit_name}\" if loc.get(\"to\", loc[\"from\"]) == loc[\"from\"]\n                            else f\"第{loc['from']}-{loc['to']}{unit_name}\")\n                raise ApiError(\n                    \"INVALID_ARGUMENT\",\n                    \"defense_citation_not_read\",\n                    f\"引用位置{loc_text}尚未由本任务在当前材料版本完整读取。\"\n                    f\"请先用 case_read_material 完整读取材料 {material_id} 的{loc_text}，再保存辩护意见。\",\n                )\n        return _save_locked(\n            ctx.tasks, ctx.root, ctx.case_id, task, title, a[\"content\"],\n            check_fn=lambda: cached_citation if cached_citation is not None\n            else citation_check(ctx, a[\"content\"]),\n            coverage_fn=lambda: ctx.tasks.coverage(ctx.root, ctx.case_id, tid),\n        )\n",
+  "interfaces": "tasks.index_for_task(task)[\"materials\"] is original current task scoped material metadata list; keys material_id, sha256, unit, status, rel_path/text_path. Original texts.read_text(root, material)->str uses gate.resolve_internal and raises ApiError(\"MATERIAL_NOT_READY\", \"text_missing\") if missing. Original texts.split_units(text, unit)->list of Unit(no:int,text:str), only original unit-header structure is parsed. Original texts.PENDING_OCR exact constant. ApiError has code/reason; do not swallow protective denial. No source reads needed beyond capsule.",
+  "original_unit_coverage_sentinel_rule": "got -= {u.no for u in units if u.text.strip() == texts.PENDING_OCR}",
+  "confirmed_red2": {
+    "verdict": "REAL_FS_TWO_BOUNDARY_BUGS_REPRODUCED",
+    "failed": 2,
+    "passed": 0,
+    "deselected": 11,
+    "pytest_s": 1.737,
+    "controller_s": 3.985000000000582,
+    "source_pins_held": 519,
+    "completeIdentities": [
+      {
+        "pid": 37240,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.452825+00:00",
+        "birth_filetime_ticks": "134379949204528253",
+        "running": true,
+        "exit_code": 259
+      },
+      {
+        "pid": 37292,
+        "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "birth_utc": "2026-11-01T08:22:00.660585+00:00",
+        "birth_filetime_ticks": "134379949206605851",
+        "running": true,
+        "exit_code": 259
+      }
+    ],
+    "independentCIMRows": [],
+    "matchingIdentityAlive": [],
+    "guard_denials": 0,
+    "forced": false,
+    "actual_inverted_failed_page_saved_v1": true,
+    "actual_program_placeholder_page_saved_v1": true,
+    "fixture_assertions_passed_before_main_failure": true,
+    "source_process_qualifications": [
+      "Root caught public metadata passed to private texts.text_rel BEFORE runtime; corrected private index lookup exact full-byte inverse",
+      "Latest fixture author exceeded read boundaries with materials/texts/gate/app/helper source searches, coordination metadata, repeated hashes and prohibited git status/branch (read intent; no explicit Git write commands, index refresh not proven absent); raw deadline/noformal retained",
+      "Root independently reviewed complete ready test/preparer code and setup/finally, author lifecycle deviation NOT accepted as completed handback; finite TEST admission only, not source-process compliance PASS"
+    ],
+    "scope": "Actual public Core tools + owned real FS; no actual OCR/model/default lifespan/GUI/HTTP service or business quality PASS",
+    "Packaging": "HOLD"
+  },
+  "errorcopy_rules": "Lawyer/model reader needs correct range/read/resave. Error=what happened+next action; Chinese fullwidth punctuation, no marketing/contrast/filler. Existing wire INVALID_ARGUMENT/defense_citation_not_read, materialID+numericloc only <=500; must contain 读取 and exact invalidloc5-3 but must tell correct its start/end before reading. Exact programplaceholder unavailable until recognized text exists. No names/body/query. cn-prose full instructions already in prior pinned source capsule, do not reread."
+}

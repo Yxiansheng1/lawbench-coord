@@ -1,0 +1,38 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\agent.ts",
+    "bytes": 27451,
+    "sha256": "486662e133184cfbc8b816b445339ab0b75200fd771dba1af1562b28d8e7bdc5",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-0-agent.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\runtime-context.ts",
+    "bytes": 7184,
+    "sha256": "4944ee5cbbc24f21c27f1f0be54af7601da280b7fd2354e48fcc0ef6beeea839",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-1-runtime-context.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\surface.ts",
+    "bytes": 30481,
+    "sha256": "6a1b31cb29227acc6e8f0806c691e3393eef6ce6c8b2eded963c0d6eb4780de8",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-2-surface.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\model-selection.ts",
+    "bytes": 5041,
+    "sha256": "8e54dfda2e4a110148f384e0866ce0c6b213096d314aa84c222fa14155498571",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-3-model-selection.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+    "bytes": 22822,
+    "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-4-agent.ts"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+    "bytes": 31548,
+    "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\NativeEffectiveHeaderInput-20261028-013653\\dep-5-commands.ts"
+  }
+]

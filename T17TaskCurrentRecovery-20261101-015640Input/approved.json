@@ -1,0 +1,9 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskCurrentRecovery-20261101-015640",
+  "fixture": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskListRecovery-20261101-013252\\test_public_task_list.py",
+  "fixture_sha256": "ab5a8f3dfa90069e67c59fbf2c4de5142ed1a111d3e006c7206b28926bc574a8",
+  "original_bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\FullRegression\\SafetyLoggingFix-20261031-133032\\bootstrap.py",
+  "test": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskCurrentRecovery-20261101-015640\\test_public_task_current.py",
+  "bootstrap": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskCurrentRecovery-20261101-015640\\bootstrap.py",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T17TaskCurrentRecovery-20261101-015640.md"
+}

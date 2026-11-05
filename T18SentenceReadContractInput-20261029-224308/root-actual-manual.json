@@ -1,0 +1,141 @@
+{
+  "verdict": "ACTUAL_SENTENCE_WORKFLOW_AND_BUSINESS_FAILED",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceGateObserverFix-20261029-222220\\run-0hRgtX",
+  "positive_slices": {
+    "actual_read_before_list16_denied17_then_list21_success22": true,
+    "actual_joint_three_ask71_answers72_before_calc131": true,
+    "production_gate_only_not_entire_workflow_PASS": true
+  },
+  "actual_material_successful_reads": 0,
+  "question_prefill": "Purpose already known but asked without prefill; no source facts read; later unknown custody_start ask126 correctly production-denied127 after joint answers.",
+  "failures": [
+    "First grouped read after list names four known materials; valid production Core args but harness requires all five and injects GROUPED_READ_ARGS_OR_ORDER before Core. Original five-material PRIMARY grouped workflow remains unmet, not waived.",
+    "After 15 failed material attempts, model used explicitly hypothetical 2024-01-01 in actual calculator; original detention date is2026-01-15. No date-grounding/quality PASS.",
+    "Draft0 citations; no judgment comparison/unclear arrest-certificate marker/full milestone basis/visible per-item selfcheck.",
+    "Node strict error rejected ask after actual answers; B request_protocol_violation. No assertions weakened or failure rewritten."
+  ],
+  "actual_calculator_arguments": [
+    {
+      "name": "case_calc_sentence",
+      "call_id": "chatcmpl-tool-8df9674f757e9d54",
+      "seq": 131,
+      "arguments_sha256": "c6e3f0fc224552971dab073ffa7175c871524bb7c63d3269aae2bb437d059487",
+      "result_seq": 132,
+      "is_error": false,
+      "result_sha256": "f202924a3b360986385c20888192a594dd7747ad46f0b45b9e57c67b639103be",
+      "calculator_arguments": {
+        "penalty": "有期徒刑",
+        "years": 3,
+        "months": 6,
+        "custody": [
+          {
+            "from": "2024-01-01",
+            "to": "2026-09-30",
+            "kind": "刑事拘留"
+          }
+        ]
+      },
+      "calculator_result": {
+        "start": "2024-01-01",
+        "end": "2027-06-30",
+        "offset_days": 1004,
+        "custody_days": 1004,
+        "milestones": [
+          {
+            "name": "执行满二分之一",
+            "date": "2025-09-30",
+            "basis": "有期徒刑执行原判刑期二分之一以上可提请假释（待律师核实）"
+          }
+        ],
+        "basis": [
+          "有期徒刑判决执行以前先行羁押的，羁押一日折抵刑期一日（待律师核实）"
+        ],
+        "notes": []
+      }
+    }
+  ],
+  "draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceGateObserverFix-20261029-222220\\run-0hRgtX\\case\\工作区\\任务\\T-20261029223249-26c8\\草稿\\刑期计算表-v1.md",
+    "bytes": 856,
+    "sha256": "46f9d1aedeb7188aa05dd37e50237b1a8129c8cab9a493efeb96ef603a3fdeaa",
+    "mtime_ns": "1793284454396068000",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 先行羁押 | 2024-01-01 至 2026-09-30 刑事拘留 | 【待补充：拘留开始日期需从拘留证确认】 |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 羁押天数 | 1004 天 | 程序计算 |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 折抵天数 | 1004 天 | 程序计算 |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 刑期起止 | 自 2024-01-01 起至 2027-06-30 止 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 执行满二分之一 | 2025-09-30 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 拘留开始日期（2024-01-01）为假设值，需从拘留证原件确认实际日期",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "- 羁押截止日按律师提供的2026-09-30计算",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 0,
+        "must_fix": 0,
+        "hints": 7
+      }
+    },
+    "citations": []
+  },
+  "model_POST": 32,
+  "model_HTTP200": 32,
+  "elapsed_s": 98.18700000000536,
+  "task_settlement": "finished/completed, do not claim budget trigger merely because32 calls",
+  "source_GET": "NOT_REACHED",
+  "JSONL_reopen": "NOT_REACHED",
+  "original8_SHA_size_mtime_ns_514pins_private25_held": true,
+  "OS_complete_gone": 7,
+  "Listen0": true,
+  "owned_text_key_scan": {
+    "files": 31,
+    "exact_dedicated_key_hits": 0,
+    "other_credentials_read": false,
+    "memory_erasure_claimed": false
+  },
+  "F_hints": "7hints not automaticallyfatal; substantive unsupported date and workflow failures independently assessed.",
+  "Packaging": "HOLD"
+}

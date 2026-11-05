@@ -1,0 +1,117 @@
+{
+  "format": "lawbench-t30-genuine-session-gui-prepared-v1",
+  "task": "A-T30-genuine-session-GUI-20261028-094637",
+  "createdAt": "2026-10-28T10:34:06.6427659+08:00",
+  "expectedCaseId": "872b161f-27d4-40bf-879e-ee457ef6454b",
+  "sourceCaseRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case",
+  "sourceRunReport": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\admission-report.json",
+    "bytes": 8435,
+    "sha256": "238bc2fa4d720d0b5c41e60f1c66a0fe51610e5b7a100b7593f4b61e978ea08e",
+    "packetManifestSha256": "b7c1933e9065a67049a2f4cb14d6eac804f084d388a130371664442876d708f4"
+  },
+  "sourceTree": {
+    "algorithm": "ordinal-path-tab-size-tab-sha256-lf-v1",
+    "files": 5,
+    "bytes": 126598,
+    "sha256": "fbace1ea0b8a396669e8b544af60778b33c6ef83c7c60852615b174de7e35716"
+  },
+  "sourceFiles": [
+    {
+      "relativePath": "工作区/case.db",
+      "bytes": 65536,
+      "sha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6"
+    },
+    {
+      "relativePath": "工作区/case.db-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "relativePath": "工作区/case.db-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9/session.v4.jsonl",
+      "bytes": 16235,
+      "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+    },
+    {
+      "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-97c67db2-b8a6-428b-be48-04b4144d10bd/session.v4.jsonl",
+      "bytes": 12059,
+      "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+    }
+  ],
+  "targetFilesBeforeAdmission": [
+    {
+      "relativePath": "工作区/case.db",
+      "bytes": 65536,
+      "sha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6"
+    },
+    {
+      "relativePath": "工作区/case.db-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "relativePath": "工作区/case.db-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-7fd6b82e-f361-456a-9c91-b6ba77991bb9/session.v4.jsonl",
+      "bytes": 16235,
+      "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+    },
+    {
+      "relativePath": "工作区/会话/--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--/session-97c67db2-b8a6-428b-be48-04b4144d10bd/session.v4.jsonl",
+      "bytes": 12059,
+      "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+    }
+  ],
+  "targetLogs": [
+    {
+      "role": "source",
+      "sessionId": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+      "bytes": 12059,
+      "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+    },
+    {
+      "role": "child",
+      "sessionId": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+      "bytes": 16235,
+      "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+    }
+  ],
+  "paths": {
+    "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405",
+    "case": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\case",
+    "private": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private",
+    "home": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\home",
+    "appdata": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\appdata",
+    "system": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\system",
+    "temp": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\temp",
+    "roaming": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\roaming",
+    "programdata": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\programdata"
+  },
+  "settings": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\appdata\\settings.json",
+    "bytes": 765,
+    "sha256": "31fc46f09d0649fad02c75a5a5704bb50f7268d7f66c1e02f9b853d282793f8c"
+  },
+  "dailyMarker": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\private\\appdata\\daily-case.json",
+    "bytes": 158,
+    "sha256": "b4b845119676907897d297e39716de2d20eee032205dabc730637f870379b176",
+    "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionGui-20261028-094637\\runs\\T30-genuine-session-gui-20261028-103405\\case"
+  },
+  "state": {
+    "runtimeArtifactsAbsent": true,
+    "sourceUnchanged": true,
+    "copiedBytesEqual": true,
+    "registered": false,
+    "guiStarted": false,
+    "deleteAttempted": false
+  }
+}

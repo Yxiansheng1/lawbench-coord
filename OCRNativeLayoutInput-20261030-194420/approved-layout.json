@@ -1,0 +1,119 @@
+{
+  "native_inventory": {
+    "kind": "FIXED_READONLY_395_NATIVE_INVENTORY",
+    "server_utc": "2026-10-30T11:34:00.3574393Z",
+    "free_physical_KiB": 14391172,
+    "files": [
+      {
+        "path": "C:\\prep395\\llama\\llama-mtmd-cli.exe",
+        "exists": true,
+        "bytes": 91136,
+        "sha256": "1c984293418dbfbe3e58d242a94029e1e155f5beaea721570e27300f1adf086c"
+      },
+      {
+        "path": "C:\\prep395\\python\\python.exe",
+        "exists": true,
+        "bytes": 91648,
+        "sha256": "4796bc182e858e4440f638fe5dab250d6172745ddec84e41c6afbc192a3198f9"
+      },
+      {
+        "path": "C:\\prep395\\models\\Xiaomi-OCR-0.BF16.gguf",
+        "exists": true,
+        "bytes": 1516744960,
+        "sha256": "d796fa2cd211ba39a40f37691fc0046aa49f59c7968ec844eb9e81f2ae476a52"
+      },
+      {
+        "path": "C:\\prep395\\models\\Xiaomi-OCR-0.mmproj-bf16.gguf",
+        "exists": true,
+        "bytes": 207346624,
+        "sha256": "634d6bc95781ebf4a3f06570a59859fa5082d488db540fd474bc6b4061aec90e"
+      }
+    ],
+    "inference_requests": 0,
+    "production_changes": 0,
+    "policy_changes": 0,
+    "credential_files_read": 0,
+    "dump_read": false
+  },
+  "actual_help": {
+    "kind": "PINNED_NATIVE_CLI_HELP_ONLY",
+    "server_utc": "2026-10-30T11:37:13.7203852Z",
+    "exit_code": 0,
+    "help_lines": [
+      "-C,    --cpu-mask M                     CPU affinity mask: arbitrarily long hex. Complements cpu-range",
+      "-c,    --ctx-size N                     size of the prompt context (default: 0, 0 = loaded from model)",
+      "-n,    --predict, --n-predict N         number of tokens to predict (default: -1, -1 = infinity)",
+      "-p,    --prompt PROMPT                  prompt to start generation with; for system message, use -sys",
+      "-ngl,  --gpu-layers, --n-gpu-layers N   max. number of layers to store in VRAM, either an exact number,",
+      "-m,    --model FNAME                    model path to load",
+      "--temp, --temperature N                 temperature (default: 0.20)",
+      "-mm,   --mmproj FILE                    path to a multimodal projector file. see tools/mtmd/README.md",
+      "--image, --audio, --video FILE          path to an image, audio, or video file. use with multimodal models,",
+      "--jinja, --no-jinja                     whether to use jinja template engine for chat (default: disabled)",
+      "                                        only commonly used templates are accepted (unless --jinja is set",
+      "Usage: C:\\prep395\\llama\\llama-mtmd-cli.exe [options] -m <model> --mmproj <mmproj> --image <image> --audio <audio> -p <prompt>",
+      "  -m and --mmproj are required",
+      "  -hf user/repo can replace both -m and --mmproj in most cases",
+      "  --image, --audio and -p are optional, if NOT provided, the CLI will run in chat mode"
+    ],
+    "inference_requests": 0,
+    "production_changes": 0,
+    "policy_changes": 0,
+    "credential_files_read": 0,
+    "dump_read": false
+  },
+  "old_source_pins": [
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-395-human-auth-readonly-current.json",
+      "bytes": 3415,
+      "sha256": "ded48e494b1b98485afd1ff70608c9629557291bf85464ee2bac0254def4f5a7"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-human-WER-crash-metadata-current.json",
+      "bytes": 1104,
+      "sha256": "a1cda1d8d778e54886af02ef19cf757c39473cd3cd2cb057213a0192700aa683"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-human-diagnostic-window-current.json",
+      "bytes": 1219,
+      "sha256": "02f71ec6150cec089f9fef25182b9af29b19cc9987deb06e03157b089878abfd"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR-isolated-final-candidate-root-current.json",
+      "bytes": 2334,
+      "sha256": "5bfd8002c0238769de01d839bc3f8d26d097fe5abb4e942b41d09d57fd45c59f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-C\\prep395\\prep395\\backends.py",
+      "bytes": 10931,
+      "sha256": "5cd1446577b7a61b60146d42a56e8778ecda0623dd2a5490b4b27e7138fc6200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-C\\prep395\\deploy\\isolated-synthetic-crash-20261028-001334\\run-isolated-ocr.ps1",
+      "bytes": 37041,
+      "sha256": "eb92b2877ed181946d3dac74a3c10994474d0071dca594ccd7db4d3d0cada8e8"
+    }
+  ],
+  "remote_stage_layout": "one existing newly transferred stage directly under C:/Users/PC/AppData/Local/Temp/lb-ocr-native-<freshid>, with native-cli-diagnostic.py,input.png,admission.json; NEW run_dir is stage/run and must not exist",
+  "root_client_provenance": "Six original client source files remain client-side, root verifies all bytes/SHA before/after transfer+actual; remote checks their exact declared frozen metadata only and does NOT claim reading them on395",
+  "argv": [
+    "-m",
+    "MODEL",
+    "--mmproj",
+    "MMPROJ",
+    "--image",
+    "STAGE/input.png",
+    "-p",
+    "FROZEN_PRIMARY_PROMPT",
+    "-n",
+    "4096",
+    "-c",
+    "32768",
+    "-ngl",
+    "99",
+    "--temp",
+    "0",
+    "--jinja"
+  ],
+  "thinking_control": "CLI has --jinja; actual focused help shows NO reasoning/kwargs flags. Do not invent a flag or claim enable_thinking false parity with HTTP. Output is counterfactual only."
+}

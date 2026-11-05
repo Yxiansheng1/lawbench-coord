@@ -1,0 +1,308 @@
+{
+  "purpose": "Original T34 settings/rejected real GUI disabled-provider projection, safe private observation ONLY, not presumed cause/product fix",
+  "baseline": [
+    {
+      "name": "prepare.ps1",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\executed-prepare.ps1",
+      "bytes": 13514,
+      "sha256": "5828d34c7734fbf45cf1e59201e88da826b14e0f75a50503e7e615e8764dc2ee"
+    },
+    {
+      "name": "start.ps1",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\executed-start.ps1",
+      "bytes": 74172,
+      "sha256": "e5ea6ba83220536a4009f613df66c1e213c5b58d281b1413d339014628a83172"
+    },
+    {
+      "name": "stop.ps1",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\executed-stop.ps1",
+      "bytes": 7149,
+      "sha256": "542474f756d86b82dec04e0b4f2f3abac8f97be7b3e413d62ef76221d2e377d1"
+    },
+    {
+      "name": "entry.py",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\executed-entry.py",
+      "bytes": 88641,
+      "sha256": "9cad004ad8a7f0cd4ba9b76bfcf4e38762ea1b0e0c90c891cf3f3307dbda953c"
+    },
+    {
+      "name": "README.md",
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\executed-README.md",
+      "bytes": 11268,
+      "sha256": "6c0e7b7c5028d4be3e9bda45ae6732cf535cf3910a0fd3dc4545961089df206b"
+    }
+  ],
+  "primary": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\致ORCH-A-交回-T34原生禁用投影拒绝只读定位-20261025-055702.md",
+      "bytes": 7278,
+      "sha256": "7fd49c61219f1f35eb40d6d243075721c6d8dcb5f1d527e1de231a145c279e70"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-复核-T34只读定位收执及一次被动观察限制-20261025-062023.md",
+      "bytes": 2708,
+      "sha256": "e1eb516bb31dfac4f4781bbd9215866edc7230fa9eeef4411c85f52f1255ca96"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-native-sync-current.json",
+      "bytes": 1218,
+      "sha256": "e835a55a269f90a1205122197f8ff5c1312029e0362cc84bb17f2bd89e426a48"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-native-task-GUI-root-current.json",
+      "bytes": 1660,
+      "sha256": "8b71ea6dbc64c08060e0fc67b3953d2901eb630d8b4c79cbc16a84b8da34eab7"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineBranchGUI-root-20261028-130406\\ordinary-actions-root.json",
+      "bytes": 467,
+      "sha256": "12110879a7125fe3d9a4a988bfd60c78463b6e781fa916cf0745f051efe43d46"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\Params-root-pins-current.json",
+      "bytes": 5083,
+      "sha256": "b9c3f2a75f70568e2f166c3f8b5dc6ce7fcd838ff15ef1f05b4ebef2395b828c"
+    }
+  ],
+  "sdk_sources_and_built": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\src\\index.ts",
+      "bytes": 8043,
+      "sha256": "eb80b31ed41a4d9fbc06a3dc5562e56fe50d2b9648bb73f57082b914ff9d244e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\boot\\config-editor\\lib\\index.js",
+      "bytes": 6853,
+      "sha256": "bb85243d9f5729a7186cace56c4ce31d4918bd026482797ef5b7c01bf612fab5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\src\\index.ts",
+      "bytes": 20807,
+      "sha256": "462c902f2782a14e2bb002338cbdd56a5971daa7ffca7114ac053636f154b5e9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\settings\\settings\\lib\\index.js",
+      "bytes": 22636,
+      "sha256": "9432b872597b7a31473072eb38a55979ab23375c76bd1d86d751388a692a0136"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\settings-controller\\src\\index.ts",
+      "bytes": 11130,
+      "sha256": "73d05b8340fbcc93a814a19aaecb53b81a777b0af08f10271f4ff6dd415d3a53"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\settings-controller\\lib\\index.js",
+      "bytes": 21753,
+      "sha256": "dd2bdf646a251745093f854e39399931a1efb8b68f789914b9f754bbc2bf1e2d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\settings.tsx",
+      "bytes": 38017,
+      "sha256": "af20dbd621065bc36880215f99229ca7c071112cd76363f44795af720066e64d"
+    }
+  ],
+  "legacy18": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\prepare.ps1",
+      "expected": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37",
+      "actual": "1f5ae62fc4675d70f10d6cc0d7b0f44e84b3659a7b3b0460ce4067b658a91b37"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\start.ps1",
+      "expected": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445",
+      "actual": "080abc3f93dbe7032fcad378315ee5b5c271d7cd4dec2761729ff24ebf295445"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CoreRuntimeGui-20261025-145707\\stop.ps1",
+      "expected": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647",
+      "actual": "7e9bc2e1216cdd5edc4d70d6d22582329363b3a376bf6c26a11334dea560f647"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-B/docs/plan/evidence/T33/ReadGetEntry-20261025-105313/server.py",
+      "expected": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca",
+      "actual": "c763f3b00ec32575bf26f34d4b2a22d07a9a17aba370aae79a078737fd2458ca"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\agent.js",
+      "expected": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43",
+      "actual": "3a0d22545b49d27866be09fd025ab3c337af4fec1a0acb46a5698267c6948a43"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\client.js",
+      "expected": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661",
+      "actual": "e26b9f922b1c57a88d3e209fe1b0119d0e4f6381f02759afa23f629ebe5f8661"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\credentials.js",
+      "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+      "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\host.js",
+      "expected": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8",
+      "actual": "4f8c97e01cac44dbeb49e8b80374ed9a8c1d96bf62dcbeac8e2ff17342fdd1f8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\index.js",
+      "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+      "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\project\\node_modules\\lawbench-dsh\\lib\\session-store.js",
+      "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+      "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\resolve-from-dsh.mjs",
+      "expected": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208",
+      "actual": "1a174359fa6fe54a8a83ae996897c703e9a5b8065cae36a8fcd12d07fc27b208"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T50\\20261023-211421\\runtime\\network-guard.cjs",
+      "expected": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130",
+      "actual": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/agent.js",
+      "expected": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b",
+      "actual": "b37c804d14a9d8623b25fa4c2c25363a46e9975921b21c6a80c690484865e06b"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/client.js",
+      "expected": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46",
+      "actual": "a44b04053acb7178ecc8391931d45fb9473a464ab9f5d4c45117ab1d9f9e5f46"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/host.js",
+      "expected": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994",
+      "actual": "a9be8f6c41daa47ff9e9cbc962b0eb74e0f9b17acc2ffd2033d4922939d3d994"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/credentials.js",
+      "expected": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1",
+      "actual": "556f5dc427c01c2762308eeba0fa42cf8e5c722b16d9c60372a410f05778aec1"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/index.js",
+      "expected": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956",
+      "actual": "df08553ed2310871adc5f2ab85ff351027917a6480a2797167fe636e2dad9956"
+    },
+    {
+      "path": "D:/Lawbeach/lawbench-A/dsh-ext/lib/session-store.js",
+      "expected": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762",
+      "actual": "91a7ffc0414440cefd956740bec641d3730ff02293752e4ab994b6a910652762"
+    }
+  ],
+  "evidence": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353",
+  "current_B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+    "mtime_ns": "1793302647316836800"
+  },
+  "author_runtime": 0,
+  "product_changes": false,
+  "old_served_reuse": false,
+  "model_calls": 0,
+  "extra395GPU": 0,
+  "private_gui_watchdog_max_seconds": 600,
+  "handoff_source_files": [
+    {
+      "name": "prepare.ps1",
+      "bytes": 13563,
+      "sha256": "dfceea89a46b81131dbee5c200443200ac903b7523724ff9fdf77bca939c2287",
+      "baseline": "prepare.ps1.before",
+      "baseline_sha256": "5828d34c7734fbf45cf1e59201e88da826b14e0f75a50503e7e615e8764dc2ee"
+    },
+    {
+      "name": "start.ps1",
+      "bytes": 76332,
+      "sha256": "462520ce1887478520d9df4b505c76f4431876d07af7e9dcc0d0691994b2bd1d",
+      "baseline": "start.ps1.before",
+      "baseline_sha256": "e5ea6ba83220536a4009f613df66c1e213c5b58d281b1413d339014628a83172"
+    },
+    {
+      "name": "stop.ps1",
+      "bytes": 7180,
+      "sha256": "3ea70a2886e68fd975a5e4f96b26f111248f4bad6b260414c91c4dc9391ce96d",
+      "baseline": "stop.ps1.before",
+      "baseline_sha256": "542474f756d86b82dec04e0b4f2f3abac8f97be7b3e413d62ef76221d2e377d1"
+    },
+    {
+      "name": "entry.py",
+      "bytes": 88654,
+      "sha256": "c504d34463f627b5f4632a4faf7fafc8398ac6c3cbcc444a6935f6cb6a0741f0",
+      "baseline": "entry.py.before",
+      "baseline_sha256": "9cad004ad8a7f0cd4ba9b76bfcf4e38762ea1b0e0c90c891cf3f3307dbda953c"
+    },
+    {
+      "name": "projection-observer.mjs",
+      "bytes": 18544,
+      "sha256": "0871eff40533f60776742cc20372b7a85b701a940b735f72035d37333c946c6b",
+      "kind": "new",
+      "plugin_count": 1
+    },
+    {
+      "name": "frame-classifier-finite.mjs",
+      "bytes": 7048,
+      "sha256": "5b6203710b1c1df027c297ba3caa30fe13483504d5fbb565a27f167a0a4bb7dd",
+      "kind": "finite-classifier-helper"
+    },
+    {
+      "name": "README.md",
+      "bytes": 8904,
+      "sha256": "e536442391e839bc28a1c9e025b98003965297cbc8ea05279aa388a0df6fa200",
+      "baseline": "README.md.before",
+      "baseline_sha256": "6c0e7b7c5028d4be3e9bda45ae6732cf535cf3910a0fd3dc4545961089df206b"
+    },
+    {
+      "name": "binding-finite.mjs",
+      "bytes": 2104,
+      "sha256": "6e2ce94e8f8618d572512acd820fc143f0148dcaefdcc6b541e676d40b92f2f5",
+      "kind": "actual-empty-Cordis-binding-finite"
+    }
+  ],
+  "literal_inputs_self_hash": "NOT_SELF_REFERENCED",
+  "observation_contract": {
+    "target_namespace": "llm-pi-ai",
+    "seams": [
+      "ConfigEditor.prototype.edit",
+      "SettingsForms.prototype.mutate"
+    ],
+    "required_services": [
+      "configEditor",
+      "settings"
+    ],
+    "output": "gui/state/projection-observer.json",
+    "event_limit": 8,
+    "max_bytes": 16384,
+    "acceptanceProof": false
+  },
+  "author_nonzeros": {
+    "target_runtime_scripts": 0,
+    "node_or_python_invocations": 0,
+    "parser_ast_import_check_test_build": 0,
+    "gui_http_model_process_probes": 0,
+    "git_writes": 0,
+    "credential_or_dsh_home_storage_reads": 0,
+    "accidental_bash_attempts_rejected_before_execution": 7
+  },
+  "not_run": [
+    "prepare",
+    "admission",
+    "start",
+    "GUI action",
+    "observer capture",
+    "classifier runtime check",
+    "finite frame classifier runtime check",
+    "stop",
+    "parser/import/test/type/build",
+    "native projection PASS",
+    "whole-T34 PASS"
+  ],
+  "binding_source": {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+    "bytes": 60361,
+    "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+  }
+}

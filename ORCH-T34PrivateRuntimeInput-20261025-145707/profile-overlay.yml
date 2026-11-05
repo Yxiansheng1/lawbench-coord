@@ -1,0 +1,59 @@
+# T50 profile overlay. This file is loaded after the current lawbench-dsh bundle.
+# It replaces the system credential provider and narrows both the model and
+# workbench-service endpoints to loopback ports supplied by start.ps1.
+
+- id: legal-credentials
+  disabled: true
+
+- insert:
+    - id: t50-memory-credentials
+      name: ./t50-memory-credentials.mjs
+
+# Complete replacement of the base row: a Cordis patch replaces config, not
+# individual keys. Keep the product model definition identical to
+# dsh-ext/cordis.patch.yml lines 211-244 except for the loopback port.
+- id: llm-pi-ai
+  config:
+    providers:
+      lawfirm:
+        displayName: 律所模型（T50 合成）
+        api: openai-completions
+        baseURL: !!js "'http://127.0.0.1:' + process.env.T50_LLM_PORT + '/v1'"
+        apiKeyEnv: LAWFIRM_KEY
+        timeoutMs: 1200000
+        retryPolicy:
+          mode: normal
+          maxRetries: 1
+        models:
+          - id: qwen38-27b
+            name: 律所模型（128K，T50 合成）
+            contextWindow: 131072
+            input: [text]
+            reasoningEfforts:
+              off:
+              low: low
+              medium: medium
+              high: xhigh
+        compat:
+          supportsStore: false
+          supportsDeveloperRole: false
+          maxTokensField: max_tokens
+          thinkingFormat: chat-template
+          chatTemplateKwargs:
+            enable_thinking:
+              $var: thinking.enabled
+            reasoning_effort:
+              $var: thinking.effort
+              omitWhenOff: true
+
+# Complete replacement of the current product row. All paths and executable
+# inputs come from the exact environment assembled by start.ps1.
+- id: legal-host
+  config:
+    command: !!js "JSON.parse(process.env.LAWBENCH_SERVICE_CMD ?? '[]')"
+    cwd: !!js process.env.LAWBENCH_SERVICE_CWD
+    appData: !!js process.env.LOCALAPPDATA
+    forwardPort: !!js "Number(process.env.T50_LLM_PORT)"
+    env: !!js "JSON.parse(process.env.LAWBENCH_SERVICE_ENV ?? '{}')"
+    skillDirs: !!js "JSON.parse(process.env.LAWBENCH_SKILL_DIRS ?? '[]')"
+    officeRuntimeWorker: !!js process.env.T50_OFFICE_WORKER

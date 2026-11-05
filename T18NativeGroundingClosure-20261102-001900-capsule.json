@@ -1,0 +1,90 @@
+{
+  "allowed_reads": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 62088,
+      "sha256": "510449d709d63ea95b59676cfb970eba05f753b7a1bd608ea8e9c4daf273a771"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+      "bytes": 24949,
+      "sha256": "d9e2477db5bade355a3b5ed006b0bca046f9af5ad8fbb169d9267bf4d4e6cd80"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 18478,
+      "sha256": "0ab9facab69127e721fb9307ea1db1ba0ff8900d7db4dcd12175323a8e83e275"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\ORCH-A-T18NativeGroundingReview-20261102-000134.md",
+      "bytes": 5486,
+      "sha256": "47c1cf8f0338050d6593379ace9236ae3290556b82fccf8274d84fe781447689"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\REVIEW-B-T18NativeGroundingReviewB-20261102-001115.md",
+      "bytes": 4932,
+      "sha256": "36924473fd29cfc2d8ba8f16ed287e7657a9c43e80f7ebd196066fc0397983ca"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\REVIEW-C-T18NativeGroundingReviewC-20261102-001115.md",
+      "bytes": 7454,
+      "sha256": "eb044896a9b54ec7e47bdb714f220bd434934124d4040d3b5812a0c278228bef"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-root-open-findings-current.json",
+      "bytes": 2441,
+      "sha256": "6881fd1440aab3d7f77be19c84b2bea56cb148937e9d2c8ee1b4a998f80e0dc4"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-001244\\types.stdout.txt",
+      "bytes": 105,
+      "sha256": "d9e5611d7df3eddd69145a1a3ed19bbdad18a2c9b6d7f8875c788682cbe01850"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\t34-tools-capability.spec.ts",
+      "bytes": 36709,
+      "sha256": "1546450b88ccfab03ad47bd87b50ae85c3420b5816c026a186516cdb18e1fcfd"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_task_begin.res.json",
+      "bytes": 960,
+      "sha256": "7f06fcbed0c6ad96f8aa5b9418aeafbee3038314bceb0214c08c5225dd95a9e7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\core_context.res.json",
+      "bytes": 365,
+      "sha256": "b0622883e064bd04baeed820e7e8ac8fabe73ce014c151111e2968e45301aac2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_read.result.json",
+      "bytes": 191,
+      "sha256": "92605b16a190940d5f7b8e786bdb9960fc5c2f48b991e5fcdcdf65783b3d21bd"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\examples\\tool_save_draft.result.json",
+      "bytes": 897,
+      "sha256": "084def0bf7bd065f686a07e0400da79d5191c4e5f4530ea9f66e93c106419eb0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\types.ts",
+      "bytes": 22007,
+      "sha256": "f5206fd5daf18d3899202c96ca0edb6e7c1a10ddc535edead062ed28f2261b2d"
+    }
+  ],
+  "allowed_writes": [
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+    "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18NativeGroundingClosure-20261102-001900.md"
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18NativeGroundingClosure-20261102-001900.md",
+  "baseline": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGroundingClosure-20261102-001900",
+  "original_packet": "D:\\Lawbeach\\lawbench-coord\\T18NativeGroundingReview-20261102-001115-review-packet.json",
+  "runtime_offline_only": "7PASS, tsc TS2722 line585, no model/HTTP, all464pinsheld/5completeOSgone/guarddenials absent",
+  "SDK_TaskState_Skill_READONLY": true
+}

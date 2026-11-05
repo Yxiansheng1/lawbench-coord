@@ -1,0 +1,49 @@
+{
+  "verdict": "PASS_ROOT_PHYSICAL_JSONL_HEADERS_EVENTS_AND_NATIVE_R_INDEPENDENT_COMPARISON",
+  "checked_at": "2026-10-28T01:22:49.798205+00:00",
+  "checks": {
+    "source_header": true,
+    "source_events": true,
+    "child_header": true,
+    "child_events": true,
+    "inherited_prefix": true,
+    "end_seed": true,
+    "source_seq": true,
+    "child_seq": true,
+    "four_posts": true,
+    "natural_cleanup": true,
+    "turn1_native_R": true,
+    "turn1_completed": true,
+    "turn1_one_POST200": true,
+    "turn2_native_R": true,
+    "turn2_completed": true,
+    "turn2_one_POST200": true,
+    "turn3_native_R": true,
+    "turn3_completed": true,
+    "turn3_one_POST200": true,
+    "turn4_native_R": true,
+    "turn4_completed": true,
+    "turn4_one_POST200": true
+  },
+  "physical_logs": [
+    {
+      "session_id": "session-7fd6b82e-f361-456a-9c91-b6ba77991bb9",
+      "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9\\session.v4.jsonl",
+      "bytes": 16235,
+      "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461",
+      "events": 37
+    },
+    {
+      "session_id": "session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+      "path": "\\\\?\\D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd\\session.v4.jsonl",
+      "bytes": 12059,
+      "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee",
+      "events": 27
+    }
+  ],
+  "header_encoding": "Installed session-persistence-jsonl/src/format.ts toHeaderLine adds delegationDepth: header.delegationDepth ?? 0. Other header fields compared exactly; physical bytes never modified.",
+  "root_admin_correction": "Normal Python rglob omitted overlong descendants. Same owned paths read using Windows extended path prefix. No global policy change; proposed repair dispatch failed before job/order/registry writes. No product defect or model rerun.",
+  "scope": "Actual native three-turn source plus production fork fourth turn; physical persisted headers/events equal independently observed snapshots. No GUI/case-trash/compression/whole-project claim.",
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

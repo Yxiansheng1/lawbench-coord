@@ -1,0 +1,210 @@
+D:\Lawbeach\lawbench-B\docs\plan\evidence\T18\T18SchemaKeywordCompatV7-20261101-230453\offline-controls.mjs
+SHA cc677c978dd3a66232931303830f97751486643d195c7cf2c5a41e4664042767
+FOCUSEDRANGES [(615, 665), (850, 1005)]
+0615 assertProtocolError(
+0616   () => validateStage2Result({ reviews: unknownTarget }, inventory),
+0617   "UNKNOWN_TARGET_ID",
+0618 );
+0619 const unknownRef = cloneReviews(validReviews);
+0620 unknownRef[0].refs = ["C999999"];
+0621 assertProtocolError(
+0622   () => validateStage2Result({ reviews: unknownRef }, inventory),
+0623   "UNKNOWN_REF_TARGET_ID",
+0624 );
+0625 const duplicateRef = cloneReviews(validReviews);
+0626 const duplicateRefTarget = inventory.targets.find((target) => (
+0627   allowedReferenceKindsFor(duplicateRef[0].target_id[0]).includes(target.kind)
+0628 ));
+0629 assert.ok(duplicateRefTarget);
+0630 duplicateRef[0].refs = [duplicateRefTarget.target_id, duplicateRefTarget.target_id];
+0631 assertProtocolError(
+0632   () => validateStage2Result({ reviews: duplicateRef }, inventory),
+0633   "REF_DUPLICATE",
+0634 );
+0635 const sameFamilyRef = cloneReviews(validReviews);
+0636 sameFamilyRef[0].refs = [sameFamilyRef[0].target_id];
+0637 assertProtocolError(
+0638   () => validateStage2Result({ reviews: sameFamilyRef }, inventory),
+0639   "REF_FAMILY_INVALID",
+0640 );
+0641 const fToQ = cloneReviews(validReviews);
+0642 const fTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "F");
+0643 const qReferenceTarget = inventory.targets.find((target) => target.kind === "Q");
+0644 assert.ok(fTargetIndexForRefGraph >= 0 && qReferenceTarget);
+0645 fToQ[fTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
+0646 assertProtocolError(
+0647   () => validateStage2Result({ reviews: fToQ }, inventory),
+0648   "REF_FAMILY_INVALID",
+0649 );
+0650 const cToQ = cloneReviews(validReviews);
+0651 const cTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "C");
+0652 assert.ok(cTargetIndexForRefGraph >= 0);
+0653 cToQ[cTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
+0654 assertProtocolError(
+0655   () => validateStage2Result({ reviews: cToQ }, inventory),
+0656   "REF_FAMILY_INVALID",
+0657 );
+0658 const positiveWithoutRef = cloneReviews(validReviews);
+0659 positiveWithoutRef[0].refs = [];
+0660 if (positiveWithoutRef[0].treatment !== "ADDRESSED") {
+0661   positiveWithoutRef[0].treatment = "ADDRESSED";
+0662 }
+0663 assertProtocolError(
+0664   () => validateStage2Result({ reviews: positiveWithoutRef }, inventory),
+0665   "POSITIVE_TREATMENT_WITHOUT_REF",
+0850 assert.deepEqual(
+0851   Object.keys(reviewsSchema).sort(),
+0852   ["items", "maxItems", "minItems", "type"],
+0853 );
+0854 assert.equal(reviewsSchema.type, "array");
+0855 assert.equal(reviewsSchema.minItems, schemaActiveIds.length);
+0856 assert.equal(reviewsSchema.maxItems, schemaActiveIds.length);
+0857 assert.deepEqual(Object.keys(reviewsSchema.items).sort(), ["anyOf"]);
+0858 const responseBranches = schemaBranchesOf(stage2ResponseFormat);
+0859 assert.equal(responseBranches.length, 6);
+0860 for (const branch of responseBranches) {
+0861   assert.deepEqual(
+0862     Object.keys(branch).sort(),
+0863     ["additionalProperties", "properties", "required", "type"],
+0864   );
+0865   assert.equal(branch.type, "object");
+0866   assert.equal(branch.additionalProperties, false);
+0867   assert.deepEqual(branch.required, ["target_id", "treatment", "refs", "assessment"]);
+0868   assert.deepEqual(
+0869     Object.keys(branch.properties).sort(),
+0870     ["assessment", "refs", "target_id", "treatment"],
+0871   );
+0872   assert.deepEqual(
+0873     Object.keys(branch.properties.target_id).sort(),
+0874     ["enum", "type"],
+0875   );
+0876   assert.deepEqual(
+0877     Object.keys(branch.properties.treatment).sort(),
+0878     ["enum", "type"],
+0879   );
+0880   assert.equal(branch.properties.refs.type, "array");
+0881   assert.equal(Object.prototype.hasOwnProperty.call(branch.properties.refs, "uniqueItems"), false);
+0882   assert.deepEqual(
+0883     Object.keys(branch.properties.assessment).sort(),
+0884     ["maxLength", "minLength", "type"],
+0885   );
+0886   assert.equal(branch.properties.assessment.type, "string");
+0887   assert.equal(branch.properties.assessment.minLength, 1);
+0888   assert.equal(branch.properties.assessment.maxLength, ASSESSMENT_MAX_UTF16);
+0889 }
+0890 
+0891 const familyRules = {
+0892   F: {
+0893     treatments: FRAGMENT_TREATMENTS,
+0894     positive: "ADDRESSED",
+0895     referenceKinds: ["C"],
+0896   },
+0897   C: {
+0898     treatments: SUPPORT_TREATMENTS,
+0899     positive: "SUPPORTED",
+0900     referenceKinds: ["F"],
+0901   },
+0902   Q: {
+0903     treatments: SUPPORT_TREATMENTS,
+0904     positive: "SUPPORTED",
+0905     referenceKinds: ["F", "C"],
+0906   },
+0907 };
+0908 assert.deepEqual(
+0909   new Set(responseBranches.flatMap((branch) => (
+0910     branch.properties.target_id.enum.map((targetId) => targetId[0])
+0911   ))),
+0912   new Set(["F", "C", "Q"]),
+0913 );
+0914 for (const [kind, rule] of Object.entries(familyRules)) {
+0915   const activeIds = schemaActiveIds.filter((targetId) => targetId[0] === kind);
+0916   const familyBranches = responseBranches.filter((branch) => (
+0917     branch.properties.target_id.enum.every((targetId) => targetId[0] === kind)
+0918   ));
+0919   assert.equal(familyBranches.length, 2);
+0920   const positiveBranch = familyBranches.find((branch) => (
+0921     branch.properties.treatment.enum.length === 1 &&
+0922       branch.properties.treatment.enum[0] === rule.positive
+0923   ));
+0924   const otherBranch = familyBranches.find((branch) => branch !== positiveBranch);
+0925   assert.ok(positiveBranch && otherBranch);
+0926   for (const branch of familyBranches) {
+0927     assert.deepEqual(branch.properties.target_id.enum, activeIds);
+0928   }
+0929   assert.deepEqual(positiveBranch.properties.treatment.enum, [rule.positive]);
+0930   assert.deepEqual(
+0931     otherBranch.properties.treatment.enum,
+0932     rule.treatments.filter((treatment) => treatment !== rule.positive),
+0933   );
+0934   const referenceIds = schemaActiveIds.filter((targetId) => (
+0935     rule.referenceKinds.includes(targetId[0])
+0936   ));
+0937   assert.deepEqual(positiveBranch.properties.refs.items.enum, referenceIds);
+0938   assert.deepEqual(otherBranch.properties.refs.items.enum, referenceIds);
+0939   assert.equal(positiveBranch.properties.refs.minItems, 1);
+0940   assert.equal(otherBranch.properties.refs.minItems, 0);
+0941   assert.equal(positiveBranch.properties.refs.maxItems, referenceIds.length);
+0942   assert.equal(otherBranch.properties.refs.maxItems, referenceIds.length);
+0943   assert.deepEqual(
+0944     Object.keys(positiveBranch.properties.refs).sort(),
+0945     ["items", "maxItems", "minItems", "type"],
+0946   );
+0947   assert.deepEqual(
+0948     Object.keys(otherBranch.properties.refs).sort(),
+0949     ["items", "maxItems", "minItems", "type"],
+0950   );
+0951   assert.equal(positiveBranch.properties.refs.items.type, "string");
+0952   assert.equal(otherBranch.properties.refs.items.type, "string");
+0953 }
+0954 assertNoEmptyEnums(stage2ResponseFormat);
+0955 
+0956 const partialSchemaFormat = buildStage2ResponseFormat(
+0957   schemaInventory,
+0958   ["F0001", "C0002", "Q0003"],
+0959 );
+0960 const partialBranches = schemaBranchesOf(partialSchemaFormat);
+0961 const partialFAddressed = partialBranches.find((branch) => (
+0962   branch.properties.target_id.enum.includes("F0001") &&
+0963     branch.properties.treatment.enum.includes("ADDRESSED")
+0964 ));
+0965 const partialCAddressed = partialBranches.find((branch) => (
+0966   branch.properties.target_id.enum.includes("C0002") &&
+0967     branch.properties.treatment.enum.includes("SUPPORTED")
+0968 ));
+0969 assert.ok(partialFAddressed && partialCAddressed);
+0970 assert.deepEqual(partialFAddressed.properties.target_id.enum, ["F0001"]);
+0971 assert.ok(partialFAddressed.properties.refs.items.enum.includes("C0005"));
+0972 assert.deepEqual(partialCAddressed.properties.target_id.enum, ["C0002"]);
+0973 assert.ok(partialCAddressed.properties.refs.items.enum.includes("F0004"));
+0974 assertNoEmptyEnums(partialSchemaFormat);
+0975 
+0976 const noEligibleRefsInventory = familyInventory("F", 2);
+0977 const noEligibleRefsIds = noEligibleRefsInventory.targets.map((target) => target.target_id);
+0978 const noEligibleRefsFormat = buildStage2ResponseFormat(
+0979   noEligibleRefsInventory,
+0980   noEligibleRefsIds,
+0981 );
+0982 const noEligibleRefsBranches = schemaBranchesOf(noEligibleRefsFormat);
+0983 assert.equal(noEligibleRefsBranches.length, 1);
+0984 const noEligibleRefsBranch = noEligibleRefsBranches[0];
+0985 assert.deepEqual(noEligibleRefsBranch.properties.target_id.enum, noEligibleRefsIds);
+0986 assert.deepEqual(
+0987   noEligibleRefsBranch.properties.treatment.enum,
+0988   FRAGMENT_TREATMENTS.filter((treatment) => treatment !== "ADDRESSED"),
+0989 );
+0990 assert.equal(noEligibleRefsBranch.properties.refs.minItems, 0);
+0991 assert.equal(noEligibleRefsBranch.properties.refs.maxItems, 0);
+0992 assert.deepEqual(
+0993   Object.keys(noEligibleRefsBranch.properties.refs).sort(),
+0994   ["maxItems", "minItems", "type"],
+0995 );
+0996 assert.equal(
+0997   Object.prototype.hasOwnProperty.call(noEligibleRefsBranch.properties.refs, "items"),
+0998   false,
+0999 );
+1000 assert.deepEqual(
+1001   Object.keys(noEligibleRefsFormat.json_schema.schema.properties.reviews),
+1002   ["type", "minItems", "maxItems", "items"],
+1003 );
+1004 assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.minItems, 2);
+1005 assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.maxItems, 2);

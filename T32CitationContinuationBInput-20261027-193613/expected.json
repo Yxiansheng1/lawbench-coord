@@ -1,0 +1,8 @@
+{
+  "before_sha": "fd39258ca33596f714044de7e598d2b57eae6d2f4378073f0ce23e26ff1858f9",
+  "after_sha": "ec4e15f047f3ae6264dc25ad582cb2191ce085e9bc7c5add4bb5df0212ba0dd8",
+  "before_bytes": 67866,
+  "after_bytes": 67862,
+  "old": "\"Windows\", \"T32-CITATION-SYNTHETIC\", \"\", \"\", \"\", \"\"",
+  "new": "\"Windows\", \"T32-CITATION-SYNTHETIC\", \"\", \"\", \"\""
+}

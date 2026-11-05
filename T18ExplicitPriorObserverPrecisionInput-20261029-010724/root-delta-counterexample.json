@@ -1,0 +1,15 @@
+{
+  "kind": "ROOT_READ_ONLY_STATIC_COUNTEREXAMPLE_TO_OBSERVER_PREDICATE",
+  "checked_at_utc": "2026-10-28T17:01:12.916727+00:00",
+  "original_sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d",
+  "original_held": true,
+  "prefix_bytes": 3579,
+  "suffix_bytes": 5588,
+  "old_delta": "七",
+  "new_delta": "4.1",
+  "current_observer_accepts_correct_minimal_delta": false,
+  "counterexample_body_saved": false,
+  "model_request": 0,
+  "product_failure": false,
+  "claim": "The current observer deterministically rejects the exact minimal article-number replacement before any model run."
+}

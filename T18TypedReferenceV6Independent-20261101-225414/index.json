@@ -1,0 +1,159 @@
+{
+  "scope": "INDEPENDENT_FOCUSED_V6_TYPEDGRAPH_SCHEMA_DELTA_NOT_FULL_SOURCE_OR_SEMANTICS",
+  "requirements": [
+    "Typedgraph F->C/C->F/Q->F,C ONLY localhelperandgenericmapline; noupgradedselfcheckgroundtruth. Dynamicfamilymetadata schemas peractivesubset/knownoutsideactiverefs, positiveADDRESSED/SUPPORTEDmin1/otherinclPARTIALmin0/noemptyenum/noextras/required/length/count. Existinglocaldupe/exactIDs/merge/UTF16 checksstillstrict. Checkschema/localcontractequivalence/disjointbranches/edgecases NOTentailment.",
+    "Generatedformatbuilder failclosed validatedcanonicalindex/subset, response_format onlyoptionalpayloadfield oldpayloadbehaviorheld. Main BOTHexistingstagesformatcorrect IDs. No model/budget/0.6/49152/400remaining900/max2/sourcecache/inventory/prompts exceptmapline changes. PriorpublicHTTPtransport/sourcecleanupbyteheld andRoot8pin/PSinversesheld. No newhealth/fallback/backendconfig/serverrestart/SDKchange.",
+    "Controls newtypednegative/boundedstaticshape/emptyeligible/enumoutsideactive/allfamilies plusoriginalassertionsminfixturechange. No schemaevaluationframework/mirroredtransport/install/runtime byauthor. ProviderJSONSchema maxLengthUnicodevsUTF16/uniqueness/backendpartialfeatures NOTassumed; localvalidatorandmanualremainauthority, HTTP400stop no fallback.",
+    "C ONLY RootV6aliases+purposeinverse/draftPSreuse fromacceptedV5; originalC_AMENDfrozenguardlimits stillretained no overallsecurityPASS. DoNOTreopenfrozenguard/fullplatformaudit unchangedresource or proposeguardmodification. Specificcurrentnewbugonly withline/trigger/minimalfix. Nopeerformal/knownsemanticfailurelabels supplied."
+  ],
+  "A_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\00-review-consumer.mjs.txt",
+      "bytes": 28616,
+      "sha256": "73537e7bad4a53da4ac4700c611578f16f72cb7090099b22b26d8481fe59734f",
+      "mtime_ns": "1793544854709171700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\01-offline-controls.mjs.txt",
+      "bytes": 25111,
+      "sha256": "1d82b25ec2c97a64df3f204ab7a1903acee524763d2888e82fcbfdb57b50d8fe",
+      "mtime_ns": "1793544854720170100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\02-T18-typed-reference-schema-v6-source-reviewed-current.json.txt",
+      "bytes": 7433,
+      "sha256": "6244332a7956bb2d3a951c4ed2ee249219d0bf6b5d5f4217aa2c982576112e46",
+      "mtime_ns": "1793544854737174000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\03-source-manifest.json.txt",
+      "bytes": 1108,
+      "sha256": "1b80318519dfc2f10be32f60aa5e9cc1992af3c2e0d59106253956dcc6667e87",
+      "mtime_ns": "1793544854748182200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\04-T18-v6-typed-reference-structured-output-primary-reference-current.json.txt",
+      "bytes": 1092,
+      "sha256": "759a0606b3000b78ab1dea7d1694a19cc8a78b224e1e7b8e111cf02342e54948",
+      "mtime_ns": "1793544854753182200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\review-consumer.mjs.diff.txt",
+      "bytes": 5576,
+      "sha256": "383d0f48b87ab6bdc2281d4320c183693ccd88d848737a247722a2019a13912c",
+      "mtime_ns": "1793544854769506900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\offline-controls.mjs.diff.txt",
+      "bytes": 13745,
+      "sha256": "68f05f252bca937355a6d1ffa7293ad320f03e5f6cef1435ef844228600bb44d",
+      "mtime_ns": "1793544854779457200"
+    }
+  ],
+  "C_views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\00-review-consumer.mjs.txt",
+      "bytes": 28616,
+      "sha256": "73537e7bad4a53da4ac4700c611578f16f72cb7090099b22b26d8481fe59734f",
+      "mtime_ns": "1793544854709171700"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\01-offline-controls.mjs.txt",
+      "bytes": 25111,
+      "sha256": "1d82b25ec2c97a64df3f204ab7a1903acee524763d2888e82fcbfdb57b50d8fe",
+      "mtime_ns": "1793544854720170100"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\02-T18-typed-reference-schema-v6-source-reviewed-current.json.txt",
+      "bytes": 7433,
+      "sha256": "6244332a7956bb2d3a951c4ed2ee249219d0bf6b5d5f4217aa2c982576112e46",
+      "mtime_ns": "1793544854737174000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\03-source-manifest.json.txt",
+      "bytes": 1108,
+      "sha256": "1b80318519dfc2f10be32f60aa5e9cc1992af3c2e0d59106253956dcc6667e87",
+      "mtime_ns": "1793544854748182200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\04-T18-v6-typed-reference-structured-output-primary-reference-current.json.txt",
+      "bytes": 1092,
+      "sha256": "759a0606b3000b78ab1dea7d1694a19cc8a78b224e1e7b8e111cf02342e54948",
+      "mtime_ns": "1793544854753182200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\05-T18-typed-reference-schema-v6-root-driver-draft-current.json.txt",
+      "bytes": 1552,
+      "sha256": "b4fc1630e7f9410696e67fa57f90dd14ea975a921d94cf970f60846fbdd4af0c",
+      "mtime_ns": "1793544854762231800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\review-consumer.mjs.diff.txt",
+      "bytes": 5576,
+      "sha256": "383d0f48b87ab6bdc2281d4320c183693ccd88d848737a247722a2019a13912c",
+      "mtime_ns": "1793544854769506900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18TypedReferenceV6Independent-20261101-225414\\offline-controls.mjs.diff.txt",
+      "bytes": 13745,
+      "sha256": "68f05f252bca937355a6d1ffa7293ad320f03e5f6cef1435ef844228600bb44d",
+      "mtime_ns": "1793544854779457200"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-typed-reference-schema-v6-root-driver-inverse.diff.txt",
+      "bytes": 4323,
+      "sha256": "3fd6ba26adf66542fc055ea47b3dcd93574febb5fb425715a4ad7759763b6cce",
+      "mtime_ns": "1793544556289972800"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-typed-reference-schema-v6-root-admitter-inverse.diff.txt",
+      "bytes": 4732,
+      "sha256": "ef514d09e6b0ee04fea3a54195c55c365203d91edc1e67d951ce85a2ee109067",
+      "mtime_ns": "1793544556291487200"
+    }
+  ],
+  "pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\review-consumer.mjs",
+      "bytes": 56688,
+      "sha256": "1780ed662ce2dac7e8c4e7e7a00f441c205fe6a66aa0c6ffe43e64dd7d5a5b08",
+      "mtime_ns": "1793544582744400000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\offline-controls.mjs",
+      "bytes": 50329,
+      "sha256": "83fcd21f27ba25b50b5f91ea603cfb86ac787b89c619f7cf17d9e7470d94a1d9",
+      "mtime_ns": "1793544656359539300"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\source-manifest.json",
+      "bytes": 699,
+      "sha256": "924ab1ebc4594e9594ddd3c66140317c364db95128a1260377d61bf084744825",
+      "mtime_ns": "1793544685837647400"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18TypedReferenceSchemaV6-20261101-224758\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-typed-reference-schema-v6-saved-key-root-admin.py",
+      "bytes": 15714,
+      "sha256": "76147f3885244df35ef732a74161dd20a388d1eecce0bfcaecd92d283d6562a2",
+      "mtime_ns": "1793544556289448300"
+    },
+    {
+      "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-typed-reference-schema-v6-reviewed-runtime-root-admin.py",
+      "bytes": 3673,
+      "sha256": "e35b411e77274a540868bfb87684a61a46a76965ef8ca72807e41e8115eb20a6",
+      "mtime_ns": "1793544556289972800"
+    }
+  ]
+}

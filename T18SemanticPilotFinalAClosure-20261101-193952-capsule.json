@@ -1,0 +1,45 @@
+{
+  "scope": "Missing independent protocol/source verdict ONLY, previousdeadline job immutable and NOT reopened. Current target UNCHANGED since frozen packet. Full currentconsumer+controls and two precise responsehunkdiffs.",
+  "views": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotFinalClosure-20261101-193217\\00-review-consumer.mjs.txt",
+      "bytes": 33017,
+      "sha256": "19924bd34ea847f24c1e4952ad97ecf4c8dd820bf9059704c72088ff66955dc6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotFinalClosure-20261101-193217\\01-offline-controls.mjs.txt",
+      "bytes": 25354,
+      "sha256": "cd92810b65e6704f45b8c028c4810f60fa318d4f99578146ecda46d3ea489108"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotFinalClosure-20261101-193217\\review-consumer.mjs.diff.txt",
+      "bytes": 4725,
+      "sha256": "29b9e46270b7d6c5c723c155ee94c79732b7744804f5c5e1a6d67a529bd7474f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18SemanticPilotFinalClosure-20261101-193217\\offline-controls.mjs.diff.txt",
+      "bytes": 7956,
+      "sha256": "fa0dc4bc287cef21ebd8c772cb9c81f45f7a45934aa56c851f9652de8c89f74c"
+    }
+  ],
+  "current_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\review-consumer.mjs",
+      "bytes": 28483,
+      "sha256": "e4284da357bcf7b9d37f61a7f31dc23e3be1e9d84d5470e484fae6b7e3035ee6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18IsolatedSemanticPilot-20261101-183940\\offline-controls.mjs",
+      "bytes": 21443,
+      "sha256": "b7b7722ff8b745911b023fc1bc699e26ad5be257b31173cfe7e001c917bd6cac"
+    }
+  ],
+  "requirements": [
+    "Two freshcontexts evidence-only extraction then evidence+candidates+oldv3draft+selfcheck+actualcoverage. No modelactions/completeness/businessPASS.",
+    "Exact route/model0.6/49152/max2calls/400s remaining900s, noretry/redirecterror; exactmodel envelope/one outerfence permitted from originalorder; genuine quotes/candidate joins notsemanticclassifier.",
+    "SAME verified fixeddata buffer consumed; positiveinteger schema with externally pinned actualv3 data. Root externalmanifest/knownNode/cleanenv and explicittrustboundary are required, not consumerselfauthentication.",
+    "Review actual responsepath partialstatus/body preservation; responseartifact beforelate-deadlinefailure; readercancel+release; raw+JSONescaped redaction with marker nonASCII outsideadmittedASCII; sameimplementation memoryfake controls, no realnetwork.",
+    "Status emptyfindingsNOTqualityPASS; everyfinding Rootmanualjudgment. No lexicalquote-presence omission filter, no hardcodedfixtureversion/keywords, noACLframework.",
+    "This job sourceonly. Do NOT hash/metadata/Git/checkruntime/prepare/test or broaden into reauditing alreadyclosed Root launcher scope. Formal sourcejudgment only, precisein-scope blocker or qualifiedPASS. No actualconsumer/model/Key yet."
+  ]
+}

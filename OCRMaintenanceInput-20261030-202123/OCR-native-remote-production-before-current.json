@@ -1,0 +1,52 @@
+{
+  "utc": "2026-10-30T11:53:50.6280503Z",
+  "freeGiB": 13.772,
+  "processes": [
+    {
+      "pid": 9652,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-14T09:33:07.8751930Z"
+    },
+    {
+      "pid": 2932,
+      "exe": "C:\\prep395\\python\\python.exe",
+      "birth_utc": "2026-10-14T09:33:08.5013960Z"
+    },
+    {
+      "pid": 36704,
+      "exe": "C:\\prep395\\llama\\llama-server.exe",
+      "birth_utc": "2026-10-27T15:44:20.5370110Z"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9102,
+      "OwningProcess": 9652
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 9101,
+      "OwningProcess": 36704
+    },
+    {
+      "LocalAddress": "192.168.8.124",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    },
+    {
+      "LocalAddress": "10.126.126.3",
+      "LocalPort": 9000,
+      "OwningProcess": 2932
+    }
+  ],
+  "stage_absent": true,
+  "chain": [
+    "C:\\Users\\PC\\AppData\\Local\\Temp",
+    "C:\\Users\\PC\\AppData\\Local",
+    "C:\\Users\\PC\\AppData",
+    "C:\\Users\\PC",
+    "C:\\Users",
+    "C:\\"
+  ]
+}

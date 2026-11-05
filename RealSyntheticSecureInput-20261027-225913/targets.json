@@ -1,0 +1,27 @@
+{
+  "consumer": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RealSyntheticOCRRefine-20261027-225347\\consumer.py",
+  "destination": "D:\\Lawbeach\\lawbench-C\\docs\\plan\\evidence\\T32\\RealSyntheticSecureInput-20261027-225913",
+  "authorization": {
+    "at": "2026-10-27T22:48:59.147242+08:00",
+    "source": "D:\\Lawbeach\\lawbench-coord\\OWNER-合成案卷真实识别业务模型测试授权-20261027-224859.md",
+    "human_quote": "同意上述合成数据测试授权，6000D 和 395 现在可用于测试。",
+    "scope": "synthetic_only_existing6000D395_realOCR_businessModel_and_cancel_recovery",
+    "read_credentials": false,
+    "new_fees": false,
+    "global_changes": false,
+    "packaging": "HOLD"
+  },
+  "admission": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\real-synthetic-6000D-auth-admission-current.json",
+  "planned_consumer_cli": [
+    "--parent",
+    "--phase",
+    "--key-stdin"
+  ],
+  "phases": [
+    "ocr",
+    "refine",
+    "cancel"
+  ],
+  "Python": "C:/Users/morel/AppData/Local/Programs/Python/Python312/python.exe",
+  "shell": "C:/Users/morel/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe"
+}

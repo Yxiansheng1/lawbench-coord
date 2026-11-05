@@ -1,0 +1,28 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-schema-keyword-compat-v7-root-driver-draft-current.json
+SHA 53581fab2f18b0730a0a6c1705e422f68d973b2543a31914bfcf7d83ba664ba8
+FOCUSEDRANGES None
+0001 {
+0002   "status": "DRAFT_NOT_EXECUTED_OR_ADMITTED",
+0003   "driver": {
+0004     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\run-schema-keyword-compat-v7-saved-key-root-admin.py",
+0005     "bytes": 16032,
+0006     "sha256": "eafef74b1b8fcf12221f385db816cd955bc07599bb5a97bc1f189bbe8e172a82",
+0007     "mtime_ns": "1793545603268424400"
+0008   },
+0009   "admitter": {
+0010     "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\admit-schema-keyword-compat-v7-reviewed-runtime-root-admin.py",
+0011     "bytes": 3657,
+0012     "sha256": "1c90ef5862020cf01a696ca50870f1fce8fbfd5ef50d05cdb65e6c4ed1c039c2",
+0013     "mtime_ns": "1793545603270432200"
+0014   },
+0015   "changes": [
+0016     "ONLYV7aliases/root/purpose/verdict",
+0017     "PSnowcapturechildCIMPID/exe/parent/UTCbirthBEFOREchildstdinKey; thenEXACTsameCIMbirthusedwatchdog+outercomparison; no weakenedtimewindow/equality"
+0018   ],
+0019   "cause": "outputs/T18-v6-inner-watchdog-birth-precision-current.json",
+0020   "requires": "NEWPSstaticparse/fullsetupcleanup/currentindependentreview plusV7source/offline BEFOREadmit",
+0021   "all_other_logic_held": true,
+0022   "Keyread": false,
+0023   "modelrequests": 0,
+0024   "Packaging": "HOLD"
+0025 }

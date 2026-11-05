@@ -1,0 +1,555 @@
+{
+  "format": "lawbench-t18-explicit-prior-quality-revision-v1",
+  "task": "B-T18-explicit-prior-quality-revision-20261029-004226",
+  "status": "FAILED",
+  "authoredStatus": "AUTHORED_NOT_RUN",
+  "startedAtUtc": "2026-10-28T17:20:32.797Z",
+  "process": {
+    "executable": "E:\\node\\node.exe",
+    "pid": 2288,
+    "node": "v24.21.0",
+    "cwd": "D:\\Lawbeach\\lawbench-A\\dsh"
+  },
+  "fixture": {
+    "syntheticOnly": true,
+    "originalTwoMaterialCaseOnly": true,
+    "materialNames": [
+      "采购合同",
+      "采购部内部意见"
+    ],
+    "explicitCancelBatchBeforeEachBegin": true,
+    "requestScopePrepareCalls": 0,
+    "materialImportCalls": 0
+  },
+  "modelRoute": {
+    "provider": "lawfirm",
+    "model": "qwen38-27b",
+    "baseURL": "http://10.126.126.1:8000/v1",
+    "thinking": "中",
+    "contextWindow": 131072,
+    "maxTokens": 32768,
+    "modelCallsPerSkill": 32,
+    "requestTimeoutMs": 1200000,
+    "streamIdleTimeoutMs": 1200000
+  },
+  "runRoot": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ",
+  "admission": {
+    "initial": {
+      "checkedAtUtc": "2026-10-28T17:20:33.232Z",
+      "manifestSha256": "dbca629100335db645d3b590b568b25d0c57cc58d14acd03fd2f2013fb3db6b0",
+      "caseFileCount": 16,
+      "sessionFileCount": 1,
+      "appdataFileCount": 2,
+      "dependencyCount": 33,
+      "runtimeExecutableCount": 3,
+      "reviewedBSourcePinsSha256": "2c2b32e8b0d026b057eaf6c26a43b5b6580581ba9ed2b859192a6734c3c6a379",
+      "consumerSha256": "d9602629f65a13d97e0a6aa2aa232b039bb28fd84ce163676633eead38e1bc76",
+      "bServiceSha256": "77a826901fc8b9ea1243ad389e121148995be057eb791487d0f62bbcc5ed2f4a"
+    },
+    "final": {
+      "checkedAtUtc": "2026-10-28T17:22:40.076Z",
+      "manifestSha256": "dbca629100335db645d3b590b568b25d0c57cc58d14acd03fd2f2013fb3db6b0",
+      "caseFileCount": 16,
+      "sessionFileCount": 1,
+      "appdataFileCount": 2,
+      "dependencyCount": 33,
+      "runtimeExecutableCount": 3,
+      "reviewedBSourcePinsSha256": "2c2b32e8b0d026b057eaf6c26a43b5b6580581ba9ed2b859192a6734c3c6a379",
+      "consumerSha256": "d9602629f65a13d97e0a6aa2aa232b039bb28fd84ce163676633eead38e1bc76",
+      "bServiceSha256": "77a826901fc8b9ea1243ad389e121148995be057eb791487d0f62bbcc5ed2f4a"
+    }
+  },
+  "originalFilesHeld": true,
+  "nativeSessionId": "session-1cb28369-3a90-46dc-b047-e64986038394",
+  "stages": [],
+  "modelPosts": {
+    "attempts": 10,
+    "http200": 10,
+    "observations": [
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:20:47.444Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:20:47.688Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:20:57.692Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:20:57.818Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:04.149Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:04.382Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:06.695Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:06.782Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:13.672Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:13.762Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:18.705Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:18.795Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:37.240Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:37.334Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:21:53.452Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:21:53.545Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:22:12.728Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:22:12.824Z"
+      },
+      {
+        "kind": "model",
+        "startedAt": "2026-10-28T17:22:27.766Z",
+        "method": "POST",
+        "origin": "http://10.126.126.1:8000",
+        "path": "/v1/chat/completions",
+        "outcome": "completed",
+        "redirect": "error",
+        "status": 200,
+        "finishedAt": "2026-10-28T17:22:27.862Z"
+      }
+    ]
+  },
+  "networkSummary": {
+    "observations": 22,
+    "modelPostAttempts": 10,
+    "modelPostHttp200": 10,
+    "coreCalls": 11,
+    "healthCalls": 1,
+    "deniedAttempts": 0
+  },
+  "apiCalls": [
+    {
+      "method": "caseOpen",
+      "http": "POST",
+      "path": "/api/case/open",
+      "ok": true
+    },
+    {
+      "method": "materialsList",
+      "http": "GET",
+      "path": "/api/materials",
+      "ok": true
+    },
+    {
+      "method": "tasksList",
+      "http": "GET",
+      "path": "/api/tasks",
+      "ok": true
+    },
+    {
+      "method": "taskCreate",
+      "http": "POST",
+      "path": "/api/task",
+      "ok": true
+    },
+    {
+      "method": "tasksList",
+      "http": "GET",
+      "path": "/api/tasks",
+      "ok": true
+    }
+  ],
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": [
+      "B HTTP service did not stop cleanly"
+    ]
+  },
+  "claims": {
+    "oneSyntheticWorkflowOnly": true,
+    "actualTwoSkillWorkflow": false,
+    "actualModelAuthoredChecklist": false,
+    "actualModelAuthoredRevision": false,
+    "originalFirstPassBusinessFailRetained": true,
+    "fullT18": false,
+    "businessAcceptance": false,
+    "legalAcceptance": false,
+    "gui": false,
+    "packaging": false
+  },
+  "copy": {
+    "caseFiles": [
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\02案件材料\\采购合同.docx",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\02案件材料\\采购合同.docx",
+        "relative": "02案件材料/采购合同.docx",
+        "bytes": 39994,
+        "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\02案件材料\\采购部内部意见.txt",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\02案件材料\\采购部内部意见.txt",
+        "relative": "02案件材料/采购部内部意见.txt",
+        "bytes": 823,
+        "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\case.db",
+        "relative": "工作区/case.db",
+        "bytes": 98304,
+        "sha256": "c8fe7936d0f07475efa4e70739078a2479d00c427d5dea017acb141fd4fe4c6b"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db-shm",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\case.db-shm",
+        "relative": "工作区/case.db-shm",
+        "bytes": 32768,
+        "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\case.db-wal",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\case.db-wal",
+        "relative": "工作区/case.db-wal",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\reads.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\reads.json",
+        "relative": "工作区/任务/T-20261028234100-6b49/reads.json",
+        "bytes": 531,
+        "sha256": "dd70f6bfb2382b40776d4d1ccd01501d439e338963990a097695fd02f50473cf"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\result.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\result.json",
+        "relative": "工作区/任务/T-20261028234100-6b49/result.json",
+        "bytes": 9013,
+        "sha256": "5ea5e26193091960e3fd66f40d75bab98dcca49794973ae3b0d064a86fa0b1fc"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\task.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\task.json",
+        "relative": "工作区/任务/T-20261028234100-6b49/task.json",
+        "bytes": 1059,
+        "sha256": "1678d883352739caafc33860df2e94161d8516065ba65501bea394b192b25dd0"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\修改清单\\采购合同.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\修改清单\\采购合同.json",
+        "relative": "工作区/任务/T-20261028234100-6b49/修改清单/采购合同.json",
+        "bytes": 3149,
+        "sha256": "ca50d275c41d0043f233f7e81c2851d900b2ac399379d019f571f909b43871e5"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v1.md",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v1.md",
+        "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v1.md",
+        "bytes": 8988,
+        "sha256": "3a190540a7384dae5ee92262beff549937e9b77f34e8e5d8eca48568c9c550bb"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+        "relative": "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md",
+        "bytes": 9170,
+        "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\任务\\T-20261028234100-770a\\task.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\任务\\T-20261028234100-770a\\task.json",
+        "relative": "工作区/任务/T-20261028234100-770a/task.json",
+        "bytes": 546,
+        "sha256": "96ff1890c393deed195cf359e2e8553ed0ed97434eaabcc5393950773b664fb1"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\_处理状态.md",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\材料\\_处理状态.md",
+        "relative": "工作区/材料/_处理状态.md",
+        "bytes": 191,
+        "sha256": "4386eb8b24ab0cbe78a840a7d572614302e1902aed3fdb5bf76f655807554c8c"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\index.json",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\材料\\index.json",
+        "relative": "工作区/材料/index.json",
+        "bytes": 1475,
+        "sha256": "12bc5cd46b9237442fd63a6d8ded78b668df0e018194b21ec1d9394b45763e7a"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\文本\\02案件材料\\采购合同.docx.md",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\材料\\文本\\02案件材料\\采购合同.docx.md",
+        "relative": "工作区/材料/文本/02案件材料/采购合同.docx.md",
+        "bytes": 4189,
+        "sha256": "6bd4b99f7a6fd6fcaa553ea60497e1f91285a6665a896467465a5be2f72a91ab"
+      },
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case\\工作区\\材料\\文本\\02案件材料\\采购部内部意见.txt.md",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\工作区\\材料\\文本\\02案件材料\\采购部内部意见.txt.md",
+        "relative": "工作区/材料/文本/02案件材料/采购部内部意见.txt.md",
+        "bytes": 951,
+        "sha256": "fb7e80a148f51cd032d6091e974b6432f62ce186422f37d1865b53c085a556eb"
+      }
+    ],
+    "sessionFiles": [
+      {
+        "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--\\session-1cb28369-3a90-46dc-b047-e64986038394\\session.v4.jsonl",
+        "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\sessions\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--\\session-1cb28369-3a90-46dc-b047-e64986038394\\session.v4.jsonl",
+        "relative": "--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-fQoiXe-case--/session-1cb28369-3a90-46dc-b047-e64986038394/session.v4.jsonl",
+        "bytes": 240391,
+        "sha256": "cd40b5df18811adbbe988cf1bea2b739c0a8e25eb2009e36f15935b3d4ace2b5"
+      }
+    ]
+  },
+  "case": {
+    "caseId": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case",
+    "materialIds": [
+      "M0001",
+      "M0002"
+    ],
+    "originalAreaFiles": [
+      "02案件材料/采购合同.docx",
+      "02案件材料/采购部内部意见.txt"
+    ],
+    "created": false
+  },
+  "materialReads": [
+    {
+      "materialId": "M0001",
+      "name": "采购合同",
+      "type": "docx",
+      "unit": "para",
+      "unitCount": 47,
+      "originalPath": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\02案件材料\\采购合同.docx",
+      "originalBytes": 39994,
+      "originalSha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "sourceBytes": 39994,
+      "sourceSha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "sourceMtimeNs": "1792379578857675200"
+    },
+    {
+      "materialId": "M0002",
+      "name": "采购部内部意见",
+      "type": "txt",
+      "unit": "line",
+      "unitCount": 10,
+      "originalPath": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\case\\02案件材料\\采购部内部意见.txt",
+      "originalBytes": 823,
+      "originalSha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "sourceBytes": 823,
+      "sourceSha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "sourceMtimeNs": "1792379578787315800"
+    }
+  ],
+  "resumedSession": {
+    "sameUuid": true,
+    "originalCwdPreserved": true,
+    "originalEventPrefixPreserved": true
+  },
+  "error": {
+    "message": "cleanup failed",
+    "failures": [
+      "B HTTP service did not stop cleanly"
+    ]
+  },
+  "bService": {
+    "ready": {
+      "contractVersion": "1.6",
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "fixtureCount": 2,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "ocrStarted": false,
+      "pid": 43932,
+      "port": 55225,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "startedAtUtc": "2026-10-28T17:20:35.904+00:00",
+      "status": "ready"
+    },
+    "final": {
+      "appdataSourceCount": 2,
+      "appdataSourcesUnchanged": true,
+      "copiedAppdata": [
+        {
+          "bytes": 638,
+          "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scopes.json",
+          "mtime_ns": "1793202060773185300",
+          "relative": "request-scopes.json",
+          "sha256": "15425c85634ff41379d2b9c3003c1b88c352c99a1dca5a17dcb7f25e38e226fd",
+          "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scopes.json"
+        },
+        {
+          "bytes": 526,
+          "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ExplicitPriorQualityRevision-20261029-004226\\run-Bf3ztJ\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+          "mtime_ns": "1793202060700810100",
+          "relative": "request-scope-intents/79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json",
+          "sha256": "3cda63fed3e1896ed90b1206a2bb42fbea7929317c791481a80924382a5ba6c2",
+          "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\appdata\\request-scope-intents\\79da42833363c82ccf62c502d1df47d9a99cffd900910137df4d510d0f1d167d.json"
+        }
+      ],
+      "credentials": {
+        "externalKeyGetter": 0,
+        "keyGetter": 0
+      },
+      "executable": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "failure": "two_stage_protocol_incomplete",
+      "finishedAtUtc": "2026-10-28T17:22:39.410+00:00",
+      "fixtureCount": 2,
+      "fixtureInputsUnchanged": true,
+      "forwardListener": false,
+      "host": "127.0.0.1",
+      "lifespan": "off",
+      "listenerClosed": true,
+      "logsClosed": true,
+      "netClientClosed": true,
+      "ocrStarted": false,
+      "outbound": {
+        "attempts": 0,
+        "denied": 0
+      },
+      "passed": false,
+      "pid": 43932,
+      "port": 55225,
+      "protocol": {
+        "beginCwds": [
+          "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case"
+        ],
+        "caseBound": true,
+        "counts": {
+          "GET /api/materials": 1,
+          "GET /api/tasks": 2,
+          "GET /health": 1,
+          "POST /api/case/open": 1,
+          "POST /api/task": 1,
+          "POST /core/context": 1,
+          "POST /core/progress": 1,
+          "POST /core/task/begin": 1,
+          "POST /core/task/end": 1,
+          "POST /core/tool": 7
+        },
+        "cwdAliases": [
+          {
+            "from": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGateContractWorkflow-20261028-191702\\run-fQoiXe\\case",
+            "to": "d:\\lawbeach\\lawbench-b\\docs\\plan\\evidence\\t18\\explicitpriorqualityrevision-20261029-004226\\run-bf3ztj\\case"
+          }
+        ],
+        "denials": {},
+        "materialIdCount": 2,
+        "requestIds": [
+          "b91ca8e9-4d23-47bb-b249-c8e46fb7dd06"
+        ],
+        "selectionIds": [
+          "T-20261029012044-c562"
+        ],
+        "selectionInputs": [
+          [
+            "工作区/任务/T-20261028234100-6b49/草稿/合同审查意见-v2.md"
+          ]
+        ],
+        "sessionBound": true,
+        "stage1ChecklistPath": "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md",
+        "stageBegun": [
+          true,
+          false
+        ],
+        "stageClosed": [
+          true,
+          false
+        ],
+        "stageDrafts": [
+          [
+            "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v1.md",
+            "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v2.md",
+            "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v3.md",
+            "工作区/任务/T-20261029012044-5869/草稿/出稿前审查-合同审查意见-v4.md"
+          ],
+          []
+        ],
+        "taskBound": true,
+        "taskIds": [
+          "T-20261029012044-5869"
+        ],
+        "violations": []
+      },
+      "retainerClosed": true,
+      "retainerStarted": false,
+      "sourcePinCount": 346,
+      "sourcePinsUnchanged": true,
+      "startedAtUtc": "2026-10-28T17:20:35.904+00:00",
+      "status": "FAILED"
+    },
+    "exitCode": 1,
+    "forcedStop": false
+  },
+  "finishedAtUtc": "2026-10-28T17:22:40.077Z"
+}

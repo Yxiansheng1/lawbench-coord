@@ -1,0 +1,32 @@
+{
+  "verdict": "TECHNICAL_CHAIN_ACCEPTED_BUSINESS_FACT_ROLE_FAILURE_OPEN",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\ContractDraftQuestionBindings-20261029-063959\\run-NqrGTD",
+  "final_body_sha256": "b5277a507dc8ec39df8ee08201048995ccba50b186b569d514eb864efd97adc0",
+  "full_final_body_and_both_canonical_materials_read": true,
+  "checked": [
+    "150*4200=630000 for each specification; total300tons/1260000 correct.",
+    "13percentVAT and seller-paidfreight agree with later email.",
+    "Both2026Maydeliverydates/fullwarehouse location agree with email.",
+    "Payment60vs30days/retention5vs3percent/warranty6months remain within explicit pending-confirmation text; no unilateral operative selection in this sample.",
+    "Actualrequired3answers precede firstsuccessfulsave; malformedask rejected before realcallback.",
+    "13citations/10unique sourceGET resolutions and productionJSONL54events close/reopen equality technically passed."
+  ],
+  "failed": [
+    {
+      "id": "BUYER_RESIDENCE_UNSUPPORTED_ROLE",
+      "actual": "Buyer residence is written as a shortened shipping warehouse address and reused by notification clause11.1.",
+      "primary": "Canonical email only supplies a delivery warehouse location; no buyer legal residence or notification address is supplied.",
+      "expected": "Unprovided buyer residence/notification facts must remain pending; do not infer them from a shipping location.",
+      "product_rule": "contract-draft shared rule forbids inventing identity/address; selfcheck requires missing commercial facts as placeholders."
+    }
+  ],
+  "remaining_review": [
+    "SixFhints include three table rows with citations immediately after table and three operative boilerplate clauses; hints are not all proven business defects.",
+    "Preamble seller qualification/capacity assertion is not evidenced by supplied materials and remains unsupported factual language.",
+    "Proposed risk/legal clauses, party details, placeholders and legal appropriateness need lawyerreview; no legalmerits certification."
+  ],
+  "business_quality_all_PASS": false,
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

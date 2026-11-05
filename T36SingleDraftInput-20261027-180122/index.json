@@ -1,0 +1,26 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\guide\\连越律所工作台功能清单.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36SingleDraftInput-20261027-180122\\00-guide-连越律所工作台功能清单.md",
+    "bytes": 9082,
+    "sha256": "40d9ce79bba882e56f41abd51cce98cfe566e1efa10c1e810e73c5a7b02d3a9f"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\cross-exam-opinion\\SKILL.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36SingleDraftInput-20261027-180122\\01-cross-exam-opinion-SKILL.md",
+    "bytes": 12390,
+    "sha256": "03615deb739515c516b84fb7b3536f6b8a130d2fb7d71189e2a4a9d8ba387b1a"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T36\\LawyerSkillListPrecision-20261027-175532\\root-review-amendment.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36SingleDraftInput-20261027-180122\\02-LawyerSkillListPrecision-20261027-175532-root-review-amendment.md",
+    "bytes": 7369,
+    "sha256": "df694b477dca33faedb318f413bb1f1361b149122397d9e082597108bbbd7ba8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-coord\\B-handback-T36-lawyer-list-precision-20261027-175532.md",
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T36SingleDraftInput-20261027-180122\\03-lawbench-coord-B-handback-T36-lawyer-list-precision-20261027-175532.md",
+    "bytes": 3907,
+    "sha256": "7a92585b7ec924687326bb6c375ed8be5c096972ba1610beaf1aa84c23a9e672"
+  }
+]

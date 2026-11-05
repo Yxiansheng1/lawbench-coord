@@ -1,0 +1,12 @@
+# Native GET admission: preparation only, not runtime/GUI acceptance
+2026-10-25T10:53:13.028052+08:00; actualheartbeat2026-10-25T02:46:42.904Z. One scan10:47:00 unread0, no active writers/GUI/service. Packaging HOLD.
+Root read current A API_ROUTES+documents/tasksheet/materials/case-tab/wiki-card consumers and B api/ui routes+TaskStore+OcrQueue/merge+wiki review/suggestions+Registry/Gate. No code imported/run, no new service/testing.
+Six A/B schemas parsed JSON equal (raw LF/CRLF hashes differ for5), record outputs/NativeReadGet-contract-audit-current.json. No demonstrated product contract bug.
+- taskCurrent GET/api/task/current: A dock.tsx199; B api/ui.py76→TaskStore.current168, reads recent private case roots and pending task files, no writes; constrain fresh one-root registry, no task records, session_id only.
+- tasksList GET/api/tasks: A documents239/materials350; B ui73→TaskStore.list186 invokes _close_stale350 which WRITES abnormal task/result for stale running tasks. Admit only fresh exact case and per-request no task-dir entries, reject rather than fake[]. No taskCreate/core/pipeline allowed. Not generally read-only.
+- outputsList GET/api/outputs: A documents240/case-tab27/home147; B ui79→TaskStore.outputs158, reads index else native empty value, no export/write.
+- ocrList GET/api/ocr/jobs: A materials116; B ui191→OcrQueue.list215 SELECT only, merge.connect70 closes SQLite. Possible ordinary SQLite private DB sidecars, no OCR submit/thread/key/Net. Valid case-open DB required.
+- wiki GET suggestions: A materials353; B ui162→handle sidNone early return, no pending writes. Shared request has optional id/accept, but GET params are strings so accept fails boolean contract; still constrain exactly case_id, never forward id/accept, no POST.
+- wiki GET review: A wiki-card147; B ui165→review.get58, reads card/materialindex, mark POST71 writes and remains denied. Imports drafts defines local Lock only; no pipeline invocation.
+Old entry has8 exact routes. All6 above absent: a definite preparation capability gap, not proof each of59 anonymized <denied-route> records is one of these. Do not alter old8 entry/E50/guard/PDF or guess raw denied paths.
+Next unique B prepares a new byte-cloned entry with exact6GET and narrowed writes (only case/open), robust same-case/query/empty-task constraints. Root full cumulative review before any finite invocation. New prep not GUI pass. No T52 slow response/cancel/replacement startup, no model/OCR/lifespan.

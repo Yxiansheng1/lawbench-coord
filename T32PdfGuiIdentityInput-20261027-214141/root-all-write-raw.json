@@ -1,0 +1,32 @@
+[
+  {
+    "id": "item_19",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+        "kind": "update"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+        "kind": "update"
+      }
+    ],
+    "status": "completed"
+  },
+  {
+    "id": "item_29",
+    "type": "file_change",
+    "changes": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\root-entry-identity-repin-20261027-214141.md",
+        "kind": "add"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-coord\\A-handback-T32-PDF-entry-identity-repin-20261027-214141.md",
+        "kind": "add"
+      }
+    ],
+    "status": "completed"
+  }
+]

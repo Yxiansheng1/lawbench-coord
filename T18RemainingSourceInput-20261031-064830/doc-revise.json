@@ -1,0 +1,1351 @@
+{
+  "purpose": "ORIGINAL_FAILED_NATIVE_SAVED_DRAFT_NOT_REACHED_SOURCE_GET_ONLY",
+  "original_business_status": "FAILED",
+  "original_actual": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK",
+  "case_id": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+  "task_id": "T-20261029024515-5073",
+  "old_case": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case",
+  "case_files": [
+    {
+      "relative": "02案件材料\\采购合同.docx",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\02案件材料\\采购合同.docx",
+      "bytes": 39994,
+      "sha256": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a"
+    },
+    {
+      "relative": "02案件材料\\采购部内部意见.txt",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\02案件材料\\采购部内部意见.txt",
+      "bytes": 823,
+      "sha256": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040"
+    },
+    {
+      "relative": "工作区\\case.db",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\case.db",
+      "bytes": 98304,
+      "sha256": "a82d11f4da9934f69aa2a7575a2303b57211bf41721211af9052ce6e0e348c9b"
+    },
+    {
+      "relative": "工作区\\case.db-shm",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\case.db-shm",
+      "bytes": 32768,
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    },
+    {
+      "relative": "工作区\\case.db-wal",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\case.db-wal",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\reads.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\reads.json",
+      "bytes": 531,
+      "sha256": "dd70f6bfb2382b40776d4d1ccd01501d439e338963990a097695fd02f50473cf"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\result.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\result.json",
+      "bytes": 9013,
+      "sha256": "5ea5e26193091960e3fd66f40d75bab98dcca49794973ae3b0d064a86fa0b1fc"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\task.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\task.json",
+      "bytes": 1059,
+      "sha256": "1678d883352739caafc33860df2e94161d8516065ba65501bea394b192b25dd0"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\修改清单\\采购合同.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\修改清单\\采购合同.json",
+      "bytes": 3149,
+      "sha256": "ca50d275c41d0043f233f7e81c2851d900b2ac399379d019f571f909b43871e5"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v1.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v1.md",
+      "bytes": 8988,
+      "sha256": "3a190540a7384dae5ee92262beff549937e9b77f34e8e5d8eca48568c9c550bb"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261028234100-6b49\\草稿\\合同审查意见-v2.md",
+      "bytes": 9170,
+      "sha256": "1b095356f48c4a7ae9e94bd171c92377385d70ff3730c59fcb50f26822cba31d"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\reads.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\reads.json",
+      "bytes": 532,
+      "sha256": "c121bde3eb83e2c43715f87a2c8a1ccc6cbcc9980f132ebecd79f46588c17cd2"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\result.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\result.json",
+      "bytes": 2204,
+      "sha256": "15352d914ca8d37106ecefc7ca45d1b9042145661d0a8b1f1e0a78ac7db9cd1a"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\task.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\task.json",
+      "bytes": 889,
+      "sha256": "63758b80ede3c64d3ee8e747e9da5457b677f026e810b0a09635224735905c2d"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v1.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v1.md",
+      "bytes": 2649,
+      "sha256": "ca7f43c9e67b1c4dcd502015bd5cac359069b0a0337ede659a1484590918749a"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v2.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v2.md",
+      "bytes": 2355,
+      "sha256": "61e8a64cae9de8dea8f95177397f8524ed3e2de5d6d307b53782a7ba5788239c"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v3.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v3.md",
+      "bytes": 2354,
+      "sha256": "ed215779c1b3c57fce35db544669ab6d1a5efa1e9ba01790588347eb1dd59571"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v4.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029012044-5869\\草稿\\出稿前审查-合同审查意见-v4.md",
+      "bytes": 2351,
+      "sha256": "b01af533b523c9752a84fd3801d3de1cfd46db5fb75642888aaa6bad493abe2f"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029024515-07d7\\task.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029024515-07d7\\task.json",
+      "bytes": 1093,
+      "sha256": "33194ee0937ef7c49e566f86427fc60ee9258a2e13ff4a884abc13985f3c64e0"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029024515-5073\\reads.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029024515-5073\\reads.json",
+      "bytes": 300,
+      "sha256": "1d58c336fc952266fe4af25d6b28739674a709f36371c9f83a5f1e1a01eff989"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029024515-5073\\result.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029024515-5073\\result.json",
+      "bytes": 8958,
+      "sha256": "ffbff9a2c04ad14456368d088df5a9637fbfaf72be16d286c4fad3405915d926"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029024515-5073\\task.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029024515-5073\\task.json",
+      "bytes": 1175,
+      "sha256": "2125934ea41128bc9e5dafd90f1c2db6bd4da11a19bad40e9ef3a2eb071ab4ff"
+    },
+    {
+      "relative": "工作区\\任务\\T-20261029024515-5073\\草稿\\合同审查意见-修改稿-v1.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\任务\\T-20261029024515-5073\\草稿\\合同审查意见-修改稿-v1.md",
+      "bytes": 9170,
+      "sha256": "cd8f3cf84f8af1be413e0764798f076c2c91ba91f0f1f026e8b344b1e5c924bb"
+    },
+    {
+      "relative": "工作区\\材料\\_处理状态.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\材料\\_处理状态.md",
+      "bytes": 191,
+      "sha256": "4386eb8b24ab0cbe78a840a7d572614302e1902aed3fdb5bf76f655807554c8c"
+    },
+    {
+      "relative": "工作区\\材料\\index.json",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\材料\\index.json",
+      "bytes": 1475,
+      "sha256": "12bc5cd46b9237442fd63a6d8ded78b668df0e018194b21ec1d9394b45763e7a"
+    },
+    {
+      "relative": "工作区\\材料\\文本\\02案件材料\\采购合同.docx.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\材料\\文本\\02案件材料\\采购合同.docx.md",
+      "bytes": 4189,
+      "sha256": "6bd4b99f7a6fd6fcaa553ea60497e1f91285a6665a896467465a5be2f72a91ab"
+    },
+    {
+      "relative": "工作区\\材料\\文本\\02案件材料\\采购部内部意见.txt.md",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case\\工作区\\材料\\文本\\02案件材料\\采购部内部意见.txt.md",
+      "bytes": 951,
+      "sha256": "fb7e80a148f51cd032d6091e974b6432f62ce186422f37d1865b53c085a556eb"
+    }
+  ],
+  "old_registry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\appdata\\cases.json",
+    "bytes": 320,
+    "sha256": "bcef10df5f438fa4a10c3b96d0167451fd2fd101874ae5569e539adfd59caa35"
+  },
+  "registry_document": {
+    "v": 1,
+    "cases": [
+      {
+        "case_id": "9d535ab5-f14c-42cc-bd99-a2f669ff6200",
+        "root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\DocReviseClauseRuntime-20261029-024101\\run-DDLgyK\\case",
+        "name": "case",
+        "last_opened": "2026-10-29T02:45:15+08:00",
+        "kind": "civil"
+      }
+    ]
+  },
+  "requests": [
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第1段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 1
+      },
+      "expected_text": "钢材采购合同"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第3段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 3
+      },
+      "expected_text": "甲方（采购方）：虚构市青禾建材贸易有限公司（以下简称“青禾建材”）"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第6段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 6
+      },
+      "expected_text": "乙方（供货方）：虚构市某某钢构有限公司（以下简称“某某钢构”）"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第12段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 12
+      },
+      "expected_text": "| 序号 | 名称 | 规格 | 数量（吨） | 单价（元/吨） | 金额（元） |\n|---|---|---|---|---|---|\n| 1 | 热轧H型钢 | HW200×200 | 150 | 4,200 | 630,000 |\n| 2 | 热轧H型钢 | HN300×150 | 150 | 4,200 | 630,000 |"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第26段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 26
+      },
+      "expected_text": "5.1 合同总价款为人民币壹佰贰拾陆万元整（￥1,260,000.00）。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第19段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 19
+      },
+      "expected_text": "3.1 交货时间：2026年5月20日前分两批交付。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第27段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 27
+      },
+      "expected_text": "5.2 甲方应于收到货物后九十日内付款。"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "citation": "〔采购部内部意见 第5-6行〕",
+      "expected_name": "采购部内部意见",
+      "expected_loc": {
+        "unit": "line",
+        "from": 5,
+        "to": 6
+      },
+      "expected_text": "1. 第一批 HW200×200 150吨，须于2026年5月10日前到货；\n2. 第二批 HN300×150 150吨，须于2026年5月20日前到货。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第30段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 30
+      },
+      "expected_text": "6.1 乙方逾期交货的，每逾期一日，按逾期交货部分价款的千分之一向甲方支付违约金。"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "citation": "〔采购部内部意见 第10行〕",
+      "expected_name": "采购部内部意见",
+      "expected_loc": {
+        "unit": "line",
+        "from": 10
+      },
+      "expected_text": "五、对方逾期交货超过二十日的，我方需要能够解除合同另行采购。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第23段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 23
+      },
+      "expected_text": "4.1 甲方应于到货后七日内完成验收，逾期未提出书面异议的，视为验收合格。"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "citation": "〔采购部内部意见 第7行〕",
+      "expected_name": "采购部内部意见",
+      "expected_loc": {
+        "unit": "line",
+        "from": 7
+      },
+      "expected_text": "二、质检部反馈：委托第三方检测机构出具报告一般需要十至十五个工作日，到货后七日内无法完成验收。"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "citation": "〔采购部内部意见 第8行〕",
+      "expected_name": "采购部内部意见",
+      "expected_loc": {
+        "unit": "line",
+        "from": 8
+      },
+      "expected_text": "三、财务部意见：货款按惯例留5%作为质量保证金，质保期满无质量问题后支付。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第39段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 39
+      },
+      "expected_text": "9.1 双方指定的电子邮件通知地址以本合同附件为准，附件的电子版可在http://127.0.0.1/lbfx-attachment查阅，通知自发出之日起视为送达。"
+    },
+    {
+      "material_id": "M0002",
+      "material_version": "3c40461cdeebad0c3fda4cda07824e901196a5bcdd149b11edfbdc1ade90e040",
+      "citation": "〔采购部内部意见 第9行〕",
+      "expected_name": "采购部内部意见",
+      "expected_loc": {
+        "unit": "line",
+        "from": 9
+      },
+      "expected_text": "四、对方合同第九条说通知地址\"以附件为准\"，但对方发来的文本没有附件，请法务一并看一下。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第21段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 21
+      },
+      "expected_text": "3.3 乙方应提前两日通知甲方收货，甲方应安排人员清点签收。"
+    },
+    {
+      "material_id": "M0001",
+      "material_version": "16ea49cb8e539ed2d3485673ac9eef76184248a6b75edbf8fd7de3179fd4181a",
+      "citation": "〔采购合同 第37段〕",
+      "expected_name": "采购合同",
+      "expected_loc": {
+        "unit": "para",
+        "from": 37
+      },
+      "expected_text": "8.1 因本合同发生的争议，双方协商解决；协商不成的，提交甲方所在地人民法院诉讼解决。"
+    }
+  ],
+  "expected_gets": 17,
+  "service_path": "D:\\Lawbeach\\lawbench-B\\service",
+  "contracts_path": "D:\\Lawbeach\\lawbench-B\\contracts",
+  "B346": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+    "bytes": 53548,
+    "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b"
+  },
+  "contract_pins": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\archive_build.schema.json",
+      "bytes": 6548,
+      "sha256": "33ebdee0c44972a5e70ad3055832dbde91a82291a6d783d789482dde8e7eae99"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\capsules.schema.json",
+      "bytes": 1047,
+      "sha256": "6ac19ad67d759b9b7e68f79804deba66ada63ca048024db6bc8bfd316246bb0a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\capsules_reset.schema.json",
+      "bytes": 1064,
+      "sha256": "8c57c943a2ad00097acb96fe7eb1d5fa8e0bb8901b343501e139c40d990e8a4a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\case_forget.schema.json",
+      "bytes": 1932,
+      "sha256": "b8ef855e383ade4b02e99c419a96daf15cb8eb8d52482da1d77e806b07530ab8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\case_open.schema.json",
+      "bytes": 4388,
+      "sha256": "5aa0139bdbbe427758b16f05b78237986de372bef5fb50c038e6457853b57c06"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\case_recent.schema.json",
+      "bytes": 4012,
+      "sha256": "7f682fe580996393f0313a6dc71fef8795263c35da5375cf38e203c760361aa7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\connection_test.schema.json",
+      "bytes": 3688,
+      "sha256": "25a0ebb101214e7ae37b073553a0066c8c5ceb34ad0b0861f5dcc05b67f039e2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\documents_save.schema.json",
+      "bytes": 3705,
+      "sha256": "7ea0ec0282e9b218410385a3c41e77bfe3cba5a9599bdb09e99ebb244ed8d4c4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\invoice_run.schema.json",
+      "bytes": 11740,
+      "sha256": "3a26cf02a0fa3ccfde670a7d1ba1bfcee56de776859f1b77b940a3a691baec02"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_import.schema.json",
+      "bytes": 7910,
+      "sha256": "63445e5fb73afd22d182c6fd24a5f5f73686c507a94b9087d670bc02f56c8db5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_list.schema.json",
+      "bytes": 10258,
+      "sha256": "f0f0f3e08c8374e36f9e6cf52a84fee4ccde43757561eb820b01c9f0343eff31"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_relocate.schema.json",
+      "bytes": 3314,
+      "sha256": "e89d3e622fd53c0e158aaebde024dc033e8be6df8c627d80914f825bc05b71bb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_remove.schema.json",
+      "bytes": 4737,
+      "sha256": "84c639395c7557d36447d84558172e9e96bc481c95059d54a248ac22abeffe6b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\materials_scan.schema.json",
+      "bytes": 2763,
+      "sha256": "8918b9798ff9428d88103ec2d1d5af4efa3c278fab59d2717aff1574a2e76bec"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\ocr_cancel.schema.json",
+      "bytes": 1797,
+      "sha256": "923085a9db14c1fa4489de28cae7e0faee19ffe4ed32931ff054b8c9566687d3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\ocr_list.schema.json",
+      "bytes": 5838,
+      "sha256": "2fe2b15231ed95b228472262a391e55b004753aab66fcda940b01e424211e50a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\ocr_submit.schema.json",
+      "bytes": 2930,
+      "sha256": "d4320834ddc3dc63437b78268d6ae26e9163ab8d26437649bfa45d35b9234f4c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\outputs_confirm.schema.json",
+      "bytes": 3822,
+      "sha256": "01406647c962a83e106c9501ccbeafffe5166947b20a7bacac1aaeb1f8031865"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\outputs_list.schema.json",
+      "bytes": 1226,
+      "sha256": "cef6ada7e9450aadc9b88a9337d0629ba1aa331559dc862f2d9df4b1684e9e24"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\pipeline_cancel.schema.json",
+      "bytes": 1296,
+      "sha256": "52bc4e1c61c73ef4e25e95002c981953d1921f4b8b35dc5d9c772bb8f1766fd8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\pipeline_run.schema.json",
+      "bytes": 2083,
+      "sha256": "2f98e90edf9ee523901e24eaeb3f7b385477d42b48a004a1764bc9199dd313e4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\pipeline_status.schema.json",
+      "bytes": 4389,
+      "sha256": "1efe217ad3e8089cf27ab7d04fb1d1fd80b10540a3578d81fd9b0f4751a6699c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\prompt_refine.schema.json",
+      "bytes": 3771,
+      "sha256": "e2fc9f418f5d93c6d749dbc7d0d95804619d0edcf56bdb5b7de239ae74d3ca85"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\redline.schema.json",
+      "bytes": 3438,
+      "sha256": "970766970afcaf25febc5980b7c30411def39d5e20a9fd740ac62206733a4377"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\remote_access.schema.json",
+      "bytes": 4548,
+      "sha256": "dd526182ce20f29df2d6b16eb2b1cf655e5d94a86a337a16a5fd6b9379158e15"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\request_scope.schema.json",
+      "bytes": 4555,
+      "sha256": "67a2d4f51a52f3c8ad8ac0f05bf3e3aec90d12f5f1e2fdaeb1a99901d1365a1c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\retainer_driver.schema.json",
+      "bytes": 1973,
+      "sha256": "1a0893681521d6c062cbf24dbe4c3c25cd230c6e6fdd3a5ed4713b129063fdad"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\search.schema.json",
+      "bytes": 1319,
+      "sha256": "f2e23e8bdbe89078b5e18609b390b3482e28a6e8f3ff69570f589af28ff4e4d0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\settings.schema.json",
+      "bytes": 968,
+      "sha256": "5ee2d390ec4012f74867d4eb4017c2608cebdc369083e8f77299db0e38ec1a0a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\source.schema.json",
+      "bytes": 4165,
+      "sha256": "fa0fe5c770402423ca8739d6d9a69d562ee93e75c91070b2905cdeadac39734f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\task_create.schema.json",
+      "bytes": 3230,
+      "sha256": "27146bdf5719b6c102c087f5d0123f28823bf4054270fe553e3f9907bd86c9ce"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\task_current.schema.json",
+      "bytes": 5988,
+      "sha256": "4425ac661ac23ecd5a177ae4cba84264ebe2b79fb6304b5745f2a99197bedc9b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\tasks_list.schema.json",
+      "bytes": 8095,
+      "sha256": "6a4019cf782f3817cb0b97576cb65ed86d3b8ab0ce654aa18760357600244eef"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\wiki_review.schema.json",
+      "bytes": 4846,
+      "sha256": "3bbd00c40f6a28834f1f72f7545d34d9ddea69616eca429c32cf3977ca45b610"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\api\\wiki_suggestions.schema.json",
+      "bytes": 2021,
+      "sha256": "4b53ecf78f065006d577401f5a8b8beceb57b9e1d82d0755ca9070e0e7cd131d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\case_db.sql",
+      "bytes": 4199,
+      "sha256": "18513849ca3dde0cdf333682983c77561ad597744c29da23c75a2544ae2c4703"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\common.schema.json",
+      "bytes": 17837,
+      "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\context.schema.json",
+      "bytes": 5387,
+      "sha256": "201e94ed3075e05d87749c327fd21b315273acf30f52b91c355a218ed66b9cd9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\progress.schema.json",
+      "bytes": 1627,
+      "sha256": "e08c7377904a4c2c0a6e2892631bb72773e2e79a7b867cbe68db497763324b1a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\task_begin.schema.json",
+      "bytes": 6382,
+      "sha256": "22b455e37beb880f8272846d3e4f154a2a82e2a75a3e7f601e1dfd1982b16571"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\task_end.schema.json",
+      "bytes": 2792,
+      "sha256": "311dba84568699e59d0d0d94ebceecfe5c51249dd773fdaf3a9d5e17e4c5a066"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\core\\tool.schema.json",
+      "bytes": 1300,
+      "sha256": "4a726dd60f9de4d8199614411854c3276ac9448a4477054244ba903ddc9c534b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_archive_build.fail.json",
+      "bytes": 166,
+      "sha256": "b590e819b9559f46f838ed45a2d6adbe29e6ee4e8cb7a14c14b58d90ea8aae1c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_forget.req.json",
+      "bytes": 59,
+      "sha256": "bb42a7fb8eb34b9bb040db8db1832bf6fcf73440fdc9e6204086fa8d07b61979"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_forget.res.json",
+      "bytes": 72,
+      "sha256": "795db7faf7e82fdbbe37cd1c1663f4eeaa3fce1b5b3745b6b73f20f283e869f4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_open.fail.json",
+      "bytes": 181,
+      "sha256": "269a4533b3838e174db982b3290bfff87ca45623a23f7d9adaffc1290a1fc453"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_open.req_bad_kind.json",
+      "bytes": 71,
+      "sha256": "6a9f3909541c9af4d2e83d186ebd780ad3e016833189d86ebe7abf2e73d14112"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_open.req_folders.json",
+      "bytes": 151,
+      "sha256": "2bc2947cec49f7b913529cfdf31386f97ada17399eac5c74014fde087433af9f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_case_open.req_kind.json",
+      "bytes": 100,
+      "sha256": "bffae8ccfdfd1fd01fd5743828723e25cb6f7225abfa0ff7991be7543450a677"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_documents_save.fail.json",
+      "bytes": 111,
+      "sha256": "636450218db72ec6fcb40728fda52d988126d0168fe718610358bcc7556ee06a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_documents_save.req.json",
+      "bytes": 199,
+      "sha256": "6d6e3bc36058cf6b6f807ff7ac26ce5b7cf4f2663eb39870607798b967e37a97"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_documents_save.res.json",
+      "bytes": 1100,
+      "sha256": "b040b7b893aef4521180a34fa990b3e319084ef22f23958d31cb03fcbe435534"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_invoice_run.req.json",
+      "bytes": 124,
+      "sha256": "816eaa838bf3a97458a1aa65cf19f1ddb9245bde4c4b26ddcb42dd59eb3e4369"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_invoice_run.req_imap.json",
+      "bytes": 123,
+      "sha256": "c188789664e6600c32a32bdb78ebad4c0ea8cc7bcb6d1bc73f5265836fcff004"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_invoice_run.res.json",
+      "bytes": 191,
+      "sha256": "d19bdf681385a639dfce8dcc892e90660cbcf1d52210b39487feb2f7badb18ad"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_invoice_run.res_blocked.json",
+      "bytes": 206,
+      "sha256": "b22eb832a8e2baa426a18d117114122f8d8acc25fa0b7c9f3e9badc7a4de1c7b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_invoice_run.res_exclude.json",
+      "bytes": 233,
+      "sha256": "c9ec1c3f9df4a43270de8c28f91f61cddb4d360c7d31f8118e99ddddf90991e2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.req.json",
+      "bytes": 218,
+      "sha256": "7359abcc44a93c8efef87455ee51111203a56628e263c65fa0f99c34299cda34"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.req_bad_mode.json",
+      "bytes": 182,
+      "sha256": "8a59d9fb80b834dde60f638bd3aad2e04540beb043427d1763c0c544b6675b51"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.req_ref.json",
+      "bytes": 181,
+      "sha256": "ac53d4b04efed100c02bde82bd402434cf38e33186f870b61687e6919a423d0e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.res.json",
+      "bytes": 461,
+      "sha256": "d976d02e18f4dec6eee1990b8258820425b918a577ebcc38f9077fb6a15812e7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.res_bad_reason.json",
+      "bytes": 324,
+      "sha256": "47191f5918f08a2a9f534629281056b5fb8ede98d75ebc37e9633ba59927ae32"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.res_bad_registered.json",
+      "bytes": 343,
+      "sha256": "b6b4453f2af1421478c697ff4e0dc8cbd00a509afa7feedc08363d6668038666"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_import.res_ref.json",
+      "bytes": 366,
+      "sha256": "52eb087f69f437bce45b60ab901ab13af8aa1ed0ad9780776371dab768d700ab"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_list.res_missing.json",
+      "bytes": 644,
+      "sha256": "f94208f6b3b67c8175f03ea944ac37a87bc51cfdc22071ea9a3c92bb96fe89de"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_relocate.req.json",
+      "bytes": 122,
+      "sha256": "cc22ab870cbbdd7b0e9b3c4cd9b235fc5ba225ae209541beddd98fbb94217a4f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_relocate.req_bad_ref.json",
+      "bytes": 120,
+      "sha256": "7688528d84a0ba40e7faf2f48ad0c48cbee865f65c5334c8940259d97ba8f064"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_relocate.req_bad_ref_zero.json",
+      "bytes": 122,
+      "sha256": "17037c550ab88f7ba428bda0e9b0cb1f346659a131cc43e121d80b41f639a5bb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_relocate.res.json",
+      "bytes": 240,
+      "sha256": "3deedf35d85a8ae7bfc2359114f78f06a846e7d05c289a3a04a0ee6297bcfbb5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_remove.req.json",
+      "bytes": 113,
+      "sha256": "9108887493ed514f0b61c708d598cf5ff14cd486dc3913bd703f75b0c5de442a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_materials_remove.res.json",
+      "bytes": 271,
+      "sha256": "b90a90ab219aa994c0e3d342659c23ec18da4e3ee18d23114cb7f6e83be9d3ed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_ocr_list.res.json",
+      "bytes": 365,
+      "sha256": "bdca4627ee2f6cf602f2fad38cfc6cdc9be2a02f6b3d3e180f2b6cb269e211e5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_ocr_submit.req.json",
+      "bytes": 146,
+      "sha256": "3cbabed042b125f0565081b68a7985fdb984b5a87ae6840cdd2dc46807d86785"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_prompt_refine.req.json",
+      "bytes": 144,
+      "sha256": "3003ac28d223fd3a601284fc9b842d72de81ff5687049ce5d2702a8fc33c0cb2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_prompt_refine.req_bad_empty.json",
+      "bytes": 20,
+      "sha256": "225fb1b6f91dca199d677840e65dbb3e4d9ccec0a457daaa9e4e6468983af90d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_prompt_refine.res.json",
+      "bytes": 189,
+      "sha256": "2bfcaf016c6a80e8f3883fc666a00c91aa119c691d3a6a964e3bda1856520466"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_prompt_refine.res_original.json",
+      "bytes": 148,
+      "sha256": "2aeced6ea39215609ed38edc468987b8840e5dcb5dcedfb6a2581c92d533056f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_remote_access.req_code_null.json",
+      "bytes": 21,
+      "sha256": "e6442033cf251eeed56bdf4d9aef1fb6c29f4db757525d759d1b9f36adfdaa5f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_remote_access.req_code_spaces.json",
+      "bytes": 39,
+      "sha256": "e1ccd0789efec6c279abca1bb2064ee14093d6f67cd422e53347a92c1a0a95ce"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_remote_access.req_enabled.json",
+      "bytes": 24,
+      "sha256": "2f35a24e6ef157149674a65d4152174eb0966510dd604d66e7fba27d23b2f695"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_remote_access.res_failed.json",
+      "bytes": 130,
+      "sha256": "26f71fa2661e9d65b861f7f1cda124db304f8c10f92e3dd61ee9516c5a0a4393"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_request_scope.req_prepare.json",
+      "bytes": 212,
+      "sha256": "3b812351f30926f1f764326e282c99c17e4c44838b59648de373a8811bfa4b37"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_request_scope.req_release.json",
+      "bytes": 162,
+      "sha256": "e13e617d55b44f916b86d40593f27de08831d91ab5775ac49b4e475c00002b42"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_request_scope.res_prepare.json",
+      "bytes": 259,
+      "sha256": "889d1ebf00af9b2a14cb31ffb59e0cd7463013c353b4813c7921bc35a3b0e7a7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_request_scope.res_release.json",
+      "bytes": 201,
+      "sha256": "c70059a95bec1c757f21a77a10343bc1e10ec40df452ae7cfdb97185f4ce20bc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_source.req_task.json",
+      "bytes": 164,
+      "sha256": "238c2f876e4ddfec0fbdb9ea5211c38623a13ff63fc8026bfc8cf4dfc337617b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_source.res.json",
+      "bytes": 210,
+      "sha256": "ec5295dba4fd43a43d18f883b0969b39370e926a0dc6f6411d21342de1b8e784"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_source.res_missing.json",
+      "bytes": 252,
+      "sha256": "1724740e6e91fb438eb39e3402931007614389d4c492ff0b4e2193572f24e2dc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_task_create.req.json",
+      "bytes": 287,
+      "sha256": "3d50ef40d21cfa116dc27fa0dc3a0fae82d00e985084ebfdd4425676f36d39f7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_task_create.req_legacy.json",
+      "bytes": 263,
+      "sha256": "e791951d88d1b9d1777e69e7af922a5aeaf1ebcfb0eb92cc5a00b77f1b5842d0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_task_current.req.json",
+      "bytes": 33,
+      "sha256": "d6fc2ee4e5e73621b7d2fe9fc0e418cbdb86407c43d452d1fddbbf052e27b105"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_task_current.res.json",
+      "bytes": 398,
+      "sha256": "f7495d698d767204f0d2b7b43712ddae34b590606845133527573af7ef768f64"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_task_current.res_free.json",
+      "bytes": 63,
+      "sha256": "0262c5d952078986f4279b7799aa0167785544277807fa0da16c5b4d2cda1ed9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_wiki_review.res.json",
+      "bytes": 218,
+      "sha256": "0f97dcea22454a309ad9317c935b6ab75913746738dc4d13e1ac726a75eaae55"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\api_wiki_suggestions.res.json",
+      "bytes": 379,
+      "sha256": "d01b6ecf4355ab8fd87206b78c885884ed759ec7c20ba77b625b7d34b6398d5e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_0.json",
+      "bytes": 24,
+      "sha256": "a58d887459f8a104dd3382a54bfb3d0122c93f52b8d1e38bb3adef4f538bc359"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_1.json",
+      "bytes": 33,
+      "sha256": "55210533927a0885fec090266a706fc701c44e44c2058d1e878b7854711b0258"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_10.json",
+      "bytes": 60,
+      "sha256": "4dd74907e650cb71ddc5cc8a12ec0432614fed266c6df90d324d1b9473deee51"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_11.json",
+      "bytes": 39,
+      "sha256": "d50f7022eea7f1a459dde6eb260c7e46e18e83133c4b3ce16e0e99e346708e19"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_12.json",
+      "bytes": 42,
+      "sha256": "8ca4e620b7bb821dbb8a027d6f38e1f75405a8421abdf0997cfa3dfcae37bd0f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_2.json",
+      "bytes": 33,
+      "sha256": "82e52fdcad49fd6f2523230c6dc1d416685891425e6f1e3f7bda4790ba03d202"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_3.json",
+      "bytes": 52,
+      "sha256": "18beef21d6a71c0cab145a8fe98d6f877618bdfa3664815317c8493e2b4f2fb5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_4.json",
+      "bytes": 25,
+      "sha256": "0a84e2cb70604c8303c37bd5dc062afa41b3314de1ee8b56de0478d840890c60"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_5.json",
+      "bytes": 16,
+      "sha256": "632093ff14fdaba18171d7b156220fb8831483b8fed63d8aa7403141b7df5bab"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_6.json",
+      "bytes": 24,
+      "sha256": "1eff2cb678b5cdb1074e3b13c4a6122acb9f9e6bc6c40a159b6cde8ae1465975"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_7.json",
+      "bytes": 34,
+      "sha256": "bb2a3e11727fbda8cc35c69e169014854efddc2fd33d8ea74e731762c3c8124b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_8.json",
+      "bytes": 16,
+      "sha256": "55a6870e49b4e99235c678484d9945852f5377f62e6cbd0b679fd57cf43f6423"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\citation_9.json",
+      "bytes": 41,
+      "sha256": "8096c30a81acbcb91e455a41a0c08d289273818ccec57295714f21cbb203d52c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_context.res.json",
+      "bytes": 386,
+      "sha256": "5590af2756bcae959e25b217c94ae09162d147f5ebb1fec42a713d87d6aa73fc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_begin.fail.json",
+      "bytes": 136,
+      "sha256": "bf71eb8ac65913ae5dcc3c6330d495e3b8e7ba9a6bfd1599efa269892525e689"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_begin.req.json",
+      "bytes": 126,
+      "sha256": "beebb7bc4ef3055eb7ec2ecd4e4d4a36a259b32a5d0d47df95fd93d2f21cc73f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_begin.req_legacy.json",
+      "bytes": 70,
+      "sha256": "c1c447ede5501371bef62a3c7ce791eba6a3de39965434aa7845e5e6e921a98c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_begin.res.json",
+      "bytes": 960,
+      "sha256": "7f06fcbed0c6ad96f8aa5b9418aeafbee3038314bceb0214c08c5225dd95a9e7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_begin.res_legacy.json",
+      "bytes": 356,
+      "sha256": "1f318be12f6b153bc55e3b64e373de4f8021c4819b95031f407ec2d63e592fa9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\core_task_end.req.json",
+      "bytes": 130,
+      "sha256": "4955f8042704edb16a8c8a0f2eb5d3310b335c9328ed9b05d5c83d2d14982d86"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_case_card.json",
+      "bytes": 614,
+      "sha256": "060b6c315c09d4b7d12a88650d5142f30c94efcffbc958d7b532611769f6b6c1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_cases.json",
+      "bytes": 238,
+      "sha256": "1ba4ba534493f9e517dee7129a65c974843dc094bc9f84ebc027000703e1502e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_index.json",
+      "bytes": 796,
+      "sha256": "18e580a5bdc38384b9f4dc27aafb24205c328033fbe0f782bc6adae808b0c201"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_index.ref.json",
+      "bytes": 883,
+      "sha256": "a261e8bc56afc0a3d06ac3b738647909a6ffcc971b9ac6fade181c1204987cf1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_index.ref_renamed.json",
+      "bytes": 889,
+      "sha256": "e5f75660947ae9f77dd9d2b3dceb253a950b033e37b0db9a600fefaf86e7d13d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_index.ref_source_rel.json",
+      "bytes": 931,
+      "sha256": "9ac1e82fd18542af49d5e77ea61d64a131de60a6784fc4fc04ce7c5c63a56d25"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_refs.bad_required.json",
+      "bytes": 240,
+      "sha256": "7b6cf741c3914474e43e37a9ab02b4159afff8950fd6f560ccd261c23faf3019"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_material_refs.json",
+      "bytes": 290,
+      "sha256": "f95b404f970cc0ab70e9270f88f7d1c135f0bbe1218293480d06c02765ff0357"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_outputs_index.json",
+      "bytes": 392,
+      "sha256": "72efaa7fa1d59c17fc49a841d3dd8e742402c1485b170d99542841b21bf661ff"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_reads.json",
+      "bytes": 313,
+      "sha256": "a1f8983a7c32b0059aeb4dbebfbf017b625136a5d0c3df54356480e769858938"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_request_scope_store.json",
+      "bytes": 584,
+      "sha256": "4410345e84b494f5159d002350e16039f194cf0b69eded729d0db645d796cbfc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_result.json",
+      "bytes": 1441,
+      "sha256": "401721a925abc6b619f35dd4b4682874d50f1039e6eafb49afb1a523f0334ad2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_settings.external.json",
+      "bytes": 810,
+      "sha256": "9a3b73923821af19b1cdc89bdf232d7ce3b4f0a163e36adcd353c676cc527f18"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_settings.json",
+      "bytes": 780,
+      "sha256": "4aef39122c3c8a97387e908c9b745fcb0d63421c0f2c1a06c38398e1e109fa49"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_settings.ports.json",
+      "bytes": 679,
+      "sha256": "11f3853314e93c062612b2e4224e8bf838013d415919fa5cc3d62f17eb5800a2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_task.json",
+      "bytes": 759,
+      "sha256": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_task.legacy.json",
+      "bytes": 505,
+      "sha256": "716230f5a779bfca7076a86a7fdcc956cc7e6a86fa2b184efc443bd2939952b1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_task.request_scope.json",
+      "bytes": 963,
+      "sha256": "725d582b8263ae1eb42cc4dbd8528d0e8f476722f3e80786a6854562b2186a04"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\manifest.json",
+      "bytes": 16467,
+      "sha256": "c771c74e2c4b0bb62e0714d472cf78703f392e42a0edbe0ab26cd8ff539a4b0f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\prep_extract.req.json",
+      "bytes": 140,
+      "sha256": "bdf0aa03fdd3c0ee2c37fe5c003e71c2974251fcd2fce1c5e0447ddebbd46c70"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\prep_extract.res.json",
+      "bytes": 163,
+      "sha256": "676ae822125a9d6b431eb905075fd08530ee9295272bab6b502433deab58974f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\prep_health.json",
+      "bytes": 126,
+      "sha256": "a11b2d8950a535d3f63bfdc893c9acc3e3042127170086741a4011760fdeb4f8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\prep_ocr.err.json",
+      "bytes": 83,
+      "sha256": "6820c6b1e07a56392f67c78b14e1fedb7e4e5e9849fcf3bf8a3487beb3e3d532"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\prep_ocr.res.json",
+      "bytes": 191,
+      "sha256": "dce7b549b3a5822c2270724ac1d16b63f42c5ebf7643cd6ee87f001d77801ef7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\skill_capsules.bad_tool.json",
+      "bytes": 726,
+      "sha256": "404eae63629d2aa41dab8e1333aed37360e620c2ddaffe9336218680ab6396ec"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\skill_capsules.json",
+      "bytes": 728,
+      "sha256": "aa0ba7bdd91df338f9cd09d6bee63f6d08f1d86cc8f66cc8d40b01b99200e3d7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\skill_capsules.new_item.json",
+      "bytes": 751,
+      "sha256": "620f98fde44e6402df9d6900ba3e0ed9893036c2c60e1347859f829290f3c24a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_archive_plan.args.json",
+      "bytes": 688,
+      "sha256": "137206fa5b7f16c65e7b1026837343c31dad759902b777e3d0b9d70d6055d1ba"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_archive_plan.args_bad.json",
+      "bytes": 669,
+      "sha256": "d291d414f69b2cef0b3ac5e2e8be46f99c9974541b8a80225e3a332218544368"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_calc_sentence.args.json",
+      "bytes": 311,
+      "sha256": "15f5ae67dbfd6ec6910b5ff9e5f828185594e97fb20f6e449e9c4ec6866b8eae"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_calc_sentence.args_bad.json",
+      "bytes": 47,
+      "sha256": "1a1ef87ce10872de9ffc7d57a328d6d2e4421da10faf9d56df1988bfb78b55d6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_calc_sentence.result.json",
+      "bytes": 456,
+      "sha256": "8a4001fdf539f2daffc6f607b7b8987f8f6916f594db1807ce643f0c3b84eedb"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_edit_list.args.json",
+      "bytes": 257,
+      "sha256": "36dc831ba7861719e538af7c5af4aaec4dbd3acc701f2affc4d2dabf995aaa90"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_list.result.json",
+      "bytes": 286,
+      "sha256": "c3d35b2243cce4fa1b2f01c767b06ef89c3c29653ed5b2bb7e394182f0c9b322"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_read.args.json",
+      "bytes": 41,
+      "sha256": "6cf1597fac5049f47e628eb9c889c11fdce8c907b21f2f6c86bbf6a072ac1660"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_read.args_path.json",
+      "bytes": 45,
+      "sha256": "76beaff60cf25dfb39c1458ae22102cc42ae58830a8d5c5838a577c908b13a3b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_read.result.json",
+      "bytes": 202,
+      "sha256": "41d9037f496bd532f4c9086c7b2f03a15fbbe27a48f94eeda8034b375a83632c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_read_material.args_more.json",
+      "bytes": 86,
+      "sha256": "fe97dd366ec1cd0a8fe59f0f0114e1476cf7855ee4f160440302f92f2d0ab6a7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_save_draft.result.json",
+      "bytes": 941,
+      "sha256": "ee7d0c66effb40166ff3b758ee3ea6e5b2d177dd1ee14eb3e74be04d8e6ef3d3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\tool_search.result.json",
+      "bytes": 286,
+      "sha256": "4ca68a8fcf735896d59a5d3f83ed9cc62aa019eb0eb9c169b2ddbfb925395aac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\case_card.schema.json",
+      "bytes": 3563,
+      "sha256": "da395b4361bf57037e5561ed9269313ab0f098a81f2dc6be026c800e470784c6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\cases.schema.json",
+      "bytes": 1396,
+      "sha256": "22ef6aa3f4d14c0b0d8414a6bcb449f264d413459c53ee40c78cb0a88c10a8d3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\material_index.schema.json",
+      "bytes": 4814,
+      "sha256": "a51b3e7c9edd3b027b386c2812f2f02e863934effab48277f8950dc7375050c6"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\material_refs.schema.json",
+      "bytes": 1734,
+      "sha256": "b844042f7bfeab44cca9ff998a82f309ad74d6aa69b2ba13a903d0afdca01f75"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\outputs_index.schema.json",
+      "bytes": 2286,
+      "sha256": "f2a134e114cea6f4ada2e4cafd84b50e0e9f1fb8924d7ac7c30985bcc12c390e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\reads.schema.json",
+      "bytes": 1521,
+      "sha256": "bea7fbc427cb1924cdf6ab9732e14a4931d5ee25ae5849f8bbc3934ac450e3c1"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\request_scope_intent.schema.json",
+      "bytes": 1659,
+      "sha256": "cb8a2cb8459120f1bfed4ba3eac94052bef342a85d33f2fc3f637c1a11e732fe"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\request_scope_store.schema.json",
+      "bytes": 2357,
+      "sha256": "e8b40898e8f4af1ac21a66bda79213ae37031b842d05c309e1c645c83cd2a477"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\result.schema.json",
+      "bytes": 2694,
+      "sha256": "9b8cb22bfa8b1a529c702f643a2295a2deff2dfce23cc66777ea776bda0f10f8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\settings.schema.json",
+      "bytes": 7756,
+      "sha256": "a2d679526efb8f022612b3d26d787245c49b16fa93a06c4d04ea310ad5cb9224"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\task.schema.json",
+      "bytes": 4155,
+      "sha256": "1d291f56a9efe903b3f695654c768c6378b986d0aa62b0ffd1c99611ace06bed"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\files\\wiki_pending.schema.json",
+      "bytes": 1720,
+      "sha256": "6b13a55b3739eebd90ed53fde0474543964bdf2b3a48dfd65ee55076ac609777"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\prep395\\extract.schema.json",
+      "bytes": 4458,
+      "sha256": "8594a0b16155138849ce1ba55fa9a886f863dbcac0d55df75d981f09886b9345"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\prep395\\health.schema.json",
+      "bytes": 994,
+      "sha256": "71da141cf411cb95dc7784956c26f88424638b9052e599a701d824bc80e5633f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\prep395\\ocr_page.schema.json",
+      "bytes": 2476,
+      "sha256": "292dfab8424431a1429c30dcd6e75ca61404e8df6196cfc2a5389a6b32ad765e"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\skill\\archive_catalog.schema.json",
+      "bytes": 2139,
+      "sha256": "4a7ba1046c9484ab66fc0820dcc367d553e0a9b23ab6085d0a6c5fe93045f74c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\skill\\capsules.schema.json",
+      "bytes": 4409,
+      "sha256": "3b3955195ce3e4412c0161da7ef195fda91fd13635d29d07b721cd564721a2a7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\skill\\frontmatter.schema.json",
+      "bytes": 1248,
+      "sha256": "a4d82dec93108fd9b192b5b3664c2c4b7c7233a2cfec5336f196ab51a01d6818"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_archive_match.schema.json",
+      "bytes": 3505,
+      "sha256": "24f5655a3f300cbe850f8e8ce939735c28dc0d523a9027c5247274450da5f0f5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_calc_sentence.schema.json",
+      "bytes": 4613,
+      "sha256": "95455b1d2776b596fa0ce8deb2606e304b52fcbbe9c0abc33c3d445db70e60d7"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_list_materials.schema.json",
+      "bytes": 876,
+      "sha256": "b2fc83f73d69681f9c1197bf630c668e8d8fe81882cd4b4752601f21b12696c2"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_read_input.schema.json",
+      "bytes": 1814,
+      "sha256": "e5c9ca594b28ea185fea44cb819dca2d4dca7f719d9d6c46646025b9049b6401"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_read_material.schema.json",
+      "bytes": 6035,
+      "sha256": "c584983f9f3f553a95b20e126444a94eb249795f58c7ffa77fb3eb70621880b3"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_read_wiki.schema.json",
+      "bytes": 1494,
+      "sha256": "76cfac6da0bc43513a756d361a36af29071a3bfc26dcd9f440af733ebb31d99b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_save_archive_plan.schema.json",
+      "bytes": 9815,
+      "sha256": "dc4972f0f086802441ef8155f4845e3eab2ea95f066a2dd62f09131ded2dcddc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_save_draft.schema.json",
+      "bytes": 1749,
+      "sha256": "0e4d0997ef5790f0106c2300917a5f8f16ab264237a8bc01edb8a28f3311730b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_save_edit_list.schema.json",
+      "bytes": 3866,
+      "sha256": "7a90e27099b9bdbcc185109b0482455a19ecb292d4e1cd755134d1c48e2bd7a9"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_search.schema.json",
+      "bytes": 2150,
+      "sha256": "287f07c3e2c917056ba9a6b873f070ca6b7ac53eecfdee3a6529eabdc5a1ab4b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\tools\\case_suggest_wiki.schema.json",
+      "bytes": 1246,
+      "sha256": "1c0459f645d3d32fe3cda8594aa7d1cd8a8c15bb297ffd068aea0213f5a1f94d"
+    }
+  ],
+  "primary": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\api\\ui.py",
+      "bytes": 14417,
+      "sha256": "a9e9f4dd18cae7869847d56a3a15c992cc618ec3fe242a2e0302a169595ba09c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\source.py",
+      "bytes": 6659,
+      "sha256": "5b09e28c59fe4f36c6ed66563969d372a08758360ac8df1b6f5e2bf2ea3ac1b5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\registry.py",
+      "bytes": 11656,
+      "sha256": "05d3266afd7efb4108d416102c35d548aae29b011cdfb8b757872a8b0e656c21"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\materials.py",
+      "bytes": 84378,
+      "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\texts.py",
+      "bytes": 6262,
+      "sha256": "1f44044b450d6816b1384288391f5a72229b236e8d067a958b424dadae6f85c4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\checks\\parse.py",
+      "bytes": 14357,
+      "sha256": "56f6ac85636eb5260db117067397fe5bad8cd1376360a1be8c52b92203b9db83"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\logs.py",
+      "bytes": 2455,
+      "sha256": "7576265fd8bf4967d9d99b7b67c22607af36fc640ccd8333602ba4ff15bdcdc6"
+    }
+  ],
+  "original_proof": {
+    "path": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-doc-revise-clause-actual-root-closed-current.json",
+    "bytes": 16381,
+    "sha256": "7f55e8eeb9d64066fca1e2069284a209b5e72c3246135770ed3722b7ee93a68a"
+  }
+}

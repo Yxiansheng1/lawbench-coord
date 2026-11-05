@@ -1,0 +1,68 @@
+[
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\00-server.py",
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809\\server.py",
+    "bytes": 141021,
+    "sha256": "399f49b59097c87548c2dec307cbfac8cbe828f1fb4845b5d2c23c99f5c5947d"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\01-probe.mjs",
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809\\probe.mjs",
+    "bytes": 22165,
+    "sha256": "b1b3fa29d57ad1b727dc04c21804dcb117b0d6efb970d94b29a9d2cf3b62cb92"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\02-README.md",
+    "source": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\RefRemoveOptinEntry-20261027-131809\\README.md",
+    "bytes": 10970,
+    "sha256": "b4075a319744aff4f192422549e0ab18c1a6f6d6c1084f63dad9ff50d0217dc1"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\03-prepare.ps1",
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\prepare.ps1",
+    "bytes": 17122,
+    "sha256": "1c0395f1a8d05749645f3d39823e3cb32ba81e08bdda2d52fe1d51ba535219e5"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\04-start.ps1",
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\start.ps1",
+    "bytes": 75682,
+    "sha256": "cc802b8023d0b81e90334451187bb38c9a4bef0b2e10cc5021225258311ffcbf"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\05-stop.ps1",
+    "source": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\RefRemoveOptinGui-20261027-134049\\stop.ps1",
+    "bytes": 7133,
+    "sha256": "5a156f2b71a81d36e3494c689320dd2259e5e2f8e1998af49c28fee92ae9d675"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\06-materials.tsx",
+    "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\materials.tsx",
+    "bytes": 26603,
+    "sha256": "4b482392cf71b685cd87bcc160189142552fa50068d13a9072d30a16cbb6b782"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\07-T37-legacy-mixed-accepted-current.json",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T37-legacy-mixed-accepted-current.json",
+    "bytes": 2225,
+    "sha256": "2cf6628d0b541a8eb86dce5296c439f952079228250a5eb50c8415cbdca1ba5f"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\08-T32-current-effective-launcher-current.json",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-current-effective-launcher-current.json",
+    "bytes": 2015,
+    "sha256": "ffac41a4e9afbea9e3d3944667dd155112c3058932ae7edf929c9c8eebdf52d2"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\09-T32-current-counter-finite-accepted-current.json",
+    "source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T32-current-counter-finite-accepted-current.json",
+    "bytes": 1164,
+    "sha256": "45a03a7026df7969e98b7bdc382dc6aca01c06f0f22be3af9793fff174be4468"
+  },
+  {
+    "snapshot": "D:\\Lawbeach\\lawbench-coord\\T37MixedGuiInput-20261027-164646\\10-reviewed-source-pins.json",
+    "source": "D:\\Lawbeach\\lawbench-coord\\T32TaskCancelSourcePinsInput-20261027-145932\\reviewed-source-pins.json",
+    "bytes": 53547,
+    "sha256": "5afec6625cbdb6459b5fb59788f9dd734b79775f3bff6ede802ed247667168cf"
+  }
+]

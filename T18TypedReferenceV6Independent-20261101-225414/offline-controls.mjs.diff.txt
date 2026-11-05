@@ -1,0 +1,329 @@
+--- CLOSED_V5
++++ V6
+@@ -26,6 +26,7 @@
+   buildStage1Messages,
+   buildStage2Envelope,
+   buildStage2Messages,
++  buildStage2ResponseFormat,
+   buildVisibleUnits,
+   joinAssessmentsToUnits,
+   mergeShardReviews,
+@@ -60,6 +61,13 @@
+     ...record,
+     refs: [...record.refs],
+   }));
++}
++
++function allowedReferenceKindsFor(kind) {
++  if (kind === "F") return ["C"];
++  if (kind === "C") return ["F"];
++  if (kind === "Q") return ["F", "C"];
++  return [];
+ }
+ 
+ function shaPin(fileName) {
+@@ -427,6 +435,9 @@
+ assert.ok(JSON.stringify(stage2Messages).includes("\uD83D\uDE00"));
+ assert.ok(!JSON.stringify(stage2Messages).includes("RAW_STAGE1_TRANSCRIPT_SENTINEL"));
+ assert.ok(!stage2Messages[1].content.includes("assistant"));
++assert.ok(stage2Messages[0].content.includes(
++  "F may refer to C; C may refer to F; Q may refer to F or C.",
++));
+ const firstShardMessages = buildStage2Messages(
+   units,
+   validatedStage1.assessments,
+@@ -448,12 +459,15 @@
+ 
+ function makeValidReviews() {
+   return inventory.targets.map((target, index) => {
+-    const other = inventory.targets.find((candidate) => candidate.kind !== target.kind);
++    const referenceTarget = inventory.targets.find((candidate) => (
++      allowedReferenceKindsFor(target.kind).includes(candidate.kind)
++    ));
++    assert.ok(referenceTarget);
+     const treatment = target.kind === "F"
+       ? FRAGMENT_TREATMENTS[index % FRAGMENT_TREATMENTS.length]
+       : SUPPORT_TREATMENTS[index % SUPPORT_TREATMENTS.length];
+     const needsRef = treatment === "ADDRESSED" || treatment === "SUPPORTED";
+-    const refs = needsRef || index % 3 === 1 ? [other.target_id] : [];
++    const refs = needsRef || index % 3 === 1 ? [referenceTarget.target_id] : [];
+     return {
+       target_id: target.target_id,
+       treatment,
+@@ -502,7 +516,8 @@
+   (target) => target.target_id === firstActiveReviews[0].target_id,
+ );
+ const outsideActiveRef = inventory.targets.find(
+-  (target) => !firstActiveIds.has(target.target_id) && target.kind !== firstActiveTarget.kind,
++  (target) => !firstActiveIds.has(target.target_id) &&
++    allowedReferenceKindsFor(firstActiveTarget.kind).includes(target.kind),
+ );
+ assert.ok(outsideActiveRef);
+ const crossShardRefReviews = cloneReviews(firstActiveReviews);
+@@ -608,7 +623,10 @@
+   "UNKNOWN_REF_TARGET_ID",
+ );
+ const duplicateRef = cloneReviews(validReviews);
+-const duplicateRefTarget = inventory.targets.find((target) => target.kind !== unknownRef[0].target_id[0]);
++const duplicateRefTarget = inventory.targets.find((target) => (
++  allowedReferenceKindsFor(duplicateRef[0].target_id[0]).includes(target.kind)
++));
++assert.ok(duplicateRefTarget);
+ duplicateRef[0].refs = [duplicateRefTarget.target_id, duplicateRefTarget.target_id];
+ assertProtocolError(
+   () => validateStage2Result({ reviews: duplicateRef }, inventory),
+@@ -618,6 +636,23 @@
+ sameFamilyRef[0].refs = [sameFamilyRef[0].target_id];
+ assertProtocolError(
+   () => validateStage2Result({ reviews: sameFamilyRef }, inventory),
++  "REF_FAMILY_INVALID",
++);
++const fToQ = cloneReviews(validReviews);
++const fTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "F");
++const qReferenceTarget = inventory.targets.find((target) => target.kind === "Q");
++assert.ok(fTargetIndexForRefGraph >= 0 && qReferenceTarget);
++fToQ[fTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
++assertProtocolError(
++  () => validateStage2Result({ reviews: fToQ }, inventory),
++  "REF_FAMILY_INVALID",
++);
++const cToQ = cloneReviews(validReviews);
++const cTargetIndexForRefGraph = inventory.targets.findIndex((target) => target.kind === "C");
++assert.ok(cTargetIndexForRefGraph >= 0);
++cToQ[cTargetIndexForRefGraph].refs = [qReferenceTarget.target_id];
++assertProtocolError(
++  () => validateStage2Result({ reviews: cToQ }, inventory),
+   "REF_FAMILY_INVALID",
+ );
+ const positiveWithoutRef = cloneReviews(validReviews);
+@@ -655,7 +690,7 @@
+ );
+ const relatedButNotQualityPass = cloneReviews(validReviews);
+ relatedButNotQualityPass[0].refs = [inventory.targets.find(
+-  (target) => target.kind !== relatedButNotQualityPass[0].target_id[0],
++  (target) => allowedReferenceKindsFor(relatedButNotQualityPass[0].target_id[0]).includes(target.kind),
+ ).target_id];
+ assert.equal(
+   outputStatusForReviews(
+@@ -766,6 +801,221 @@
+ assert.equal(payload.temperature, 0.6);
+ assert.equal(payload.max_tokens, 49152);
+ assert.equal(payload.stream, false);
++assert.equal(Object.prototype.hasOwnProperty.call(payload, "response_format"), false);
++
++function schemaBranchesOf(responseFormat) {
++  return responseFormat.json_schema.schema.properties.reviews.items.anyOf;
++}
++
++function assertNoEmptyEnums(value) {
++  if (Array.isArray(value)) {
++    for (const item of value) assertNoEmptyEnums(item);
++    return;
++  }
++  if (!value || typeof value !== "object") return;
++  for (const [key, child] of Object.entries(value)) {
++    if (key === "enum") {
++      assert.ok(Array.isArray(child) && child.length > 0);
++    }
++    assertNoEmptyEnums(child);
++  }
++}
++
++function familyInventory(kind, count) {
++  return {
++    targets: Array.from({ length: count }, (_, index) => ({
++      target_id: `${kind}${String(index + 1).padStart(4, "0")}`,
++      kind,
++      text: "",
++    })),
++  };
++}
++
++const schemaInventory = syntheticInventory(12);
++const schemaActiveIds = schemaInventory.targets.map((target) => target.target_id);
++const stage2ResponseFormat = buildStage2ResponseFormat(schemaInventory, schemaActiveIds);
++assert.deepEqual(Object.keys(stage2ResponseFormat).sort(), ["json_schema", "type"]);
++assert.equal(stage2ResponseFormat.type, "json_schema");
++assert.deepEqual(Object.keys(stage2ResponseFormat.json_schema).sort(), ["name", "schema"]);
++assert.equal(stage2ResponseFormat.json_schema.name, "lawbench_target_review_v6");
++const responseSchema = stage2ResponseFormat.json_schema.schema;
++assert.deepEqual(
++  Object.keys(responseSchema).sort(),
++  ["additionalProperties", "properties", "required", "type"],
++);
++assert.equal(responseSchema.type, "object");
++assert.equal(responseSchema.additionalProperties, false);
++assert.deepEqual(responseSchema.required, ["reviews"]);
++const reviewsSchema = responseSchema.properties.reviews;
++assert.deepEqual(
++  Object.keys(reviewsSchema).sort(),
++  ["items", "maxItems", "minItems", "type"],
++);
++assert.equal(reviewsSchema.type, "array");
++assert.equal(reviewsSchema.minItems, schemaActiveIds.length);
++assert.equal(reviewsSchema.maxItems, schemaActiveIds.length);
++assert.deepEqual(Object.keys(reviewsSchema.items).sort(), ["anyOf"]);
++const responseBranches = schemaBranchesOf(stage2ResponseFormat);
++assert.equal(responseBranches.length, 6);
++for (const branch of responseBranches) {
++  assert.deepEqual(
++    Object.keys(branch).sort(),
++    ["additionalProperties", "properties", "required", "type"],
++  );
++  assert.equal(branch.type, "object");
++  assert.equal(branch.additionalProperties, false);
++  assert.deepEqual(branch.required, ["target_id", "treatment", "refs", "assessment"]);
++  assert.deepEqual(
++    Object.keys(branch.properties).sort(),
++    ["assessment", "refs", "target_id", "treatment"],
++  );
++  assert.deepEqual(
++    Object.keys(branch.properties.target_id).sort(),
++    ["enum", "type"],
++  );
++  assert.deepEqual(
++    Object.keys(branch.properties.treatment).sort(),
++    ["enum", "type"],
++  );
++  assert.equal(branch.properties.refs.type, "array");
++  assert.equal(branch.properties.refs.uniqueItems, true);
++  assert.deepEqual(
++    Object.keys(branch.properties.assessment).sort(),
++    ["maxLength", "minLength", "type"],
++  );
++  assert.equal(branch.properties.assessment.type, "string");
++  assert.equal(branch.properties.assessment.minLength, 1);
++  assert.equal(branch.properties.assessment.maxLength, ASSESSMENT_MAX_UTF16);
++}
++
++const familyRules = {
++  F: {
++    treatments: FRAGMENT_TREATMENTS,
++    positive: "ADDRESSED",
++    referenceKinds: ["C"],
++  },
++  C: {
++    treatments: SUPPORT_TREATMENTS,
++    positive: "SUPPORTED",
++    referenceKinds: ["F"],
++  },
++  Q: {
++    treatments: SUPPORT_TREATMENTS,
++    positive: "SUPPORTED",
++    referenceKinds: ["F", "C"],
++  },
++};
++assert.deepEqual(
++  new Set(responseBranches.flatMap((branch) => (
++    branch.properties.target_id.enum.map((targetId) => targetId[0])
++  ))),
++  new Set(["F", "C", "Q"]),
++);
++for (const [kind, rule] of Object.entries(familyRules)) {
++  const activeIds = schemaActiveIds.filter((targetId) => targetId[0] === kind);
++  const familyBranches = responseBranches.filter((branch) => (
++    branch.properties.target_id.enum.every((targetId) => targetId[0] === kind)
++  ));
++  assert.equal(familyBranches.length, 2);
++  const positiveBranch = familyBranches.find((branch) => (
++    branch.properties.treatment.enum.length === 1 &&
++      branch.properties.treatment.enum[0] === rule.positive
++  ));
++  const otherBranch = familyBranches.find((branch) => branch !== positiveBranch);
++  assert.ok(positiveBranch && otherBranch);
++  for (const branch of familyBranches) {
++    assert.deepEqual(branch.properties.target_id.enum, activeIds);
++  }
++  assert.deepEqual(positiveBranch.properties.treatment.enum, [rule.positive]);
++  assert.deepEqual(
++    otherBranch.properties.treatment.enum,
++    rule.treatments.filter((treatment) => treatment !== rule.positive),
++  );
++  const referenceIds = schemaActiveIds.filter((targetId) => (
++    rule.referenceKinds.includes(targetId[0])
++  ));
++  assert.deepEqual(positiveBranch.properties.refs.items.enum, referenceIds);
++  assert.deepEqual(otherBranch.properties.refs.items.enum, referenceIds);
++  assert.equal(positiveBranch.properties.refs.minItems, 1);
++  assert.equal(otherBranch.properties.refs.minItems, 0);
++  assert.equal(positiveBranch.properties.refs.maxItems, referenceIds.length);
++  assert.equal(otherBranch.properties.refs.maxItems, referenceIds.length);
++  assert.deepEqual(
++    Object.keys(positiveBranch.properties.refs).sort(),
++    ["items", "maxItems", "minItems", "type", "uniqueItems"],
++  );
++  assert.deepEqual(
++    Object.keys(otherBranch.properties.refs).sort(),
++    ["items", "maxItems", "minItems", "type", "uniqueItems"],
++  );
++  assert.equal(positiveBranch.properties.refs.items.type, "string");
++  assert.equal(otherBranch.properties.refs.items.type, "string");
++}
++assertNoEmptyEnums(stage2ResponseFormat);
++
++const partialSchemaFormat = buildStage2ResponseFormat(
++  schemaInventory,
++  ["F0001", "C0002", "Q0003"],
++);
++const partialBranches = schemaBranchesOf(partialSchemaFormat);
++const partialFAddressed = partialBranches.find((branch) => (
++  branch.properties.target_id.enum.includes("F0001") &&
++    branch.properties.treatment.enum.includes("ADDRESSED")
++));
++const partialCAddressed = partialBranches.find((branch) => (
++  branch.properties.target_id.enum.includes("C0002") &&
++    branch.properties.treatment.enum.includes("SUPPORTED")
++));
++assert.ok(partialFAddressed && partialCAddressed);
++assert.deepEqual(partialFAddressed.properties.target_id.enum, ["F0001"]);
++assert.ok(partialFAddressed.properties.refs.items.enum.includes("C0005"));
++assert.deepEqual(partialCAddressed.properties.target_id.enum, ["C0002"]);
++assert.ok(partialCAddressed.properties.refs.items.enum.includes("F0004"));
++assertNoEmptyEnums(partialSchemaFormat);
++
++const noEligibleRefsInventory = familyInventory("F", 2);
++const noEligibleRefsIds = noEligibleRefsInventory.targets.map((target) => target.target_id);
++const noEligibleRefsFormat = buildStage2ResponseFormat(
++  noEligibleRefsInventory,
++  noEligibleRefsIds,
++);
++const noEligibleRefsBranches = schemaBranchesOf(noEligibleRefsFormat);
++assert.equal(noEligibleRefsBranches.length, 1);
++const noEligibleRefsBranch = noEligibleRefsBranches[0];
++assert.deepEqual(noEligibleRefsBranch.properties.target_id.enum, noEligibleRefsIds);
++assert.deepEqual(
++  noEligibleRefsBranch.properties.treatment.enum,
++  FRAGMENT_TREATMENTS.filter((treatment) => treatment !== "ADDRESSED"),
++);
++assert.equal(noEligibleRefsBranch.properties.refs.minItems, 0);
++assert.equal(noEligibleRefsBranch.properties.refs.maxItems, 0);
++assert.deepEqual(
++  Object.keys(noEligibleRefsBranch.properties.refs).sort(),
++  ["maxItems", "minItems", "type", "uniqueItems"],
++);
++assert.equal(
++  Object.prototype.hasOwnProperty.call(noEligibleRefsBranch.properties.refs, "items"),
++  false,
++);
++assert.deepEqual(
++  Object.keys(noEligibleRefsFormat.json_schema.schema.properties.reviews),
++  ["type", "minItems", "maxItems", "items"],
++);
++assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.minItems, 2);
++assert.equal(noEligibleRefsFormat.json_schema.schema.properties.reviews.maxItems, 2);
++assertNoEmptyEnums(noEligibleRefsFormat);
++
++const formattedPayload = buildRequestPayload(stage2Messages, stage2ResponseFormat);
++assert.deepEqual(
++  Object.keys(formattedPayload).sort(),
++  ["max_tokens", "messages", "model", "response_format", "stream", "temperature"],
++);
++assert.equal(formattedPayload.model, MODEL);
++assert.deepEqual(formattedPayload.messages, stage2Messages);
++assert.equal(formattedPayload.temperature, 0.6);
++assert.equal(formattedPayload.max_tokens, 49152);
++assert.equal(formattedPayload.stream, false);
++assert.equal(formattedPayload.response_format, stage2ResponseFormat);
+ 
+ const credentialSentinel = "CREDENTIAL_OFFLINE_SENTINEL_9f4e2b";
+ assert.equal(buildAuthorizationHeader(credentialSentinel), `Bearer ${credentialSentinel}`);

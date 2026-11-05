@@ -1,0 +1,11 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-fragment-bidirectional-v3-root-launcher-static-parse-current.json
+SHA 0622a9a4f3078a2c9ab45df2d286b408f0b693cc31e7057fa37ee2a458640bb9
+0001 {
+0002   "errors": [],
+0003   "static_parse_only": true,
+0004   "driver_NOT_executed": true,
+0005   "Keyread": false,
+0006   "model_requests": 0,
+0007   "unbound_template_errors_retained": "T18-fragment-bidirectional-v3-root-launcher-static-unbound-RED.json",
+0008   "qualification": "Initial Root parser input omitted mandatory literal path substitution; admin input failure, no product source or runtime change"
+0009 }

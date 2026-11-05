@@ -1,0 +1,36 @@
+{
+  "scope": "BOUNDED_SOURCE_ONLY_MAINLINE_REPAIR_FEASIBILITY_NOT_BUSY_AUDIT_OR_RUNTIME",
+  "allowed_reads": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 59895,
+      "sha256": "7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90",
+      "mtime_ns": "1793528020910183000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 25296,
+      "sha256": "ce6a5ee0d21443305173c19fd36c5b623a6641566164dac427098da9f3718dae",
+      "mtime_ns": "1793472939838046600"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+      "bytes": 40534,
+      "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73",
+      "mtime_ns": "1793008811321809900"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+      "bytes": 22822,
+      "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769",
+      "mtime_ns": "1792403012403852800"
+    }
+  ],
+  "constraints": [
+    "Owneracceptedinternalbatchtimeoutnonblocking; doNOTchaseitsgreen orproposeunchangedretrial. Realfact-support/selfcheck failures remain.",
+    "Knownobservedcurrentfailuretypes: reference points to whitespaceoramountstatement while claim concerns a date; modellabelsSUPPORTED for globalabsence/onlycertain evidence fromsource merelylistingexistence. Sourceformat/schema/transportalreadyfixednotsemanticfix.",
+    "Currentmodel0.6/qwen38-27b/49152/400remaining900, originalNative32model48tool; title/contentonlysavedraftargs, soleNativeSession.beginSubmissionR, no HostR/newSession/context/history/SDK changes.",
+    "DoNOTrespondwithpromptwordingvariants/warnings-as-qualityPASS/newgenericframework/semanticregex/NLP classifier/extraauthasks. Chooseconcretesmallestdataflowrepairorstateexactcapabilityblock. OriginalsemanticcasesandreadcoverageRedsremainimmutable."
+  ],
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18GroundingRepairFeasibilityA-20261101-234912.md"
+}

@@ -1,0 +1,12 @@
+{
+  "target": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-20261101-114236.spec.ts",
+  "before": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18BoundedReadTypesClosure-20261101-123700-before.ts",
+  "before_sha256": "08e6e13fb7a8ecd264761882957e2549895a3e1fe08cd3b2705ab839933d3b59",
+  "mapping": {
+    "async (_label, args) =>": "async (_label: string, args: Record<string, unknown>) =>",
+    "async (start, end) =>": "async (start: number, end: number) =>",
+    "async (_label, searchReply) =>": "async (_label: string, searchReply: SearchReply) =>",
+    "async (_label, skill) =>": "async (_label: string, skill: string | null) =>"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadTypesClosure-20261101-123700.md"
+}

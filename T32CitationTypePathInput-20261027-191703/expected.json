@@ -1,0 +1,9 @@
+{
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\document-citation-navigation.spec.tsx",
+  "before_bytes": 8978,
+  "before_sha": "bf167a78a12fe494222a1b18cfc0f2af1dcd2a5d8187d75a3c06abfe1f30d4e0",
+  "after_bytes": 8979,
+  "after_sha": "6c438973fd59868a9fb5ca596c842c4bf8314e5127a9807b654cfe7bec0114b7",
+  "old": "../ui/session-case.ts'",
+  "new": "../ui/session-case.tsx'"
+}

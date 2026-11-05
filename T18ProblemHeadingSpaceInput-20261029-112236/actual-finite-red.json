@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ProblemRecordFinite-root-20261029-112057",
+  "exit": 1,
+  "elapsed_s": 1.2339999999967404,
+  "identities": [
+    {
+      "pid": 38864,
+      "parent": 43016,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-29T03:20:57.5416200Z"
+    }
+  ],
+  "owned_OS_after": [],
+  "OS_after": [],
+  "source_changes": [],
+  "pin_checks": 517,
+  "forced": false,
+  "source_sha256": "863ce380232a12ae45d38ba544c38cee335ba64af49d4195b1a6e4fc63c1e34f",
+  "test_sha256": "4da26c9278d9db59eef360860dad525540825173236375ab9159ced0f92faffb",
+  "stdout": "PASS problem-records-finite: pinned old/new consumer, actual body, B service, and manifest\nPASS problem-records-finite: source inverse and function capability boundary\nPASS problem-records-finite: old actual rejection and new structural-only acceptance\nPASS problem-records-finite: legacy control and all six ATX heading ranks\nPASS problem-records-finite: each of five fields is mandatory\n",
+  "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: empty heading with closing hashes must fail closed\n+ actual - expected\n\n+ null\n- 'draft machine checks failed: hasProblemRecords'\n\n    at expectReject (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\verify-problem-records-finite.mts:230:10)\n    at <anonymous> (D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\verify-problem-records-finite.mts:357:3) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: null,\n  expected: 'draft machine checks failed: hasProblemRecords',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.21.0\n",
+  "scope": "ACTUAL_EXTRACTED_OBSERVER_FUNCTION_OFFLINE_ONLY",
+  "product_main_executed": false,
+  "Agent_Session_created": false,
+  "model_started_by_root": 0,
+  "Key_read_by_root": 0,
+  "global_network_metered": false,
+  "fixture_zero_process_claim_adopted": false,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,56 @@
+{
+  "verdict": "STATIC_CONSUMER_REJECT_BEFORE_RUNTIME",
+  "at_utc": "2026-10-28T20:40:29.627120+00:00",
+  "terminal_full_commands_reviewed": true,
+  "commands": 93,
+  "success": 78,
+  "nonzero": 15,
+  "author_runtime": 0,
+  "actual_thread": "01a1842e-bc31-73f3-b1ea-8c034aafb00e",
+  "first_ascii_order_and_actual_source_read_verified": true,
+  "full_source_delta_setup_finally_reviewed": true,
+  "whole_unchanged_function_count": 34,
+  "source_map": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-contract-draft-source-map-current.json",
+  "findings": [
+    {
+      "id": "F1",
+      "kind": "LITERAL_HASH_TYPO",
+      "detail": "Approved input literal SHA is missing f across entry/service/manifest; actual immutable original is intact."
+    },
+    {
+      "id": "F2",
+      "kind": "FIXED_NOTES_IDENTITY_SKIPPED",
+      "detail": "Actual approved parent tests/notes exists; source validates selected/task/Skill but skips notes file identity after mistaken sample-subfolder lookup."
+    },
+    {
+      "id": "F3",
+      "kind": "UNSUPPORTED_FORMAT_ORACLE",
+      "detail": "No primary Chinese clause-number/200-character format requirement; manually review full contract adequacy, retain nonempty/parties/citations technical checks."
+    },
+    {
+      "id": "F4",
+      "kind": "UNSUPPORTED_QUESTION_NOT_CLASSIFIED",
+      "detail": "Unknown IDs recorded but missing explicit synthetic fixture boundary, could falsely pass after known three answered."
+    }
+  ],
+  "actual_model_started": false,
+  "product_bug_claimed": false,
+  "old_formal_claims_qualified": true,
+  "history_unchanged": true,
+  "Packaging": "HOLD",
+  "entry": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftNative-20261029-042331\\native-contract-draft.mts",
+    "bytes": 106165,
+    "sha256": "69b6865b676e764adde099767a4eed8c17115e9ccb8cf50fa7708000e9adf0a3"
+  },
+  "service": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftNative-20261029-042331\\b-service-contract-draft.py",
+    "bytes": 45166,
+    "sha256": "eeae98dd0cd8905b7e8d3272127686ab404033dc5c580b136732e877acd31221"
+  },
+  "manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftNative-20261029-042331\\literalfixed-inputs.json",
+    "bytes": 10709,
+    "sha256": "bd99e4b52a98ddb033643b61a379bc2abeb23ebde9a8f8eff3a21b16fd78bfd2"
+  }
+}

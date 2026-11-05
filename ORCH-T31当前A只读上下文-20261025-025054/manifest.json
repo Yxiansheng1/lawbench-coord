@@ -1,0 +1,32 @@
+[
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\cases.ts",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\ui\\cases.ts",
+    "sha256": "5184cd47306d4e419a9b4934a82407b98329cf51c24e5299cf896f0c63cae539"
+  },
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\intake.ts",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\ui\\intake.ts",
+    "sha256": "435ecb0052d42cac7cdb06e54217202903f7765cc7f24f1950e5bbd0af320129"
+  },
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\index.tsx",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\ui\\index.tsx",
+    "sha256": "1d3cecc386d47b388b099853f8b8ded58ee5fc772a1c9045ce215f74b258bf37"
+  },
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\tasksheet.ts",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\ui\\tasksheet.ts",
+    "sha256": "433e84bce0812f83fe42011e68a81041b26d5c79477f0d4bcb2554bc593c3c56"
+  },
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dock.tsx",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\ui\\dock.tsx",
+    "sha256": "447778dcb2044ec7264c9435ee5708527b15a374fd201edc2e7c6955f26c28ee"
+  },
+  {
+    "current_A_source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "copy": "D:\\Lawbeach\\lawbench-coord\\ORCH-T31当前A只读上下文-20261025-025054\\dsh-ext\\agent\\index.ts",
+    "sha256": "c9c1eeae2a06150c5aed0b0c08c8cdb16828158c80b93dbb5a04d35b3a5b47f9"
+  }
+]

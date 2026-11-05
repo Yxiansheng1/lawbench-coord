@@ -1,0 +1,52 @@
+{
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CompiledBoundary-20261030-234705",
+  "snapshots": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CompiledBoundary-20261030-234705\\compiled-boundary.mjs",
+      "bytes": 21779,
+      "sha256": "439beebd757c533307b83c0f093613436f1829b55cd3a933e0ba91271b2caa9b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CompiledBoundary-20261030-234705\\literal-inputs.json",
+      "bytes": 5935,
+      "sha256": "b0cafcf6a7236053e3c6e2b1f658b083ae032c550ab5550d5db84e6b57a3fdcc"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CompiledBoundary-20261030-234705\\README.md",
+      "bytes": 6154,
+      "sha256": "5ce9b4ebece190151725ed4a2e0e0e59923f456453b99492d6dbd94b18d9e51a"
+    }
+  ],
+  "pairs": [
+    {
+      "old": "name: '@deepseek-ai/dsh-config-editor'",
+      "new": "name: pathToFileURL(MODULES.configEditor.path).href"
+    },
+    {
+      "old": "name: '@deepseek-ai/dsh-settings'",
+      "new": "name: pathToFileURL(MODULES.settings.path).href"
+    },
+    {
+      "old": "name: '@deepseek-ai/dsh-llm'",
+      "new": "name: pathToFileURL(MODULES.llm.path).href"
+    },
+    {
+      "old": "name: '@deepseek-ai/dsh-llm-pi-ai'",
+      "new": "name: pathToFileURL(MODULES.llmPiAi.path).href"
+    },
+    {
+      "old": "name: '@deepseek-ai/cordis-plugin-timer'",
+      "new": "name: pathToFileURL(MODULES.timer.path).href"
+    },
+    {
+      "old": "name: '@deepseek-ai/dsh-hmr'",
+      "new": "name: pathToFileURL(MODULES.hmr.path).href"
+    }
+  ],
+  "original_inputs": "D:\\Lawbeach\\lawbench-coord\\T34CompiledBoundaryInput-20261030-234705\\approved-inputs.json",
+  "original_actual": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-compiled-boundary-actual-current.json",
+  "underlying_native_cause": "UNKNOWN",
+  "target_reached": false,
+  "guard_policy_unchanged": true,
+  "scope": "Direct pinned compiled component pipeline, not full desktop runtime-resolution/GUI"
+}

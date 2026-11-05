@@ -1,0 +1,838 @@
+{
+  "criterion": "For live defense-opinion model save only: resolvedpage/para/line citation mustbecompletelycovered in authoritativecurrenttask reads.json foridenticalmaterial_id/version/unit beforefile/version/resultwrite; actionableerror preservesstrictcode/message privacy; currentAPI1.7/schema/auth/SDK/TaskStore/guard/UI/manual/otherSkills held",
+  "target_source": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\new-drafts.py",
+    "bytes": 22908,
+    "sha256": "03d8a77d41a75338ae3baa239e9572b97d71d74ad4bff4bbe01fe9709e20957d"
+  },
+  "same_immutable_full_packet": {
+    "target": "NUMERIC_CITED_SOURCE_READ_WORKFLOW_V1_SAME_PRODUCT_NEW_BOUNDED_EVIDENCE",
+    "problem": "Currentmodelcase cited originalinterrogation24 fromsearchonly withnoprimaryread; cannotenforce factualmeaning byNLP",
+    "criterion": "For live defense-opinion model save only: resolvedpage/para/line citation mustbecompletelycovered in authoritativecurrenttask reads.json foridenticalmaterial_id/version/unit beforefile/version/resultwrite; actionableerror preservesstrictcode/message privacy; currentAPI1.7/schema/auth/SDK/TaskStore/guard/UI/manual/otherSkills held",
+    "non_goals": [
+      "Not factual/legal/modelselfcheckPASS",
+      "Not hardstop fourthsave orchangebudget/temp/model",
+      "Not enforcingExcelcell provenance (explicitOPEN/noqualityPASS)",
+      "No newguards/authsource orall-casefallback",
+      "No package/publish"
+    ],
+    "files": [
+      {
+        "label": "old-drafts.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\old-drafts.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\old-drafts.py",
+        "bytes": 20481,
+        "sha256": "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822"
+      },
+      {
+        "label": "new-drafts.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\new-drafts.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\new-drafts.py",
+        "bytes": 22908,
+        "sha256": "03d8a77d41a75338ae3baa239e9572b97d71d74ad4bff4bbe01fe9709e20957d"
+      },
+      {
+        "label": "old-Spec.md",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\old-Spec.md",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\old-Spec.md",
+        "bytes": 203312,
+        "sha256": "a84bdb2be66264146e586b1186772ca7201e405b6cccbdf86c60a131dbd2ce31"
+      },
+      {
+        "label": "new-Spec.md",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\new-Spec.md",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\new-Spec.md",
+        "bytes": 203807,
+        "sha256": "43b34592492cbf6cb75b59dbae3762ac0b60b9b67175d8a3b183532e1d5ad8f4"
+      },
+      {
+        "label": "test-cited-unread.py",
+        "original": "D:\\Lawbeach\\lawbench-B\\service\\tests\\test_t18_cited_unread_20261101.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\test-cited-unread.py",
+        "bytes": 18000,
+        "sha256": "b9542217e14d90f6d63d1e5b75a8dc8a027d88c2d8be31d5097c47aabeeb526d"
+      },
+      {
+        "label": "task-store.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\task-store.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\task-store.py",
+        "bytes": 40634,
+        "sha256": "a5f4d01587def86b1308eef91c06263ceab7d0a24c7b7f663d54bdee33d7ec01"
+      },
+      {
+        "label": "tools.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\tools.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\tools.py",
+        "bytes": 2594,
+        "sha256": "83fe68104ebf5f8440205b7bc5be12dc52b31a7945bfcc6ca53ba35b30872f5a"
+      },
+      {
+        "label": "core-api.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\core-api.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\core-api.py",
+        "bytes": 2106,
+        "sha256": "42d8ef7176d2624ff50f9bffc5d156f4f6a126c293f2f354e6fef7770719e988"
+      },
+      {
+        "label": "errors.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\errors.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\errors.py",
+        "bytes": 3204,
+        "sha256": "f580d733d88a15a70df089f8b1bcd6bfffcac6b8a78013532aab61d2d20d33f4"
+      },
+      {
+        "label": "parse.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\parse.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\parse.py",
+        "bytes": 14357,
+        "sha256": "56f6ac85636eb5260db117067397fe5bad8cd1376360a1be8c52b92203b9db83"
+      },
+      {
+        "label": "citations.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\citations.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\citations.py",
+        "bytes": 19642,
+        "sha256": "6171f0dd8c564cb9fe092a1c3d222217acaedab6bf500baf04afeafeca19b412"
+      },
+      {
+        "label": "materials.py",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\materials.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\materials.py",
+        "bytes": 7705,
+        "sha256": "cb85fcf0fde54c3db2e46e3c477f60a7648d2c4f591149e9dd6ac6f74db47724"
+      },
+      {
+        "label": "reads.schema.json",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\reads.schema.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\reads.schema.json",
+        "bytes": 1463,
+        "sha256": "d58c762972159024afe81a9db4e89d1bea1f972222e83eac9c7bb47aa2d1b379"
+      },
+      {
+        "label": "common.schema.json",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\common.schema.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\common.schema.json",
+        "bytes": 17837,
+        "sha256": "46a8ac7b6c7017684d2667f4d622bb65577b29691b3f4121a20de02a6e5cb445"
+      },
+      {
+        "label": "agent-consumer.ts",
+        "original": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadIndependent-20261101-145740\\agent-consumer.ts",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\agent-consumer.ts",
+        "bytes": 59850,
+        "sha256": "6ebcfd0c0360b7749b53ee947cc8ae8df91d1f15ef40a55c2da4c3eacdd276ff"
+      },
+      {
+        "label": "current-tests.py",
+        "original": "D:/Lawbeach/lawbench-B/service/tests/test_t18_cited_unread_20261101.py",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\current-tests.py",
+        "bytes": 18000,
+        "sha256": "b9542217e14d90f6d63d1e5b75a8dc8a027d88c2d8be31d5097c47aabeeb526d"
+      },
+      {
+        "label": "current-A-Spec.md",
+        "original": "D:/Lawbeach/lawbench-A/docs/src/Spec.md",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\current-A-Spec.md",
+        "bytes": 200876,
+        "sha256": "1b56a9b7ea8d39bf75fedf45b5d21ebfccc303929f16e37a5c6cafc3a68a8567"
+      },
+      {
+        "label": "original-full-OLD6-junit.xml",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadRED-root-20261101-144132\\private-root\\reports\\junit.xml",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\original-full-OLD6-junit.xml",
+        "bytes": 6599,
+        "sha256": "24e1db3ada61d651962f6423c6a7d210a821f1aa4430481ce6728b8ce0ca6322"
+      },
+      {
+        "label": "current-GREEN11-junit.xml",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadEdgeFinal-root-20261101-152042\\private-root\\reports\\junit.xml",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\current-GREEN11-junit.xml",
+        "bytes": 1748,
+        "sha256": "6b6d5aad4cc94688f743400bb5cbdfb04fc9c4908590916a7d8a0ceba1e71c31"
+      },
+      {
+        "label": "counterfactual-OLD5-junit.xml",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnread-edge-old-root-20261101-151812\\private-root\\reports\\junit.xml",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\counterfactual-OLD5-junit.xml",
+        "bytes": 11640,
+        "sha256": "55b774dd47a8d1b58585fb852f74f9acd26e2c32b59e9464826aa1c0a97578d2"
+      },
+      {
+        "label": "T18-cited-unread-green-accepted-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-green-accepted-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-green-accepted-current.json",
+        "bytes": 1542,
+        "sha256": "28ed248d735e9a8f70fae721b1909a41c84228084b5a7d823fd1f0bccdfce4ee"
+      },
+      {
+        "label": "T18-cited-unread-edge-final-accepted-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-edge-final-accepted-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-edge-final-accepted-current.json",
+        "bytes": 1754,
+        "sha256": "da37598f3cb2736a5b18e047be9b05e97038e1d61c96c364392697168210a9c2"
+      },
+      {
+        "label": "T18-cited-unread-edge-fixture-closure-reviewed-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-edge-fixture-closure-reviewed-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-edge-fixture-closure-reviewed-current.json",
+        "bytes": 1073,
+        "sha256": "fcaf115d3a8470ce3269e16d57538c16b0f37dda90a7dea02d018386a51429cd"
+      },
+      {
+        "label": "T18-cited-unread-service-whole-reviewed-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-service-whole-reviewed-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-service-whole-reviewed-current.json",
+        "bytes": 1109,
+        "sha256": "b9c4ab4bf5e3fd27362b46e0a50b7ed2a3295258efde03f4064307cadc18d9ab"
+      },
+      {
+        "label": "T18-cited-unread-native-actual-closed-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-native-actual-closed-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-native-actual-closed-current.json",
+        "bytes": 8517,
+        "sha256": "3a753bbd4f46fc0042ef3a42d0fb458f325091641b28aec94aad41776a86b9f8"
+      },
+      {
+        "label": "T18-cited-unread-native-root-readback-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-native-root-readback-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-native-root-readback-current.json",
+        "bytes": 4593,
+        "sha256": "cb07e242a0009ae729fee63a5ce392e7006d04321038649873d04a87b57a5a20"
+      },
+      {
+        "label": "T18-cited-unread-spec-HTML-current.json",
+        "original": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-spec-HTML-current.json",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\T18-cited-unread-spec-HTML-current.json",
+        "bytes": 709,
+        "sha256": "810b20e1309c6466e9292cc862bbc51f1100aa68517d99a47c0a5cc0504bd173"
+      },
+      {
+        "label": "cumulative-source.patch",
+        "original": "Root derived exact cumulative byte snapshots",
+        "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CitedUnreadCumulativeIndependent-20261101-154523\\cumulative-source.patch",
+        "bytes": 4958,
+        "sha256": "c1aa3d1aa0f4178a6770bd8a5023c038e5507fdd4f793d9d7bb50556669a7ca6"
+      }
+    ],
+    "OLDRED": {
+      "tests": 6,
+      "failed": 2,
+      "passed": 4,
+      "mode": "Original full old drafts implementation realFS"
+    },
+    "NEWGREEN": {
+      "tests": 11,
+      "failed": 0,
+      "passed": 11,
+      "mode": "Current real producer no counterfactual flag"
+    },
+    "knownEvidenceLimits": [
+      "Actual page/para journeys and authoritative budget carry/ordinary/error-noncarry now current11PASS; first current11 had2fixtureKeyErrors corrected only expected SHA expressions, oldrawretained",
+      "Fresh Native/model case4 actual23POST200/8successfulprimaryreads/3successfuldrafts, producervalidation errors recovered; new citation-read save denial NOTTRIGGERED so no actual new-save-denial recovery claim",
+      "Raw consumerFAILED first legitimate primary-read denial; task/turn completed and Bpassedtrue, no SDK close/reopen proof",
+      "SharedBwhole actual1412=1344PASS18FAIL8ERROR42SKIP, same26failure keys/23guard3UNKNOWN/no new; later appended5testcases NOTderivedwholeaggregate",
+      "Cell/sheet provenanceOPEN; manualUI unchanged; factualselection/selfcheck/businessFAILED_PARTIAL remains independent fullproject blocker",
+      "Spec source note currentA/B; HTML import failed markdown_it missing in two existing runtimes; no install/substitute/no HTMLregeneration claimed",
+      "OriginalEnv.close ignoresrmtree failures; no blanket helper/fullmachinecleanup/traffic claims"
+    ],
+    "sourceWorkflowQualifications": [
+      "Owner explicit existingLaneColdRunner/exact1017max/no newsubagents overrides genericAgent/Opus mechanism; twofresh independent actualCLI authors",
+      "Previous incomplete reviewer output discarded, no authorjustification or otherreviewerverdict included",
+      "Root retains all source/runtime qualification records; no assertion relaxation or protected guard changes"
+    ],
+    "unchangedSourceScope": "Everythingoutside helper+live_defense_hook+cachedchecklambda andoneBSpecnote; no oldassertions/helper/conftest modifications",
+    "OLD_EXTRA": {
+      "tests": 5,
+      "failed": 4,
+      "passed": 1,
+      "mode": "Pinned original save_draft function only in current unchanged global tail, test-local explicit env flag; no protected guard patch or live rollback"
+    }
+  },
+  "Root_actual_evidence": {
+    "T18-cited-unread-green-accepted-current.json": {
+      "verdict": "REAL_FS_NUMERIC_CITATION_PRIMARY_READ_RED_TO_GREEN_SAME6_ACCEPTED_LIMITED",
+      "tests": 6,
+      "passed": 6,
+      "failed": 0,
+      "errors": 0,
+      "pytest_s": 3.345,
+      "controller_s": 5.625,
+      "Root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadGREEN-root-20261101-144948",
+      "sourceSHA_sizeHeld": 498,
+      "safetyDenials": 0,
+      "forced": false,
+      "completeCapturedIdentities": [
+        {
+          "pid": 37868,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-11-01T06:49:57.946352+00:00",
+          "birth_filetime_ticks": "134379893979463520",
+          "running": true,
+          "exit_code": 259
+        },
+        {
+          "pid": 22736,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-11-01T06:49:58.150873+00:00",
+          "birth_filetime_ticks": "134379893981508730",
+          "running": true,
+          "exit_code": 259
+        }
+      ],
+      "independentCIMRows": [],
+      "completeOSgone": 2,
+      "rawREDRetained": "T18-cited-unread-red-accepted-current.json",
+      "testsByteIdentical": true,
+      "newModel": 0,
+      "NativeRscopeActual": 0,
+      "page_para_realFS_NOTYETPROVEN": true,
+      "cellProvenance": "OPEN",
+      "manualUI_path_BYTEHELD_NOTRERUN": true,
+      "factualLegalQualityPASS": false,
+      "cleanupLimits": "OriginalEnv.close ignoresownrmtree; no blanket file/client/net/threadcleanup/fullmachine/helperOS/trafficclaim",
+      "Packaging": "HOLD"
+    },
+    "T18-cited-unread-edge-final-accepted-current.json": {
+      "verdict": "REAL_FS_NUMERIC_CITATION_LINE_PARA_PAGE_AND_AUTHORITATIVE_CARRY_ELEVEN_PASS_LIMITED",
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "errors": 0,
+      "pytest_s": 6.054,
+      "controller_s": 8.297000000005937,
+      "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadEdgeFinal-root-20261101-152042",
+      "source_pins_held": 509,
+      "source_changes": [],
+      "guard_denials": 0,
+      "forced": false,
+      "completeIdentities": [
+        {
+          "pid": 32008,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-11-01T07:20:48.787165+00:00",
+          "birth_filetime_ticks": "134379912487871652",
+          "running": true,
+          "exit_code": 259
+        },
+        {
+          "pid": 22736,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-11-01T07:20:48.994997+00:00",
+          "birth_filetime_ticks": "134379912489949972",
+          "running": true,
+          "exit_code": 259
+        }
+      ],
+      "independentCIMRows": [],
+      "matchingIdentityAlive": [],
+      "original6prefix_held": true,
+      "new5OLD_counterfactual": "4FAIL1PASS original save_draft function only; all current auth/scope/frozen guards held",
+      "initial_current_two_fixture_KeyErrors_preserved": true,
+      "NativeR_model_recovery_NOTYETPROVEN": true,
+      "cellProvenance": "OPEN",
+      "budgetcarryProof": "Original publicCore API syntheticusage fixture; not actual model budget or NativeR proof",
+      "business_quality": "FAILED_PARTIAL",
+      "cleanup_limits": "OriginalEnv.close ignores own rmtree failures; no blanket helperOS/fullmachine/client/Net/thread/traffic cleanup claim",
+      "Packaging": "HOLD"
+    },
+    "T18-cited-unread-service-whole-reviewed-current.json": {
+      "at": "2026-11-01T15:14:12.470735+08:00",
+      "verdict": "CURRENT_SERVICE_AFTER_READ_PROVENANCE_SAME26_FAILURE_KEYS_NO_NEW_FAILURE_NOT_FULL_PASS",
+      "raw": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-cited-unread-service-whole-regression-current.json",
+      "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\FullServiceFinal-root-20261101-145505",
+      "actual_counts": {
+        "total": 1412,
+        "passed": 1344,
+        "failed": 18,
+        "errors": 8,
+        "skipped": 42
+      },
+      "source_inventory_held": 474,
+      "new_failure_keys": [],
+      "removed_failure_keys": [],
+      "direct_actual_guard_rows": 23,
+      "unknown_fullrun_rows": 3,
+      "guard_denials": {
+        "categories": {
+          "subprocess": 20,
+          "write": 2
+        },
+        "total": 22
+      },
+      "T37_excluded_before_collection": true,
+      "complete_OS_identities": 11,
+      "partial_NOT_PROVEN": [],
+      "OS_after": [],
+      "no_full_machine_helperOS_or_traffic_claim": true,
+      "whole_business_quality": "FAILED_PARTIAL",
+      "Packaging": "HOLD"
+    },
+    "T18-cited-unread-native-actual-closed-current.json": {
+      "verdict": "ACTUAL_CLOSED_CITED_UNREAD_CHANGED_SOURCE_REQUIRES_BUSINESS_REVIEW",
+      "at": "2026-11-01T15:27:04.515564+08:00",
+      "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18CitedUnreadNativeRuntime-root-20261101-152336",
+      "run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2",
+      "elapsed_s": 170.35899999999674,
+      "natural_driver_exit": 1,
+      "forced": false,
+      "model_POST": 23,
+      "model_HTTP200": 23,
+      "physical_rows": 125,
+      "events": 124,
+      "tool_counts": {
+        "skill": 1,
+        "case_search": 6,
+        "case_read_material": 11,
+        "ask_user_question": 1,
+        "case_save_draft": 3
+      },
+      "asks": [
+        {
+          "seq": 51,
+          "question_ids": [
+            "direction",
+            "stage",
+            "key_points"
+          ],
+          "is_error": false,
+          "error_text": "{\"answers\":[{\"id\":\"direction\",\"selected\":[],\"custom\":\"确认，方向是罪轻。\"},{\"id\":\"stage\",\"selected\":[],\"custom\":\"对，审查起诉阶段。\"},{\"id\":\"key_points\",\"selected\":[],\"custom\":\"确认，重点讲16,500元性质，郑某30,000元证据问题，并写坦白、退赔。\"}]}"
+        }
+      ],
+      "drafts": 3,
+      "successful_primary_reads": 8,
+      "raw_status": "FAILED",
+      "raw_error": {
+        "name": "Error",
+        "message": "tool failed for chatcmpl-tool-92a2784b54f53f08"
+      },
+      "task_settlement": {
+        "attempted": true,
+        "outcome": "settled",
+        "taskId": "T-20261101152340-fc8c",
+        "taskState": "finished",
+        "terminalStatus": "completed",
+        "attempts": 1
+      },
+      "cleanup": {
+        "agentCancelledOrIdle": true,
+        "browserDisposed": true,
+        "contextDisposed": true,
+        "bServiceStopped": true,
+        "fetchRestored": true,
+        "environmentRestored": true,
+        "outputRedactionRestored": true,
+        "keyCleared": true,
+        "failures": []
+      },
+      "B_passed": true,
+      "B_failure": null,
+      "B_protocol_violations": [],
+      "B_closure": {
+        "listenerClosed": true,
+        "netClientClosed": true,
+        "logsClosed": true,
+        "retainerClosed": true
+      },
+      "B_getters": {
+        "externalKeyGetter": 0,
+        "keyGetter": 0
+      },
+      "B_outbound": {
+        "attempts": 0,
+        "denied": 0
+      },
+      "pins_held": 811,
+      "identities": [
+        {
+          "pid": 33976,
+          "parent": 15820,
+          "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "birth_utc": "2026-11-01T07:23:36.3316830Z"
+        },
+        {
+          "pid": 36396,
+          "parent": 33976,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T07:23:36.7743190Z"
+        },
+        {
+          "pid": 17632,
+          "parent": 36396,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T07:23:36.7861420Z"
+        },
+        {
+          "pid": 28860,
+          "parent": 36396,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T07:23:36.8565920Z"
+        },
+        {
+          "pid": 35992,
+          "parent": 28860,
+          "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+          "birth_utc": "2026-11-01T07:23:36.9618100Z"
+        },
+        {
+          "pid": 22092,
+          "parent": 28860,
+          "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+          "birth_utc": "2026-11-01T07:23:37.2985150Z"
+        },
+        {
+          "pid": 33760,
+          "parent": 22092,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T07:23:37.3066820Z"
+        }
+      ],
+      "independent_OS_alive": [],
+      "port": 63993,
+      "Listen_count": 0,
+      "owned_UTF8_key_scan": {
+        "UTF8_files": 278,
+        "usedKeyhits": 0,
+        "other_credentials_read": false,
+        "memory_erasure_claimed": false
+      },
+      "non_UTF8_not_scanned": 4,
+      "no_business_quality_PASS": true,
+      "Packaging": "HOLD",
+      "read_ranges": [
+        {
+          "seq": 46,
+          "args": {
+            "name": "起诉意见书"
+          },
+          "result_seq": 47,
+          "is_error": true,
+          "content_sha256": "66a30a611f93bedbad071b811d9036e968abdc2181cc1a4d3cac855b5b98e914",
+          "content_bytes": 150
+        },
+        {
+          "seq": 56,
+          "args": {
+            "name": "起诉意见书"
+          },
+          "result_seq": 57,
+          "is_error": true,
+          "content_sha256": "13f985372311fc209d32463d60aaff1dd9415f0fe92e7a31077be84bbee22389",
+          "content_bytes": 121
+        },
+        {
+          "seq": 61,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1
+          },
+          "result_seq": 62,
+          "is_error": true,
+          "content_sha256": "8ba96d0fe5fca79a4247d3b4074f4af03eb5f17ed6e1b0ea652437520cd52702",
+          "content_bytes": 166
+        },
+        {
+          "seq": 66,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1,
+            "end": 1
+          },
+          "result_seq": 67,
+          "is_error": false,
+          "content_sha256": "405744144c8dabd0dbcd2b147d1534d7da893933513aca580f10039f38d9aaaa",
+          "content_bytes": 175
+        },
+        {
+          "seq": 71,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1,
+            "end": 10
+          },
+          "result_seq": 72,
+          "is_error": false,
+          "content_sha256": "2982a574205a1f10a59e6a67146e0f153af17df184386c6bcc037cc5ff231a40",
+          "content_bytes": 983
+        },
+        {
+          "seq": 76,
+          "args": {
+            "name": "起诉意见书",
+            "start": 11,
+            "end": 20
+          },
+          "result_seq": 77,
+          "is_error": false,
+          "content_sha256": "81561260c76ddbe23193a8f83a614f818470d13f78400f23fa4cc1be0b2294a4",
+          "content_bytes": 1352
+        },
+        {
+          "seq": 81,
+          "args": {
+            "name": "起诉意见书",
+            "start": 21,
+            "end": 30
+          },
+          "result_seq": 82,
+          "is_error": false,
+          "content_sha256": "fca7d1b9058220c67bcf08e41b460a330615d06bd71c1d32ba914121eb3333fa",
+          "content_bytes": 1307
+        },
+        {
+          "seq": 86,
+          "args": {
+            "name": "讯问笔录",
+            "start": 1,
+            "end": 10
+          },
+          "result_seq": 87,
+          "is_error": false,
+          "content_sha256": "dcce7f3eed6c38e71bb730ee82a864243988756637eb12f62919e3f1faa9d3a5",
+          "content_bytes": 779
+        },
+        {
+          "seq": 91,
+          "args": {
+            "name": "讯问笔录",
+            "start": 11,
+            "end": 20
+          },
+          "result_seq": 92,
+          "is_error": false,
+          "content_sha256": "1131394e5dce3005e10e65fb40b06251cc4a42a30484c4ebe01e14bf16399296",
+          "content_bytes": 831
+        },
+        {
+          "seq": 96,
+          "args": {
+            "name": "讯问笔录",
+            "start": 21,
+            "end": 30
+          },
+          "result_seq": 97,
+          "is_error": false,
+          "content_sha256": "c3741e80d0c74b810f2568a6e2a228301e8f08bef489d34a5370c330681069c1",
+          "content_bytes": 602
+        },
+        {
+          "seq": 107,
+          "args": {
+            "name": "起诉意见书",
+            "start": 29,
+            "end": 29
+          },
+          "result_seq": 108,
+          "is_error": false,
+          "content_sha256": "387bf520f24891e87096f37219f9ef734abf21599935df82cfc63b1082ccbf61",
+          "content_bytes": 306
+        }
+      ],
+      "physical_drafts": [
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v1.md",
+          "bytes": 5271,
+          "sha256": "1bda644d4d741ef93624af041ba3a93f44dddc54a34ef857018d9a44e81eb609",
+          "Native_args_equal": true,
+          "call_seq": 101
+        },
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v2.md",
+          "bytes": 5418,
+          "sha256": "fa05436068c47497c3d314fe33d451a0bc22add58492e3ed9048ae53c17e7609",
+          "Native_args_equal": true,
+          "call_seq": 112
+        },
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v3.md",
+          "bytes": 5394,
+          "sha256": "c048cfd9f53ea0cc472a1ff90523b4800a1e0f75786c7fe6177811a85edc1a24",
+          "Native_args_equal": true,
+          "call_seq": 117
+        }
+      ],
+      "total_draft_attempts": 3,
+      "denied_draft_attempts": []
+    },
+    "T18-cited-unread-native-root-readback-current.json": {
+      "read_ranges": [
+        {
+          "seq": 46,
+          "args": {
+            "name": "起诉意见书"
+          },
+          "result_seq": 47,
+          "is_error": true,
+          "content_sha256": "66a30a611f93bedbad071b811d9036e968abdc2181cc1a4d3cac855b5b98e914",
+          "content_bytes": 150
+        },
+        {
+          "seq": 56,
+          "args": {
+            "name": "起诉意见书"
+          },
+          "result_seq": 57,
+          "is_error": true,
+          "content_sha256": "13f985372311fc209d32463d60aaff1dd9415f0fe92e7a31077be84bbee22389",
+          "content_bytes": 121
+        },
+        {
+          "seq": 61,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1
+          },
+          "result_seq": 62,
+          "is_error": true,
+          "content_sha256": "8ba96d0fe5fca79a4247d3b4074f4af03eb5f17ed6e1b0ea652437520cd52702",
+          "content_bytes": 166
+        },
+        {
+          "seq": 66,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1,
+            "end": 1
+          },
+          "result_seq": 67,
+          "is_error": false,
+          "content_sha256": "405744144c8dabd0dbcd2b147d1534d7da893933513aca580f10039f38d9aaaa",
+          "content_bytes": 175
+        },
+        {
+          "seq": 71,
+          "args": {
+            "name": "起诉意见书",
+            "start": 1,
+            "end": 10
+          },
+          "result_seq": 72,
+          "is_error": false,
+          "content_sha256": "2982a574205a1f10a59e6a67146e0f153af17df184386c6bcc037cc5ff231a40",
+          "content_bytes": 983
+        },
+        {
+          "seq": 76,
+          "args": {
+            "name": "起诉意见书",
+            "start": 11,
+            "end": 20
+          },
+          "result_seq": 77,
+          "is_error": false,
+          "content_sha256": "81561260c76ddbe23193a8f83a614f818470d13f78400f23fa4cc1be0b2294a4",
+          "content_bytes": 1352
+        },
+        {
+          "seq": 81,
+          "args": {
+            "name": "起诉意见书",
+            "start": 21,
+            "end": 30
+          },
+          "result_seq": 82,
+          "is_error": false,
+          "content_sha256": "fca7d1b9058220c67bcf08e41b460a330615d06bd71c1d32ba914121eb3333fa",
+          "content_bytes": 1307
+        },
+        {
+          "seq": 86,
+          "args": {
+            "name": "讯问笔录",
+            "start": 1,
+            "end": 10
+          },
+          "result_seq": 87,
+          "is_error": false,
+          "content_sha256": "dcce7f3eed6c38e71bb730ee82a864243988756637eb12f62919e3f1faa9d3a5",
+          "content_bytes": 779
+        },
+        {
+          "seq": 91,
+          "args": {
+            "name": "讯问笔录",
+            "start": 11,
+            "end": 20
+          },
+          "result_seq": 92,
+          "is_error": false,
+          "content_sha256": "1131394e5dce3005e10e65fb40b06251cc4a42a30484c4ebe01e14bf16399296",
+          "content_bytes": 831
+        },
+        {
+          "seq": 96,
+          "args": {
+            "name": "讯问笔录",
+            "start": 21,
+            "end": 30
+          },
+          "result_seq": 97,
+          "is_error": false,
+          "content_sha256": "c3741e80d0c74b810f2568a6e2a228301e8f08bef489d34a5370c330681069c1",
+          "content_bytes": 602
+        },
+        {
+          "seq": 107,
+          "args": {
+            "name": "起诉意见书",
+            "start": 29,
+            "end": 29
+          },
+          "result_seq": 108,
+          "is_error": false,
+          "content_sha256": "387bf520f24891e87096f37219f9ef734abf21599935df82cfc63b1082ccbf61",
+          "content_bytes": 306
+        }
+      ],
+      "physical_drafts": [
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v1.md",
+          "bytes": 5271,
+          "sha256": "1bda644d4d741ef93624af041ba3a93f44dddc54a34ef857018d9a44e81eb609",
+          "Native_args_equal": true,
+          "call_seq": 101
+        },
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v2.md",
+          "bytes": 5418,
+          "sha256": "fa05436068c47497c3d314fe33d451a0bc22add58492e3ed9048ae53c17e7609",
+          "Native_args_equal": true,
+          "call_seq": 112
+        },
+        {
+          "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18CitedUnreadNativeCase-20261101-151539\\run-kbSMM2\\case\\工作区\\任务\\T-20261101152340-fc8c\\草稿\\辩护意见-v3.md",
+          "bytes": 5394,
+          "sha256": "c048cfd9f53ea0cc472a1ff90523b4800a1e0f75786c7fe6177811a85edc1a24",
+          "Native_args_equal": true,
+          "call_seq": 117
+        }
+      ],
+      "all_physical_drafts_equal_original_Native_arguments": true,
+      "not_business_PASS": true
+    },
+    "T18-cited-unread-spec-HTML-current.json": {
+      "status": "NOT_RENDERED_MISSING_EXISTING_MARKDOWN_IT_DEPENDENCY",
+      "phase": "Original builder import; no convert function or HTML write reached",
+      "ModuleNotFoundError": "markdown_it",
+      "source_A_spec": {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\src\\Spec.md",
+        "bytes": 200876,
+        "sha256": "1b56a9b7ea8d39bf75fedf45b5d21ebfccc303929f16e37a5c6cafc3a68a8567"
+      },
+      "source_B_spec": {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\src\\Spec.md",
+        "bytes": 203807,
+        "sha256": "43b34592492cbf6cb75b59dbae3762ac0b60b9b67175d8a3b183532e1d5ad8f4"
+      },
+      "installed_or_substituted": false,
+      "PRD_not_regenerated": true,
+      "not_product_failure": true,
+      "Packaging": "HOLD"
+    }
+  },
+  "counterfactual_old_function_only_explicit": true,
+  "new_citation_deny_NOT_TRIGGERED_in_native_case4": true,
+  "full_consumer_FAILED_not_waived": true,
+  "technical_model_budget_temperature_UNCHANGED": true,
+  "source_review_deadline_s": 300,
+  "source_review_deadline_NOT_model_or_product_budget_increase": true
+}

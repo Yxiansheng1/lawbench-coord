@@ -1,0 +1,96 @@
+{
+  "rows": [
+    {
+      "name": "00-OWNER-T18-停止条件与收口-20261102-014226.md",
+      "bytes": 3920,
+      "sha256": "d0448bcf6aa6fba5aecb91acd80d889335b275a53d90fb240f1c036a974fc92c"
+    },
+    {
+      "name": "01-T18-native-grounding-green-unit-current.json",
+      "bytes": 11843,
+      "sha256": "3af22f125389cd46e23d0796a3f27d5fa5e56b7ef55f6e89b799d6185be51d07"
+    },
+    {
+      "name": "02-T18-native-grounding-green-unit-admission-current.json",
+      "bytes": 99490,
+      "sha256": "dc225032a6900af7c7d633fdc5cc284371430057431398a83deccccbffe49e53"
+    },
+    {
+      "name": "03-results.json",
+      "bytes": 15030,
+      "sha256": "feb416fe7f81195e0079f0730f3a5187fa4b29573c139412e6751db514545650"
+    },
+    {
+      "name": "04-unit-invocation.json",
+      "bytes": 116169,
+      "sha256": "3f4657472aa205d92bd6b3b9f8105747b7b6a57859c79ac024649a3f90abf06e"
+    },
+    {
+      "name": "05-unit-result.json",
+      "bytes": 939,
+      "sha256": "9d66d1cda06691bc9a77a3637541b390a52d13d49f17e50acb56f129ceece91b"
+    },
+    {
+      "name": "06-types-result.json",
+      "bytes": 499,
+      "sha256": "5d3beefdcc4707219b61f9d8c54a6da0544bea5211a83dc43942109b0bbe5b9a"
+    },
+    {
+      "name": "07-unit.stdout.txt",
+      "bytes": 168,
+      "sha256": "c5fb4a04656b2d196b73a1f944b31827c0567c6fa45cfcd87a42a9636a7558e1"
+    },
+    {
+      "name": "08-unit.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "09-types.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "10-types.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "11-REVIEW-B-T18GroundingFinalReviewB-20261102-010118.md",
+      "bytes": 5816,
+      "sha256": "06989b0ee1dd7b37d42c9c1771db08d2cbab48a320c4554c994c5172b4d4b2bd"
+    },
+    {
+      "name": "12-REVIEW-C-T18GroundingFinalReviewC-20261102-010118.md",
+      "bytes": 4055,
+      "sha256": "07299218bed46efa86ea5eb1a6d3e5f6adf468871083aa7c27e0d3ada193bcbe"
+    },
+    {
+      "name": "freeze.json",
+      "bytes": 7115,
+      "sha256": "837b76e3d14bff63e1fa2c5b0f9dbc6ff793f9e95f166d8a1b19b946d6e9408b"
+    },
+    {
+      "name": "grounding-review.ts",
+      "bytes": 37867,
+      "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8"
+    },
+    {
+      "name": "index.ts",
+      "bytes": 62098,
+      "sha256": "6d8d77041ee8e7655a32afa2b5135ce5104788505db624fea476831ecace9cd1"
+    },
+    {
+      "name": "native-grounding-review-20261102-000134.spec.ts",
+      "bytes": 50993,
+      "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1"
+    },
+    {
+      "name": "prior-autonomous-authority-before-owner-stop.json",
+      "bytes": 12356,
+      "sha256": "d5fd573d8583b8992f2a905fdd19b95f62682a35898435fc11562e295ccfbe87"
+    }
+  ],
+  "current_source_pins_held_after_closure": true,
+  "owner_order": "D:\\Lawbeach\\lawbench-coord\\OWNER-T18-停止条件与收口-20261102-014226.md"
+}

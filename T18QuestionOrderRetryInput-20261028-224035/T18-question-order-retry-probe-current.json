@@ -1,0 +1,18 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18QuestionOrderRetryProbe-root-20261028-223847",
+  "exit": 1,
+  "elapsed_s": 1.1870000000017171,
+  "natural": true,
+  "forced": false,
+  "identities": [],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_only_observer_function_inverse_all_other_bytes_held": true,
+  "source_sha256": "207cd958ef0d4040396455d80ca6db377a58517177aea4fdae32b4e3bf02ab45",
+  "test_sha256": "bbd0f87e81e61a118948fc6b2f5ad6a078125127cb2c8e58d4c029ca57a715ff",
+  "stdout": "{\"kind\":\"OFFLINE_REAL_59_ROW_DENIED_QUESTION_THEN_VALID_ANSWER_RETRY\",\"actualLog\":\"D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/QuestionGateContractWorkflow-20261028-191702/run-znIBMz/sessions//--D-Lawbeach-lawbench-A-docs-plan-evidence-T18-QuestionGateContractWorkflow-20261028-191702-run-znIBMz-case--/session-c880b32f-0802-4dfa-bdb7-bde6b998425f/session.v4.jsonl\",\"rows\":59,\"asks\":2,\"successfulAsks\":1,\"error\":\"native turn contains more than one lawyer question call\",\"verdict\":\"RED_LEGITIMATE_GUARD_RETRY_REJECTED\"}\n",
+  "stderr": "",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

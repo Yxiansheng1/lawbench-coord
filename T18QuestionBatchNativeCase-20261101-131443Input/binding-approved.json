@@ -1,0 +1,23 @@
+{
+  "old_mts": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadNativeCase-20261101-125036\\native-defense-opinion.mts",
+  "old_py": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18BoundedReadNativeCase-20261101-125036\\b-service-defense-opinion.py",
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18QuestionBatchNativeCase-20261101-131443",
+  "oldblock": "const APPROVED_RUNTIME_PINS = {\n  \"current-compiled-agent\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\agent.js\",\n    \"bytes\": 569980,\n    \"sha256\": \"47cf4cb2de59bbc27a30c656fd12d3eb68fb8675ca311393b44ab0a9a0abe03b\"\n  },\n  \"current-compiled-host\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\host.js\",\n    \"bytes\": 905178,\n    \"sha256\": \"19c21b8db04adf387a4f9925e11685106aa979b4683c32684eb67c418393297a\"\n  },\n  \"current-compiled-package\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\profile-node_modules\\\\lawbench-dsh\\\\package.json\",\n    \"bytes\": 1257,\n    \"sha256\": \"3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794\"\n  },\n  \"current-compiled-manifest\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18BoundedReadPrivateBuild-20261101-124200\\\\private-output-20261101-122346\\\\manifest.json\",\n    \"bytes\": 58594,\n    \"sha256\": \"e4ac06d961ef93085fecb7ce60f658c0d65db2a6ea79c5df7156f2eef1ed1d95\"\n  }\n} as const",
+  "newblock": "const APPROVED_RUNTIME_PINS = {\n  \"current-compiled-agent\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18QuestionBatchPrivateBuild-20261101-131022\\\\private-output-20261101-131312\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\agent.js\",\n    \"bytes\": 570196,\n    \"sha256\": \"44eacd92e427ca641404bd75da1f48ad26c2bcf6250d3812d0db83e13954f9b8\"\n  },\n  \"current-compiled-host\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18QuestionBatchPrivateBuild-20261101-131022\\\\private-output-20261101-131312\\\\profile-node_modules\\\\lawbench-dsh\\\\lib\\\\host.js\",\n    \"bytes\": 905178,\n    \"sha256\": \"19c21b8db04adf387a4f9925e11685106aa979b4683c32684eb67c418393297a\"\n  },\n  \"current-compiled-package\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18QuestionBatchPrivateBuild-20261101-131022\\\\private-output-20261101-131312\\\\profile-node_modules\\\\lawbench-dsh\\\\package.json\",\n    \"bytes\": 1257,\n    \"sha256\": \"3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794\"\n  },\n  \"current-compiled-manifest\": {\n    \"path\": \"D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T18\\\\T18QuestionBatchPrivateBuild-20261101-131022\\\\private-output-20261101-131312\\\\manifest.json\",\n    \"bytes\": 58598,\n    \"sha256\": \"5540da33474d644a0065cca448adc9f7986a55d414bf7f183c9cacecc16613c8\"\n  }\n} as const",
+  "expected_consumer": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18QuestionBatchNativeCase-20261101-131443\\native-defense-opinion.mts",
+    "bytes": 156901,
+    "sha256": "2dde13b432a4c941c306d5a96a81f67ef56bb8e24d4867d0a1ca0ab2f4751822"
+  },
+  "expected_bService": {
+    "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18QuestionBatchNativeCase-20261101-131443\\b-service-defense-opinion.py",
+    "bytes": 53710,
+    "sha256": "59b91aa7fb24a926961c8d7f950750efedf49ed31fdbd214d8a34b94765e4809"
+  },
+  "ready_manifest": "D:\\Lawbeach\\lawbench-coord\\T18QuestionBatchNativeCase-20261101-131443Input\\literalfixed-inputs-ready.json",
+  "expected_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18QuestionBatchNativeCase-20261101-131443Input\\literalfixed-inputs-ready.json",
+    "bytes": 12031,
+    "sha256": "cafc3ff9519a47dde63b858e5b7e37aece71ea8f6cb93627842b498e1ce45917"
+  }
+}

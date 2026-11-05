@@ -1,0 +1,95 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR395HumanAuthReadonly-root-20261030-191602",
+  "identity": {
+    "pid": 57428,
+    "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+    "birth_utc": "2026-10-30T11:16:02.7932829Z"
+  },
+  "state": "SSH_READONLY_COMPLETED_NATURAL0_AUTH_WINDOW_CLOSED",
+  "command_sha256": "86afb482c7c13040648bb7f357f0cd3ba6292e4123a9fbe6f5c7a0da44615646",
+  "fixed_command_file": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR395HumanAuthReadonly-root-20261030-191602\\fixed-remote-readonly-command.txt",
+  "stdout": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR395HumanAuthReadonly-root-20261030-191602\\remote-stdout.txt",
+  "result": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\OCR395HumanAuthReadonly-root-20261030-191602\\ssh-result.json",
+  "new_inference": 0,
+  "production_changes": 0,
+  "credential_files_read": 0,
+  "refused_PS_helper_executed": false,
+  "execution_policy_bypassed": false,
+  "full_suite": false,
+  "Packaging": "HOLD",
+  "finished_at_utc": "2026-10-30T11:20:19.568025+00:00",
+  "SSH_exit": 0,
+  "server_metadata": {
+    "kind": "FIXED_READONLY_395_PREFLIGHT",
+    "server_utc": "2026-10-30T11:17:03.8618605Z",
+    "free_physical_KiB": 14385100,
+    "total_physical_KiB": 33184580,
+    "listeners": [
+      {
+        "address": "127.0.0.1",
+        "port": 9102,
+        "pid": 9652,
+        "exe": "C:\\prep395\\llama\\llama-server.exe",
+        "birth_utc": "2026-10-14T09:33:07.8751930Z"
+      },
+      {
+        "address": "127.0.0.1",
+        "port": 9101,
+        "pid": 36704,
+        "exe": "C:\\prep395\\llama\\llama-server.exe",
+        "birth_utc": "2026-10-27T15:44:20.5370110Z"
+      },
+      {
+        "address": "192.168.8.124",
+        "port": 9000,
+        "pid": 2932,
+        "exe": "C:\\prep395\\python\\python.exe",
+        "birth_utc": "2026-10-14T09:33:08.5013960Z"
+      },
+      {
+        "address": "10.126.126.3",
+        "port": 9000,
+        "pid": 2932,
+        "exe": "C:\\prep395\\python\\python.exe",
+        "birth_utc": "2026-10-14T09:33:08.5013960Z"
+      }
+    ],
+    "execution_policies": [
+      {
+        "scope": "MachinePolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "UserPolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "Process",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "CurrentUser",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "LocalMachine",
+        "policy": "Undefined"
+      }
+    ],
+    "effective_execution_policy": "Restricted",
+    "binary": {
+      "path": "C:\\prep395\\llama\\llama-server.exe",
+      "bytes": 9216,
+      "sha256": "9d7ec1f038329210f6be353a89752ea4a762f9defa80560d37102ccce7b09a06"
+    },
+    "inference_requests": 0,
+    "production_changes": 0,
+    "policy_changes": 0,
+    "credential_files_read": 0,
+    "dump_read": false
+  },
+  "free_physical_GiB": 13.72,
+  "owned_auth_console_OS_after": [],
+  "SSH_child_full_OS_identity": "NOT_CAPTURED_DO_NOT_CLAIM_FULL_TREE",
+  "OCR_cause_or_quality_PASS": false
+}

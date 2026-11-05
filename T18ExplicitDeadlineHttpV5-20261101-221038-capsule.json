@@ -1,0 +1,153 @@
+{
+  "old_readonly_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929",
+  "new_root": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ExplicitDeadlineHttpV5-20261101-221038",
+  "old_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\review-consumer.mjs",
+      "bytes": 49695,
+      "sha256": "ee5b52624529d760b25a1a9ac36ceafb80a358f453f21ddc9c89e810b78c02c7",
+      "mtime_ns": "1793540632162320800"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\offline-controls.mjs",
+      "bytes": 34986,
+      "sha256": "646e7ed6b2f2e1a0298a3696789996ffdd3ec60c151eb28405b67da4f0fb7173",
+      "mtime_ns": "1793540592142087200"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\fixed-data.json",
+      "bytes": 17427,
+      "sha256": "e386b2e000f2d9a6bb52169b0ee2a660a273996f13fd73e720ac7ff5bea0bc69",
+      "mtime_ns": "1793529580412201500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\stage1-assessments.json",
+      "bytes": 10015,
+      "sha256": "5e4ba4c51aa23b29b8625174c595d940628bbb7910ef6e9afcd4f777d5712fc1",
+      "mtime_ns": "1793538024944549000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\T18ShardedBidirectionalV4-20261101-213929\\source-manifest.json",
+      "bytes": 677,
+      "sha256": "b87d5b4243f637ac781a672b0127ea819d9cff708a729f0d8c949d5766fa7aad",
+      "mtime_ns": "1793540646858648900"
+    }
+  ],
+  "actual_failure": {
+    "at": "2026-11-01T22:10:38.269838+08:00",
+    "status": "CLOSED_CLIENT_HEADERS_TIMEOUT_SEMANTIC_NOT_REACHED",
+    "actual": {
+      "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ShardedBidirectionalV4Actual-root-20261101-215548",
+      "exit_code": 1,
+      "elapsed_s": 308.89100000000326,
+      "forced_by_Root": false,
+      "driver_result": {
+        "kind": "ROOT_ISOLATED_SEMANTIC_DPAPI_STDIN",
+        "child_exit": 1,
+        "forced_stop": false,
+        "natural_child_exit": true,
+        "credential_argv_env_file": false,
+        "requests_cap": 2
+      },
+      "Root_error_type": null,
+      "identities": [
+        {
+          "pid": 40840,
+          "parent": 34148,
+          "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+          "birth_utc": "2026-11-01T13:55:48.6174850Z"
+        },
+        {
+          "pid": 18644,
+          "parent": 40840,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T13:55:48.6256080Z"
+        },
+        {
+          "pid": 40928,
+          "parent": 40840,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T13:55:49.4218310Z"
+        },
+        {
+          "pid": 32948,
+          "parent": 40928,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T13:55:49.4288780Z"
+        }
+      ],
+      "independent_OS_after": [],
+      "source_changes": [],
+      "observed_owned_Node_TCP_peers": [
+        {
+          "OwningProcess": 40928,
+          "RemoteAddress": "10.126.126.1",
+          "RemotePort": 8000,
+          "State": 5
+        }
+      ],
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ShardedBidirectionalV4Actual-root-20261101-215548\\model-output\\artifacts\\final-report.json",
+      "consumer_report": {
+        "status": "FAIL_TRANSPORT_FAILURE",
+        "protocol_capability_only": true,
+        "legal_or_business_pass": false,
+        "stage": "stage2a",
+        "code": "TRANSPORT_FAILURE"
+      },
+      "usedKey_scan": {
+        "UTF8_files": 16,
+        "binary_not_scanned": 3,
+        "raw_usedKey_hit_files": 0,
+        "JSONescaped_usedKey_hit_files": 0,
+        "scope": "exact owned root only",
+        "full_memory_or_machine_claim": false
+      },
+      "not_Native_or_product_business_PASS": true,
+      "owner_only_ACL_or_full_platform_security_NOT_PROVEN": true,
+      "Packaging": "HOLD"
+    },
+    "response": {
+      "status": null,
+      "body": "",
+      "bodyOverflow": false,
+      "capturedBytes": 0,
+      "transportError": "TRANSPORT_FAILURE",
+      "transportDiagnostic": {
+        "errorName": "TYPE_ERROR",
+        "errorCode": null,
+        "causeCode": "UND_ERR_HEADERS_TIMEOUT"
+      }
+    },
+    "timings": {
+      "stage2aMs": 304655,
+      "totalMs": 304675
+    },
+    "actual_POST_attempts": 1,
+    "HTTP_status_received": 0,
+    "second_shard_NOT_STARTED": true,
+    "semantic_reviews_NOT_REACHED": true,
+    "confirmed_client_error": "UND_ERR_HEADERS_TIMEOUT",
+    "not_a_proven_server_outage_or_Key401_or_model_temperature_cause": true,
+    "server_received_modelgeneration_or_cancel_NOT_PROVEN": true,
+    "primary_reference": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-transport-timeout-primary-reference-current.json",
+    "next_fix": "Replace ONLY isolated diagnostic transport with public NodeHTTP per-request AbortSignal deadline; sameexisting400s/remaining900 limit, fixedroute/Bearer/stdin/cap/model/prompts/shards held. No globalSDK/defaultlibrary/config changes, no retry/fallback.",
+    "Packaging": "HOLD"
+  },
+  "Root_static_research": {
+    "local_Node_PE_product_version": "24.21.0",
+    "primary_links": [
+      "https://undici.nodejs.org/api/Dispatcher",
+      "https://nodejs.org/api/http.html"
+    ],
+    "fact": "OfficialUndici defaultheaders/body300s; currentactualerror headers timeout at304655ms below declared400000ms",
+    "limits": "No assertion why serverneeds>300s/no serverrestart or cancel proof"
+  },
+  "guard": {
+    "path": "D:/Lawbeach/lawbench-A/docs/plan/evidence/T50/20261023-211421/runtime/network-guard.cjs",
+    "sha256": "cbb770e4f3b75ad09d017837a15c5f412d630a8b32b852b8d33a96911f0a4130",
+    "Root_fullread": true,
+    "http_request_and_net_socket_still_guarded": true,
+    "NEVERmodify_clone_weaken_or_reroute_guard": true
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-B-T18ExplicitDeadlineHttpV5-20261101-221038.md"
+}

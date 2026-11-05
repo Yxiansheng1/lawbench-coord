@@ -1,0 +1,73 @@
+{
+  "approved_inputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\approved-inputs.json",
+    "bytes": 2315,
+    "sha256": "ab1bdd4e163575cc294f49c889fa7b533f1ed1e90d5362422967f08424648e6b"
+  },
+  "answers": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\authorized-synthetic-answers.json",
+    "bytes": 119,
+    "sha256": "ee2edc2fa739e7533170c961daec8b5141e86383aec45039e86213dd838be6de"
+  },
+  "originals": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\SKILL.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\0-SKILL.md",
+      "bytes": 13102,
+      "sha256": "535591d51956174f4820d0cb31b7249f98eb8f9819609b120a5923c608c11754",
+      "mtime_ns": "1792400314788869000"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\tests\\样本01-诈骗取保候审\\起诉意见书.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\1-起诉意见书.txt",
+      "bytes": 3033,
+      "sha256": "e7679f4ff37a2b3754501a7c9542f40deb3fab105c3513c17600da5916607414",
+      "mtime_ns": "1792379578790724500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\tests\\样本01-诈骗取保候审\\退赔收条.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\2-退赔收条.txt",
+      "bytes": 238,
+      "sha256": "db23a6b76c0dc00ccd5c73d1d7537023cc7f576a97947ae75bb306d812723275",
+      "mtime_ns": "1792379578790724500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\tests\\样本01-诈骗取保候审\\讯问笔录.txt",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\3-讯问笔录.txt",
+      "bytes": 1357,
+      "sha256": "bb9bdea54af2346e5973e8338001524fd4beefbc89a11380ac558c54de6e8e79",
+      "mtime_ns": "1792379578790724500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\tests\\样本01-诈骗取保候审\\_任务说明.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\4-_任务说明.md",
+      "bytes": 678,
+      "sha256": "433d6b3b4f6efff4f33016b22ea8af9bbc106654e53b6b9b04709f597ec61b69",
+      "mtime_ns": "1792379578790724500"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-applications\\tests\\要点.md",
+      "snapshot": "D:\\Lawbeach\\lawbench-coord\\T18CriminalApplicationsNativeInput-20261029-142908\\5-要点.md",
+      "bytes": 7455,
+      "sha256": "4e58069cc62f3f40aef5772c91cdf82eed2d9aa9027fd4747a75abbd950ff55d",
+      "mtime_ns": "1792379578794920000"
+    }
+  ],
+  "baseline": {
+    "entry": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CrossExamFiniteExtraction-20261029-140102\\native-cross-exam.mts",
+      "bytes": 148412,
+      "sha256": "0da719ca45ae93dfa87fe4405dc14b0badffe55eabbc2268bab24d1d19c33bfb"
+    },
+    "service": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CrossExamFiniteExtraction-20261029-140102\\b-service-cross-exam.py",
+      "bytes": 48345,
+      "sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d"
+    },
+    "manifest": {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\CrossExamFiniteExtraction-20261029-140102\\literalfixed-inputs.json",
+      "bytes": 12276,
+      "sha256": "33103a5a03c00f3854e0d0dc4d813ec2ece3164f20036a3bc69553ce16507058"
+    }
+  }
+}

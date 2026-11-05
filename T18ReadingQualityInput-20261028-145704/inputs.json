@@ -1,0 +1,10 @@
+{
+  "skill": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\SKILL.md",
+  "sharedRules": "D:\\Lawbeach\\lawbench-B\\skills\\_shared\\共用规则.md",
+  "rootActualProof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-reading-actual-root-current.json",
+  "draft": "D:\\Lawbeach\\lawbench-coord\\T18ReadingQualityInput-20261028-145704\\actual-final-draft.md",
+  "rootQuality": "D:\\Lawbeach\\lawbench-coord\\T18ReadingQualityInput-20261028-145704\\root-quality-review.json",
+  "sampleDirectory": "D:\\Lawbeach\\lawbench-B\\skills\\case-reading-notes\\tests\\样本01-民间借贷",
+  "buildSkills": "D:\\Lawbeach\\lawbench-B\\skills\\_scripts\\build_skills.py",
+  "checkExamples": "D:\\Lawbeach\\lawbench-B\\contracts\\check_examples.py"
+}

@@ -1,0 +1,101 @@
+{
+  "at": "2026-10-28T19:03:58.717009+08:00",
+  "before": "D:\\Lawbeach\\lawbench-coord\\T18QuestionGateBuildInput-20261028-190358",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358",
+  "builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\build-private.mjs",
+  "builder_sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\PrivateRuntimeBuild-20261026-043910\\build-config.mjs",
+  "config_sha256": "4f86aad968ebcd72e238f767b71cad80dd89446bef89ea473ad8600cd634dae6",
+  "changed_trees": [
+    {
+      "id": "lawbench-agent-source",
+      "before": {
+        "files": 4,
+        "bytes": 57829,
+        "sha256": "a0c25295daed8ca444c989d24d51d6a5ed6196703d3a3b6f3a68d22313a8b745"
+      },
+      "after": {
+        "files": 4,
+        "bytes": 72301,
+        "sha256": "8378b6a90d85afea4c0c866bdf7678fdbcc166ac46dfc43a78b93513d960e78c"
+      }
+    },
+    {
+      "id": "lawbench-host-source",
+      "before": {
+        "files": 20,
+        "bytes": 184127,
+        "sha256": "33bb54cc2cca639080747e0985bdf83740ad806aac8740fc1ff9ae31cb2619f6"
+      },
+      "after": {
+        "files": 20,
+        "bytes": 186034,
+        "sha256": "e946b4618f02b90154205d5794db077a6e0da6dc31727b611bf61e5e9ce19a80"
+      }
+    },
+    {
+      "id": "lawbench-shared-source",
+      "before": {
+        "files": 9,
+        "bytes": 33915,
+        "sha256": "0f7805f79e4d93d8bb7730ed652053bd3723cca8703f172ca358f6db8dba3b77"
+      },
+      "after": {
+        "files": 9,
+        "bytes": 34130,
+        "sha256": "a4182a25056dc5e91587966184b63a19305cb982a988c3bafa3b3c7bae22de2b"
+      }
+    },
+    {
+      "id": "lawbench-ui-source",
+      "before": {
+        "files": 92,
+        "bytes": 637026,
+        "sha256": "605ff86d3e3587c99a8e2ac5d742461d811d81602d6f1d8ef81e6e4914fa7dc9"
+      },
+      "after": {
+        "files": 92,
+        "bytes": 637497,
+        "sha256": "16453fdee71df01f487d95f1b5afed87203d7a5191150cea63930b9f62b743a1"
+      }
+    }
+  ],
+  "all18_baseline_inverse_trees_exact": true,
+  "all53_refs_same": true,
+  "legacy18_same": true,
+  "approved_sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "bytes": 44666,
+      "sha256": "4f652150927692c5230bd7ec5d517fdec2f45e35839fefd017d3e6d0aa3c922c"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "bytes": 20103,
+      "sha256": "d69d93748eace497539a5ca96b18fd19e9852de2b3bed93cbddb45c87a7277b4"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\index.ts",
+      "bytes": 61281,
+      "sha256": "da96a5e012b746da5204210188bf8f331bb1049e7436edfb859e162e0b18806f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+      "bytes": 3801,
+      "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\turn-notices.ts",
+      "bytes": 4045,
+      "sha256": "278c58c72ba15c6f7c0dccd63def3dd5f81d2a1fc51fb197dfd806d48c97b2a0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\ui\\dock.tsx",
+      "bytes": 48424,
+      "sha256": "d9db5ade5a4936a6367453835f0b4d4213e7778d061a050d9ae8d64b9efc3787"
+    }
+  ],
+  "OS_probe": "Short pure config-data read0; not full process exe+birth captured, no cleanup claim",
+  "build_run": false,
+  "Packaging": "HOLD"
+}

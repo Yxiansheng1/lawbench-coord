@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-23T02:11:08.700957+08:00",
+  "verdict": "PASS_ENGINEERING_SLICE_ONLY",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T39-http-full-cumulative-20261023-015911",
+  "snapshot_sha256": "ff8c510455c5399b04608369b3be4a0cffec3bd97a6e9608bc63b887ec47b136",
+  "targets": 20,
+  "target_lines": 2632,
+  "context_files": 23,
+  "reports": [
+    {
+      "axis": "scope",
+      "reviewer": "/root/t39_http_full_scope",
+      "verdict": "PASS",
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t39-http-full-scope\\REVIEW.md",
+      "report_sha256": "949e1314b2f19298a91f66a3dc12e79db151d202a8bb5831324ff5c492e5a775",
+      "coverage": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t39-http-full-scope\\COVERAGE.md",
+      "coverage_sha256": "16862e65e30240e61300591324f44ac9f3a4a4464d5535e41e7ddc94ac51e063",
+      "root_report_and_coverage_fully_read": true,
+      "targets": 20
+    },
+    {
+      "axis": "behavior",
+      "reviewer": "/root/t39_http_full_behavior",
+      "verdict": "PASS",
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t39-http-full-behavior\\REVIEW.md",
+      "report_sha256": "90140f5193cce14ca1c17abba0329e869b87e50816367a76c0e646ecf5253a4f",
+      "coverage": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t39-http-full-behavior\\COVERAGE.md",
+      "coverage_sha256": "857a4ec4fb238299088aa19542091ee88dfb147b31acbde3affdd24150034741",
+      "root_report_and_coverage_fully_read": true,
+      "targets": 20
+    }
+  ],
+  "receipt": "D:\\Lawbeach\\lawbench-coord\\ORCH-复核-T39提示词HTTP完整累计-工程收口-20261023-021108.md",
+  "root_raw_fully_consumed": true,
+  "no_repeat_experiment": true,
+  "not_whole_T39_or_release": true
+}

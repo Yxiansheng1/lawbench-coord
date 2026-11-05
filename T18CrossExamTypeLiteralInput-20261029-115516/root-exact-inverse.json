@@ -1,0 +1,8 @@
+{
+  "old_entry_sha256": "8c88aaa0eab7fd0fd81e6c7d3141cb08c5f4a8df5b45a67afc3db14e8dab7411",
+  "expected_entry_sha256": "1a6e5f0c28eb20bc8a7b719805ce48d9ff1fb8ace60f0ac96d2fa3900283e35b",
+  "bytes": 127688,
+  "replace_old": "readonly thinking: '高'",
+  "replace_new": "readonly thinking: '中'",
+  "service_sha256": "aa428e97cec0e65dc0b329ba17a5cb8b95add000e407cae5464f82e953bfa22d"
+}

@@ -1,0 +1,16 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-explicit-deadline-http-v5-root-launcher-static-parse-current.json
+SHA d42891b4b864aea2d589b068b1afb675c7399beec000543dd4322fc96f7a9593
+EXPLICIT currentlines 1..13; earlier unchangedpureprotocol outside thisfocusedreview
+0001 {
+0002   "operation": "RootV2 PS literal staticparse only, no main execution",
+0003   "errors": [],
+0004   "Key_read": false,
+0005   "model_calls": 0,
+0006   "scope": "QUALIFIED_REUSE_EXACT_PS_LITERAL_V4_V2_NOT_NEW_OUTER_DRIVER_PROOF",
+0007   "V4_PS_literal_sha256": "07d0421657e6cf90b7eccbbb74a6eaa88606c1f8431a0158bfb5614025ec705c",
+0008   "same_as_actual_V2_driver_PS": true,
+0009   "new_parser_run": false,
+0010   "Keyread": false,
+0011   "model_requests": 0,
+0012   "V5_PS_literal_sha256": "07d0421657e6cf90b7eccbbb74a6eaa88606c1f8431a0158bfb5614025ec705c"
+0013 }

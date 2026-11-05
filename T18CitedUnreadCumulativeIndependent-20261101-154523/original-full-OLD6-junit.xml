@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="3.754" timestamp="2026-11-01T14:41:55.695299+08:00" hostname="MoreLiterai"><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_main_search_only_numeric_citation_denied_without_side_effects" time="0.600"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101144156-a203/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnreadRED-root-20261101-144132/private-root/pytest-basetemp/test_t18_main_search_only_nume0')
+
+    def test_t18_main_search_only_numeric_citation_denied_without_side_effects(tmp_path):
+        """搜索命中不是读取；未读引用必须拒绝，且不落草稿、不改 result。"""
+        env = _material_env(
+            tmp_path,
+            "第一行 借款经过\n第二行 红色雨伞是检索命中\n第三行 还款经过\n第四行 其他事实\n",
+        )
+        try:
+            task_id = _selected_task(env, "t18-main-search-only", DEFENSE_SKILL)
+            env.tool_ok(task_id, "case_search", {"query": "红色雨伞"})
+            assert _reads(env, task_id) == []
+    
+&gt;           _assert_citation_denied(
+                env,
+                task_id,
+                "辩护意见正文〔事实材料 第2行〕",
+                "事实材料",
+                "第2行",
+                "红色雨伞",
+            )
+
+tests\test_t18_cited_unread_20261101.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101144156-a203/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_main_wrong_task_or_old_version_read_does_not_authorize" time="0.547"><failure message="AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101144157-7759/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}">tmp_path = WindowsPath('C:/Users/morel/Documents/Codex/2026-10-21/deepseek-codex-gpt-advisor-reviewer/outputs/T18CitedUnreadRED-root-20261101-144132/private-root/pytest-basetemp/test_t18_main_wrong_task_or_ol0')
+
+    def test_t18_main_wrong_task_or_old_version_read_does_not_authorize(tmp_path):
+        """别的任务读过、或本任务读过旧版本，都不能支撑当前辩护意见保存。"""
+        env = _material_env(
+            tmp_path,
+            "第一行 红色雨伞\n第二行 还款经过\n第三行 其他事实\n",
+        )
+        try:
+            defense_task = _selected_task(env, "t18-main-identity-defense", DEFENSE_SKILL)
+            other_task = _selected_task(env, "t18-main-identity-other", None)
+            env.tool_ok(other_task, "case_search", {"query": "红色雨伞"})
+            env.tool_ok(other_task, "case_read_material", {"name": "事实材料", "start": 1, "end": 1})
+            assert _reads(env, other_task)
+            assert _reads(env, defense_task) == []
+    
+&gt;           _assert_citation_denied(
+                env,
+                defense_task,
+                "辩护意见正文〔事实材料 第1行〕",
+                "事实材料",
+                "第1行",
+                "红色雨伞",
+            )
+
+tests\test_t18_cited_unread_20261101.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_t18_cited_unread_20261101.py:56: in _assert_citation_denied
+    body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+r = &lt;Response [200 OK]&gt;, code = 'INVALID_ARGUMENT'
+
+    def fail(r, code: str) -&gt; dict:
+        assert r.status_code == 200, r.text
+        body = r.json()
+&gt;       assert body["ok"] is False and body["error"]["code"] == code, body
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {'ok': True, 'value': {'path': '工作区/任务/T-20261101144157-7759/草稿/辩护意见-v1.md', 'version': 1, 'citation_check': {'passed': True, 'problems': [], 'stats': {'citations': 1, 'must_fix': 0, 'hints': 0}}, 'coverage': {'total': 1, 'fully_read': [], 'partially_read': [], 'not_read': ['事实材料'], 'unreadable': []}, 'not_fully_read': ['事实材料']}}
+
+tests\t8_helpers.py:35: AssertionError</failure></testcase><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_positive_correct_actual_read_allows_same_content" time="0.468" /><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_positive_complete_inclusive_range_allows" time="0.521" /><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_positive_long_unit_partial_then_offset_recovery" time="0.562" /><testcase classname="tests.test_t18_cited_unread_20261101" name="test_t18_positive_non_defense_save_unchanged" time="0.492" /></testsuite></testsuites>

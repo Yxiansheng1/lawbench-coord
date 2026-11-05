@@ -1,0 +1,165 @@
+FULL ONLY CHANGED FUNCTION
+def _task_store_observation(
+    lb: Any,
+    case_root: pathlib.Path,
+    scope_evidence: dict[str, Any],
+) -> dict[str, Any]:
+    task_identity = scope_evidence.get("task")
+    if not isinstance(task_identity, dict) or not task_identity.get("task_id"):
+        return {
+            "status": "NOT_REACHED",
+            "reason": "NO_ACTUAL_POLICY_TASK",
+            "rewritten": False,
+        }
+    scope = scope_evidence.get("scope_tuple")
+    materials = scope_evidence.get("materials")
+    if not isinstance(scope, dict) or not isinstance(materials, list):
+        raise ORIGINAL.Deny("TASK_SCOPE_EVIDENCE_MISSING")
+
+    task_id = task_identity["task_id"]
+    located_case_id, located_root, native_task = lb.tasks.locate(task_id)
+    if (
+        located_case_id != scope.get("case_id")
+        or pathlib.Path(located_root).resolve() != case_root.resolve()
+        or not isinstance(native_task, dict)
+        or native_task.get("task_id") != task_id
+    ):
+        raise ORIGINAL.Deny("TASK_STORE_LOCATE_MISMATCH")
+
+    rel = lb.tasks.rel(task_id, "task.json")
+    path = ORIGINAL.gate.resolve_internal(located_root, rel, op="task").resolve()
+    if case_root.resolve() not in path.parents:
+        raise ORIGINAL.Deny("TASK_STORE_PATH")
+    info = path.lstat()
+    if not stat.S_ISREG(info.st_mode) or info.st_size > MAX_JSON_BYTES:
+        raise ORIGINAL.Deny("TASK_STORE_FILE")
+    data = path.read_bytes()
+    document = json.loads(data.decode("utf-8"))
+    if document != native_task:
+        raise ORIGINAL.Deny("TASK_STORE_NATIVE_SNAPSHOT_MISMATCH")
+
+    request_scope = document.get("request_scope")
+    if not isinstance(request_scope, dict):
+        raise ORIGINAL.Deny("TASK_STORE_REQUEST_SCOPE")
+    if (
+        document.get("case_id") != scope.get("case_id")
+        or request_scope.get("case_id") != scope.get("case_id")
+        or request_scope.get("request_id") != scope.get("request_id")
+        or request_scope.get("kind") != "materials"
+    ):
+        raise ORIGINAL.Deny("TASK_STORE_SCOPE_IDENTITY")
+    session_id = scope.get("session_id")
+    if request_scope.get("session_id") != session_id:
+        raise ORIGINAL.Deny("TASK_STORE_SESSION")
+    if "session_id" in document and document["session_id"] != session_id:
+        raise ORIGINAL.Deny("TASK_STORE_SESSION_FIELD")
+
+    sha_by_id = {
+        row["material_id"]: row["sha256"]
+        for row in materials
+        if isinstance(row, dict)
+    }
+    rows = request_scope.get("materials")
+    if not isinstance(rows, list) or len(rows) != 2:
+        raise ORIGINAL.Deny("TASK_STORE_MATERIALS")
+    selected_ids: list[str] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            raise ORIGINAL.Deny("TASK_STORE_MATERIAL_ROW")
+        material_id, digest = row.get("material_id"), row.get("sha256")
+        if (
+            not isinstance(material_id, str)
+            or not isinstance(digest, str)
+            or sha_by_id.get(material_id) != digest
+        ):
+            raise ORIGINAL.Deny("TASK_STORE_MATERIAL_BINDING")
+        selected_ids.append(material_id)
+    if tuple(selected_ids) != tuple(scope.get("material_ids", ())):
+        raise ORIGINAL.Deny("TASK_STORE_MATERIAL_SELECTION")
+
+    return {
+        "status": "VERIFIED",
+        "taskId": task_id,
+        "caseId": located_case_id,
+        "relativePath": rel,
+        "bytes": len(data),
+        "finalFileSha256": _sha256(data),
+        "physicalEqualsNativeSnapshot": True,
+        "requestScopeVerified": True,
+        "sessionId": session_id,
+        "requestId": scope.get("request_id"),
+        "selectedMaterialIds": selected_ids,
+        "rewritten": False,
+    }
+
+ACTUAL TASK APIS
+    def _write(self, root: str, rel: str, data: dict, schema: str) -> None:
+        contracts.validate(schema, "", data)
+        gate.write_bytes(root, rel, json.dumps(data, ensure_ascii=False, indent=2).encode("utf-8"), op="task")
+
+    @staticmethod
+    def _read(root: str, rel: str, schema: str) -> dict:
+        p = gate.resolve_internal(root, rel, op="task")
+        data = contracts.read_json(p)
+        if schema == "files/task.schema.json":
+            data.setdefault("route", "local")  # T38：旧任务单缺字段按本地，内存兼容
+        contracts.validate(schema, "", data)
+        return data
+
+    def request_scope(self, request: dict) -> dict:
+        """POST /api/request/scope：prepare/release 的持久映射入口。"""
+        return self.scopes.handle(request)
+
+    def task_scope(self, task: dict) -> dict | None:
+        """返回经持久记录核验的任务范围；任务副本不能单独作为权限来源。"""
+        return self.scopes.task_scope(task)
+
+    def index_for_task(self, task: dict) -> dict:
+        """按持久 R 固定的材料快照裁剪索引；任务副本缺坏时失败关闭。"""
+        scope = self.task_scope(task)
+        index = self.materials.index(task["case_id"])
+        if scope is None:
+            return index
+
+        by_id = {m["material_id"]: m for m in index["materials"]}
+        scoped: list[dict] = []
+        for expected in scope["materials"]:
+            material = by_id.get(expected["material_id"])
+            if (
+                material is None
+                or material["status"] in ("source_deleted", "missing", "removed")
+                or material.get("sha256") != expected["sha256"]
+            ):
+                raise ApiError("INPUT_CHANGED", "task_scope_version_changed")
+            scoped.append(material)
+        return {**index, "materials": scoped}
+
+    def locate(self, task_id: str) -> tuple[str, str, dict]:
+        """task_id → (case_id, root, task.json)。"""
+        rel = self.rel(task_id, "task.json")
+        cid = self._where.get(task_id)
+        candidates = [cid] if cid else [c["case_id"] for c in self.cases.recent()]
+        for case_id in candidates:
+            try:
+                root = self.cases.root_of(case_id)
+            except ApiError:
+                continue
+            if gate.resolve_internal(root, rel, op="task").is_file():
+                self._where[task_id] = case_id
+                return case_id, root, self._read(root, rel, "files/task.schema.json")
+        raise ApiError("TASK_NOT_FOUND", "task_not_found")
+
+    # ---------- 参数与输入 ----------
+
+    def default_params(self, skill: str | None) -> dict:
+ACTUAL SNAPSHOT NO session_id
+        if not record["materials"]:
+            return None
+        return {
+            "request_id": request_id,
+            "case_id": record["case_id"],
+            "kind": "materials",
+            "materials": [dict(m) for m in record["materials"]],
+        }
+
+    # ---------- 独立意图凭据 ----------

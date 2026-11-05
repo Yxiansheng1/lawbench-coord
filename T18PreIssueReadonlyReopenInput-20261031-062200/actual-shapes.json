@@ -1,0 +1,83 @@
+{
+  "header": {
+    "type": "session",
+    "version": 4,
+    "id": "session-b8463829-842a-4f07-bb33-cffd9689f090",
+    "createdAt": 1793278985314,
+    "cwd": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\PreIssueReadyCountFix-20261029-205727\\run-MMU3Nf\\case",
+    "isSeeded": false,
+    "delegationDepth": 0
+  },
+  "task": {
+    "v": 1,
+    "task_id": "T-20261029210305-0427",
+    "case_id": "14d78c28-8b7e-4a9c-b2c1-735d3d853e73",
+    "kind": "agent",
+    "session_id": "session-b8463829-842a-4f07-bb33-cffd9689f090",
+    "entry": null,
+    "skill": "pre-issue-check",
+    "route": "local",
+    "step": null,
+    "inputs": [
+      {
+        "index": 1,
+        "title": "民事起诉状草稿",
+        "path": "成果/民事起诉状草稿.md",
+        "version": null,
+        "sha256": "dc700a6a931b007c219d9d2a600c4f42c42f333128b48f51215f0816445ed23d"
+      }
+    ],
+    "params": {
+      "thinking": "中",
+      "window": "128K",
+      "max_tokens": 32768,
+      "temperature": 0.6
+    },
+    "budget": {
+      "model_calls": 32,
+      "tool_calls": 48,
+      "minutes": 45
+    },
+    "state": "finished",
+    "created_at": "2026-10-29T21:03:05+08:00",
+    "request_id": "5d64029f-79b3-4d48-a922-e310ca22f90c",
+    "request_scope": null
+  },
+  "event_types": {
+    "turn/start": 1,
+    "turn/end": 1,
+    "request/header": 1,
+    "system/message": 1,
+    "tool/result": 9,
+    "tool/call": 9,
+    "user/message": 3,
+    "assistant/message": 10,
+    "request/context": 1,
+    "step/end": 10,
+    "step/start": 10,
+    "agent/inbox/spliced": 2
+  },
+  "real_rpc_user_events": [
+    {
+      "type": "user/message",
+      "seq": 6,
+      "time": 1793278985939,
+      "data": {
+        "content": [
+          {
+            "type": "text",
+            "text": "# 任务说明\r\n\r\n我选了李某乙诉王某丙那份民事起诉状草稿，下周一要递交虚构市虚构区人民法院，帮我在递交前全面审一遍。"
+          }
+        ],
+        "source": {
+          "kind": "user",
+          "rpcId": "5d64029f-79b3-4d48-a922-e310ca22f90c"
+        },
+        "role": "user",
+        "id": "6f741deb-dab8-475c-8c80-cc15278b25ad"
+      },
+      "surfaceOp": "append"
+    }
+  ],
+  "actual_58events_preexist": true
+}

@@ -1,3 +1,21 @@
+# 协调目录：构建产物与依赖副本不入库
+.p/
+node_modules/
+**/node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# T34 依赖资源快照（内含 node_modules 副本，可按 lock 重建）
+T34PlatformNativeResources-*/
+T34RequiredPeerResources-*/
+T34DependencyResources-*/
+
+# 大体积源码归档（源码仓 lawbench 已有，无需重复入库）
+GitHubMac-源码与失败记录-20261103-2100/lawbench-1.0.0-macos-source-*.zip
+B6-private-output-*/
+
+# 系统杂项
 Thumbs.db
 .DS_Store
 *.tmp

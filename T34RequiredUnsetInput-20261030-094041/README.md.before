@@ -1,0 +1,77 @@
+# T34 禁用幂等受影响 GUI 候选
+
+状态：`SOURCE_ONLY_HANDOFF / AUTHOR_RUNTIME_ZERO / ROOT_ONE_FRESH_GUI_REQUIRED`
+
+本目录是可交给根侧独立审计的数据型受影响 GUI 候选，不是第三次分类器实验，也不是
+GUI 或整条 T34 的 PASS。目标是实际 GUI 中仅当
+`remote.describe` 实况返回匹配的 `llm-pi-ai/live/plain`、且该 provider 由本产品拥有、
+无外部来源时，跳过不必要的 unset；畸形、拒绝、陈旧或外部 provider 仍走原 unset/error。
+底层 `ConfigEditor` 写失败的真实原因仍为 `UNKNOWN`，打包仍为 `HOLD`。
+
+## 交付范围
+
+本目录只有七个文件。五个运行时文件逐字节复制自
+`T34IdempotenceGUIInput-20261030-091453` 的批准 `.before` 快照；没有旧有限助手、
+新分类器、行为、断言或路由改动。相对旧快照只有下列必要适配：
+
+| 文件 | 改动 |
+| --- | --- |
+| `prepare.ps1` | 证据根改到本目录 |
+| `start.ps1` | 证据根改到本目录；回填本目录 `entry.py` 身份；B 清单、当前私有构建、24 行输出和 3 个原生垫片改为当前批准字面值 |
+| `stop.ps1` | owned-runs 根改到本目录 |
+| `entry.py` | `EVIDENCE_ROOT` 改到本目录 |
+| `projection-observer.mjs` | 原样复制，20,058 字节，`2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac` |
+| `literal-inputs.json` | 根批准蓝图加实际七文件交回行；清单自身不自引用 |
+| `README.md` | 本说明 |
+
+`start.ps1` 的最终 `entry.py` 钉值为 88,648 字节、
+`a6ff33b4922f11178bf4d637947c6fb05e4ff8dbf1b1cfbf40a06d84b0b9e31b`。
+
+## 当前 25 项私有构建
+
+唯一允许的运行包来源是：
+
+`D:\Lawbeach\lawbench-A\docs\plan\evidence\T34\IdempotencePrivateBuild-20261030-085828\private-output-20261030-091211`
+
+清单为 58,198 字节，
+`8493f52c879b8674b8c72f961de4c81d89165f97ffd251b91bcb270c85bf39ab`。
+目录含清单加 24 个输出；这 24 行已作为字面表写入 `start.ps1`，当前逐项字节/SHA
+全部匹配。根批准的 18 棵树/53 个引用身份和 legacy18 未改，唯一改变的产品输出是：
+
+| 输出 | 字节 | SHA-256 |
+| --- | ---: | --- |
+| `lawbench-dsh/lib/client.js` | 539,498 | `b6ffe003a34af83918bc9fc069350cfa4054ac69458d7644200b68f567a9bd86` |
+
+现有构建证据记录为 19.381895 秒、退出 0、4 个 owned OS 身份均已结束；旧
+`private-output-20261027-194112` 不能证明这个新客户端。当前产品源码证明位于根工作区
+`C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T34-disabled-idempotence-source-reviewed-current.json`，
+本作者读取时 1,288 字节，
+`cad7525601a2334b41f3e2b18965f9496aa5d2b23e082d61a8dba54926175e9d`。
+
+## 保持不变的边界
+
+真实合成案副本、源/子会话日志、B346、E50、SDK、legacy18、resolver、network guard、
+PDF 固定来源及五项资源均沿用批准快照。启动最大观察窗仍为 600 秒；owned PID、
+可执行文件、UTC 出生时间、端口、私有目录与窗口清理、出站拒绝、
+OCR/Retainer 关闭和 fake key 路径均未放宽。没有历史、UUID、R 回合、答案或模型消息
+被伪造；计划操作仍禁止 UI 输入、发送、fork 和删除。
+
+观察器安装和输出检查是根侧一次 GUI 运行的必需部分。0 次事件或 0 次 mutate/edit
+只有在真实 UI 状态确实不允许时才算预期，不能预先宣称通过。
+
+## 作者验证与未运行项
+
+作者以原生 PowerShell 只读核对了七份输入快照、源码证明存在性、当前产品三源、
+当前构建清单、24 个输出、脚本最小行级差异和观察器原字节。实际执行器调用
+41 次，非零 6 次；
+其中 2 次是误填 `bash` 后在启动前被运行器拒绝，目标命令未执行。Git 写操作为 0。
+
+`NOT_RUN`：prepare、admission、start、GUI、observer capture、stop、
+parser/import/type/check/test/build、模型/网络、原生投影 PASS、整条 T34 PASS、
+打包。底层写拒绝原因仍为 `UNKNOWN`。
+
+## 根侧下一步
+
+根侧先独立审计本目录、相对批准快照的逆变换、清单/输出、全部写面、
+source/profile identity、安全清理和命令记录；然后只做一次全新的实际 GUI 禁用投影路径。
+不得复用本作者证据作为 GUI PASS，也不得在失败原因未定时提出降级 guard 或额外分类器。

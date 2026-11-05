@@ -1,0 +1,27 @@
+{
+  "source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadAFix-20261101-115414Input\\0-index.ts",
+      "bytes": 59185,
+      "sha256": "b0e093554b4903a605587431be0095e4318b846c7bffa6791d70114b4ecadf93"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\contracts\\_build\\gen_schemas.py",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadAFix-20261101-115414Input\\1-gen_schemas.py",
+      "bytes": 67207,
+      "sha256": "c511bdcd9e490f1e3ad8b53cae25f03b309856382f66c4d98931ee3c5c07b4ab"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\src\\Spec.md",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18BoundedReadAFix-20261101-115414Input\\2-Spec.md",
+      "bytes": 199684,
+      "sha256": "edc6b4d47fd3d100831eba736b8efd8bf061604674319da49dd6ff74d1ad2bcc"
+    }
+  ],
+  "fixed_test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-20261101-114236.spec.ts",
+  "fixed_test_sha256": "08e6e13fb7a8ecd264761882957e2549895a3e1fe08cd3b2705ab839933d3b59",
+  "red": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\defense-read-bound-corrected-red-unit-current.json",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadAFix-20261101-115414.md",
+  "contract_change_root_approved": true
+}

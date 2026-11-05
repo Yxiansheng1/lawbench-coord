@@ -1,0 +1,78 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\task.py",
+  "source_bytes": 40607,
+  "source_sha256": "7b6ee04ba53f45b1f7e6624d2c9bf60b122dfc68c12e26331431a84eed36bf04",
+  "original_read_method": "    @staticmethod\n    def _read(root: str, rel: str, schema: str) -> dict:\n        p = gate.resolve_internal(root, rel, op=\"task\")\n        data = contracts.read_json(p)\n        if schema == \"files/task.schema.json\":\n            data.setdefault(\"route\", \"local\")  # T38：旧任务单缺字段按本地，内存兼容\n        contracts.validate(schema, \"\", data)\n        return data\n",
+  "samples": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_task.json",
+      "bytes": 759,
+      "sha256": "ab740560b0bbfcb699eb5e0768bf5f1e4ab928b440d0c373bc5777a072799034",
+      "data": {
+        "v": 1,
+        "task_id": "T-20260928093000-7c1f",
+        "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+        "kind": "agent",
+        "session_id": "s_01HZX",
+        "entry": "case-analysis",
+        "skill": "criminal-reading-notes",
+        "route": "external",
+        "step": null,
+        "inputs": [
+          {
+            "index": 1,
+            "title": "刑事阅卷笔录",
+            "path": "成果/刑事阅卷笔录-v1.md",
+            "version": 1,
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "params": {
+          "thinking": "低",
+          "window": "64K",
+          "max_tokens": 16384
+        },
+        "budget": {
+          "model_calls": 8,
+          "tool_calls": 24,
+          "minutes": 45
+        },
+        "state": "pending",
+        "created_at": "2026-09-28T09:30:00+08:00"
+      }
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\contracts\\examples\\file_task.legacy.json",
+      "bytes": 505,
+      "sha256": "716230f5a779bfca7076a86a7fdcc956cc7e6a86fa2b184efc443bd2939952b1",
+      "data": {
+        "v": 1,
+        "task_id": "T-20260928093000-7c1f",
+        "case_id": "3f2b9c1e-7a4d-4e8b-9c2a-1b5d6e7f8a90",
+        "kind": "agent",
+        "session_id": "s_01HZX",
+        "entry": "case-analysis",
+        "skill": "criminal-reading-notes",
+        "step": null,
+        "inputs": [],
+        "params": {
+          "thinking": "低",
+          "window": "64K",
+          "max_tokens": 16384
+        },
+        "budget": {
+          "model_calls": 8,
+          "tool_calls": 24,
+          "minutes": 45
+        },
+        "state": "pending",
+        "created_at": "2026-09-28T09:30:00+08:00"
+      }
+    }
+  ],
+  "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T17\\T17TaskRecordShapeFixture-20261101-011812",
+  "expected_cases": 9,
+  "scope": "Existing T17 damaged task-record error recovery; same TaskStore._read task schema route compatibility before validation. No business semantic change.",
+  "test_before": "D:\\Lawbeach\\lawbench-coord\\T17TaskRecordShapeFixture-20261101-011812Input\\test-before.py",
+  "test_sha256": "815f6855eb6d4a2dc5ebb9322bf60cb98ec0a456044252e09c08b12a1799d65c"
+}

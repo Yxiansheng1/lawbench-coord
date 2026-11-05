@@ -1,0 +1,143 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIGUI-20261031-102147",
+  "replacements": [
+    {
+      "old": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702",
+      "new": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIGUI-20261031-102147"
+    },
+    {
+      "old": "CanonicalOriginalGUI-20261031-022702",
+      "new": "CurrentUIGUI-20261031-102147"
+    },
+    {
+      "old": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralReadOrderPrivateBuild-20261030-164557\\private-output-20261030-171028",
+      "new": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIPrivateBuild-20261031-101722\\private-output-20261031-101856"
+    },
+    {
+      "old": "58199",
+      "new": "58197"
+    },
+    {
+      "old": "89725cac86267da39572a8e9e9fb3e855aca26199cac4e0df13dd84e2cf76d52",
+      "new": "4947e42090ad66b31ac192ddc8280fc3fb63e17f80ec346ff4a69c2f7410385a"
+    },
+    {
+      "old": "144114",
+      "new": "144114"
+    },
+    {
+      "old": "05f5cdd4d5f96033d86b8c4deec640409e2952e149882b9a746267e3799a41fd",
+      "new": "05f5cdd4d5f96033d86b8c4deec640409e2952e149882b9a746267e3799a41fd"
+    },
+    {
+      "old": "88654",
+      "new": "88646"
+    },
+    {
+      "old": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64",
+      "new": "7a37e9b4e462bea40f30538fed7acc2e36f01754b164475fd0174d00311b5d72"
+    }
+  ],
+  "frozen_helpers": [
+    "projection-observer.mjs",
+    "settings-read-observer.mjs",
+    "private-provider-binding.mjs",
+    "observer-finite.mjs",
+    "signature-finite.mjs"
+  ],
+  "current_private_build": {
+    "verdict": "STATIC25_CURRENT_UI3GUARDS_ACCEPTED_BUILD0",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CurrentUIPrivateBuild-20261031-101722\\private-output-20261031-101856",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34CurrentUIPrivateBuild-root-20261031-101856",
+    "manifest_bytes": 58197,
+    "manifest_sha": "4947e42090ad66b31ac192ddc8280fc3fb63e17f80ec346ff4a69c2f7410385a",
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "other23_outputs_equal": true,
+    "compiled_client_whole_inverse3guards_and_stamp_exact": true,
+    "sourceModules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "unchanged_Agent_Host_contract_AST_reused": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "OS": [
+      {
+        "pid": 55844,
+        "parent": 57692,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-31T02:18:57.1108700Z"
+      },
+      {
+        "pid": 52232,
+        "parent": 55844,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birth_utc": "2026-10-31T02:18:57.1699550Z"
+      },
+      {
+        "pid": 59444,
+        "parent": 55844,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-31T02:18:58.1594250Z"
+      },
+      {
+        "pid": 58920,
+        "parent": 55844,
+        "exe": "E:\\node\\node.exe",
+        "birth_utc": "2026-10-31T02:18:58.5193360Z"
+      },
+      {
+        "pid": 39768,
+        "parent": 55844,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birth_utc": "2026-10-31T02:18:58.9451250Z"
+      }
+    ],
+    "OS_complete_count": 5,
+    "OS_partial_NOT_PROVEN": [],
+    "build_elapsed_s": 19.937999999994645,
+    "forced": false,
+    "GUI": false,
+    "SystemCredentialStore": false,
+    "Packaging": "HOLD"
+  },
+  "root_blueprint": "D:\\Lawbeach\\lawbench-coord\\T34CurrentUIGUIInput-20261031-102147\\root-approved-manifest-blueprint.json",
+  "purpose": "ONE fresh current UI3guard compiled-client render/settings navigation only; memory credentials; no privacy preseed, no actual secret/Key/SystemStore/model call",
+  "watchdog_max600": true,
+  "no_privacy_Key_security_actions": true,
+  "no_newmodel_or_externalrequest": true
+}

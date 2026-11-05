@@ -1,0 +1,514 @@
+﻿2026-11-03T12:41:17.2563510Z Current runner version: '2.338.2'
+2026-11-03T12:41:17.2579520Z ##[group]Runner Image Provisioner
+2026-11-03T12:41:17.2580160Z Hosted Compute Agent
+2026-11-03T12:41:17.2580580Z Version: 20261021.618
+2026-11-03T12:41:17.2581090Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-11-03T12:41:17.2581600Z Build Date: 2026-10-21T00:45:21Z
+2026-11-03T12:41:17.2582140Z Worker ID: {52f180da-dc56-4549-a819-1d50737f483d}
+2026-11-03T12:41:17.2582720Z Region: westus
+2026-11-03T12:41:17.2583150Z Cloud: MacCloud
+2026-11-03T12:41:17.2583530Z ##[endgroup]
+2026-11-03T12:41:17.2584400Z ##[group]Operating System
+2026-11-03T12:41:17.2584920Z macOS
+2026-11-03T12:41:17.2585360Z 15.8.2
+2026-11-03T12:41:17.2585730Z 24H232
+2026-11-03T12:41:17.2586180Z ##[endgroup]
+2026-11-03T12:41:17.2586580Z ##[group]Runner Image
+2026-11-03T12:41:17.2626580Z Image: macos-15-arm64
+2026-11-03T12:41:17.2626980Z Version: 20261028.0489.1
+2026-11-03T12:41:17.2627790Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20261028.0489/images/macos/macos-15-arm64-Readme.md
+2026-11-03T12:41:17.2628790Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20261028.0489
+2026-11-03T12:41:17.2629530Z ##[endgroup]
+2026-11-03T12:41:17.2630340Z ##[group]GITHUB_TOKEN Permissions
+2026-11-03T12:41:17.2631910Z Contents: read
+2026-11-03T12:41:17.2632370Z Metadata: read
+2026-11-03T12:41:17.2632720Z ##[endgroup]
+2026-11-03T12:41:17.2634340Z Secret source: Actions
+2026-11-03T12:41:17.2634860Z Cache mode: write
+2026-11-03T12:41:17.2635390Z Prepare workflow directory
+2026-11-03T12:41:17.2902020Z Prepare all required actions
+2026-11-03T12:41:17.2938060Z Getting action download info
+2026-11-03T12:41:17.4656490Z Download action repository 'actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-03T12:41:17.6736560Z Download action repository 'actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-03T12:41:17.7753460Z Download action repository 'actions/cache@caa296126883cff596d87d8935842f9db880ef25' (SHA:caa296126883cff596d87d8935842f9db880ef25)
+2026-11-03T12:41:17.8490380Z Download action repository 'actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f' (SHA:b7c566a772e6b6bfb58ed0dc250532a479d7789f)
+2026-11-03T12:41:18.0079720Z Complete job name: build (arm64)
+2026-11-03T12:41:18.0542110Z ##[group]Run actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+2026-11-03T12:41:18.0542880Z with:
+2026-11-03T12:41:18.0543230Z   submodules: true
+2026-11-03T12:41:18.0543580Z   fetch-depth: 1
+2026-11-03T12:41:18.0544010Z   persist-credentials: false
+2026-11-03T12:41:18.0544390Z   repository: Yxiansheng1/lawbench
+2026-11-03T12:41:18.0547060Z   token: ***
+2026-11-03T12:41:18.0547400Z   ssh-strict: true
+2026-11-03T12:41:18.0547710Z   ssh-user: git
+2026-11-03T12:41:18.0548000Z   clean: true
+2026-11-03T12:41:18.0548320Z   sparse-checkout-cone-mode: true
+2026-11-03T12:41:18.0548820Z   fetch-tags: false
+2026-11-03T12:41:18.0549150Z   show-progress: true
+2026-11-03T12:41:18.0549570Z   lfs: false
+2026-11-03T12:41:18.0549900Z   set-safe-directory: true
+2026-11-03T12:41:18.0550250Z   allow-unsafe-pr-checkout: false
+2026-11-03T12:41:18.0550740Z env:
+2026-11-03T12:41:18.0551290Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:18.0551870Z ##[endgroup]
+2026-11-03T12:41:18.2034040Z Syncing repository: Yxiansheng1/lawbench
+2026-11-03T12:41:18.2035150Z ##[group]Getting Git version info
+2026-11-03T12:41:18.2035620Z Working directory is '/Users/runner/work/lawbench/lawbench'
+2026-11-03T12:41:18.2036390Z [command]/opt/homebrew/bin/git version
+2026-11-03T12:41:18.2376110Z git version 2.56.0
+2026-11-03T12:41:18.2385240Z ##[endgroup]
+2026-11-03T12:41:18.2391860Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/696bb953-f9d7-4421-8a3a-6c3529b1f9b3/.gitconfig'
+2026-11-03T12:41:18.2399440Z Temporarily overriding HOME='/Users/runner/work/_temp/696bb953-f9d7-4421-8a3a-6c3529b1f9b3' before making global git config changes
+2026-11-03T12:41:18.2401050Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T12:41:18.2403090Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/lawbench/lawbench
+2026-11-03T12:41:18.2516620Z Deleting the contents of '/Users/runner/work/lawbench/lawbench'
+2026-11-03T12:41:18.2518900Z ##[group]Initializing the repository
+2026-11-03T12:41:18.2522500Z [command]/opt/homebrew/bin/git init /Users/runner/work/lawbench/lawbench
+2026-11-03T12:41:18.2793490Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-03T12:41:18.2795350Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-03T12:41:18.2797170Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-03T12:41:18.2798010Z hint: call:
+2026-11-03T12:41:18.2798300Z hint:
+2026-11-03T12:41:18.2798670Z hint: 	git config --global init.defaultBranch <name>
+2026-11-03T12:41:18.2799140Z hint:
+2026-11-03T12:41:18.2799550Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-03T12:41:18.2800170Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-03T12:41:18.2800660Z hint:
+2026-11-03T12:41:18.2801010Z hint: 	git branch -m <name>
+2026-11-03T12:41:18.2801370Z hint:
+2026-11-03T12:41:18.2801800Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-03T12:41:18.2802610Z Initialized empty Git repository in /Users/runner/work/lawbench/lawbench/.git/
+2026-11-03T12:41:18.2803960Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Yxiansheng1/lawbench
+2026-11-03T12:41:18.2882850Z ##[endgroup]
+2026-11-03T12:41:18.2883460Z ##[group]Disabling automatic garbage collection
+2026-11-03T12:41:18.2886020Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-11-03T12:41:18.2943800Z ##[endgroup]
+2026-11-03T12:41:18.2944330Z ##[group]Setting up auth
+2026-11-03T12:41:18.2948230Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:41:18.3006660Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:41:18.3998790Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:41:18.4061480Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:41:18.4978490Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:41:18.5038440Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:41:18.6020590Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T12:41:18.6086500Z ##[endgroup]
+2026-11-03T12:41:18.6087090Z ##[group]Fetching the repository
+2026-11-03T12:41:18.6092580Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f2f0db042089750729c6415b20b5d74e29673d09:refs/remotes/origin/release/1.0.0-macos-20261103
+2026-11-03T12:41:25.5998550Z From https://github.com/Yxiansheng1/lawbench
+2026-11-03T12:41:25.5999990Z  * [new ref]         f2f0db042089750729c6415b20b5d74e29673d09 -> origin/release/1.0.0-macos-20261103
+2026-11-03T12:41:25.6002800Z ##[endgroup]
+2026-11-03T12:41:25.6003810Z ##[group]Determining the checkout info
+2026-11-03T12:41:25.6004860Z ##[endgroup]
+2026-11-03T12:41:25.6008900Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-11-03T12:41:25.6075300Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-03T12:41:25.6124830Z ##[group]Checking out the ref
+2026-11-03T12:41:25.6134740Z [command]/opt/homebrew/bin/git checkout --progress --force -B release/1.0.0-macos-20261103 refs/remotes/origin/release/1.0.0-macos-20261103
+2026-11-03T12:41:26.2858400Z Switched to a new branch 'release/1.0.0-macos-20261103'
+2026-11-03T12:41:26.2860260Z branch 'release/1.0.0-macos-20261103' set up to track 'origin/release/1.0.0-macos-20261103'.
+2026-11-03T12:41:26.2876360Z ##[endgroup]
+2026-11-03T12:41:26.2876790Z ##[group]Setting up auth for fetching submodules
+2026-11-03T12:41:26.2880410Z [command]/opt/homebrew/bin/git config --global http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-03T12:41:26.2937200Z [command]/opt/homebrew/bin/git config --global --unset-all url.https://github.com/.insteadOf
+2026-11-03T12:41:26.2983490Z [command]/opt/homebrew/bin/git config --global --add url.https://github.com/.insteadOf git@github.com:
+2026-11-03T12:41:26.3028890Z [command]/opt/homebrew/bin/git config --global --add url.https://github.com/.insteadOf org-119147486@github.com:
+2026-11-03T12:41:26.3081530Z ##[endgroup]
+2026-11-03T12:41:26.3081920Z ##[group]Fetching submodules
+2026-11-03T12:41:26.3084130Z [command]/opt/homebrew/bin/git submodule sync
+2026-11-03T12:41:26.3804250Z [command]/opt/homebrew/bin/git -c protocol.version=2 submodule update --init --force --depth=1
+2026-11-03T12:41:26.4437930Z Submodule 'dsh' (https://github.com/deepseek-ai/deepseek-harness) registered for path 'dsh'
+2026-11-03T12:41:26.4544150Z Cloning into '/Users/runner/work/lawbench/lawbench/dsh'...
+2026-11-03T12:41:34.9419700Z From https://github.com/deepseek-ai/deepseek-harness
+2026-11-03T12:41:34.9420850Z  * branch              477b4f420553e8a52c2fbccc464d7561b239c443 -> FETCH_HEAD
+2026-11-03T12:41:36.6065090Z Submodule path 'dsh': checked out '477b4f420553e8a52c2fbccc464d7561b239c443'
+2026-11-03T12:41:36.6076310Z [command]/opt/homebrew/bin/git submodule foreach git config --local gc.auto 0
+2026-11-03T12:41:36.6994590Z Entering 'dsh'
+2026-11-03T12:41:36.7099740Z ##[endgroup]
+2026-11-03T12:41:36.7181930Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-11-03T12:41:36.7247030Z f2f0db042089750729c6415b20b5d74e29673d09
+2026-11-03T12:41:36.7255780Z ##[group]Removing auth
+2026-11-03T12:41:36.7259470Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:41:36.7314380Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:41:36.8210100Z Entering 'dsh'
+2026-11-03T12:41:36.8834690Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:41:36.8870730Z http.https://github.com/.extraheader
+2026-11-03T12:41:36.8875620Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-03T12:41:36.8877170Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:41:37.0176840Z Entering 'dsh'
+2026-11-03T12:41:37.0979550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:41:37.1282670Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:41:37.2482660Z Entering 'dsh'
+2026-11-03T12:41:37.2745300Z file:/Users/runner/work/lawbench/lawbench/.git/modules/dsh/config	remote.origin.url
+2026-11-03T12:41:37.2880640Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/lawbench/lawbench/.git/modules/dsh/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:41:37.2976800Z ##[endgroup]
+2026-11-03T12:41:37.3187810Z ##[group]Run mkdir -p packaging/mac/tokenizer
+2026-11-03T12:41:37.3188200Z [36;1mmkdir -p packaging/mac/tokenizer[0m
+2026-11-03T12:41:37.3189180Z [36;1m# Only a successful query whose asset list lacks tokenizer.json falls back to a smoke build; any other error[0m
+2026-11-03T12:41:37.3189640Z [36;1m# (network, permission, no published release assets-v1) fails the step (review P3)[0m
+2026-11-03T12:41:37.3190080Z [36;1mnames="$(gh release view assets-v1 --repo "Yxiansheng1/lawbench" --json assets --jq '.assets[].name')"[0m
+2026-11-03T12:41:37.3190450Z [36;1mif printf '%s\n' "$names" | grep -qx tokenizer.json; then[0m
+2026-11-03T12:41:37.3190860Z [36;1m  gh release download assets-v1 --repo "Yxiansheng1/lawbench" -p tokenizer.json -D packaging/mac/tokenizer --clobber[0m
+2026-11-03T12:41:37.3191390Z [36;1m  echo "$TOKENIZER_SHA256  packaging/mac/tokenizer/tokenizer.json" | shasum -a 256 -c -[0m
+2026-11-03T12:41:37.3191740Z [36;1m  echo "included=yes" >> "$GITHUB_OUTPUT"[0m
+2026-11-03T12:41:37.3191920Z [36;1melse[0m
+2026-11-03T12:41:37.3192160Z [36;1m  echo "assets-v1/tokenizer.json not found: smoke build without tokenizer"[0m
+2026-11-03T12:41:37.3192560Z [36;1m  echo "included=no" >> "$GITHUB_OUTPUT"[0m
+2026-11-03T12:41:37.3192760Z [36;1mfi[0m
+2026-11-03T12:41:37.3231060Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-03T12:41:37.3231310Z env:
+2026-11-03T12:41:37.3231590Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:37.3234310Z   GH_TOKEN: ***
+2026-11-03T12:41:37.3234510Z ##[endgroup]
+2026-11-03T12:41:39.2051380Z packaging/mac/tokenizer/tokenizer.json: OK
+2026-11-03T12:41:39.2166440Z ##[group]Run actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+2026-11-03T12:41:39.2166780Z with:
+2026-11-03T12:41:39.2166920Z   node-version: 24.21.0
+2026-11-03T12:41:39.2167070Z   always-auth: false
+2026-11-03T12:41:39.2167230Z   check-latest: false
+2026-11-03T12:41:39.2169000Z   token: ***
+2026-11-03T12:41:39.2169130Z   package-manager-cache: true
+2026-11-03T12:41:39.2169280Z env:
+2026-11-03T12:41:39.2169580Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:39.2169920Z ##[endgroup]
+2026-11-03T12:41:39.3482790Z Attempting to download 24.21.0...
+2026-11-03T12:41:39.3570080Z (node:1498) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-03T12:41:39.3570690Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-03T12:41:40.2993930Z Acquiring 24.21.0 - arm64 from https://github.com/actions/node-versions/releases/download/24.21.0-34304089047/node-24.21.0-darwin-arm64.tar.gz
+2026-11-03T12:41:41.0552840Z Extracting ...
+2026-11-03T12:41:41.0696140Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/f1e46ec5-f00e-43d1-8dd9-873ec1c598b3 -f /Users/runner/work/_temp/4cd72464-d6ae-432d-a7df-3aa640562433
+2026-11-03T12:41:42.0117590Z Adding to the cache ...
+2026-11-03T12:41:43.7536740Z ##[group]Environment details
+2026-11-03T12:41:44.0052170Z node: v24.21.0
+2026-11-03T12:41:44.0052410Z npm: 11.19.0
+2026-11-03T12:41:44.0052670Z yarn: 1.22.22
+2026-11-03T12:41:44.0053030Z ##[endgroup]
+2026-11-03T12:41:44.0119700Z ##[group]Run corepack enable
+2026-11-03T12:41:44.0119880Z [36;1mcorepack enable[0m
+2026-11-03T12:41:44.0151280Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-03T12:41:44.0151510Z env:
+2026-11-03T12:41:44.0151740Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:44.0152030Z ##[endgroup]
+2026-11-03T12:41:44.1889260Z ##[group]Run actions/cache@caa296126883cff596d87d8935842f9db880ef25
+2026-11-03T12:41:44.1889710Z with:
+2026-11-03T12:41:44.1890150Z   path: ~/Library/pnpm/store
+~/Library/Caches/electron
+~/Library/Caches/electron-builder
+dsh/apps/desktop/.desktop-build/downloads
+packaging/mac/cache
+
+2026-11-03T12:41:44.1890750Z   key: mac-build-arm64-fb5bc864ac9c68f7877463220fe7b02d0662acefc28c224a653bbbdc4a133465
+2026-11-03T12:41:44.1898910Z   restore-keys: mac-build-arm64-
+2026-11-03T12:41:44.1899400Z   enableCrossOsArchive: false
+2026-11-03T12:41:44.1899610Z   fail-on-cache-miss: false
+2026-11-03T12:41:44.1899810Z   lookup-only: false
+2026-11-03T12:41:44.1899980Z   save-always: false
+2026-11-03T12:41:44.1900140Z env:
+2026-11-03T12:41:44.1900380Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:44.1900660Z ##[endgroup]
+2026-11-03T12:41:44.3635680Z Cache not found for input keys: mac-build-arm64-fb5bc864ac9c68f7877463220fe7b02d0662acefc28c224a653bbbdc4a133465, mac-build-arm64-
+2026-11-03T12:41:44.3671060Z ##[group]Run bash packaging/mac/check-lock.sh
+2026-11-03T12:41:44.3671310Z [36;1mbash packaging/mac/check-lock.sh[0m
+2026-11-03T12:41:44.3707100Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-03T12:41:44.3707310Z env:
+2026-11-03T12:41:44.3707540Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:44.3707820Z ##[endgroup]
+2026-11-03T12:41:44.4132510Z check-lock: ok   arm64 python: version, url, sha256 present
+2026-11-03T12:41:44.4151470Z check-lock: ok   arm64 python: download is for arm64 (cpython-3.12.14%2B20260901-aarch64-apple-darwin-install_only_stripped.tar.gz)
+2026-11-03T12:41:44.4260570Z check-lock: ok   arm64 libreoffice: version, url, sha256 present
+2026-11-03T12:41:44.4283590Z check-lock: ok   arm64 libreoffice: download is for arm64 (LibreOffice_26.8.0_MacOS_aarch64.dmg)
+2026-11-03T12:41:44.4389630Z check-lock: ok   arm64 pandoc: version, url, sha256 present
+2026-11-03T12:41:44.4407630Z check-lock: ok   arm64 pandoc: download is for arm64 (pandoc-3.11-arm64-macOS.zip)
+2026-11-03T12:41:44.4510040Z check-lock: ok   arm64 pandoc-copying: version, url, sha256 present
+2026-11-03T12:41:44.4614710Z check-lock: ok   arm64 pandoc-copyright: version, url, sha256 present
+2026-11-03T12:41:44.4710470Z check-lock: ok   x64 python: version, url, sha256 present
+2026-11-03T12:41:44.4729560Z check-lock: ok   x64 python: download is for x64 (cpython-3.12.14%2B20260901-x86_64-apple-darwin-install_only_stripped.tar.gz)
+2026-11-03T12:41:44.4830100Z check-lock: ok   x64 libreoffice: version, url, sha256 present
+2026-11-03T12:41:44.4849340Z check-lock: ok   x64 libreoffice: download is for x64 (LibreOffice_26.8.0_MacOS_x86-64.dmg)
+2026-11-03T12:41:44.4946950Z check-lock: ok   x64 pandoc: version, url, sha256 present
+2026-11-03T12:41:44.4964410Z check-lock: ok   x64 pandoc: download is for x64 (pandoc-3.11-x86_64-macOS.zip)
+2026-11-03T12:41:44.5060780Z check-lock: ok   x64 pandoc-copying: version, url, sha256 present
+2026-11-03T12:41:44.5161660Z check-lock: ok   x64 pandoc-copyright: version, url, sha256 present
+2026-11-03T12:41:44.5236640Z check-lock: ok   python: arm64 and x64 differ
+2026-11-03T12:41:44.5283970Z check-lock: ok   libreoffice: arm64 and x64 differ
+2026-11-03T12:41:44.5431300Z check-lock: ok   pandoc: arm64 and x64 differ
+2026-11-03T12:41:44.5631720Z check-lock: ok   pandoc-copying: shared by both
+2026-11-03T12:41:44.5770780Z check-lock: ok   pandoc-copyright: shared by both
+2026-11-03T12:41:44.5872210Z check-lock: all ok
+2026-11-03T12:41:44.6016240Z ##[group]Run mkdir -p packaging/mac/out
+2026-11-03T12:41:44.6016520Z [36;1mmkdir -p packaging/mac/out[0m
+2026-11-03T12:41:44.6016740Z [36;1mif [ "yes" = yes ]; then[0m
+2026-11-03T12:41:44.6017100Z [36;1m  export LAWBENCH_TOKENIZER="$PWD/packaging/mac/tokenizer/tokenizer.json"[0m
+2026-11-03T12:41:44.6017430Z [36;1melse[0m
+2026-11-03T12:41:44.6017620Z [36;1m  export LAWBENCH_ALLOW_NO_TOKENIZER=1[0m
+2026-11-03T12:41:44.6017840Z [36;1mfi[0m
+2026-11-03T12:41:44.6018110Z [36;1mbash packaging/mac/build.sh 2>&1 | tee packaging/mac/out/build-log.txt[0m
+2026-11-03T12:41:44.6018510Z [36;1mtest "${PIPESTATUS[0]}" -eq 0[0m
+2026-11-03T12:41:44.6018810Z [36;1m# the build ran for this runner's architecture: the dmg name must say so (T42)[0m
+2026-11-03T12:41:44.6019200Z [36;1mls packaging/mac/out/*-mac-arm64*.dmg[0m
+2026-11-03T12:41:44.6050220Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-03T12:41:44.6050450Z env:
+2026-11-03T12:41:44.6050950Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:41:44.6051260Z ##[endgroup]
+2026-11-03T12:41:44.6418700Z [build-mac] == preflight (12:41:44)
+2026-11-03T12:41:44.6954840Z [build-mac] preflight: macOS 15.8.2 arm64 (target arm64), node v24.21.0, version 1.0.0, commit f2f0db0
+2026-11-03T12:41:44.6955490Z [build-mac] == preflight done in 0 s
+2026-11-03T12:41:44.6978230Z [build-mac] == dsh (12:41:44)
+2026-11-03T12:41:45.3369870Z [build-mac] dsh: patches applied (P-30 )
+2026-11-03T12:41:46.2462570Z native/system/packages/darwin-x64        | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["darwin"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+2026-11-03T12:41:46.2463930Z native/system/packages/linux-arm64       | [WARN] Unsupported platform: wanted: {"cpu":["arm64"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+2026-11-03T12:41:46.2465360Z native/system/packages/linux-x64         | [WARN] Unsupported platform: wanted: {"cpu":["x64"],"os":["linux"],"libc":["any"]} (current: {"os":"darwin","cpu":"arm64","libc":"unknown"})
+2026-11-03T12:41:46.3356240Z Scope: all 335 workspace projects
+2026-11-03T12:41:46.3545800Z [WARN] There are cyclic workspace dependencies: /Users/runner/work/lawbench/lawbench/dsh/apps/cli, /Users/runner/work/lawbench/lawbench/dsh/packages/sdk/client; /Users/runner/work/lawbench/lawbench/dsh/apps/web, /Users/runner/work/lawbench/lawbench/dsh/packages/test-support/client-runtime, /Users/runner/work/lawbench/lawbench/dsh/packages/bundle/web-app; /Users/runner/work/lawbench/lawbench/dsh/packages/api/remotes, /Users/runner/work/lawbench/lawbench/dsh/packages/client/ui-plugin-manager, /Users/runner/work/lawbench/lawbench/dsh/packages/client/ui-sidebar, /Users/runner/work/lawbench/lawbench/dsh/packages/client/ui-workspace, /Users/runner/work/lawbench/lawbench/dsh/packages/client/ui-conversation; /Users/runner/work/lawbench/lawbench/dsh/packages/api/session-controller, /Users/runner/work/lawbench/lawbench/dsh/packages/subagent/subagent, /Users/runner/work/lawbench/lawbench/dsh/packages/schedule/schedule; /Users/runner/work/lawbench/lawbench/dsh/packages/compaction/compaction-basic, /Users/runner/work/lawbench/lawbench/dsh/packages/compaction/compaction-image-offload; /Users/runner/work/lawbench/lawbench/dsh/packages/compaction/compaction-tool-result-pruner, /Users/runner/work/lawbench/lawbench/dsh/packages/llm/token-meter, /Users/runner/work/lawbench/lawbench/dsh/packages/llm/llm-retry, /Users/runner/work/lawbench/lawbench/dsh/packages/llm/llm-deepseek, /Users/runner/work/lawbench/lawbench/dsh/packages/llm/plugin-package-inventory-deepseek, /Users/runner/work/lawbench/lawbench/dsh/packages/preset/agent-preset-registry, /Users/runner/work/lawbench/lawbench/dsh/packages/preset/agent-preset; /Users/runner/work/lawbench/lawbench/dsh/packages/core/agent-default-model, /Users/runner/work/lawbench/lawbench/dsh/packages/settings/settings; /Users/runner/work/lawbench/lawbench/dsh/packages/sandbox/sandbox-local, /Users/runner/work/lawbench/lawbench/dsh/packages/sandbox/sandbox-windows-acl; /Users/runner/work/lawbench/lawbench/dsh/packages/ssh/fs-ssh, /Users/runner/work/lawbench/lawbench/dsh/packages/ssh/ssh; /Users/runner/work/lawbench/lawbench/dsh/packages/subagent/subagent-spawn-in-process, /Users/runner/work/lawbench/lawbench/dsh/packages/subagent/tool-subagent; /Users/runner/work/lawbench/lawbench/dsh/vendor/cordis, /Users/runner/work/lawbench/lawbench/dsh/vendor/include
+2026-11-03T12:41:46.4861930Z ? Verifying lockfile against supply-chain policies (1680 entries)...
+2026-11-03T12:41:46.5753220Z Lockfile is up to date, resolution step is skipped
+2026-11-03T12:41:46.6471010Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-11-03T12:41:46.6942240Z Packages: +1387
+2026-11-03T12:41:46.6959080Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-11-03T12:41:47.6498940Z Progress: resolved 1387, reused 0, downloaded 117, added 8
+2026-11-03T12:41:48.6742830Z Progress: resolved 1387, reused 0, downloaded 352, added 25
+2026-11-03T12:41:49.6549850Z Progress: resolved 1387, reused 0, downloaded 568, added 41
+2026-11-03T12:41:50.6627780Z Progress: resolved 1387, reused 0, downloaded 839, added 65
+2026-11-03T12:41:51.2112140Z ✓ Lockfile passes supply-chain policies (1680 entries in 4.7s)
+2026-11-03T12:41:51.6594760Z Progress: resolved 1387, reused 0, downloaded 1003, added 77
+2026-11-03T12:41:52.6698300Z Progress: resolved 1387, reused 0, downloaded 1109, added 83
+2026-11-03T12:41:53.6799240Z Progress: resolved 1387, reused 0, downloaded 1243, added 93
+2026-11-03T12:41:54.6743500Z Progress: resolved 1387, reused 0, downloaded 1304, added 97
+2026-11-03T12:41:55.6815790Z Progress: resolved 1387, reused 0, downloaded 1375, added 105
+2026-11-03T12:42:03.3481500Z Progress: resolved 1387, reused 0, downloaded 1376, added 105
+2026-11-03T12:42:04.9861630Z Progress: resolved 1387, reused 0, downloaded 1377, added 105
+2026-11-03T12:42:07.2328350Z Progress: resolved 1387, reused 0, downloaded 1379, added 185
+2026-11-03T12:42:07.2352460Z Progress: resolved 1387, reused 0, downloaded 1379, added 194
+2026-11-03T12:42:07.9936540Z Progress: resolved 1387, reused 0, downloaded 1381, added 379
+2026-11-03T12:42:08.9984880Z Progress: resolved 1387, reused 0, downloaded 1382, added 604
+2026-11-03T12:42:10.0010250Z Progress: resolved 1387, reused 0, downloaded 1382, added 1025
+2026-11-03T12:42:10.9975040Z Progress: resolved 1387, reused 0, downloaded 1382, added 1188
+2026-11-03T12:42:12.0032750Z Progress: resolved 1387, reused 0, downloaded 1382, added 1355
+2026-11-03T12:42:12.6425860Z Progress: resolved 1387, reused 0, downloaded 1382, added 1387, done
+2026-11-03T12:42:13.6196430Z .../.pnpm/koffi@3.1.1/node_modules/koffi install$ node ./cnoke.cjs -P . -D src/koffi --prebuild --release
+2026-11-03T12:42:13.6374420Z .../esbuild@0.25.12/node_modules/esbuild postinstall$ node install.js
+2026-11-03T12:42:13.6410330Z .../lefthook@2.1.9/node_modules/lefthook postinstall$ node postinstall.js
+2026-11-03T12:42:13.6497220Z .../esbuild@0.28.1/node_modules/esbuild postinstall$ node install.js
+2026-11-03T12:42:13.7612860Z .../lefthook@2.1.9/node_modules/lefthook postinstall: Done
+2026-11-03T12:42:13.7656480Z .../.pnpm/koffi@3.1.1/node_modules/koffi install: Done
+2026-11-03T12:42:13.8082930Z .../node_modules/node-pty install$ node scripts/prebuild.js || node-gyp rebuild
+2026-11-03T12:42:13.8121360Z .../esbuild@0.25.12/node_modules/esbuild postinstall: Done
+2026-11-03T12:42:13.8326160Z .../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js
+2026-11-03T12:42:13.8501160Z .../esbuild@0.28.1/node_modules/esbuild postinstall: Done
+2026-11-03T12:42:13.8762140Z .../node_modules/node-pty install: [32m> Checking prebuilds...[0m
+2026-11-03T12:42:13.8772590Z .../node_modules/node-pty install: Done
+2026-11-03T12:42:13.8773440Z .../node_modules/node-pty postinstall$ node scripts/post-install.js
+2026-11-03T12:42:13.9312630Z .../node_modules/node-pty postinstall: [32m> Cleaning release folder...[0m
+2026-11-03T12:42:13.9314120Z .../node_modules/node-pty postinstall: [32m> Moving conpty.dll...[0m
+2026-11-03T12:42:13.9314750Z .../node_modules/node-pty postinstall:   SKIPPED (not Windows)
+2026-11-03T12:42:13.9324710Z .../node_modules/node-pty postinstall: Done
+2026-11-03T12:42:13.9329640Z .../esbuild@0.21.5/node_modules/esbuild postinstall: Done
+2026-11-03T12:42:14.3517390Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/apps/desktop-host/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/apps/cli/lib/bin.js'
+2026-11-03T12:42:14.7651810Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/packages/sdk/client/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/apps/cli/lib/bin.js'
+2026-11-03T12:42:14.9016130Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/python/sdk-runtime/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/apps/cli/lib/bin.js'
+2026-11-03T12:42:15.1419040Z 
+2026-11-03T12:42:15.1420050Z devDependencies:
+2026-11-03T12:42:15.1420760Z + @deepseek-ai/dsh-agent 0.1.7-rc.2 <- packages/core/agent
+2026-11-03T12:42:15.1421330Z + @deepseek-ai/dsh-browser-use 0.1.7-rc.2 <- packages/browser-use/browser-use
+2026-11-03T12:42:15.1421920Z + @deepseek-ai/dsh-computer-use 0.1.7-rc.2 <- packages/computer-use/computer-use
+2026-11-03T12:42:15.1422720Z + @deepseek-ai/dsh-experimental-browser-use-chrome-devtools-mcp 0.1.7-rc.2 <- packages/experimental/browser-use-chrome-devtools-mcp
+2026-11-03T12:42:15.1423610Z + @deepseek-ai/dsh-experimental-browser-use-playwright-mcp 0.1.7-rc.2 <- packages/experimental/browser-use-playwright-mcp
+2026-11-03T12:42:15.1424430Z + @deepseek-ai/dsh-experimental-browser-use-runtime 0.1.7-rc.2 <- packages/experimental/browser-use-runtime
+2026-11-03T12:42:15.1425380Z + @deepseek-ai/dsh-experimental-browser-use-stagehand-native 0.1.7-rc.2 <- packages/experimental/browser-use-stagehand-native
+2026-11-03T12:42:15.1426340Z + @deepseek-ai/dsh-experimental-computer-use-cua-driver-mcp 0.1.7-rc.2 <- packages/experimental/computer-use-cua-driver-mcp
+2026-11-03T12:42:15.1427360Z + @deepseek-ai/dsh-experimental-computer-use-cua-driver-native 0.1.7-rc.2 <- packages/experimental/computer-use-cua-driver-native
+2026-11-03T12:42:15.1428270Z + @deepseek-ai/dsh-llm-replay 0.1.7-rc.2 <- packages/test-support/llm-replay
+2026-11-03T12:42:15.1428830Z + @deepseek-ai/dsh-mcp-client 0.1.7-rc.2 <- packages/mcp/mcp-client
+2026-11-03T12:42:15.1429440Z + @deepseek-ai/dsh-skill-office 0.1.7-rc.2 <- packages/skill/skill-office
+2026-11-03T12:42:15.1430160Z + @deepseek-ai/dsh-tool-session-query 0.1.7-rc.2 <- packages/session-query/tool-session-query
+2026-11-03T12:42:15.1430970Z + @deepseek-ai/dsh-tool-workspace-dependencies 0.1.7-rc.2 <- packages/skill/tool-workspace-dependencies
+2026-11-03T12:42:15.1431590Z + @deepseek-ai/dsh-web-fetch-http 0.1.7-rc.2 <- packages/web/web-fetch-http
+2026-11-03T12:42:15.1432070Z + @stylistic/eslint-plugin 5.10.0
+2026-11-03T12:42:15.1432300Z + @testing-library/dom 10.4.2
+2026-11-03T12:42:15.1432580Z + @testing-library/react 16.3.2
+2026-11-03T12:42:15.1432850Z + @types/js-yaml 4.0.9
+2026-11-03T12:42:15.1433540Z + @types/jsdom 28.0.3
+2026-11-03T12:42:15.1433840Z + @types/mdast 4.0.4
+2026-11-03T12:42:15.1434110Z + @types/node 22.20.0
+2026-11-03T12:42:15.1434380Z + @types/spdx-expression-parse 4.0.0
+2026-11-03T12:42:15.1434690Z + @vitest/coverage-v8 4.1.8
+2026-11-03T12:42:15.1435060Z + @yao-pkg/pkg 6.21.0
+2026-11-03T12:42:15.1435410Z + @yarnpkg/cli-dist 4.17.1
+2026-11-03T12:42:15.1435630Z + eslint-plugin-sonarjs 4.1.0
+2026-11-03T12:42:15.1435900Z + execa 10.0.0
+2026-11-03T12:42:15.1436190Z + extract-zip 2.0.1
+2026-11-03T12:42:15.1436450Z + fast-check 4.8.0
+2026-11-03T12:42:15.1436630Z + fflate 0.8.3
+2026-11-03T12:42:15.1436860Z + istanbul-lib-report 3.0.1
+2026-11-03T12:42:15.1437020Z + js-yaml 4.2.0
+2026-11-03T12:42:15.1437180Z + jscpd 5.0.12
+2026-11-03T12:42:15.1437330Z + jsdom 29.1.1
+2026-11-03T12:42:15.1438080Z + lefthook 2.1.9
+2026-11-03T12:42:15.1438270Z + lightningcss 1.32.0
+2026-11-03T12:42:15.1438490Z + mdast-util-from-markdown 2.0.3
+2026-11-03T12:42:15.1438750Z + mdast-util-gfm 3.1.0
+2026-11-03T12:42:15.1438990Z + mermaid 11.16.0
+2026-11-03T12:42:15.1439180Z + micromark-extension-gfm 3.0.0
+2026-11-03T12:42:15.1439360Z + oxlint 1.76.0
+2026-11-03T12:42:15.1439520Z + oxlint-tsgolint 7.0.2001
+2026-11-03T12:42:15.1439720Z + pnpm 11.7.0
+2026-11-03T12:42:15.1439900Z + publint 0.3.21
+2026-11-03T12:42:15.1440140Z + smol-toml 1.7.1
+2026-11-03T12:42:15.1440350Z + spdx-expression-parse 5.0.0
+2026-11-03T12:42:15.1440550Z + tar 7.5.22
+2026-11-03T12:42:15.1440710Z + tsdown 0.22.2
+2026-11-03T12:42:15.1440870Z + tsx 4.22.4
+2026-11-03T12:42:15.1441040Z + typescript 6.0.3
+2026-11-03T12:42:15.1441200Z + vite-tsconfig-paths 6.1.1
+2026-11-03T12:42:15.1441360Z + vitest 4.1.8
+2026-11-03T12:42:15.1441460Z 
+2026-11-03T12:42:15.2680650Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/packages/sdk/client/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/packages/sdk/client/node_modules/@deepseek-ai/dsh/lib/bin.js'
+2026-11-03T12:42:15.5890840Z packages/subprocess/subprocess-local postinstall$ node scripts/ensure-spawn-helper.mjs
+2026-11-03T12:42:15.6256160Z packages/subprocess/subprocess-local postinstall: Done
+2026-11-03T12:42:15.6750260Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/apps/desktop-host/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/apps/desktop-host/node_modules/@deepseek-ai/dsh/lib/bin.js'
+2026-11-03T12:42:15.9262250Z . postinstall$ node scripts/install-lefthook.mjs
+2026-11-03T12:42:15.9667680Z . postinstall: Done
+2026-11-03T12:42:15.9973420Z [WARN] Failed to create bin at /Users/runner/work/lawbench/lawbench/dsh/python/sdk-runtime/node_modules/.bin/dsh. ENOENT: no such file or directory, open '/Users/runner/work/lawbench/lawbench/dsh/python/sdk-runtime/node_modules/@deepseek-ai/dsh/lib/bin.js'
+2026-11-03T12:42:16.0366600Z Done in 30.1s using pnpm v11.7.0
+2026-11-03T12:42:31.3838270Z $ tsx scripts/build.ts
+2026-11-03T12:42:32.0159350Z $ tsx native/system/scripts/build.ts --host-addon-only
+2026-11-03T12:42:38.1157470Z build: built darwin-arm64/bin/system.node
+2026-11-03T12:42:38.4350930Z $ pnpm run build:lib:host && pnpm run build:lib:client
+2026-11-03T12:42:38.9520540Z $ node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc -b tsconfig.host.json && tsdown --env.DSH_BUILD_FACE host && pnpm --filter @deepseek-ai/dsh-desktop run bundle
+2026-11-03T12:43:57.7100020Z ##[error]packages/api/gateway/src/client/index.ts(13,8): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/index.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7156360Z   The file is in the program because:
+2026-11-03T12:43:57.7157990Z     Imported via '@deepseek-ai/dsh-client-connection/client' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7159240Z     Imported via '@deepseek-ai/dsh-client-connection/client' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/remote-events.ts'
+2026-11-03T12:43:57.7160670Z     Imported via '@deepseek-ai/dsh-client-connection/client' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/remote-stream.ts'
+2026-11-03T12:43:57.7162070Z     Imported via '@deepseek-ai/dsh-client-connection/client' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts'
+2026-11-03T12:43:57.7172230Z ##[error]packages/api/gateway/src/client/index.ts(30,8): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/stream-client.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7174240Z   The file is in the program because:
+2026-11-03T12:43:57.7174810Z     Imported via './stream-client.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7175650Z     Imported via './stream-client.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/remote-stream.ts'
+2026-11-03T12:43:57.7176790Z     Imported via './stream-client.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7177750Z     Imported via './stream-client.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/journal-stream.ts'
+2026-11-03T12:43:57.7180520Z ##[error]packages/api/gateway/src/client/index.ts(31,36): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/remote-events.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7184390Z ##[error]packages/api/gateway/src/client/index.ts(35,8): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/remote-stream.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7185750Z   The file is in the program because:
+2026-11-03T12:43:57.7186290Z     Imported via './remote-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7187160Z     Imported via './remote-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/journal-stream.ts'
+2026-11-03T12:43:57.7187960Z     Imported via './remote-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7188760Z     Imported via './remote-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7189550Z     Imported via './remote-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/snapshot-stream.ts'
+2026-11-03T12:43:57.7192110Z ##[error]packages/api/gateway/src/client/index.ts(38,37): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/journal-stream.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7193690Z   The file is in the program because:
+2026-11-03T12:43:57.7194400Z     Imported via './journal-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7195210Z     Imported via './journal-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7197720Z ##[error]packages/api/gateway/src/client/index.ts(47,38): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/snapshot-stream.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7199180Z   The file is in the program because:
+2026-11-03T12:43:57.7199790Z     Imported via './snapshot-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7200650Z     Imported via './snapshot-stream.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts'
+2026-11-03T12:43:57.7202930Z ##[error]packages/api/gateway/src/client/index.ts(156,24): error TS2352: Conversion of type 'HostConnectionHandle | undefined' to type 'ConnectionHandle' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+2026-11-03T12:43:57.7204710Z   Type 'HostConnectionHandle' is missing the following properties from type 'ConnectionHandle': isLoopback, generation, state, reconnect, and 2 more.
+2026-11-03T12:43:57.7220910Z ##[error]packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts(18,38): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/api/gateway/src/client/index.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7224410Z ##[error]packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts(230,5): error TS2307: Cannot find module 'D:/Lawbeach/lawbench-A/docs/plan/evidence/T31/PrivateRuntimeBuild-20261026-043910/private-output-20261026-215235/profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/index.js' or its corresponding type declarations.
+2026-11-03T12:43:57.7228030Z ##[error]packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts(233,5): error TS2307: Cannot find module 'D:/Lawbeach/lawbench-A/docs/plan/evidence/T31/PrivateRuntimeBuild-20261026-043910/private-output-20261026-215235/profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.host.js' or its corresponding type declarations.
+2026-11-03T12:43:57.7231600Z ##[error]packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts(236,5): error TS2307: Cannot find module 'D:/Lawbeach/lawbench-A/docs/plan/evidence/T31/PrivateRuntimeBuild-20261026-043910/private-output-20261026-215235/profile-node_modules/@deepseek-ai/dsh-api-session-controller/lib/typert.remote-client.js' or its corresponding type declarations.
+2026-11-03T12:43:57.7234850Z ##[error]packages/api/session-controller/tests/t31-compiled-session-gateway.finite.ts(549,24): error TS2352: Conversion of type 'HostConnectionHandle | undefined' to type 'ConnectionHandle' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+2026-11-03T12:43:57.7236600Z   Type 'HostConnectionHandle' is missing the following properties from type 'ConnectionHandle': isLoopback, generation, state, reconnect, and 2 more.
+2026-11-03T12:43:57.7238980Z ##[error]packages/client/connection/src/client/index.ts(10,8): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/connection.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7240390Z   The file is in the program because:
+2026-11-03T12:43:57.7240930Z     Imported via './connection.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/index.ts'
+2026-11-03T12:43:57.7241690Z     Imported via './connection.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/index.ts'
+2026-11-03T12:43:57.7244040Z ##[error]packages/client/connection/src/client/index.ts(33,8): error TS6307: File '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/api.ts' is not listed within the file list of project '/Users/runner/work/lawbench/lawbench/dsh/tsconfig.host.json'. Projects must list all files or use an 'include' pattern.
+2026-11-03T12:43:57.7245590Z   The file is in the program because:
+2026-11-03T12:43:57.7246110Z     Imported via './api.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/index.ts'
+2026-11-03T12:43:57.7246800Z     Imported via './api.ts' from file '/Users/runner/work/lawbench/lawbench/dsh/packages/client/connection/src/client/index.ts'
+2026-11-03T12:43:57.7248800Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(10,38): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/tests/configuration-fixture.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7250560Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(73,51): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7252050Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(96,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7253400Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(103,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7254750Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(130,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7256350Z ##[error]packages/settings/settings/tests/t34-provider-composition-20261030-110957.spec.ts(137,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7258500Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(7,26): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/llm/llm-pi-ai/t34-source-candidate-20261030-112739/index.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7260900Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(10,38): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/tests/configuration-fixture.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7262580Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(73,51): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7263970Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(96,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7265370Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(103,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7266760Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(130,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7268120Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(137,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7269470Z ##[error]packages/settings/settings/tests/t34-provider-descriptor-state-20261030-115132.spec.ts(164,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7271610Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(7,26): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/llm/llm-pi-ai/t34-source-candidate-20261030-112739/index.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7274150Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(10,38): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/tests/configuration-fixture.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7275990Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(73,51): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7277340Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(96,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7278930Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(103,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7280390Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(130,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7281800Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(137,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7283310Z ##[error]packages/settings/settings/tests/t34-provider-priority-candidate-20261030-112739.spec.ts(164,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7285710Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(7,26): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/llm/llm-pi-ai/t34-source-candidate-20261030-112739/index.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7288600Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(10,38): error TS2307: Cannot find module 'file:///D:/Lawbeach/lawbench-A/dsh/packages/settings/settings/tests/configuration-fixture.ts' or its corresponding type declarations.
+2026-11-03T12:43:57.7290500Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(73,51): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7292110Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(96,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7293790Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(103,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7295350Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(130,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.7297030Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(137,58): error TS7006: Parameter 'value' implicitly has an 'any' type.
+2026-11-03T12:43:57.7298740Z ##[error]packages/settings/settings/tests/t34-provider-priority-value-20261030-113809.spec.ts(164,56): error TS7006: Parameter 'row' implicitly has an 'any' type.
+2026-11-03T12:43:57.8314500Z [ELIFECYCLE] Command failed with exit code 2.
+2026-11-03T12:43:57.8761920Z [ELIFECYCLE] Command failed with exit code 2.
+2026-11-03T12:43:57.8998200Z /Users/runner/work/lawbench/lawbench/dsh/scripts/build.ts:27
+2026-11-03T12:43:57.8999040Z     throw new Error(`build: ${script} exited with ${String(result.status ?? result.signal)}`)
+2026-11-03T12:43:57.8999400Z           ^
+2026-11-03T12:43:57.8999480Z 
+2026-11-03T12:43:57.8999630Z Error: build: build:lib exited with 2
+2026-11-03T12:43:57.9000040Z     at runScript (/Users/runner/work/lawbench/lawbench/dsh/scripts/build.ts:27:11)
+2026-11-03T12:43:57.9000590Z     at main (/Users/runner/work/lawbench/lawbench/dsh/scripts/build.ts:45:3)
+2026-11-03T12:43:57.9001040Z     at <anonymous> (/Users/runner/work/lawbench/lawbench/dsh/scripts/build.ts:53:23)
+2026-11-03T12:43:57.9001480Z     at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+2026-11-03T12:43:57.9001800Z     at async node:internal/modules/esm/loader:647:26
+2026-11-03T12:43:57.9002190Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+2026-11-03T12:43:57.9002480Z 
+2026-11-03T12:43:57.9002550Z Node.js v24.21.0
+2026-11-03T12:43:57.9330010Z [ELIFECYCLE] Command failed with exit code 1.
+2026-11-03T12:43:57.9585570Z ##[error]Process completed with exit code 1.
+2026-11-03T12:43:57.9936550Z ##[group]Run actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+2026-11-03T12:43:57.9936870Z with:
+2026-11-03T12:43:57.9937030Z   name: mac-build-logs-19-arm64
+2026-11-03T12:43:57.9937240Z   retention-days: 14
+2026-11-03T12:43:57.9937400Z   include-hidden-files: true
+2026-11-03T12:43:57.9937770Z   path: packaging/mac/out/*.txt
+packaging/mac/out/*.sha256
+dsh/apps/desktop/.desktop-build/packaging-runs/**/events.jsonl
+
+2026-11-03T12:43:57.9938150Z   if-no-files-found: warn
+2026-11-03T12:43:57.9938300Z   compression-level: 6
+2026-11-03T12:43:57.9938430Z   overwrite: false
+2026-11-03T12:43:57.9938550Z env:
+2026-11-03T12:43:57.9938830Z   TOKENIZER_SHA256: 87a7830d63fcf43bf241c3c5242e96e62dd3fdc29224ca26fed8ea333db72de4
+2026-11-03T12:43:57.9939180Z ##[endgroup]
+2026-11-03T12:43:58.1460330Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-03T12:43:58.1461370Z The least common ancestor is /Users/runner/work/lawbench/lawbench. This will be the root directory of the artifact
+2026-11-03T12:43:58.1461880Z With the provided path, there will be 2 files uploaded
+2026-11-03T12:43:58.1464750Z Artifact name is valid!
+2026-11-03T12:43:58.1473870Z Root directory input is valid!
+2026-11-03T12:43:58.3178050Z Beginning upload of artifact content to blob storage
+2026-11-03T12:43:58.3689150Z Uploaded bytes 4136
+2026-11-03T12:43:58.3779470Z Finished uploading artifact content to blob storage!
+2026-11-03T12:43:58.3780240Z SHA256 digest of uploaded artifact zip is 8bb1804bada46d83383ca736a2067fcbc077c342050aa6f87d9cea800a373e08
+2026-11-03T12:43:58.3780730Z Finalizing artifact upload
+2026-11-03T12:43:58.8922080Z Artifact mac-build-logs-19-arm64.zip successfully finalized. Artifact ID 13231202172
+2026-11-03T12:43:58.8922790Z Artifact mac-build-logs-19-arm64 has been successfully uploaded! Final size is 4136 bytes. Artifact ID is 13231202172
+2026-11-03T12:43:58.8928870Z Artifact download URL: https://github.com/Yxiansheng1/lawbench/actions/runs/41637800827/artifacts/13231202172
+2026-11-03T12:43:58.9072110Z Post job cleanup.
+2026-11-03T12:43:58.9945950Z [command]/opt/homebrew/bin/git version
+2026-11-03T12:43:59.0024050Z git version 2.56.0
+2026-11-03T12:43:59.0050370Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/74265160-9d5e-4e33-83c7-ea5355ed8a8b/.gitconfig'
+2026-11-03T12:43:59.0051290Z Temporarily overriding HOME='/Users/runner/work/_temp/74265160-9d5e-4e33-83c7-ea5355ed8a8b' before making global git config changes
+2026-11-03T12:43:59.0052090Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-03T12:43:59.0052800Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/lawbench/lawbench
+2026-11-03T12:43:59.0110630Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-03T12:43:59.0156340Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-03T12:43:59.0801240Z Entering 'dsh'
+2026-11-03T12:43:59.1007050Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-03T12:43:59.1057120Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-03T12:43:59.1647980Z Entering 'dsh'
+2026-11-03T12:43:59.1817660Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:43:59.1861100Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-03T12:43:59.2474030Z Entering 'dsh'
+2026-11-03T12:43:59.2540110Z file:/Users/runner/work/lawbench/lawbench/.git/modules/dsh/config	remote.origin.url
+2026-11-03T12:43:59.2599000Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/lawbench/lawbench/.git/modules/dsh/config --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-03T12:43:59.2721450Z Cleaning up orphan processes

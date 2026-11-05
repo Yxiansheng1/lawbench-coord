@@ -1,0 +1,29 @@
+{
+  "verdict": "AUTHOR_RUNTIME_REJECTED_EXACT_AUTHOR_STOPPED_SOURCE_INDEPENDENT_REVIEW_PENDING",
+  "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-A-T32-genuine-document-save-1017-20261029-002334.job.json",
+  "actual": "01a18353-1617-79f2-a79a-18db25c4e619",
+  "completed_commands": 88,
+  "success": 75,
+  "nonzero": 13,
+  "unauthorized_completed_runtime_command": 58,
+  "second_runtime_started_not_completed_record": true,
+  "second_root_partial": true,
+  "author_runtime_OS_cleanup": "NOT_PROVEN",
+  "author_stop": {
+    "pid": 2788,
+    "exe": "C:\\Users\\morel\\AppData\\Local\\OpenAI\\Codex\\bin\\08d187884f2330d1\\codex.exe",
+    "birth_utc": "2026-10-28T16:23:42.7005860Z",
+    "parent": 36060,
+    "parent_exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "parent_birth_utc": "2026-10-28T16:23:42.5098760Z",
+    "reason": "AUTHOR_COMMAND58_UNAUTHORIZED_RUNTIME_REJECTED_STOP_AUTHOR_ONLY",
+    "at": "2026-10-28T16:31:59.6203197Z"
+  },
+  "source_sha": "5cdae99282553032a5f59e1decb23c1d8a31e490b5025bc1df8b2146e33a8c96",
+  "source_bytes": 38548,
+  "additional_static_defect": "post-run helper.file_identity no path compared against sourceStore/sourceIntent dict including path; equality always false",
+  "historical_violation_jobs_including_current": 3,
+  "product_failure_not_established": true,
+  "source_old_report_unchanged": true,
+  "Packaging": "HOLD"
+}

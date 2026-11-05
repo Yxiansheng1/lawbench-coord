@@ -1,0 +1,169 @@
+# T34 禁用外部模型幂等修复证据
+
+## 结论
+
+本卡只修复一个可界定的无效写入：工作台保存“外部模型关闭”时，若真实
+`settings.describe()` 当场证明 `llm-pi-ai` 是唯一的 live 目标命名空间，且其
+`value.providers` 是普通对象、没有自有 `external` 键，则不再发出无意义的
+`unset providers.external`。
+
+修改前触发：禁用分支无条件请求
+`mutate('llm-pi-ai', [{ op: 'unset', path: ['providers', 'external'] }], undefined)`；
+原始实跑在配置本已缺失时仍得到 `settings/rejected`。
+
+修改后触发：禁用分支在现有串行队列和 current-target 门内最多做一次真实
+`describe()`。只有它返回自有 `value`、`namespaces` 恰好一项且为
+`llm-pi-ai`、`applies === 'live'`、命名空间自有 `value`、其自有
+`providers` 为普通对象且没有自有 `external` 键时才零写入。等待返回后再次检查
+Remote、API 和代次；已换代时返回 `null`，不写旧目标，也不发布旧结果。
+
+严格边界：
+
+- 不证明或修复底层 `ConfigEditor.edit` 的写拒绝原因；原写拒绝仍然保留。
+- 不把静态 profile、缓存、`external.enabled === false` 或缺失结果当成 absence。
+- `describe` 缺失、不可调用、拒绝、抛错、`ok: false`、形态不明、命名空间缺失或重复、
+  `applies` 不是 `live`、`providers` 无效时，全部回到原 `unset` 路径。
+- `external` 即使是自有键且值为 `null`/`undefined`，仍执行原 `unset`。
+- 启用分支不调用 `describe`，原 `set` 参数、转发地址与凭据引用不变。
+- 不复制、输出或记录 provider 值；不增加缓存、存储、路由、重试、自动发送或安全旁路。
+
+## 改动范围
+
+最终源码 SHA-256：
+
+| 文件 | bytes | SHA-256 |
+| --- | ---: | --- |
+| `dsh-ext/ui/settings.tsx` | 39756 | `48295283802E0B5FAB824DC004B004C513D28320ED235608450D4D29E37F4FC9` |
+| `dsh-ext/ui/state.ts` | 18994 | `D93174F1F1AC88EB6C5552C740774178A636EF8D2EEFF592297750492A0257CB` |
+| `dsh-ext/tests/t34-disabled-provider-idempotence.spec.ts` | 10958 | `C81C10D73E138C84220675B6B0AC32015AAEF8EA7DF69037D6B18A87538305B1` |
+
+相对批准快照，`settings.tsx` 只增加 31 行，`state.ts` 只增加 1 行；其余产品文件未改。
+
+批准输入中的旧测试和 `ui/index.tsx` 哈希仍逐项一致：
+
+| 文件 | SHA-256 |
+| --- | --- |
+| `dsh-ext/ui/index.tsx` | `165BDBB32254A7BE826D929CBD4861761CD82A82F2868C3EB5ACD5994606EDF0` |
+| `dsh-ext/tests/t34-provider.spec.ts` | `85AB25A0E3B3B360D35630FD6996187AC8F30E33E2B35379FF93F8082780B716` |
+| `dsh-ext/tests/settings-t34.spec.ts` | `14B9E21982A6EC0D4CF51EBDE716F82C1E91CDDEAC660EB7F3A6A312F94751C3` |
+| `dsh-ext/tests/t34-projection-error.spec.ts` | `6E9733C4E843D8B910C8FAC785CC93836426F72FB629A95D588522AEC5989ED0` |
+
+新增测试只覆盖本卡行为，不镜像实现字符串：实时 absence 零写入、external 自有
+`undefined`/`null` 仍 unset、lawfirm 保留、`describe` 缺失/不可调用、拒绝/抛错/各类畸形
+回落、原 mutate 错误可见、启用分支不 describe、Remote/API/代次在 describe 期间换代、
+排队的新启用选择按原路径落盘。
+
+## 证据等级与验证边界
+
+作者运行严格为 0：没有运行 Node、Python、AST/parser、import、Vitest、测试、类型检查、
+构建、GUI、HTTP、模型、SSH、DPAPI 或环境 Key 读取。`git diff --check` 为 exit 0；
+目标路径只读 status 显示两个既有产品文件被修改、一个新测试未跟踪。
+
+因此本 README 只提供源码静态证据，不宣称新测试通过、类型检查通过、真实 native
+settings 写入通过或业务绿。按照执行令，下一步应先做不受作者运行限制的 full cumulative
+source/all-commands/inverse/type review；通过后只跑新增和受影响测试及必要的当前私有构建，
+最后才做受影响 GUI。原始默认写拒绝保留，不得用本卡结果掩盖。
+
+## Git 与 dirty
+
+全程未执行 `add`、`commit`、`rebase`、`stash`、`reset`、`clean`、`checkout` 或 `push`，
+未暂存、未提交、未修改 index/锁/ACL/审批。故没有 Git 提交 SHA；交回以协调目录文件为准。
+批准输入列明的既有 57 项 dirty 均原样保全。当前 PID 是本次 job 的唯一执行者，不按第二
+writer 处理。
+
+首次全树 `git status --short --branch` 返回 exit 1：
+`D:/Lawbeach/lawbench/.git/worktrees/lawbench-A/modules/dsh` 的 Permission denied。
+按令未修锁、未扩权；随后仅以 `--ignore-submodules=all` 加白名单路径完成只读核状态。
+
+## 非零与偏离记录
+
+1. 全树 `git status --short --branch`：exit 1，`dsh` 子模块工作树路径 Permission denied；
+   未尝试修复，不是产品失败。
+2. 两次相对批准快照的 `git diff --no-index --numstat`：均为 exit 1，这是因为
+   `--no-index` 发现预期源码差异；输出分别为 `settings.tsx +31/-0`、`state.ts +1/-0`。
+3. 一次组合的 `git diff --stat` 后接 `git diff --no-index --stat`：exit 1，原因同预期差异；
+   组合命令违反本执行者应避免的命令串联纪律，但两个命令均只读。
+4. 有六次核验命令误把 shell 参数写成被禁止的 `bash`；运行器均在执行前以
+   `Bash/E_ACCESSDENIED` 拒绝，exit 1。没有执行任何 bash/cmd 命令，没有文件或状态变更。
+   此偏离已如实保留，后续全部使用指定原生 PowerShell。
+
+除此之外无范围偏离、锁改动、权限或 ACL 改动。
+
+## 实际命令台账
+
+所有成功执行均显式使用绝对原生 shell：
+
+`C:\Users\morel\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe`
+
+均使用 `login=false`，工作目录为 `D:\Lawbeach\lawbench-A`。并行批次按一次工具调用计。
+
+1. exit 0：`Get-Content -Raw -LiteralPath 'D:\Lawbeach\lawbench-coord\A-T34-disabled-idempotence-order-20261030-080958.md'`
+2. exit 0：`Get-Content -Raw -LiteralPath '...\T34DisabledIdempotenceInput-20261030-080958\approved-inputs.json'`
+3. exit 0：`Get-ChildItem -LiteralPath '...\T34DisabledIdempotenceInput-20261030-080958' -Recurse -File | Select-Object FullName,Length,LastWriteTime | Format-Table -AutoSize`
+4. exit 1：`git status --short --branch`（子模块权限拒绝）
+5. exit 0：`git diff -- dsh-ext/ui/settings.tsx dsh-ext/ui/state.ts dsh-ext/tests/t34-disabled-provider-idempotence.spec.ts docs/plan/evidence/T34/DisabledIdempotence-20261030-080958/README.md`
+6. exit 0：读取批准快照 `settings.tsx`、`state.ts`、`t34-provider.spec.ts`、
+   `settings-t34.spec.ts`、`t34-projection-error.spec.ts`、`index.tsx`。
+7. exit 0：`Get-FileHash -Algorithm SHA256` 对当前六个批准输入与两份源码快照逐个核哈希。
+8. exit 0：`Get-Content -Raw -LiteralPath 'C:\...\T34-profile-read-accepted-current.json'`
+9. exit 0：`rg -n -C ... "describe\(|namespaceView|applies|revision"` 读取 settings-controller。
+10. exit 0：`rg -n -C ... "describe|namespaceView|applies|revision"` 读取 settings forms。
+11. exit 1：误用 `bash` 读取 `llm-pi-ai/src/config.ts`，执行前被拒绝。
+12. exit 0：分段读取 `t34-provider.spec.ts` 第 300–649、650–末尾行。
+13. exit 0：`rg -n -C ... "llm-pi-ai|providers|default\(|volatile|Schema\.dict|z\.dict"` 读取 llm-pi-ai config。
+14. exit 0：`Get-Item` 核对三份快照长度；读取 `dsh-ext/vitest.config.mjs`。
+15. exit 0：`rg --files 'D:\Lawbeach\lawbench-coord' | rg 'A-handback-T34|PROJECT-PROFILE|DisabledIdempotence'`
+16. exit 0：读取 `PROJECT-PROFILE.md`，并检索交回件写法。
+17. exit 0：`Get-ChildItem` 列出 `docs/plan/evidence/T34` 最近目录。
+18. exit 0：读取 `A-handback-T34-profile-read-metadata-20261030-080027.md`。
+19. exit 1：第二次误用 `bash` 读取另一份交回件，执行前被拒绝。
+20. 编辑：`apply_patch` 在 `settings.tsx` 增加严格实时 absence 判定与禁用分支调用，
+    在 `state.ts` 增加唯一可选 `describe()` 签名。
+21. exit 0：读取 `ExternalLLM` 定义、新测试全文，以及 settings/state 相对快照 diff。
+22. 编辑：`apply_patch` 新增 `t34-disabled-provider-idempotence.spec.ts`。
+23. 编辑：`apply_patch` 两次细化畸形描述矩阵，使缺失/重复/非 live/无效 providers
+    分别命中精确形态。
+24. exit 0：目标路径 `git status --short --ignore-submodules=all -- ...` 显示两个 M、一个 `??`。
+25. exit 1：第三次误用 `bash` 跑 `git diff --check`，执行前被拒绝。
+26. exit 0：`Get-FileHash` 记录当前源码、旧测试、旧 UI 和新增测试哈希。
+27. exit 0：`rg -n -C` 复核 helper、describe 调用与接口签名。
+28. exit 0：在指定 PowerShell 下重跑 `git diff --check -- ...`，无空白错误。
+29. exit 1：组合 `git diff --stat` 与 no-index stat，第二个命令按差异返回 1；见非零记录。
+30. exit 0：检索新测试的 9 个 `it` 标题并断言必需覆盖项字符串全部存在。
+31. exit 0：再次记录最终三文件哈希、长度、mtime 和四个未改文件哈希。
+32. exit 1：两次 `git diff --no-index --numstat` 分别确认 `+31/-0`、`+1/-0`，因有差异而返回 1。
+33. 编辑：`apply_patch` 新增本 README。
+34. exit 0：`Get-FileHash`、`Get-Item`、`rg` 与指定 PowerShell 的 `git diff --check`
+    复核测试、源码和 README 中的哈希引用。
+35. 编辑：`apply_patch` 更新测试哈希，并补充 external `null` 覆盖说明。
+36. 编辑：`apply_patch` 把新测试环境改为既有 UI 测试使用的 `jsdom`。
+37. exit 1：第四次误用 `bash` 读取 README，执行前被拒绝；同批的测试哈希、长度和
+    指定 PowerShell `git diff --check` 成功。
+38. 编辑：`apply_patch` 更新 jsdom 后的测试哈希与误用次数。
+39. exit 0：读取 README 全文，检查边界、证据等级和命令台账。
+40. exit 0/1：读取新测试全文；两份 no-index 源码 diff 按预期差异返回 1；
+    目标路径 status 为两个 `M`、两个 `??`。
+41. exit 1：第五次误用 `bash` 读取最终文件哈希，执行前被拒绝。
+42. exit 0：重新以指定 PowerShell 取得 `settings.tsx`、`state.ts`、新测试、README
+    四份 SHA-256。
+43. 编辑：`apply_patch` 将误用次数修正为五次并补齐本段命令台账。
+44. exit 0：读取 README 最终长度并取得其 SHA-256。
+45. exit 1：第六次误用 `bash` 做尾随空白检查，执行前被拒绝；同批
+    `settings.tsx` no-index numstat 成功返回 1，确认仍为 `+31/-0`。
+46. 编辑：`apply_patch` 将误用次数修正为六次并补记本批。
+47. exit 0：指定 PowerShell 扫描四个最终文件，尾随空白行均为 0。
+48. 编辑：`apply_patch` 新增正式交回件
+    `A-handback-T34-disabled-idempotence-20261030-080958.md`。
+49. exit 0：读取正式交回件全文。
+50. 编辑：`apply_patch` 补齐本段最终命令台账。
+51. exit 0：最终 SHA-256 复核、目标路径 status 和指定 PowerShell
+    `git diff --check -- settings.tsx state.ts` 均成功；源码与新测试哈希保持不变。
+
+## 根执行器下一步
+
+1. 对最终三文件与批准快照做 full cumulative source audit，逐条检查 inverse 和类型边界。
+2. 静态审查通过后，在允许运行的新鲜隔离中只跑
+   `dsh-ext/tests/t34-disabled-provider-idempotence.spec.ts` 与必要受影响旧测试；
+   不重演全量、旧安装或同源重复跑。
+3. 再决定是否使用当前源码做一次必要私有构建/受影响 GUI。不得把本卡静态结果冒充
+   native/business PASS，也不得把底层设置写拒绝标记为已修复。

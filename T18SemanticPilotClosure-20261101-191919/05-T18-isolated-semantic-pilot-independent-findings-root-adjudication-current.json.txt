@@ -1,0 +1,42 @@
+C:\Users\morel\Documents\Codex\2026-10-21\deepseek-codex-gpt-advisor-reviewer\outputs\T18-isolated-semantic-pilot-independent-findings-root-adjudication-current.json
+SHA aa37b823f0373e418dd921794058273096455bc1c3f631c4a793494e958c635c
+0001 {
+0002   "status": "AMEND_VALID_SOURCE_ISSUES_NO_MODEL_ADMISSION",
+0003   "accepted": [
+0004     "A1/C1 retain and consume SAME verified fixed-data buffer; eliminate reopen race",
+0005     "A3/C2 enforce remaining whole-run deadline before BOTH fetches and after responses, min(400s,remaining)",
+0006     "A4 validate exact response model qwen38-27b, missing/different rejected",
+0007     "C4 redact exact raw credential AND its JSON-escaped rendering, including stored raw-response strings"
+0008   ],
+0009   "rejected": [
+0010     {
+0011       "finding": "A2 fenced JSON",
+0012       "reason": "Original author order expressly permits ONE outer markdown fence. This predetermined protocol is retained, no runtime fallback added."
+0013     },
+0014     {
+0015       "finding": "A5 candidate literal present in draft",
+0016       "reason": "Literal presence cannot prove correct treatment, opposing assertion/denial/context may still omit treatment. Validator authenticates anchors only; every finding requires Root semantic judgment. No lexical semantic classifier."
+0017     },
+0018     {
+0019       "finding": "A6 version must hardcode3",
+0020       "reason": "Actual physical v3 is bound by immutable fixed-data SHA/size plus externally pinned manifest before and after runtime. Input schema positive integer is correct; simultaneous replacement of all externally pinned inputs is not admitted."
+0021     },
+0022     {
+0023       "finding": "C3 automatic owner-only ACL modifications",
+0024       "reason": "No ACL/security mutation authorized or necessary for this isolated synthetic diagnostic. Existing outputs parent is owned by current user but shared writable with CodexSandboxUsers; owner-only/hostile-local-actor security is NOT proven or claimed. Root will establish fresh nonsymlink outputs, exact external pins and redacted artifacts. No raw credential artifact. Platform/private-ACL security is explicitly outside acceptance."
+0025     }
+0026   ],
+0027   "launcher_conditions": [
+0028     "Known pinned Node executable; clean environment without proxy/preload variables; fixed hard-IP route/redirect:error/no retry; external manifest/data/source pins before Key and after run",
+0029     "Fresh Root-owned output root, reject observed reparse ancestors/created directories; record existing ACLs without changing them; no owner-only privacy claim",
+0030     "Root independent900s watchdog and complete own PID/exe/UTCbirth capture; DPAPI raw Key anonymousstdin only AFTER admitted pins; exact raw+JSONescaped own-artifact scan"
+0031   ],
+0032   "source_reviews": [
+0033     "D:\\Lawbeach\\lawbench-coord\\REVIEW-A-T18SemanticPilotReviewA-20261101-185816.md",
+0034     "D:\\Lawbeach\\lawbench-coord\\REVIEW-C-T18SemanticPilotReviewC-20261101-185816.md"
+0035   ],
+0036   "current_parent_acl_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-isolated-semantic-pilot-existing-parent-access-readonly-current.json",
+0037   "no_Key_read": true,
+0038   "no_model_runtime": true,
+0039   "Packaging": "HOLD"
+0040 }

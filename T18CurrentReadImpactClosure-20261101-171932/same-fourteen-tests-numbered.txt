@@ -1,0 +1,679 @@
+0001: """T18：辩护意见引用必须由本任务当前材料版本的完整读取支撑。
+0002: 
+0003: 本文件只定义有限的红灯测试和正向对照，不修改产品实现、旧测试或测试辅助层。
+0004: """
+0005: from __future__ import annotations
+0006: 
+0007: import pathlib
+0008: 
+0009: from t8_helpers import Env, fail, ok
+0010: 
+0011: 
+0012: DEFENSE_SKILL = "defense-opinion"
+0013: TASK_PARAMS = {"thinking": "中", "window": "32K", "max_tokens": 2048}
+0014: 
+0015: 
+0016: def _selected_task(env: Env, session: str, skill: str | None) -> str:
+0017:     """通过公开的 /api/task 选择 skill，再由真实 /core/task/begin 建运行中任务。"""
+0018:     req = {
+0019:         "case_id": env.case_id,
+0020:         "session_id": session,
+0021:         "entry": skill,
+0022:         "skill": skill,
+0023:         "inputs": [],
+0024:         "params": TASK_PARAMS,
+0025:     }
+0026:     ok(env.client.post("/api/task", json=req), "api/task_create.schema.json")
+0027:     return env.begin(session)["task_id"]
+0028: 
+0029: 
+0030: def _material_env(tmp_path: pathlib.Path, text: str) -> Env:
+0031:     source = tmp_path / "事实材料.txt"
+0032:     source.write_text(text, encoding="utf-8")
+0033:     return Env(tmp_path / "case", {"事实材料.txt": source})
+0034: 
+0035: 
+0036: def _reads(env: Env, task_id: str) -> list[dict]:
+0037:     return env.read_json(task_id, "reads.json", "files/reads.schema.json")["reads"]
+0038: 
+0039: 
+0040: def _snapshot(env: Env, task_id: str) -> tuple[bytes, tuple[tuple[str, bytes], ...]]:
+0041:     task_dir = env.task_dir(task_id)
+0042:     result = (task_dir / "result.json").read_bytes()
+0043:     drafts_dir = task_dir / "草稿"
+0044:     drafts = tuple(sorted(
+0045:         ((p.relative_to(drafts_dir).as_posix(), p.read_bytes()) for p in drafts_dir.glob("*.md")),
+0046:         key=lambda item: item[0],
+0047:     ))
+0048:     return result, drafts
+0049: 
+0050: 
+0051: def _assert_citation_denied(env: Env, task_id: str, content: str, name: str, loc: str,
+0052:                             private_text: str) -> None:
+0053:     materials = env.tool_ok(task_id, "case_list_materials", {})["materials"]
+0054:     material_id = next(m["material_id"] for m in materials if m["name"] == name)
+0055:     before = _snapshot(env, task_id)
+0056:     body = fail(env.tool(task_id, "case_save_draft", {"title": "辩护意见", "content": content}),
+0057:                 "INVALID_ARGUMENT")
+0058:     error = body["error"]
+0059:     message = error["message"]
+0060:     assert isinstance(message, str) and message
+0061:     assert material_id in message and loc in message
+0062:     assert "读取" in message
+0063:     assert name not in message
+0064:     assert private_text not in message
+0065:     assert len(message) <= 500
+0066:     assert _snapshot(env, task_id) == before
+0067:     assert env.read_json(task_id, "task.json", "files/task.schema.json")["state"] == "running"
+0068: 
+0069: 
+0070: def test_t18_main_search_only_numeric_citation_denied_without_side_effects(tmp_path):
+0071:     """搜索命中不是读取；未读引用必须拒绝，且不落草稿、不改 result。"""
+0072:     env = _material_env(
+0073:         tmp_path,
+0074:         "第一行 借款经过\n第二行 红色雨伞是检索命中\n第三行 还款经过\n第四行 其他事实\n",
+0075:     )
+0076:     try:
+0077:         task_id = _selected_task(env, "t18-main-search-only", DEFENSE_SKILL)
+0078:         env.tool_ok(task_id, "case_search", {"query": "红色雨伞"})
+0079:         assert _reads(env, task_id) == []
+0080: 
+0081:         _assert_citation_denied(
+0082:             env,
+0083:             task_id,
+0084:             "辩护意见正文〔事实材料 第2行〕",
+0085:             "事实材料",
+0086:             "第2行",
+0087:             "红色雨伞",
+0088:         )
+0089: 
+0090:         # 放在第一个主断言之后：即便旧实现同时缺少区间并集核对，也只产生一个主 RED 节点。
+0091:         env.tool_ok(task_id, "case_read_material", {"name": "事实材料", "start": 2, "end": 2})
+0092:         env.tool_ok(task_id, "case_read_material", {"name": "事实材料", "start": 4, "end": 4})
+0093:         _assert_citation_denied(
+0094:             env,
+0095:             task_id,
+0096:             "辩护意见正文〔事实材料 第2-4行〕",
+0097:             "事实材料",
+0098:             "第2-4行",
+0099:             "还款经过",
+0100:         )
+0101:     finally:
+0102:         env.close()
+0103: 
+0104: 
+0105: def test_t18_main_wrong_task_or_old_version_read_does_not_authorize(tmp_path):
+0106:     """别的任务读过、或本任务读过旧版本，都不能支撑当前辩护意见保存。"""
+0107:     env = _material_env(
+0108:         tmp_path,
+0109:         "第一行 红色雨伞\n第二行 还款经过\n第三行 其他事实\n",
+0110:     )
+0111:     try:
+0112:         defense_task = _selected_task(env, "t18-main-identity-defense", DEFENSE_SKILL)
+0113:         other_task = _selected_task(env, "t18-main-identity-other", None)
+0114:         env.tool_ok(other_task, "case_search", {"query": "红色雨伞"})
+0115:         env.tool_ok(other_task, "case_read_material", {"name": "事实材料", "start": 1, "end": 1})
+0116:         assert _reads(env, other_task)
+0117:         assert _reads(env, defense_task) == []
+0118: 
+0119:         _assert_citation_denied(
+0120:             env,
+0121:             defense_task,
+0122:             "辩护意见正文〔事实材料 第1行〕",
+0123:             "事实材料",
+0124:             "第1行",
+0125:             "红色雨伞",
+0126:         )
+0127: 
+0128:         env.tool_ok(defense_task, "case_search", {"query": "还款经过"})
+0129:         env.tool_ok(defense_task, "case_read_material", {"name": "事实材料", "start": 2, "end": 2})
+0130:         stale_reads = _reads(env, defense_task)
+0131:         assert any(r["from"] <= 2 <= r["to"] for r in stale_reads)
+0132: 
+0133:         (env.root / "事实材料.txt").write_text(
+0134:             "第一行 红色雨伞\n第二行 还款经过已更新\n第三行 其他事实已更新\n",
+0135:             encoding="utf-8",
+0136:         )
+0137:         ok(env.client.post("/api/materials/scan", json={"case_id": env.case_id}),
+0138:            "api/materials_scan.schema.json")
+0139:         _assert_citation_denied(
+0140:             env,
+0141:             defense_task,
+0142:             "辩护意见正文〔事实材料 第2行〕",
+0143:             "事实材料",
+0144:             "第2行",
+0145:             "还款经过已更新",
+0146:         )
+0147:     finally:
+0148:         env.close()
+0149: 
+0150: 
+0151: def test_t18_positive_correct_actual_read_allows_same_content(tmp_path):
+0152:     env = _material_env(tmp_path, "第一行 红色雨伞\n第二行 还款经过\n第三行 其他事实\n")
+0153:     try:
+0154:         task_id = _selected_task(env, "t18-positive-correct-read", DEFENSE_SKILL)
+0155:         env.tool_ok(task_id, "case_search", {"query": "还款经过"})
+0156:         env.tool_ok(task_id, "case_read_material", {"name": "事实材料", "start": 2, "end": 2})
+0157:         content = "辩护意见正文〔事实材料 第2行〕"
+0158:         saved = env.tool_ok(task_id, "case_save_draft", {"title": "正确读取", "content": content})
+0159:         assert saved["version"] == 1
+0160:         assert (env.root / saved["path"]).read_text(encoding="utf-8") == content
+0161:     finally:
+0162:         env.close()
+0163: 
+0164: 
+0165: def test_t18_positive_complete_inclusive_range_allows(tmp_path):
+0166:     env = _material_env(tmp_path, "第一行 借款\n第二行 交付\n第三行 催款\n第四行 其他\n")
+0167:     try:
+0168:         task_id = _selected_task(env, "t18-positive-range", DEFENSE_SKILL)
+0169:         env.tool_ok(task_id, "case_search", {"query": "交付"})
+0170:         env.tool_ok(task_id, "case_read_material", {"name": "事实材料", "start": 1, "end": 3})
+0171:         content = "辩护意见正文〔事实材料 第1-3行〕"
+0172:         saved = env.tool_ok(task_id, "case_save_draft", {"title": "完整区间", "content": content})
+0173:         assert saved["version"] == 1
+0174:         assert any(r["from"] == 1 and r["to"] == 3 for r in _reads(env, task_id))
+0175:     finally:
+0176:         env.close()
+0177: 
+0178: 
+0179: def test_t18_positive_long_unit_partial_then_offset_recovery(tmp_path):
+0180:     env = _material_env(tmp_path, "第一行 短行\n" + "长" * 3360 + "\n第三行 短行\n")
+0181:     try:
+0182:         task_id = _selected_task(env, "t18-positive-long-offset", DEFENSE_SKILL)
+0183:         env.tool_ok(task_id, "case_search", {"query": "长"})
+0184:         args = {"name": "事实材料", "start": 2, "max_chars": 500}
+0185:         part = env.tool_ok(task_id, "case_read_material", args)
+0186:         assert part["next_offset"] is not None
+0187:         assert _reads(env, task_id) == []
+0188:         while part["next_offset"] is not None:
+0189:             part = env.tool_ok(
+0190:                 task_id,
+0191:                 "case_read_material",
+0192:                 {**args, "offset": part["next_offset"]},
+0193:             )
+0194:         assert any(r["from"] == 2 and r["to"] == 2 for r in _reads(env, task_id))
+0195:         saved = env.tool_ok(
+0196:             task_id,
+0197:             "case_save_draft",
+0198:             {"title": "续读完成", "content": "辩护意见正文〔事实材料 第2行〕"},
+0199:         )
+0200:         assert saved["version"] == 1
+0201:     finally:
+0202:         env.close()
+0203: 
+0204: 
+0205: def test_t18_positive_non_defense_save_unchanged(tmp_path):
+0206:     env = _material_env(tmp_path, "第一行 红色雨伞\n第二行 还款经过\n")
+0207:     try:
+0208:         task_id = _selected_task(env, "t18-positive-free-save", None)
+0209:         env.tool_ok(task_id, "case_search", {"query": "红色雨伞"})
+0210:         saved = env.tool_ok(
+0211:             task_id,
+0212:             "case_save_draft",
+0213:             {"title": "普通草稿", "content": "普通草稿〔事实材料 第1行〕"},
+0214:         )
+0215:         assert saved["version"] == 1
+0216:         assert (env.root / saved["path"]).is_file()
+0217:     finally:
+0218:         env.close()
+0219: 
+0220: 
+0221: # T18 边界证据：以下追加内容不改变上方既有六个节点的任何字节。
+0222: import hashlib
+0223: import os
+0224: 
+0225: import pytest
+0226: 
+0227: from lawbench.tools import drafts as drafts_mod
+0228: from t8_helpers import CASE_FILES, Env
+0229: 
+0230: 
+0231: _EDGE_ORIGINAL_DRAFTS = pathlib.Path(
+0232:     r"D:\Lawbeach\lawbench-coord\T18CitedUnreadProductFix-20261101-144353Before\drafts.py"
+0233: )
+0234: _EDGE_ORIGINAL_DRAFTS_SHA256 = (
+0235:     "e46c1656ecea6f151e1ca827aad2911e45a54b2a14abc8f1abfb5df92d817822"
+0236: )
+0237: 
+0238: 
+0239: @pytest.fixture(autouse=True)
+0240: def _edge_original_save_counterfactual(request, monkeypatch):
+0241:     """仅在显式对照模式下，只换入旧版 save_draft 业务函数。"""
+0242:     if not (
+0243:         request.node.name.startswith("test_t18_edge_")
+0244:         and os.environ.get("LB_T18_COMPARE_ORIGINAL_SAVE") == "1"
+0245:     ):
+0246:         return
+0247: 
+0248:     raw = _EDGE_ORIGINAL_DRAFTS.read_bytes()
+0249:     assert hashlib.sha256(raw).hexdigest() == _EDGE_ORIGINAL_DRAFTS_SHA256
+0250:     source = raw.decode("utf-8")
+0251:     start = source.index("def save_draft(")
+0252:     stop = source.index("def _save_locked(", start)
+0253:     function_source = source[start:stop]
+0254: 
+0255:     namespace = dict(vars(drafts_mod))
+0256:     exec(compile(function_source, str(_EDGE_ORIGINAL_DRAFTS), "exec"), namespace)
+0257:     original_save_draft = namespace["save_draft"]
+0258:     assert callable(original_save_draft)
+0259:     monkeypatch.setattr(drafts_mod, "save_draft", original_save_draft)
+0260: 
+0261: 
+0262: def _edge_end(env: Env, task_id: str, reason: str) -> str:
+0263:     expected = {"budget": "budget_stopped", "completed": "completed", "error": "failed"}[reason]
+0264:     value = ok(
+0265:         env.client.post(
+0266:             "/core/task/end",
+0267:             json={
+0268:                 "task_id": task_id,
+0269:                 "reason": reason,
+0270:                 "model_calls": 7,
+0271:                 "tool_calls": 2,
+0272:                 "elapsed_s": 3,
+0273:             },
+0274:         ),
+0275:         "core/task_end.schema.json",
+0276:     )
+0277:     assert value == {"status": expected}
+0278:     assert env.read_json(task_id, "task.json", "files/task.schema.json")["state"] == "finished"
+0279:     result = env.read_json(task_id, "result.json", "files/result.schema.json")
+0280:     assert result["status"] == expected
+0281:     assert result["usage"] == {"model_calls": 7, "tool_calls": 2, "elapsed_s": 3}
+0282:     return expected
+0283: 
+0284: 
+0285: def _edge_material(env: Env, task_id: str, name: str) -> dict:
+0286:     materials = env.tool_ok(task_id, "case_list_materials", {})["materials"]
+0287:     return next(material for material in materials if material["name"] == name)
+0288: 
+0289: 
+0290: def test_t18_edge_docx_para_denial_then_single_para_allows(tmp_path):
+0291:     source = CASE_FILES["证据/借条.docx"]
+0292:     source_bytes = source.read_bytes()
+0293:     env = Env(tmp_path / "case", {"证据/借条.docx": source})
+0294:     try:
+0295:         material_file = env.root / "证据" / "借条.docx"
+0296:         assert material_file.read_bytes() == source_bytes
+0297:         task_id = _selected_task(env, "t18-edge-docx-para", DEFENSE_SKILL)
+0298:         assert _reads(env, task_id) == []
+0299: 
+0300:         content = "辩护意见正文〔借条 第1段〕"
+0301:         _assert_citation_denied(env, task_id, content, "借条", "第1段", "借款")
+0302: 
+0303:         read = env.tool_ok(
+0304:             task_id, "case_read_material", {"name": "借条", "start": 1, "end": 1}
+0305:         )
+0306:         assert read["unit"] == "para"
+0307:         assert read["start"] == read["end"] == 1
+0308:         assert read["text"].startswith("【第1段】")
+0309: 
+0310:         material = _edge_material(env, task_id, "借条")
+0311:         reads = _reads(env, task_id)
+0312:         assert len(reads) == 1
+0313:         assert reads[0]["material_id"] == material["material_id"]
+0314:         assert reads[0]["material_version"] == hashlib.sha256(source_bytes).hexdigest()
+0315:         assert (reads[0]["unit"], reads[0]["from"], reads[0]["to"]) == ("para", 1, 1)
+0316: 
+0317:         saved = env.tool_ok(
+0318:             task_id, "case_save_draft", {"title": "DOCX一段", "content": content}
+0319:         )
+0320:         assert saved["version"] == 1
+0321:         assert (env.root / saved["path"]).read_bytes() == content.encode("utf-8")
+0322:         assert material_file.read_bytes() == source_bytes
+0323:     finally:
+0324:         env.close()
+0325: 
+0326: 
+0327: def test_t18_edge_pdf_page_denial_then_single_page_allows(tmp_path):
+0328:     source = CASE_FILES["起诉意见书.pdf"]
+0329:     source_bytes = source.read_bytes()
+0330:     env = Env(tmp_path / "case", {"起诉意见书.pdf": source})
+0331:     try:
+0332:         material_file = env.root / "起诉意见书.pdf"
+0333:         assert material_file.read_bytes() == source_bytes
+0334:         task_id = _selected_task(env, "t18-edge-pdf-page", DEFENSE_SKILL)
+0335:         assert _reads(env, task_id) == []
+0336: 
+0337:         content = "辩护意见正文〔起诉意见书 第2页〕"
+0338:         _assert_citation_denied(env, task_id, content, "起诉意见书", "第2页", "起诉意见")
+0339: 
+0340:         read = env.tool_ok(
+0341:             task_id,
+0342:             "case_read_material",
+0343:             {"name": "起诉意见书", "start": 2, "end": 2, "max_chars": 8000},
+0344:         )
+0345:         assert read["unit"] == "page"
+0346:         assert read["start"] == read["end"] == 2
+0347:         assert read["has_more"] is False
+0348:         assert read["next_offset"] is None
+0349:         assert read["text"].startswith("【第2页】")
+0350: 
+0351:         material = _edge_material(env, task_id, "起诉意见书")
+0352:         reads = _reads(env, task_id)
+0353:         assert len(reads) == 1
+0354:         assert reads[0]["material_id"] == material["material_id"]
+0355:         assert reads[0]["material_version"] == hashlib.sha256(source_bytes).hexdigest()
+0356:         assert (reads[0]["unit"], reads[0]["from"], reads[0]["to"]) == ("page", 2, 2)
+0357: 
+0358:         saved = env.tool_ok(
+0359:             task_id, "case_save_draft", {"title": "PDF一页", "content": content}
+0360:         )
+0361:         assert saved["version"] == 1
+0362:         assert (env.root / saved["path"]).read_bytes() == content.encode("utf-8")
+0363:         assert material_file.read_bytes() == source_bytes
+0364:     finally:
+0365:         env.close()
+0366: 
+0367: 
+0368: def test_t18_edge_budget_stopped_carries_reads_to_next_same_session_task(tmp_path):
+0369:     env = _material_env(tmp_path, "第一行 借款经过\n第二行 还款经过\n")
+0370:     try:
+0371:         session = "t18-edge-budget-carry"
+0372:         predecessor = _selected_task(env, session, DEFENSE_SKILL)
+0373:         env.tool_ok(
+0374:             predecessor, "case_read_material", {"name": "事实材料", "start": 1, "end": 1}
+0375:         )
+0376:         predecessor_reads = _reads(env, predecessor)
+0377:         assert len(predecessor_reads) == 1
+0378:         assert _edge_end(env, predecessor, "budget") == "budget_stopped"
+0379: 
+0380:         successor = _selected_task(env, session, DEFENSE_SKILL)
+0381:         assert successor != predecessor
+0382:         assert _reads(env, successor) == predecessor_reads
+0383:         assert env.read_json(successor, "result.json", "files/result.schema.json")["status"] == "running"
+0384: 
+0385:         content = "辩护意见正文〔事实材料 第1行〕"
+0386:         saved = env.tool_ok(
+0387:             successor, "case_save_draft", {"title": "预算续接", "content": content}
+0388:         )
+0389:         assert saved["version"] == 1
+0390:         assert (env.root / saved["path"]).read_bytes() == content.encode("utf-8")
+0391:     finally:
+0392:         env.close()
+0393: 
+0394: 
+0395: def test_t18_edge_completed_does_not_carry_reads(tmp_path):
+0396:     env = _material_env(tmp_path, "第一行 借款经过\n第二行 还款经过\n")
+0397:     try:
+0398:         session = "t18-edge-completed-no-carry"
+0399:         predecessor = _selected_task(env, session, DEFENSE_SKILL)
+0400:         env.tool_ok(
+0401:             predecessor, "case_read_material", {"name": "事实材料", "start": 1, "end": 1}
+0402:         )
+0403:         assert len(_reads(env, predecessor)) == 1
+0404:         assert _edge_end(env, predecessor, "completed") == "completed"
+0405: 
+0406:         successor = _selected_task(env, session, DEFENSE_SKILL)
+0407:         assert successor != predecessor
+0408:         assert _reads(env, successor) == []
+0409:         assert env.read_json(successor, "result.json", "files/result.schema.json")["status"] == "running"
+0410:         _assert_citation_denied(
+0411:             env,
+0412:             successor,
+0413:             "辩护意见正文〔事实材料 第1行〕",
+0414:             "事实材料",
+0415:             "第1行",
+0416:             "第一行 借款经过",
+0417:         )
+0418:     finally:
+0419:         env.close()
+0420: 
+0421: 
+0422: def test_t18_edge_error_does_not_carry_reads(tmp_path):
+0423:     env = _material_env(tmp_path, "第一行 借款经过\n第二行 还款经过\n")
+0424:     try:
+0425:         session = "t18-edge-error-no-carry"
+0426:         predecessor = _selected_task(env, session, DEFENSE_SKILL)
+0427:         env.tool_ok(
+0428:             predecessor, "case_read_material", {"name": "事实材料", "start": 1, "end": 1}
+0429:         )
+0430:         assert len(_reads(env, predecessor)) == 1
+0431:         assert _edge_end(env, predecessor, "error") == "failed"
+0432: 
+0433:         successor = _selected_task(env, session, DEFENSE_SKILL)
+0434:         assert successor != predecessor
+0435:         assert _reads(env, successor) == []
+0436:         assert env.read_json(successor, "result.json", "files/result.schema.json")["status"] == "running"
+0437:         _assert_citation_denied(
+0438:             env,
+0439:             successor,
+0440:             "辩护意见正文〔事实材料 第1行〕",
+0441:             "事实材料",
+0442:             "第1行",
+0443:             "第一行 借款经过",
+0444:         )
+0445:     finally:
+0446:         env.close()
+0447: 
+0448: 
+0449: import lawbench.case.texts as texts
+0450: 
+0451: 
+0452: def test_t18_gap_encrypted_pdf_inverted_range_rejects_failed_page(tmp_path):
+0453:     source = CASE_FILES["加密.pdf"]
+0454:     source_bytes = source.read_bytes()
+0455:     env = Env(tmp_path / "case", {"加密.pdf": source})
+0456:     try:
+0457:         material_file = env.root / "加密.pdf"
+0458:         assert material_file.read_bytes() == source_bytes
+0459:         task_id = _selected_task(env, "t18-gap-encrypted-pdf", DEFENSE_SKILL)
+0460: 
+0461:         material = _edge_material(env, task_id, "加密")
+0462:         assert material["unit"] == "page"
+0463:         assert material["status"] == "failed"
+0464: 
+0465:         fail(
+0466:             env.tool(task_id, "case_read_material", {"name": "加密", "start": 1, "end": 1}),
+0467:             "MATERIAL_NOT_READY",
+0468:         )
+0469:         assert _reads(env, task_id) == []
+0470: 
+0471:         _assert_citation_denied(
+0472:             env,
+0473:             task_id,
+0474:             "辩护意见正文〔加密 第1页〕",
+0475:             "加密",
+0476:             "第1页",
+0477:             "加密",
+0478:         )
+0479:         _assert_citation_denied(
+0480:             env,
+0481:             task_id,
+0482:             "辩护意见正文〔加密 第5-3页〕",
+0483:             "加密",
+0484:             "第5-3页",
+0485:             "加密",
+0486:         )
+0487: 
+0488:         assert source.read_bytes() == source_bytes
+0489:         assert material_file.read_bytes() == source_bytes
+0490:     finally:
+0491:         env.close()
+0492: 
+0493: 
+0494: def test_t18_gap_placeholder_page2_not_coverage_and_citation_denied(tmp_path):
+0495:     source = CASE_FILES["起诉意见书.pdf"]
+0496:     source_bytes = source.read_bytes()
+0497:     env = Env(tmp_path / "case", {"起诉意见书.pdf": source})
+0498:     cache_path = None
+0499:     original_cache_bytes = None
+0500:     material_file = None
+0501:     try:
+0502:         material_file = env.root / "起诉意见书.pdf"
+0503:         assert material_file.read_bytes() == source_bytes
+0504:         task_id = _selected_task(env, "t18-gap-placeholder-page2", DEFENSE_SKILL)
+0505: 
+0506:         material = _edge_material(env, task_id, "起诉意见书")
+0507:         # case_list_materials 只给公开元数据（无 rel_path / text_path），材料文本位置取自本案持久索引。
+0508:         index_meta = next(
+0509:             m for m in env.client.app.state.lb.materials.index(env.case_id)["materials"]
+0510:             if m["material_id"] == material["material_id"]
+0511:         )
+0512:         cache_path = env.root / texts.text_rel(index_meta)
+0513:         original_cache_bytes = cache_path.read_bytes()
+0514:         original_text = original_cache_bytes.decode("utf-8")
+0515:         units = texts.split_units(original_text, "page")
+0516:         assert len(units) >= 2
+0517: 
+0518:         page2_text = units[1].text.strip()
+0519:         assert page2_text
+0520:         patched = original_text.replace(
+0521:             units[1].header + "\n" + units[1].text,
+0522:             units[1].header + "\n" + texts.PENDING_OCR,
+0523:             1,
+0524:         )
+0525:         assert patched != original_text
+0526:         assert units[0].header + "\n" + units[0].text in patched
+0527:         cache_path.write_bytes(patched.encode("utf-8"))
+0528:         assert cache_path.read_bytes() == patched.encode("utf-8")
+0529: 
+0530:         read = env.tool_ok(
+0531:             task_id,
+0532:             "case_read_material",
+0533:             {"name": "起诉意见书", "start": 1, "end": 2, "max_chars": 8000},
+0534:         )
+0535:         assert read["unit"] == "page"
+0536:         assert (read["start"], read["end"]) == (1, 2)
+0537:         assert units[0].header + "\n" + units[0].text in read["text"]
+0538:         assert texts.PENDING_OCR in read["text"]
+0539:         read_records = _reads(env, task_id)
+0540:         assert any(
+0541:             record["material_id"] == material["material_id"]
+0542:             and record["unit"] == "page"
+0543:             and record["from"] <= 1
+0544:             and record["to"] >= 2
+0545:             for record in read_records
+0546:         )
+0547: 
+0548:         coverage = env.client.app.state.lb.tasks.coverage(
+0549:             str(env.root), env.case_id, task_id
+0550:         )
+0551:         assert "起诉意见书" not in coverage["fully_read"]
+0552:         partially_read = next(
+0553:             item for item in coverage["partially_read"] if item["name"] == "起诉意见书"
+0554:         )
+0555:         assert partially_read["read_units"] == 1
+0556:         assert partially_read["total_units"] == len(units)
+0557: 
+0558:         _assert_citation_denied(
+0559:             env,
+0560:             task_id,
+0561:             "辩护意见正文〔起诉意见书 第2页〕",
+0562:             "起诉意见书",
+0563:             "第2页",
+0564:             page2_text,
+0565:         )
+0566: 
+0567:         content = "辩护意见正文〔起诉意见书 第1页〕"
+0568:         saved = env.tool_ok(
+0569:             task_id, "case_save_draft", {"title": "真实页对照", "content": content}
+0570:         )
+0571:         assert saved["version"] == 1
+0572:         assert (env.root / saved["path"]).read_bytes() == content.encode("utf-8")
+0573:         assert source.read_bytes() == source_bytes
+0574:         assert material_file.read_bytes() == source_bytes
+0575:     finally:
+0576:         try:
+0577:             if cache_path is not None and original_cache_bytes is not None:
+0578:                 cache_path.write_bytes(original_cache_bytes)
+0579:             assert source.read_bytes() == source_bytes
+0580:             if material_file is not None:
+0581:                 assert material_file.read_bytes() == source_bytes
+0582:         finally:
+0583:             env.close()
+0584: 
+0585: 
+0586: def test_t18_actionability_public_material_id_recovery_flow(tmp_path):
+0587:     """未读引用错误应给出从公开材料 ID 恢复到按名称读取的可执行路径。"""
+0588:     first_line = "第一行 前导合成事实"
+0589:     private_line = "第二行 私有合成词霜桥"
+0590:     source = tmp_path / "事实材料.txt"
+0591:     env = _material_env(tmp_path, first_line + "\n" + private_line + "\n")
+0592:     original_bytes = source.read_bytes()
+0593:     try:
+0594:         task_id = _selected_task(env, "t18-actionability-name-recovery", DEFENSE_SKILL)
+0595:         materials = env.tool_ok(task_id, "case_list_materials", {})["materials"]
+0596:         material = next(item for item in materials if item["name"] == "事实材料")
+0597:         material_id = material["material_id"]
+0598:         before = _snapshot(env, task_id)
+0599: 
+0600:         content = "辩护意见正文〔事实材料 第2行〕"
+0601:         denied = fail(
+0602:             env.tool(
+0603:                 task_id,
+0604:                 "case_save_draft",
+0605:                 {"title": "辩护意见", "content": content},
+0606:             ),
+0607:             "INVALID_ARGUMENT",
+0608:         )
+0609:         original_error = denied["error"]
+0610:         message = original_error["message"]
+0611:         assert isinstance(message, str) and message
+0612:         assert material_id in message and "第2行" in message
+0613:         assert "读取" in message
+0614:         assert "事实材料" not in message
+0615:         assert content not in message
+0616:         assert first_line not in message and private_line not in message
+0617:         assert len(message) <= 500
+0618:         assert _snapshot(env, task_id) == before
+0619:         assert _reads(env, task_id) == []
+0620:         assert env.read_json(
+0621:             task_id, "task.json", "files/task.schema.json"
+0622:         )["state"] == "running"
+0623: 
+0624:         fail(
+0625:             env.tool(
+0626:                 task_id,
+0627:                 "case_read_material",
+0628:                 {"name": material_id, "start": 2, "end": 2},
+0629:             ),
+0630:             "MATERIAL_NOT_FOUND",
+0631:         )
+0632:         assert _reads(env, task_id) == []
+0633:         assert _snapshot(env, task_id) == before
+0634: 
+0635:         resolved = next(
+0636:             item
+0637:             for item in env.tool_ok(task_id, "case_list_materials", {})["materials"]
+0638:             if item["material_id"] == material_id
+0639:         )
+0640:         assert resolved["name"] == "事实材料"
+0641:         read = env.tool_ok(
+0642:             task_id,
+0643:             "case_read_material",
+0644:             {"name": resolved["name"], "start": 2, "end": 2},
+0645:         )
+0646:         assert read["unit"] == "line"
+0647:         assert (read["start"], read["end"]) == (2, 2)
+0648:         assert private_line in read["text"].splitlines()
+0649: 
+0650:         current_version = hashlib.sha256(original_bytes).hexdigest()
+0651:         records = _reads(env, task_id)
+0652:         assert len(records) == 1
+0653:         assert records[0]["material_id"] == material_id
+0654:         assert records[0]["material_version"] == current_version
+0655:         assert (
+0656:             records[0]["unit"],
+0657:             records[0]["from"],
+0658:             records[0]["to"],
+0659:         ) == ("line", 2, 2)
+0660: 
+0661:         saved = env.tool_ok(
+0662:             task_id,
+0663:             "case_save_draft",
+0664:             {"title": "名称映射恢复", "content": content},
+0665:         )
+0666:         assert saved["version"] == 1
+0667:         assert (env.root / saved["path"]).read_bytes() == content.encode("utf-8")
+0668:         assert source.read_bytes() == original_bytes
+0669:         assert (env.root / "事实材料.txt").read_bytes() == original_bytes
+0670: 
+0671:         list_position = message.find("case_list_materials")
+0672:         read_position = message.find("case_read_material")
+0673:         assert (
+0674:             list_position >= 0
+0675:             and read_position > list_position
+0676:             and "name" in message
+0677:         )
+0678:     finally:
+0679:         env.close()

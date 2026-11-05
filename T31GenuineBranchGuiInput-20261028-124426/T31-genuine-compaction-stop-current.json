@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-28T12:42:55.653532+08:00",
+  "verdict": "OBSERVED_GENUINE_MANUAL_COMPACTION_MAX256_CAP_STOP_NO_COMMIT_NO_FORK",
+  "actualRoot": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31CompactedFork-full-root-20261028-124036",
+  "actualRun": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GenuineCompactedFork-20261028-115217\\run-1zVHyw",
+  "consumer": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GenuineCompactedFork-20261028-115217\\native-genuine-compacted-fork.mts",
+  "consumerSHA": "1a725bf2572b582b86d89c250e94f010063840df8cd4e498b57ed97efbba7a3c",
+  "naturalExitCode": 2,
+  "elapsed_s": 6.671999999991385,
+  "modelPOST": 1,
+  "HTTP200": 1,
+  "closedAttempts": 0,
+  "configuredMaxTokens": 256,
+  "compactionId": "947260ee-78d9-45e7-a959-e2e894214b0c",
+  "physicalEventCount": 30,
+  "originalPrefix27Equal": true,
+  "physicalHeaderEqual": true,
+  "originalUnchanged": true,
+  "sourceResumeMarker27": true,
+  "start28End29FailureRecorded": true,
+  "summaryCheckpointAbsent": true,
+  "forkAbsent": true,
+  "childModelTurnAbsent": true,
+  "cleanup": {
+    "fiberDisposed": true,
+    "clientSessionsDisposed": true,
+    "fetchRestored": true,
+    "outputRedactionRestored": true,
+    "environmentRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "sixCompleteOSGone": true,
+  "identities": [
+    {
+      "pid": 16220,
+      "parent": 22200,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T04:40:36.5713520Z"
+    },
+    {
+      "pid": 31756,
+      "parent": 16220,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T04:40:36.5822800Z"
+    },
+    {
+      "pid": 7740,
+      "parent": 16220,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T04:40:37.0597110Z"
+    },
+    {
+      "pid": 41780,
+      "parent": 7740,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T04:40:37.0666140Z"
+    },
+    {
+      "pid": 26080,
+      "parent": 7740,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T04:40:37.1391710Z"
+    },
+    {
+      "pid": 21032,
+      "parent": 26080,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T04:40:37.2497560Z"
+    }
+  ],
+  "forced": false,
+  "source46SevenAnd22Fixed": true,
+  "sourceCommands": 188,
+  "sourceSuccessfulCommands": 160,
+  "authorRuntime": 0,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31GenuineCompactionStop-root-20261028-124255",
+  "GUI": false,
+  "genuineCompactedResourceAvailable": false,
+  "wholeT31": false,
+  "Gate1": false,
+  "Packaging": "HOLD",
+  "limitations": [
+    "This configured 256-token summary sample stopped at the cap; no conclusion that compaction always fails or that a just-compacted GUI branch works.",
+    "No cap increase, retry, history padding, alternate model, new messages or fork followup after this stop.",
+    "keyCleared means local reference clearing, not proof of whole-memory erasure; fetch guard is not a full OS socket measurement.",
+    "All39 command texts/writefaces reviewed; large immutable source/report repeats and209274-character untracked metadata were not treated as new product evidence or facts from truncated output."
+  ],
+  "packetFiles": 26,
+  "manifestSHA": "42117145146cc8fbe9d8bba3de74cd2a6d0727ad31621212cf28d246bef67721"
+}

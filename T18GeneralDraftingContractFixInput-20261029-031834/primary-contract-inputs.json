@@ -1,0 +1,22 @@
+[
+  {
+    "path": "D:/Lawbeach/lawbench-B/contracts/api/materials_list.schema.json",
+    "bytes": 10258,
+    "sha256": "f0f0f3e08c8374e36f9e6cf52a84fee4ccde43757561eb820b01c9f0343eff31"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-B/contracts/files/material_index.schema.json",
+    "bytes": 4814,
+    "sha256": "a51b3e7c9edd3b027b386c2812f2f02e863934effab48277f8950dc7375050c6"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-B/service/lawbench/case/materials.py",
+    "bytes": 84378,
+    "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+  },
+  {
+    "path": "D:/Lawbeach/lawbench-A/dsh/packages/core/session/src/types.ts",
+    "bytes": 23140,
+    "sha256": "71df05767d4436f7df989a7fe0d634befef54587f1ae63849cc6b28de6921c53"
+  }
+]

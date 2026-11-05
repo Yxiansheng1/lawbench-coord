@@ -1,0 +1,8 @@
+{
+  "id": "item_57",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"(Get-FileHash -Algorithm SHA256 -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-A\\\\docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536\\\\fixed-inputs.json').Hash.ToLowerInvariant()\"",
+  "aggregated_output": "3ce2e0193d228d4a8083ad243ebdbf9065f539aef80bd63e969c5c6a7a373c3a\r\n",
+  "exit_code": 0,
+  "status": "completed"
+}

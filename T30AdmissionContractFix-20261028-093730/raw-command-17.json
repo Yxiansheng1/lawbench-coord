@@ -1,0 +1,8 @@
+{
+  "id": "item_21",
+  "type": "command_execution",
+  "command": "\"C:\\\\Users\\\\morel\\\\.cache\\\\codex-runtimes\\\\codex-primary-runtime\\\\dependencies\\\\native\\\\powershell\\\\pwsh.exe\" -NoProfile -Command \"Test-Path -LiteralPath 'docs\\\\plan\\\\evidence\\\\T30\\\\GenuineSessionAdmission-20261028-092536'; Get-ChildItem -LiteralPath 'docs\\\\plan\\\\evidence\\\\T30' -Force | Select-Object Name,Attributes,LastWriteTimeUtc | Format-Table -AutoSize; Get-ChildItem -LiteralPath 'D:\\\\Lawbeach\\\\lawbench-coord' -Filter '*T30*admission*' | Select-Object Name,Length,LastWriteTimeUtc | Format-Table -AutoSize\"",
+  "aggregated_output": "False\r\n\r\nName                           Attributes LastWriteTimeUtc\r\n----                           ---------- ----------------\r\n部分写入失败-20261021-190749    Directory 2026/10/21 11:13:17\r\n持久化事实改道-20261021-162727  Directory 2026/10/21 8:47:29\r\n第二轮-20261021-1536            Directory 2026/10/21 8:10:10\r\n返修-20261021                   Directory 2026/10/21 7:05:21\r\n三项边界返修-20261021-1730      Directory 2026/10/21 9:37:37\r\n交付说明.md                       Archive 2026/10/21 11:13:28\r\nbaseline.txt                      Archive 2026/10/19 9:10:16\r\ndsh-packages.txt                  Archive 2026/10/19 9:10:59\r\npatches-check.sh                  Archive 2026/10/19 9:08:36\r\npatches-check.txt                 Archive 2026/10/19 9:08:36\r\nvitest.txt                        Archive 2026/10/19 9:10:16\r\n\r\n\r\nName                                                     Length LastWriteTimeUtc\r\n----                                                     ------ ----------------\r\nA-T30-genuine-session-admission-order-20261028-092536.md   4842 2026/10/28 1:25:36\r\n\r\n",
+  "exit_code": 0,
+  "status": "completed"
+}

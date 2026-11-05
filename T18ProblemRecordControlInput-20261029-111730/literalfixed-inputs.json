@@ -1,0 +1,284 @@
+{
+  "format": "lawbench-t18-criminal-evidence-native-inputs-v1",
+  "task": "A-T18-criminal-evidence-native-20261029-100253",
+  "hashAlgorithm": "sha256",
+  "approvedInputs": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18CriminalEvidenceNativeInput-20261029-100253\\approved-inputs.json",
+    "bytes": 3298,
+    "sha256": "782daed01cc78593fc747583362fc77674e8677d8a2345dfb68ef31184e2502b"
+  },
+  "sourcePins": {
+    "path": "D:\\Lawbeach\\lawbench-coord\\T18RoundCitationRuntimeInput-20261029-105056\\reviewed-b-source-pins-round-citation.json",
+    "bytes": 53548,
+    "sha256": "6b07e5773dc77c6b13fd6688e4febca847af250f8a37ce13d3a4af4d581c5205"
+  },
+  "canonicalTask": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\_任务说明.md",
+    "bytes": 646,
+    "sha256": "44d4a257aacdc6b5036e83215c701658459a76da2512effdcac2b32e3af67e5f",
+    "mtime_ns": "1792379578798921000"
+  },
+  "skill": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\SKILL.md",
+    "bytes": 13276,
+    "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2",
+    "mtime_ns": "1792400314786868300"
+  },
+  "materials": [
+    {
+      "name": "价格认定结论书",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\价格认定结论书.md",
+      "bytes": 759,
+      "sha256": "a0f5cb8cb2a9a28c112a556be342c1b3728b1b739184d34d7cf953c31bd7721b",
+      "mtime_ns": "1792379578798921000"
+    },
+    {
+      "name": "扣押清单",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\扣押清单.md",
+      "bytes": 346,
+      "sha256": "6a55c26af5cbb90a6811b041250f760aa8b34b077ab5809050669856b3e3538c",
+      "mtime_ns": "1792379578798921000"
+    },
+    {
+      "name": "监控视频截图说明",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\监控视频截图说明.md",
+      "bytes": 951,
+      "sha256": "429a37a30badd105f8c3a4fdb696588bcb3ad4b0071c6b7f56075afbc66ca0fe",
+      "mtime_ns": "1792379578799920500"
+    },
+    {
+      "name": "被告人李某乙讯问笔录（第一次）",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第一次）.md",
+      "bytes": 977,
+      "sha256": "a1752a4c978057dcc5523d2f98ddc237f2a26af394acd39c33df2c4459fd05a6",
+      "mtime_ns": "1792379578799920500"
+    },
+    {
+      "name": "被告人李某乙讯问笔录（第二次）",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\样本03-李某乙盗窃无笔录\\被告人李某乙讯问笔录（第二次）.md",
+      "bytes": 646,
+      "sha256": "119f28862aa2dac5c8234ceea90cd9a693db31d0c6c07731292ac25482b51348",
+      "mtime_ns": "1792379578799920500"
+    }
+  ],
+  "referenceNotes": {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\tests\\要点.md",
+    "bytes": 10648,
+    "sha256": "4413f18644795a225c7f1046714202c45f82773b595e3be5ed4e16261a5d6d9a",
+    "mtime_ns": "1792379578800919800"
+  },
+  "dependencies": [
+    {
+      "role": "persona",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\persona.md",
+      "bytes": 2706,
+      "sha256": "a0dbc2b314f781d2b74a99edce633a289176965a549e00e45c946f0c5bf877c3"
+    },
+    {
+      "role": "dsh-cordis",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\vendor\\cordis\\lib\\index.js",
+      "bytes": 60361,
+      "sha256": "6a9394c0877ff45218818c6e815edd038f8057e1a1deb390a8d43ec81c57691e"
+    },
+    {
+      "role": "dsh-llm",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm\\src\\index.ts",
+      "bytes": 53468,
+      "sha256": "bda0a46c6cdc927a72b84f45b4caf351753e3e82cc3b8b35707c24857fdd14ba"
+    },
+    {
+      "role": "dsh-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\session\\src\\index.ts",
+      "bytes": 60384,
+      "sha256": "e4092a93a5a6daecf9639f2a261cf074d1877318c9ddb2226249802cc21ddd2d"
+    },
+    {
+      "role": "dsh-system-prompt",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\system-prompt\\src\\index.ts",
+      "bytes": 26532,
+      "sha256": "9e31442544109b3ff9be13458e826e0dcacbe31d9f59ddd96a6498ab20b1574e"
+    },
+    {
+      "role": "dsh-tools",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\tools\\src\\index.ts",
+      "bytes": 90679,
+      "sha256": "9107a2b6447b10c2ecb90429d7c1b80b956759e96d35230af16f5a88f5d3eccd"
+    },
+    {
+      "role": "dsh-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent\\src\\index.ts",
+      "bytes": 31340,
+      "sha256": "9979fdae64fd0a342067981c39de9cde2da7066d28f8506a501fd51e8f9068b9"
+    },
+    {
+      "role": "dsh-agent-loop",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\core\\agent-loop\\src\\index.ts",
+      "bytes": 37946,
+      "sha256": "853e76aef2eecafe5526a5267c3d386780b5c59e3c79c2448532fada7285a605"
+    },
+    {
+      "role": "dsh-session-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-projection\\src\\index.ts",
+      "bytes": 31464,
+      "sha256": "2186b62bfd59c0b5ea1413287f34e3a5be79b2162c5e0e2eb2143d7e42fea39f"
+    },
+    {
+      "role": "dsh-persistence-jsonl",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session\\session-persistence-jsonl\\src\\index.ts",
+      "bytes": 70510,
+      "sha256": "6c56c465034c7673dd167f2ad7270ad8ce9ae7536457a291dc6a7abb81328436"
+    },
+    {
+      "role": "dsh-session-query",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\session-query\\session-query\\src\\index.ts",
+      "bytes": 15460,
+      "sha256": "549f7f90c90efec63a5c7d69dbc65938c0f9578f85dcfc8ee25a49a43a8e83e3"
+    },
+    {
+      "role": "dsh-typert",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\typert\\registry\\src\\index.ts",
+      "bytes": 1023,
+      "sha256": "a6c1aa498660cb50d768c867411943d3760e2bbb8dcd016c950c6294ed626e2a"
+    },
+    {
+      "role": "dsh-llm-pi-ai",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\llm\\llm-pi-ai\\src\\index.ts",
+      "bytes": 14182,
+      "sha256": "1aa1823262d01d9e2bdc33177b82bfb1082b4559cbde288bb3606db19d575f2d"
+    },
+    {
+      "role": "controller-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\agent.ts",
+      "bytes": 22822,
+      "sha256": "2136af39dc59755f3fc5ef9474ec78ca77576061ea197627f1b664b319a4d769"
+    },
+    {
+      "role": "controller-commands",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\commands.ts",
+      "bytes": 31548,
+      "sha256": "c3ea5af81f21212888364bbd169c9d3d19c93f8720716dfc44ba32c1d164bb2c"
+    },
+    {
+      "role": "controller-projection",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\model-selection-projection.ts",
+      "bytes": 3041,
+      "sha256": "a45bdb4bf86025c62e45e83a582301ff649fea50c94f82eedd81b37ba6ef7f9f"
+    },
+    {
+      "role": "browser-session",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\api\\session-controller\\src\\client\\sessions\\session.ts",
+      "bytes": 40534,
+      "sha256": "07dc081cb466087fae1262050b171697efd60d8721b43578baf31e08a8a67b73"
+    },
+    {
+      "role": "skill-registry",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill\\src\\index.ts",
+      "bytes": 35965,
+      "sha256": "af4fad67fb086c3f5c93aed4604830718b4535e7e59a60d680404b07ea08477c"
+    },
+    {
+      "role": "skill-filesystem",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\skill-filesystem\\src\\index.ts",
+      "bytes": 39233,
+      "sha256": "a3fcfefcc6500f4bd7c19ba48dfa80efad312034f196f81a40d33d0d0098d315"
+    },
+    {
+      "role": "tool-skill",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\skill\\tool-skill\\src\\index.ts",
+      "bytes": 18371,
+      "sha256": "fb7b9f7558d516854ffe159803586decd1da003d7f10e04e026c4b7ca3622a1c"
+    },
+    {
+      "role": "user-questions",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\user-questions\\src\\index.ts",
+      "bytes": 5960,
+      "sha256": "2d8e7899f9763b308cf3fab3cc1018f5026af8c06a6b39925982ccdb8d934668"
+    },
+    {
+      "role": "tool-ask-user",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\interaction\\tool-ask-user\\src\\index.ts",
+      "bytes": 3702,
+      "sha256": "aa448c483d0e0de805079950c616e45d93b4c972b7a62345b4e4a8c4164bfecf"
+    },
+    {
+      "role": "repeat-tool-reminder",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\packages\\guard\\repeat-tool-reminder\\src\\index.ts",
+      "bytes": 10619,
+      "sha256": "1e917986fe9c5187d8f0fa11154ab2bf3b7c1d30db991540f4d1e62a2c59236d"
+    },
+    {
+      "role": "installed-lock",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\lock.yaml",
+      "bytes": 1011346,
+      "sha256": "60c46d0ed242a2f94663b0921b6296dd2db3a64fb2112dbc708a8341828acc38"
+    },
+    {
+      "role": "shared-skill-rules",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\_shared\\共用规则.md",
+      "bytes": 6982,
+      "sha256": "ebb19fe3584185971e989a87580d1e0f2f5ec1c83cc1c965c9958cbb8aec8b45"
+    },
+    {
+      "role": "criminal-evidence-review-skill",
+      "path": "D:\\Lawbeach\\lawbench-B\\skills\\criminal-evidence-review\\SKILL.md",
+      "bytes": 13276,
+      "sha256": "4405955c130cb7f9ea58c997965f41a62b6d7efcdafbb258d57fbd4028d906d2"
+    }
+  ],
+  "compilerPrivate": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552781,
+      "sha256": "f0b3f4c9bdc77c4b6c6de6eb7355c179a23568d7a15a8716a5f45683d7ee1f2f"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\ContractDraftQuestionPrivateBuild-20261029-045644\\private-output-20261029-050141\\manifest.json",
+      "bytes": 58200,
+      "sha256": "712f3b68d73d793c3caa6391bcc0f14e48b66c83dd5364e78b02db8a84affc14"
+    }
+  ],
+  "runtimeExecutables": [
+    {
+      "role": "node",
+      "path": "E:\\node\\node.exe",
+      "bytes": 93580104,
+      "sha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+    },
+    {
+      "role": "tsx",
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\tsx\\dist\\cli.mjs",
+      "bytes": 120402,
+      "sha256": "5d5b2a9f9cf4d6a8b44326b676417e00b42ad04037ed173b7af82ea8146a4fc0"
+    },
+    {
+      "role": "python",
+      "path": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "bytes": 104952,
+      "sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a"
+    }
+  ],
+  "consumer": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\native-criminal-evidence.mts",
+    "bytes": 123270,
+    "sha256": "863ce380232a12ae45d38ba544c38cee335ba64af49d4195b1a6e4fc63c1e34f"
+  },
+  "bService": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\CriminalProblemRecordObserver-20261029-110348\\b-service-criminal-evidence.py",
+    "bytes": 48428,
+    "sha256": "c437b9390b2d9c9fbe4afd1ae538c65be30bc4fff6c911ae6e77b69ac236ebdb"
+  }
+}

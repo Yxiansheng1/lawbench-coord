@@ -1,0 +1,26 @@
+[
+  {
+    "role": "current-compiled-agent",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\private-output-20261028-191115\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+    "bytes": 549374,
+    "sha256": "af533872ed30e41aeb2de823d24261a588f4b72c96f753ab05ead01def67c6e6"
+  },
+  {
+    "role": "current-compiled-host",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\private-output-20261028-191115\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+    "bytes": 902499,
+    "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+  },
+  {
+    "role": "current-compiled-package-metadata",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\private-output-20261028-191115\\profile-node_modules\\lawbench-dsh\\package.json",
+    "bytes": 1257,
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+  },
+  {
+    "role": "current-compiled-manifest",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\QuestionGatePrivateBuild-20261028-190358\\private-output-20261028-191115\\manifest.json",
+    "bytes": 58199,
+    "sha256": "af0d8cc2adae28bdae370d140044403ad9060a54b4a2a80c252991be42d88e88"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "state": "CLOSED_ROUND6_SINGLE_BUILD_FAILED_ELECTRON_ASSET_503",
+  "ownerReply": "允许从答复起60分钟，继续第6轮",
+  "firstObservedAfterReply": "2026-11-04T07:56:01.738663+08:00",
+  "deadline": "2026-11-04T08:56:00+08:00",
+  "base": "7d53fac3f61b05196e7bd6b5e16fc57b3431fd9c",
+  "codeChange": "Only decode backslashreplace -> owner requested replace",
+  "beforeSHA256": "9aad12b4e6f63a4f13e4b2d4ab5af40a72e7c523fa418592e7a7af70623589fd",
+  "afterSHA256": "f9ee940641471bdbfaa89925784c0b425454d5e80f73b92600a444c6a07b5540",
+  "signatureSHA256": "e1e13d06c86e2e6fd25d9ee8c68a2059ca57eee7a69f5fa19a2dbae726a53274",
+  "architecturePriorGateRun": 41691769146,
+  "localEncodingChecks": [
+    {
+      "check": "invalid UTF8",
+      "passed": true
+    },
+    {
+      "check": "Mach-O text",
+      "passed": true
+    },
+    {
+      "check": "lipo CPUs",
+      "passed": true
+    }
+  ],
+  "caseOrModelOperations": 0,
+  "ciBuildLimit": 1,
+  "arch": "x64",
+  "sameCauseTwice": "STOP",
+  "quotaWarning": "STOP",
+  "dirtyHistoryPreserved": [
+    "dsh",
+    ".types",
+    "bootstrap-session-remote.mjs"
+  ],
+  "actualSourceChangeWholeInverseExact": true,
+  "head": "3e1a829f27220b4a7943897a38f3c611a4a3a3b9",
+  "run": 41743220634,
+  "url": "https://github.com/Yxiansheng1/lawbench/actions/runs/41743220634",
+  "dispatchedAt": "2026-11-04T07:57:58.691151+08:00",
+  "dispatchCount": 1,
+  "recordedAt": "2026-11-04T08:55:12.538726+08:00",
+  "CIcount": 1,
+  "allJobsCompleted": true,
+  "failureStage": "prepare:runtime; Electron44.0.0darwin-x64 download503",
+  "sameSpecificCauseCount": 1,
+  "mainArchitectureGate": "NOT_REACHED;未通过",
+  "mainSignature": "NOT_REACHED;未通过",
+  "sideToolsSignature": "limitedPASSboth",
+  "DMG": null,
+  "actualSmoke": "NOT_RUN;未通过",
+  "automaticRetry": false,
+  "reports": [
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64第6轮架构闸门-20261104-085512.md",
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64第6轮签名验证-20261104-085512.md",
+    "D:\\Lawbeach\\lawbench-coord\\Intel-x64第6轮构建结果-20261104-085512.md"
+  ]
+}

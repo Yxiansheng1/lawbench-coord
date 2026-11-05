@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ManualClauseFinite-root-20261028-203721",
+  "exit": 0,
+  "elapsed_s": 1.1720000000004802,
+  "natural": true,
+  "forced": false,
+  "identities": [
+    {
+      "pid": 44024,
+      "parent": 27172,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:37:21.1928570Z"
+    },
+    {
+      "pid": 46256,
+      "parent": 44024,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T12:37:21.2563950Z"
+    }
+  ],
+  "OS_after": [],
+  "source_unchanged": true,
+  "exact_only_observer_function_inverse_all_other_bytes_held": true,
+  "source_sha256": "31415f0ec05605bba10e69721c4579fa21d00d553c9af38d84c74ee1b103b3f9",
+  "test_sha256": "01f3394735d033ffda806627283cdc6f12292a04b3748bdd0071397083821a34",
+  "stdout": "PASS manual-reason-observer: original and latest actual inputs and 22 focused cases\nPASS manual-reason-observer: 2 other-machine-reason controls\n",
+  "stderr": "",
+  "scope": "OFFLINE_CURRENT_OBSERVER_ACTUAL_SYNTHETIC_ARTIFACT_AND_REJECTION_CASES_ONLY_NOT_NATIVE_MODEL_RUN",
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

@@ -1,0 +1,178 @@
+// @vitest-environment jsdom
+// T32：新会话默认案件、文稿；原文与材料保留注册和 slot，但不进 guide；原文按出处打开、原生关闭、再打开。
+// 本文件用 DSH 自己的 registry、controller 与 store 驱动布局，只替掉插件上下文和渲染 seat。
+import { createSidebarRightController } from '../../dsh/packages/client/ui-sidebar-right/lib/types/client/service.js'
+import { createSidebarRightStore } from '../../dsh/packages/client/ui-sidebar-right/lib/types/client/stores.js'
+import { defaultSeed } from '../../dsh/packages/client/ui-sidebar-right/lib/types/client/contract/seed.js'
+import { SidebarRightTabRegistry } from '../../dsh/packages/client/ui-sidebar-right/lib/types/client/tab-registry.js'
+import { citationDeps, citationDepsFor } from '../ui/citation-deps.ts'
+import { TABS } from '../ui/cases.ts'
+import { registerTabs } from '../ui/index.tsx'
+import { SEEDED_KEY } from '../ui/rightbar.ts'
+import { setNav, type Nav } from '../ui/kit.tsx'
+import { app, type CaseRef } from '../ui/state.ts'
+
+const SESSION = 's-new'
+const CASE: CaseRef = { case_id: 'c-1', name: '甲案（虚构）', root: 'D:\\案件\\甲案', exists: true }
+
+type Registered = { name: string; key?: string; id?: string; guide?: unknown[] }
+let active: ReturnType<typeof harness> | undefined
+
+function harness(seen: string[] = [], session = SESSION) {
+  const dsh = { effect: (fn: () => unknown) => fn() }
+  const tabs = new SidebarRightTabRegistry(dsh as never)
+  const { controller, adopt } = createSidebarRightController(tabs, () => {})
+  const store = createSidebarRightStore(() => defaultSeed(tabs)).create()
+  const releaseAdoption = adopt(session as never, store)
+  const cleanups: Array<(() => void) | undefined> = []
+  const slots: Registered[] = []
+  const opened: Array<{ kind: string; options?: { params?: Record<string, string> } }> = []
+
+  localStorage.clear()
+  localStorage.setItem(SEEDED_KEY, JSON.stringify(seen))
+  app.set((s) => ({ ...s, cases: [CASE], currentRoot: CASE.root }))
+
+  const sidebarRight = {
+    openTab(kind: string, options?: { params?: Record<string, string> }) {
+      opened.push({ kind, options })
+      controller.openTab(kind, options as never)
+    },
+    mounted: controller.mounted,
+    isExpanded: () => controller.isExpanded(),
+    toggleExpanded: () => controller.toggleExpanded(),
+  }
+  const ctx = {
+    slots: {
+      inject: (_name: string, fn: () => () => void) => fn(),
+      register: (definition: Registered) => {
+        slots.push(definition)
+        return () => {}
+      },
+    },
+    sidebarRight,
+    sidebarRightTabs: tabs,
+    effect: (fn: () => unknown) => {
+      const cleanup = fn()
+      if (typeof cleanup === 'function') cleanups.push(cleanup as () => void)
+      return () => {}
+    },
+  }
+  const nav = registerTabs(ctx as never)
+  setNav({ openTab: nav.openTab } as unknown as Nav)
+
+  const layout = () => {
+    const surface = store.getSnapshot().bySession[session]
+    if (surface === undefined) throw new Error('expected a session surface')
+    return surface.layout
+  }
+  const tab = (kind: string) => Object.values(layout().tabs).find((item) => item.kind === kind)
+  let releaseBinding: (() => void) | undefined
+  const bind = () => {
+    releaseBinding = controller.bind({
+      sessionId: session as never,
+      actions: store.actions,
+      surfaces: store.getSnapshot().bySession,
+      closeWithFocus: (_paneId, close) => { close() },
+      openWithFocus: (open) => { open() },
+      canSplitPane: () => true,
+    })
+  }
+  const unbind = () => { releaseBinding?.(); releaseBinding = undefined }
+  const dispose = () => {
+    unbind()
+    for (const cleanup of cleanups.reverse()) cleanup?.()
+    releaseAdoption()
+    controller.tabDomain.dispose()
+    setNav(undefined)
+    app.set((s) => ({ ...s, cases: [], currentRoot: null }))
+  }
+  return { tabs, controller, store, slots, opened, layout, tab, nav, bind, unbind, dispose, session }
+}
+
+beforeEach(() => { active = undefined })
+afterEach(() => {
+  active?.dispose()
+  active = undefined
+  localStorage.clear()
+})
+
+describe('T32 原文按需页签生命周期', () => {
+  it('新会话 seed 案件和文稿；原文和材料仍注册，但 guide 只列默认两页', () => {
+    const h = active = harness(['s-old'])
+    expect(h.tabs.guide().map((entry) => entry.kind)).toEqual([TABS.case, TABS.document])
+    expect(h.tabs.get(TABS.source)?.kind).toBe(TABS.source)
+    expect(h.tabs.get(TABS.materials)?.kind).toBe(TABS.materials)
+    expect(h.tabs.get(TABS.document)?.keepMounted).toBe(true)
+    expect(h.tabs.get(TABS.source)?.keepMounted).not.toBe(true)
+    expect(h.slots.filter((item) => item.name === 'sidebar.right.pane.tab').map((item) => item.key))
+      .toEqual(expect.arrayContaining([TABS.case, TABS.document, TABS.source, TABS.materials]))
+
+    h.bind()
+    expect(h.opened).toEqual([{ kind: TABS.case, options: undefined }, { kind: TABS.document, options: undefined }])
+    expect(Object.values(h.layout().tabs).map((item) => item.kind)).toEqual([TABS.case, TABS.document])
+    expect(h.layout().expanded).toBe(false)
+    expect(JSON.parse(localStorage.getItem(SEEDED_KEY) ?? '[]')).toEqual(['s-old', SESSION])
+
+    h.controller.toggleExpanded()
+    expect(h.layout().expanded).toBe(true)
+    h.controller.toggleExpanded()
+    expect(h.layout().expanded).toBe(false)
+    const once = h.opened.length
+    app.set((s) => ({ ...s }))
+    h.unbind()
+    h.bind()
+    expect(h.opened.length).toBe(once)
+    expect(h.tab(TABS.source)).toBeUndefined()
+    expect(h.tab(TABS.materials)).toBeUndefined()
+  })
+
+  it('出处保留参数打开原文；原生关闭后 app 变更或重挂不补回，再按出处可重开', () => {
+    const h = active = harness()
+    h.bind()
+
+    citationDeps.openSource('M-1', '〔起诉书 第2页〕')
+    expect(h.opened.at(-1)).toEqual({
+      kind: TABS.source,
+      options: { params: { material_id: 'M-1', citation: '〔起诉书 第2页〕' } },
+    })
+    const source = h.tab(TABS.source)
+    expect(source).toBeDefined()
+    expect(h.layout().expanded).toBe(true)
+
+    h.controller.close(source!.id)
+    expect(h.tab(TABS.source)).toBeUndefined()
+    app.set((s) => ({ ...s }))
+    h.unbind()
+    h.bind()
+    expect(h.tab(TABS.source)).toBeUndefined()
+    expect(h.layout().expanded).toBe(true)
+
+    h.unbind()
+    citationDepsFor('task-42').openSource('M-2', '〔讯问笔录 第1页〕')
+    expect(h.tab(TABS.source)).toBeUndefined()
+    h.bind()
+    expect(h.opened.at(-1)).toEqual({
+      kind: TABS.source,
+      options: { params: { material_id: 'M-2', citation: '〔讯问笔录 第1页〕', task_id: 'task-42' } },
+    })
+    expect(h.tab(TABS.source)?.contentId).toBe(`sidebar://${TABS.source}`)
+  })
+
+  it('所有页关闭时交给 DSH 收起，不把原文补回来', () => {
+    const h = active = harness()
+    h.bind()
+    citationDeps.openSource('M-1', '〔起诉书 第2页〕')
+    const source = h.tab(TABS.source)!
+    const caseTab = h.tab(TABS.case)!
+    const documentTab = h.tab(TABS.document)!
+    h.controller.close(caseTab.id)
+    expect(h.tab(TABS.case)).toBeUndefined()
+    expect(h.tab(TABS.source)).toBeDefined()
+    h.controller.close(documentTab.id)
+    expect(h.tab(TABS.document)).toBeUndefined()
+
+    h.controller.close(source.id)
+    expect(Object.values(h.layout().tabs)).toEqual([])
+    expect(h.layout().expanded).toBe(false)
+  })
+})

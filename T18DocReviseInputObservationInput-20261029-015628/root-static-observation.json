@@ -1,0 +1,13 @@
+{
+  "verdict": "STATIC_REJECT_BEFORE_MAIN_KEY_HTTP",
+  "consumer_sha256": "08453ec8ba76a1bed97a799a25bb71d6fb2c31a1c1626a3e5c4fb598058614ab",
+  "actual_checklist_sha256": "b01af533b523c9752a84fd3801d3de1cfd46db5fb75642888aaa6bad493abe2f",
+  "actual_checklist_bytes": 2351,
+  "actual_checklist_contains_4_1": false,
+  "actual_checklist_contains_chapter_four": true,
+  "impossible_literal_checks": 2,
+  "old_first_stage_strict_predicate_still_NOT_MET": true,
+  "model": 0,
+  "HTTP": 0,
+  "Key": 0
+}

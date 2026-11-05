@@ -1,0 +1,42 @@
+{
+  "verdict": "CONSUMER_EARLY_ABORT_TEARDOWN_RACE_REQUIRES_SOURCE_REVIEW_NOT_NEW_PRODUCT_CRASH",
+  "original_error": {
+    "name": "Error",
+    "message": "actual tool loop lacks case_list_materials"
+  },
+  "native_completed_end_seq47_ms": 1793250126119,
+  "B_final_finished_at": "2026-10-29T05:02:06.292+00:00",
+  "actual_agent_end_failed": [
+    {
+      "ts": "2026-10-29T05:02:06.738Z",
+      "source": "agent",
+      "level": "warn",
+      "event": "agent.task_end_failed",
+      "attempt": 1,
+      "code": "SERVICE_UNAVAILABLE",
+      "reason": "completed"
+    },
+    {
+      "ts": "2026-10-29T05:02:06.742Z",
+      "source": "agent",
+      "level": "warn",
+      "event": "agent.task_end_failed",
+      "attempt": 2,
+      "code": "SERVICE_UNAVAILABLE",
+      "reason": "completed"
+    }
+  ],
+  "actual_task_state": "running",
+  "B_task_end_count": 0,
+  "B_route_count_expected_task_end1": true,
+  "B_exit_failure": "cross_exam_route_count",
+  "all_B_close_flags_true": true,
+  "all_seven_complete_owned_OS_gone": true,
+  "Listen0": true,
+  "source_primary": "A agent session/event listener void onSessionEvent; agent.whenIdle does not await these side effects; consumer early missinglist throw reaches teardown",
+  "causal_race_supported_by_primary_code_and_timeline_not_yet_finite_proven": true,
+  "no_product_patch_authorized_by_this_inference": true,
+  "report_cleanup_failure_is_nonzero_fixture_exit_not_live_listener_or_OS_leak": true,
+  "sourceGET0": true,
+  "production_JSONL_reopen": "NOT_REACHED"
+}

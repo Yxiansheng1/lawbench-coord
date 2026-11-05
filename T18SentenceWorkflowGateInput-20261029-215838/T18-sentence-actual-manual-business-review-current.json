@@ -1,0 +1,131 @@
+{
+  "verdict": "MANUAL_BUSINESS_CHECK_FAILED",
+  "actual_run": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceApiObservation-20261029-214710\\run-gySbhT",
+  "final_draft": {
+    "path": "\\\\?\\D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T18\\SentenceApiObservation-20261029-214710\\run-gySbhT\\case\\工作区\\任务\\T-20261029215326-30e9\\草稿\\刑期计算表-v7.md",
+    "bytes": 1419,
+    "sha256": "8adfaf2afeb899967bea0b97cf199667066d97ed78963368bc34d5bea87ad29e",
+    "mtime_ns": "1793282095385838500",
+    "actual_model_tool_argument_matches": true,
+    "citation_check": {
+      "passed": true,
+      "problems": [
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 逮捕羁押止日 | 2026-09-30 | 【律师提供】 |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 刑期起止 | 自 2026-01-15 起至 2029-07-14 止 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "| 执行满二分之一 | 2027-10-14 | 程序计算（法律依据待律师核实） |",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        },
+        {
+          "class": "F",
+          "severity": "hint",
+          "excerpt": "羁押止日按律师要求算至2026年9月30日【律师提供】。",
+          "citation": null,
+          "message": "含金额或日期但没有出处，确认是否需要补出处"
+        }
+      ],
+      "stats": {
+        "citations": 8,
+        "must_fix": 0,
+        "hints": 4
+      }
+    },
+    "citations": [
+      {
+        "material_id": "M0001",
+        "material_version": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+        "name": "刑事判决书",
+        "loc": {
+          "unit": "line",
+          "from": 16
+        }
+      },
+      {
+        "material_id": "M0002",
+        "material_version": "bbe57c8d65553335463121e598a7009cd396fb3f3887f5e948b883213c167096",
+        "name": "拘留证",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0005",
+        "material_version": "8c85c11e42b3d35f0ae2a63639924691a5ce8f06a5f5e61581642e39c90952d5",
+        "name": "逮捕证",
+        "loc": {
+          "unit": "line",
+          "from": 7
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+        "name": "羁押情况证明",
+        "loc": {
+          "unit": "line",
+          "from": 5
+        }
+      },
+      {
+        "material_id": "M0001",
+        "material_version": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+        "name": "刑事判决书",
+        "loc": {
+          "unit": "line",
+          "from": 17
+        }
+      },
+      {
+        "material_id": "M0004",
+        "material_version": "8a6e9b8fad2a482745f6970e8b3d1733fac0af84b1a3ca2b756c806cc75c809e",
+        "name": "起诉意见书",
+        "loc": {
+          "unit": "line",
+          "from": 6
+        }
+      },
+      {
+        "material_id": "M0003",
+        "material_version": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+        "name": "羁押情况证明",
+        "loc": {
+          "unit": "line",
+          "from": 8
+        }
+      }
+    ]
+  },
+  "positive": [
+    "Actual production calculator start/end/half 2026-01-15/2029-07-14/2027-10-14 and custody/offset259 match actual source judgment and requested endpoint; not legal merits certification.",
+    "The unclear arrest-certificate date 2026年2月2■日 remains visible; clear other materials cited; judgment comparison shown.",
+    "First successful save follows calculator result immediately."
+  ],
+  "failures": [
+    "No actual case_list_materials or ask_user_question; callback/answers0. This violates PRIMARY list then grouped read then joint confirmation BEFORE calculator.",
+    "Final draft omits raw calculator milestone basis and notes 各段羁押期间有重叠，重叠的日子只算一次; no exact full raw-return visibility PASS.",
+    "Draft says 判决执行之日 无【律师提供】 but actual public task supplied no execution date or real answer; attribution unsupported.",
+    "Required per-item visible selfcheck absent from final analysis draft and visible final reply."
+  ],
+  "F_hints": "Four F hints retained; not all fatal merely because F. Root assessed actual content separately.",
+  "source_GET": "NOT_REACHED",
+  "JSONL_close_reopen": "NOT_REACHED",
+  "calculator_one_actual_call": true,
+  "production_source_or_legal_merits_all_PASS": false,
+  "Packaging": "HOLD"
+}

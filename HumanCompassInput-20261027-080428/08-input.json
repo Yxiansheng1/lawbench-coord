@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-23T01:37:56.700468+08:00",
+  "verdict": "PASS_ENGINEERING_SLICE_ONLY",
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T38-serial-full-cumulative-20261023-010815",
+  "snapshot_sha256": "460c5dc9b3eb45ad72de9874e253d0d1baf09a4308ec226503b0f73da104d930",
+  "targets": 74,
+  "target_lines": 23230,
+  "context_files": 357,
+  "reports": [
+    {
+      "axis": "scope",
+      "reviewer": "/root/t38_serial_full_scope_fresh",
+      "verdict": "PASS",
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t38-serial-full-scope-fresh\\REVIEW.md",
+      "report_sha256": "eb4e105a0ef672505f7a87d06fbb4787cdb1a73254f3ad586159f7a7e9c81084",
+      "coverage": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t38-serial-full-scope-fresh\\COVERAGE.md",
+      "coverage_sha256": "05897b95e965df4a7ddf5a20f58f5a7e1054fd3ed388338bbe361703dd69b204",
+      "root_report_and_coverage_fully_read": true,
+      "targets": 74
+    },
+    {
+      "axis": "behavior",
+      "reviewer": "/root/t38_serial_full_behavior",
+      "verdict": "PASS",
+      "report": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t38-serial-full-behavior\\REVIEW.md",
+      "report_sha256": "01460cc35eb4b1e6e6c94c0af5791dcb65fb389b999230e8f0fef7e669638ebe",
+      "coverage": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\t38-serial-full-behavior\\COVERAGE.md",
+      "coverage_sha256": "8734a3cf72cd033250afd5d043c75c0511445ce8d304db2180ebfcee3203d652",
+      "root_report_and_coverage_fully_read": true,
+      "targets": 74
+    }
+  ],
+  "receipt": "D:\\Lawbeach\\lawbench-coord\\ORCH-复核-T38服务契约完整累计-工程收口-20261023-013756.md",
+  "root_raw_fully_consumed": true,
+  "scope_qualification_replaced_by_fresh": true,
+  "no_repeat_experiment": true,
+  "not_whole_T38_or_release": true
+}

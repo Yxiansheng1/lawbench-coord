@@ -1,0 +1,193 @@
+{
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T30GenuineAdmission-root-20261028-094301",
+  "exit_code": 0,
+  "elapsed_s": 3.687999999994645,
+  "natural_exit": true,
+  "forced_stop": false,
+  "identities": [
+    {
+      "pid": 38624,
+      "parent": 12348,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T01:43:01.9284910Z"
+    },
+    {
+      "pid": 31128,
+      "parent": 38624,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T01:43:01.9372420Z"
+    },
+    {
+      "pid": 43884,
+      "parent": 38624,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T01:43:02.0122250Z"
+    },
+    {
+      "pid": 41808,
+      "parent": 43884,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T01:43:02.1244270Z"
+    },
+    {
+      "pid": 23548,
+      "parent": 43884,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T01:43:02.2319580Z"
+    },
+    {
+      "pid": 29476,
+      "parent": 43884,
+      "exe": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "birth_utc": "2026-10-28T01:43:03.9493860Z"
+    }
+  ],
+  "OS_after": [],
+  "run_roots": [
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq"
+  ],
+  "report": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\admission-report.json",
+  "consumer_report": {
+    "format": "lawbench-t30-genuine-session-admission-v1",
+    "authoredStatus": "AUTHORED_NOT_RUN",
+    "status": "PASS",
+    "process": {
+      "executable": "E:\\node\\node.exe",
+      "pid": 43884,
+      "startedAtUtc": "2026-10-28T01:43:02.034Z"
+    },
+    "runRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq",
+    "sourceAndTarget": {
+      "sourceBefore": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-97c67db2-b8a6-428b-be48-04b4144d10bd.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+      },
+      "childBefore": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl",
+        "bytes": 16235,
+        "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+      },
+      "sourceAfterCopy": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-97c67db2-b8a6-428b-be48-04b4144d10bd.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+      },
+      "childAfterCopy": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl",
+        "bytes": 16235,
+        "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+      },
+      "target": {
+        "source": {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd\\session.v4.jsonl",
+          "bytes": 12059,
+          "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+        },
+        "child": {
+          "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9\\session.v4.jsonl",
+          "bytes": 16235,
+          "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+        },
+        "sourceProjectDir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--",
+        "childProjectDir": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--",
+        "sourceDirectory": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+        "childDirectory": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9"
+      },
+      "sourceFinal": {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd\\session.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+      },
+      "childFinal": {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9\\session.v4.jsonl",
+        "bytes": 16235,
+        "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+      },
+      "sourceInputFinal": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-97c67db2-b8a6-428b-be48-04b4144d10bd.v4.jsonl",
+        "bytes": 12059,
+        "sha256": "e07870975267497a8ab19b7836d01f549d48effe161c55b8e63bf669616b5dee"
+      },
+      "childInputFinal": {
+        "path": "D:\\Lawbeach\\lawbench-coord\\T30GenuineSessionInput-20261028-092536\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9.v4.jsonl",
+        "bytes": 16235,
+        "sha256": "b6e48f43655a511fb07020a61574e5767d4f9bbac72459057ceb791f19ee8461"
+      }
+    },
+    "network": {
+      "fetchAttempts": 0,
+      "httpRequests": 0,
+      "modelCalls": 0
+    },
+    "cleanup": {
+      "routerContextDisposed": true,
+      "preflightContextDisposed": true,
+      "fetchRestored": true,
+      "environmentRestored": true,
+      "failures": []
+    },
+    "claims": {
+      "gui": false,
+      "fixedDriveTrash": false,
+      "usbRefusal": false,
+      "wholeT30": false,
+      "packaging": false
+    },
+    "manifest": {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\fixed-inputs.json",
+      "sha256": "3ce2e0193d228d4a8083ad243ebdbf9065f539aef80bd63e969c5c6a7a373c3a",
+      "entries": 32,
+      "checkedAtUtc": "2026-10-28T01:43:02.230Z"
+    },
+    "case": {
+      "appdata": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\appdata",
+      "caseDbSha256": "47f21b3fb42c2648605943bd1ee590ceb42dcfd5b6dfd2c8c35c1d8099e7faa6",
+      "caseId": "872b161f-27d4-40bf-879e-ee457ef6454b",
+      "caseRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case",
+      "casesJsonSha256": "bf795c81eebfde1a057603f907b996a95e44b94da5d0db328c32ff113bd957b0",
+      "created": true,
+      "format": "lawbench-t30-genuine-case-registration-v1",
+      "kind": "daily",
+      "modelCalls": 0,
+      "networkImports": 0,
+      "sessionRoot": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话",
+      "source": "installed B-line CaseRegistry.open"
+    },
+    "router": {
+      "caseRootsVisible": true,
+      "listedCount": 2,
+      "sourceStatSizeBytes": 12059,
+      "childStatSizeBytes": 16235,
+      "sourceLogicalCwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case",
+      "childLogicalCwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case",
+      "sourcePhysicalHeaderCwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\workspace",
+      "childPhysicalHeaderCwd": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\NativeRealConversation-20261028-000823\\run-RTmLl7\\workspace",
+      "sourceEvents": 27,
+      "childEvents": 37,
+      "childInheritedEvents": 27,
+      "inheritedPrefixEqual": true,
+      "parentRelationEqual": true,
+      "sourceRecordOwnedByCase": true,
+      "childRecordOwnedByCase": true,
+      "sourceRecordDirectory": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-97c67db2-b8a6-428b-be48-04b4144d10bd",
+      "childRecordDirectory": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T30\\GenuineSessionAdmission-20261028-092536\\run-kLVTTq\\case\\工作区\\会话\\--D-Lawbeach-lawbench-A-docs-plan-evidence-T31-NativeRealConversation-20261028-000823-run-RTmLl7-workspace--\\session-7fd6b82e-f361-456a-9c91-b6ba77991bb9"
+    },
+    "preflight": {
+      "event": "workspace/session-delete-check",
+      "refusalCodes": [],
+      "deleteEventsEmitted": 0,
+      "deleteEventObserved": false,
+      "fixedDriveCheckOnly": true,
+      "stopOrReleaseCalled": false,
+      "trashMoveCalled": false
+    }
+  },
+  "consumer_unchanged": true,
+  "credential_read": false,
+  "model_requests": 0,
+  "delete_events_issued": 0,
+  "GUI_PASS": false,
+  "whole_project_PASS": false,
+  "Packaging": "HOLD"
+}

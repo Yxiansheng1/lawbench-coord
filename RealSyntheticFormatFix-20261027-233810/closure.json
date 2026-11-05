@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-27T23:35:48.9747321+08:00",
+  "owned": [
+    {
+      "pid": 41352,
+      "present": false,
+      "exe": null,
+      "birth": null
+    },
+    {
+      "pid": 29376,
+      "present": false,
+      "exe": null,
+      "birth": null
+    }
+  ],
+  "forced_stop": false,
+  "run": "D:/Lawbeach/lawbench-C/docs/plan/evidence/T32/RealSyntheticSecureInput-20261027-225913/runs/root-20261027-233226",
+  "files": [
+    {
+      "Name": "launch-summary.json",
+      "Length": 2031
+    }
+  ]
+}

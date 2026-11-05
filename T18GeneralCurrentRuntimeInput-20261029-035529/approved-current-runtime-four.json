@@ -1,0 +1,145 @@
+{
+  "private": [
+    {
+      "role": "current-compiled-agent",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+      "bytes": 552599,
+      "sha256": "9dd06812701c21408323a3145022b828b23d4cf0a8ce86c6653268fdcbed403f"
+    },
+    {
+      "role": "current-compiled-host",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+      "bytes": 902499,
+      "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+    },
+    {
+      "role": "current-compiled-package",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404\\profile-node_modules\\lawbench-dsh\\package.json",
+      "bytes": 1257,
+      "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+    },
+    {
+      "role": "current-compiled-manifest",
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404\\manifest.json",
+      "bytes": 58194,
+      "sha256": "cc33c0d99bd18b0850d675da62a0944d7be93c3b9acfddca7106eb8e5c8e2e47"
+    }
+  ],
+  "build": {
+    "at": "2026-10-29T03:54:46.117401+08:00",
+    "verdict": "STATIC25_CURRENT_GENERAL_DRAFTING_QUESTION_GATE_ACCEPTED_BUILD0",
+    "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18GeneralPrivateBuild-root-20261029-035404",
+    "output": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\GeneralQuestionPrivateBuild-20261029-034531\\private-output-20261029-035404",
+    "manifest_sha": "cc33c0d99bd18b0850d675da62a0944d7be93c3b9acfddca7106eb8e5c8e2e47",
+    "manifest_bytes": 58194,
+    "inventory25_exact": true,
+    "trees18_files39_refs14_exact": true,
+    "legacy18_unchanged": true,
+    "source_modules": {
+      "lawbench": 258,
+      "uiConversation": 91,
+      "sessionController": 42
+    },
+    "changed_output_paths": [
+      "profile-node_modules/lawbench-dsh/lib/agent.js",
+      "profile-node_modules/lawbench-dsh/lib/client.js"
+    ],
+    "contract_AST": {
+      "kind": "STATIC_TYPESCRIPT_AST_DATA_ONLY_NO_BUNDLE_EXECUTION",
+      "embedded": {
+        "agent": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        },
+        "host": {
+          "schemas": 68,
+          "version": "1.6",
+          "exact": true
+        }
+      },
+      "prompt": {
+        "sameHostRemote": true,
+        "package": "@deepseek-ai/dsh-api-session-controller",
+        "properties": [
+          "requestId",
+          "sessionId",
+          "mode",
+          "content",
+          "clientTimeZone",
+          "deliveryRestriction"
+        ],
+        "deliveryRestriction": "z.literal(\"next-turn-only\").readonly().optional()",
+        "codecEqual": true
+      },
+      "generatedDeclarationIncludesPrompt": true
+    },
+    "current_gate_agent_sha": "9dd06812701c21408323a3145022b828b23d4cf0a8ce86c6653268fdcbed403f",
+    "current_gate_host_sha": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b",
+    "compiled_gate_strings_present": true,
+    "build_exit": 0,
+    "elapsed_s": 9.2186342,
+    "OS": [
+      {
+        "pid": 23808,
+        "exe": "E:\\node\\node.exe",
+        "birthTicks": 639288140499595292,
+        "gone": true
+      },
+      {
+        "pid": 11796,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288140509480881,
+        "gone": true
+      },
+      {
+        "pid": 4200,
+        "exe": null,
+        "birthTicks": null,
+        "gone": true
+      },
+      {
+        "pid": 40908,
+        "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+        "birthTicks": 639288140503871277,
+        "gone": true
+      },
+      {
+        "pid": 29568,
+        "exe": "C:\\Windows\\system32\\conhost.exe",
+        "birthTicks": 639288140499670249,
+        "gone": true
+      }
+    ],
+    "OS_complete_count": 4,
+    "OS_partial_count": 1,
+    "full_OS_identity_proof": false,
+    "OS_qualification": "Four complete observed build exe/UTCbirth identities gone; one additional fast-exit child PID has null exe/birth, so its exact identity closure is NOT_PROVEN. Natural build0; no forced stop. Static AST helper OS identity not collected separately.",
+    "AST_helper_OS_identity_not_collected": true,
+    "forced": false,
+    "GUI": false,
+    "model_calls": 0,
+    "original_contract_business_pass": false,
+    "Gate1": "INCOMPLETE",
+    "Packaging": "HOLD"
+  },
+  "source_review": {
+    "verdict": "MINIMAL_GENERAL_DRAFTING_QUESTION_PREDICATE_SOURCE_REVIEWED_PENDING_UNIT",
+    "consumer_product": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "product_sha256": "b2e460220a7ee037fec883fa3fb19e285fa2789846c0af7807099683f2e81255",
+    "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\general-drafting-question-gate.spec.ts",
+    "test_sha256": "c14bce581cfe033ab7a4cc6192ab8a3920c402094f16bf1b0f0a1445a499076a",
+    "full_product_byte_inverse": true,
+    "old_tests_taskstate_host_skill_held": true,
+    "author_actual_commands": 41,
+    "author_success": 37,
+    "author_nonzero": 4,
+    "author_runtime": 0,
+    "scope": "Only three confirmed Skills. IDs from current Host catalog; existing TaskState final-answer/call token isolation reused; feedback contract-only.",
+    "actual_red": "run-iOLk2a 12model200 ask0 saved4",
+    "unit_runner_reused_exact_pins_environment_OS_cleanup": true,
+    "model_started": false,
+    "Packaging": "HOLD"
+  },
+  "unit37_types0": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-general-question-gate-unit-root-current.json"
+}

@@ -1,0 +1,105 @@
+{
+  "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+  "snapshot": "D:\\Lawbeach\\lawbench-coord\\T31PreparedGuardInput-20261031-054059\\baseline",
+  "destination": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopePreparedGuard-20261031-054059",
+  "baseline_files": [
+    {
+      "name": "entry.py",
+      "bytes": 43762,
+      "sha256": "34f9d264e8835b604f5e7696137de33e3b4ca7314126f1d8982ff3d92c79a9b5"
+    },
+    {
+      "name": "literal-inputs.json",
+      "bytes": 50570,
+      "sha256": "c4ee799f4d529c8a50b7a53f6925d1f6341c9c4c5045601fdb7899fc4e029ada"
+    },
+    {
+      "name": "observer-finite.mjs",
+      "bytes": 6845,
+      "sha256": "80100aa3b4c343448ee705f83f4d6bd6b28c026227304eb90005f4d521c07ccb"
+    },
+    {
+      "name": "prepare.ps1",
+      "bytes": 13561,
+      "sha256": "49339421002094b2646f8b7417c196c03201fe3f4150b666340a65718945dc92"
+    },
+    {
+      "name": "private-provider-binding.mjs",
+      "bytes": 2499,
+      "sha256": "376570143a8af0235af627ec87af06cef9a3e717c1928f777343386387381a4e"
+    },
+    {
+      "name": "projection-observer.mjs",
+      "bytes": 20058,
+      "sha256": "2c594da0154dc3dfda506d557249cc2213788d9a28c759af1edec2ddb7b39eac"
+    },
+    {
+      "name": "README.md",
+      "bytes": 2625,
+      "sha256": "0077ebe619495217bba2b8be14353f35ef98ce00a7212a81e891eb4229e60534"
+    },
+    {
+      "name": "scope-a.txt",
+      "bytes": 37,
+      "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+    },
+    {
+      "name": "scope-b.txt",
+      "bytes": 37,
+      "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+    },
+    {
+      "name": "scope-c.txt",
+      "bytes": 39,
+      "sha256": "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439"
+    },
+    {
+      "name": "settings-read-observer.mjs",
+      "bytes": 11513,
+      "sha256": "4fac11cf4a8bd75d46f932a0ce3cbb1d5dd263d15a81c2c180953715bf8ce107"
+    },
+    {
+      "name": "signature-finite.mjs",
+      "bytes": 5381,
+      "sha256": "d52d1848983de75a8fb30f4ce9ca0340a349fc7942972a06fa44a8588f1aefed"
+    },
+    {
+      "name": "start.ps1",
+      "bytes": 95730,
+      "sha256": "e6000e158f9515aec9d49f3de7418bb5e7e0b06b6f098e863e3f8458825e8ac0"
+    },
+    {
+      "name": "stop.ps1",
+      "bytes": 7178,
+      "sha256": "91b58a7afbb347561c65beec4d1f89739e90381c2dd5b0ee385bc954090f4330"
+    }
+  ],
+  "entry_old_root_name": "GuiScopeSubmission-20261031-050218",
+  "entry_new_root_name": "GuiScopePreparedGuard-20261031-054059",
+  "entry_old_bytes": 43762,
+  "entry_old_sha256": "34f9d264e8835b604f5e7696137de33e3b4ca7314126f1d8982ff3d92c79a9b5",
+  "entry_new_bytes": 43765,
+  "entry_new_sha256": "f3c9ef443dce7c3ca320b3a317ac5ebcc5c44c7177a65aa9d2c5607749e80dcb",
+  "forward_port": 57667,
+  "normalized_prefix_bytes": 2110,
+  "normalized_prefix_sha256": "63efe801cc3fff18dd7e4b609fdcc35e6639086c253985497db9e2a0a4414b25",
+  "scope_files": [
+    {
+      "name": "scope-a.txt",
+      "bytes": 37,
+      "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+    },
+    {
+      "name": "scope-b.txt",
+      "bytes": 37,
+      "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+    },
+    {
+      "name": "scope-c.txt",
+      "bytes": 39,
+      "sha256": "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439"
+    }
+  ],
+  "failed_actual_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T31-GUI-fresh-inventory-actual-closed-current.json",
+  "old_actual_immutable": true
+}

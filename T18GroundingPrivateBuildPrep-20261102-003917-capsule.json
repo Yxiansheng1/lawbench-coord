@@ -1,0 +1,17 @@
+{
+  "allowed_reads": [
+    "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-private-build-literal-inputs-current.json",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18RangeDiagnosticPrivateBuild-20261101-181821\\build-private.mjs",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18RangeDiagnosticPrivateBuild-20261101-181821\\build-config.mjs"
+  ],
+  "allowed_writes": [
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18GroundingPrivateBuildPrep-20261102-003917\\build-private.mjs",
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18GroundingPrivateBuildPrep-20261102-003917\\build-config.mjs",
+    "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18GroundingPrivateBuildPrep-20261102-003917.md"
+  ],
+  "source_directory": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18GroundingPrivateBuildPrep-20261102-003917",
+  "expected_builder_sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+  "old_config_sha256": "f5175e307d6dcdd29a2a8779140df649cf321e4706c0d56b65f285ede3026703",
+  "literal_current_pins_from_Root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-native-grounding-private-build-literal-inputs-current.json",
+  "runtime_admitted": false
+}

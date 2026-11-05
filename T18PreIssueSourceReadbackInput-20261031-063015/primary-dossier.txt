@@ -1,0 +1,485 @@
+
+FILE D:\Lawbeach\lawbench-B\service\lawbench\api\ui.py
+"""给界面的接口 /api/*（Spec 4.3、20.5；契约 contracts/api/）。
+
+每个接口：按契约 $defs/request 校验请求（不合格 INVALID_ARGUMENT）→ 执行 → 包成 {ok, value}；
+开发和测试环境再按 $defs/response 校验返回（Spec 20.11）。本卡实现 case_open、case_recent、settings、
+capsules、capsules_reset、connection_test；T5 加 materials_scan、materials_list、materials_import。
+"""
+from __future__ import annotations
+
+import json
+import math
+import secrets
+import time
+from typing import Callable
+
+from starlette.concurrency import run_in_threadpool
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+from starlette.routing import Route
+
+from .. import contracts, logs
+from ..errors import MESSAGES, ApiError
+
+LLM_MODEL = "qwen38-27b"  # Spec 20.7：发给网关的模型名固定
+KEY_TIMEOUT = 10.0
+
+
+def _endpoint(app_state, name: str, fn: Callable[[dict], dict], *, query: bool = False,
+              no_input: bool = False, family: str = "api"):
+    """family：契约目录（api 或 core）；日志的模块名也用它。"""
+    schema = f"{family}/{name}.schema.json"
+
+    async def handler(request: Request) -> JSONResponse:
+        t0 = time.monotonic()
+        if query:
+            data: object = dict(request.query_params)
+        else:
+            raw = await request.body()
+            try:
+                data = json.loads(raw) if raw.strip() else {}
+            except ValueError:
+                raise ApiError("INVALID_ARGUMENT", "bad_json")
+        if request.path_params and isinstance(data, dict):
+            data = {**data, **request.path_params}   # /api/pipeline/{task_id} 等：路径里的参数并进请求（T16）
+        if no_input:
+            # settings、capsules 的 $defs/request 是 PUT 的请求体；GET 不带任何参数
+            if data:
+                raise ApiError("INVALID_ARGUMENT", "unexpected_query")
+        elif contracts.errors(schema, "#/$defs/request", data):
+            raise ApiError("INVALID_ARGUMENT", "request_contract")
+        value = await run_in_threadpool(fn, data)
+        body = {"ok": True, "value": value}
+        if app_state.config.validate_responses:
+            contracts.validate(schema, "#/$defs/response", body)
+        case_id = value.get("case_id") if isinstance(value, dict) else None
+        logs.event(family, name, case_id=case_id, duration_ms=(time.monotonic() - t0) * 1000)
+        return JSONResponse(body)
+
+    return handler
+
+
+def routes(st) -> list[Route]:
+    """st：app.state（带 config、cases、settings、capsules、net、key_getter）。"""
+
+    def case_open(d: dict) -> dict:
+        value = st.cases.open(d["path"], d.get("template"), d.get("folders"), d.get("kind"))
+        st.tasks.mark_abnormal(value["case_id"])  # 上次硬退出时仍在执行的任务标"异常中断"（Spec 9.2）
+        st.ocr.resume_case(value["case_id"])      # 案件文件夹拔掉又插回等：接着做它未完成的识别任务（T12 复核）
+        return value
+
+    def task_create(d: dict) -> dict:
+        return st.tasks.create(d)
+
+    def request_scope(d: dict) -> dict:
+        return st.tasks.request_scope(d)
+
+    def tasks_list(d: dict) -> dict:
+        return st.tasks.list(d["case_id"])
+
+    def task_current(d: dict) -> dict:
+        return st.tasks.current(d["session_id"])
+
+    def outputs_list(d: dict) -> dict:
+        return st.tasks.outputs(d["case_id"])
+
+    def documents_save(d: dict) -> dict:
+        from ..tools.drafts import save_document_ui
+        return save_document_ui(st.tasks, st.materials, st.config.skills_dirs, d)
+
+    def search(d: dict) -> dict:  # T9：律师检索，返回结构同 case_search
+        from ..search import fts
+        return fts.search(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]), d["q"])
+
+    def source(d: dict) -> dict:  # T9（T14 派修）：原文查看
+        from ..case import source as src
+        return src.view(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]),
+                        d["material_id"], d["citation"], d.get("task_id"), materials=st.materials)
+
+    def case_forget(d: dict) -> dict:        # 契约 1.4：从最近案件里移除（只删登记，不动案件文件夹）
+        return st.cases.forget(d["case_id"])
+
+    def case_recent(d: dict) -> dict:
+        return {"cases": st.cases.recent()}
+
+    def settings_get(d: dict) -> dict:
+        return st.settings.get()
+
+    def settings_put(d: dict) -> dict:
+        st.net.check_servers(d["servers"])  # 6000D 地址不能指向本机转发端口自己
+        return st.settings.put(d)
+
+    def capsules_get(d: dict) -> dict:
+        return st.capsules.get()
+
+    def capsules_put(d: dict) -> dict:
+        return st.capsules.put(d)
+
+    def capsules_reset(d: dict) -> dict:
+        return st.capsules.reset()
+
+    def materials_scan(d: dict) -> dict:
+        return st.materials.scan(d["case_id"])
+
+    def materials_list(d: dict) -> dict:
+        return st.materials.list(d["case_id"], include_removed=d.get("include_removed") == "true")
+
+    def materials_import(d: dict) -> dict:
+        return st.materials.import_(
+            d["case_id"], d["paths"], d["target"], d["unzip"], mode=d.get("mode", "copy")
+        )
+
+    def materials_relocate(d: dict) -> dict:
+        return st.materials.relocate(d["case_id"], d["ref_id"], d["path"])
+
+    def materials_remove(d: dict) -> dict:    # 契约 1.4：律师移除材料（原件进回收站）
+        return st.materials.remove(d["case_id"], d["material_ids"])
+
+    def prompt_refine(d: dict) -> dict:
+        from ..pipeline import refine
+        material_names = (
+            [m["name"] for m in st.materials.index(d["case_id"])["materials"]]
+            if d.get("case_id") else []
+        )
+        return refine.refine(
+            st.net,
+            st.key_getter,
+            st.config.skills_dirs,
+            d["text"],
+            d.get("skill"),
+            material_names,
+        )
+
+    def connection_test(d: dict) -> dict:
+        return probe_connection(st, d["server"])
+
+    # T16：流水线与 wiki 修改建议
+    def pipeline_run(d: dict) -> dict:
+        return st.pipelines.run(d)
+
+    def pipeline_status(d: dict) -> dict:
+        return st.pipelines.status(d["task_id"])
+
+    def pipeline_cancel(d: dict) -> dict:
+        return st.pipelines.cancel(d["task_id"])
+
+    def wiki_suggestions(d: dict) -> dict:
+        from ..wiki import suggestions
+        return suggestions.handle(st.cases.root_of(d["case_id"]), d.get("id"), d.get("accept"))
+    def wiki_review_get(d: dict) -> dict:     # 契约 1.4：wiki 核对状态（记在案件里）
+        from ..wiki import review
+        return review.get(st.cases.root_of(d["case_id"]), st.materials.index(d["case_id"]))
+
+    def wiki_review_mark(d: dict) -> dict:
+        from ..wiki import review
+        return review.mark(st.cases.root_of(d["case_id"]), d["case_id"], st.materials.index(d["case_id"]))
+
+    def invoice_run(d: dict) -> dict:
+        return st.invoice.run(d)
+
+    def retainer_driver(d: dict) -> dict:
+        return st.retainer.handle(d)
+
+    def outputs_confirm(d: dict) -> dict:
+        return st.exporter.confirm(d)
+
+    def redline(d: dict) -> dict:
+        return st.exporter.redline(d)
+
+    def archive_build(d: dict) -> dict:
+        return st.archive.build(d)
+
+    def ocr_submit(d: dict) -> dict:
+        return st.ocr.submit(d)
+
+    def ocr_list(d: dict) -> dict:
+        return st.ocr.list(d["case_id"])
+
+    def ocr_cancel(d: dict) -> dict:
+        return st.ocr.cancel(d["job_id"])
+
+    E = lambda name, fn, **kw: _endpoint(st, name, fn, **kw)  # noqa: E731
+    return [
+        Route("/api/case/open", E("case_open", case_open), methods=["POST"]),
+        Route("/api/case/recent", E("case_recent", case_recent, query=True), methods=["GET"]),
+        Route("/api/case/forget", E("case_forget", case_forget), methods=["POST"]),
+        Route("/api/settings", E("settings", settings_get, query=True, no_input=True), methods=["GET"]),
+        Route("/api/settings", E("settings", settings_put), methods=["PUT"]),
+        Route("/api/capsules", E("capsules", capsules_get, query=True, no_input=True), methods=["GET"]),
+        Route("/api/capsules", E("capsules", capsules_put), methods=["PUT"]),
+        Route("/api/capsules/reset", E("capsules_reset", capsules_reset), methods=["POST"]),
+        Route("/api/materials/scan", E("materials_scan", materials_scan), methods=["POST"]),
+        Route("/api/materials", E("materials_list", materials_list, query=True), methods=["GET"]),
+        Route("/api/materials/import", E("materials_import", materials_import), methods=["POST"]),
+        Route("/api/materials/relocate", E("materials_relocate", materials_relocate), methods=["POST"]),
+        Route("/api/materials/remove", E("materials_remove", materials_remove), methods=["POST"]),
+        Route("/api/prompt/refine", E("prompt_refine", prompt_refine), methods=["POST"]),
+        Route("/api/connection/test", E("connection_test", connection_test), methods=["POST"]),
+        Route("/api/request/scope", E("request_scope", request_scope), methods=["POST"]),
+        Route("/api/task", E("task_create", task_create), methods=["POST"]),
+        Route("/api/tasks", E("tasks_list", tasks_list, query=True), methods=["GET"]),
+        Route("/api/task/current", E("task_current", task_current, query=True), methods=["GET"]),
+        Route("/api/outputs", E("outputs_list", outputs_list, query=True), methods=["GET"]),
+        Route("/api/outputs/confirm", E("outputs_confirm", outputs_confirm), methods=["POST"]),
+        Route("/api/documents/save", E("documents_save", documents_save), methods=["POST"]),
+        Route("/api/redline", E("redline", redline), methods=["POST"]),
+        Route("/api/archive/build", E("archive_build", archive_build), methods=["POST"]),
+        Route("/api/search", E("search", search, query=True), methods=["GET"]),
+        Route("/api/source", E("source", source, query=True), methods=["GET"]),
+        Route("/api/pipeline/run", E("pipeline_run", pipeline_run), methods=["POST"]),
+        Route("/api/pipeline/{task_id}", E("pipeline_status", pipeline_status, query=True), methods=["GET"]),
+        Route("/api/pipeline/{task_id}/cancel", E("pipeline_cancel", pipeline_cancel), methods=["POST"]),
+        Route("/api/wiki/review", E("wiki_review", wiki_review_get, query=True), methods=["GET"]),
+        Route("/api/wiki/review", E("wiki_review", wiki_review_mark), methods=["POST"]),
+        Route("/api/wiki/suggestions", E("wiki_suggestions", wiki_suggestions, query=True), methods=["GET"]),
+        Route("/api/wiki/suggestions/{id}", E("wiki_suggestions", wiki_suggestions), methods=["POST"]),
+        Route("/api/invoice/run", E("invoice_run", invoice_run), methods=["POST"]),
+        Route("/api/retainer/driver", E("retainer_driver", retainer_driver), methods=["POST"]),
+        Route("/api/ocr/jobs", E("ocr_submit", ocr_submit), methods=["POST"]),
+        Route("/api/ocr/jobs", E("ocr_list", ocr_list, query=True), methods=["GET"]),
+        Route("/api/ocr/jobs/{job_id}/cancel", E("ocr_cancel", ocr_cancel), methods=["POST"]),
+    ]
+
+
+def probe_connection(st, server: str) -> dict:
+    """对所内、所外地址依次探测；6000D 另发 max_tokens=1 请求判断 Key（Spec 20.7；6000D 目前不校验 Key）。"""
+    net = st.net
+    t0 = time.perf_counter()
+    try:
+        base, route = net.select(server, force=True)
+    except ApiError as e:
+        return {"reachable": False, "key_valid": None, "latency_ms": None, "route": None,
+                "message": MESSAGES[e.code]}
+    latency = math.ceil((time.perf_counter() - t0) * 1000)
+    where = "所内" if route == "primary" else "所外"
+    key_valid = None
+    note = ""
+    if server == "llm":
+        try:
+            key = st.key_getter()
+        except Exception:  # noqa: BLE001 凭据管理器读取出错（已按类名记日志）：不能说成"尚未设置"
+            key, note = None, "，Key 暂时无法验证"
+        else:
+            if not key:
+                note = "，尚未设置 Key"
+        if key:
+            try:
+                t1 = time.perf_counter()
+                code = _key_probe(net, base, key)
+                latency = math.ceil((time.perf_counter() - t1) * 1000)   # 真实请求的耗时；perf_counter：Windows 上 monotonic 约 16 毫秒一跳，快的请求会显示 0（T14）
+                if code in (401, 403):
+                    key_valid, note = False, "，" + MESSAGES["KEY_INVALID"]
+                elif code != 200:
+                    note = "，Key 暂时无法验证"
+                else:
+                    # 网关不校验 Key 时假 Key 也回 200：再发一次明显无效的 Key，它被拒才算真 Key 有效（T14 第二次实跑）
+                    bogus = _key_probe(net, base, "invalid-" + secrets.token_hex(8))
+                    if bogus in (401, 403):
+                        key_valid = True
+                    elif bogus == 200:
+                        note = "，网关当前未校验 Key，无法确认 Key 是否正确"
+                    else:
+                        note = "，Key 暂时无法验证"
+            except Exception as e:  # noqa: BLE001 连接中断等：连通性已确认，Key 状态未知
+                logs.event("api", "connection_test_key", status="fail", error=type(e).__name__)
+                note = "，Key 暂时无法验证"
+    return {"reachable": True, "key_valid": key_valid, "latency_ms": latency, "route": route,
+            "message": f"已连接（{where}）{note}"}
+
+
+def _key_probe(net, base: str, key: str) -> int:
+    """max_tokens=1 的非流式请求，返回状态码。Key 只放在请求头里，不进日志。"""
+    return net.client.post(base + "/chat/completions", timeout=KEY_TIMEOUT, headers={"Authorization": f"Bearer {key}"},
+                           json={"model": LLM_MODEL, "messages": [{"role": "user", "content": "ping"}],
+                                 "max_tokens": 1, "stream": False}).status_code
+
+FILE D:\Lawbeach\lawbench-B\service\lawbench\case\source.py
+"""原文查看 GET /api/source（Spec 4.3、9.5 第 883 行；契约 api/source）。
+
+按出处文本找到这份材料的定位单元，返回该单元的文本；PDF 另返回该页（范围取首页）的页面图片，定位到页、不做文字高亮。
+定位复用出处核对（T10）的 checks.parse：find_cites 解析出处、Material.check_loc 判位置、Material.text_at 取文本；
+页面图片复用识别（T12）的 ocr.render.render_png（200 DPI、长边不超过 2480 像素，内存里渲染、不落临时文件）。
+
+source_changed：契约请求只有 case_id、material_id、citation，没有任务编号和版本。按本案各任务 result.json 里记下的
+出处（材料编号 + 版本 + 位置）判断：同一材料同一位置有记录、而且没有一条的版本等于现在的原件哈希 → true；
+没有记录（如来自检索）或有一条是现在的版本 → false。
+
+只读：读 index.json、材料文本、原件（渲染）、result.json；不写文件。日志只记材料编号与单元类型。
+"""
+from __future__ import annotations
+
+import json
+import re
+
+from .. import contracts, logs
+from ..checks.parse import MaterialSet, find_cites
+from ..errors import ApiError
+from ..ocr import render
+from . import gate
+from .task import TASK_DIR
+
+
+def view(root: str, case_id: str, index: dict, material_id: str, citation: str, task_id: str | None = None,
+         *, materials=None) -> dict:
+    meta = next((m for m in index["materials"] if m["material_id"] == material_id), None)
+    if meta is None:
+        raise ApiError("MATERIAL_NOT_FOUND", "source_material")
+    loc = _loc_for(meta["name"], citation)
+    if meta["status"] == "failed":
+        raise ApiError("MATERIAL_NOT_READY", "failed")
+    mat = MaterialSet.from_case(root, {"materials": [meta]}).get(meta["name"])
+    if mat.units is None:
+        raise ApiError("MATERIAL_NOT_READY", "text_missing")
+    problem = mat.check_loc(loc)
+    if problem:
+        raise ApiError("INVALID_ARGUMENT", "source_loc", detail=f"出处位置不对：{problem}")
+    original = None
+    if materials is not None:
+        try:
+            original, original_status = materials.original_path(case_id, material_id, op="source_view")
+        except ApiError as error:
+            if meta.get("origin") != "ref" and error.code == "OUT_OF_CASE":
+                original_status = "deleted"
+                logs.event("source", "page_image", status="fail", material_id=material_id, error=error.code)
+            else:
+                raise
+    else:
+        original_status = "deleted" if meta["status"] == "source_deleted" else (
+            "missing" if meta["status"] == "missing" else "ok"
+        )
+    png = None
+    if meta["type"] == "pdf" and loc["unit"] == "page":
+        if materials is None:
+            png = _page_png(root, meta, loc["from"])
+        elif original is not None and original_status == "ok":
+            png = _page_png(root, meta, loc["from"], original)
+    logs.event("source", "view", case_id=case_id, material_id=material_id, unit=loc["unit"])
+    return {"name": meta["name"], "loc": loc, "text": mat.text_at(loc), "page_png_base64": png,
+            "source_changed": _changed(root, meta, loc, task_id), "original_status": original_status}
+
+
+def _loc_for(name: str, citation: str) -> dict:
+    """出处里属于这份材料的第一处位置。出处必须整串是一条合格出处（契约已按正则校验）；
+    〔未找到依据〕〔推断〕没有位置，名字对不上这份材料的也拒绝。"""
+    cites = find_cites(citation)
+    if len(cites) != 1 or cites[0].raw != citation or not cites[0].ok or cites[0].fixed:
+        raise ApiError("INVALID_ARGUMENT", "source_citation")
+    item = next((i for i in cites[0].items if i.name == name), None)
+    if item is None:
+        raise ApiError("INVALID_ARGUMENT", "source_other_material")
+    return item.loc
+
+
+def _page_png(root: str, meta: dict, page_no: int, original=None) -> str | None:
+    """渲染不了（加密、损坏、原件已不在）只是没有图，文本照常返回；原因只进日志。"""
+    import base64
+    try:
+        path = original if original is not None else gate.resolve_read(root, meta["rel_path"], op="source_view")
+        return base64.b64encode(render.render_png(path, "pdf", page_no)).decode("ascii")
+    except (render.RenderError, ApiError, OSError) as e:
+        logs.event("source", "page_image", status="fail", material_id=meta["material_id"],
+                   error=getattr(e, "code", None) or type(e).__name__)
+        return None
+
+
+def _changed(root: str, meta: dict, loc: dict, task_id: str | None = None) -> bool:
+    """给了 task_id（契约 1.4）：只看这个任务记下的出处——这份材料在该任务里记的版本与现在不同就是变了
+    （版本按材料记，同一任务里位置写法不同也算，如记的是第2-3页、点的是第2页）；这个任务没引过这份材料则为 False。
+    没给：照旧扫本案全部任务，同材料同位置有记录、且没有一条是现在的版本才算变了。"""
+    if task_id is not None:
+        if not re.fullmatch(r"[TP]-\d{14}-[0-9a-f]{4}", task_id):
+            raise ApiError("TASK_NOT_FOUND", "bad_task_id")
+        res = _result(root, task_id)
+        if res is None:
+            raise ApiError("TASK_NOT_FOUND", "source_task")
+        versions = {c["material_version"] for c in res["citations"] if c["material_id"] == meta["material_id"]}
+        return bool(versions) and meta["sha256"] not in versions
+    base = gate.resolve_internal(root, TASK_DIR, op="source_view")
+    if not base.is_dir():
+        return False
+    key = json.dumps(loc, sort_keys=True)
+    versions = set()
+    for d in base.iterdir():
+        res = _result(root, d.name)
+        if res is None:
+            continue  # 还没开始执行的任务单（没有 result.json）、损坏的记录不算
+        versions |= {c["material_version"] for c in res["citations"]
+                     if c["material_id"] == meta["material_id"] and json.dumps(c["loc"], sort_keys=True) == key}
+    return bool(versions) and meta["sha256"] not in versions
+
+
+def _result(root: str, name: str) -> dict | None:
+    try:
+        path = gate.resolve_internal(root, f"{TASK_DIR}/{name}/result.json", op="source_view")
+        res = json.loads(path.read_text(encoding="utf-8"))
+        return None if contracts.errors("files/result.schema.json", "", res) else res
+    except (ApiError, OSError, ValueError):
+        return None
+
+FILE D:\Lawbeach\lawbench-B\service\lawbench\logs.py
+"""本机日志（Spec 4.5）。
+
+只记：时间、模块、操作名、案件编号、耗时、状态、错误类型。不记材料名、路径、检索词、模型输入输出、
+异常的完整信息（只记异常类名）。调试模式也不放开——所以这里只提供结构化的 event()，不提供自由文本接口。
+"""
+from __future__ import annotations
+
+import json
+import re
+import logging
+import logging.handlers
+import pathlib
+from datetime import datetime
+
+_LOGGER = logging.getLogger("lawbench.events")
+_LOGGER.propagate = False
+_LOGGER.setLevel(logging.INFO)
+
+_STATUS = {"ok", "fail", "denied"}
+
+
+def setup(appdata: pathlib.Path) -> pathlib.Path:
+    log_dir = pathlib.Path(appdata) / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    for h in list(_LOGGER.handlers):
+        _LOGGER.removeHandler(h)
+        h.close()
+    h = logging.handlers.TimedRotatingFileHandler(
+        log_dir / "service.log", when="midnight", backupCount=14, encoding="utf-8", delay=True)
+    h.setFormatter(logging.Formatter("%(message)s"))
+    _LOGGER.addHandler(h)
+    return log_dir
+
+
+def close() -> None:
+    for h in list(_LOGGER.handlers):
+        _LOGGER.removeHandler(h)
+        h.close()
+
+
+def event(module: str, op: str, *, status: str = "ok", case_id: str | None = None,
+          duration_ms: int | None = None, error: str | None = None,
+          material_id: str | None = None, unit: str | None = None) -> None:
+    """error 只能是错误码或异常类名；material_id 只能是材料编号（M0001），unit 只能是定位单位（原文查看用）。"""
+    if status not in _STATUS:
+        raise ValueError(f"未知日志状态 {status}")
+    if material_id is not None and not re.fullmatch(r"M[0-9]{4}", material_id):
+        raise ValueError("material_id 不是材料编号")
+    if unit is not None and unit not in ("page", "para", "line", "cell"):
+        raise ValueError(f"未知定位单位 {unit}")
+    rec = {"t": datetime.now().astimezone().isoformat(timespec="seconds"), "module": module, "op": op,
+           "status": status}
+    if case_id:
+        rec["case_id"] = case_id
+    if duration_ms is not None:
+        rec["ms"] = int(duration_ms)
+    if error:
+        rec["error"] = error
+    if material_id:
+        rec["material_id"] = material_id
+    if unit:
+        rec["unit"] = unit
+    _LOGGER.info(json.dumps(rec, ensure_ascii=False))
+
+REGISTRY root_of uses ._load() cases.json validated; constructor only stores path/sql_path/ref_context/lock. Materials(cases,lo_base=Path,ref_context=cases.ref_context_for) constructor only stores; index reads current index, original_path validates real gate and returns(Path,ok) for these4 in-caseTXT. No case.open/scan needed. Allcopiedcase20 files byteequal. CaseRegistry cases.json must be original document with ONLY cases[0].root rebound to freshprivatecopy. Same actualcase_id/task andsavedresultcitations. Rootalreadyprimaryauditedotherfullsources. No create_app/lifespan/Retainer/OCR/Net/TaskStore/Agent/Session construction.

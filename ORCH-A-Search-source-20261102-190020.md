@@ -1,0 +1,22 @@
+# A source-only original supplementary Search requirement
+First native tool reads this ASCII order absolute pwsh login=false. Exact DS1017/max, one A author. Old A P05 author terminal. Preserve dirty/current P0/P05/T18 and all eight confirmed UI behaviors. Source limit600seconds; Search whole phase19:00:20 to19:50:20 +08 no extension. Same failed technical cause2 consecutive STOP, don't switch wrappers. Git read-only --ignore-submodules=all only if needed, no Git writes. No install/download/changeSDK/default libs/policy/ACL/creds. Source-only absolutely no test/parser/types/build/runtime/HTTP/GUI/Key/model/selftests. No new chats/agents.
+
+Write allowlist relative A:
+dsh-ext/host/public-search.ts
+dsh-ext/host/index.ts ONLY webSearch/webFetch methods and associated current comments, no other methods
+dsh-ext/ui/web-search.tsx
+existing tests t49-public-search.spec.ts and t49-web-search-ui.spec.tsx ONLY necessary positive assertions adapting intentional count/error changes; preserve all security/cancel/cleanup cases and negative assertions
+NEW dsh-ext/tests/owner-search-count-20261102.spec.ts
+Formal D:/Lawbeach/lawbench-coord/ORCH-A-Search-source-handback-20261102-190020.md
+No other writes. Never touch frozen T18 agent/grounding/tests, guard origins/authorize rules.
+
+ROOT browsed official primary https://api-docs.deepseek.com/zh-cn/guides/search/ today:
+POST https://api.deepseek.com/v1/tools/search: query1..128 Unicode, count INTEGER1..50 default10, need_content false; optional ori_question exists BUT OWNER FORBIDS sending it. Fetch POST https://api.deepseek.com/v1/tools/fetch only url. Existing endpoints correct, don't rewrite adapter or SDK. 401 invalid/missingKey;403 Fetch safety rejected;404 no usable Fetch body;408/504 timeouts;429 rate limit. Existing response body cap and no redirects/public HTTPS URL protections unchanged.
+
+Implement minimal current omissions:
+1 PUBLIC_SEARCH_COUNT=10 default; add optional count only. Strict RPC accepts exact query alone OR query+count. Reject unknown fields including ori_question/context/history/case_id; count must integer1..50, no coercion. Default query-only callers remain accepted. searchPublicWeb uses parsed count in exact outgoing {query,count,need_content:false}, caps accepted results to requested count. Host webSearch must forward parsed query/count (not raw request extras). Preserve logs metadata only and user cancellation.
+2 WebSearchTab visible accessible number input results count default10 bounds1..50; validation shows readable noninteger/out-of-range; only manual click/Enter submits query/count. No automatic searches on mount/import/generation/typing. No key state false silent no-op: clicking Search with valid query but no configured key should show exact 未配置公开搜索 Key，请到设置→公开网页搜索配置. Preserve no network request. Button may remain enabled for valid query so this message can appear, not auto credential access. Never print or echo key. Existing SearchKeyControl independent credential store and password/clear/race protections unchanged.
+3 Distinguish missing Key from returned401: no-key Host webSearch/webFetch same exact missing message;401 -> INVALID_KEY / 公开搜索 Key 无效，请到设置→公开网页搜索检查. 408/504 TIMEOUT;403 existing safety-rejected,404 no body, network timeout/cancel/size handling preserved; do not echo upstream error body. No blanket throw, no silent error.
+4 Update old exact positive tests for intentional default5->10 and optional count/error only; preserve unsafe URL/context/cancellation/metadata tests. Add new tests count defaults/bounds/explicit count result cap/body exactly3 fields; no-key never invokes fetch,401 distinct. UI current tests cover count change and no-key message if feasible. Keep no actual HTTP or system credentials; use existing fake fetch/credential seams. Do NOT execute tests. No true-query/paid Search calls.
+
+No new credential backend/storage needed: existing lawbench credentials has dedicated DEEPSEEK_SEARCH_KEY target; leave all credential code untouched. Real E2E will remain not proven if Key unavailable; do not fabricate response/history or claim execution. Handback all writes, command failures and limits; actual source-only terminal, old failed history unchanged. Stop after handback.

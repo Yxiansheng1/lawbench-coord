@@ -1,0 +1,15 @@
+{
+  "source": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-20261101-114236.spec.ts",
+  "source_sha256": "d9869b950f9dff665dea917403665423af6104c55e123a6d129cd49f5759c867",
+  "target": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-read-bound-compiled-20261101-125300.spec.ts",
+  "mapping": {
+    "import {\n  CONTRACT_REVIEW_SKILL,\n  DEFENSE_OPINION_SKILL,\n  DENY_BUDGET,\n  LegalAgent,\n} from '../agent/index.ts'": "const COMPILED_AGENT_URI: string = 'file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/T18BoundedReadPrivateBuild-20261101-124200/private-output-20261101-122346/profile-node_modules/lawbench-dsh/lib/agent.js'\nconst {\n  CONTRACT_REVIEW_SKILL,\n  DEFENSE_OPINION_SKILL,\n  DENY_BUDGET,\n  LegalAgent,\n} = await import(COMPILED_AGENT_URI) as typeof import('../agent/index.ts')\ntype LegalAgent = import('../agent/index.ts').LegalAgent",
+    "import { LawbenchRemote } from '../host/index.ts'": "const COMPILED_HOST_URI: string = 'file:///D:/Lawbeach/lawbench-A/docs/plan/evidence/T18/T18BoundedReadPrivateBuild-20261101-124200/private-output-20261101-122346/profile-node_modules/lawbench-dsh/lib/host.js'\nconst { LawbenchRemote } = await import(COMPILED_HOST_URI) as typeof import('../host/index.ts')"
+  },
+  "bundle_manifest": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18BoundedReadPrivateBuild-20261101-124200\\private-output-20261101-122346\\manifest.json",
+    "bytes": 58594,
+    "sha256": "e4ac06d961ef93085fecb7ce60f658c0d65db2a6ea79c5df7156f2eef1ed1d95"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18BoundedReadCompiledBinding-20261101-125300.md"
+}

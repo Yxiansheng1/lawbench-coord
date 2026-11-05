@@ -1,0 +1,26 @@
+[
+  {
+    "role": "current-compiled-agent",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\private-output-20261029-221202\\profile-node_modules\\lawbench-dsh\\lib\\agent.js",
+    "bytes": 556453,
+    "sha256": "16a82ad40de09d1895b6ceda188af70d630863c8fd369444490e62e7eeb2f9af"
+  },
+  {
+    "role": "current-compiled-host",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\private-output-20261029-221202\\profile-node_modules\\lawbench-dsh\\lib\\host.js",
+    "bytes": 902499,
+    "sha256": "ca849dcf561fdeaf37858dc280b1ef460dbfaef86c1c95c452d6f2ce11aae56b"
+  },
+  {
+    "role": "current-compiled-package",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\private-output-20261029-221202\\profile-node_modules\\lawbench-dsh\\package.json",
+    "bytes": 1257,
+    "sha256": "3d6bcaf2b875d7c2e19d1e982de019f07035866f117693749e80b9c0dc5ee794"
+  },
+  {
+    "role": "current-compiled-manifest",
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\SentenceWorkflowPrivateBuild-20261029-220752\\private-output-20261029-221202\\manifest.json",
+    "bytes": 58195,
+    "sha256": "7f8e4c2b42f81e782034e742f4a46319ee338620c439e844a3223f454f208851"
+  }
+]

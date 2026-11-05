@@ -1,0 +1,50 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\SKILL.md",
+    "bytes": 15249,
+    "sha256": "3f280837b8b424443a03fe55729293f8112e36b98a6f44dd48c7f66b5a017d43",
+    "mtime_ns": "1792400314787868100"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\_任务说明.md",
+    "bytes": 605,
+    "sha256": "0cfa48ca602b93fd02b510e1bb506b7338f21cbad95c77a56c7e4adafead2174",
+    "mtime_ns": "1792379578838590300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\要点.md",
+    "bytes": 9905,
+    "sha256": "0026379ebe64d16b76520b3b861546f35bdc1f384e20c16b5697f3b1cde6661f",
+    "mtime_ns": "1792379578843630800"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\刑事判决书.txt",
+    "bytes": 1872,
+    "sha256": "69c32115681e92f2a70616e0c86f82c6c1e7ad2f988553dcdde06920d32022bd",
+    "mtime_ns": "1792379578838590300"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\拘留证.txt",
+    "bytes": 489,
+    "sha256": "bbe57c8d65553335463121e598a7009cd396fb3f3887f5e948b883213c167096",
+    "mtime_ns": "1792379578839591000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\羁押情况证明.txt",
+    "bytes": 468,
+    "sha256": "2e312568243d3e2ba8b71ee28755f6ba6a6cf4627e68d54f6f1f82b0ba5d4405",
+    "mtime_ns": "1792379578839591000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\起诉意见书.txt",
+    "bytes": 666,
+    "sha256": "8a6e9b8fad2a482745f6970e8b3d1733fac0af84b1a3ca2b756c806cc75c809e",
+    "mtime_ns": "1792379578839591000"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-B\\skills\\sentence-calc\\tests\\样本01-诈骗判决刑期\\逮捕证.txt",
+    "bytes": 424,
+    "sha256": "8c85c11e42b3d35f0ae2a63639924691a5ce8f06a5f5e61581642e39c90952d5",
+    "mtime_ns": "1792379578839591000"
+  }
+]

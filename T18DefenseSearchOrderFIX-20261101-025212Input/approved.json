@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18DefenseSearchOrderFIX-20261101-025212Input\\agent-index.ts",
+      "bytes": 57836,
+      "sha256": "a9a26fd6fffc3fc458e6f04e18848ad035db80e67723886e73d3f1425a815451"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+      "before": "D:\\Lawbeach\\lawbench-coord\\T18DefenseSearchOrderFIX-20261101-025212Input\\agent-task-state.ts",
+      "bytes": 24595,
+      "sha256": "8c68eb6b99e36f774cddd0f7cd30fb0441c27d3e55b01d6eb733381538a0d899"
+    }
+  ],
+  "test": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\defense-search-read-order-20261101-024639.spec.ts",
+  "test_sha256": "6a6c63fc8833693a04e61b25e38085506b498811745b9c1272fbe097144c4ea2",
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18DefenseSearchOrderFIX-20261101-025212.md",
+  "red_proof": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18-defense-search-order-red-reviewed-current.json"
+}

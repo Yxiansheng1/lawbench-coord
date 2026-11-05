@@ -1,0 +1,51 @@
+{
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\binding-finite.mjs",
+      "bytes": 2104,
+      "sha256": "6e2ce94e8f8618d572512acd820fc143f0148dcaefdcc6b541e676d40b92f2f5"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\entry.py",
+      "bytes": 88654,
+      "sha256": "c504d34463f627b5f4632a4faf7fafc8398ac6c3cbcc444a6935f6cb6a0741f0"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\frame-classifier-finite.mjs",
+      "bytes": 7048,
+      "sha256": "5b6203710b1c1df027c297ba3caa30fe13483504d5fbb565a27f167a0a4bb7dd"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\literal-inputs.json",
+      "bytes": 13679,
+      "sha256": "5775e35bd7345ba9e7f80be654d60f4fcc7e292aa6390c8426b6ddf140b86387"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\prepare.ps1",
+      "bytes": 13563,
+      "sha256": "dfceea89a46b81131dbee5c200443200ac903b7523724ff9fdf77bca939c2287"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\projection-observer.mjs",
+      "bytes": 18544,
+      "sha256": "0871eff40533f60776742cc20372b7a85b701a940b735f72035d37333c946c6b"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\README.md",
+      "bytes": 8573,
+      "sha256": "690dc32b7ba41832c5256ec6a0f3cbe53bf983096f3e9b5866e1f103d5c03a9f"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\start.ps1",
+      "bytes": 76332,
+      "sha256": "462520ce1887478520d9df4b505c76f4431876d07af7e9dcc0d0691994b2bd1d"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\ProjectionBindingFix-20261030-065353\\stop.ps1",
+      "bytes": 7180,
+      "sha256": "3ea70a2886e68fd975a5e4f96b26f111248f4bad6b260414c91c4dc9391ce96d"
+    }
+  ],
+  "blueprint": "D:\\Lawbeach\\lawbench-coord\\T34BindingManifestInput-20261030-070038\\root-approved-manifest-blueprint.json",
+  "root_review": "Actual delivered manifest is stale entire old9 metadata: old evidence root/7old own rows/no bindingfinite or Cordis. No app/GUI admitted. Actual60commands55success5nonzero/runtime0 reviewed. Formal4Bash+3relativepwsh claim not in raw: raw3Bash PREEXEC+2PSparser, all successful shell absolute. Source fixes otherwise exact inverse."
+}

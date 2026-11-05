@@ -1,0 +1,18 @@
+{
+  "accepted": true,
+  "tests": 54,
+  "new_archive_tests": 7,
+  "unchanged_affected_tests": 47,
+  "types_exit0": true,
+  "source_changes": [],
+  "source_byte_frozen": {
+    "dsh-ext/agent/index.ts": "d76bd85184e271ffb7aa10a4e8e1a5a11242aa4ae80850f02f29e94f89e94801",
+    "dsh-ext/agent/task-state.ts": "82121824045eee3e4e816caa5c066152b7e00681c39c207d49f562b399801815",
+    "dsh-ext/tests/archive-workflow-gate-20261030-003021.spec.ts": "4719391feb49b71281eaa99ec2b6d0cde4d87d15a2df056b1a9e130811bfcd41"
+  },
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ArchiveWorkflowUnit-root-20261030-005225",
+  "complete_OS_gone": 10,
+  "model_calls": 0,
+  "not_Native_or_business_PASS": true,
+  "Packaging": "HOLD"
+}

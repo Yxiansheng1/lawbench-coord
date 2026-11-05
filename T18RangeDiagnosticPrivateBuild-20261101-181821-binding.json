@@ -1,0 +1,49 @@
+{
+  "old_builder": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\build-private.mjs",
+    "bytes": 32121,
+    "sha256": "347ae08143138724db02017fd4243d56f950d2f1a2e7fdf9ef53ec557ab47b55",
+    "mtime_ns": "1793509872166817500"
+  },
+  "old_config": {
+    "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524\\build-config.mjs",
+    "bytes": 20804,
+    "sha256": "c120cb053072838a19e954b8fc3852788c4911a81ee3620a1c962a7bcb7d3cee",
+    "mtime_ns": "1793512554590084800"
+  },
+  "new_builder": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18RangeDiagnosticPrivateBuild-20261101-181821\\build-private.mjs",
+  "new_config": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18RangeDiagnosticPrivateBuild-20261101-181821\\build-config.mjs",
+  "mapping": {
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18RangeDiagnosticPrivateBuild-20261101-181821",
+    "92678": "92723",
+    "369c148c4fdc3d304304ce1d4b4b2f840882ee3ab8e60049a34f23f719c61ef3": "a61b26d72935d898ae8a1e5bd687e0d2d53395ee7a81befe10443d504844b6ae",
+    "6ebcfd0c0360b7749b53ee947cc8ae8df91d1f15ef40a55c2da4c3eacdd276ff": "7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90"
+  },
+  "each_literal_count": {
+    "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\T18LocalizedContextPrivateBuild-20261101-135524": 1,
+    "92678": 1,
+    "369c148c4fdc3d304304ce1d4b4b2f840882ee3ab8e60049a34f23f719c61ef3": 1,
+    "6ebcfd0c0360b7749b53ee947cc8ae8df91d1f15ef40a55c2da4c3eacdd276ff": 1
+  },
+  "expected_config": {
+    "bytes": 20803,
+    "sha256": "f5175e307d6dcdd29a2a8779140df649cf321e4706c0d56b65f285ede3026703"
+  },
+  "formal": "D:\\Lawbeach\\lawbench-coord\\HANDBACK-A-T18RangeDiagnosticPrivateBuild-20261101-181821.md",
+  "known_source_delta": [
+    {
+      "old": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+        "bytes": 59850,
+        "sha256": "6ebcfd0c0360b7749b53ee947cc8ae8df91d1f15ef40a55c2da4c3eacdd276ff",
+        "mtime_ns": "1793512205535308500"
+      },
+      "new": {
+        "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+        "bytes": 59895,
+        "sha256": "7d52fe3448941d38fd08807f0f019fd918151ed80297fce4c1f3deaf21eb6f90",
+        "mtime_ns": "1793528020910183000"
+      }
+    }
+  ]
+}

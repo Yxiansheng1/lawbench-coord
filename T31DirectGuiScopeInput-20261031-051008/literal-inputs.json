@@ -1,0 +1,105 @@
+{
+  "format": "lawbench-t31-small-service-literal-inputs-v1",
+  "source_only": true,
+  "runtime_executed": false,
+  "actual_passed": false,
+  "approved_core": {
+    "destination": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeServiceSmall-20261031-050218",
+    "planned_GUI_evidence_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+    "source_pins": [
+      {
+        "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+        "bytes": 88654,
+        "sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658\\scope-policy.py",
+        "bytes": 24402,
+        "sha256": "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\net.py",
+        "bytes": 25896,
+        "sha256": "e547412246d92ba4ba105fed98923f91e30e8f5f63a0965a9830ab03f4252585"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\app.py",
+        "bytes": 8723,
+        "sha256": "b2ccc942a3d52588c339ce6d74eb3d1333add17a83691c761fbd4059fc96e09f"
+      },
+      {
+        "path": "D:\\Lawbeach\\lawbench-B\\service\\lawbench\\case\\materials.py",
+        "bytes": 84378,
+        "sha256": "0e2a65ec8b98c901b636d176e4aa588a4682376695bf5124194418ae0a9021ac"
+      }
+    ],
+    "policy": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopePolicyContract-20261031-045658\\scope-policy.py",
+    "policy_sha256": "4bb9918cf8f61e6292e1a9200ebfba42b1cdc9b9c51502b962502d79966af1fb",
+    "baseline": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T34\\CanonicalOriginalGUI-20261031-022702\\entry.py",
+    "baseline_sha256": "aa42c2aa1e9f0b3e5b84b1ba20b9bdd26ac35a1552a491f7f3d67ed266001f64",
+    "current_B346": {
+      "path": "D:\\Lawbeach\\lawbench-coord\\T18WikiTableFidelityBSourcePins-20261030-033727.json",
+      "bytes": 53548,
+      "sha256": "7410f1bd84f1b2a2764203540550670d3252a73bae3b3e3cc02007e5adf9c57b",
+      "mtime_ns": "1793302647316836800"
+    },
+    "actual_model_POST_allowed": 0,
+    "actual_credentials_allowed": 0,
+    "seconds": 600
+  },
+  "new_source_files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeServiceSmall-20261031-050218\\entry.py",
+      "bytes": 45580,
+      "sha256": "4bcdce13b654b6bd8f4e4378b3a313057b727e1f5d0069de9ea13f5628e08b3a"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeServiceSmall-20261031-050218\\scope-a.txt",
+      "bytes": 37,
+      "sha256": "0a51e0be95614eef753152f14e9c6ff303f47814b07da716e57141baf4ceb6e8"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeServiceSmall-20261031-050218\\scope-b.txt",
+      "bytes": 37,
+      "sha256": "3035e0e8f6e9a1b8c907425544c09628c9052c9d2042de6bc166d9f89cf87e91"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T31\\GuiScopeServiceSmall-20261031-050218\\scope-c.txt",
+      "bytes": 39,
+      "sha256": "5195e5e8b39b260769436bb9967e1f22456a748fb495c17a2795e7905e29a439"
+    }
+  ],
+  "documentation_self_hash_policy": "omitted: literal-inputs.json and README.md cannot contain a truthful non-self-referential SHA without a second source mutation",
+  "expected_runtime_root": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T31\\GuiScopeSubmission-20261031-050218",
+  "expected_forward_port": {
+    "minimum": 10000,
+    "maximum": 65535,
+    "must_differ_from_host": true,
+    "forbidden": [
+      18765,
+      65001,
+      65002,
+      65003,
+      65004,
+      65005
+    ]
+  },
+  "source_limits": {
+    "seconds": 600,
+    "actual_model_posts": 0,
+    "actual_credentials": 0,
+    "sockets": 0,
+    "keyring_accesses": 0,
+    "runtime_started": false
+  },
+  "execution_telemetry": {
+    "actual_command_count": 4,
+    "nonzero_exit_count": 0,
+    "python_invoked": false,
+    "runtime_invoked": false,
+    "tests_invoked": false,
+    "build_invoked": false,
+    "import_probe_invoked": false,
+    "git_write_invoked": false
+  }
+}

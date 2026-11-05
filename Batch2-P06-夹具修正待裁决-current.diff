@@ -1,0 +1,5 @@
+--- service/tests/test_owner_p06_pages_20261102.py
++++ service/tests/test_owner_p06_pages_20261102.py
+@@ synthetic material identifier only @@
+-        "material_id": "M-P06-SYNTH",
++        "material_id": "M0001",

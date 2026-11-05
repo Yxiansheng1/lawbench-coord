@@ -1,0 +1,312 @@
+{
+  "verdict": "NATIVE_GROUNDING_FOCUSED_UNIT_AND_TYPES_PASS",
+  "root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeGrounding-green-root-20261102-014726",
+  "results": [
+    {
+      "mode": "unit",
+      "exit_code": 0,
+      "elapsed_s": 2.312999999994645,
+      "identities": [
+        {
+          "pid": 28680,
+          "parent": 39244,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T17:47:26.5727550Z"
+        },
+        {
+          "pid": 43696,
+          "parent": 28680,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T17:47:26.5924650Z"
+        },
+        {
+          "pid": 43896,
+          "parent": 28680,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T17:47:26.8705100Z"
+        },
+        {
+          "pid": 43852,
+          "parent": 28680,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T17:47:26.8799500Z"
+        },
+        {
+          "pid": 43860,
+          "parent": 28680,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T17:47:26.8844060Z"
+        }
+      ],
+      "partial_NOT_PROVEN": [],
+      "OS_after": [],
+      "forced": false,
+      "error": null
+    },
+    {
+      "mode": "types",
+      "exit_code": 0,
+      "elapsed_s": 5.014999999999418,
+      "identities": [
+        {
+          "pid": 42764,
+          "parent": 39244,
+          "exe": "E:\\node\\node.exe",
+          "birth_utc": "2026-11-01T17:47:28.8956660Z"
+        },
+        {
+          "pid": 29620,
+          "parent": 42764,
+          "exe": "C:\\Windows\\system32\\conhost.exe",
+          "birth_utc": "2026-11-01T17:47:28.9004890Z"
+        }
+      ],
+      "partial_NOT_PROVEN": [],
+      "OS_after": [],
+      "forced": false,
+      "error": null
+    }
+  ],
+  "source_changes": [],
+  "passed": 37,
+  "failed": 0,
+  "pending": 0,
+  "executed": [
+    {
+      "name": "T18 原生辩护草稿独立来源复核 生产形状的 ctx.llm.stream 被注入；两路匿名复核先记账，随后作者调用仍保留原路由与预算",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 首次成功保存后只触发一次；后续保存不重审，修改稿明确未复核",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 预算不足时在复核前拒绝，至少保留一次作者调用且不更改收尾计数规则",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 失败、拒绝和迟到的读取回执都不进入复核材料",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 草稿或来源超上限时显式标为不完整，不静默截断为通过结论",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 取消、流错误、非正常结束、坏 JSON 和伪锚点都不注入可用结论",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 复核等待期间任务被替换时不向旧 decision 注入，也不改后续任务",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 finish 后出现尾块时主动 abort 并有界关闭未 done 的迭代器",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 finish 后取消仍在等 next 的流时立即 abort 并关闭迭代器",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 任务替换会立即取消静默复核、清掉旧材料并拒绝旧 pre-step",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 恰在五分钟边界跳过复核记账，只让作者调用取得 wrap-up 提醒",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 两路评论者各达上限时第二路问题与不确定项均被保留且总量不超界",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 读取范围与文本复制分开标记：顶层续读、未读分片和起始号大于一均按片段处理",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 标题与正文分别接受原样锚点，跨标题正文的拼接伪锚点仍整体拒绝",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 超长请求、回执、分片与路径元数据不进入载荷；多条受限回执受汇总预算约束",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 完整读取同时校验请求上界、多点材料身份和每个已读分片的整数范围",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 八条以上已全读材料的名称省略仍属覆盖完整，并在资料限制中单独提示身份范围",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 接近汇总元数据上限时，放不下的受限回执在入列前按单条省略并保留精确 JSON 边界",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 立即返回的大量空文本分片受固定上限约束，失败后仍完成迭代器清理",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 原生辩护草稿独立来源复核 真实 apply 的 pre-step 与工具 execute 走通 ctx.llm.stream，并保留外部窗口路由",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 general-drafting 的实际下一步提示带部分读取名称与真实单元数，且不增加调用",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 litigation-docs 的实际下一步提示带部分读取名称与真实单元数，且不增加调用",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 defense-opinion 的实际下一步提示带部分读取名称与真实单元数，且不增加调用",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 完整覆盖沿用原有提示，不把材料读全误报为事实已全部核验",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 缺失、结构异常以及保存失败或结果契约失败都不伪造覆盖反馈",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 三类交付 Skill 之外不安排覆盖反馈",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 同一任务重复保存仍只提示一次，并在取走前使用最近一次成功保存的覆盖",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 迟到旧任务和不同会话互不串扰",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 保存覆盖反馈 每类材料名只展开有限项，但明确保留被省略数量",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 general-drafting 在干净保存后只提示一次，重复保存不重排",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 litigation-docs 在干净保存后只提示一次，重复保存不重排",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 defense-opinion 在干净保存后只提示一次，重复保存不重排",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 有 citation_check 问题时仍排交付提示；合同审查原反馈通道保持不变",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 Core 失败和结果契约失败都不安排交付提示",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 自由对话、其他 Skill 和外部无工具轮次都不安排交付提示",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 交付阶段逐项自检提示 迟到的旧任务保存不污染新任务；不同会话各自最多提示一次",
+      "status": "passed",
+      "messages": []
+    },
+    {
+      "name": "T18 辩护模板来源事实纪律 模板明确要求未确认工作占位、不利事实部分和单一陈述归属",
+      "status": "passed",
+      "messages": []
+    }
+  ],
+  "selected_expected": 37,
+  "source_rebinding": {
+    "scope": "ROOT_MAIN_PART_RANGE_IDENTITY_CUMULATIVE_DELTA_FULLY_REVIEWED_WITH_NO_VACUOUS_MORE_NAMES",
+    "mainpart_actual_thread": "01a19833-561f-7c13-9524-3268323266f3",
+    "mainpart_commands": 2,
+    "mainpart_zero": 2,
+    "identity_actual_thread": "01a19837-19d6-7c10-8765-5bc33ba5def5",
+    "identity_commands": 3,
+    "identity_zero": 3,
+    "all_commands_formal_writefaces_and_whole_new_delta_reviewed": true,
+    "source_runtime": 0,
+    "only_helper_test_formals": true,
+    "old_source_identity_missing_proof": "Short finished source author PID/birth not captured; no independentOSobjectclaim",
+    "Rootadmin_initialASCIIWriteFailure": "emptyunusedorder before any author launch; correctedASCIIUnicodeescapes before fresh sourcejob",
+    "Rootadmin_CIMinvalidquery": "terminal status no pid; not OSabsence proof",
+    "changes": [
+      {
+        "before": {
+          "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+          "bytes": 37261,
+          "sha256": "8599067216ca20d7d53c4656394bbbe17195e03f92bd9eeb7da03b064e297d51"
+        },
+        "after": {
+          "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\grounding-review.ts",
+          "bytes": 37867,
+          "sha256": "fe62f6ce3474897619177b14ae35cded93c6cb97a3b96381969534136a56b9a8"
+        }
+      },
+      {
+        "before": {
+          "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+          "bytes": 49087,
+          "sha256": "0fbbb6897dbd2d3ad7a3e8cad72c6af3193398aec2364e22756bddec58c87985"
+        },
+        "after": {
+          "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\native-grounding-review-20261102-000134.spec.ts",
+          "bytes": 50993,
+          "sha256": "b56214d85a464d584fa586683b8951b2d38eeb440ada75b0c43386527a024ad1"
+        }
+      }
+    ],
+    "old_chunk_metadata_coverage_lifecycle_byteheld": true,
+    "Packaging": "HOLD"
+  },
+  "scope": "NEW_GROUNDING20_PLUS_ORIGINAL_DELIVERY17_OFFLINE_AND_TYPES",
+  "model": 0,
+  "GUI": 0,
+  "native_model_and_production_case_execution": false,
+  "metadata_observer_OS_not_individually_sealed": true,
+  "whole_T18_PASS": false,
+  "Packaging": "HOLD"
+}

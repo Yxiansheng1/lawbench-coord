@@ -1,0 +1,9 @@
+{
+  "target_native_entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\GuiDraftEntry-20261025-172934\\server.py",
+  "target_native_sha256": "458412d6b03c4c350bd40e228503e8ec8f207c13125ec22139612a9176a62151",
+  "old_native_entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T34\\TaskSelectionEntry-20261025-154140\\server.py",
+  "old_native_sha256": "ed7be2e8530f128d3068e793cc04c0d05deb7d68aefd243353c428df06d5fd34",
+  "allowed_script_changes": "prepare+start NativeEntry path/SHA2each; stop runsRoot1 =5literal; nothing else",
+  "current_libs_source": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T34-core-build-root-full-20261025-144914\\current",
+  "native_gui_boundary": "prelistener4nativeASGIbootstrap createv1/cancelled/model0tool1, afterlisten11GET+owncaseopens4+onespecificv2save; coredisabled; actualGUIunverified"
+}

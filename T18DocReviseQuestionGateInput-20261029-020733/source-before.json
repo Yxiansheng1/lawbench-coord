@@ -1,0 +1,42 @@
+[
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\index.ts",
+    "bytes": 46028,
+    "sha256": "5e53fbe9d1833c6533143a2e87d7c39a4f2cf1ce4ede4b421572664aab9fdcfb"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\agent\\task-state.ts",
+    "bytes": 21264,
+    "sha256": "fa2467257b68f274bf4e734ea7116dbce20d15327b66952ae01ac6e5a708479b"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate.spec.ts",
+    "bytes": 22358,
+    "sha256": "248d87161122529cf295985d6d56b53cdcc6722ad9e55d7f432f3a2eaa1d5ed8"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\contract-question-gate-runtime.spec.ts",
+    "bytes": 15507,
+    "sha256": "c5c89d7fbc42eaa70144565d62c27fcaa2559335113c82ec106b25f5810b09ec"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\tests\\draft-feedback-recovery.spec.ts",
+    "bytes": 15455,
+    "sha256": "6e23e5d532ef4e79f02606dddac472252a9737f6d9d125356e3a85923e8e5f94"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\shared\\core-client.ts",
+    "bytes": 3666,
+    "sha256": "5deeb42f96b2b23225f90adb8642fa9529f419a01a8e14f731378b4f2ac74c50"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\dsh-ext\\host\\skills.ts",
+    "bytes": 3801,
+    "sha256": "9981fa72543238a5d7d16b9790905cb98a08dc140adab67a4fe485da5239a472"
+  },
+  {
+    "path": "D:\\Lawbeach\\lawbench-A\\skills\\doc-revise\\SKILL.md",
+    "bytes": 10591,
+    "sha256": "5ffa5fd1ce60445990886533429811d9e60e508f32bccf2e419589a93dc136a3"
+  }
+]

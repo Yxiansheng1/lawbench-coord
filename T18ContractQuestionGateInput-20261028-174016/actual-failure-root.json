@@ -1,0 +1,102 @@
+{
+  "verdict": "REAL_NATIVE_MODEL_WORKFLOW_FAILED_REQUIRED_QUESTIONS_AND_BUSINESS_QUALITY",
+  "runtime_root": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18NativeContractRuntime-root-20261028-171231",
+  "run": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T18\\NativeContractWorkflow-20261028-163202\\run-Ru6yvt",
+  "modelPOST": 10,
+  "modelHTTP200": 10,
+  "actual_tools": 9,
+  "ask_user_question": 0,
+  "question_callback": 0,
+  "native_events": 58,
+  "elapsed_s": 263.6870000000001,
+  "natural_exit": true,
+  "forced": false,
+  "OS_identities": [
+    {
+      "pid": 39788,
+      "parent": 39604,
+      "exe": "C:\\Users\\morel\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "birth_utc": "2026-10-28T09:12:31.8377190Z"
+    },
+    {
+      "pid": 2968,
+      "parent": 39788,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T09:12:32.3444820Z"
+    },
+    {
+      "pid": 15092,
+      "parent": 2968,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T09:12:32.3566920Z"
+    },
+    {
+      "pid": 8324,
+      "parent": 2968,
+      "exe": "E:\\node\\node.exe",
+      "birth_utc": "2026-10-28T09:12:32.4335460Z"
+    },
+    {
+      "pid": 38396,
+      "parent": 8324,
+      "exe": "D:\\Lawbeach\\lawbench-A\\dsh\\node_modules\\.pnpm\\@esbuild+win32-x64@0.28.1\\node_modules\\@esbuild\\win32-x64\\esbuild.exe",
+      "birth_utc": "2026-10-28T09:12:32.5466210Z"
+    },
+    {
+      "pid": 39856,
+      "parent": 8324,
+      "exe": "C:\\Users\\morel\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "birth_utc": "2026-10-28T09:12:32.9966550Z"
+    },
+    {
+      "pid": 38384,
+      "parent": 39856,
+      "exe": "C:\\Windows\\system32\\conhost.exe",
+      "birth_utc": "2026-10-28T09:12:33.0042550Z"
+    }
+  ],
+  "OS_after": [],
+  "port": 52262,
+  "portListen": 0,
+  "root_quality_findings": [
+    "Skillactualrequiredparty/purposeconfirmation andmissingfocusquestion skipped beforefirstdraft; modeltoolcallsproveask0. Consumerassertionpreserved.",
+    "Finalv4risk7claims1/1000is20times5/10000; arithmeticratio2, nolegalmeritsdetermination.",
+    "Selfcheckclaimsmandatoryquestionhandlingpasseddespiteask0."
+  ],
+  "edit_list": {
+    "items": 7,
+    "accepted": 6,
+    "out_of_scope": [
+      {
+        "id": 4,
+        "reason": "find 跨越域代码或超链接"
+      }
+    ]
+  },
+  "redline_requests": 0,
+  "revisedDOCX": 0,
+  "original_fixtures_SHA_bytes_mtime_unchanged": true,
+  "Keyscan": {
+    "owned_text_files": 29,
+    "exactdedicatedKeyhits": 0,
+    "no_memory_erasure_claim": true
+  },
+  "cleanup": {
+    "agentCancelledOrIdle": true,
+    "browserDisposed": true,
+    "contextDisposed": true,
+    "bServiceStopped": true,
+    "fetchRestored": true,
+    "environmentRestored": true,
+    "outputRedactionRestored": true,
+    "keyCleared": true,
+    "failures": []
+  },
+  "retainer_qualification": "finite sentinel closed only; original neverstarted",
+  "Packaging": "HOLD",
+  "whole_T18_PASS": false,
+  "whole_project_PASS": false,
+  "packet": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\T18ContractActualFailure-root-20261028-172032",
+  "files": 11,
+  "manifestSHA": "c8f26e27b8187a165adf7deb2b07c688068a0bb11c549ecdbca60a2166cb08d8"
+}

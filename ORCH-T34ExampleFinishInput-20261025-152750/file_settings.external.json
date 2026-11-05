@@ -1,0 +1,36 @@
+{
+  "v": 1,
+  "servers": {
+    "llm_base_url": "http://192.168.8.77:8000/v1",
+    "prep_base_url": "http://192.168.8.124:9000",
+    "llm_alt_base_url": "http://10.126.126.1:8000/v1",
+    "prep_alt_base_url": "http://10.126.126.3:9000"
+  },
+  "defaults": {
+    "thinking": "中",
+    "window": "64K",
+    "max_tokens": 16384,
+    "temperature": 0.6
+  },
+  "skill_presets": {},
+  "templates": {
+    "文书": null,
+    "合同": null
+  },
+  "ocr_fallback_llm": false,
+  "profile": {
+    "lawyer_name": null
+  },
+  "office": {
+    "dir": null,
+    "invoice_buyer": null
+  },
+  "converter": "auto",
+  "external_llm": {
+    "enabled": true,
+    "base_url": "https://api.example.com/v1",
+    "model": "example-model",
+    "context_window": 65536,
+    "supports_tools": true
+  }
+}

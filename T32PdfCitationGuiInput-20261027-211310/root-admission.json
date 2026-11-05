@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-27T21:11:06.286848+08:00",
+  "entry": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+  "probe": "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\probe.mjs",
+  "entry_sha": "165565761356c1100baf7b101b4a39ff1dbcf668d89321e3b1874bae9246da9f",
+  "probe_sha": "766c0e1a3c1a81f0569efc429eda0d983030341a72cacadffa185697641ddf6f",
+  "full_cumulative_review": true,
+  "finite_admitted": true,
+  "authors": [
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T32-native-PDF-citation-1017-20261027-204736.job.json",
+      "commands": 77,
+      "success": 63,
+      "write_faces": [
+        "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\README.md",
+        "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\probe.mjs",
+        "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+        "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-native-PDF-citation-20261027-204736.md"
+      ],
+      "runtime": 0,
+      "all_commands_independently_read": true
+    },
+    {
+      "job": "C:\\Users\\morel\\Documents\\Codex\\2026-10-21\\deepseek-codex-gpt-advisor-reviewer\\outputs\\lane-B-T32-PDF-GUI-layout-fix-1017-20261027-210353.job.json",
+      "commands": 36,
+      "success": 29,
+      "write_faces": [
+        "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\root-layout-correction-20261027-210353.md",
+        "D:\\Lawbeach\\lawbench-B\\docs\\plan\\evidence\\T32\\NativePdfCitationEntry-20261027-204736\\server.py",
+        "D:\\Lawbeach\\lawbench-coord\\B-handback-T32-PDF-GUI-layout-20261027-210353.md"
+      ],
+      "runtime": 0,
+      "all_commands_independently_read": true
+    }
+  ],
+  "fixed_inputs": 13,
+  "byte_inverse": true,
+  "dirty_retained": true,
+  "dirty_added": [
+    "?? docs/plan/evidence/T32/NativePdfCitationEntry-20261027-204736/"
+  ],
+  "docs_qualifications": [
+    "Correction note opening typo 78,898; actual before 76,898 bytes. Historical document preserved.",
+    "Main coverage self-corrected material total=1 before handback; pages total_units=5.",
+    "No author runtime accepted. Root finite and GUI NOT_RUN yet."
+  ],
+  "GUI_pass": false,
+  "packaging": "HOLD"
+}

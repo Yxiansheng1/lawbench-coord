@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-27T21:21:10.1751619+08:00",
+  "state": "PROVISIONAL_STATIC_AUTHOR_STILL_WRITING_NOT_RUNTIME",
+  "files": [
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\prepare.ps1",
+      "bytes": 21824,
+      "sha256": "642145c15714d41806eac14baec071d457bd5886ca7dc5e2698e7bf6d5008132"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\start.ps1",
+      "bytes": 81176,
+      "sha256": "ac076517e6f9cedb22710875e9bcedcb8fd57d577fe46d5749e0905a400fd862"
+    },
+    {
+      "path": "D:\\Lawbeach\\lawbench-A\\docs\\plan\\evidence\\T32\\NativePdfCitationGui-20261027-211310\\stop.ps1",
+      "bytes": 7157,
+      "sha256": "b87887fe29dc191cbe9237e3111f1ce9d48ab26ac330edc1e06c5804699a9eec"
+    }
+  ],
+  "confirmed_language": "PowerShell variable names case-insensitive, root pure-language check source/copy returned same binding",
+  "candidate_issue": "New original PDF $CitationSourcePath and ready-copy local $citationSourcePath are same binding. prepare overwrites source path at line126; original pdf_source.path check would compare against copy. start Assert-PreparedInputs locally shadows global original similarly.",
+  "required_if_still_final": "Rename original constant and references by exact case-sensitive byte replacement to a distinct PdfFixtureSourcePath name; keep lower-case copy path/strict checks/hash/mtime/assertions.",
+  "transient_empty_pipeline_count": "Author self-corrected both prepare/start to explicit per-field comparisons before delivery; do not dispatch an extra count fix.",
+  "product_runtime": 0,
+  "GUI": 0,
+  "packaging": "HOLD"
+}

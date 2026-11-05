@@ -1,0 +1,8 @@
+{
+  "relative": "service/lawbench/tools/drafts.py",
+  "old_bytes": 14654,
+  "old_sha256": "816869ed16178a3243b300455e5a509f139272437b11a7b50bb1421f01b22fa2",
+  "bytes": 17262,
+  "sha256": "255a99dabb231d8cb4f09b692fac5bf7a87d7e291973ab746de43ccc022da4f5",
+  "qualification": "Rootfullsource+all28commands/formal reviewed. ActualnamedChinese20/Arabic20andUIcorrectApiError2passed beforefixture lock-only expectation failure. Current11unit notallgreen; concurrentBTESTONLYfixesfixture, productFROZEN. RootMUST11+affected12green BEFOREadmission/model."
+}

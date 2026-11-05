@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lawbench://contracts/files/request_scope_store.schema.json",
+  "title": "<应用数据>/request-scopes.json",
+  "description": "T31 内部持久记录：只保存案件、会话、原生请求、任务、材料编号/版本和状态，不保存材料名、路径、正文或模型输入输出",
+  "type": "object",
+  "$defs": {
+    "record": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/case_id"
+        },
+        "session_id": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/session_id"
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "claiming",
+            "claimed",
+            "released",
+            "rejected"
+          ]
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "material_id": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/material_id"
+              },
+              "sha256": {
+                "$ref": "lawbench://contracts/common.schema.json#/$defs/sha256"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "material_id",
+              "sha256"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "task_id": {
+          "anyOf": [
+            {
+              "$ref": "lawbench://contracts/common.schema.json#/$defs/task_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "updated_at": {
+          "$ref": "lawbench://contracts/common.schema.json#/$defs/time"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "session_id",
+        "state",
+        "materials",
+        "task_id",
+        "updated_at"
+      ]
+    }
+  },
+  "properties": {
+    "v": {
+      "const": 1
+    },
+    "records": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "lawbench://contracts/common.schema.json#/$defs/request_id"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "v",
+    "records"
+  ]
+}
